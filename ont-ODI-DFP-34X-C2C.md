@@ -1,6 +1,6 @@
 ---
 title: ODI DFP-34X-C2C
-has_children: true
+has_children: false
 parent: ONT
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Huawei MA5671A
-has_children: true
+has_children: false
 parent: ONT
 ---
 

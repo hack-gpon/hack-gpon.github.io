@@ -1,6 +1,6 @@
 ---
 title: TWCGPON657
-has_children: true
+has_children: false
 parent: ONT
 ---
 

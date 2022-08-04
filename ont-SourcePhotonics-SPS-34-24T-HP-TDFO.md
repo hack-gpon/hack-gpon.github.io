@@ -1,7 +1,6 @@
 ---
 title: SourcePhotonics SPS-34-24T-HP-TDFO
-
-has_children: true
+has_children: false
 parent: ONT
 ---
 

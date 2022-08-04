@@ -1,6 +1,6 @@
 ---
 title: Halny HL-GSFP
-has_children: true
+has_children: false
 parent: ONT
 ---
 

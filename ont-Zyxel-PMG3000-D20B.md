@@ -1,6 +1,6 @@
 ---
 title: Zyxel PMG3000-D20B
-has_children: true
+has_children: false
 parent: ONT
 ---
 

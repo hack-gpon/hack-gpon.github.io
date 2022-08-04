@@ -1,6 +1,6 @@
 ---
 title: VSOL V2801F
-has_children: true
+has_children: false
 parent: ONT
 ---
 

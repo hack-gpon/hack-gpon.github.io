@@ -1,6 +1,6 @@
 ---
 title: ZTE F6005 
-has_children: true
+has_children: false
 parent: ONT
 ---
 

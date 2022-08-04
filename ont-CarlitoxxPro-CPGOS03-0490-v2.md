@@ -1,6 +1,6 @@
 ---
 title: CarlitoxxPro CPGOS03-0490 v2
-has_children: true
+has_children: false
 parent: ONT
 ---
 

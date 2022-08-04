@@ -1,6 +1,6 @@
 ---
 title: Nokia G-010S-P
-has_children: true
+has_children: false
 parent: ONT
 ---
 

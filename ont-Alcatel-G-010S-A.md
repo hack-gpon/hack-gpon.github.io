@@ -1,6 +1,6 @@
 ---
 title: Alcatel G-010S-A
-has_children: true
+has_children: false
 parent: ONT
 ---
 

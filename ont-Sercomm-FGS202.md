@@ -1,6 +1,6 @@
 ---
 title: Sercomm FGS202
-has_children: true
+has_children: false
 parent: ONT
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: D-LINK DPN-100 Rev A
-has_children: true
+has_children: false
 parent: ONT
 ---
 

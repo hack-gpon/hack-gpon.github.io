@@ -1,6 +1,6 @@
 ---
 title: Nokia G-010S-Q
-has_children: true
+has_children: false
 parent: ONT
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: ZTE F601 
-has_children: true
+has_children: false
 parent: ONT
 ---
 

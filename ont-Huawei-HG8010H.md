@@ -1,6 +1,6 @@
 ---
 title: Huawei HG8010H 
-has_children: true
+has_children: false
 parent: ONT
 ---
 

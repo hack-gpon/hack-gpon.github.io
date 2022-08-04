@@ -1,6 +1,6 @@
 ---
 title: Hilink HL23446
-has_children: true
+has_children: false
 parent: ONT
 ---
 
