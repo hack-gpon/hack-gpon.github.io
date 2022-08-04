@@ -18,7 +18,7 @@ parent: ONT
 | RAM |   |
 | System |   |
 | HSGMII | No |
-| Optics | SC/APC |
+| Optics | SC/APC and SC/UPC |
 | IP address | 192.168.100.1  |
 | Web Gui | ✅, user telecomadmin, password admintelecom  |
 | SSH | |
