@@ -178,7 +178,7 @@ JVhEWjAwNCUAAAAIAAgACAAAAAAAAAAAAAAAAAAAAABvbWNpX2FwcG9tY2lfYXBwH4sIAAAAAAAA
 AwMAAAAAAAAAAAAfiwgAAAAAAAADY2BoYGZgYFjh9Uq/aNcZQdXsOh3R5ktr/fd0sTEwcuTnJmfG
 JxYUYJVlZGAA0gCHsMK2QQAAAAAAAEQlWERaMDA0JQ==
 ```
-Save it as omci_app.xdelta.b64, then run:
+Save it as omci_app.xdelta.base64, then run:
 ```sh
 # base64 -d omci_app.xdelta.base64 > omci_app.xdelta
 # xdelta patch omci_app.xdelta bin/omci_app bin/omci_app.new
@@ -193,6 +193,8 @@ For reference, the patch changes the follwing section of the omci_app:
 ```
 (It's inside the function referecing the string `OMCI_SW_VER1`)
 
+The original file md5sum is: 4aea2f72bacc11256b7e2c1583d2ad4f
+The patched file md5sum is: da20327c4c002e4c27f82f6ee63dbc1a
 ### Enable PLOAM logging
 ```sh
 /etc/scripts/bin flash set OMCI_DBGLVL 1
