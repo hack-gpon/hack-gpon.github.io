@@ -8,26 +8,22 @@ parent: ONT
 
 ## Hardware Specifications
 
-|             |                    |
-|-------------|--------------------|
-| Vendor      | Technicolor        |
-| Model       | AFM0002TIM/FWB/WND |
-| Alias       |                    |
-| Chipset     | Realtek RTL9601B   |
-| Flash       |                    |
-| RAM         |                    |
-| System      | Linux (Luna SDK)   |
-| HSGMII      | NO                 |
-| Optics      |                    |
-| IP address  | 192.168.2.1        |
-| Web Gui     | Can be enabled     |
-| SSH         | Enabled            |
-| Form Factor | miniONT SFP        |
+|             |                                                 |
+|-------------|-------------------------------------------------|
+| Vendor      | Technicolor                                     |
+| Model       | AFM0002TIM/FWB/WND                              |
+| Alias       |                                                 |
+| Chipset     | Realtek RTL9601B                                |
+| Flash       |                                                 |
+| RAM         |                                                 |
+| System      | Linux (Luna SDK)                                |
+| HSGMII      | NO                                              |
+| Optics      |                                                 |
+| IP address  | 192.168.2.1                                     |
+| Web Gui     | Can be enabled, user `admin`, password `system` |
+| SSH         | ✅ user `admin`, password `system`              |
+| Form Factor | miniONT SFP                                     |
 
-## Default credentials:
-- User: admin
-- Password: system
-## Interchangeable firmware with 
 ## List of software versions
 - V1_7_8_181123
 - V1_7_8_210928
@@ -54,15 +50,15 @@ parent: ONT
 
 This stick supports dual boot. 
 
-k0 and r0 contains respectively the kernel and firmware  of the first image, k1 and r1 of the second one
+`k0` and `r0` contains respectively the kernel and firmware of the first image, `k1` and `r1` of the second one
 
 ## List of firmware and files
-## Useful files
+### Useful files
 - `/var/config/lastgood.xml` - Contains the user portion of the configuration
 - `/var/config/lastgood-hs.xml` - Contains the "hardware" configuration (i.e. that _should_ not be changed)
 - `/tmp/omcilog` - OMCI messages logs (must be enabeled, see below)
 
-## Useful binaries
+### Useful binaries
 - `/etc/scripts/flash`  - Used to manipulate the config files in a samewhat safe manner
 - `xmlconfig` - Used to low-level manipulate the XML config files. Called by `flash`
 - `nv` - Used to manipulate the nvram storage, including persistent config entries via `nv setenv`/`nv getenv`
