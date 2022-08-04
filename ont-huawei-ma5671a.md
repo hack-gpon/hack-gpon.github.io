@@ -1,8 +1,8 @@
 ---
-title: Hack Gpon - Ont Huawei MA5671A
+title: Huawei MA5671A
 has_children: true
 nav_order: 2
+parent: Huawei
 ---
 
-
-# Ont Huawei MA5671A
+# Huawei MA5671A

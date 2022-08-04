@@ -4,4 +4,4 @@ _site/
 .jekyll-cache/
 .jekyll-metadata
 Gemfile.lock
-assets/
+assets/js/zzzz-search-data.json

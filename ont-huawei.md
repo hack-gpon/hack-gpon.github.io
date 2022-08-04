@@ -1,7 +1,8 @@
 ---
-title: Hack Gpon - Ont Huawei
+title: Huawei
 has_children: true
-nav_order: 2
+parent: ONT
+nav_order: 1
 ---
 
-# Ont Huawei
+# Huawei

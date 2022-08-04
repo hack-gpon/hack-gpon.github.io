@@ -3,10 +3,26 @@ title: "Hack GPON"
 baseurl: /
 permalink: '/:title/'
 search_enabled: true
-color_scheme: "dark"
+color_scheme: "light"
+url: "https://hack-gpon.github.io/"
+nav_sort: case_sensitive
 
+aux_links:
+  "Hack GPON on GitHub":
+    - "//github.com/hack-gpon/hack-gpon.github.io"
 
 plugins:
   - jekyll-last-modified-at
 last-modified-at:
     date-format: '%d/%m/%Y'
+
+last_edit_timestamp: true
+last_edit_time_format: "%d/%m/%Y"
+
+gh_edit_link: true # show or hide edit this page link
+gh_edit_link_text: "Edit this page on GitHub"
+gh_edit_repository: "https://github.com/hack-gpon/hack-gpon.github.io" # the github URL for your repo
+gh_edit_branch: "main" # the branch that your docs is served from
+
+
+footer_content: "Copyright &copy; 2022"
