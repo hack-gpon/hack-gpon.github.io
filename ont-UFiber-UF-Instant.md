@@ -26,7 +26,10 @@ parent: ONT
 
 ### Interchangeable firmware with
 
-N.B. can be used as universal GPON stick with V2801F rootfs, but only with stock UF kernel (4.3.1) - needed for Laser controller
+Warning
+{: .label .label-red }
+
+can be used as universal GPON stick with V2801F rootfs, but only with stock UF kernel (4.3.1) - needed for Laser controller
 
 - [ODI DFP-34X-C2C](ont-ODI-DFP-34X-C2C)
 - [VSOL V2801F](ont-vsol-V2801F)
