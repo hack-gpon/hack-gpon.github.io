@@ -20,7 +20,7 @@ parent: ONT
 | HSGMII | No |
 | Optics | SC/APC and SC/UPC |
 | IP address | 192.168.100.1  |
-| Web Gui | ✅, user `telecomadmin`, password `admintelecom`  |
+| Web Gui | ✅ user `telecomadmin`, password `admintelecom`  |
 | SSH | |
 | Form Factor | ONT |
 
