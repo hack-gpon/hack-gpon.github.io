@@ -1,0 +1,12 @@
+remote_theme: just-the-docs/just-the-docs
+title: "Hack GPON"
+baseurl: /
+permalink: '/:title/'
+search_enabled: true
+color_scheme: "dark"
+
+
+plugins:
+  - jekyll-last-modified-at
+last-modified-at:
+    date-format: '%d/%m/%Y'
