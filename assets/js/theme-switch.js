@@ -29,8 +29,8 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', eve
 
 const toggleDarkMode = document.querySelector('.js-toggle-dark-mode'); 
 jtd.addEvent(toggleDarkMode, 'click', function(){ 
-    const newColorScheme = jtd.getTheme() === 'dark' ? "dark" : "light";
-    const newTextScheme = jtd.getTheme() === 'dark' ? "Light mode" : "Dark mode";
+    const newColorScheme = jtd.getTheme() !== 'dark' ? "dark" : "light";
+    const newTextScheme = jtd.getTheme() !== 'dark' ? "Light mode" : "Dark mode";
     jtd.setTheme(newColorScheme);
     toggleDarkMode.textContent = newTextScheme; 
     localStorage.setItem("color-scheme",newColorScheme);
