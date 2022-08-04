@@ -26,10 +26,10 @@ parent: ONT
 
 ### Interchangeable firmware with
 
-- [Huawei MA5671A]({{ site.baseurl }}{% link ont-huawei-ma5671a.md %})
-- [Nokia G-010S-P]({{ site.baseurl }}{% link ont-nokia-g-s010s-p.md %})
-- [SourcePhotonics SPS-34-24T-HP-TDFO]({{ site.baseurl }}{% link ont-SourcePhotonics-SPS-34-24T-HP-TDFO.md %})
-- [Hilink HL23446]({{ site.baseurl }}{% link ont-Hilink-HL23446.md %})
+- [Huawei MA5671A](ont-huawei-ma5671a)
+- [Nokia G-010S-P](ont-nokia-g-s010s-p)
+- [SourcePhotonics SPS-34-24T-HP-TDFO](ont-SourcePhotonics-SPS-34-24T-HP-TDFO)
+- [Hilink HL23446](ont-Hilink-HL23446)
 
 ### List of software version
 

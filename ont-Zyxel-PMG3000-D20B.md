@@ -26,9 +26,9 @@ parent: ONT
 
 ### Interchangeable firmware with
 
-- [Zyxel PMG3000-D20B]({{ site.baseurl }}{% link ont-Zyxel-PMG3000-D20B.md %})
-- [Halny HL-GSFP]({{ site.baseurl }}{% link ont-Halny-HL-GSFP.md %})
-- [D-LINK DPN-100-Rev-A]({{ site.baseurl }}{% link ont-D-LINK-DPN-100-Rev-A.md %})
+- [Zyxel PMG3000-D20B](ont-Zyxel-PMG3000-D20B)
+- [Halny HL-GSFP](ont-Halny-HL-GSFP)
+- [D-LINK DPN-100-Rev-A](ont-D-LINK-DPN-100-Rev-A)
 
 ### List of software version
 ### List of partition

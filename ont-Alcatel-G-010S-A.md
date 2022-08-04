@@ -37,7 +37,7 @@ Is it possibile to turn a Nokia G-010S-P into an Alcatel G-010S-A
 
 ## HW Mod
 
-- [Nokia G-010S-A Pin 6 Iusse | Rsaxvc.net](https://rsaxvc.net/blog/2020/8/15/Nokia_G-010S-A_Pin_6_Issue.html)
+- [Nokia G-010S-A Pin 6 Iusse - Rsaxvc.net](https://rsaxvc.net/blog/2020/8/15/Nokia_G-010S-A_Pin_6_Issue.html)
 
 ## Miscellaneous Links
 
