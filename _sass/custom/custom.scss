@@ -1,17 +1,19 @@
-.github-edit 
-
 .github-edit {
-    float: right;
     color: $body-text-color;
     
-    &:hover svg {
-        fill: $btn-primary-color;
+    &:hover {
+        color: $nav-child-link-color;
+        
+        svg {
+            fill: $nav-child-link-color;
+        }
     }
 
     svg {
         display: inline;
         vertical-align: top;
         width: 1.5rem;
+        height: 1.5rem;
         fill: $body-text-color;
     }
 }
