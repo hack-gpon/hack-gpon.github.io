@@ -19,12 +19,29 @@ parent: ONT
 | System      | Linux (Luna SDK)                                |
 | HSGMII      | NO                                              |
 | Optics      |                                                 |
-| IP address  | 192.168.2.1                                     |
+| IP address  | 192.168.2.1 / 169.0.0.1                         |
 | Web Gui     | Can be enabled, user `admin`, password `system` |
 | SSH         | ✅ user `admin`, password `system`              |
 | Form Factor | miniONT SFP                                     |
 
+![](../../assets/img/afm0002tim.jpg)
+
+## Hardware revision
+
+- AFM0002TIM (IP address: 192.168.2.1)
+- AFM0002FWB (IP address: 169.0.0.1)
+- AFM0002WND
+
+Warning
+{: .label .label-red }
+
+- On this page we discuss AFM0002TIM. 
+- The AFM0002FWB can be transformed into AFM0002TIM.
+- The AFM0002FWB has an older sw version.
+
 ## List of software versions
+- V1_7_8_180122 
+- V1_7_8_180725
 - V1_7_8_181123
 - V1_7_8_210928
 - V1_7_8_210412
@@ -32,7 +49,7 @@ parent: ONT
 ## List of partitions
 
 | dev   | size     | erasesize | name            |
-|-------|----------|-----------|-----------------|
+|-------------|-------------------------------------------------|-----------|-----------------|
 | mtd0  | 00040000 | 00001000  | "boot"          |
 | mtd1  | 00002000 | 00001000  | "env"           |
 | mtd2  | 00002000 | 00001000  | "env2"          |
@@ -178,7 +195,7 @@ JVhEWjAwNCUAAAAIAAgACAAAAAAAAAAAAAAAAAAAAABvbWNpX2FwcG9tY2lfYXBwH4sIAAAAAAAA
 AwMAAAAAAAAAAAAfiwgAAAAAAAADY2BoYGZgYFjh9Uq/aNcZQdXsOh3R5ktr/fd0sTEwcuTnJmfG
 JxYUYJVlZGAA0gCHsMK2QQAAAAAAAEQlWERaMDA0JQ==
 ```
-Save it as omci_app.xdelta.base64, then run:
+Save it as `omci_app.xdelta.base64`, then run:	
 ```sh
 # base64 -d omci_app.xdelta.base64 > omci_app.xdelta
 # xdelta patch omci_app.xdelta bin/omci_app bin/omci_app.new
@@ -193,8 +210,8 @@ For reference, the patch changes the follwing section of the omci_app:
 ```
 (It's inside the function referecing the string `OMCI_SW_VER1`)
 
-The original file md5sum is: 4aea2f72bacc11256b7e2c1583d2ad4f
-The patched file md5sum is: da20327c4c002e4c27f82f6ee63dbc1a
+The original file md5sum is: `4aea2f72bacc11256b7e2c1583d2ad4f`
+The patched file md5sum is: `da20327c4c002e4c27f82f6ee63dbc1a`
 ### Enable PLOAM logging
 ```sh
 /etc/scripts/bin flash set OMCI_DBGLVL 1
@@ -207,4 +224,5 @@ reboot
 3. You can then open it into wireshark by installing the OMCI plugin from https://wiki.wireshark.org/Contrib.md
    
 If you want to log everything since the stick boots, you can create a custom rootfs. Place the last command inside `etc/runomci.sh` as the last line of the file
+
 ## Miscellaneous Links

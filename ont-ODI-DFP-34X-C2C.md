@@ -9,7 +9,7 @@ parent: ONT
 ## Hardware Specifications
 
 |          |               |
-|----------|---------------|
+|-------------|-------------------------------------------------|
 | Vendor   | ODI        |
 | Model    | DFP-34X-C2C      |
 | Alias | |
@@ -23,6 +23,9 @@ parent: ONT
 | Web Gui | ✅ |
 | SSH | ✅ |
 | Form Factor | miniONT SFP |
+
+![](../../assets/img/odi.jpg)
+
 
 ### Interchangeable firmware with
 

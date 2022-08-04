@@ -9,7 +9,7 @@ parent: ONT
 ## Hardware Specifications
 
 |          |               |
-|----------|---------------|
+|-------------|-------------------------------------------------|
 | Vendor   | D-LINK        |
 | Model    | DPN-100 Rev A      |
 | Alias | |

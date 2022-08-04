@@ -9,7 +9,7 @@ parent: ONT
 ## Hardware Specifications
 
 |          |               |
-|----------|---------------|
+|-------------|-------------------------------------------------|
 | Vendor   | ZTE        |
 | Model    | F601      |
 | Alias | |
@@ -23,6 +23,10 @@ parent: ONT
 | Web Gui | ✅   |
 | SSH | |
 | Form Factor | ONT |
+
+![f601_v1](../../assets/img/f601_v1.jpg)
+![f601_v3](../../assets/img/f601_v3.jpg)
+
 
 ### Hardware revision
 - v1: big

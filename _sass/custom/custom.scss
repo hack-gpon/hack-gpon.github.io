@@ -1,0 +1,19 @@
+.github-edit {
+    color: $nav-child-link-color;
+    
+    &:hover {
+        color: $link-color;
+
+        svg {
+            fill: $link-color ;
+        }
+    }
+
+    svg {
+        display: inline;
+        vertical-align: top;
+        width: 1.5rem;
+        height: 1.5rem;
+        fill: $nav-child-link-color;
+    }
+}

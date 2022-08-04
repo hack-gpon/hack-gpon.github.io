@@ -9,3 +9,4 @@ description: Worldwide wiki for to access, change and edit ONT
 # Worldwide wiki for to access, change and edit ONT
 
 resources to access and modify ONTs
+{: .fs-6 .fw-300 }

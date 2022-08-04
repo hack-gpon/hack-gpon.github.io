@@ -27,6 +27,10 @@ search:
   # Supports true or false (default)
   button: false
 
+plugins:
+  - jekyll-seo-tag
+  - jekyll-last-modified-at
+
 color_scheme: "light"
 url: "https://hack-gpon.github.io/"
 nav_sort: case_sensitive
@@ -43,13 +47,16 @@ footer_content: "Copyright &copy; 2022"
 last_edit_timestamp: true
 last_edit_time_format: "%D at %R"
 
+last-modified-at:
+    date-format: '%D at %R'
+
 gh_edit_link: true # show or hide edit this page link
 gh_edit_link_text: "Edit this page on GitHub"
 gh_edit_repository: "https://github.com/hack-gpon/hack-gpon.github.io" # the github URL for your repo
 gh_edit_branch: "main" # the branch that your docs is served from
+# gh_edit_source: docs # the source that your files originate from
+gh_edit_view_mode: "tree"
 
 
 
-plugins:
-  - jekyll-seo-tag
 
