@@ -24,6 +24,9 @@ parent: ONT
 | SSH         | Enabled            |
 | Form Factor | miniONT SFP        |
 
+## Default credentials:
+- User: admin
+- Password: system
 ## Interchangeable firmware with 
 ## List of software versions
 - V1_7_8_181123
@@ -66,7 +69,9 @@ k0 and r0 contains respectively the kernel and firmware  of the first image, k1 
 - `omcicli` - Used to interact with the running OMCI daemon
 - `omci_app` - The OMCI daemon
 - `diag` - Used to run low-level diagnostics commands on the stick
+
 ## Useful commands
+
 ### Enable the Web UI
 ```sh
 # /bin/iptables -D INPUT -p tcp --dport 80 -j DROP
