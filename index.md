@@ -8,4 +8,4 @@ description: Worldwide wiki for to access, change and edit ONT
 
 # Worldwide wiki for to access, change and edit ONT
 
-very often ISPs provide ONTs that fail to squeeze the fibre line to the maximum, or fail to monitor and access small boxes or small SFPss
+resources to access and modify ONTs
