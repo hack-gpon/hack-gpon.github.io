@@ -35,11 +35,6 @@ aux_links:
   "Hack GPON on GitHub":
     - "//github.com/hack-gpon/hack-gpon.github.io"
 
-plugins:
-  - jekyll-last-modified-at
-last-modified-at:
-    date-format: '%d/%m/%Y'
-
 last_edit_timestamp: true
 last_edit_time_format: "%d/%m/%Y"
 

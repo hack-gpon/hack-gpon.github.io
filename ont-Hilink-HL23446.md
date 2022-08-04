@@ -1,18 +1,18 @@
 ---
-title: Nokia G-010S-P
+title: Hilink HL23446
 has_children: true
 parent: ONT
 ---
 
-# Nokia G-010S-P
+# Hilink HL23446
 
 ## Hardware Specifications
 
 |          |               |
 |----------|---------------|
-| Vendor   | Nokia        |
-| Model    | G-010S-P      |
-| Alias | Alcatel G-010S-P |
+| Vendor   | Hilink        |
+| Model    | HL23446      |
+| Alias | CarlitoxxPro CPGOS03-0490 v1 |
 | Chipset  | Lantiq PEB98035 |
 | Flash | 16 MB |
 | RAM | 64 MB |
@@ -34,3 +34,4 @@ parent: ONT
 ### List of partition
 ### List of firmware and files
 ## Miscellaneous Links
+

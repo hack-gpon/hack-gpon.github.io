@@ -1,18 +1,20 @@
 ---
-title: Nokia G-010S-P
+title: SourcePhotonics SPS-34-24T-HP-TDFO
+
 has_children: true
 parent: ONT
 ---
 
-# Nokia G-010S-P
+# SourcePhotonics SPS-34-24T-HP-TDFO
+
 
 ## Hardware Specifications
 
 |          |               |
 |----------|---------------|
-| Vendor   | Nokia        |
-| Model    | G-010S-P      |
-| Alias | Alcatel G-010S-P |
+| Vendor   | SourcePhotonics        |
+| Model    | SPS-34-24T-HP-TDFO      |
+| Alias | Stick GPON FS.com |
 | Chipset  | Lantiq PEB98035 |
 | Flash | 16 MB |
 | RAM | 64 MB |
@@ -34,3 +36,5 @@ parent: ONT
 ### List of partition
 ### List of firmware and files
 ## Miscellaneous Links
+
+- [FS.com](https://www.fs.com/it/products/133619.html)

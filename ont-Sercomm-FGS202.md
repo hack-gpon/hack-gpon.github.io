@@ -1,27 +1,27 @@
 ---
-title: Nokia G-010S-P
+title: Sercomm FGS202
 has_children: true
 parent: ONT
 ---
 
-# Nokia G-010S-P
+# Sercomm FGS202
 
 ## Hardware Specifications
 
 |          |               |
 |----------|---------------|
-| Vendor   | Nokia        |
-| Model    | G-010S-P      |
-| Alias | Alcatel G-010S-P |
-| Chipset  | Lantiq PEB98035 |
-| Flash | 16 MB |
-| RAM | 64 MB |
-| System | OpenWRT |
+| Vendor   | Sercomm        |
+| Model    | FGS202      |
+| Alias | |
+| Chipset  | Lantiq PEB98036 |
+| Flash | 8 MB |
+| RAM | 32 MB |
+| System | eCos |
 | HSGMII | Yes |
 | Optics | SC/APC |
 | IP address |   |
-| Web Gui | ✅ |
-| SSH | |
+| Web Gui | NO |
+| SSH | NO |
 
 ### Interchangeable firmware with
 
@@ -33,4 +33,11 @@ parent: ONT
 ### List of software version
 ### List of partition
 ### List of firmware and files
+
+## HW Mod
+
+- Pin 7 GND -> VCC [https://forum.fibra.click/d/27574-faq-25gbps-su-singolo-dispositivo-su-timvodafonefastwebjustspeed/18](https://forum.fibra.click/d/27574-faq-25gbps-su-singolo-dispositivo-su-timvodafonefastwebjustspeed/18)
+- Only for Ubiquiti [https://forum.openwrt.org/t/support-for-gpon-sfp-fgs202/42641/47](https://forum.openwrt.org/t/support-for-gpon-sfp-fgs202/42641/47)
+
 ## Miscellaneous Links
+

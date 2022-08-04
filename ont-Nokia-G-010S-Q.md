@@ -1,23 +1,23 @@
 ---
-title: Technicolor AFM0002
+title: Nokia G-010S-Q
 has_children: true
 parent: ONT
 ---
 
-# Technicolor AFM0002TIM/FWB/WND
+# Nokia G-010S-Q
 
 ## Hardware Specifications
 
 |          |               |
 |----------|---------------|
-| Vendor   | Technicolor        |
-| Model    | AFM0002TIM/FWB/WND       |
+| Vendor   | Nokia        |
+| Model    | RTL9601CI       |
 | Alias | |
-| Chipset  | Realtek RTL9601B |
+| Chipset  |  |
 | Flash |   |
 | RAM |  |
-| System | Linux (Luna SDK)  |
-| HSGMII | NO  |
+| System |   |
+| HSGMII |   |
 | Optics |   |
 | IP address |   |
 | Web Gui |  |
@@ -25,8 +25,6 @@ parent: ONT
 
 ### Interchangeable firmware with
 ### List of software version
-- V1_7_8_210928
-- V1_7_8_210412
 ### List of partition
 ### List of firmware and files
 ## Miscellaneous Links
