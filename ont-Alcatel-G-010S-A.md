@@ -20,8 +20,8 @@ parent: ONT
 | HSGMII | Yes |
 | Optics | SC/UPC |
 | IP address | 192.168.1.10 |
-| Web Gui | ✅ user adminadmin, password ALC#FGU |
-| SSH | ✅ user ONTUSER, password SUGAR2A041 |
+| Web Gui | ✅ user `adminadmin`, password `ALC#FGU` |
+| SSH | ✅ user `ONTUSER`, password `SUGAR2A041` |
 | Form Factor | miniONT SFP |
 
 ### Interchangeable firmware with

@@ -1,17 +1,17 @@
 ---
-title: UFiber UF-Instant
+title: VSOL V2801F
 has_children: true
 parent: ONT
 ---
 
-# UFiber UF-Instant
+# VSOL V2801F
 
 ## Hardware Specifications
 
 |          |               |
 |----------|---------------|
-| Vendor   | UFiber        |
-| Model    |  UFiber UF-Instant      |
+| Vendor   | VSOL        |
+| Model    |  V2801F      |
 | Alias | |
 | Chipset  | Realtek RTL9601CI |
 | Flash | 16 MB |

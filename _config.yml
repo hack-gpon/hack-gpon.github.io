@@ -35,8 +35,11 @@ aux_links:
   "Hack GPON on GitHub":
     - "//github.com/hack-gpon/hack-gpon.github.io"
 
+back_to_top: true
+back_to_top_text: "Back to top"
+
 last_edit_timestamp: true
-last_edit_time_format: "%d/%m/%Y"
+last_edit_time_format: "%D at %R"
 
 gh_edit_link: true # show or hide edit this page link
 gh_edit_link_text: "Edit this page on GitHub"
@@ -45,4 +48,7 @@ gh_edit_branch: "main" # the branch that your docs is served from
 
 
 footer_content: "Copyright &copy; 2022"
+
+plugins:
+  - jekyll-seo-tag
 

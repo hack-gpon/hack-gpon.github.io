@@ -20,8 +20,8 @@ parent: ONT
 | HSGMII | Yes |
 | Optics | SC/APC |
 | IP address | 10.10.1.1  |
-| Web Gui | ✅ username admin, password 1234  |
-| SSH | ✅ username admin, password 1234  |
+| Web Gui | ✅ username `admin`, password `1234`  |
+| SSH | ✅ username `admin`, password `1234`  |
 | Form Factor | miniONT SFP |
 
 ### Interchangeable firmware with
