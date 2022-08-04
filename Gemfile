@@ -1,6 +1,4 @@
 source "https://rubygems.org"
+gemspec
 
 gem "webrick" 
-gem "jekyll" 
-gem "just-the-docs" 
-gem "jekyll-feed"

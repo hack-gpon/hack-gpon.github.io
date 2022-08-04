@@ -20,9 +20,9 @@ parent: ONT
 | System | OpenWRT |
 | HSGMII | Yes |
 | Optics | SC/APC |
-| IP address |   |
-| Web Gui | ✅ |
-| SSH | |
+| IP address |  192.168.1.10   |
+| Web Gui |  |
+| SSH | ✅, user `ONTUSER`, password `7sp!lwUBz1.` |
 | Form Factor | miniONT SFP |
 
 ### Interchangeable firmware with
