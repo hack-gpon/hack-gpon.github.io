@@ -1,7 +1,7 @@
 remote_theme: just-the-docs/just-the-docs
 title: "Hack GPON"
 baseurl: 
-permalink: '/:title/'
+permalink: '/:title'
 search_enabled: true
 search:
   # Split pages into sections that can be searched individually
