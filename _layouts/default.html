@@ -98,7 +98,19 @@ layout: table_wrappers
           </ul>
         </nav>
       {% endif %}
-      <nav class="aux-nav"><ul class="aux-nav-list"><li class="aux-nav-list-item"><span class="site-button "><a class="btn js-toggle-dark-mode">Dark mode</a></span></li></ul></nav>
+      <nav class="aux-nav"><ul class="aux-nav-list">
+        <li class="aux-nav-list-item"><span class="site-button "><a class="btn js-toggle-dark-mode">Dark mode</a></span></li>
+        {% if
+          site.gh_edit_link and
+          site.gh_edit_link_text and
+          site.gh_edit_repository and
+          site.gh_edit_branch and
+          site.gh_edit_view_mode
+        %}
+        <li class="aux-nav-list-item"><a class="github-edit" href="{{ site.gh_edit_repository }}/{{ site.gh_edit_view_mode }}/{{ site.gh_edit_branch }}{% if site.gh_edit_source %}/{{ site.gh_edit_source }}{% endif %}/{{ page.path }}" id="edit-this-page" title="{{ site.gh_edit_link_text }}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg></a>
+        </li>
+        {% endif %}
+      </ul></nav>
     </div>
     <div id="main-content-wrap" class="main-content-wrap">
       {% unless page.url == "/" %}
@@ -131,17 +143,7 @@ layout: table_wrappers
           </nav>
         {% endif %}
       {% endunless %}
-      <div id="main-content" class="main-content" role="main">
-        {% if
-            site.gh_edit_link and
-            site.gh_edit_link_text and
-            site.gh_edit_repository and
-            site.gh_edit_branch and
-            site.gh_edit_view_mode
-          %}
-            <a class="github-edit" href="{{ site.gh_edit_repository }}/{{ site.gh_edit_view_mode }}/{{ site.gh_edit_branch }}{% if site.gh_edit_source %}/{{ site.gh_edit_source }}{% endif %}/{{ page.path }}" id="edit-this-page" title="{{ site.gh_edit_link_text }}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg></a>
-          {% endif %}
-          
+      <div id="main-content" class="main-content" role="main">         
         {% if site.heading_anchors != false %}
           {% include vendor/anchor_headings.html html=content beforeHeading="true" anchorBody="<svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><use xlink:href=\"#svg-link\"></use></svg>" anchorClass="anchor-heading" anchorAttrs="aria-labelledby=\"%html_id%\"" %}
         {% else %}

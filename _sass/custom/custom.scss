@@ -1,0 +1,17 @@
+.github-edit 
+
+.github-edit {
+    float: right;
+    color: $body-text-color;
+    
+    &:hover svg {
+        fill: $btn-primary-color;
+    }
+
+    svg {
+        display: inline;
+        vertical-align: top;
+        width: 1.5rem;
+        fill: $body-text-color;
+    }
+}
