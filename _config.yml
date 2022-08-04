@@ -38,6 +38,8 @@ aux_links:
 back_to_top: true
 back_to_top_text: "Back to top"
 
+footer_content: "Copyright &copy; 2022"
+
 last_edit_timestamp: true
 last_edit_time_format: "%D at %R"
 
@@ -47,7 +49,6 @@ gh_edit_repository: "https://github.com/hack-gpon/hack-gpon.github.io" # the git
 gh_edit_branch: "main" # the branch that your docs is served from
 
 
-footer_content: "Copyright &copy; 2022"
 
 plugins:
   - jekyll-seo-tag
