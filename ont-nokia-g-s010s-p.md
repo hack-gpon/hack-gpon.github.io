@@ -24,12 +24,18 @@ parent: ONT
 | SSH | |
 | Form Factor | miniONT SFP |
 
+![](../../assets/img/g-s010s-p.jpg)
+
 ### Interchangeable firmware with
+
 
 - [Huawei MA5671A](ont-huawei-ma5671a)
 - [Nokia G-010S-P](ont-nokia-g-s010s-p)
 - [SourcePhotonics SPS-34-24T-HP-TDFO](ont-SourcePhotonics-SPS-34-24T-HP-TDFO)
 - [Hilink HL23446](ont-Hilink-HL23446)
+
+Is it possibile to turn a [Nokia G-010S-P](ont-nokia-g-s010s-p) into an [Nokia G-010S-A](ont-nokia-g-s010s-A)
+
 
 ### List of software version
 ### List of partition

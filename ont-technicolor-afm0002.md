@@ -19,12 +19,29 @@ parent: ONT
 | System      | Linux (Luna SDK)                                |
 | HSGMII      | NO                                              |
 | Optics      |                                                 |
-| IP address  | 192.168.2.1                                     |
+| IP address  | 192.168.2.1 / 169.0.0.1                         |
 | Web Gui     | Can be enabled, user `admin`, password `system` |
 | SSH         | ✅ user `admin`, password `system`              |
 | Form Factor | miniONT SFP                                     |
 
+![](../../assets/img/afm0002tim.jpg)
+
+## Hardware revision
+
+- AFM0002TIM (IP address: 192.168.2.1)
+- AFM0002FWB (IP address: 169.0.0.1)
+- AFM0002WND
+
+Warning
+{: .label .label-red }
+
+- On this page we discuss AFM0002TIM. 
+- The AFM0002FWB can be transformed into AFM0002TIM.
+- The AFM0002FWB has an older sw version.
+
 ## List of software versions
+- V1_7_8_180122 
+- V1_7_8_180725
 - V1_7_8_181123
 - V1_7_8_210928
 - V1_7_8_210412

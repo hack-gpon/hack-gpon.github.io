@@ -24,6 +24,9 @@ parent: ONT
 | SSH | |
 | Form Factor | ONT |
 
+
+![](../../assets/img/g-010g-q.jpg)
+
 ### Hardware revision
 ### List of software version
 ### List of partition

@@ -24,6 +24,8 @@ parent: ONT
 | SSH | |
 | Form Factor | ONT |
 
+![f6005_of](../../assets/img/f6005_of.jpg)
+![f6005_tim](../../assets/img/f6005_tim.jpg)
 
 ### List of software version
 ### List of partition

@@ -24,6 +24,10 @@ parent: ONT
 | SSH | |
 | Form Factor | ONT |
 
+![f601_v1](../../assets/img/f601_v1.jpg)
+![f601_v3](../../assets/img/f601_v3.jpg)
+
+
 ### Hardware revision
 - v1: big
 - v2: small, simil huawei, self-destructs

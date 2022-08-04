@@ -24,6 +24,9 @@ parent: ONT
 | SSH | ✅ |
 | Form Factor | miniONT SFP |
 
+![](../../assets/img/odi.jpg)
+
+
 ### Interchangeable firmware with
 
 - [ODI DFP-34X-C2C](ont-ODI-DFP-34X-C2C)
