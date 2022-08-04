@@ -1,11 +1,11 @@
 .github-edit {
-    color: $body-text-color;
+    color: $nav-child-link-color;
     
     &:hover {
-        color: $nav-child-link-color;
-        
+        color: $link-color;
+
         svg {
-            fill: $nav-child-link-color;
+            fill: $link-color ;
         }
     }
 
@@ -14,6 +14,6 @@
         vertical-align: top;
         width: 1.5rem;
         height: 1.5rem;
-        fill: $body-text-color;
+        fill: $nav-child-link-color;
     }
 }
