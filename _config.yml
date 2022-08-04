@@ -51,18 +51,3 @@ gh_edit_branch: "main" # the branch that your docs is served from
 
 footer_content: "Copyright &copy; 2022"
 
-collections:
-  # Define a collection named "docs", its documents reside in the "_docs" directory
-  onts:
-    permalink: "/:ont/:path/"
-    output: true
-  tutorials:
-    permalink: "/:tutorial/:path/"
-    output: true
-
-just_the_docs:
-  collections:
-    onts:
-      name: ONT
-    tutorials:
-      name: Tutorials
