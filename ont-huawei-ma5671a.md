@@ -9,7 +9,7 @@ parent: ONT
 ## Hardware Specifications
 
 |          |               |
-|----------|---------------|
+|-------------|-------------------------------------------------|
 | Vendor   | Huawei        |
 | Model    | MA5671A      |
 | Alias | |

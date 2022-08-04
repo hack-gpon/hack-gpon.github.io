@@ -9,7 +9,7 @@ parent: ONT
 ## Hardware Specifications
 
 |          |               |
-|----------|---------------|
+|-------------|-------------------------------------------------|
 | Vendor   | Hilink        |
 | Model    | HL23446      |
 | Alias | CarlitoxxPro CPGOS03-0490 v1 |

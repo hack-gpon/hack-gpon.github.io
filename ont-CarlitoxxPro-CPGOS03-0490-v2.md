@@ -9,7 +9,7 @@ parent: ONT
 ## Hardware Specifications
 
 |          |               |
-|----------|---------------|
+|-------------|-------------------------------------------------|
 | Vendor   | CarlitoxxPro        |
 | Model    |  CPGOS03-0490 v2      |
 | Alias | |

@@ -9,7 +9,7 @@ parent: ONT
 ## Hardware Specifications
 
 |          |               |
-|----------|---------------|
+|-------------|-------------------------------------------------|
 | Vendor   | Sercomm        |
 | Model    | FGS202      |
 | Alias | |

@@ -9,7 +9,7 @@ parent: ONT
 ## Hardware Specifications
 
 |          |               |
-|----------|---------------|
+|-------------|-------------------------------------------------|
 | Vendor   | ODI        |
 | Model    | DFP-34X-C2C      |
 | Alias | |

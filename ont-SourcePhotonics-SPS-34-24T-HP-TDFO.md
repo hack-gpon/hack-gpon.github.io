@@ -10,7 +10,7 @@ parent: ONT
 ## Hardware Specifications
 
 |          |               |
-|----------|---------------|
+|-------------|-------------------------------------------------|
 | Vendor   | SourcePhotonics        |
 | Model    | SPS-34-24T-HP-TDFO      |
 | Alias | Stick GPON FS.com |

@@ -9,7 +9,7 @@ parent: ONT
 ## Hardware Specifications
 
 |          |               |
-|----------|---------------|
+|-------------|-------------------------------------------------|
 | Vendor   | Nokia        |
 | Model    | G-010S-P      |
 | Alias | Alcatel G-010S-P |

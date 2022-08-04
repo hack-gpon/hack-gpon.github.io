@@ -9,7 +9,7 @@ parent: ONT
 ## Hardware Specifications
 
 |          |               |
-|----------|---------------|
+|-------------|-------------------------------------------------|
 | Vendor   | UFiber        |
 | Model    |  UFiber UF-Instant      |
 | Alias | |
