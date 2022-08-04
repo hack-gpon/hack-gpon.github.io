@@ -22,6 +22,7 @@ parent: ONT
 | IP address |   |
 | Web Gui | ✅ |
 | SSH | |
+| Form Factor | miniONT SFP |
 
 ### Interchangeable firmware with
 

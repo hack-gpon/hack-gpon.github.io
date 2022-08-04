@@ -22,6 +22,7 @@ parent: ONT
 | IP address | 192.168.100.1  |
 | Web Gui | ✅, user telecomadmin, password admintelecom  |
 | SSH | |
+| Form Factor | ONT |
 
 ### Hardware revision
 - v1: port pon horizontal

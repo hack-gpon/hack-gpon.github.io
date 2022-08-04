@@ -22,6 +22,7 @@ parent: ONT
 | IP address | 192.168.1.10 |
 | Web Gui | After root |
 | SSH | |
+| Form Factor | miniONT SFP |
 
 ### Interchangeable firmware with
 

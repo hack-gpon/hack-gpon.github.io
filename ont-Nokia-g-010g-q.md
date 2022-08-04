@@ -1,30 +1,30 @@
 ---
-title: Nokia G-010S-Q
+title: Nokia G-010G-Q
 has_children: true
 parent: ONT
 ---
 
-# Nokia G-010S-Q
+# ZTE F601
 
 ## Hardware Specifications
 
 |          |               |
 |----------|---------------|
 | Vendor   | Nokia        |
-| Model    | RTL9601CI       |
+| Model    | G-010G-Q      |
 | Alias | |
-| Chipset  |  |
-| Flash |   |
-| RAM |  |
+| Chipset  | Realtek |
+| Flash |  |
+| RAM |   |
 | System |   |
-| HSGMII |   |
-| Optics |   |
-| IP address |   |
-| Web Gui |  |
+| HSGMII | No |
+| Optics | SC/APC |
+| IP address |    |
+| Web Gui | ✅   |
 | SSH | |
-| Form Factor | miniONT SFP |
+| Form Factor | ONT |
 
-### Interchangeable firmware with
+### Hardware revision
 ### List of software version
 ### List of partition
 ### List of firmware and files
