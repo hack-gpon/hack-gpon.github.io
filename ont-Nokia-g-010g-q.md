@@ -24,10 +24,13 @@ parent: ONT
 | SSH | |
 | Form Factor | ONT |
 
-
 ![](../../assets/img/g-010g-q.jpg)
+![](../../assets/img/g-010g-q.png)
 
 ### Hardware revision
+- ventilation grid version
+- square version with relief circle
+
 ### List of software version
 ### List of partition
 ### List of firmware and files
