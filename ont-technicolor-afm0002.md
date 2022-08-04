@@ -192,5 +192,20 @@ For reference, the patch changes the follwing section of the omci_app:
 +00408cf0 24 05 00 0f     li         a1,0xf
 ```
 (It's inside the function referecing the string `OMCI_SW_VER1`)
+
+
+### Enable PLOAM logging
+```sh
+/etc/scripts/bin flash set OMCI_DBGLVL 1
+/etc/scripts/bin flash set OMCI_DBGLOGFILE 1
+reboot
+/bin/omcicli set logfile 1 ffffffff
+```
+1. The binary log will be placed inside: `/tmp/omcilog`
+2. You can convert it into .pcap using https://github.com/ADeltaX/omcilog2pcap
+3. You can then open it into wireshark by installing the OMCI plugin from https://wiki.wireshark.org/Contrib.md
+   
+If you want to log everything since the stick boots, you can create a custom rootfs. Place the last command inside `etc/runomci.sh` as the last line of the file
+
 ## Miscellaneous Links
 
