@@ -16,7 +16,7 @@ parent: ONT
 | Chipset  | Realtek |
 | Flash |  |
 | RAM |   |
-| System |   |
+| System | Linux (ZTE custom SDK)  |
 | HSGMII | Yes |
 | Optics | SC/APC |
 | IP address | 192.168.1.1  |
@@ -30,3 +30,6 @@ parent: ONT
 ### List of firmware and files
 ## Miscellaneous Links
 
+## Bugs
+
+buffers are not optimally created and therefore there are problems with uploads if the server is far away. no problem with multiple connections
