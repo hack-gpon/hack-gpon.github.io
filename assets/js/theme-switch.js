@@ -1,4 +1,3 @@
-
 if(localStorage.getItem("color-scheme") === null) {
     const newColorScheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light";
     const newTextScheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? "Light mode" : "Dark mode";
