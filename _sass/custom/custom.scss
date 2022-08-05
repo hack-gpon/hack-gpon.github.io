@@ -114,17 +114,20 @@ ul.metadata {
         }
 
         ul.modal-body {
-            padding: 10px;
-            margin: -1px;
-            border-width: 1px 1px 1px 3px;
-            border-style: solid;
-            border-color: $border-color;
-
-            &:hover {
-                border-color: $link-color;
-            }
+            padding: 0;
+            margin: 0;
 
             >li{
+
+                padding: 10px;
+                margin: -1px;
+                border-width: 1px 1px 1px 3px;
+                border-style: solid;
+                border-color: $border-color;
+
+                &:hover {
+                    border-color: $link-color;
+                }
 
                 &::before {
                     content: '';
