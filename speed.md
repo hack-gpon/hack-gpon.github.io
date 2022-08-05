@@ -6,4 +6,7 @@ description: Tool for calculating maximum speeds
 
 ---
 
-<iframe src="https://hack-gpon.github.io/assets/statics/speed-gpon-eth.html" title="Theoretical maximum speed calculator"></iframe>
+<iframe src="https://hack-gpon.github.io/assets/static/speed-gpon-eth.html" title="Theoretical maximum speed calculator" style="
+    width: 100%;
+    height: 50vh;
+"></iframe>
