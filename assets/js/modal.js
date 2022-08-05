@@ -12,8 +12,10 @@ var modalToogles = document.querySelectorAll("div[data-toogle=modal]");
 });
 
 [...modalToogles].forEach(toogle => {
-    var modal = document.querySelector(toogle.getAttribute('data-target'));
-    modal.style.display = "block";
+    toogle.addEventListener("click", (event) => {
+        var modal = document.querySelector(toogle.getAttribute('data-target'));
+        modal.style.display = "block";
+    });
 });
 
 window.addEventListener("click", function(event) {
