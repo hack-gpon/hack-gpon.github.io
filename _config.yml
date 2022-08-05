@@ -42,13 +42,9 @@ aux_links:
 back_to_top: true
 back_to_top_text: "Back to top"
 
-footer_content: "Copyright &copy; 2022"
+footer_content: "Copyright &copy; 2022. Distributed by an <a href=\"https://github.com/hack-gpon/hack-gpon.github.io/blob/main/LICENCE\">MIT License</a>. <a href=\"privacy-policy\">Privacy Policy</a>."
 
-last_edit_timestamp: true
-last_edit_time_format: "%D at %R"
-
-last-modified-at:
-    date-format: '%D at %R'
+last_edit_timestamp_script: true
 
 gh_edit_link: true # show or hide edit this page link
 gh_edit_link_text: "Edit this page on GitHub"
@@ -56,7 +52,5 @@ gh_edit_repository: "https://github.com/hack-gpon/hack-gpon.github.io" # the git
 gh_edit_branch: "main" # the branch that your docs is served from
 # gh_edit_source: docs # the source that your files originate from
 gh_edit_view_mode: "tree"
-
-
-
-
+gh_owner_name: hack-gpon
+gh_repository_name: hack-gpon.github.io

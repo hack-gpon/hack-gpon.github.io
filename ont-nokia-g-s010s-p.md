@@ -4,29 +4,27 @@ has_children: false
 parent: ONT
 ---
 
-# Nokia G-010S-P
+# Hardware Specifications
 
-## Hardware Specifications
+|             |                  |
+| ----------- | ---------------- |
+| Vendor      | Nokia            |
+| Model       | G-010S-P         |
+| Alias       | Alcatel G-010S-P |
+| Chipset     | Lantiq PEB98035  |
+| Flash       | 16 MB            |
+| RAM         | 64 MB            |
+| System      | OpenWRT          |
+| HSGMII      | Yes              |
+| Optics      | SC/APC           |
+| IP address  |                  |
+| Web Gui     | ✅               |
+| SSH         |                  |
+| Form Factor | miniONT SFP      |
 
-|          |               |
-|-------------|-------------------------------------------------|
-| Vendor   | Nokia        |
-| Model    | G-010S-P      |
-| Alias | Alcatel G-010S-P |
-| Chipset  | Lantiq PEB98035 |
-| Flash | 16 MB |
-| RAM | 64 MB |
-| System | OpenWRT |
-| HSGMII | Yes |
-| Optics | SC/APC |
-| IP address |   |
-| Web Gui | ✅ |
-| SSH | |
-| Form Factor | miniONT SFP |
+{% include image.html file="g-s010s-p.jpg"  alt="G-010S-P" caption="G-010S-P" %}
 
-![](../../assets/img/g-s010s-p.jpg)
-
-### Interchangeable firmware with
+## Interchangeable firmware with
 
 
 - [Huawei MA5671A](ont-huawei-ma5671a)
@@ -37,7 +35,10 @@ parent: ONT
 Is it possibile to turn a [Nokia G-010S-P](ont-nokia-g-s010s-p) into an [Nokia G-010S-A](ont-nokia-g-s010s-A)
 
 
-### List of software version
-### List of partition
-### List of firmware and files
-## Miscellaneous Links
+## List of software version
+## List of partition
+## List of firmware and files
+# Miscellaneous Links
+
+- [alcatel_lucent-lantiq_falcon](https://github.com/minhng99/alcatel_lucent-lantiq_falcon)
+- [uboot lantiq falcon](https://github.com/minhng99/u-boot_lantiq_falcon)

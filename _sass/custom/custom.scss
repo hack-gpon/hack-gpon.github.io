@@ -1,19 +1,249 @@
-.github-edit {
-    color: $nav-child-link-color;
-    
-    &:hover {
-        color: $link-color;
+$purple-400: #2A1264 !default;
+$blue-400: #122664 !default;
+$green-400: #025341 !default;
+$yellow-400: #AD8305 !default;
+$red-400: #A62323 !default;
+
+.page-header {
+
+    .github-edit {
+        color: $nav-child-link-color;
+        float: right;
+        
+        &:hover {
+            color: $link-color;
+
+            svg {
+                fill: $link-color ;
+            }
+        }
 
         svg {
-            fill: $link-color ;
+            display: inline;
+            vertical-align: top;
+            width: 1.5 * $spacing-unit;
+            height: 1.5 * $spacing-unit;
+            fill: $nav-child-link-color;
         }
     }
 
+    h1 {
+        margin-right: 3.5 * $spacing-unit;
+    }
+}
+
+
+.avatar {
+    border-radius: 50%;
+    width: 1.5 * $spacing-unit;
+    height: 1.5 * $spacing-unit;
+}
+
+
+
+ul.metadata {
+    flex-wrap: wrap;
+    list-style: none;
+    display: flex;
+    margin: 0!important;
+    padding: 0.125rem 0 0!important;
+    >li{
+        flex-basis: auto;
+        align-items: center;
+        list-style: none;
+        display: flex;
+
+        &:not(:last-of-type):not(:only-of-type)::after {
+            content: "•";
+            padding-left: 5px;
+            padding-right: 5px;
+            color: $grey-dk-000;
+        }
+
+        &::before {
+            content: "";
+        }
+    }
+}
+
+[data-toogle] {
+    
+    cursor: pointer;
+}
+
+.modal {
+    display: none;  
+    position: fixed;  
+    z-index: 100;  
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;  
+    overflow: auto;  
+    background-color: rgba(0,0,0,0.4);  
+
+    .modal-content {
+        border: $border $border-color;
+        position: relative;
+        background-color: $body-background-color;
+        width: min(500px, calc(100vw - 40px));
+        padding: 0;
+        margin: 40px  auto;
+        animation-name: animatetop;
+        animation-duration: 0.4s;
+    
+    
+        
+    
+        .modal-header {
+            padding: 2px $spacing-unit;
+            margin-left: 1.5 * $spacing-unit;
+
+            h2, .close {
+                font-size: 1.5 * $spacing-unit !important;
+                margin-top: 1.5 * $spacing-unit;
+                margin-bottom: 1.5 * $spacing-unit;
+                line-height: 1;
+            }
+            h2 {
+                margin-right: 1.5 * $spacing-unit;
+            }
+
+            .close {
+                color:  $nav-child-link-color;
+                float: right;
+                font-weight: bold;
+                cursor: pointer;
+    
+                &:hover {
+                    color: $link-color;
+                }
+            }
+        }
+    
+        div.modal-body {padding: 2px $spacing-unit;}
+    
+        .modal-footer {
+            padding: 2px $spacing-unit;
+            color: $body-text-color;
+        }
+
+        ul.modal-body {
+            padding: 0;
+            margin: 0;
+
+            >li{
+
+                padding: 10px;
+                margin: -1px;
+                border-width: 1px 1px 1px 3px;
+                border-style: solid;
+                border-color: $border-color;
+
+                &:hover {
+                    border-left-color: $link-color;
+                }
+
+                &::before {
+                    content: '';
+                }
+                
+                
+                >a {
+                    color: $body-text-color;
+                    text-decoration: none;
+                    border: 0;
+                    background: none;
+                    display: flex;
+                    align-items: center;
+                    
+                    &:hover {
+                        color: $link-color;
+                    }
+
+                    img {
+                        margin-right: 10px;
+                    }
+                }
+                
+            }
+        }
+    }
+}
+  
+/* Add Animation */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+.alert {
+    padding: $sp-3;
+    margin-bottom: $sp-3;
+    overflow: auto;
+    border: $border $border-color;
+    border-radius: $border-radius;
+
+
     svg {
-        display: inline;
-        vertical-align: top;
-        width: 1.5rem;
-        height: 1.5rem;
-        fill: $nav-child-link-color;
+        height: $spacing-unit;
+        margin-right: 0.5 * $spacing-unit;
+        width: $spacing-unit;
+    }
+
+    &.alert-warning {
+        background-color: $yellow-000;
+        color: $yellow-400;
+        border-color: $yellow-100;
+        svg {
+            fill: $yellow-400;
+        }
+    }
+
+    &.alert-danger {
+        background-color: $red-000;
+        color: $red-400;
+        border-color: $red-100;
+        svg {
+            fill: $red-400;
+        }
+    }
+
+    &.alert-info {
+        background-color: $blue-000;
+        color: $blue-400;
+        border-color: $blue-100;
+        svg {
+            fill: $blue-400;
+        }
+    }
+
+    &.alert-success {
+        background-color: $green-000;
+        color: $green-400;
+        border-color: $green-100;
+        svg {
+            fill: $green-400;
+        }
+    }
+}
+
+.btn-yellow {
+    @include btn-color($white, $yellow-100);
+}
+
+figure {
+    border:  $border $border-color;
+    border-radius: $border-radius;
+    display: table;
+    
+    figcaption {
+        background-color: $code-background-color;
+        padding: 8px;
+    }
+    img{
+        vertical-align: middle;
+        border-top-left-radius: $border-radius;
+        border-top-right-radius: $border-radius;
     }
 }
