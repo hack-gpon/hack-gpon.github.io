@@ -1,5 +1,5 @@
-var modals = document.querySelectorAll("div[data-modal]");
-var modalToogles = document.querySelectorAll("div[data-toogle=modal]");
+var modals = document.querySelectorAll("[data-modal]");
+var modalToogles = document.querySelectorAll("[data-toogle=modal]");
 
 
 [...modals].forEach(modal => {
