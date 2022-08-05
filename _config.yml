@@ -42,7 +42,7 @@ aux_links:
 back_to_top: true
 back_to_top_text: "Back to top"
 
-footer_content: "Copyright &copy; 2022"
+footer_content: "Copyright &copy; 2022. Distributed by an [MIT License](https://github.com/hack-gpon/hack-gpon.github.io/blob/main/LICENCE). [Privacy Policy](privacy-policy.md)"
 
 last_edit_timestamp_script: true
 

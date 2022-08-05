@@ -6,8 +6,6 @@ description: Resources to access and modify ONTs
 
 ---
 
-# ONT
-
 resources to access and modify ONTs
 {: .fs-6 .fw-300 }
 

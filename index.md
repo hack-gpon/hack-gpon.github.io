@@ -5,8 +5,16 @@ nav_order: 1
 description: Worldwide wiki for to access, change and edit ONT
 ---
 
+Most of ONT run customized firmware implementing vendor and ISP-specific integrations and get locked down in functionality to match service requirements.
+Often ONTs perform differently depending on the OLT and various settings applied by the ISP in the ONT, often for convenience it is necessary to switch from an external ONT to an SFP or vice versa, despite which most OLTs perform too many checks on the ONT and this makes a simple replacement impossible.
 
-# Worldwide wiki for to access, change and edit ONT
+This wiki contains links, codes, tutorials for accessing, editing and changing ONT.
+Are you ready?
 
-resources to access and modify ONTs
-{: .fs-6 .fw-300 }
+<span class="fs-8">
+[Yes](ont.md){: .btn }
+</span>
+
+<span class="fs-8">
+[Quick start](quick-start.md){: .btn }
+</span>
