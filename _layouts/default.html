@@ -152,13 +152,15 @@ layout: table_wrappers
                         <li><a id="contributors" data-toogle="modal" data-target="#contributors-modal">Contributor</a></li>
                     </ul>
                     <div class="modal" data-modal="contributors-modal" id="contributors-modal">
-                        <div class="modal-header">
-                            <span class="close">&times;</span>
-                            <h2>Contributor to this article</h2>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <span class="close">&times;</span>
+                                <h2>Contributor to this article</h2>
+                            </div>
+                            <ul class="modal-body" id="contributors-modal-list">
+                                
+                            </ul>
                         </div>
-                        <ul class="modal-body" id="contributors-modal-list">
-                            
-                        </ul>
                     </div>
                     {% endif %}
                     {% if page.description %}

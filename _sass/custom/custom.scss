@@ -93,8 +93,27 @@ ul.metadata {
     
         .modal-footer {
             padding: 2px 16px;
-            background-color: #5cb85c;
-            color: white;
+            color: $body-text-color;
+        }
+
+        ul.modal-body>li{
+
+            &::before {
+                content: '';
+            }
+            
+            >li{
+                >a {
+                    color: $body-text-color;
+                    text-decoration: none;
+                    border: 0;
+                    background: none;
+                    
+                    &:hover {
+                        color: $link-color;
+                    }
+                }
+            }
         }
     }
 }
