@@ -66,9 +66,9 @@ ul.metadata {
         border: 1px solid $border-color;
         position: relative;
         background-color: $body-background-color;
-        width: calc(100vw - 100px);
+        width: 400px;
         padding: 0;
-        margin: 40px 40px  auto;
+        margin: 40px  auto;
         animation-name: animatetop;
         animation-duration: 0.4s;
     
@@ -89,7 +89,7 @@ ul.metadata {
             margin-left: 28px;
         }
     
-        .modal-body {padding: 2px 16px;}
+        div.modal-body {padding: 2px 16px;}
     
         .modal-footer {
             padding: 2px 16px;
@@ -102,18 +102,18 @@ ul.metadata {
                 content: '';
             }
             
-            >li{
-                >a {
-                    color: $body-text-color;
-                    text-decoration: none;
-                    border: 0;
-                    background: none;
-                    
-                    &:hover {
-                        color: $link-color;
-                    }
+            
+            >a {
+                color: $body-text-color;
+                text-decoration: none;
+                border: 0;
+                background: none;
+                
+                &:hover {
+                    color: $link-color;
                 }
             }
+            
         }
     }
 }
