@@ -1,20 +1,28 @@
-.github-edit {
-    color: $nav-child-link-color;
-    
-    &:hover {
-        color: $link-color;
+.page-header {
+
+    .github-edit {
+        color: $nav-child-link-color;
+        float: right;
+        
+        &:hover {
+            color: $link-color;
+
+            svg {
+                fill: $link-color ;
+            }
+        }
 
         svg {
-            fill: $link-color ;
+            display: inline;
+            vertical-align: top;
+            width: 1.5rem;
+            height: 1.5rem;
+            fill: $nav-child-link-color;
         }
     }
 
-    svg {
-        display: inline;
-        vertical-align: top;
-        width: 1.5rem;
-        height: 1.5rem;
-        fill: $nav-child-link-color;
+    h1 {
+        margin-right: 3.5rem;
     }
 }
 
@@ -87,6 +95,7 @@ ul.metadata {
             h2, .close {
                 font-size: 28px !important;
                 margin-top: 1.5em;
+                margin-bottom: 1.5em;
                 line-height: 1;
                 margin-bottom: 0.25em;
             }
@@ -126,7 +135,7 @@ ul.metadata {
                 border-color: $border-color;
 
                 &:hover {
-                    border-color: $link-color;
+                    border-left-color: $link-color;
                 }
 
                 &::before {
