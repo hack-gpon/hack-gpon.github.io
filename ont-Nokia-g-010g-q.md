@@ -4,9 +4,7 @@ has_children: false
 parent: ONT
 ---
 
-# ZTE F601
-
-## Hardware Specifications
+# Hardware Specifications
 
 |          |               |
 |-------------|-------------------------------------------------|
@@ -27,12 +25,12 @@ parent: ONT
 ![](../../assets/img/g-010g-q.jpg)
 ![](../../assets/img/g-010g-q.png)
 
-### Hardware revision
+## Hardware revision
 - ventilation grid version
 - square version with relief circle
 
-### List of software version
-### List of partition
-### List of firmware and files
-## Miscellaneous Links
+## List of software version
+## List of partition
+## List of firmware and files
+# Miscellaneous Links
 

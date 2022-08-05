@@ -146,7 +146,9 @@ layout: table_wrappers
       <div id="main-content" class="main-content" role="main">
         <header class="page-header" role="banner">
           <h1 class="fs-9">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
-          <span class="last-modified">Please enable JavaScript to display the last page modification and author information</span>
+          {% if site.last_edit_timestamp_script == true %}
+          <span id="last-modified">Please enable JavaScript to display the last page modification and author information</span>
+          {% endif %}
           {% if page.description %}
             <h2 class="fs-6 fw-300">{{ page.description }}</h2>
           {% endif %}

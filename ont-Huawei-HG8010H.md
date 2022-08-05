@@ -4,9 +4,7 @@ has_children: false
 parent: ONT
 ---
 
-# Huawei HG8010H
-
-## Hardware Specifications
+# Hardware Specifications
 
 |          |               |
 |-------------|-------------------------------------------------|
@@ -26,7 +24,7 @@ parent: ONT
 
 ![](../../assets/img/HG8010H.jpg)
 
-### Hardware revision
+## Hardware revision
 - v1: port pon horizontal
 - v2: port pon horizontal
 - v3: port pon vertical
@@ -34,10 +32,10 @@ parent: ONT
 - v5: port pon vertical
 - v6: port pon vertical
 
-### List of software version
-### List of partition
-### List of firmware and files
-## Miscellaneous Links
+## List of software version
+## List of partition
+## List of firmware and files
+# Miscellaneous Links
 
 - [Exploring the Huawei HG8010H GPON ONT](https://www.linux.it/~md/text/gpon-sha2017.pdf)
 

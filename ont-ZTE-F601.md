@@ -4,9 +4,7 @@ has_children: false
 parent: ONT
 ---
 
-# ZTE F601
-
-## Hardware Specifications
+# Hardware Specifications
 
 |          |               |
 |-------------|-------------------------------------------------|
@@ -28,13 +26,13 @@ parent: ONT
 ![f601_v3](../../assets/img/f601_v3.jpg)
 
 
-### Hardware revision
+## Hardware revision
 - v1: big
 - v2: small, simil huawei, self-destructs
 - v3: small, simil huawei
 
-### List of software version
-### List of partition
-### List of firmware and files
-## Miscellaneous Links
+## List of software version
+## List of partition
+## List of firmware and files
+# Miscellaneous Links
 

@@ -4,9 +4,7 @@ has_children: false
 parent: ONT
 ---
 
-# Nokia G-010S-Q
-
-## Hardware Specifications
+# Hardware Specifications
 
 |          |               |
 |-------------|-------------------------------------------------|
@@ -24,9 +22,9 @@ parent: ONT
 | SSH | |
 | Form Factor | miniONT SFP |
 
-### Interchangeable firmware with
-### List of software version
-### List of partition
-### List of firmware and files
-## Miscellaneous Links
+## Interchangeable firmware with
+## List of software version
+## List of partition
+## List of firmware and files
+# Miscellaneous Links
 

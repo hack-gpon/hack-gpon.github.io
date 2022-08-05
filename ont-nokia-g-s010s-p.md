@@ -4,9 +4,7 @@ has_children: false
 parent: ONT
 ---
 
-# Nokia G-010S-P
-
-## Hardware Specifications
+# Hardware Specifications
 
 |          |               |
 |-------------|-------------------------------------------------|
@@ -26,7 +24,7 @@ parent: ONT
 
 ![](../../assets/img/g-s010s-p.jpg)
 
-### Interchangeable firmware with
+## Interchangeable firmware with
 
 
 - [Huawei MA5671A](ont-huawei-ma5671a)
@@ -37,7 +35,7 @@ parent: ONT
 Is it possibile to turn a [Nokia G-010S-P](ont-nokia-g-s010s-p) into an [Nokia G-010S-A](ont-nokia-g-s010s-A)
 
 
-### List of software version
-### List of partition
-### List of firmware and files
-## Miscellaneous Links
+## List of software version
+## List of partition
+## List of firmware and files
+# Miscellaneous Links

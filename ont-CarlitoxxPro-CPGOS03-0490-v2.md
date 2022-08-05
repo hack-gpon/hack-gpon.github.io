@@ -4,9 +4,7 @@ has_children: false
 parent: ONT
 ---
 
-# CarlitoxxPro CPGOS03-0490 v2
-
-## Hardware Specifications
+# Hardware Specifications
 
 |          |               |
 |-------------|-------------------------------------------------|
@@ -24,7 +22,7 @@ parent: ONT
 | SSH | ✅ |
 | Form Factor | miniONT SFP |
 
-### Interchangeable firmware with
+## Interchangeable firmware with
 
 - [ODI DFP-34X-C2C](ont-ODI-DFP-34X-C2C)
 - [VSOL V2801F](ont-vsol-V2801F)
@@ -33,14 +31,14 @@ parent: ONT
 - [DFP-34X-2C2](ont-DFP-34X-2C2)
 - [CarlitoxxPro CPGOS03-0490 v2](ont-CarlitoxxPro-CPGOS03-0490-v2)
 
-### List of software version
-### List of partition
-### List of firmware and files
-## Miscellaneous Links
+## List of software version
+## List of partition
+## List of firmware and files
+# Miscellaneous Links
 
 - [Hacking RTL960x](https://github.com/Anime4000/RTL960x)
 
-## Bugs
+# Bugs
 
 VLAN swap issue (MEID 171), auto-sensing mode to switch between SGMII/HiSGMII
 

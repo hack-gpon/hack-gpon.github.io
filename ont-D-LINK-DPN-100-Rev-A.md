@@ -4,9 +4,7 @@ has_children: false
 parent: ONT
 ---
 
-# D-LINK DPN-100 Rev A
-
-## Hardware Specifications
+# Hardware Specifications
 
 |          |               |
 |-------------|-------------------------------------------------|
@@ -25,15 +23,15 @@ parent: ONT
 | Form Factor | miniONT SFP |
 
 
-### Interchangeable firmware with
+## Interchangeable firmware with
 
 - [Zyxel PMG3000-D20B](ont-Zyxel-PMG3000-D20B)
 - [Halny HL-GSFP](ont-Halny-HL-GSFP)
 - [D-LINK DPN-100-Rev-A](ont-D-LINK-DPN-100-Rev-A)
 
 
-### List of software version
-### List of partition
-### List of firmware and files
-## Miscellaneous Links
+## List of software version
+## List of partition
+## List of firmware and files
+# Miscellaneous Links
 

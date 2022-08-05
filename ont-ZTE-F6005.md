@@ -4,9 +4,7 @@ has_children: false
 parent: ONT
 ---
 
-# ZTE F6005
-
-## Hardware Specifications
+# Hardware Specifications
 
 |          |               |
 |-------------|-------------------------------------------------|
@@ -27,11 +25,11 @@ parent: ONT
 ![f6005_of](../../assets/img/f6005_of.jpg)
 ![f6005_tim](../../assets/img/f6005_tim.jpg)
 
-### List of software version
-### List of partition
-### List of firmware and files
-## Miscellaneous Links
+## List of software version
+## List of partition
+## List of firmware and files
+# Miscellaneous Links
 
-## Bugs
+# Bugs
 
 buffers are not optimally created and therefore there are problems with uploads if the server is far away. no problem with multiple connections

@@ -4,9 +4,7 @@ has_children: false
 parent: ONT
 ---
 
-# Huawei MA5671A
-
-## Hardware Specifications
+# Hardware Specifications
 
 |          |               |
 |-------------|-------------------------------------------------|
@@ -24,21 +22,21 @@ parent: ONT
 | SSH | |
 | Form Factor | miniONT SFP |
 
-### Interchangeable firmware with
+## Interchangeable firmware with
 
 - [Huawei MA5671A](ont-huawei-ma5671a)
 - [Nokia G-010S-P](ont-nokia-g-s010s-p)
 - [SourcePhotonics SPS-34-24T-HP-TDFO](ont-SourcePhotonics-SPS-34-24T-HP-TDFO)
 - [Hilink HL23446](ont-Hilink-HL23446)
 
-### List of software version
+## List of software version
 
-### List of partition
+## List of partition
 
 - mtd2
 - mtd5
 
-### List of firmware and files
+## List of firmware and files
 
 - [Carlito MTD2](https://ma5671a.s3.nl-ams.scw.cloud/mtd2.bin){: .btn }  md5hash: d3cb6f7efec201b37931139feb4bb23b
 - [Huawei Rooted MTD2](https://ma5671a.s3.nl-ams.scw.cloud/mA5671a_root_mtd2.img){: .btn } md5hash: 3138d2dd06a32bb92bc63610fec6fcd6
@@ -46,7 +44,7 @@ parent: ONT
 - [Huawei Rooted MTD5](https://ma5671a.s3.nl-ams.scw.cloud/mA5671a_root_mtd5.img){: .btn }  md5hash: 0e4cfdc1b96be6581869b26b48789556
 - [1224abort.bin](https://ma5671a.s3.nl-ams.scw.cloud/1224ABORT.bin){: .btn }  md5hash: 10e94a4b4acdc82dec20c7904b69e5c0
 
-## Miscellaneous Links
+# Miscellaneous Links
 
 - [Support MA5671A SFP GPON - OpenWRT forum](https://forum.openwrt.org/t/support-ma5671a-sfp-gpon/48042)
 - [u boot lantiq falcon - GitHub](https://github.com/minhng99/u-boot_lantiq_falcon)

@@ -4,9 +4,7 @@ has_children: false
 parent: ONT
 ---
 
-# Technicolor AFM0002TIM/FWB/WND
-
-## Hardware Specifications
+# Hardware Specifications
 
 |             |                                                 |
 |-------------|-------------------------------------------------|
@@ -26,7 +24,7 @@ parent: ONT
 
 ![](../../assets/img/afm0002tim.jpg)
 
-## Hardware revision
+# Hardware revision
 
 - AFM0002TIM (IP address: 192.168.2.1)
 - AFM0002FWB (IP address: 169.0.0.1)
@@ -39,14 +37,14 @@ Warning
 - The AFM0002FWB can be transformed into AFM0002TIM.
 - The AFM0002FWB has an older sw version.
 
-## List of software versions
+# List of software versions
 - V1_7_8_180122 
 - V1_7_8_180725
 - V1_7_8_181123
 - V1_7_8_210928
 - V1_7_8_210412
 
-## List of partitions
+# List of partitions
 
 | dev   | size     | erasesize | name            |
 |-------------|-------------------------------------------------|-----------|-----------------|
@@ -69,13 +67,13 @@ This stick supports dual boot.
 
 `k0` and `r0` contains respectively the kernel and firmware of the first image, `k1` and `r1` of the second one
 
-## List of firmware and files
-### Useful files
+# List of firmware and files
+## Useful files
 - `/var/config/lastgood.xml` - Contains the user portion of the configuration
 - `/var/config/lastgood-hs.xml` - Contains the "hardware" configuration (i.e. that _should_ not be changed)
 - `/tmp/omcilog` - OMCI messages logs (must be enabeled, see below)
 
-### Useful binaries
+## Useful binaries
 - `/etc/scripts/flash`  - Used to manipulate the config files in a samewhat safe manner
 - `xmlconfig` - Used to low-level manipulate the XML config files. Called by `flash`
 - `nv` - Used to manipulate the nvram storage, including persistent config entries via `nv setenv`/`nv getenv`
@@ -83,14 +81,14 @@ This stick supports dual boot.
 - `omci_app` - The OMCI daemon
 - `diag` - Used to run low-level diagnostics commands on the stick
 
-## Useful commands
+# Useful commands
 
-### Enable the Web UI
+## Enable the Web UI
 ```sh
 # /bin/iptables -D INPUT -p tcp --dport 80 -j DROP
 ```
 
-### Check the currently active image
+## Check the currently active image
 ```sh
 # nv getenv sw_active
 sw_activ=1
@@ -100,20 +98,20 @@ sw_version0=V1_7_8_210412
 sw_version1=V1_7_8_210412
 ```
 
-### Boot to a different image
+## Boot to a different image
 ```sh
 # nv setenv sw_commit 0|1
 # reboot
 ```
 
-### Get/Set the ONT S/N
+## Get/Set the ONT S/N
 ```sh
 # /etc/scripts/bin flash get GPON_SN
 GPON_SN=TMBB00000000
 # /etc/scripts/bin flash set GPON_SN TMBB0A1B2C3D
 ```
 
-### Get/Set the ONT PLOAM password
+## Get/Set the ONT PLOAM password
 Note: the password is in ASCII format
 ```sh
 # /etc/scripts/bin flash get GPON_PLOAM_PASSWD
@@ -121,14 +119,14 @@ GPON_PLOAM_PASSWD=AAAAAAAAAA
 # /etc/scripts/bin flash set GPON_PLOAM_PASSWD AAAAAAAAAA
 ```
 
-### Query a particular OMCI ME
+## Query a particular OMCI ME
 ```sh
 # omcicli mib get MIB_IDX
 ```
 
-## Low level modding
+# Low level modding
 Note: this section is based on version `V1_7_8_210412` of the stick
-### Trasnfer files from/to the stick
+## Trasnfer files from/to the stick
 Works with binary files too, just run md5sum on source and destination to make sure you are not corrupting anything...
 From the stick to the PC:
 ```sh
@@ -139,12 +137,12 @@ From the PC to the stick
 # cat lastgood.xml | ssh admin@192.168.2.1  "cat > /var/config/lastgood.xml"
 ```
 **Note:** on windows replace type with cat and run the commands from cmd (not powershell)
-### Extract and repack the rootfs
+## Extract and repack the rootfs
 ```sh
 # unsquashfs mtd5.bin
 # mksquashfs squashfs-root rootfs -b 131072 -comp lzma -no-recovery
 ```
-### Flash a new rootfs
+## Flash a new rootfs
 **Note: you can only flash the inactive image**. So mtd4/5 if you are on image1, mtd6/7 if you are on image0.
 
 The follwing examples flashes a new rootfs to image1 and boots to it
@@ -154,7 +152,7 @@ The follwing examples flashes a new rootfs to image1 and boots to it
 # nv setenv sw_commit=1
 # reboot
 ```
-### Add support to configurable SW and HW versions, VENDOR ID and much more
+## Add support to configurable SW and HW versions, VENDOR ID and much more
 We can patch `/etc/scripts/flash` in order to add support for some variables implemented in `omci_app` but removed from `xmlconfig`. The patch is below (change the values to suit your needs)
 ```patch
 --- squashfs-root/etc/scripts/flash     2021-09-28 10:38:52.000000000 +0200
@@ -188,7 +186,7 @@ We can patch `/etc/scripts/flash` in order to add support for some variables imp
                 if [ "$?" = "0" ]; then
                         exit 0
 ```                        
-### Increase the length of the software version from 13 to 14 characters
+## Increase the length of the software version from 13 to 14 characters
 `omci_app` has an hard-coded limit of 13 characters for the software version, which is too low. We can binary patch it to increase it to 14 (or more, if you dare/need)
 ```
 JVhEWjAwNCUAAAAIAAgACAAAAAAAAAAAAAAAAAAAAABvbWNpX2FwcG9tY2lfYXBwH4sIAAAAAAAA
@@ -212,7 +210,7 @@ For reference, the patch changes the follwing section of the omci_app:
 
 The original file md5sum is: `4aea2f72bacc11256b7e2c1583d2ad4f`
 The patched file md5sum is: `da20327c4c002e4c27f82f6ee63dbc1a`
-### Enable PLOAM logging
+## Enable PLOAM logging
 ```sh
 /etc/scripts/bin flash set OMCI_DBGLVL 1
 /etc/scripts/bin flash set OMCI_DBGLOGFILE 1
@@ -225,4 +223,4 @@ reboot
    
 If you want to log everything since the stick boots, you can create a custom rootfs. Place the last command inside `etc/runomci.sh` as the last line of the file
 
-## Miscellaneous Links
+# Miscellaneous Links

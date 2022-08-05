@@ -4,9 +4,7 @@ has_children: false
 parent: ONT
 ---
 
-# Nokia G-010S-A
-
-## Hardware Specifications
+# Hardware Specifications
 
 |          |               |
 |-------------|-------------------------------------------------|
@@ -27,21 +25,21 @@ parent: ONT
 ![](../../assets/img/G-010S-A.jpg)
 
 
-### Interchangeable firmware with
+## Interchangeable firmware with
 
 Is it possibile to turn a [Nokia G-010S-P](ont-nokia-g-s010s-p) into an [Nokia G-010S-A](ont-nokia-g-s010s-A)
 
-### List of software version
+## List of software version
 
 - [https://github.com/hwti/G-010S-A/tree/main/firmwares](https://github.com/hwti/G-010S-A/tree/main/firmwares)
 
-### List of partition
-### List of firmware and files
+## List of partition
+## List of firmware and files
 
-## HW Mod
+# HW Mod
 
 - [Nokia G-010S-A Pin 6 Iusse - Rsaxvc.net](https://rsaxvc.net/blog/2020/8/15/Nokia_G-010S-A_Pin_6_Issue.html)
 
-## Miscellaneous Links
+# Miscellaneous Links
 
 - [https://github.com/hwti/G-010S-A](https://github.com/hwti/G-010S-A)
