@@ -22,7 +22,7 @@ parent: ONT
 | SSH | |
 | Form Factor | ONT |
 
-![](../../assets/img/HG8010H.jpg)
+{% include image.html file="HG8010H.jpg"  alt="HG8010H" caption="HG8010H: port pon horizontal (left, middle), pon vertical (right)" %}
 
 ## Hardware revision
 - v1: port pon horizontal

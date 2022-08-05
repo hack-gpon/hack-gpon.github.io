@@ -22,7 +22,7 @@ parent: ONT
 | SSH | |
 | Form Factor | miniONT SFP |
 
-![](../../assets/img/g-s010s-p.jpg)
+{% include image.html file="g-s010s-p.jpg"  alt="G-010S-P" caption="G-010S-P" %}
 
 ## Interchangeable firmware with
 

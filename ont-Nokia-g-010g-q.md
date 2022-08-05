@@ -22,8 +22,9 @@ parent: ONT
 | SSH | |
 | Form Factor | ONT |
 
-![](../../assets/img/g-010g-q.jpg)
-![](../../assets/img/g-010g-q.png)
+{% include image.html file="g-010g-q.jpg"  alt="G-010G-Q " caption="G-010G-Q: ventilation grid version" %}
+{% include image.html file="g-010g-q.png"  alt="G-010G-Q " caption="G-010G-Q: square version with relief circle" %}
+
 
 ## Hardware revision
 - ventilation grid version

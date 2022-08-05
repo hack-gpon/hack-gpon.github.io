@@ -22,13 +22,13 @@ parent: ONT
 | SSH | |
 | Form Factor | ONT |
 
-![f601_v1](../../assets/img/f601_v1.jpg)
-![f601_v3](../../assets/img/f601_v3.jpg)
+{% include image.html file="f601_v1.jpg" alt="F601 v1" caption="F601 v1" %}
+{% include image.html file="f601_v3.jpg" alt="F601 v3" caption="F601 v3" %}
 
 
 ## Hardware revision
 - v1: big
-- v2: small, simil huawei, self-destructs
+- v2: small, simil huawei, some lots have self-destruction functionality
 - v3: small, simil huawei
 
 ## List of software version

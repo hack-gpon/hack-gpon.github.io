@@ -22,7 +22,8 @@ parent: ONT
 | SSH         | ✅ user `admin`, password `system`              |
 | Form Factor | miniONT SFP                                     |
 
-![](../../assets/img/afm0002tim.jpg)
+{% include image.html file="afm0002tim.jpg" alt="AFM0002TIM" caption="AFM0002TIM" %}
+
 
 # Hardware revision
 

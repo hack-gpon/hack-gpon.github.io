@@ -22,8 +22,9 @@ parent: ONT
 | SSH | |
 | Form Factor | ONT |
 
-![f6005_of](../../assets/img/f6005_of.jpg)
-![f6005_tim](../../assets/img/f6005_tim.jpg)
+{% include image.html file="f6005_of.jpg" alt="F601 v1" caption="F6005 OF" %}
+{% include image.html file="f6005_tim.jpg" alt="F601 v3" caption="F6005 TIM" %}
+
 
 ## List of software version
 ## List of partition

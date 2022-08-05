@@ -22,7 +22,7 @@ parent: ONT
 | SSH | ✅ user `ONTUSER`, password `SUGAR2A041` |
 | Form Factor | miniONT SFP |
 
-![](../../assets/img/G-010S-A.jpg)
+{% include image.html file="G-010S-A.jpg"  alt="G-010S-A" caption="G-010S-A" %}
 
 
 ## Interchangeable firmware with
