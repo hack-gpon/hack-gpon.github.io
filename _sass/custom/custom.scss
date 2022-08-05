@@ -73,20 +73,31 @@ ul.metadata {
         animation-duration: 0.4s;
     
     
-        .close {
-            color:  $nav-child-link-color;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-
-            &:hover {
-                color: $link-color;
-            }
-        }
+        
     
         .modal-header {
             padding: 2px 16px;
             margin-left: 28px;
+
+            h2, .close {
+                font-size: 28px !important;
+                margin-top: 1.5em;
+                line-height: 1;
+                margin-bottom: 0.25em;
+            }
+            h2 {
+                float: left;
+            }
+
+            .close {
+                color:  $nav-child-link-color;
+                float: right;
+                font-weight: bold;
+    
+                &:hover {
+                    color: $link-color;
+                }
+            }
         }
     
         div.modal-body {padding: 2px 16px;}
@@ -108,9 +119,15 @@ ul.metadata {
                 text-decoration: none;
                 border: 0;
                 background: none;
+                display: flex;
+                align-items: center;
                 
                 &:hover {
                     color: $link-color;
+                }
+
+                img {
+                    margin-left: 10px;
                 }
             }
             
