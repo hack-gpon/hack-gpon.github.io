@@ -30,12 +30,11 @@ parent: ONT
 - AFM0002FWB (IP address: 169.0.0.1)
 - AFM0002WND
 
-Warning
-{: .label .label-red }
-
+{% include warning.html content="
 - On this page we discuss AFM0002TIM. 
 - The AFM0002FWB can be transformed into AFM0002TIM.
 - The AFM0002FWB has an older sw version.
+" %}
 
 # List of software versions
 - V1_7_8_180122 
