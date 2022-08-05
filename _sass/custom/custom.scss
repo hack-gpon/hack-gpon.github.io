@@ -165,8 +165,53 @@ ul.metadata {
     }
 }
   
-  /* Add Animation */
-  @keyframes animatetop {
+/* Add Animation */
+@keyframes animatetop {
     from {top: -300px; opacity: 0}
     to {top: 0; opacity: 1}
-  }
+}
+
+.alert {
+    padding: $sp-3;
+    margin-bottom: $sp-3;
+    overflow: auto;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+
+
+    &.alert-warning {
+        background-color: $yellow-000;
+        color: $yellow-300;
+        border-color: $yellow-100;
+        svg {
+            fill: $yellow-300;
+        }
+    }
+
+    &.alert-danger {
+        background-color: $red-000;
+        color: $red-300;
+        border-color: $red-100;
+        svg {
+            fill: $red-300;
+        }
+    }
+
+    &.alert-info {
+        background-color: $blue-000;
+        color: $blue-300;
+        border-color: $blue-100;
+        svg {
+            fill: $blue-300;
+        }
+    }
+
+    &.alert-success {
+        background-color: $green-000;
+        color: $green-300;
+        border-color: $green-100;
+        svg {
+            fill: $green-300;
+        }
+    }
+}
