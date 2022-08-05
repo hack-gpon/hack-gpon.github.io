@@ -6,21 +6,21 @@ parent: ONT
 
 # Hardware Specifications
 
-|          |               |
-|-------------|-------------------------------------------------|
-| Vendor   | VSOL        |
-| Model    |  V2801F      |
-| Alias | |
-| Chipset  | Realtek RTL9601CI |
-| Flash | 8 MB |
-| RAM | 64 MB |
-| System | Linux (Luna SDK) |
-| HSGMII | No |
-| Optics | SC/APC |
-| IP address |   |
-| Web Gui | ✅ |
-| SSH | ✅ |
-| Form Factor | miniONT SFP |
+|             |                   |
+| ----------- | ----------------- |
+| Vendor      | VSOL              |
+| Model       | V2801F            |
+| Alias       |                   |
+| Chipset     | Realtek RTL9601CI |
+| Flash       | 8 MB              |
+| RAM         | 64 MB             |
+| System      | Linux (Luna SDK)  |
+| HSGMII      | No                |
+| Optics      | SC/APC            |
+| IP address  |                   |
+| Web Gui     | ✅                |
+| SSH         | ✅                |
+| Form Factor | miniONT SFP       |
 
 ## Interchangeable firmware with
 

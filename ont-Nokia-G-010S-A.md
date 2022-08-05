@@ -6,21 +6,21 @@ parent: ONT
 
 # Hardware Specifications
 
-|          |               |
-|-------------|-------------------------------------------------|
-| Vendor   | Nokia        |
-| Model    | G-010S-A      |
-| Alias | Alcatel G-010S-A |
-| Chipset  | Lantiq PEB98035 |
-| Flash | 16 MB |
-| RAM | 64 MB |
-| System | OpenWRT |
-| HSGMII | Yes |
-| Optics | SC/UPC |
-| IP address | 192.168.1.10 |
-| Web Gui | ✅ user `adminadmin`, password `ALC#FGU` |
-| SSH | ✅ user `ONTUSER`, password `SUGAR2A041` |
-| Form Factor | miniONT SFP |
+|             |                                          |
+| ----------- | ---------------------------------------- |
+| Vendor      | Nokia                                    |
+| Model       | G-010S-A                                 |
+| Alias       | Alcatel G-010S-A                         |
+| Chipset     | Lantiq PEB98035                          |
+| Flash       | 16 MB                                    |
+| RAM         | 64 MB                                    |
+| System      | OpenWRT                                  |
+| HSGMII      | Yes                                      |
+| Optics      | SC/UPC                                   |
+| IP address  | 192.168.1.10                             |
+| Web Gui     | ✅ user `adminadmin`, password `ALC#FGU` |
+| SSH         | ✅ user `ONTUSER`, password `SUGAR2A041` |
+| Form Factor | miniONT SFP                              |
 
 {% include image.html file="G-010S-A.jpg"  alt="G-010S-A" caption="G-010S-A" %}
 

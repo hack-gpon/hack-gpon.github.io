@@ -6,21 +6,21 @@ parent: ONT
 
 # Hardware Specifications
 
-|          |               |
-|-------------|-------------------------------------------------|
-| Vendor   | Halny         |
-| Model    | MA5671A      |
-| Alias | |
-| Chipset  | Lantiq PEB98035 |
-| Flash | 8 MB |
-| RAM | 64 MB |
-| System | eCOS |
-| HSGMII | Yes |
-| Optics | SC/APC |
-| IP address |   |
-| Web Gui |   |
-| SSH |   |
-| Form Factor | miniONT SFP |
+|             |                 |
+| ----------- | --------------- |
+| Vendor      | Halny           |
+| Model       | MA5671A         |
+| Alias       |                 |
+| Chipset     | Lantiq PEB98035 |
+| Flash       | 8 MB            |
+| RAM         | 64 MB           |
+| System      | eCOS            |
+| HSGMII      | Yes             |
+| Optics      | SC/APC          |
+| IP address  |                 |
+| Web Gui     |                 |
+| SSH         |                 |
+| Form Factor | miniONT SFP     |
 
 ## Interchangeable firmware with
 

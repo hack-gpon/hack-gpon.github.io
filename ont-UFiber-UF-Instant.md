@@ -6,21 +6,21 @@ parent: ONT
 
 # Hardware Specifications
 
-|          |               |
-|-------------|-------------------------------------------------|
-| Vendor   | UFiber        |
-| Model    |  UFiber UF-Instant      |
-| Alias | |
-| Chipset  | Realtek RTL9601CI |
-| Flash | 16 MB |
-| RAM | 64 MB |
-| System | Linux (Luna SDK) |
-| HSGMII | No |
-| Optics | SC/APC |
-| IP address |   |
-| Web Gui | ✅ |
-| SSH | ✅ |
-| Form Factor | miniONT SFP |
+|             |                   |
+| ----------- | ----------------- |
+| Vendor      | UFiber            |
+| Model       | UFiber UF-Instant |
+| Alias       |                   |
+| Chipset     | Realtek RTL9601CI |
+| Flash       | 16 MB             |
+| RAM         | 64 MB             |
+| System      | Linux (Luna SDK)  |
+| HSGMII      | No                |
+| Optics      | SC/APC            |
+| IP address  |                   |
+| Web Gui     | ✅                |
+| SSH         | ✅                |
+| Form Factor | miniONT SFP       |
 
 ## Interchangeable firmware with
 

@@ -6,22 +6,22 @@ parent: ONT
 
 # Hardware Specifications
 
-|          |               |
-|-------------|-------------------------------------------------|
-| Vendor   | D-LINK        |
-| Model    | DPN-100 Rev C1      |
-| Alias | |
-| Chipset  | Realtek RTL9601C1 |
-| Flash |   |
-| RAM | B |
-| System |   |
-| HSGMII |   |
-| Optics | SC/APC |
-| IP address | 192.168.100.1  |
-| Web Gui |   |
-| SSH | |
-| Telnet | ✅ |
-| Form Factor | miniONT SFP |
+|             |                   |
+| ----------- | ----------------- |
+| Vendor      | D-LINK            |
+| Model       | DPN-100 Rev C1    |
+| Alias       |                   |
+| Chipset     | Realtek RTL9601C1 |
+| Flash       |                   |
+| RAM         | B                 |
+| System      |                   |
+| HSGMII      |                   |
+| Optics      | SC/APC            |
+| IP address  | 192.168.100.1     |
+| Web Gui     |                   |
+| SSH         |                   |
+| Telnet      | ✅                |
+| Form Factor | miniONT SFP       |
 
 
 ## Interchangeable firmware with

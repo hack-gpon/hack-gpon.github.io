@@ -6,20 +6,20 @@ parent: ONT
 
 # Hardware Specifications
 
-|          |               |
-|-------------|-------------------------------------------------|
-| Vendor   | Nokia        |
-| Model    | RTL9601CI       |
-| Alias | |
-| Chipset  |  |
-| Flash |   |
-| RAM |  |
-| System |   |
-| HSGMII |   |
-| Optics |   |
-| IP address |   |
-| Web Gui |  |
-| SSH | |
+|             |             |
+| ----------- | ----------- |
+| Vendor      | Nokia       |
+| Model       | RTL9601CI   |
+| Alias       |             |
+| Chipset     |             |
+| Flash       |             |
+| RAM         |             |
+| System      |             |
+| HSGMII      |             |
+| Optics      |             |
+| IP address  |             |
+| Web Gui     |             |
+| SSH         |             |
 | Form Factor | miniONT SFP |
 
 ## Interchangeable firmware with

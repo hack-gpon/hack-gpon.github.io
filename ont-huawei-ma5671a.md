@@ -6,21 +6,21 @@ parent: ONT
 
 # Hardware Specifications
 
-|          |               |
-|-------------|-------------------------------------------------|
-| Vendor   | Huawei        |
-| Model    | MA5671A      |
-| Alias | |
-| Chipset  | Lantiq PEB98035 |
-| Flash | 16 MB |
-| RAM | 64 MB |
-| System | OpenWRT |
-| HSGMII | Yes |
-| Optics | SC/APC |
-| IP address | 192.168.1.10 |
-| Web Gui | After root |
-| SSH | |
-| Form Factor | miniONT SFP |
+|             |                 |
+| ----------- | --------------- |
+| Vendor      | Huawei          |
+| Model       | MA5671A         |
+| Alias       |                 |
+| Chipset     | Lantiq PEB98035 |
+| Flash       | 16 MB           |
+| RAM         | 64 MB           |
+| System      | OpenWRT         |
+| HSGMII      | Yes             |
+| Optics      | SC/APC          |
+| IP address  | 192.168.1.10    |
+| Web Gui     | After root      |
+| SSH         |                 |
+| Form Factor | miniONT SFP     |
 
 ## Interchangeable firmware with
 

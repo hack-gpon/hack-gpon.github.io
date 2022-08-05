@@ -6,21 +6,21 @@ parent: ONT
 
 # Hardware Specifications
 
-|          |               |
-|-------------|-------------------------------------------------|
-| Vendor   | SourcePhotonics        |
-| Model    | SPS-34-24T-HP-TDFO      |
-| Alias | Stick GPON FS.com |
-| Chipset  | Lantiq PEB98035 |
-| Flash | 16 MB |
-| RAM | 64 MB |
-| System | OpenWRT |
-| HSGMII | Yes |
-| Optics | SC/APC |
-| IP address |  192.168.1.10   |
-| Web Gui |  |
-| SSH | ✅, user `ONTUSER`, password `7sp!lwUBz1.` |
-| Form Factor | miniONT SFP |
+|             |                                            |
+| ----------- | ------------------------------------------ |
+| Vendor      | SourcePhotonics                            |
+| Model       | SPS-34-24T-HP-TDFO                         |
+| Alias       | Stick GPON FS.com                          |
+| Chipset     | Lantiq PEB98035                            |
+| Flash       | 16 MB                                      |
+| RAM         | 64 MB                                      |
+| System      | OpenWRT                                    |
+| HSGMII      | Yes                                        |
+| Optics      | SC/APC                                     |
+| IP address  | 192.168.1.10                               |
+| Web Gui     |                                            |
+| SSH         | ✅, user `ONTUSER`, password `7sp!lwUBz1.` |
+| Form Factor | miniONT SFP                                |
 
 ## Interchangeable firmware with
 

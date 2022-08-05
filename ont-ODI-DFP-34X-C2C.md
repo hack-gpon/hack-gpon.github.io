@@ -6,21 +6,21 @@ parent: ONT
 
 # Hardware Specifications
 
-|          |               |
-|-------------|-------------------------------------------------|
-| Vendor   | ODI        |
-| Model    | DFP-34X-C2C      |
-| Alias | |
-| Chipset  | Realtek RTL9601D |
-| Flash | 8 MB |
-| RAM | 64 MB |
-| System | Linux (Luna SDK) |
-| HSGMII | Yes |
-| Optics | SC/APC |
-| IP address |   |
-| Web Gui | ✅ |
-| SSH | ✅ |
-| Form Factor | miniONT SFP |
+|             |                  |
+| ----------- | ---------------- |
+| Vendor      | ODI              |
+| Model       | DFP-34X-C2C      |
+| Alias       |                  |
+| Chipset     | Realtek RTL9601D |
+| Flash       | 8 MB             |
+| RAM         | 64 MB            |
+| System      | Linux (Luna SDK) |
+| HSGMII      | Yes              |
+| Optics      | SC/APC           |
+| IP address  |                  |
+| Web Gui     | ✅               |
+| SSH         | ✅               |
+| Form Factor | miniONT SFP      |
 
 {% include image.html file="odi.jpg" alt="ODI DFP-34X-C2C" caption="ODI DFP-34X-C2C" %}
 

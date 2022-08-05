@@ -6,21 +6,21 @@ parent: ONT
 
 # Hardware Specifications
 
-|          |               |
-|-------------|-------------------------------------------------|
-| Vendor   | Sercomm        |
-| Model    | FGS202      |
-| Alias | |
-| Chipset  | Lantiq PEB98036 |
-| Flash | 8 MB |
-| RAM | 32 MB |
-| System | eCos |
-| HSGMII | Yes |
-| Optics | SC/APC |
-| IP address |   |
-| Web Gui | NO |
-| SSH | NO |
-| Form Factor | miniONT SFP |
+|             |                 |
+| ----------- | --------------- |
+| Vendor      | Sercomm         |
+| Model       | FGS202          |
+| Alias       |                 |
+| Chipset     | Lantiq PEB98036 |
+| Flash       | 8 MB            |
+| RAM         | 32 MB           |
+| System      | eCos            |
+| HSGMII      | Yes             |
+| Optics      | SC/APC          |
+| IP address  |                 |
+| Web Gui     | NO              |
+| SSH         | NO              |
+| Form Factor | miniONT SFP     |
 
 ## Interchangeable firmware with
 

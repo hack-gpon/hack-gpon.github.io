@@ -6,21 +6,21 @@ parent: ONT
 
 # Hardware Specifications
 
-|          |               |
-|-------------|-------------------------------------------------|
-| Vendor   |          |
-| Model    |  DFP-34X-2C2      |
-| Alias | |
-| Chipset  | Realtek RTL9601CI |
-| Flash | 8 MB |
-| RAM | 64 MB |
-| System | Linux (Luna SDK) |
-| HSGMII | No |
-| Optics | SC/APC |
-| IP address |   |
-| Web Gui | ✅ |
-| SSH | ✅ |
-| Form Factor | miniONT SFP |
+|             |                   |
+| ----------- | ----------------- |
+| Vendor      |                   |
+| Model       | DFP-34X-2C2       |
+| Alias       |                   |
+| Chipset     | Realtek RTL9601CI |
+| Flash       | 8 MB              |
+| RAM         | 64 MB             |
+| System      | Linux (Luna SDK)  |
+| HSGMII      | No                |
+| Optics      | SC/APC            |
+| IP address  |                   |
+| Web Gui     | ✅                |
+| SSH         | ✅                |
+| Form Factor | miniONT SFP       |
 
 ## Interchangeable firmware with
 

@@ -6,21 +6,21 @@ parent: ONT
 
 # Hardware Specifications
 
-|          |               |
-|-------------|-------------------------------------------------|
-| Vendor   | Hilink        |
-| Model    | HL23446      |
-| Alias | CarlitoxxPro CPGOS03-0490 v1 |
-| Chipset  | Lantiq PEB98035 |
-| Flash | 16 MB |
-| RAM | 64 MB |
-| System | OpenWRT |
-| HSGMII | Yes |
-| Optics | SC/APC |
-| IP address |   |
-| Web Gui | ✅ |
-| SSH | |
-| Form Factor | miniONT SFP |
+|             |                              |
+| ----------- | ---------------------------- |
+| Vendor      | Hilink                       |
+| Model       | HL23446                      |
+| Alias       | CarlitoxxPro CPGOS03-0490 v1 |
+| Chipset     | Lantiq PEB98035              |
+| Flash       | 16 MB                        |
+| RAM         | 64 MB                        |
+| System      | OpenWRT                      |
+| HSGMII      | Yes                          |
+| Optics      | SC/APC                       |
+| IP address  |                              |
+| Web Gui     | ✅                           |
+| SSH         |                              |
+| Form Factor | miniONT SFP                  |
 
 ## Interchangeable firmware with
 

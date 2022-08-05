@@ -6,21 +6,21 @@ parent: ONT
 
 # Hardware Specifications
 
-|          |               |
-|-------------|-------------------------------------------------|
-| Vendor   | Zyxel         |
-| Model    | PMG3000-D20B      |
-| Alias | |
-| Chipset  | Lantiq PEB98035 |
-| Flash | 8 MB |
-| RAM | 64 MB |
-| System | OpenWRT |
-| HSGMII | Yes |
-| Optics | SC/APC |
-| IP address | 10.10.1.1  |
-| Web Gui | ✅ username `admin`, password `1234`  |
-| SSH | ✅ username `admin`, password `1234`  |
-| Form Factor | miniONT SFP |
+|             |                                      |
+| ----------- | ------------------------------------ |
+| Vendor      | Zyxel                                |
+| Model       | PMG3000-D20B                         |
+| Alias       |                                      |
+| Chipset     | Lantiq PEB98035                      |
+| Flash       | 8 MB                                 |
+| RAM         | 64 MB                                |
+| System      | OpenWRT                              |
+| HSGMII      | Yes                                  |
+| Optics      | SC/APC                               |
+| IP address  | 10.10.1.1                            |
+| Web Gui     | ✅ username `admin`, password `1234` |
+| SSH         | ✅ username `admin`, password `1234` |
+| Form Factor | miniONT SFP                          |
 
 ## Interchangeable firmware with
 
