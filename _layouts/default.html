@@ -256,7 +256,7 @@ layout: table_wrappers
                     document.getElementById('last-modified').textContent = "Last Modified: " + modified;
                     document.getElementById('contributors').textContent = "<a href=''>" + authors.length + " "+ ( authors.length == 1? "Contributor" : "Contributors") +"</a>";
 
-                    document.getElementById('contributors-modal-list').innerHTML = authors.map(x => "<li><a href='"+x.html_url+"'><img class='avatar' src='"+x.avatar_url+"'>"+x.name+"</a></li>");
+                    document.getElementById('contributors-modal-list').innerHTML = authors.map(x => "<li><a href='"+x.html_url+"'><img class='avatar' src='"+x.avatar_url+"'>"+x.name+"</a></li>").join('');
                 });
             }
         }

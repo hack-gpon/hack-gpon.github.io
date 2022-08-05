@@ -17,7 +17,7 @@ var modalToogles = document.querySelectorAll("div[data-toogle=modal]");
 });
 
 window.addEventListener("click", function(event) {
-    if (modals.includes(event.target)) {
+    if ([...modals].includes(event.target)) {
         event.target.style.display = "none";
     }
 });
