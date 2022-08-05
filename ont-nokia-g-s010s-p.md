@@ -41,3 +41,4 @@ Is it possibile to turn a [Nokia G-010S-P](ont-nokia-g-s010s-p) into an [Nokia G
 # Miscellaneous Links
 
 - [alcatel_lucent-lantiq_falcon](https://github.com/minhng99/alcatel_lucent-lantiq_falcon)
+- [uboot lantiq falcon](https://github.com/minhng99/u-boot_lantiq_falcon)
