@@ -143,7 +143,15 @@ layout: table_wrappers
           </nav>
         {% endif %}
       {% endunless %}
-      <div id="main-content" class="main-content" role="main">         
+      <div id="main-content" class="main-content" role="main">
+        <header class="page-header" role="banner">
+          <h1 class="fs-9">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
+          <span class="last-modified">Please enable JavaScript to display the last page modification and author information</span>
+          {% if page.description %}
+            <h2 class="fs-6 fw-300">{{ page.description }}</h2>
+          {% endif %}
+        </header>
+        <hr>         
         {% if site.heading_anchors != false %}
           {% include vendor/anchor_headings.html html=content beforeHeading="true" anchorBody="<svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><use xlink:href=\"#svg-link\"></use></svg>" anchorClass="anchor-heading" anchorAttrs="aria-labelledby=\"%html_id%\"" %}
         {% else %}
@@ -212,5 +220,27 @@ layout: table_wrappers
     {% endif %}
   </div>
   <script src="{{ base.url | prepend: site.url }}/assets/js/theme-switch.js"></script>
+  {%if site.last_edit_timestamp_script and site.gh_owner_name and site.gh_repository_name and page.path %}
+  <script>
+    function setModifiedDate() {
+    if (document.getElementById('last-modified')) {
+      fetch("https://api.github.com/repos/{{ site.gh_owner_name }}/{{ site.gh_repository_name }}/commits?path={{ page.path }}")
+        .then((response) => {
+          return response.json();
+        })
+        .then((commits) => {
+          var modified = commits[0]['commit']['committer']['date'].slice(0,10);
+          if(modified != '{{ page.date | date: "%Y-%m-%d" }}') {
+            document.getElementById('last-modified').textContent = "Last Modified: " + modified;
+          }
+        });
+      }
+    }
+
+    window.addEventListener('load', function () {
+        setModifiedDate()
+    });
+</script>
+{% endif %}
 </body>
 </html>
