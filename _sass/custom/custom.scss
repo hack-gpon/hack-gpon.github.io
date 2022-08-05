@@ -51,6 +51,11 @@ ul.metadata {
     
 }
 
+[data-toogle] {
+    
+    cursor: pointer;
+}
+
 .modal {
     display: none;  
     position: fixed;  
@@ -66,7 +71,7 @@ ul.metadata {
         border: 1px solid $border-color;
         position: relative;
         background-color: $body-background-color;
-        width: 400px;
+        width: 500px;
         padding: 0;
         margin: 40px  auto;
         animation-name: animatetop;
@@ -86,13 +91,14 @@ ul.metadata {
                 margin-bottom: 0.25em;
             }
             h2 {
-                float: left;
+                margin-right: 28px;
             }
 
             .close {
                 color:  $nav-child-link-color;
                 float: right;
                 font-weight: bold;
+                cursor: pointer;
     
                 &:hover {
                     color: $link-color;
@@ -107,30 +113,42 @@ ul.metadata {
             color: $body-text-color;
         }
 
-        ul.modal-body>li{
+        ul.modal-body {
+            padding: 10px;
+            margin: -1px;
+            border-width: 1px 1px 1px 3px;
+            border-style: solid;
+            border-color: $border-color;
 
-            &::before {
-                content: '';
+            &:hover {
+                border-color: $link-color;
             }
-            
-            
-            >a {
-                color: $body-text-color;
-                text-decoration: none;
-                border: 0;
-                background: none;
-                display: flex;
-                align-items: center;
+
+            >li{
+
+                &::before {
+                    content: '';
+                }
                 
-                &:hover {
-                    color: $link-color;
-                }
+                
+                >a {
+                    color: $body-text-color;
+                    text-decoration: none;
+                    border: 0;
+                    background: none;
+                    display: flex;
+                    align-items: center;
+                    
+                    &:hover {
+                        color: $link-color;
+                    }
 
-                img {
-                    margin-left: 10px;
+                    img {
+                        margin-right: 10px;
+                    }
                 }
+                
             }
-            
         }
     }
 }
