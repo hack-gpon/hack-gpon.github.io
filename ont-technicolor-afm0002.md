@@ -35,6 +35,9 @@ parent: ONT
 {% include info.html content="The AFM0002FWB can be transformed into AFM0002TIM. The AFM0002FWB has an older sw version." %}
 
 
+# Serial
+
+
 # List of software versions
 - V1_7_8_180122 
 - V1_7_8_180725
@@ -220,5 +223,7 @@ reboot
 3. You can then open it into wireshark by installing the OMCI plugin from https://wiki.wireshark.org/Contrib.md
    
 If you want to log everything since the stick boots, you can create a custom rootfs. Place the last command inside `etc/runomci.sh` as the last line of the file
+
+
 
 # Miscellaneous Links
