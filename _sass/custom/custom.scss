@@ -179,6 +179,12 @@ ul.metadata {
     border-radius: $border-radius;
 
 
+    svg {
+        height: 1rem;
+        margin-right: 0.5rem;
+        width: 1rem;
+    }
+
     &.alert-warning {
         background-color: $yellow-000;
         color: $yellow-300;
