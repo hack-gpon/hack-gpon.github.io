@@ -9,6 +9,8 @@ description: Resources to access and modify ONTs
 resources to access and modify ONTs
 {: .fs-6 .fw-300 }
 
+{% include warning.html content="Playing with ONTs can cause: serial/ploam ban, optics breakage and ONT/OLT breakage. Always pay close attention to the calibration of the laser, under no circumstances should the calibration be changed." %}
+
 
 {% include info.html content="The material and information contained on this website is for general information purposes only. You should not rely upon the material or information on the website as a basis for making any business, legal or any other decisions. Whilst we endeavour to keep the information up to date and correct, hack-gpon.github.io makes no representations or warranties of any kind, express or implied about the completeness, accuracy, reliability, suitability or availability with respect to the website or the information, products, services or related graphics contained on the website for any purpose. Any reliance you place on such material is therefore strictly at your own risk. We do not take responsibility for broken, bricked, unusable or become doorstops. To the extent not prohibited by law, in no circumstances shall hack-gpon.github.io be liable to you or any other third parties for any loss or damage (including, without limitation, damage for loss of business or loss of profits) arising directly or indirectly from your use of or inability to use, this site or any of the material contained in it." %}
 

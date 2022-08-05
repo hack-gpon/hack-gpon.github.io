@@ -16,5 +16,7 @@ Are you ready?
 </span>
 
 <span class="fs-8">
-[Quick start](quick-start.md){: .btn }
+[Quick start](quick-start.md){: .btn .btn-blue }
 </span>
+
+{% include warning.html content="Playing with ONTs can cause: serial/ploam ban, optics breakage and ONT/OLT breakage. Always pay close attention to the calibration of the laser, under no circumstances should the calibration be changed." %}
