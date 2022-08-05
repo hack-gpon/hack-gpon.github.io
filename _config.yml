@@ -54,7 +54,3 @@ gh_edit_branch: "main" # the branch that your docs is served from
 gh_edit_view_mode: "tree"
 gh_owner_name: hack-gpon
 gh_repository_name: hack-gpon.github.io
-
-
-
-

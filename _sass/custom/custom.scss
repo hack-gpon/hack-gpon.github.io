@@ -226,3 +226,7 @@ ul.metadata {
         }
     }
 }
+
+.btn-yellow {
+    @include btn-color($white, $yellow-100);
+}

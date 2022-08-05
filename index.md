@@ -12,7 +12,7 @@ This wiki contains links, codes, tutorials for accessing, editing and changing O
 Are you ready?
 
 <span class="fs-8">
-[Yes](ont.md){: .btn } [Quick start](quick-start.md){: .btn .btn-blue }
+[Yes](ont.md){: .btn .btn-green } [Quick start](quick-start.md){: .btn .btn-blue }
 </span>
 
 {% include warning.html content="Playing with ONTs can cause: serial/ploam ban, optics breakage and ONT/OLT breakage. Always pay close attention to the calibration of the laser, under no circumstances should the calibration be changed." %}
