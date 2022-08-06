@@ -240,10 +240,10 @@ figure {
     figcaption {
         background-color: $code-background-color;
         padding: 8px;
-        border-top-left-radius: $border-radius;
-        border-top-right-radius: $border-radius;
     }
     img{
         vertical-align: middle;
+        border-top-left-radius: $border-radius;
+        border-top-right-radius: $border-radius;
     }
 }
