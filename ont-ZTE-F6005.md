@@ -18,7 +18,7 @@ parent: ONT
 | HSGMII      | Yes                    |
 | Optics      | SC/APC                 |
 | IP address  | 192.168.1.1            |
-| Web Gui     | ✅                     |
+| Web Gui     | ✅ user `admin`, password `admin`  |
 | SSH         |                        |
 | Form Factor | ONT                    |
 
