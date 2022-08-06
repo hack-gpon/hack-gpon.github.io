@@ -1,5 +1,5 @@
 ---
-title: D-LINK DPN-100 Rev A
+title: D-LINK DPN-100 Rev C1
 has_children: false
 parent: ONT
 ---
