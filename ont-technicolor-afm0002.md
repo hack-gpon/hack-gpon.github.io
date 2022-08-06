@@ -113,7 +113,9 @@ GPON_SN=TMBB00000000
 ```
 
 ## Get/Set the ONT PLOAM password
-Note: the password is in ASCII format
+
+{% include info.html content="The PLOAM password is in ASCII format" %}
+
 ```sh
 # /etc/scripts/bin flash get GPON_PLOAM_PASSWD
 GPON_PLOAM_PASSWD=AAAAAAAAAA
@@ -126,7 +128,10 @@ GPON_PLOAM_PASSWD=AAAAAAAAAA
 ```
 
 # Low level modding
-Note: this section is based on version `V1_7_8_210412` of the stick
+
+{% include warning.html content="This section is based on version `V1_7_8_210412` of the stick" %}
+
+
 ## Trasnfer files from/to the stick
 Works with binary files too, just run md5sum on source and destination to make sure you are not corrupting anything...
 From the stick to the PC:
@@ -137,14 +142,19 @@ From the PC to the stick
 ```sh
 # cat lastgood.xml | ssh admin@192.168.2.1  "cat > /var/config/lastgood.xml"
 ```
-**Note:** on windows replace type with cat and run the commands from cmd (not powershell)
+
+{% include warning.html content="on windows replace type with cat and run the commands from cmd (not powershell)" %}
+
 ## Extract and repack the rootfs
 ```sh
 # unsquashfs mtd5.bin
 # mksquashfs squashfs-root rootfs -b 131072 -comp lzma -no-recovery
 ```
 ## Flash a new rootfs
-**Note: you can only flash the inactive image**. So mtd4/5 if you are on image1, mtd6/7 if you are on image0.
+
+{% include info.html content="you can only flash the inactive image" %}
+
+So mtd4/5 if you are on image1, mtd6/7 if you are on image0.
 
 The follwing examples flashes a new rootfs to image1 and boots to it
 ```sh

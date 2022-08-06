@@ -21,22 +21,22 @@ $red-400: #A62323 !default;
         svg {
             display: inline;
             vertical-align: top;
-            width: 1.5rem;
-            height: 1.5rem;
+            width: 1.5 * $spacing-unit;
+            height: 1.5 * $spacing-unit;
             fill: $nav-child-link-color;
         }
     }
 
     h1 {
-        margin-right: 3.5rem;
+        margin-right: 3.5 * $spacing-unit;
     }
 }
 
 
 .avatar {
     border-radius: 50%;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.5 * $spacing-unit;
+    height: 1.5 * $spacing-unit;
 }
 
 
@@ -52,17 +52,18 @@ ul.metadata {
         align-items: center;
         list-style: none;
         display: flex;
+
         &:not(:last-of-type):not(:only-of-type)::after {
             content: "•";
             padding-left: 5px;
             padding-right: 5px;
             color: $grey-dk-000;
         }
+
         &::before {
             content: "";
-          }
+        }
     }
-    
 }
 
 [data-toogle] {
@@ -82,7 +83,7 @@ ul.metadata {
     background-color: rgba(0,0,0,0.4);  
 
     .modal-content {
-        border: 1px solid $border-color;
+        border: $border $border-color;
         position: relative;
         background-color: $body-background-color;
         width: min(500px, calc(100vw - 40px));
@@ -95,17 +96,17 @@ ul.metadata {
         
     
         .modal-header {
-            padding: 2px 16px;
-            margin-left: 28px;
+            padding: 2px $spacing-unit;
+            margin-left: 1.5 * $spacing-unit;
 
             h2, .close {
-                font-size: 28px !important;
-                margin-top: 1.5em;
-                margin-bottom: 1.5em;
+                font-size: 1.5 * $spacing-unit !important;
+                margin-top: 1.5 * $spacing-unit;
+                margin-bottom: 1.5 * $spacing-unit;
                 line-height: 1;
             }
             h2 {
-                margin-right: 28px;
+                margin-right: 1.5 * $spacing-unit;
             }
 
             .close {
@@ -120,10 +121,10 @@ ul.metadata {
             }
         }
     
-        div.modal-body {padding: 2px 16px;}
+        div.modal-body {padding: 2px $spacing-unit;}
     
         .modal-footer {
-            padding: 2px 16px;
+            padding: 2px $spacing-unit;
             color: $body-text-color;
         }
 
@@ -180,14 +181,14 @@ ul.metadata {
     padding: $sp-3;
     margin-bottom: $sp-3;
     overflow: auto;
-    border: 1px solid $border-color;
+    border: $border $border-color;
     border-radius: $border-radius;
 
 
     svg {
-        height: 1rem;
-        margin-right: 0.5rem;
-        width: 1rem;
+        height: $spacing-unit;
+        margin-right: 0.5 * $spacing-unit;
+        width: $spacing-unit;
     }
 
     &.alert-warning {
@@ -229,4 +230,16 @@ ul.metadata {
 
 .btn-yellow {
     @include btn-color($white, $yellow-100);
+}
+
+figure {
+    border:  $border $border-color;
+    border-radius: $border-radius;
+    figcaption {
+        background-color: $code-background-color;
+        padding: 8px;
+    }
+    img{
+        vertical-align: middle;
+    }
 }
