@@ -18,12 +18,14 @@ parent: ONT
 | HSGMII      | No                                              |
 | Optics      | SC/APC and SC/UPC                               |
 | IP address  | 192.168.100.1                                   |
-| Web Gui     | ✅ user `root`, password `admin` and user `telecomadmin`, password `admintelecom` |
-| Telnet      | After Enabling user `root`, password `admin`                                 |
+| Web Gui     | ✅ user `root`, password `admin` or `adminHW` and user `telecomadmin`, password `admintelecom` |
+| Telnet      | After Enabling user `root`, password `admin` or `adminHW`                                 |
 | SSH         |                                                 |
 | Form Factor | ONT                                             |
 
 {% include image.html file="HG8010H.jpg"  alt="HG8010H" caption="HG8010H: port pon horizontal (left, middle), pon vertical (right)" %}
+{% include image.html file="HG8010Hvorr.jpg"  alt="HG8010Hv3/4/5" caption="HG8010Hv3/4/5 back" %}
+{% include image.html file="HG8010Hv6.jpg"  alt="HG8010Hv6" caption="HG8010Hv6 back" %}
 {% include image.html file="HG8010H_Teardown_1.jpg"  alt="HG8010Hv1/2 Teardown" caption="HG8010Hv1/2: Teardown" %}
 {% include image.html file="HG8010H_Teardown_2.jpg"  alt="HG8010Hv1/2 Teardown" caption="HG8010Hv1/2: Teardown" %}
 {% include image.html file="HG8010H_Teardown_1_v6.jpg"  alt="HG8010Hv6 Teardown" caption="HG8010Hv6: Teardown" %}
