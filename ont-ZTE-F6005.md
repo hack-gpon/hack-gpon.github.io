@@ -28,6 +28,7 @@ parent: ONT
 
 ## List of software version
 - V6.0.10N14
+
 ## List of partition
 ## List of firmware and files
 # Miscellaneous Links

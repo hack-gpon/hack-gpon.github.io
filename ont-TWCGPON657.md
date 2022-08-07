@@ -22,15 +22,6 @@ parent: ONT
 | SSH         | ✅                |
 | Form Factor | miniONT SFP       |
 
-## Interchangeable firmware with
-
-- [ODI DFP-34X-C2C](ont-ODI-DFP-34X-C2C)
-- [VSOL V2801F](ont-vsol-V2801F)
-- [TWCGPON657](ont-TWCGPON657)
-- [UFiber UF-Instant](ont-UFiber-UF-Instant) 
-- [DFP-34X-2C2](ont-DFP-34X-2C2)
-- [CarlitoxxPro CPGOS03-0490 v2](ont-CarlitoxxPro-CPGOS03-0490-v2)
-
 ## List of software version
 ## List of partition
 ## List of firmware and files

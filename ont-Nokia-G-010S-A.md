@@ -27,7 +27,7 @@ parent: ONT
 
 ## Interchangeable firmware with
 
-Is it possibile to turn a [Nokia G-010S-P](ont-nokia-g-s010s-p) into an [Nokia G-010S-A](ont-nokia-g-s010s-A)
+Is it possibile to turn a [Nokia G-010S-P](ont-nokia-g-s010s-p) into an [Nokia G-010S-A](ont-nokia-g-s010s-A) changing layout from mtd
 
 ## Serial
 
