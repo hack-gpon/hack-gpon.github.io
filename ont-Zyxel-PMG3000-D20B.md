@@ -22,6 +22,9 @@ parent: ONT
 | SSH         | ✅ username `admin`, password `1234` |
 | Form Factor | miniONT SFP                          |
 
+Once you access the stick via ssh you will be challenged with a second tier login. The credentials to access the zyxel shell are: username: `twmanu` , password: `twmanu`.
+From the zyxel shell you can escape to a standard linux shell via the `linuxshell` command
+
 ## Interchangeable firmware with
 
 - [Zyxel PMG3000-D20B](ont-Zyxel-PMG3000-D20B)
@@ -30,10 +33,110 @@ parent: ONT
 - Zisa
 - T&W
 
-## List of software version
-## List of partition
-## List of firmware and files
+# List of software version
+
+# List of partitions
+ 
+| dev  | size     | erasesize | name           |
+| ---- | -------- | --------- | -------------- |
+| mtd0 | 00060000 | 00010000  | "Boot"         |
+| mtd1 | 00010000 | 00010000  | "Env"          |
+| mtd2 | 00390000 | 00010000  | "ImageA"       |
+| mtd3 | 00390000 | 00010000  | "ImageB"       |
+| mtd4 | 00060000 | 00010000  | "Config"       |
+| mtd5 | 00010000 | 00010000  | "SECTION_EGIS" |
+| mtd6 | 00250000 | 00010000  | "rootfs"       |
+| mtd7 | 00020000 | 00010000  | "rootfs_data"  |
+
+
+This stick supports dual boot from `ImageA` and `ImageB` witch contains the rootfs.
+
+
+# List of firmware and files
+## Useful files
+- `/var/config/ont.sys` used to customize various settings on the stick
+
+# Useful commands
+
+# Useful commands
+*Note: all commands start from the twmanu shell*
+
+## Change the ONT S/N
+*Note  the S/N is in ACII format*
+```sh
+manufactory
+set sn ALCLf0f0f0f0
+exit
+hal
+set sn ALCLf0f0f0f0
+```
+
+## Change the ONT PLOAM password
+*Note: the PLOAM is in ACII format*
+This can be done easily via web ui. If you prefer to do it via the shell use:
+```sh
+manufactory
+set password PLOAMPASS
+```
+
+## Change the ONT equipment ID
+*Note: model number must be 20 no more than chars total*
+```sh
+manufactory
+set equipment id MYEQUIPMENTID
+exit
+omci
+equipment id MYEQUIPMENTID
+```
+
+## Change the ONT hardware version
+```sh
+manufactory
+set hardware version 3FE49165BFAA01
+```
+
+## Change the software version
+Edit the /var/config/ont.sys via vi directly on the stick itself. The file is CRLF terminated, one entry per line.
+The entries for the software version are:
+```
+SW_VER0:0xabcdef
+SW_VER1:0xabcedf
+```
+*Note: it's better to enter the software version in hex format, all lowercase precedeed by 0x.* 
+
+# Low level modding
+
+## Create a new rootfs
+The stick has a tricky image packing method, fortuntaly it has been reverse engineered. A script to help you create a custom rootfs can be found here: [https://github.com/nanomad/zyxel-pmg-3000-mod-kit](https://github.com/nanomad/zyxel-pmg-3000-mod-kit)
+
+## Flash a new rootfs
+*Note: all commands start from the twmanu shell*
+
+- Transfer the new mtd on the stick via tftp
+```
+linuxshell
+tftp -gr mtd2.mod.bin TFTP_SERVER_IP
+```
+- Flash it on the standby partition. 
+You can use `system` and then `show actimage` to get the current active image. Check `/proc/mtd` for the right mtds. Usually:
+- if the currect active image is A the mtd in use is mtd2
+- If the current active image is B the mtd in use is mtd3
+```
+linuxshell
+mtd -e /dev/mtd2 write /tmp/mtd2.mod.bin /dev/mtd2
+```
+- Switch to the new image
+```
+system
+set actimage a
+```
+- Reboot the ONT
+```
+system
+reboot
+```
+
 # Miscellaneous Links
 
 - [https://github.com/xvzf/zyxel-gpon-sfp](https://github.com/xvzf/zyxel-gpon-sfp)
-
+- [https://github.com/nanomad/zyxel-pmg-3000-mod-kit](https://github.com/nanomad/zyxel-pmg-3000-mod-kit)
