@@ -22,6 +22,12 @@ parent: ONT
 | SSH         | ✅                |
 | Form Factor | miniONT SFP       |
 
+## Interchangeable firmware with
+
+- [VSOL V2801F](ont-vsol-V2801F)
+- [TWCGPON657](ont-TWCGPON657)
+- [UFiber UF-Instant](ont-UFiber-UF-Instant) 
+
 ## List of software version
 ## List of partition
 ## List of firmware and files

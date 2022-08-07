@@ -48,7 +48,9 @@ You can easily communicate with the ONT using a TTL converter (for example i've 
 
 *You don't actually need the two VCC pins, just use TX/RX and GND*
 
-⚠️ **The ONT's serial logic is 3V3**: Make sure the logic of your TTL converter is 3V3 too otherwise you might damage the ONT, in my case i wasn't sure the CH341A had a 3V3 logic for the TTL part so i've set up a voltage divider made of 2 resistors between the TX pin and ground as shown in the image below
+{% include warning.html content="The ONT's serial logic is 3V3." %}
+
+Make sure the logic of your TTL converter is 3V3 too otherwise you might damage the ONT, in my case i wasn't sure the CH341A had a 3V3 logic for the TTL part so i've set up a voltage divider made of 2 resistors between the TX pin and ground as shown in the image below.
 
 *Also make sure that your TTL converter RX pin voltage threshold is less than (or equal to) 3V3*
 

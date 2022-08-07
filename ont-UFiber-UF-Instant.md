@@ -24,7 +24,13 @@ parent: ONT
 
 ## Interchangeable firmware with
 
-{% include warning.html content="UFiber UF-Instant can be used as universal GPON stick with V2801F rootfs, but only with stock UF kernel (4.3.1): needed for Laser controller." %}
+{% include warning.html content="UFiber UF-Instant can be used as universal GPON stick with V2801F rootfs, but only with stock UF kernel (4.3.1/4.4.2): needed for Laser controller." %}
+
+
+- [VSOL V2801F](ont-vsol-V2801F)
+- [TWCGPON657](ont-TWCGPON657)
+- [UFiber UF-Instant](ont-UFiber-UF-Instant) 
+
 
 ## List of software version
 ## List of partition
