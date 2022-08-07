@@ -25,8 +25,8 @@ parent: ONT
 
 
 {% include image.html file="HG8010H.jpg"  alt="HG8010H" caption="HG8010H: Horizontal PON port (left, middle); vertical PON port (right)" %}
-{% include image.html file="HG8010Hvorr.jpg"  alt="HG8010Hv3/4/5" caption="Back of the HG8010Hv3/4/5" %}
-{% include image.html file="HG8010Hv6.jpg"  alt="HG8010Hv6" caption="Back of the HG8010Hv6" %}
+{% include image.html file="HG8010Hvorr.jpg"  alt="HG8010Hv3/4/5" caption="Bottom of the HG8010Hv3/4/5" %}
+{% include image.html file="HG8010Hv6.jpg"  alt="HG8010Hv6" caption="Bottom of the HG8010Hv6" %}
 {% include image.html file="HG8010H_Teardown_1.jpg"  alt="HG8010Hv1/2 Teardown" caption="HG8010Hv1/2: Teardown" %}
 {% include image.html file="HG8010H_Teardown_2.jpg"  alt="HG8010Hv1/2 Teardown" caption="HG8010Hv1/2: Teardown" %}
 {% include image.html file="HG8010H_Teardown_1_v6.jpg"  alt="HG8010Hv6 Teardown" caption="HG8010Hv6: Teardown" %}
