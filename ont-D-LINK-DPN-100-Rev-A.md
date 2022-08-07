@@ -28,7 +28,8 @@ parent: ONT
 - [Zyxel PMG3000-D20B](ont-Zyxel-PMG3000-D20B)
 - [Halny HL-GSFP](ont-Halny-HL-GSFP)
 - [D-LINK DPN-100-Rev-A](ont-D-LINK-DPN-100-Rev-A)
-
+- Zisa
+- T&W
 
 ## List of software version
 ## List of partition

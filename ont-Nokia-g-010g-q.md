@@ -6,23 +6,23 @@ parent: ONT
 
 # Hardware Specifications
 
-|          |               |
-|-------------|-------------------------------------------------|
-| Vendor   | Nokia        |
-| Model    | G-010G-Q      |
-| Alias | |
-| Chipset  | Realtek RTL9601B |
-| Flash | Winbond <a href="https://www.winbond.com/resource-files/w25q128jv%20revf%2003272018%20plus.pdf">W25Q128JV</a> 3V 128M-BIT SPI |
-| RAM | DDR2 325MHz  |
-| System | Linux (Luna SDK)  |
-| HSGMII | No |
-| Optics | SC/APC |
-| IP address | 192.168.100.1   |
-| Web Gui (HTTP) | ✅ Port 80 (⚠️ *only available when the PON connection **ISN'T** estabilished*) |
-| Web Gui (HTTPS) | ✅ Port 443 **NO SSL SUPPORT** |
-| Web Gui Default Login | user `admin` password `1234` |
-| SSH | |
-| Form Factor | ONT |
+|                       |                                                                                                                               |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Vendor                | Nokia                                                                                                                         |
+| Model                 | G-010G-Q                                                                                                                      |
+| Alias                 |                                                                                                                               |
+| Chipset               | Realtek RTL9601B                                                                                                              |
+| Flash                 | Winbond <a href="https://www.winbond.com/resource-files/w25q128jv%20revf%2003272018%20plus.pdf">W25Q128JV</a> 3V 128M-BIT SPI |
+| RAM                   | DDR2 325MHz                                                                                                                   |
+| System                | Linux (Luna SDK)                                                                                                              |
+| HSGMII                | No                                                                                                                            |
+| Optics                | SC/APC                                                                                                                        |
+| IP address            | 192.168.100.1                                                                                                                 |
+| Web Gui (HTTP)        | ✅ Port 80 (⚠️ *only available when the PON connection **ISN'T** estabilished*)                                             |
+| Web Gui (HTTPS)       | ✅ Port 443 **NO SSL SUPPORT**                                                                                                |
+| Web Gui Default Login | user `admin` password `1234`                                                                                                  |
+| SSH                   |                                                                                                                               |
+| Form Factor           | ONT                                                                                                                           |
 
 # Hardware revisions
 
@@ -33,12 +33,12 @@ parent: ONT
 # List of software version
 # List of partition
 
-| dev   | size     | erasesize | name            |
-| ----- | -------- | --------- | --------------- |
-| mtd0 | 00080000 | 00010000 | "Boot" |
-| mtd1 | 00180000 | 00010000 | "Config" |
-| mtd2 | 00700000 | 00010000 | "ImageA" |
-| mtd3 | 00700000 | 00010000 | "ImageB" |
+| dev  | size     | erasesize | name     |
+| ---- | -------- | --------- | -------- |
+| mtd0 | 00080000 | 00010000  | "Boot"   |
+| mtd1 | 00180000 | 00010000  | "Config" |
+| mtd2 | 00700000 | 00010000  | "ImageA" |
+| mtd3 | 00700000 | 00010000  | "ImageB" |
 
 This ont seems to be supporting dual boot (notice partitions "ImageA" and "ImageB"), however we haven't tested it out. 
 

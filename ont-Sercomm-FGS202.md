@@ -22,13 +22,6 @@ parent: ONT
 | SSH         | NO              |
 | Form Factor | miniONT SFP     |
 
-## Interchangeable firmware with
-
-- [Huawei MA5671A](ont-huawei-ma5671a)
-- [Nokia G-010S-P](ont-nokia-g-s010s-p)
-- [SourcePhotonics SPS-34-24T-HP-TDFO](ont-SourcePhotonics-SPS-34-24T-HP-TDFO)
-- [Hilink HL23446](ont-Hilink-HL23446)
-
 ## List of software version
 ## List of partition
 ## List of firmware and files
