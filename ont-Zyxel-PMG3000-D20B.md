@@ -22,7 +22,7 @@ parent: ONT
 | SSH         | ✅ username `admin`, password `1234` |
 | Form Factor | miniONT SFP                          |
 
-Once you access the stick via ssh you will be challenged with a second tier login. The credentials to access the zyxel shell are: username: `twmanu` , password: `twmanu`.
+Once you access the stick via ssh you will be presented with a second tier login. The credentials to access the zyxel shell are: username: `twmanu` , password: `twmanu`.
 From the zyxel shell you can move to a standard linux shell via the `linuxshell` command
 
 ## Firmware is interchangeable with:
@@ -49,7 +49,7 @@ From the zyxel shell you can move to a standard linux shell via the `linuxshell`
 | mtd7 | 00020000 | 00010000  | "rootfs_data"  |
 
 
-This stick supports dual boot from `ImageA` and `ImageB` which contain the rootfs.
+This stick supports dual boot, as visible from the presence of `ImageA` and `ImageB`, which contain the rootfs.
 
 
 # List of firmwares and files
@@ -147,6 +147,8 @@ set actimage a
 system
 reboot
 ```
+
+# Known Bugs
 
 # Miscellaneous Links
 
