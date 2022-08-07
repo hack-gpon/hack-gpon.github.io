@@ -22,9 +22,11 @@ parent: ONT
 | SSH         |             |
 | Form Factor | miniONT SFP |
 
-## Interchangeable firmware with
-## List of software version
-## List of partition
-## List of firmware and files
+
+## List of software versions
+## List of partitions
+## List of firmwares and files
+# Known Bugs
 # Miscellaneous Links
+
 

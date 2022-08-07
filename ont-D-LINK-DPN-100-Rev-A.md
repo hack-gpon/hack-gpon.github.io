@@ -23,7 +23,7 @@ parent: ONT
 | Form Factor | miniONT SFP     |
 
 
-## Interchangeable firmware with
+## Firmware is interchangeable with:
 
 - [Zyxel PMG3000-D20B](ont-Zyxel-PMG3000-D20B)
 - [Halny HL-GSFP](ont-Halny-HL-GSFP)
@@ -31,8 +31,11 @@ parent: ONT
 - Zisa
 - T&W
 
-## List of software version
-## List of partition
-## List of firmware and files
+## List of software versions
+## List of partitions
+## List of firmwares and files
+# Known Bugs
 # Miscellaneous Links
+
+
 

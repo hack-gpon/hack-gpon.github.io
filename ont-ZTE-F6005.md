@@ -26,13 +26,16 @@ parent: ONT
 {% include image.html file="f6005_tim.jpg" alt="F601 v3" caption="F6005 TIM" %}
 
 
-## List of software version
+## List of software versions
 - V6.0.10N14
 
-## List of partition
-## List of firmware and files
+## List of partitions
+## List of firmwares and files
+
+# Known Bugs
+
+Buffer size is suboptimal, because of this the ONT can't keep up working at full speed during uploads if the server is geographically, and so latency-wise, far. There are no known problems with multiple connections.
+
 # Miscellaneous Links
 
-# Bugs
 
-buffers are not optimally created and therefore there are problems with uploads if the server is far away. no problem with multiple connections

@@ -22,16 +22,18 @@ parent: ONT
 | SSH         | ✅                |
 | Form Factor | miniONT SFP       |
 
-## List of software version
-## List of partition
-## List of firmware and files
+## List of software versions
+## List of partitions
+## List of firmwares and files
+
+# Known Bugs
+
+VLAN swap issue (MEID 171), auto-sensing mode to switch between SGMII/HiSGMII
+
+You should use the VID/VLAN shown by executing the command "omcicli mib get 84" via telnet to bring up PPPoE
+
 # Miscellaneous Links
 
 - [Hacking RTL960x](https://github.com/Anime4000/RTL960x)
 
-# Bugs
-
-VLAN swap issue (MEID 171), auto-sensing mode to switch between SGMII/HiSGMII
-
-use VID/VLAN from command "omcicli mib get 84" via telnet to bring up PPPoE
 

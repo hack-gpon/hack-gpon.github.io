@@ -18,7 +18,7 @@ parent: ONT
 | HSGMII                | No                                                                                                                            |
 | Optics                | SC/APC                                                                                                                        |
 | IP address            | 192.168.100.1                                                                                                                 |
-| Web Gui (HTTP)        | ✅ Port 80 (⚠️ *only available when the PON connection **ISN'T** estabilished*)                                             |
+| Web Gui (HTTP)        | ✅ Port 80 (⚠️ *only available when the PON connection **IS NOT** estabilished*)                                             |
 | Web Gui (HTTPS)       | ✅ Port 443 **NO SSL SUPPORT**                                                                                                |
 | Web Gui Default Login | user `admin` password `1234`                                                                                                  |
 | SSH                   |                                                                                                                               |
@@ -30,8 +30,8 @@ parent: ONT
 
 {% include image.html file="g-010g-q.png"  alt="G-010G-Q " caption="G-010G-Q: square version with relief circle" %}
 
-# List of software version
-# List of partition
+# List of software versions
+# List of partitions
 
 | dev  | size     | erasesize | name     |
 | ---- | -------- | --------- | -------- |
@@ -40,17 +40,17 @@ parent: ONT
 | mtd2 | 00700000 | 00010000  | "ImageA" |
 | mtd3 | 00700000 | 00010000  | "ImageB" |
 
-This ont seems to be supporting dual boot (notice partitions "ImageA" and "ImageB"), however we haven't tested it out. 
+This ont seems to support dual boot (notice partitions "ImageA" and "ImageB"), however this has not been tested. 
 
 # Setting up the serial interface
 {% include image.html file="g-010g-q-serial-pinout.png"  alt="G-010G-Q " caption="G-010G-Q: serial pinout" %}
-You can easily communicate with the ONT using a TTL converter (for example i've used the CH341A programmer in TTL mode) by connecting the converters' pins to the ONT ones accordingly to the pinout shown in the image above
+You can easily communicate with the ONT using a TTL converter (for example the CH341A programmer in TTL mode) by connecting the converters' pins to the ONT following the pinout shown in the image above
 
 *You don't actually need the two VCC pins, just use TX/RX and GND*
 
 {% include warning.html content="The ONT's serial logic is 3V3." %}
 
-Make sure the logic of your TTL converter is 3V3 too otherwise you might damage the ONT, in my case i wasn't sure the CH341A had a 3V3 logic for the TTL part so i've set up a voltage divider made of 2 resistors between the TX pin and ground as shown in the image below.
+Make sure the logic of your TTL converter is 3V3 too otherwise you might damage the ONT, in my case I wasn't sure the CH341A had a 3V3 logic for the TTL part so I set up a voltage divider made of 2 resistors between the TX pin and ground as shown in the image below.
 
 *Also make sure that your TTL converter RX pin voltage threshold is less than (or equal to) 3V3*
 
@@ -62,12 +62,17 @@ You'll see a shell like prompt:
 ```
 ONT>
 ```
-there you'll have to type `enable` and then `login`, unluckily there's no default user/password
+Here you'll have to type `enable` and then `login`, unfortunately there is no default username and password
 
-Once you've logged in you will be shown a custom menu, and you'll be able to access the linux shell by first typing `system` and finally `shell`
+Once you're logged in, a custom menu will be shown, and you'll be able to access the linux shell by first typing `system` and finally `shell`
 
-You can then exit the shell to reach the parent menu by typing `exit` or `x`, and you can get help for each menu with the `help` command
+To exit the shell and reach the parent menu type `exit` or `x`, in each menu the `help` command will show how to use the shell
 
-# List of firmware and files
+# List of firmwares and files
+
+# Known Bugs
+
 # Miscellaneous Links
 - <a href="https://github.com/nanomad/nokia-ont-mib-parser">MIB file parser</a> for NOKIA's GPON ONTs (*helps you parsing the .mib file located in `/mnt/rwdir`*)
+
+

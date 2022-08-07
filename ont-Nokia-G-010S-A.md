@@ -25,30 +25,33 @@ parent: ONT
 {% include image.html file="G-010S-A.jpg"  alt="G-010S-A" caption="G-010S-A" %}
 
 
-## Interchangeable firmware with
+## Firmware is interchangeable with:
 
-Is it possibile to turn a [Nokia G-010S-P](ont-nokia-g-s010s-p) into an [Nokia G-010S-A](ont-nokia-g-s010s-A) changing layout from mtd
+Turning a [Nokia G-010S-P](ont-nokia-g-s010s-p) into a [Nokia G-010S-A](ont-nokia-g-s010s-A) is possible by changing layout from mtd
 
 ## Serial
 
 On SFP: Serial TTL: TX Pin 3 RX Pin 6 asc0=0 115,200 N 8 1
 
-#  Disable Dying Gasp
+#  Disabling Dying Gasp
 ```sh
 uci set gpon.gtc.nDyingGaspEnable='0'; uci commit gpon
 ```
 
-## List of software version
+## List of software versions
 
 - [https://github.com/hwti/G-010S-A/tree/main/firmwares](https://github.com/hwti/G-010S-A/tree/main/firmwares)
 
-## List of partition
-## List of firmware and files
+## List of partitions
+## List of firmwares and files
 
 # HW Mod
 
 - [Nokia G-010S-A Pin 6 Iusse - Rsaxvc.net](https://rsaxvc.net/blog/2020/8/15/Nokia_G-010S-A_Pin_6_Issue.html)
 
+# Known Bugs
+
 # Miscellaneous Links
 
 - [https://github.com/hwti/G-010S-A](https://github.com/hwti/G-010S-A)
+
