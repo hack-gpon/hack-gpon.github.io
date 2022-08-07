@@ -6,21 +6,21 @@ parent: ONT
 
 # Hardware Specifications
 
-|             |                 |
-| ----------- | --------------- |
-| Vendor      | Huawei          |
-| Model       | MA5671A         |
-| Alias       |                 |
-| Chipset     | Lantiq PEB98035 |
-| Flash       | 16 MB           |
-| RAM         | 64 MB           |
-| System      | OpenWRT         |
-| HSGMII      | Yes             |
-| Optics      | SC/APC          |
-| IP address  | 192.168.1.10    |
-| Web Gui     | After root      |
-| SSH         |                 |
-| Form Factor | miniONT SFP     |
+|             |                                     |
+| ----------- | ----------------------------------- |
+| Vendor      | Huawei                              |
+| Model       | MA5671A                             |
+| Alias       |                                     |
+| Chipset     | Lantiq PEB98035                     |
+| Flash       | 16 MB                               |
+| RAM         | 64 MB                               |
+| System      | OpenWRT                             |
+| HSGMII      | Yes                                 |
+| Optics      | SC/APC                              |
+| IP address  | 192.168.1.10                        |
+| Web Gui     | After root                          |
+| SSH         | ✅ user `root`, password `admin123` |
+| Form Factor | miniONT SFP                         |
 
 ## Interchangeable firmware with
 
@@ -28,6 +28,15 @@ parent: ONT
 - [Nokia G-010S-P](ont-nokia-g-s010s-p)
 - [SourcePhotonics SPS-34-24T-HP-TDFO](ont-SourcePhotonics-SPS-34-24T-HP-TDFO)
 - [Hilink HL23446](ont-Hilink-HL23446)
+
+## Serial
+
+On SFP: Serial TTL: TX Pin 2 RX Pin 7 asc0=0 115,200 N 8 1
+
+#  Disable Dying Gasp
+```sh
+set nDyingGaspEnable disable
+```
 
 ## List of software version
 
@@ -44,6 +53,11 @@ parent: ONT
 - [Huawei Rooted MTD5](https://ma5671a.s3.nl-ams.scw.cloud/mA5671a_root_mtd5.img){: .btn }  md5hash: 0e4cfdc1b96be6581869b26b48789556
 - [1224abort.bin](https://ma5671a.s3.nl-ams.scw.cloud/1224ABORT.bin){: .btn }  md5hash: 10e94a4b4acdc82dec20c7904b69e5c0
 
+## Set image version
+```sh
+fw_setenv image0_version V1.7.6-170626
+fw_setenv image1_version V1.7.6-170626
+```
 # Miscellaneous Links
 
 - [Support MA5671A SFP GPON - OpenWRT forum](https://forum.openwrt.org/t/support-ma5671a-sfp-gpon/48042)
