@@ -234,6 +234,6 @@ reboot
    
 If you want to log everything since the stick boots, you can create a custom rootfs. Place the last command inside `etc/runomci.sh` as the last line of the file
 
-
-
 # Miscellaneous Links
+
+- [omcilog2pcap](https://github.com/ADeltaX/omcilog2pcap)

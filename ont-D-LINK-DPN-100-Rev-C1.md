@@ -30,4 +30,4 @@ parent: ONT
 ## List of firmware and files
 # Miscellaneous Links
 
-- [https://github.com/Anime4000/RTL960x/issues/2](https://github.com/Anime4000/RTL960x/issues/2)
+- [DLINK DPN-100 Ver:C1 use RTL9601C1](https://github.com/Anime4000/RTL960x/issues/2)
