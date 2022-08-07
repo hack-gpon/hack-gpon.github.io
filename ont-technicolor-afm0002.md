@@ -35,9 +35,6 @@ parent: ONT
 {% include info.html content="The AFM0002FWB can be transformed into AFM0002TIM. The AFM0002FWB has an older sw version." %}
 
 
-# Serial
-
-
 # List of software versions
 - V1_7_8_180122 
 - V1_7_8_180725
@@ -84,6 +81,23 @@ This stick supports dual boot.
 
 # Useful commands
 
+## Get/Set the ONT S/N
+```sh
+# /etc/scripts/bin flash get GPON_SN
+GPON_SN=TMBB00000000
+# /etc/scripts/bin flash set GPON_SN TMBB0A1B2C3D
+```
+
+## Get/Set the ONT PLOAM password
+
+{% include info.html content="The PLOAM password is in ASCII format" %}
+
+```sh
+# /etc/scripts/bin flash get GPON_PLOAM_PASSWD
+GPON_PLOAM_PASSWD=AAAAAAAAAA
+# /etc/scripts/bin flash set GPON_PLOAM_PASSWD AAAAAAAAAA
+```
+
 ## Enable the Web UI
 ```sh
 # /bin/iptables -D INPUT -p tcp --dport 80 -j DROP
@@ -103,23 +117,6 @@ sw_version1=V1_7_8_210412
 ```sh
 # nv setenv sw_commit 0|1
 # reboot
-```
-
-## Get/Set the ONT S/N
-```sh
-# /etc/scripts/bin flash get GPON_SN
-GPON_SN=TMBB00000000
-# /etc/scripts/bin flash set GPON_SN TMBB0A1B2C3D
-```
-
-## Get/Set the ONT PLOAM password
-
-{% include info.html content="The PLOAM password is in ASCII format" %}
-
-```sh
-# /etc/scripts/bin flash get GPON_PLOAM_PASSWD
-GPON_PLOAM_PASSWD=AAAAAAAAAA
-# /etc/scripts/bin flash set GPON_PLOAM_PASSWD AAAAAAAAAA
 ```
 
 ## Query a particular OMCI ME
