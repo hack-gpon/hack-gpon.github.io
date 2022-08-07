@@ -18,7 +18,9 @@ parent: ONT
 | HSGMII | No |
 | Optics | SC/APC |
 | IP address | 192.168.100.1   |
-| Web Gui ✅ | Listens on both 80 (*only when the PON connection **ISN'T** estabilished*) and 443 ports<br>**NO SSL SUPPORT**<br>default login: user `admin` password `1234` |
+| Web Gui (HTTP) | ✅ Port 80 (⚠️ *only available when the PON connection **ISN'T** estabilished*) |
+| Web Gui (HTTPS) | ✅ Port 443 **NO SSL SUPPORT** |
+| Web Gui Default Login | user `admin` password `1234` |
 | SSH | |
 | Form Factor | ONT |
 
@@ -65,4 +67,4 @@ You can then exit the shell to reach the parent menu by typing `exit` or `x`, an
 
 # List of firmware and files
 # Miscellaneous Links
-
+<a href="https://github.com/nanomad/nokia-ont-mib-parser">MIB file parser</a> for NOKIA's GPON ONTs (*helps you parsing the .mib file located in `/mnt/rwdir`*)
