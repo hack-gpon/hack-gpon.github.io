@@ -152,5 +152,5 @@ reboot
 
 # Miscellaneous Links
 
-- [https://github.com/xvzf/zyxel-gpon-sfp](https://github.com/xvzf/zyxel-gpon-sfp)
-- [https://github.com/nanomad/zyxel-pmg-3000-mod-kit](https://github.com/nanomad/zyxel-pmg-3000-mod-kit)
+- [zyxel gpon- sfp](https://github.com/xvzf/zyxel-gpon-sfp)
+- [zyxel pmg-3000 mod kit](https://github.com/nanomad/zyxel-pmg-3000-mod-kit)
