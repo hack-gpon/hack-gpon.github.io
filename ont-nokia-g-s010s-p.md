@@ -36,14 +36,15 @@ Turning a [Nokia G-010S-P](ont-nokia-g-s010s-p) into a [Nokia G-010S-A](ont-noki
 
 On SFP: Serial TTL: TX Pin 2 RX Pin 7 asc0=0 115,200 N 8 1
 
-#  Disabling Dying Gasp
+## List of software versions
+## List of partitions
+## List of firmwares and files
+
+##  Disabling Dying Gasp
 ```sh
 fw_setenv nDyingGaspEnable 0
 ```
 
-## List of software versions
-## List of partitions
-## List of firmwares and files
 # Known Bugs
 # Miscellaneous Links
 

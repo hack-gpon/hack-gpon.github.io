@@ -24,14 +24,14 @@ parent: ONT
 | SSH                   |                                                                                                                               |
 | Form Factor           | ONT                                                                                                                           |
 
-# Hardware revisions
+## Hardware revisions
 
 {% include image.html file="g-010g-q.jpg"  alt="G-010G-Q " caption="G-010G-Q: ventilation grid version" %}
 
 {% include image.html file="g-010g-q.png"  alt="G-010G-Q " caption="G-010G-Q: square version with relief circle" %}
 
-# List of software versions
-# List of partitions
+## List of software versions
+## List of partitions
 
 | dev  | size     | erasesize | name     |
 | ---- | -------- | --------- | -------- |
@@ -41,6 +41,7 @@ parent: ONT
 | mtd3 | 00700000 | 00010000  | "ImageB" |
 
 This ont seems to support dual boot (notice partitions "ImageA" and "ImageB"), however this has not been tested. 
+## List of firmwares and files
 
 # Setting up the serial interface
 {% include image.html file="g-010g-q-serial-pinout.png"  alt="G-010G-Q " caption="G-010G-Q: serial pinout" %}
@@ -58,7 +59,7 @@ Make sure the logic of your TTL converter is 3V3 too otherwise you might damage 
 
 Once you've done all that, you can use the TTY client you wish, such as PuTTY, set its baud rate to 115200 and open the connection, then you can start the ONT
 
-You'll see a shell like prompt:
+You'll see a shell-like prompt:
 ```
 ONT>
 ```
@@ -67,8 +68,6 @@ Here you'll have to type `enable` and then `login`, unfortunately there is no de
 Once you're logged in, a custom menu will be shown, and you'll be able to access the linux shell by first typing `system` and finally `shell`
 
 To exit the shell and reach the parent menu type `exit` or `x`, in each menu the `help` command will show how to use the shell
-
-# List of firmwares and files
 
 # Known Bugs
 

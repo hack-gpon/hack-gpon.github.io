@@ -22,8 +22,8 @@ parent: ONT
 | SSH         |                                   |
 | Form Factor | ONT                               |
 
-{% include image.html file="f6005_of.jpg" alt="F601 v1" caption="F6005 OF" %}
-{% include image.html file="f6005_tim.jpg" alt="F601 v3" caption="F6005 TIM" %}
+{% include image.html file="f6005_of.jpg" alt="F601 v1" caption="F6005 with Open Fiber branding" %}
+{% include image.html file="f6005_tim.jpg" alt="F601 v3" caption="F6005 with ZTE branding, like the ones used by TIM" %}
 
 
 ## List of software versions

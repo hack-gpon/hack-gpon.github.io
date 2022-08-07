@@ -33,7 +33,7 @@ parent: ONT
 
 On SFP: Serial TTL: TX Pin 2 RX Pin 7 asc0=0 115,200 N 8 1
 
-#  Disabling Dying Gasp
+##  Disabling Dying Gasp
 ```sh
 set nDyingGaspEnable disable
 ```
