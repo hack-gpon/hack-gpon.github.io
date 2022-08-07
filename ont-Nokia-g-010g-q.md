@@ -26,9 +26,7 @@ parent: ONT
 
 ## Hardware revisions
 
-{% include image.html file="g-010g-q.jpg"  alt="G-010G-Q " caption="G-010G-Q: ventilation grid version" %}
-
-{% include image.html file="g-010g-q.png"  alt="G-010G-Q " caption="G-010G-Q: square version with relief circle" %}
+{% include image.html file="g-010g-q.png"  alt="G-010G-Q " caption="Nokia G-010G-Q" %}
 
 ## List of software versions
 ## List of partitions
