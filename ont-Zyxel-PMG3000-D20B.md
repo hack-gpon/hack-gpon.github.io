@@ -23,9 +23,9 @@ parent: ONT
 | Form Factor | miniONT SFP                          |
 
 Once you access the stick via ssh you will be challenged with a second tier login. The credentials to access the zyxel shell are: username: `twmanu` , password: `twmanu`.
-From the zyxel shell you can escape to a standard linux shell via the `linuxshell` command
+From the zyxel shell you can move to a standard linux shell via the `linuxshell` command
 
-## Interchangeable firmware with
+## Firmware is interchangeable with:
 
 - [Zyxel PMG3000-D20B](ont-Zyxel-PMG3000-D20B)
 - [Halny HL-GSFP](ont-Halny-HL-GSFP)
@@ -33,7 +33,7 @@ From the zyxel shell you can escape to a standard linux shell via the `linuxshel
 - Zisa
 - T&W
 
-# List of software version
+# List of software versions
 
 # List of partitions
  
@@ -49,20 +49,18 @@ From the zyxel shell you can escape to a standard linux shell via the `linuxshel
 | mtd7 | 00020000 | 00010000  | "rootfs_data"  |
 
 
-This stick supports dual boot from `ImageA` and `ImageB` witch contains the rootfs.
+This stick supports dual boot from `ImageA` and `ImageB` which contain the rootfs.
 
 
-# List of firmware and files
+# List of firmwares and files
 ## Useful files
 - `/var/config/ont.sys` used to customize various settings on the stick
 
-# Useful commands
-
-# Useful commands
+# Useful Commands
 *Note: all commands start from the twmanu shell*
 
-## Change the ONT S/N
-*Note  the S/N is in ACII format*
+## Changing the ONT's S/N
+*Note  the S/N is stored in the ASCII format*
 ```sh
 manufactory
 set sn ALCLf0f0f0f0
@@ -71,15 +69,15 @@ hal
 set sn ALCLf0f0f0f0
 ```
 
-## Change the ONT PLOAM password
-*Note: the PLOAM is in ACII format*
+## Changing the ONT's PLOAM password
+*Note: the PLOAM is stored in the ASCII format*
 This can be done easily via web ui. If you prefer to do it via the shell use:
 ```sh
 manufactory
 set password PLOAMPASS
 ```
 
-## Change the ONT equipment ID
+## Changing the ONT's equipment ID
 *Note: model number must be 20 no more than chars total*
 ```sh
 manufactory
@@ -89,13 +87,13 @@ omci
 equipment id MYEQUIPMENTID
 ```
 
-## Change the ONT hardware version
+## Changing the ONT's hardware version
 ```sh
 manufactory
 set hardware version 3FE49165BFAA01
 ```
 
-## Change the software version
+## Changing the software version
 Edit the /var/config/ont.sys via vi directly on the stick itself. The file is CRLF terminated, one entry per line.
 The entries for the software version are:
 ```
@@ -104,7 +102,7 @@ SW_VER1:0xabcedf
 ```
 *Note: it's better to enter the software version in hex format, all lowercase precedeed by 0x.* 
 
-## Query a particular OMCI ME
+## Querying a particular OMCI ME
 Query via OMCI ME Class Name
 ```sh
 omci
@@ -118,12 +116,12 @@ show me id OmciClassId (e.g 7)
 ```
 
 
-# Low level modding
+# Low Level Modding
 
-## Create a new rootfs
-The stick has a tricky image packing method, fortuntaly it has been reverse engineered. A script to help you create a custom rootfs can be found here: [https://github.com/nanomad/zyxel-pmg-3000-mod-kit](https://github.com/nanomad/zyxel-pmg-3000-mod-kit)
+## Creating a new rootfs
+The stick has a tricky image packing method, fortunately it has been reverse engineered. A script to help you create a custom rootfs can be found here: [https://github.com/nanomad/zyxel-pmg-3000-mod-kit](https://github.com/nanomad/zyxel-pmg-3000-mod-kit)
 
-## Flash a new rootfs
+## Flashing a new rootfs
 *Note: all commands start from the twmanu shell*
 
 - Transfer the new mtd on the stick via tftp

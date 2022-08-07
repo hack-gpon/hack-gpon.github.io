@@ -22,16 +22,21 @@ parent: ONT
 | SSH         | NO              |
 | Form Factor | miniONT SFP     |
 
-## List of software version
-## List of partition
-## List of firmware and files
+## List of software versions
+## List of partitions
+## List of firmwares and files
 
 # HW Mod
 
 - Pin 7 GND -> VCC [https://forum.fibra.click/d/27574-faq-25gbps-su-singolo-dispositivo-su-timvodafonefastwebjustspeed/18](https://forum.fibra.click/d/27574-faq-25gbps-su-singolo-dispositivo-su-timvodafonefastwebjustspeed/18)
 - Only for Ubiquiti [https://forum.openwrt.org/t/support-for-gpon-sfp-fgs202/42641/47](https://forum.openwrt.org/t/support-for-gpon-sfp-fgs202/42641/47)
 
+# Known Bugs
+
 # Miscellaneous Links
 
 - [Support for GPON SFP FGS202](https://forum.openwrt.org/t/support-for-gpon-sfp-fgs202/42641/60)
+
+
+
 

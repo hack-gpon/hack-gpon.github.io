@@ -21,3 +21,10 @@ parent: ONT
 | Web Gui     |             |
 | SSH         |             |
 | Form Factor | miniONT SFP |
+
+
+## List of software versions
+## List of partitions
+## List of firmwares and files
+# Known Bugs
+# Miscellaneous Links

@@ -24,10 +24,10 @@ parent: ONT
 | Form Factor | miniONT SFP       |
 
 
-## Interchangeable firmware with
-## List of software version
-## List of partition
-## List of firmware and files
+## List of software versions
+## List of partitions
+## List of firmwares and files
+# Known Bugs
 # Miscellaneous Links
 
-- [DLINK DPN-100 Ver:C1 use RTL9601C1](https://github.com/Anime4000/RTL960x/issues/2)
+- [DLINK DPN-100 Ver:C1 uses RTL9601C1](https://github.com/Anime4000/RTL960x/issues/2)
