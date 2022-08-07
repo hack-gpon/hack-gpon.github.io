@@ -32,6 +32,7 @@ parent: ONT
 - v3: small, simil huawei
 
 ## List of software version
+- V6.0.10P6N7
 ## List of partition
 ## List of firmware and files
 # Miscellaneous Links

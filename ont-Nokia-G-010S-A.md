@@ -29,6 +29,15 @@ parent: ONT
 
 Is it possibile to turn a [Nokia G-010S-P](ont-nokia-g-s010s-p) into an [Nokia G-010S-A](ont-nokia-g-s010s-A)
 
+## Serial
+
+On SFP: Serial TTL: TX Pin 3 RX Pin 6 asc0=0 115,200 N 8 1
+
+#  Disable Dying Gasp
+```sh
+uci set gpon.gtc.nDyingGaspEnable='0'; uci commit gpon
+```
+
 ## List of software version
 
 - [https://github.com/hwti/G-010S-A/tree/main/firmwares](https://github.com/hwti/G-010S-A/tree/main/firmwares)
