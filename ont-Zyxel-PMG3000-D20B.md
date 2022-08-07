@@ -104,6 +104,20 @@ SW_VER1:0xabcedf
 ```
 *Note: it's better to enter the software version in hex format, all lowercase precedeed by 0x.* 
 
+## Query a particular OMCI ME
+Query via OMCI ME Class Name
+```sh
+omci
+show me classname OmciClassName (e.g Ont2g)
+```
+
+Query via OMCI ME ID
+```sh
+omci
+show me id OmciClassId (e.g 7)
+```
+
+
 # Low level modding
 
 ## Create a new rootfs
