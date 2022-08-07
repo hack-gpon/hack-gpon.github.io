@@ -27,6 +27,7 @@ parent: ONT
 # Hardware revisions
 
 {% include image.html file="g-010g-q.jpg"  alt="G-010G-Q " caption="G-010G-Q: ventilation grid version" %}
+
 {% include image.html file="g-010g-q.png"  alt="G-010G-Q " caption="G-010G-Q: square version with relief circle" %}
 
 # List of software version
@@ -67,4 +68,4 @@ You can then exit the shell to reach the parent menu by typing `exit` or `x`, an
 
 # List of firmware and files
 # Miscellaneous Links
-<a href="https://github.com/nanomad/nokia-ont-mib-parser">MIB file parser</a> for NOKIA's GPON ONTs (*helps you parsing the .mib file located in `/mnt/rwdir`*)
+- <a href="https://github.com/nanomad/nokia-ont-mib-parser">MIB file parser</a> for NOKIA's GPON ONTs (*helps you parsing the .mib file located in `/mnt/rwdir`*)
