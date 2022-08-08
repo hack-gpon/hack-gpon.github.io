@@ -31,7 +31,13 @@ parent: ONT
 
 ## Serial
 
-On SFP: Serial TTL: TX Pin 2 RX Pin 7 asc0=0 115,200 N 8 1
+```
+USB TTL(UART) Adapter ------- SFP 20pins Molex connector
+3.3V ---red ------------------pin #15 and #16
+TX -----orange ---------------pin #2
+RX -----yellow ---------------pin #7
+GND ----green --------------- pin #10
+```
 
 ##  Disabling Dying Gasp
 ```sh
