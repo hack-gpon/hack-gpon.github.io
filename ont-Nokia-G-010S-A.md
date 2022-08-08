@@ -39,7 +39,14 @@ Turning a [Nokia G-010S-P](ont-nokia-g-s010s-p) into a [Nokia G-010S-A](ont-noki
 
 ## Serial
 
-On SFP: Serial TTL: TX Pin 3 RX Pin 6 asc0=0 115,200 N 8 1
+```
+USB TTL(UART) Adapter ------- SFP 20pins Molex connector
+3.3V ---red ------------------pin #15 and #16
+TX -----orange ---------------pin #3
+RX -----yellow ---------------pin #6
+GND ----green --------------- pin #10
+```
+Configuration: asc0=0 115200 8-N-1
 
 ##  Disabling Dying Gasp
 ```sh

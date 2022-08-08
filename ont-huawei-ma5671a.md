@@ -41,6 +41,7 @@ TX -----orange ---------------pin #2
 RX -----yellow ---------------pin #7
 GND ----green --------------- pin #10
 ```
+Configuration: asc0=0 115200 8-N-1
 
 ##  Disabling Dying Gasp
 ```sh
