@@ -1,9 +1,3 @@
-$purple-400: #2A1264 !default;
-$blue-400: #122664 !default;
-$green-400: #025341 !default;
-$yellow-400: #AD8305 !default;
-$red-400: #A62323 !default;
-
 .page-header {
 
     .github-edit {
@@ -228,9 +222,6 @@ ul.metadata {
     }
 }
 
-.btn-yellow {
-    @include btn-color($white, $yellow-100);
-}
 
 figure {
     border:  $border $border-color;
