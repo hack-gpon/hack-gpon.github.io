@@ -6,7 +6,62 @@ description: Tool for converter ASCII and Hex
 
 ---
 
-<iframe src="https://hack-gpon.github.io/assets/static/ascii-hex" title="ASCII and Hex converter" style="
-    width: 100%;
-    height: 50vh;
-"></iframe>
+<h1>ASCII To Hex</h1>
+<form id="ascii-to-hex">
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" placeholder="ASCII" name="ascii-to-hex" id="ascii-to-hex"   min="1000" max="10000">
+        <label for="ascii-to-hex">ASCII</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" placeholder="Glue" name="ascii-to-hex-glue" id="ascii-to-hex-glue" value=" ">
+        <label for="ascii-to-hex-glue">Glue</label>
+    </div>
+    <div class="mb-3">
+        <input type="submit" class="btn btn-primary" value="Calculate!">
+    </div>
+    <div class="form-floating mb-3">
+        <input readonly class="form-control" type="text" id="hex-result" placeholder="HEX Result">
+        <label for="hex-result">HEX Result</label>
+    </div>
+</form>
+<h1>Hex To ASCII</h1>
+<form id="hex-to-ascii">
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" placeholder="HEX" name="hex-to-ascii" id="hex-to-ascii">
+        <label for="hex-to-ascii">HEX</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" placeholder="Separator" name="hex-to-ascii-separator" id="hex-to-ascii-separator" value=" ">
+        <label for="hex-to-ascii-separator">Separator</label>
+    </div>
+    <div class="mb-3">
+        <input type="submit" class="btn btn-primary" value="Calculate!">
+    </div>
+    <div class="form-floating mb-3">
+        <input readonly class="form-control" type="text" id="ascii-result" placeholder="ASCII Result">
+        <label for="ascii-result">ASCII Result</label>
+    </div>
+</form>
+  
+<script>
+    var asciiToHexForm = document.getElementById('ascii-to-hex');
+    asciiToHexForm.addEventListener('submit',(event) => {
+        event.preventDefault();
+        var fomrdata = new FormData(asciiToHexForm);
+        var str = fomrdata.get('ascii-to-hex');
+        var glue = fomrdata.get('ascii-to-hex-glue');
+        var hex = [...str].map((elem, n) => "0x"+Number(str.charCodeAt(n)).toString(16)).join(glue);
+        document.getElementById('hex-result').value = hex;
+    });
+
+    var hexToAsciiForm = document.getElementById('hex-to-ascii');
+    hexToAsciiForm.addEventListener('submit',(event) => {
+        event.preventDefault();
+        var fomrdata = new FormData(hexToAsciiForm);
+        var str = fomrdata.get('hex-to-ascii');
+        var separator = fomrdata.get('hex-to-ascii-separator');
+        var ascii = str.split(separator).map(el => String.fromCharCode(Number(el))).join('');
+        document.getElementById('ascii-result').value = ascii;
+    });
+    
+</script>

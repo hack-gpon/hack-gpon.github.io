@@ -31,8 +31,8 @@ parent: ONT
 - AFM0002FWB (IP address: 169.0.0.1)
 - AFM0002WND
 
-{% include warning.html content="The version used to obtain the info shown on this page is the AFM0002TIM" %}
-{% include info.html content="The AFM0002FWB can be transformed into AFM0002TIM. The AFM0002FWB has an older software version." %}
+{% include alert.html content="The version used to obtain the info shown on this page is the AFM0002TIM" alert="Info"  icon="svg-info" color="blue" %}
+{% include alert.html content="The AFM0002FWB can be transformed into AFM0002TIM. The AFM0002FWB has an older software version." alert="Warning"  icon="svg-warning" color="red" %}
 
 
 # List of software versions
@@ -90,7 +90,7 @@ GPON_SN=TMBB00000000
 
 ## Getting/Setting the ONT's PLOAM password
 
-{% include info.html content="The PLOAM password is stored in ASCII format" %}
+{% include alert.html content="The PLOAM password is stored in ASCII format" %}
 
 ```sh
 # /etc/scripts/bin flash get GPON_PLOAM_PASSWD
@@ -126,7 +126,7 @@ sw_version1=V1_7_8_210412
 
 # Low Level Modding
 
-{% include warning.html content="This section is based on `V1_7_8_210412` firmware version of the stick" %}
+{% include alert.html content="This section is based on `V1_7_8_210412` firmware version of the stick" %}
 
 
 ## Trasnfering files from/to the stick
@@ -140,7 +140,7 @@ From the PC to the stick
 # cat lastgood.xml | ssh admin@192.168.2.1  "cat > /var/config/lastgood.xml"
 ```
 
-{% include warning.html content="If a Windows system is used replace type with cat and run the commands from cmd (not Powershell)" %}
+{% include alert.html content="If a Windows system is used replace type with cat and run the commands from cmd (not Powershell)" %}
 
 ## Extracting and repacking the rootfs
 ```sh
@@ -149,7 +149,7 @@ From the PC to the stick
 ```
 ## Flashing a new rootfs
 
-{% include info.html content="Only the inactive image can be flashed" %}
+{% include alert.html content="Only the inactive image can be flashed" %}
 
 So mtd4/5 if you are on image1, mtd6/7 if you are on image0.
 

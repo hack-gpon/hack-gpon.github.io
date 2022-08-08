@@ -38,11 +38,15 @@ layout: table_wrappers
                 <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline>
             </svg>
         </symbol>
+        {% include icons/alert.html %}
+        {% include icons/copy.html %}
+        {% include icons/external_link.html %}
+        {% include icons/custom.html %}
     </svg>
 
     <div class="side-bar">
         <div class="site-header">
-            <a href="{{ '/' | absolute_url }}" class="site-title lh-tight">{% include title.html %}</a>
+            <a href="{{ '/' | relative_url }}" class="site-title lh-tight">{% include title.html %}</a>
             <a href="#" id="menu-button" class="site-button">
                 <svg viewBox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg>
             </a>
@@ -108,13 +112,13 @@ layout: table_wrappers
                     {%- for node in pages_list -%}
                         {%- if node.parent == nil -%}
                             {%- if page.parent == node.title or page.grand_parent == node.title -%}
-                                {%- assign first_level_url = node.url | absolute_url -%}
+                                {%- assign first_level_url = node.url | relative_url -%}
                             {%- endif -%}
                             {%- if node.has_children -%}
                                 {%- assign children_list = pages_list | where: "parent", node.title -%}
                                 {%- for child in children_list -%}
                                     {%- if page.url == child.url or page.parent == child.title -%}
-                                        {%- assign second_level_url = child.url | absolute_url -%}
+                                        {%- assign second_level_url = child.url | relative_url -%}
                                     {%- endif -%}
                                 {%- endfor -%}
                             {%- endif -%}
@@ -180,7 +184,7 @@ layout: table_wrappers
                         {%- assign children_list = pages_list | where: "parent", page.title | where: "grand_parent", page.parent -%}
                         {% for child in children_list %}
                             <li>
-                                <a href="{{ child.url | absolute_url }}">{{ child.title }}</a>{% if child.summary %} - {{ child.summary }}{% endif %}
+                                <a href="{{ child.url | relative_url }}">{{ child.title }}</a>{% if child.summary %} - {{ child.summary }}{% endif %}
                             </li>
                         {% endfor %}
                     </ul>
@@ -199,7 +203,7 @@ layout: table_wrappers
                         {% if site.last_edit_timestamp or site.gh_edit_link %}
                             <div class="d-flex mt-2">
                                 {% if site.last_edit_timestamp and site.last_edit_time_format and page.last_modified_date %}
-                                    <p class="text-small text-grey-dk-000 mb-0 mr-2">
+                                    <p class="text-small text-grey-500 mb-0 mr-2">
                                         Page last modified: <span class="d-inline-block">{{ page.last_modified_date | date: site.last_edit_time_format }}</span>.
                                     </p>
                                 {% endif %}
@@ -210,7 +214,7 @@ layout: table_wrappers
                                     site.gh_edit_branch and
                                     site.gh_edit_view_mode
                                 %}
-                                    <p class="text-small text-grey-dk-000 mb-0">
+                                    <p class="text-small text-grey-500 mb-0">
                                         <a href="{{ site.gh_edit_repository }}/{{ site.gh_edit_view_mode }}/{{ site.gh_edit_branch }}{% if site.gh_edit_source %}/{{ site.gh_edit_source }}{% endif %}/{{ page.path }}" id="edit-this-page">{{ site.gh_edit_link_text }}</a>
                                     </p>
                                 {% endif %}
@@ -268,4 +272,7 @@ layout: table_wrappers
 </script>
 {% endif %}
 </body>
+{% if site.mermaid_enabled != false %}
+{%- include mermaid_init.html -%}
+{% endif %}
 </html>
