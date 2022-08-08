@@ -1,7 +1,7 @@
 ---
 title: ZTE F601 
 has_children: false
-parent: ONT
+parent: ONT ZTE
 ---
 
 # Hardware Specifications

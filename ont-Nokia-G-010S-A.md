@@ -1,7 +1,7 @@
 ---
 title: Nokia G-010S-A
 has_children: false
-parent: ONT
+parent: ONT Nokia
 ---
 
 # Hardware Specifications

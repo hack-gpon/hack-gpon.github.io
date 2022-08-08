@@ -1,7 +1,7 @@
 ---
 title: Huawei HG8010H 
 has_children: false
-parent: ONT
+parent: ONT Huawei
 ---
 
 # Hardware Specifications

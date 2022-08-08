@@ -30,6 +30,7 @@ search:
 plugins:
   - jekyll-seo-tag
   - jekyll-last-modified-at
+  - jekyll-redirect-from
 
 color_scheme: "light"
 url: "https://hack-gpon.github.io/"
@@ -54,3 +55,6 @@ gh_edit_branch: "main" # the branch that your docs is served from
 gh_edit_view_mode: "tree"
 gh_owner_name: hack-gpon
 gh_repository_name: hack-gpon.github.io
+
+whitelist:
+  - jekyll-redirect-from
