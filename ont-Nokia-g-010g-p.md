@@ -1,7 +1,7 @@
 ---
 title: Nokia G-010G-P
 has_children: false
-parent: ONT Nokia
+parent: ONT
 ---
 
 # Hardware Specifications

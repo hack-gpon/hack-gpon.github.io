@@ -1,7 +1,7 @@
 ---
 title: Huawei MA5671A
 has_children: false
-parent: ONT Huawei
+parent: ONT
 ---
 
 # Hardware Specifications
