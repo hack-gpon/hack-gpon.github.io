@@ -12,7 +12,7 @@ parent: ONT
 | Model                 | G-010G-Q                                                                                                                      |
 | Alias                 |                                                                                                                               |
 | Chipset               | Realtek RTL9601B                                                                                                              |
-| Flash                 | Winbond <a href="https://www.winbond.com/resource-files/w25q128jv%20revf%2003272018%20plus.pdf">W25Q128JV</a> 3V 128M-BIT SPI |
+| Flash                 | Winbond [W25Q128JV](https://www.winbond.com/resource-files/w25q128jv%20revf%2003272018%20plus.pdf) 3V 128M-BIT SPI |
 | RAM                   | DDR2 325MHz                                                                                                                   |
 | System                | Linux (Luna SDK)                                                                                                              |
 | HSGMII                | No                                                                                                                            |
