@@ -24,6 +24,9 @@ parent: ONT
 
 {% include image.html file="afm0002tim.jpg" alt="AFM0002TIM" caption="AFM0002TIM" %}
 
+## Serial
+
+Configuration: asc0=0 115200 8-N-1
 
 # Hardware Revisions
 
