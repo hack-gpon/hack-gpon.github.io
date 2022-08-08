@@ -13,7 +13,7 @@ Currently, there are ony two main GPON chipsets vendors:
 
 - Realtek manufactures these chipsets:
     * RTL9601B  
-    * RTL9601C1/RTL9601CI (HSGMII)
+    * RTL9601CI (HSGMII)
     * RTL9601D (HSGMII)
 - Lantiq used to manufacture these chipsets:
     * PEB98035 (HSGMII)

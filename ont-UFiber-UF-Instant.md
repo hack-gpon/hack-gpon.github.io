@@ -10,7 +10,6 @@ parent: ONT
 | ----------- | ----------------- |
 | Vendor      | UFiber            |
 | Model       | UFiber UF-Instant |
-| Alias       |                   |
 | Chipset     | Realtek RTL9601CI |
 | Flash       | 16 MB             |
 | RAM         | 64 MB             |

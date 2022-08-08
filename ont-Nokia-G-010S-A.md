@@ -10,7 +10,6 @@ parent: ONT
 | ----------- | ---------------------------------------- |
 | Vendor      | Nokia                                    |
 | Model       | G-010S-A                                 |
-| Alias       | Alcatel G-010S-A                         |
 | Chipset     | Lantiq PEB98035                          |
 | Flash       | 16 MB                                    |
 | RAM         | 64 MB                                    |

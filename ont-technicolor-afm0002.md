@@ -10,7 +10,6 @@ parent: ONT
 | ----------- | ----------------------------------------------- |
 | Vendor      | Technicolor                                     |
 | Model       | AFM0002TIM/FWB/WND                              |
-| Alias       |                                                 |
 | Chipset     | Realtek RTL9601B                                |
 | Flash       |                                                 |
 | RAM         |                                                 |
@@ -109,7 +108,7 @@ GPON_PLOAM_PASSWD=AAAAAAAAAA
 ## Checking the currently active image
 ```sh
 # nv getenv sw_active
-sw_activ=1
+sw_active=1
 # nv getenv sw_version0
 sw_version0=V1_7_8_210412
 # nv getenv sw_version1

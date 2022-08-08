@@ -10,7 +10,6 @@ parent: ONT
 | ----------- | ----------------------------------------------------------------- |
 | Vendor      | ZTE                                                               |
 | Model       | F601                                                              |
-| Alias       |                                                                   |
 | Chipset     | Realtek                                                           |
 | Flash       |                                                                   |
 | RAM         |                                                                   |

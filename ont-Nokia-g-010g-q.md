@@ -6,23 +6,22 @@ parent: ONT
 
 # Hardware Specifications
 
-|                       |                                                                                                                               |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Vendor                | Nokia                                                                                                                         |
-| Model                 | G-010G-Q                                                                                                                      |
-| Alias                 |                                                                                                                               |
-| Chipset               | Realtek RTL9601B                                                                                                              |
+|                       |                                                                                                                    |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Vendor                | Nokia                                                                                                              |
+| Model                 | G-010G-Q                                                                                                           |
+| Chipset               | Realtek RTL9601B                                                                                                   |
 | Flash                 | Winbond [W25Q128JV](https://www.winbond.com/resource-files/w25q128jv%20revf%2003272018%20plus.pdf) 3V 128M-BIT SPI |
-| RAM                   | DDR2 325MHz                                                                                                                   |
-| System                | Linux (Luna SDK)                                                                                                              |
-| HSGMII                | No                                                                                                                            |
-| Optics                | SC/APC                                                                                                                        |
-| IP address            | 192.168.100.1                                                                                                                 |
-| Web Gui (HTTP)        | ✅ Port 80 (⚠️ *only available when the PON connection **IS NOT** estabilished*)                                             |
-| Web Gui (HTTPS)       | ✅ Port 443 **NO SSL SUPPORT**                                                                                                |
-| Web Gui Default Login | user `admin` password `1234`                                                                                                  |
-| SSH                   |                                                                                                                               |
-| Form Factor           | ONT                                                                                                                           |
+| RAM                   | DDR2 325MHz                                                                                                        |
+| System                | Linux (Luna SDK)                                                                                                   |
+| HSGMII                | No                                                                                                                 |
+| Optics                | SC/APC                                                                                                             |
+| IP address            | 192.168.100.1                                                                                                      |
+| Web Gui (HTTP)        | ✅ Port 80 (⚠️ *only available when the PON connection **IS NOT** estabilished*)                                 |
+| Web Gui (HTTPS)       | ✅ Port 443 **NO SSL SUPPORT**                                                                                     |
+| Web Gui Default Login | user `admin` password `1234`                                                                                       |
+| SSH                   |                                                                                                                    |
+| Form Factor           | ONT                                                                                                                |
 
 ## Hardware revisions
 

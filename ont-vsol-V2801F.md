@@ -10,7 +10,6 @@ parent: ONT
 | ----------- | ----------------- |
 | Vendor      | VSOL              |
 | Model       | V2801F            |
-| Alias       |                   |
 | Chipset     | Realtek RTL9601CI |
 | Flash       | 8 MB              |
 | RAM         | 64 MB             |

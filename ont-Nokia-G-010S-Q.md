@@ -10,7 +10,6 @@ parent: ONT
 | ----------- | ----------- |
 | Vendor      | Nokia       |
 | Model       | RTL9601CI   |
-| Alias       |             |
 | Chipset     |             |
 | Flash       |             |
 | RAM         |             |
