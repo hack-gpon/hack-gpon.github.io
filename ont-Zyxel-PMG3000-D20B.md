@@ -10,7 +10,6 @@ parent: ONT
 | ----------- | ------------------------------------ |
 | Vendor      | Zyxel                                |
 | Model       | PMG3000-D20B                         |
-| Alias       |                                      |
 | Chipset     | Lantiq PEB98035                      |
 | Flash       | 8 MB                                 |
 | RAM         | 64 MB                                |
@@ -25,13 +24,12 @@ parent: ONT
 Once you access the stick via ssh you will be presented with a second tier login. The credentials to access the zyxel shell are: username: `twmanu` , password: `twmanu`.
 From the zyxel shell you can move to a standard linux shell via the `linuxshell` command
 
-## Firmware is interchangeable with:
+## Possible clones
 
-- [Zyxel PMG3000-D20B](ont-Zyxel-PMG3000-D20B)
-- [Halny HL-GSFP](ont-Halny-HL-GSFP)
-- [D-LINK DPN-100-Rev-A](ont-D-LINK-DPN-100-Rev-A)
-- [Ziza OP151s](ont-ziza-op151s)
-- [T&W TW2362H-CDEL](ont-T-W-TW2362H-CDEL)
+- Halny HL-GSFP
+- D-LINK DPN-100-Rev-A
+- Ziza OP151s
+- T&W TW2362H-CDEL
 
 # List of software versions
 

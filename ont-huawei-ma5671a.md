@@ -10,7 +10,6 @@ parent: ONT
 | ----------- | ----------------------------------- |
 | Vendor      | Huawei                              |
 | Model       | MA5671A                             |
-| Alias       |                                     |
 | Chipset     | Lantiq PEB98035                     |
 | Flash       | 16 MB                               |
 | RAM         | 64 MB                               |

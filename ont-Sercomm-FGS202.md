@@ -10,7 +10,6 @@ parent: ONT
 | ----------- | --------------- |
 | Vendor      | Sercomm         |
 | Model       | FGS202          |
-| Alias       |                 |
 | Chipset     | Lantiq PEB98036 |
 | Flash       | 8 MB            |
 | RAM         | 32 MB           |

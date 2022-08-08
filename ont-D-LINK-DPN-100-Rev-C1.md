@@ -10,8 +10,7 @@ parent: ONT
 | ----------- | ----------------- |
 | Vendor      | D-LINK            |
 | Model       | DPN-100 Rev C1    |
-| Alias       |                   |
-| Chipset     | Realtek RTL9601C1 |
+| Chipset     | Realtek RTL9601CI |
 | Flash       |                   |
 | RAM         | B                 |
 | System      |                   |
@@ -30,4 +29,4 @@ parent: ONT
 # Known Bugs
 # Miscellaneous Links
 
-- [DLINK DPN-100 Ver:C1 uses RTL9601C1](https://github.com/Anime4000/RTL960x/issues/2)
+- [DLINK DPN-100 Ver:C1 uses RTL9601CI ](https://github.com/Anime4000/RTL960x/issues/2)

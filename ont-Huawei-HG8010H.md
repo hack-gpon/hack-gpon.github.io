@@ -10,7 +10,6 @@ parent: ONT
 | ----------- | ----------------------------------------------- |
 | Vendor      | Huawei                                          |
 | Model       | HG8010H                                         |
-| Alias       |                                                 |
 | Chipset     | Realtek                                         |
 | Flash       |                                                 |
 | RAM         |                                                 |

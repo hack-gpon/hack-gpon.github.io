@@ -10,7 +10,6 @@ parent: ONT
 | ----------- | -------- |
 | Vendor      | Nokia    |
 | Model       | G-010G-P |
-| Alias       |          |
 | Chipset     |          |
 | Flash       |          |
 | RAM         |          |

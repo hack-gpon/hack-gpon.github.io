@@ -10,7 +10,6 @@ parent: ONT
 | ----------- | ----------------- |
 | Vendor      | CarlitoxxPro      |
 | Model       | CPGOS03-0490 v2   |
-| Alias       |                   |
 | Chipset     | Realtek RTL9601CI |
 | Flash       | 8 MB              |
 | RAM         | 64 MB             |

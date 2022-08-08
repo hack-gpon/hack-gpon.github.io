@@ -10,7 +10,6 @@ parent: ONT
 | ----------- | --------------------------------- |
 | Vendor      | ZTE                               |
 | Model       | F6005                             |
-| Alias       |                                   |
 | Chipset     | Realtek RTL9601D                  |
 | Flash       |                                   |
 | RAM         |                                   |

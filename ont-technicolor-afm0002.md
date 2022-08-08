@@ -10,7 +10,6 @@ parent: ONT
 | ----------- | ----------------------------------------------- |
 | Vendor      | Technicolor                                     |
 | Model       | AFM0002TIM/FWB/WND                              |
-| Alias       |                                                 |
 | Chipset     | Realtek RTL9601B                                |
 | Flash       |                                                 |
 | RAM         |                                                 |

@@ -10,7 +10,6 @@ parent: ONT
 | ----------- | ----------------- |
 | Vendor      |                   |
 | Model       | TWCGPON657        |
-| Alias       |                   |
 | Chipset     | Realtek RTL9601CI |
 | Flash       | 16 MB             |
 | RAM         | 64 MB             |

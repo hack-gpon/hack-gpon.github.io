@@ -10,7 +10,6 @@ parent: ONT
 | ----------- | ---------------- |
 | Vendor      | ODI              |
 | Model       | DFP-34X-C2C      |
-| Alias       |                  |
 | Chipset     | Realtek RTL9601D |
 | Flash       | 8 MB             |
 | RAM         | 64 MB            |

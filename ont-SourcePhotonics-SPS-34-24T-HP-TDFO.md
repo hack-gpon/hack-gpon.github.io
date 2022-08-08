@@ -10,7 +10,6 @@ parent: ONT
 | ----------- | ------------------------------------------ |
 | Vendor      | SourcePhotonics                            |
 | Model       | SPS-34-24T-HP-TDFO                         |
-| Alias       | Stick GPON FS.com                          |
 | Chipset     | Lantiq PEB98035                            |
 | Flash       | 16 MB                                      |
 | RAM         | 64 MB                                      |
@@ -21,6 +20,10 @@ parent: ONT
 | Web Gui     |                                            |
 | SSH         | ✅ user `ONTUSER`, password `7sp!lwUBz1.` |
 | Form Factor | miniONT SFP                                |
+
+## Possible clones
+
+- FS.com GPON ONU Stick with MAC (P/N #133619)
 
 ## Firmware is interchangeable with:
 

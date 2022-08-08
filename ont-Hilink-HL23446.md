@@ -10,7 +10,6 @@ parent: ONT
 | ----------- | ---------------------------- |
 | Vendor      | Hilink                       |
 | Model       | HL23446                      |
-| Alias       | CarlitoxxPro CPGOS03-0490 v1 |
 | Chipset     | Lantiq PEB98035              |
 | Flash       | 16 MB                        |
 | RAM         | 64 MB                        |
@@ -21,6 +20,9 @@ parent: ONT
 | Web Gui     | ✅                           |
 | SSH         |                              |
 | Form Factor | miniONT SFP                  |
+
+## Possible Clones
+- CarlitoxxPro CPGOS03-0490 **v1**
 
 ## Firmware is interchangeable with:
 
