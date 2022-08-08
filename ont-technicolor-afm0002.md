@@ -143,6 +143,8 @@ From the PC to the stick
 {% include alert.html content="If a Windows system is used replace type with cat and run the commands from cmd (not Powershell)" %}
 
 ## Extracting and repacking the rootfs
+{% include alert.html content="Make sure you run both commands as root, otherwise you might get a damaged rootfs image" alert="Warning" icon="svg-warning" color="red" %}
+
 ```sh
 # unsquashfs mtd5.bin
 # mksquashfs squashfs-root rootfs -b 131072 -comp lzma -no-recovery
