@@ -171,58 +171,6 @@ ul.metadata {
     to {top: 0; opacity: 1}
 }
 
-.alert {
-    padding: $sp-3;
-    margin-bottom: $sp-3;
-    overflow: auto;
-    border: $border $border-color;
-    border-radius: $border-radius;
-
-
-    svg {
-        height: $spacing-unit;
-        margin-right: 0.5 * $spacing-unit;
-        width: $spacing-unit;
-    }
-
-    &.alert-warning {
-        background-color: $yellow-000;
-        color: $yellow-400;
-        border-color: $yellow-100;
-        svg {
-            fill: $yellow-400;
-        }
-    }
-
-    &.alert-danger {
-        background-color: $red-000;
-        color: $red-400;
-        border-color: $red-100;
-        svg {
-            fill: $red-400;
-        }
-    }
-
-    &.alert-info {
-        background-color: $blue-000;
-        color: $blue-400;
-        border-color: $blue-100;
-        svg {
-            fill: $blue-400;
-        }
-    }
-
-    &.alert-success {
-        background-color: $green-000;
-        color: $green-400;
-        border-color: $green-100;
-        svg {
-            fill: $green-400;
-        }
-    }
-}
-
-
 figure {
     border:  $border $border-color;
     border-radius: $border-radius;
