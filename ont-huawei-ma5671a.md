@@ -1,6 +1,6 @@
 ---
 title: Huawei MA5671A
-has_children: false
+has_children: true
 parent: ONT
 ---
 
@@ -42,6 +42,10 @@ GND ----green --------------- pin #10
 ```
 Configuration: asc0=0 115200 8-N-1
 
+## Root procedure
+
+- [Root](ont-huawei-ma5671a-root)
+
 ##  Disabling Dying Gasp
 ```sh
 set nDyingGaspEnable disable
@@ -67,6 +71,27 @@ set nDyingGaspEnable disable
 fw_setenv image0_version V1.7.6-170626
 fw_setenv image1_version V1.7.6-170626
 ```
+
+## Setting S/N
+```sh
+fw_setenv ont_serial ABCD12345678
+```
+
+## Setting and check oem-generic
+```sh
+fw_setenv target oem-generic
+fw_printenv target=oem-generic
+```
+
+## Setting HSMIII
+```sh
+fw_setenv sgmii_mode 5
+```
+
+## Setting S/N
+```sh
+fw_setenv ont_serial ABCD12345678
+
 # Known Bugs
 
 # Miscellaneous Links
