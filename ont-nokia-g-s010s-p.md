@@ -22,6 +22,7 @@ parent: ONT
 | Form Factor | miniONT SFP                                                      |
 
 {% include image.html file="g-s010s-p.jpg"  alt="G-010S-P" caption="G-010S-P" %}
+{% include image.html file="g-s010s-p-and-ma5671a.jpg"  alt="G-010S-P and MA5671A Teardown" caption="G-010S-P and MA5671A Teardown" %}
 
 ## Firmware is interchangeable with:
 - [Huawei MA5671A](ont-huawei-ma5671a)

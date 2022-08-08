@@ -6,21 +6,21 @@ parent: ONT
 
 # Hardware Specifications
 
-|             |                                                 |
-| ----------- | ----------------------------------------------- |
-| Vendor      | Huawei                                          |
-| Model       | HG8010H                                         |
-| Chipset     | Realtek                                         |
-| Flash       |                                                 |
-| RAM         |                                                 |
-| System      |                                                 |
-| HSGMII      | No                                              |
-| Optics      | SC/APC and SC/UPC                               |
-| IP address  | 192.168.100.1                                   |
+|             |                                                                                                |
+| ----------- | ---------------------------------------------------------------------------------------------- |
+| Vendor      | Huawei                                                                                         |
+| Model       | HG8010H                                                                                        |
+| Chipset     |                                                                                                |
+| Flash       |                                                                                                |
+| RAM         |                                                                                                |
+| System      |                                                                                                |
+| HSGMII      | No                                                                                             |
+| Optics      | SC/APC and SC/UPC                                                                              |
+| IP address  | 192.168.100.1                                                                                  |
 | Web Gui     | ✅ user `root`, password `admin` or `adminHW` and user `telecomadmin`, password `admintelecom` |
-| Telnet      | After Enabling user `root`, password `admin` or `adminHW`                                 |
-| SSH         |                                                 |
-| Form Factor | ONT                                             |
+| Telnet      | After Enabling user `root`, password `admin` or `adminHW`                                      |
+| SSH         |                                                                                                |
+| Form Factor | ONT                                                                                            |
 
 
 {% include image.html file="HG8010H.jpg"  alt="HG8010H" caption="HG8010H: Horizontal PON port (left, middle); vertical PON port (right)" %}

@@ -10,7 +10,7 @@ parent: ONT
 | ----------- | ----------- |
 | Vendor      | Huawei      |
 | Model       | CM5671A     |
-| Chipset     | Realtek     |
+| Chipset     |             |
 | Flash       |             |
 | RAM         |             |
 | System      |             |
