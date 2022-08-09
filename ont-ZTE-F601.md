@@ -24,7 +24,7 @@ parent: ONT
 
 {% include image.html file="f601_v6_1.jpg" alt="F601 v6" caption="F601 v6" %}
 {% include image.html file="f601_v7.jpg" alt="F601 v7" caption="A wall made out of broken F601 v7s" %}
-{% include image.html file="f601_v8.jpg" alt="F601 v8" caption="F601 v8 <a href='https://forum.fibra.click/u/ftthless'>@ftthless</a>" %}
+{% include image.html file="f601_v8.jpg" alt="F601 v9" caption="F601 v9 <a href='https://forum.fibra.click/u/ftthless'>@ftthless</a>" %}
 
 
 ## Hardware revisions
@@ -47,7 +47,8 @@ parent: ONT
 ### HW V7.0
 - V7.0.10P6N7
 
-### HW V8.0
+### HW V9.0
+- V9.0.10P2N1
 
 ## List of partitions
 ## List of firmwares and files

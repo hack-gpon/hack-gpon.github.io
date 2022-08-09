@@ -10,7 +10,7 @@ parent: ONT
 | ----------- | ---------------------------------------------------------------------------------------------- |
 | Vendor      | Huawei                                                                                         |
 | Model       | HG8010H                                                                                        |
-| Chipset     |                                                                                                |
+| Chipset     | Hisilicon                                                                                      |
 | Flash       |                                                                                                |
 | RAM         |                                                                                                |
 | System      |                                                                                                |
@@ -48,13 +48,15 @@ Now that this is done, the modified configuration file can be uploaded via the w
 ## List of software versions
 
 - HWTCA31610003
+- V3R013C10S112
 - V3R015C10S106
 - V3R016C10S003 (V300R016C10SPC003B010)
 - V3R017C00S100
 - V3R017C10S201
-- V5R020C10S020 (V500R020C10SPC020A2011020049)
+- V5R020C10S020 (V500R020C10SPC020B014 - V500R020C10SPC020A2011020049)
 - V5R020C10S024 (V500R020C10SPC024B001)
-- V5R020C10S020 (V500R020C10SPC020B014)
+- V5R020C10S025 (V500R020C10SPC025B002)
+- V5R020C10S115 (V500R020C10SPC115B270)
 
 ## List of partitions
 ## List of firmwares and files

@@ -7,20 +7,20 @@ parent: ONT
 
 # Hardware Specifications
 
-|             |                                      |
-| ----------- | ------------------------------------ |
-| Vendor      | Zyxel                                |
-| Model       | PMG3000-D20B                         |
-| Chipset     | Lantiq PEB98035                      |
-| Flash       | 8 MB                                 |
-| RAM         | 64 MB                                |
-| System      | OpenWRT                              |
-| HSGMII      | Yes                                  |
-| Optics      | SC/APC                               |
-| IP address  | 10.10.1.1                            |
-| Web Gui     | ✅ username `admin`, password `1234` |
-| SSH         | ✅ username `admin`, password `1234` |
-| Form Factor | miniONT SFP                          |
+|             |                                                  |
+| ----------- | -----------------------------------------------  |
+| Vendor      | Zyxel                                            |
+| Model       | PMG3000-D20B                                     |
+| Chipset     | Lantiq PEB98035                                  |
+| Flash       | 8 MB                                             |
+| RAM         | 64 MB                                            |
+| System      | OpenWRT                                          |
+| HSGMII      | Yes                                              |
+| Optics      | SC/APC                                           |
+| IP address  | 10.10.1.1                                        |
+| Web Gui     | ✅ username `admin`, password `admin` or `1234` |
+| SSH         | ✅ username `admin`, password `admin` or `1234` |
+| Form Factor | miniONT SFP                                      |
 
 Once you access the stick via ssh you will be presented with a second tier login. The credentials to access the zyxel shell are: username: `twmanu` , password: `twmanu`.
 From the zyxel shell you can move to a standard linux shell via the `linuxshell` command
@@ -148,6 +148,7 @@ reboot
 ```
 
 # Known Bugs
+- [Not working with Broadcom BCM57810S](https://github.com/xvzf/zyxel-gpon-sfp/issues/10)
 
 # Miscellaneous Links
 
