@@ -40,13 +40,14 @@ parent: ONT
 
 ## List of software versions
 ### HW V6.0
-- V6.0.10P6N7 
 - V6.0.10P6T1 
 - V6.0.10P6T4 
+- V6.0.10P6N7 
 
-### HW V7
+### HW V7.0
+- V7.0.10P6N7
 
-### HW V8
+### HW V8.0
 
 ## List of partitions
 ## List of firmwares and files
