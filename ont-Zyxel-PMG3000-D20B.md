@@ -1,6 +1,7 @@
 ---
 title: Zyxel PMG3000-D20B
 has_children: false
+alias: Halny HL-GSFP, D-LINK DPN-100-Rev-A, Ziza OP151s, T&W TW2362H-CDEL
 parent: ONT
 ---
 

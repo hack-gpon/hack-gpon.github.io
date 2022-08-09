@@ -169,6 +169,9 @@ layout: table_wrappers
                     {% if page.description %}
                         <h2 class="fs-6 fw-300">{{ page.description }}</h2>
                     {% endif %}
+                    {% if page.alias %}
+                        <h2 class="fs-5 fw-300">Alias or Clone ONT: {{ page.alias }}</h2>
+                    {% endif %}
                 </header>
                 <hr>         
                 {% if site.heading_anchors != false %}

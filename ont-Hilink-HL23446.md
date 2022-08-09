@@ -1,6 +1,7 @@
 ---
 title: Hilink HL23446
 has_children: false
+alias: CarlitoxxPro CPGOS03-0490 v1
 parent: ONT
 ---
 

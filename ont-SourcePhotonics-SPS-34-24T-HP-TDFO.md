@@ -2,6 +2,7 @@
 title: SourcePhotonics SPS-34-24T-HP-TDFO
 has_children: false
 parent: ONT
+alias: FS.com GPON ONU Stick with MAC
 ---
 
 # Hardware Specifications
