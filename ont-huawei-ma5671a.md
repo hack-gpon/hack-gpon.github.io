@@ -30,6 +30,8 @@ parent: ONT
 - [Nokia G-010S-P](ont-nokia-g-s010s-p)
 - [SourcePhotonics SPS-34-24T-HP-TDFO](ont-SourcePhotonics-SPS-34-24T-HP-TDFO)
 - [Hilink HL23446](ont-Hilink-HL23446)
+- Dasan H650SFP {: .text-red-200 }
+- DpOptics D23446 {: .text-red-200 }
 
 ## Serial
 
@@ -78,6 +80,21 @@ fw_setenv image1_version V1.7.6-170626
 ```sh
 fw_setenv ont_serial ABCD12345678
 ```
+or
+```sh
+uci set gpon.ploam.nSerial="0x48 0x57 0x54 0x43 0x9D 0xAC 0xC7 0xA3"
+uci commit 
+```
+
+## Setting PLOAM Password
+```sh
+fw_setenv nPassword "0x30 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39"
+```
+or
+```sh
+uci set gpon.ploam.nPassword="0x30 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39"
+uci commit 
+```
 
 ## Setting and check oem-generic
 ```sh
@@ -102,3 +119,4 @@ fw_setenv sgmii_mode 5
 - [La fibre Orange à 2Gbps, sur un routeur MikroTik 10Gbps CCR2004, via un ONT SFP+](https://lafibre.info/remplacer-livebox/guide-de-connexion-fibre-directement-sur-un-routeur-voire-meme-en-2gbps/msg832904/#msg832904)
 - [Bypassing the HH3K up to 2.5Gbps using a BCM57810S NIC](https://www.dslreports.com/forum/r32230041-Internet-Bypassing-the-HH3K-up-to-2-5Gbps-using-a-BCM57810S-NIC)
 - [General setting of lantiq](https://forum.fibra.click/d/23881-ma5671a-e-vodafone-25-gbps/64)
+- [Manual and firmware for reflashing of HUAWEI MA5671A SFP module](https://github.com/nikbyte/huawei_ma5671a)

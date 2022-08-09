@@ -32,6 +32,8 @@ alias: SourcePhotonics SPS-34-24T-HP-TDFO
 - [Nokia G-010S-P](ont-nokia-g-s010s-p)
 - [SourcePhotonics SPS-34-24T-HP-TDFO](ont-SourcePhotonics-SPS-34-24T-HP-TDFO)
 - [Hilink HL23446](ont-Hilink-HL23446)
+- Dasan H650SFP {: .text-red-200 }
+- DpOptics D23446 {: .text-red-200 }
 
 # General setting
 
@@ -83,7 +85,7 @@ uci commit network.lct.macaddr=00:06:B5:07:D6:04
 uci commit network.host.macaddr=00:06:B5:07:D8:04
 ```
 
-## Setting Lantiq MAC address
+## Setting Lantiq IP address
 ```sh
 fw_setenv ipaddr 192.168.20.60
 fw_setenv gatewayip 192.168.20.1
