@@ -26,7 +26,6 @@ parent: ONT
 ## Hardware revisions
 
 {% include image.html file="g-010g-q.png"  alt="G-010G-Q " caption="Nokia G-010G-Q" %}
-{% include image.html file="G-010S-A-teardown.jpg"  alt="G-010S-A Teardown" caption="G-010S-A Teardown" %}
 
 ## List of software versions
 ## List of partitions

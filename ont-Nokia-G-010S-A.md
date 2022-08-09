@@ -22,7 +22,7 @@ parent: ONT
 | Form Factor | miniONT SFP                              |
 
 {% include image.html file="G-010S-A.jpg"  alt="G-010S-A" caption="G-010S-A" %}
-{% include image.html file="g-s010s-p-and-ma5671a.jpg"  alt="G-010S-P and MA5671A Teardown" caption="G-010S-P and MA5671A Teardown" %}
+{% include image.html file="G-010S-A-teardown.jpg"  alt="G-010S-A Teardown" caption="G-010S-A Teardown" %}
 
 
 ## Modifying firmware

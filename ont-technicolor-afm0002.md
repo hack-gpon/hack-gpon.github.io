@@ -22,6 +22,7 @@ parent: ONT
 | Form Factor | miniONT SFP                                     |
 
 {% include image.html file="afm0002tim.jpg" alt="AFM0002TIM" caption="AFM0002TIM" %}
+{% include image.html file="afm0002fwb.jpg" alt="AFM0002FWB" caption="AFM0002FWB" %}
 
 ## Serial
 

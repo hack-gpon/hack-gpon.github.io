@@ -10,9 +10,10 @@ parent: ONT
 | ----------- | ----------------------------------------------------------------- |
 | Vendor      | ZTE                                                               |
 | Model       | F601                                                              |
-| Chipset     | Realtek                                                           |
-| Flash       |                                                                   |
-| RAM         |                                                                   |
+| SoC/CPU     | v6: ZTE FA626TE 266 MHz, v7: ZTE ZX279125@A9,600MHZ               |
+| Chipset     |                                                                   |
+| Flash       | v6, v7: 16 MB                                                     |
+| RAM         | v6: 64 MB, v7: 32 MB                                              |
 | System      |                                                                   |
 | HSGMII      | No                                                                |
 | Optics      | SC/APC                                                            |
@@ -28,7 +29,13 @@ parent: ONT
 
 ## Hardware revisions
 - v6: big
+* CPU: ZTE FA626TE 266 MHz
+* RAM: 64 MiB
+* ROM: SPI Flash w25q128 16 MiB
 - v7: small, Huawei HG8010H-like exterior, some production batches have self-destruction functionality
+* CPU: ZTE ZX279125@A9,600MHZ
+* RAM: 32 MiB
+* ROM: SPI Flash mx25l12805d 16 MiB
 - v8: small, Huawei HG8010H-like exterior
 
 ## List of software versions
@@ -37,5 +44,9 @@ parent: ONT
 ## List of partitions
 ## List of firmwares and files
 # Known Bugs
+# Random notes
+- the F601v7 is mounted 'upside down' to save on waveguides, the LEDs would be on the bottom of the PCB, so it would have to be turned upside down to make it cooler...
+- the F601v6 turns on and runs even with 9 V input
+- F601v7 turns on and runs even with 5 V input
 # Miscellaneous Links
 
