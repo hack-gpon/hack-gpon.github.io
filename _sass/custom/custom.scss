@@ -186,3 +186,8 @@ figure {
         border-top-right-radius: $border-radius;
     }
 }
+
+.ont-404 svg {
+    fill: $body-text-color;
+    width: 100%;
+}

@@ -27,6 +27,8 @@ parent: ONT
 - [Nokia G-010S-P](ont-nokia-g-s010s-p)
 - [SourcePhotonics SPS-34-24T-HP-TDFO](ont-SourcePhotonics-SPS-34-24T-HP-TDFO)
 - [Hilink HL23446](ont-Hilink-HL23446)
+- Dasan H650SFP {: .text-red-200 }
+- DpOptics D23446 {: .text-red-200 }
 
 ## Serial
 
@@ -63,6 +65,8 @@ set nDyingGaspEnable disable
 - [Huawei Rooted MTD5](https://ma5671a.s3.nl-ams.scw.cloud/mA5671a_root_mtd5.img){: .btn }  md5hash: 0e4cfdc1b96be6581869b26b48789556
 - [1224abort.bin](https://ma5671a.s3.nl-ams.scw.cloud/1224ABORT.bin){: .btn }  md5hash: 10e94a4b4acdc82dec20c7904b69e5c0
 
+# General setting
+
 ## Setting image version
 ```sh
 fw_setenv image0_version V1.7.6-170626
@@ -72,6 +76,21 @@ fw_setenv image1_version V1.7.6-170626
 ## Setting S/N
 ```sh
 fw_setenv ont_serial ABCD12345678
+```
+or
+```sh
+uci set gpon.ploam.nSerial="0x48 0x57 0x54 0x43 0x9D 0xAC 0xC7 0xA3"
+uci commit 
+```
+
+## Setting PLOAM Password
+```sh
+fw_setenv nPassword "0x30 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39"
+```
+or
+```sh
+uci set gpon.ploam.nPassword="0x30 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39"
+uci commit 
 ```
 
 ## Setting and check oem-generic
@@ -84,11 +103,6 @@ fw_printenv target=oem-generic
 ```sh
 fw_setenv sgmii_mode 5
 ```
-
-## Setting S/N
-```sh
-fw_setenv ont_serial ABCD12345678
-
 # Known Bugs
 
 # Miscellaneous Links
@@ -98,5 +112,8 @@ fw_setenv ont_serial ABCD12345678
 - [Custom Firmware - right.com.cn](https://www.right.com.cn/forum/thread-8220173-1-1.html)
 - [Come avere i 2.5 Gbps su un unico dispositivo senza il Fastgate - fibra.click Forum](https://forum.fibra.click/d/17836-come-avere-i-25-gbps-su-un-unico-dispositivo-senza-il-fastgate)
 - [GPON SFP Tools](https://github.com/MokkaSchnalle/GPON-SFP-Tools)
-
-
+- [Come avere i 2.5 Gbps su un unico dispositivo senza il Fastgate](https://forum.fibra.click/d/17836-come-avere-i-25-gbps-su-un-unico-dispositivo-senza-il-fastgate)
+- [La fibre Orange à 2Gbps, sur un routeur MikroTik 10Gbps CCR2004, via un ONT SFP+](https://lafibre.info/remplacer-livebox/guide-de-connexion-fibre-directement-sur-un-routeur-voire-meme-en-2gbps/msg832904/#msg832904)
+- [Bypassing the HH3K up to 2.5Gbps using a BCM57810S NIC](https://www.dslreports.com/forum/r32230041-Internet-Bypassing-the-HH3K-up-to-2-5Gbps-using-a-BCM57810S-NIC)
+- [General setting of lantiq](https://forum.fibra.click/d/23881-ma5671a-e-vodafone-25-gbps/64)
+- [Manual and firmware for reflashing of HUAWEI MA5671A SFP module](https://github.com/nikbyte/huawei_ma5671a)

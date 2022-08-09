@@ -2,5 +2,106 @@
 title: ONT FS.com GPON ONU Stick with MAC
 has_children: false
 parent: ONT
-redirect_to: ont-SourcePhotonics-SPS-34-24T-HP-TDFO
+alias: SourcePhotonics SPS-34-24T-HP-TDFO
 ---
+
+# Hardware Specifications
+
+|             |                                            |
+| ----------- | ------------------------------------------ |
+| Vendor      | SourcePhotonics                            |
+| Model       | SPS-34-24T-HP-TDFO                         |
+| Chipset     | Lantiq PEB98035                            |
+| Flash       | 16 MB                                      |
+| RAM         | 64 MB                                      |
+| System      | OpenWRT                                    |
+| HSGMII      | Yes                                        |
+| Optics      | SC/APC                                     |
+| IP address  | 192.168.1.10                               |
+| Web Gui     |                                            |
+| SSH         | ✅ user `ONTUSER`, password `7sp!lwUBz1.` |
+| Form Factor | miniONT SFP                                |
+
+## Possible clones
+
+- SourcePhotonics SPS-34-24T-HP-TDFO
+
+## Firmware is interchangeable with:
+
+- [Huawei MA5671A](ont-huawei-ma5671a)
+- [Nokia G-010S-P](ont-nokia-g-s010s-p)
+- [SourcePhotonics SPS-34-24T-HP-TDFO](ont-SourcePhotonics-SPS-34-24T-HP-TDFO)
+- [Hilink HL23446](ont-Hilink-HL23446)
+- Dasan H650SFP {: .text-red-200 }
+- DpOptics D23446 {: .text-red-200 }
+
+# General setting
+
+
+## Setting S/N
+```sh
+set_serial_number ABCD12345678
+```
+
+## Setting PLOAM Password
+Software 6BA1896SPLQA41 and before:
+```sh
+fw_setenv nPassword "0x30 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39"
+```
+
+Software 6BA1896SPLQA41 and after:
+```sh
+sfp_i2c -i11 -s "0x30 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39"
+```
+
+## Setting LOID and Checkcode Password
+Software 6BA1896SPLQA41 and before:
+```sh
+fw_setenv omci_loid 1234567890
+fw_setenv omci_lpwd password01
+```
+
+Software 6BA1896SPLQA41 and after:
+```sh
+sfp_i2c -i9 -s "1234567890"
+sfp_i2c -i10 -s "password01"
+```
+
+## Setting eqipment id
+```sh
+sfp_i2c -i6 -s "22133912P"
+```
+
+## Setting vendor id
+```sh
+sfp_i2c -i7 -s "SPGA"
+```
+
+## Setting Lantiq MAC address
+```sh
+uci set network.Ict.macaddr=00:06:B5:07:D6:04
+uci set network.host.macaddr=00:06:B5:07:D8:04
+uci commit network.lct.macaddr=00:06:B5:07:D6:04
+uci commit network.host.macaddr=00:06:B5:07:D8:04
+```
+
+## Setting Lantiq IP address
+```sh
+fw_setenv ipaddr 192.168.20.60
+fw_setenv gatewayip 192.168.20.1
+```
+
+## Setting Onu reboot
+```sh
+reboot
+```
+
+
+## List of software versions
+## List of partitions
+## List of firmwares and files
+# Known Bugs
+# Miscellaneous Links
+
+- [FS.com](https://www.fs.com/it/products/133619.html)
+- [General setting of lantiq](https://forum.fibra.click/d/23881-ma5671a-e-vodafone-25-gbps/64)

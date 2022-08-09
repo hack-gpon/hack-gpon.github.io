@@ -22,9 +22,9 @@ parent: ONT
 | SSH         |                                                                   |
 | Form Factor | ONT                                                               |
 
-{% include image.html file="f601_v1.jpg" alt="F601 v6" caption="F601 v6" %}
-{% include image.html file="f601_v2.jpg" alt="F601 v7" caption="A wall made out of broken F601 v7s" %}
-{% include image.html file="f601_v3.jpg" alt="F601 v8" caption="F601 v8" %}
+{% include image.html file="f601_v6_1.jpg" alt="F601 v6" caption="F601 v6" %}
+{% include image.html file="f601_v7.jpg" alt="F601 v7" caption="A wall made out of broken F601 v7s" %}
+{% include image.html file="f601_v8.jpg" alt="F601 v8" caption="F601 v8 <a href='https://forum.fibra.click/u/ftthless'>@ftthless</a>" %}
 
 
 ## Hardware revisions
@@ -39,7 +39,15 @@ parent: ONT
 - v8: small, Huawei HG8010H-like exterior
 
 ## List of software versions
-- V6.0.10P6N7
+### HW V6.0
+- V6.0.10P6T1 
+- V6.0.10P6T4 
+- V6.0.10P6N7 
+
+### HW V7.0
+- V7.0.10P6N7
+
+### HW V8.0
 
 ## List of partitions
 ## List of firmwares and files
@@ -50,3 +58,21 @@ parent: ONT
 - F601v7 turns on and runs even with 5 V input
 # Miscellaneous Links
 
+
+# Theardown and other photos
+
+## HW V6.0
+
+{% include image.html file="f601_v6_2.jpg"  alt="Bottom of the F601 v6" caption="Bottom of the F601 v6 <a href='https://forum.fibra.click/u/LATIITAY'>@LATIITAY</a>" %}
+{% include image.html file="f601_v6_Teardown_1.jpg"  alt="Teardown of the F601 v6" caption="Teardown of the F601 v6  <a href='https://forum.fibra.click/u/LATIITAY'>@LATIITAY</a>" %}
+{% include image.html file="f601_v6_Teardown_2.jpg"  alt="Teardown of the F601 v6" caption="Teardown of the F601 v6 <a href='https://forum.fibra.click/u/LATIITAY'>@LATIITAY</a>" %}
+{% include image.html file="f601_v6_Teardown_3.jpg"  alt="Teardown of the F601 v6" caption="Teardown of the F601 v6 <a href='https://forum.fibra.click/u/LATIITAY'>@LATIITAY</a>" %}
+
+## HW V7.0
+
+{% include image.html file="f601_v7_1.jpg"  alt="Bottom of the F601 v7" caption="Bottom of the F601 v6 <a href='https://forum.fibra.click/u/LATIITAY'>@LATIITAY</a>" %}
+{% include image.html file="f601_v7_Teardown.jpg"  alt="Bottom of the F601 v7" caption="Teardown of the F601 v7 <a href='https://forum.fibra.click/u/LATIITAY'>@LATIITAY</a>" %}
+{% include image.html file="f601_v7_Teardown_1.jpg"  alt="Teardown of the F601 v7" caption="Teardown of the F601 v7  <a href='https://forum.fibra.click/u/LATIITAY'>@LATIITAY</a>" %}
+{% include image.html file="f601_v7_Teardown_2.jpg"  alt="Teardown of the F601 v7" caption="Teardown of the F601 v7 <a href='https://forum.fibra.click/u/LATIITAY'>@LATIITAY</a>" %}
+{% include image.html file="f601_v7_Teardown_3.jpg"  alt="Teardown of the F601 v7" caption="Teardown of the F601 v7 <a href='https://forum.fibra.click/u/LATIITAY'>@LATIITAY</a>" %}
+{% include image.html file="f601_v7_Teardown_4.jpg"  alt="Teardown of the F601 v7" caption="Teardown of the F601 v7 <a href='https://forum.fibra.click/u/LATIITAY'>@LATIITAY</a>" %}

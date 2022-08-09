@@ -1,1 +1,12 @@
-<figure>{% if {{include.url}} %}<a class="no_icon" target="_blank" rel="noopener" href="{{include.url}}">{% endif %}<img class="docimage" src="../assets/img/{{include.file}}" alt="{{include.alt}}" {% if {{include.max-width}} %}style="max-width: {{include.max-width}}px"{% endif %} />{% if {{include.url}} %}</a>{% endif %}{% if {{include.caption}} %}<figcaption>{{include.caption}}</figcaption>{% endif %}</figure>
+<figure>
+    {% if {{include.url}} %}
+        <a class="no_icon" target="_blank" rel="noopener" href="{{include.url}}">
+    {% endif %}
+    <source srcset='../assets/img/{{include.file | remove: ".jpg" | remove: ".png" | remove: ".jpeg" | remove: ".tiff" | remove: ".gif" }}.webp' type="image/webp">
+    <img class="docimage" src="../assets/img/{{include.file}}" alt="{{include.alt}}" {% if {{include.max-width}} %}style="max-width: {{include.max-width}}px"{% endif %} />
+    {% if {{include.url}} %}</a>{% endif %}{% if {{include.caption}} %}
+    <figcaption>
+        {{include.caption}}
+    </figcaption>
+    {% endif %}
+</figure>

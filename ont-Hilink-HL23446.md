@@ -1,6 +1,7 @@
 ---
 title: Hilink HL23446
 has_children: false
+alias: CarlitoxxPro CPGOS03-0490 v1
 parent: ONT
 ---
 
@@ -30,6 +31,8 @@ parent: ONT
 - [Nokia G-010S-P](ont-nokia-g-s010s-p)
 - [SourcePhotonics SPS-34-24T-HP-TDFO](ont-SourcePhotonics-SPS-34-24T-HP-TDFO)
 - [Hilink HL23446](ont-Hilink-HL23446)
+- Dasan H650SFP {: .text-red-200 }
+- DpOptics D23446 {: .text-red-200 }
 
 ## List of software versions
 ## List of partitions
