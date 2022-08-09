@@ -149,6 +149,9 @@ layout: table_wrappers
                     <a class="site-button github-edit" href="{{ site.gh_edit_repository }}/{{ site.gh_edit_view_mode }}/{{ site.gh_edit_branch }}{% if site.gh_edit_source %}/{{ site.gh_edit_source }}{% endif %}/{{ page.path }}" id="edit-this-page" title="{{ site.gh_edit_link_text }}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg></a>
                     {% endif %}
                     <h1 class="fs-9">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
+                    {% if page.alias %}
+                        <h2 class="fmt-0"><span class="fw-300">Also sold as: </span> {{ page.alias }}</h2>
+                    {% endif %}
                     {% if site.last_edit_timestamp_script == true %}
                     <ul class="metadata text-small">
                         <li id="last-modified">Last Modified</li>
@@ -168,9 +171,6 @@ layout: table_wrappers
                     {% endif %}
                     {% if page.description %}
                         <h2 class="fs-6 fw-300">{{ page.description }}</h2>
-                    {% endif %}
-                    {% if page.alias %}
-                        <h2 class="fs-5 fw-300">Alias or Clone ONT: {{ page.alias }}</h2>
                     {% endif %}
                 </header>
                 <hr>         
