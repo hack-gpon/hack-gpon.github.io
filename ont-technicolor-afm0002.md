@@ -131,7 +131,7 @@ sw_version1=V1_7_8_210412
 {% include alert.html content="This section is based on `V1_7_8_210412` firmware version of the stick" %}
 
 
-## Trasnfering files from/to the stick
+## Transfering files from/to the stick
 Works with binary files too, just run md5sum on source and destination to make sure you are not corrupting anything...
 From the stick to the PC:
 ```sh
