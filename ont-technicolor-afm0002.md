@@ -31,7 +31,7 @@ Configuration: asc0=0 115200 8-N-1
 
 - AFM0002TIM (IP address: 192.168.2.1)
 - AFM0002FWB (IP address: 169.0.0.1)
-- AFM0002WND
+- AFM0002WND (IP address: 169.0.0.1)
 
 {% include alert.html content="The version used to obtain the info shown on this page is the AFM0002TIM" alert="Info"  icon="svg-info" color="blue" %}
 {% include alert.html content="The AFM0002FWB can be transformed into AFM0002TIM. The AFM0002FWB has an older software version." alert="Warning"  icon="svg-warning" color="red" %}
