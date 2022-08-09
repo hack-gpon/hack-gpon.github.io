@@ -10,7 +10,7 @@ if(localStorage.getItem("color-scheme") === null) {
     });
 } else {
     jtd.setTheme(localStorage.getItem("color-scheme"));
-    window.addEventListener('load', function () {
+    jtd.onReady(function () {
         toggleDarkMode.textContent = localStorage.getItem("text-scheme"); 
     });
 }
@@ -35,4 +35,34 @@ jtd.addEvent(toggleDarkMode, 'click', function(){
     toggleDarkMode.textContent = newTextScheme; 
     localStorage.setItem("color-scheme",newColorScheme);
     localStorage.setItem("text-scheme",newTextScheme);
+});
+
+jtd.onReady(function(){
+    var modals = document.querySelectorAll("[data-modal]");
+    var modalToogles = document.querySelectorAll("[data-toogle=modal]");
+    
+    
+    [...modals].forEach(modal => {
+        var closeBtns = modal.getElementsByClassName("close");
+        [...closeBtns].forEach(closeBtn => {
+            closeBtn.addEventListener("click", (event) => {
+                modal.style.display = "none";
+            });
+        })
+    });
+    
+    [...modalToogles].forEach(toogle => {
+        toogle.addEventListener("click", (event) => {
+            var modal = document.querySelector(toogle.getAttribute('data-target'));
+            modal.style.display = "block";
+        });
+    });
+    
+    window.addEventListener("click", function(event) {
+        if ([...modals].includes(event.target)) {
+            event.target.style.display = "none";
+        }
+    });
+    
+    
 });

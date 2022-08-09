@@ -238,9 +238,7 @@ layout: table_wrappers
             <div class="search-overlay"></div>
         {% endif %}
     </div>
-    <script src="{{ base.url | prepend: site.url }}/assets/js/theme-switch.js"></script>
-    <script src="{{ base.url | prepend: site.url }}/assets/js/modal.js"></script>
-
+    
     {%if site.last_edit_timestamp_script and site.gh_owner_name and site.gh_repository_name and page.path %}
     <script>
         function setModifiedDate() {
