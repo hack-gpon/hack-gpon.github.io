@@ -39,7 +39,14 @@ parent: ONT
 - v8: small, Huawei HG8010H-like exterior
 
 ## List of software versions
-- V6.0.10P6N7
+### HW V6.0
+- V6.0.10P6N7 
+- V6.0.10P6T1 
+- V6.0.10P6T4 
+
+### HW V7
+
+### HW V8
 
 ## List of partitions
 ## List of firmwares and files
