@@ -9,12 +9,12 @@ description: Tool for converter ASCII and Hex
 <h1>ASCII To Hex</h1>
 <form id="ascii-to-hex">
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" placeholder="ASCII" name="ascii-to-hex" id="ascii-to-hex"   min="1000" max="10000">
+        <input type="text" class="form-control" placeholder="ASCII" name="ascii-to-hex" id="ascii-to-hex"    >
         <label for="ascii-to-hex">ASCII</label>
     </div>
     <div class="form-floating mb-3">
         <input type="text" class="form-control" placeholder="Glue" name="ascii-to-hex-glue" id="ascii-to-hex-glue" value=" ">
-        <label for="ascii-to-hex-glue">Glue</label>
+        <label for="ascii-to-hex-glue">Glue/Separator (empty for the format 0x0123456789ABCDE, ` ` for the format 0x01 0x23 0x45 0x67 0x89 0xAB 0xCD 0xEF)</label>
     </div>
     <div class="mb-3">
         <input type="submit" class="btn btn-primary" value="Calculate!">
@@ -32,7 +32,7 @@ description: Tool for converter ASCII and Hex
     </div>
     <div class="form-floating mb-3">
         <input type="text" class="form-control" placeholder="Separator" name="hex-to-ascii-separator" id="hex-to-ascii-separator" value=" ">
-        <label for="hex-to-ascii-separator">Separator</label>
+        <label for="hex-to-ascii-separator">Glue/Separator (empty for the format 0x0123456789ABCDEF, ` ` for the format 0x01 0x23 0x45 0x67 0x89 0xAB 0xCD 0xEF)</label>
     </div>
     <div class="mb-3">
         <input type="submit" class="btn btn-primary" value="Calculate!">
@@ -44,13 +44,22 @@ description: Tool for converter ASCII and Hex
 </form>
   
 <script>
+
+    function getChunks(s, i) {
+        var a = [];
+        do{ a.push(s.substring(0, i)) }  while( (s = s.substring(i)) != "" );
+        return a;
+    }
+
     var asciiToHexForm = document.getElementById('ascii-to-hex');
     asciiToHexForm.addEventListener('submit',(event) => {
         event.preventDefault();
         var fomrdata = new FormData(asciiToHexForm);
         var str = fomrdata.get('ascii-to-hex');
         var glue = fomrdata.get('ascii-to-hex-glue');
-        var hex = [...str].map((elem, n) => "0x"+Number(str.charCodeAt(n)).toString(16)).join(glue);
+        var prefixi = glue !== "" ? "0x" : "";
+        var prefix = glue === "" ? "0x" : "";
+        var hex = prefix + ([...str].map((elem, n) => prefixi+Number(str.charCodeAt(n)).toString(16)).join(glue));
         document.getElementById('hex-result').value = hex;
     });
 
@@ -60,7 +69,7 @@ description: Tool for converter ASCII and Hex
         var fomrdata = new FormData(hexToAsciiForm);
         var str = fomrdata.get('hex-to-ascii');
         var separator = fomrdata.get('hex-to-ascii-separator');
-        var ascii = str.split(separator).map(el => String.fromCharCode(Number(el))).join('');
+        var ascii = separator === "" ? getChunks(str.substring(2),2).map(el => String.fromCharCode(parseInt(el, 16))).join('') : str.split(separator).map(el => String.fromCharCode(Number(el))).join('');
         document.getElementById('ascii-result').value = ascii;
     });
     
