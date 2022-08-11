@@ -148,6 +148,7 @@ reboot
 ```
 
 # Known Bugs
+- [Not working with Broadcom BCM57810S](https://github.com/xvzf/zyxel-gpon-sfp/issues/10)
 
 # Miscellaneous Links
 
