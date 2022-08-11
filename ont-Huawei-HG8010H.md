@@ -56,6 +56,7 @@ Now that this is done, the modified configuration file can be uploaded via the w
 - V5R020C10S020 (V500R020C10SPC020A2011020049)
 - V5R020C10S024 (V500R020C10SPC024B001)
 - V5R020C10S020 (V500R020C10SPC020B014)
+- V5R020C10S115
 
 ## List of partitions
 ## List of firmwares and files
