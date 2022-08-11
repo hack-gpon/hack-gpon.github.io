@@ -1,5 +1,5 @@
 ---
-title: ODI DFP-34X-C2C
+title: ODI Realtek DFP-34X-C2C
 has_children: false
 parent: ONT
 ---
