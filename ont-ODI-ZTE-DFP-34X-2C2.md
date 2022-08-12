@@ -1,5 +1,5 @@
 ---
-title: ODI ZTE DFP-34X-C2C
+title: ODI ZTE DFP-34X-C2C (GPON)
 has_children: false
 parent: ONT
 ---
