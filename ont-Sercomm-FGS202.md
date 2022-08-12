@@ -27,7 +27,7 @@ parent: ONT
 
 # HW Modding
 
-- Pin 7 GND -> VCC [Fibra.Click - FAQ: 2.5Gbps su singolo dispositivo su Tim, Vodafone, Fastweb/JustSpeed](https://forum.fibra.click/d/27574-faq-25gbps-su-singolo-dispositivo-su-timvodafonefastwebjustspeed/18)
+- Pin 7 GND → VCC [Fibra.Click - FAQ: 2.5Gbps su singolo dispositivo su Tim, Vodafone, Fastweb/JustSpeed](https://forum.fibra.click/d/27574-faq-25gbps-su-singolo-dispositivo-su-timvodafonefastwebjustspeed/18)
 - Only for Ubiquiti [OpenWRT Forum - Support for GPON SFP](https://forum.openwrt.org/t/support-for-gpon-sfp-fgs202/42641/47)
 
 # Known Bugs

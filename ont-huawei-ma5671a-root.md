@@ -46,7 +46,7 @@ GND ----green --------------- pin #10
 
 {% include image.html file="ma5671a-root-10.jpg"  alt="serial shell 2" caption="serial shell 2" %}
 
-9. from the Teraterm menu `FILE -> TRANSFER -> XMODEM -> SEND -> [1224abort.bin]` (which is the third of the files downloaded earlier):
+9. from the Teraterm menu `FILE` → `TRANSFER` → `XMODEM` → `SEND` → `[1224abort.bin]` (which is the third of the files downloaded earlier):
 
 {% include image.html file="ma5671a-root-11.jpg"  alt="1224abort.bin" caption="1224abort.bin" %}
 
@@ -70,7 +70,7 @@ At this point it will appear:
 
 {% include image.html file="ma5671a-root-13.jpg"  alt="shell requiring mt2 upload" caption="shell requiring mt2 upload" %}
 
-13. From the teratem menu do `FILE -> TRANSFER -> KERMIT -> SEND -> [mtd2.bin]`.
+13. From the teratem menu do `FILE` → `TRANSFER` → `KERMIT` → `SEND` → `[mtd2.bin]`.
 It will start uploading the file at a speed of about 3-4 KBbs. Now you will have to wait more than half an hour for the upload to complete.
 
 14. Once finished, the image loaded on the stick must also be saved to the corresponding system partition (the first of the 2) with the commands

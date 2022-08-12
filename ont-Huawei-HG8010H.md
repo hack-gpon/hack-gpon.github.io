@@ -79,7 +79,7 @@ WAP>omcicmd mib show meid 131 instid 0
 
 success!
 ```
-*0x48575443* -> *HWTC* (Huawei)
+*0x48575443* → *HWTC* (Huawei)
 
 - Get SW Version 0 and 1:
 
@@ -109,7 +109,7 @@ WAP>omcicmd mib show meid 7 instid 1
 
 success!
 ```
-*56355230 32304331 30533131 3500* -> *V5R020C10S115*
+*0x56355230 32304331 30533131 3500* → *V5R020C10S115*
 
 - Get ONT Vendor ID and HW Version:
 
@@ -137,8 +137,8 @@ WAP>omcicmd mib show meid 256 instid 0
 success!
 ```
 
-*48575443* -> *HWTC*
-*32343046 2e41* -> *240F.A*
+*0x48575443* → *HWTC*
+*0x32343046 2e41* → *240F.A*
 
 - Get ONT Equipment ID:
 
@@ -167,7 +167,7 @@ WAP>omcicmd mib show meid 257 instid 0
 success!
 ```
 
-*48473830 31304876 36* -> *HG8010Hv6*
+*0x48473830 31304876 36* → *HG8010Hv6*
 
 # Known Bugs
 # Miscellaneous Links
