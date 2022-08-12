@@ -90,12 +90,12 @@ layout: table_wrappers
                     {% for link in site.aux_links %}
                         <li class="aux-nav-list-item">
                             <span class="site-button">
-                                <a href="{{ link.link }}" class="btn btn-{{ link.color }}">{{ link.first }} 
+                                <a href="{{ link.link }}" class="btn btn-{{ link.color }}">{{ link.title }} 
                                     {% if link.logo %}
-                                    <img style="width:auto;height:20px;vertical-align:middle;" src="{{ link.logo }}"></img></a>
+                                    <img src="{{ link.logo }}"></img></a>
                                     {% endif %}
                                     {% if link.icon %}
-                                    <svg style="width:auto;height:20px;vertical-align:middle;" >
+                                    <svg>
                                         <use xlink:href="{{ link.icon }}"></use></svg>
                                     </svg>
                                     {% endif %}
