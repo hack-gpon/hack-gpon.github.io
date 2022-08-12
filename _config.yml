@@ -39,6 +39,8 @@ nav_sort: case_sensitive
 aux_links:
   "Hack GPON on GitHub":
     - "//github.com/hack-gpon/hack-gpon.github.io"
+  "Hack GPON on Telegram":
+    - "//hack-gpon.github.io/"
 
 back_to_top: true
 back_to_top_text: "Back to top"
