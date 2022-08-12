@@ -1,5 +1,5 @@
 ---
-title: ODI Realtek DFP-34X-C2C
+title: ODI Realtek DFP-34X-C2C (XPON)
 has_children: false
 parent: ONT
 ---
@@ -143,5 +143,6 @@ sw_active=1
 # Miscellaneous Links
 
 - [Hacking RTL960x](https://github.com/Anime4000/RTL960x)
+- [Ditch ONU, use GPON SFP on Business Grade Router, Mikrotik/Ubiquiti/pfSense (Home Networking)](https://forum.lowyat.net/topic/4925452)
 
 
