@@ -12,7 +12,7 @@ parent: ONT
 | Model       | HG8010H                                                                                        |
 | Chipset     | Hisilicon                                                                                      |
 | Flash       |                                                                                                |
-| RAM         |                                                                                                |
+| RAM         | 256MB                                                                                          |
 | System      |                                                                                                |
 | HSGMII      | No                                                                                             |
 | Optics      | SC/APC and SC/UPC                                                                              |
@@ -62,7 +62,10 @@ Now that this is done, the modified configuration file can be uploaded via the w
 ## List of firmwares and files
 ## List of useful commands
 
-**All results need to be converted from Hex to Ascii**
+> **Warning**  
+> All results need to be converted from Hex to Ascii  
+> [Converter](ascii-hex)
+
 - Get OLT information:
 
 ```
