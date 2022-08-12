@@ -93,7 +93,7 @@ GPON_SN=TMBB00000000
 
 ## Getting/Setting the ONT's PLOAM password
 
-{% include alert.html content="The PLOAM password is stored in ASCII format" %}
+{% include alert.html content="The PLOAM password is stored in ASCII format" alert="Info" icon="svg-info" color="blue" %}
 
 ```sh
 # /etc/scripts/bin flash get GPON_PLOAM_PASSWD
@@ -129,7 +129,7 @@ sw_version1=V1_7_8_210412
 
 # Low Level Modding
 
-{% include alert.html content="This section is based on `V1_7_8_210412` firmware version of the stick" %}
+{% include alert.html content="This section is based on `V1_7_8_210412` firmware version of the stick" alert="Info" icon="svg-info" color="blue" %}
 
 
 ## Transfering files from/to the stick
@@ -143,7 +143,7 @@ From the PC to the stick
 # cat lastgood.xml | ssh admin@192.168.2.1  "cat > /var/config/lastgood.xml"
 ```
 
-{% include alert.html content="If a Windows system is used replace type with cat and run the commands from cmd (not Powershell)" %}
+{% include alert.html content="If a Windows system is used replace type with cat and run the commands from cmd (not Powershell)" alert="Info" icon="svg-info" color="blue" %}
 
 ## Extracting and repacking the rootfs
 {% include alert.html content="Make sure you run both commands as root, otherwise you might get a damaged rootfs image" alert="Warning" icon="svg-warning" color="red" %}
@@ -154,7 +154,7 @@ From the PC to the stick
 ```
 ## Flashing a new rootfs
 
-{% include alert.html content="Only the inactive image can be flashed" %}
+{% include alert.html content="Only the inactive image can be flashed" alert="Info" icon="svg-info" color="blue" %}
 
 So mtd4/5 if you are on image1, mtd6/7 if you are on image0.
 
@@ -231,8 +231,8 @@ reboot
 /bin/omcicli set logfile 1 ffffffff
 ```
 1. The binary log will be placed inside: `/tmp/omcilog`
-2. You can convert it into .pcap using https://github.com/ADeltaX/omcilog2pcap
-3. You can then open it with Wireshark by installing the OMCI plugin from https://wiki.wireshark.org/Contrib.md
+2. You can convert it into .pcap using [omcilog2pcap](https://github.com/ADeltaX/omcilog2pcap)
+3. You can then open it with Wireshark by installing the OMCI plugin from [wireshark](https://wiki.wireshark.org/Contrib.md)
    
 If you want to log everything since the stick boots, you can create a custom rootfs. Place the last command inside `etc/runomci.sh` as the last line of the file
 
