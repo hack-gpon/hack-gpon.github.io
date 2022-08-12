@@ -90,6 +90,7 @@ layout: table_wrappers
                     {% for link in site.aux_links %}
                         <li class="aux-nav-list-item">
                             <span class="site-button ">
+                                <a href="{{ link.last.link }}" class="btn btn-{{ link.last.color }}">{{ link.first }}  <img style="width:auto;height:20px;vertical-align:middle;" src="{{ link.last.logo }}"></img></a>
                                 {{ link }}
                             </span>
                         </li>
