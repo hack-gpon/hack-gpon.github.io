@@ -191,3 +191,17 @@ figure {
     fill: $body-text-color;
     width: 100%;
 }
+
+.site-button img {
+    height: 20px;
+    vertical-align: middle;
+    margin-left: 10px;
+    width: auto;
+}
+
+.site-button svg {
+    height: 20px;
+    vertical-align: middle;
+    margin-left: 10px;
+    width: 20px;
+}
