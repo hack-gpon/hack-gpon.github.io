@@ -37,7 +37,7 @@ url: "https://hack-gpon.github.io/"
 nav_sort: case_sensitive
 
 aux_links:
-  '<a href="http://example.com/" class="btn btn-blue">Telegram <img style="width:auto;height:20px;vertical-align:middle;" src="https://iconape.com/wp-content/png_logo_vector/telegram-new-2019-black-x-logo.png"></a>'
+  - '<a href="http://example.com/" class="btn btn-blue">Telegram <img style="width:auto;height:20px;vertical-align:middle;" src="https://iconape.com/wp-content/png_logo_vector/telegram-new-2019-black-x-logo.png"></a>'
   
 #aux_links:
 #  "Hack GPON on GitHub":
