@@ -89,7 +89,9 @@ layout: table_wrappers
                 {% if site.aux_links %}
                     {% for link in site.aux_links %}
                         <li class="aux-nav-list-item">
-                            {{ link }}
+                            <span class="site-button ">
+                                {{ link }}
+                            </span>
                         </li>
                     {% endfor %}
                 {% endif %}
