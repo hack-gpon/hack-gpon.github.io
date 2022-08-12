@@ -37,13 +37,13 @@ url: "https://hack-gpon.github.io/"
 nav_sort: case_sensitive
 
 aux_links:
-  - title: "Github"
+  "Github":
     color: 'blue'
-    icon: 'svg-github'
+    logo: 'https://cdn-icons-png.flaticon.com/512/1051/1051377.png'
     link: '//github.com/hack-gpon/hack-gpon.github.io'
-  - title: "Telegram"
+  "Telegram":
     color: 'blue'
-    icon: 'svg-telegram'
+    logo: 'https://iconape.com/wp-content/png_logo_vector/telegram-new-2019-black-x-logo.png'
     link: '//t.me/HackGPON'
       
 #aux_links:
