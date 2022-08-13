@@ -1,7 +1,7 @@
 ---
 title: ASCII and Hex converter
 has_children: false
-nav_order: 5
+nav_order: 6
 description: Tool for converter ASCII and Hex
 
 ---

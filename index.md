@@ -22,5 +22,5 @@ This wiki contains links, codes, tutorials on how to access, edit and change ONT
 Are you ready?
 
 <span class="fs-8">
-[Yes](ont.md){: .btn .btn-green } [Quick start](quick-start.md){: .btn .btn-blue }
+[Yes](ont){: .btn .btn-green } [Quick start](quick-start){: .btn .btn-blue }
 </span>
