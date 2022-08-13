@@ -11,9 +11,10 @@ parent: ONT
 | Vendor      | Huawei                                                                                         |
 | Model       | HG8010H                                                                                        |
 | Chipset     | Hisilicon                                                                                      |
-| Flash       |                                                                                                |
-| RAM         | 256MB                                                                                          |
-| System      |                                                                                                |
+| Flash       | 128MiB SLC NAND (DS35Q1GA-IB)                                                                  |
+| RAM         | 256MiB                                                                                         |
+| CPU         | Hisilicon A9 dual core (ARMv7)                                                                 |
+| System      | Dopra Linux                                                                                    |
 | HSGMII      | No                                                                                             |
 | Optics      | SC/APC and SC/UPC                                                                              |
 | IP address  | 192.168.100.1                                                                                  |
@@ -59,6 +60,10 @@ Now that this is done, the modified configuration file can be uploaded via the w
 - V5R020C10S115 (V500R020C10SPC115B270)
 
 ## List of partitions
+
+0x000000000000-0x000000100000 : "bootcode" (1MiB)  
+0x000000100000-0x000008000000 : "ubilayer_v5" (127MiB)  
+
 ## List of firmwares and files
 ## List of useful commands
 
@@ -180,7 +185,7 @@ success!
 - [Notes on a Huawei HG810H (N.B. SSL error)](https://umbriel.fr/blog/Notes_on_a_Huawei_HG8010H.html)
 
 
-# Theardown and other photos
+# Teardown and other photos
 
 ## v1-2
 
