@@ -251,8 +251,8 @@ layout: table_wrappers
 
                     var authors = commits.flatMap(x => [{...x.commit.author, ...x.author},{...x.commit.committer, ...x.committer}]).map(({date, ...keepAttrs}) => keepAttrs).filter((value, index, self) =>
                         index === self.findIndex((t) => (
-                            t.place === value.place && t.name === value.name
-                        ))
+                            t.login === value.login
+                        )) && value.login !== "web-flow"
                     );
                     document.getElementById('last-modified').textContent = "Last Modified: " + modified;
                     document.getElementById('contributors').textContent =  authors.length + " "+ ( authors.length == 1? "Contributor" : "Contributors");
