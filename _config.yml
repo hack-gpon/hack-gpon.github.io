@@ -31,6 +31,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-last-modified-at
   - jekyll-redirect-from
+  - jekyll-default-layout
 
 color_scheme: "light"
 url: "https://hack-gpon.github.io/"

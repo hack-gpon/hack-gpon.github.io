@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  site:
+    command: jekyll serve --verbose --incremental --force_polling
+    image: jekyll/jekyll:latest 
+    volumes:
+      - .:/srv/jekyll
+    ports:
+      - 4000:4000

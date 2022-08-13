@@ -80,7 +80,7 @@ ul.metadata {
         border: $border $border-color;
         position: relative;
         background-color: $body-background-color;
-        width: min(500px, calc(100vw - 40px));
+        width: 500px;
         padding: 0;
         margin: 40px  auto;
         animation-name: animatetop;
