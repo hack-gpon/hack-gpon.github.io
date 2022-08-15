@@ -53,7 +53,7 @@ This stick supports dual boot, as visible from the presence of `ImageA` and `Ima
 
 # List of firmwares and files
 ## Useful files
-- `/var/config/ont.sys` used to customize various settings on the stick
+- `/var/config/ont.sys` used to customize various settings on the stick. If you don't have it you can copy the stock one from /ont.sys
 
 # Useful Commands
 *Note: all commands start from the twmanu shell*
@@ -111,7 +111,7 @@ show me classname OmciClassName (e.g Ont2g)
 Query via OMCI ME ID
 ```sh
 omci
-show me id OmciClassId (e.g 7)
+show me classid OmciClassId (e.g 7)
 ```
 
 
