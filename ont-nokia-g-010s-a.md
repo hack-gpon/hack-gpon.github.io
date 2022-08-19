@@ -21,13 +21,13 @@ parent: ONT
 | SSH         | ✅ user `ONTUSER`, password `SUGAR2A041` |
 | Form Factor | miniONT SFP                              |
 
-{% include image.html file="G-010S-A.jpg"  alt="G-010S-A" caption="G-010S-A" %}
-{% include image.html file="G-010S-A-teardown.jpg"  alt="G-010S-A Teardown" caption="G-010S-A Teardown" %}
+{% include image.html file="g-010s-a.jpg"  alt="G-010S-A" caption="G-010S-A" %}
+{% include image.html file="g-010s-a-teardown.jpg"  alt="G-010S-A Teardown" caption="G-010S-A Teardown" %}
 
 
 ## Modifying firmware
 
-Turning a [Nokia G-010S-P](ont-nokia-g-s010s-p) into a [Nokia G-010S-A](ont-nokia-g-s010s-A) is possible by changing layout from mtd
+Turning a [Nokia G-010S-P](ont-nokia-g-010s-p) into a [Nokia G-010S-A](ont-nokia-g-010s-a) is possible by changing layout from mtd
 
 ## List of software versions
 
