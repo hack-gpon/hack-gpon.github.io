@@ -24,6 +24,8 @@ parent: ONT
 {% include image.html file="g-s010s-p.jpg"  alt="G-010S-P" caption="G-010S-P" %}
 {% include image.html file="g-s010s-p-and-ma5671a.jpg"  alt="G-010S-P and MA5671A Teardown" caption="G-010S-P and MA5671A Teardown" %}
 
+{% include alert.html content="G-010S-P and other models will not expose ethernet interface unless fiber cable is connected ([source](https://forum.mikrotik.com/viewtopic.php?t=116364&start=300))" alert="Warning" icon="svg-warning" color="yellow" %}
+
 ## Firmware is interchangeable with:
 - [Huawei MA5671A](ont-huawei-ma5671a)
 - [Nokia G-010S-P](ont-nokia-g-s010s-p)
@@ -47,6 +49,16 @@ Configuration: asc0=0 115200 8-N-1
 
 ## List of software versions
 ## List of partitions
+
+| dev  | size     | erasesize | name     |
+| ---- | -------- | --------- | -------- |
+|mtd0 | 00040000 | 00010000 | "uboot" |
+|mtd1 | 00080000 | 00010000 | "uboot_env" |
+|mtd2 | 00740000 | 00010000 | "linux" |
+|mtd3 | 0061eedc | 00010000 | "rootfs" |
+|mtd4 | 00370000 | 00010000 | "rootfs_data" |
+|mtd5 | 00800000 | 00010000 | "image1" |
+
 ## List of firmwares and files
 
 ##  Disabling Dying Gasp
