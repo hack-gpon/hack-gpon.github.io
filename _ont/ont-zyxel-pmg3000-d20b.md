@@ -153,6 +153,8 @@ reboot
 
 # Known Bugs
 - [Not working with Broadcom BCM57810S](https://github.com/xvzf/zyxel-gpon-sfp/issues/10)
+- Issue on IPv6 discovery. But we are not sure if is a edge case of a particular ISP or not
+- [Some stick have a custom password](https://github.com/xvzf/zyxel-gpon-sfp/issues/6)
 
 # Miscellaneous Links
 
