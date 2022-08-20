@@ -20,16 +20,19 @@ GND ----green --------------- pin #10
 {% include image.html file="ma5671a-root-1.jpg"  alt="Example of how the sfp-ttl connection should look like" caption="Example of how the sfp-ttl connection should look like" %}
 {% include image.html file="ma5671a-root-2.jpg"  alt="Molex SFP" caption="Molex SFP" %}
 
+{:style="counter-reset:none"}
 2. Disassemble the stick by releasing the metal tabs that hold the cover in place. There are two tabs, one on each side, inside these holes:
 
 {% include image.html file="ma5671a-root-4.jpg"  alt="Metal tabs that hold the cover in place" caption="Metal tabs that hold the cover in place" %}
 
+{:style="counter-reset:none"}
 3. Once you have removed the metal casing, you are left with the half-naked stick (note that the release mechanism also comes off easily and then you don't know how to put it back together, so take a photo and memorise the positioning well).
 
 4. Before shorting the stick, connect the previously soldered cables and molex to the USB serial (photo immediately below) and to the stick (the molex, of course) and check that the jumper on the usb key is set to 3.3V
 
 {% include image.html file="ma5671a-root-8.jpg"  alt="TTL" caption="TTL" %}
 
+{:style="counter-reset:none"}
 5. The disassembled stick will appear as in the photo, in which I have highlighted in red the 2 pins to be shorted. Here they use wire, but a pair of tweezers is sufficient (I used those, in fact). Be careful not to make any other contacts by possibly covering everything else with electrical tape.
 
 {% include image.html file="ma5671a-root-4.jpg"  alt="tweezers" caption="tweezers" %}
@@ -37,24 +40,29 @@ GND ----green --------------- pin #10
 {% include image.html file="ma5671a-root-5.jpg"  alt="tweezers and eletrical tape" caption="tweezers and eletrical tape" %}
 {% include image.html file="ma5671a-root-6.jpg"  alt="tweezers" caption="tweezers" %}
 
+{:style="counter-reset:none"}
 6. for the moment connect all cables to the usb key except the green (ground) or red (voltage), otherwise the stick will boot before you can do the following (N.B. for those who bought the uart above RX and TX are reversed). Open and configure Teratem for serial connection (select the correct com port, speed 115.200, english language, otherwise in japainise you can't read anything understandable) insert the key in the PC (I take it for granted that it has already been installed, drivers and all), short the 2 pins seen above and keeping the short connected the missing coloured cable
 
 7. if you have done everything correctly, you should see something similar to the picture below (if nothing happens, you have obviously done something wrong with cables, molexes, soldering irons, etc., so you will have to start from the beginning again and work out which step you did wrong):
 
 {% include image.html file="ma5671a-root-9.png"  alt="serial shell" caption="serial shell" %}
 
+{:style="counter-reset:none"}
 8. Remove the short (tweezers or whatever you used), then type 7 and enter. You should see this:
 
 {% include image.html file="ma5671a-root-10.png"  alt="serial shell 2" caption="serial shell 2" %}
 
+{:style="counter-reset:none"}
 9. from the Teraterm menu `FILE` → `TRANSFER` → `XMODEM` → `SEND` → `[1224abort.bin]` (which is the third of the files downloaded earlier):
 
 {% include image.html file="ma5671a-root-11.png"  alt="1224abort.bin" caption="1224abort.bin" %}
 
+{:style="counter-reset:none"}
 10. as soon as the file transfer is complete, you have 2 seconds to press `CTRL+C`, if you have not done so, you can return to the step 6. Otherwise, you should see:
 
 {% include image.html file="ma5671a-root-12.png"  alt="falcon shell" caption="falcon shell" %}
 
+{:style="counter-reset:none"}
 11. To permanently unlock the bootloader, without having to repeat the previous steps, you must give the following commands:
 ```
 FALCON => setenv bootdelay 5
@@ -71,6 +79,7 @@ At this point it will appear:
 
 {% include image.html file="ma5671a-root-13.jpg"  alt="shell requiring mt2 upload" caption="shell requiring mt2 upload" %}
 
+{:style="counter-reset:none"}
 13. From the teratem menu do `FILE` → `TRANSFER` → `KERMIT` → `SEND` → `[mtd2.bin]`.
 It will start uploading the file at a speed of about 3-4 KBbs. Now you will have to wait more than half an hour for the upload to complete.
 
