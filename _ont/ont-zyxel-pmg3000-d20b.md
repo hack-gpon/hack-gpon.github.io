@@ -60,10 +60,10 @@ This stick supports dual boot, as visible from the presence of `ImageA` and `Ima
 - `/var/config/ont.sys` used to customize various settings on the stick. If you don't have it you can copy the stock one from /ont.sys
 
 # Useful Commands
-*Note: all commands start from the twmanu shell*
+{% include alert.html content="all commands start from the twmanu shell." alert="Note"  icon="svg-info" color="blue" %}
 
 ## Changing the ONT's S/N
-*Note  the S/N is stored in the ASCII format*
+{% include alert.html content="the S/N is stored in the ASCII format." alert="Note"  icon="svg-info" color="blue" %}
 ```sh
 manufactory
 set sn ALCLf0f0f0f0
@@ -73,7 +73,7 @@ set sn ALCLf0f0f0f0
 ```
 
 ## Changing the ONT's PLOAM password
-*Note: the PLOAM is stored in the ASCII format*
+{% include alert.html content="the PLOAM is stored in the ASCII format." alert="Note"  icon="svg-info" color="blue" %}
 This can be done easily via web ui. If you prefer to do it via the shell use:
 ```sh
 manufactory
@@ -81,7 +81,7 @@ set password PLOAMPASS
 ```
 
 ## Changing the ONT's equipment ID
-*Note: model number must be 20 no more than chars total*
+{% include alert.html content="model number must be 20 no more than chars total." alert="Note"  icon="svg-info" color="blue" %}
 ```sh
 manufactory
 set equipment id MYEQUIPMENTID
@@ -103,7 +103,7 @@ The entries for the software version are:
 SW_VER0:0xabcdef
 SW_VER1:0xabcedf
 ```
-*Note: it's better to enter the software version in hex format, all lowercase precedeed by 0x.* 
+{% include alert.html content="it's better to enter the software version in hex format, all lowercase precedeed by 0x." alert="Note"  icon="svg-info" color="blue" %}
 
 ## Querying a particular OMCI ME
 Query via OMCI ME Class Name
@@ -125,7 +125,7 @@ show me classid OmciClassId (e.g 7)
 The stick has a tricky image packing method, fortunately it has been reverse engineered. A script to help you create a custom rootfs can be found here: [https://github.com/nanomad/zyxel-pmg-3000-mod-kit](https://github.com/nanomad/zyxel-pmg-3000-mod-kit)
 
 ## Flashing a new rootfs
-*Note: all commands start from the twmanu shell*
+{% include alert.html content="all commands start from the twmanu shell." alert="Note"  icon="svg-info" color="blue" %}
 
 - Transfer the new mtd on the stick via tftp
 ```
