@@ -33,7 +33,8 @@ layout: default
 - [ONT FS.com GPON ONU Stick with MAC / SourcePhotonics SPS-34-24T-HP-TDFO](ont-SourcePhotonics-SPS-34-24T-HP-TDFO)
 - [Hilink HL23446](ont-Hilink-HL23446)
 - {:.text-red-200 } Dasan H650SFP 
-- {:.text-red-200 } DpOptics D23446  
+- {:.text-red-200 } DpOptics D23446    
+- {:.text-red-200 } Photonics SPS-34-24T-HP-TDFO
 
 # General setting
 
@@ -105,3 +106,4 @@ reboot
 
 - [FS.com](https://www.fs.com/it/products/133619.html)
 - [General setting of lantiq](https://forum.fibra.click/d/23881-ma5671a-e-vodafone-25-gbps/64)
+- [Usage GPON module SFP in Spain](https://forum.mikrotik.com/viewtopic.php?t=116364&start=300)
