@@ -32,6 +32,7 @@ layout: default
 - [Hilink HL23446](ont-Hilink-HL23446)
 - {:.text-red-200 } Dasan H650SFP 
 - {:.text-red-200 } DpOptics D23446  
+- {:.text-red-200 } Photonics SPS-34-24T-HP-TDFO
 
 ## Serial
 
@@ -57,8 +58,14 @@ set nDyingGaspEnable disable
 
 ## List of partitions
 
-- mtd2
-- mtd5
+| dev  | size     | erasesize | name          |
+| ---- | -------- | --------- | ------------- |
+| mtd0 | 00040000 | 00010000  | "uboot"       |
+| mtd1 | 00080000 | 00010000  | "uboot_env"   |
+| mtd2 | 00740000 | 00010000  | "linux"       |
+| mtd3 | 0061eedc | 00010000  | "rootfs"      |
+| mtd4 | 00370000 | 00010000  | "rootfs_data" |
+| mtd5 | 00800000 | 00010000  | "image1"      |
 
 ## List of firmwares and files
 
@@ -96,6 +103,13 @@ uci set gpon.ploam.nPassword="0x30 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39"
 uci commit 
 ```
 
+## Setting LOID and Checkcode Password
+```sh
+fw_setenv omci_loid 1234567890
+fw_setenv omci_lpwd password01
+```
+If LOID is disabled in the firmware try alternative software.
+
 ## Setting and check oem-generic
 ```sh
 fw_setenv target oem-generic
@@ -120,3 +134,4 @@ fw_setenv sgmii_mode 5
 - [Bypassing the HH3K up to 2.5Gbps using a BCM57810S NIC](https://www.dslreports.com/forum/r32230041-Internet-Bypassing-the-HH3K-up-to-2-5Gbps-using-a-BCM57810S-NIC)
 - [General setting of lantiq](https://forum.fibra.click/d/23881-ma5671a-e-vodafone-25-gbps/64)
 - [Manual and firmware for reflashing of HUAWEI MA5671A SFP module](https://github.com/nikbyte/huawei_ma5671a)
+- [Usage GPON module SFP in Spain](https://forum.mikrotik.com/viewtopic.php?t=116364&start=300)

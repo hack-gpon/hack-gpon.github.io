@@ -33,7 +33,8 @@ layout: default
 - [ONT FS.com GPON ONU Stick with MAC / SourcePhotonics SPS-34-24T-HP-TDFO](ont-SourcePhotonics-SPS-34-24T-HP-TDFO)
 - [Hilink HL23446](ont-Hilink-HL23446)
 - {:.text-red-200 } Dasan H650SFP 
-- {:.text-red-200 } DpOptics D23446  
+- {:.text-red-200 } DpOptics D23446    
+- {:.text-red-200 } Photonics SPS-34-24T-HP-TDFO
 
 Turning a [Nokia G-010S-P](ont-nokia-g-010s-p) into a [Nokia G-010S-A](ont-nokia-g-010s-a) is possible by changing layout from mtd
 
@@ -51,14 +52,14 @@ Configuration: asc0=0 115200 8-N-1
 ## List of software versions
 ## List of partitions
 
-| dev  | size     | erasesize | name     |
-| ---- | -------- | --------- | -------- |
-|mtd0 | 00040000 | 00010000 | "uboot" |
-|mtd1 | 00080000 | 00010000 | "uboot_env" |
-|mtd2 | 00740000 | 00010000 | "linux" |
-|mtd3 | 0061eedc | 00010000 | "rootfs" |
-|mtd4 | 00370000 | 00010000 | "rootfs_data" |
-|mtd5 | 00800000 | 00010000 | "image1" |
+| dev  | size     | erasesize | name          |
+| ---- | -------- | --------- | ------------- |
+| mtd0 | 00040000 | 00010000  | "uboot"       |
+| mtd1 | 00080000 | 00010000  | "uboot_env"   |
+| mtd2 | 00740000 | 00010000  | "linux"       |
+| mtd3 | 0061eedc | 00010000  | "rootfs"      |
+| mtd4 | 00370000 | 00010000  | "rootfs_data" |
+| mtd5 | 00800000 | 00010000  | "image1"      |
 
 ## List of firmwares and files
 
@@ -72,5 +73,6 @@ fw_setenv nDyingGaspEnable 0
 
 - [alcatel_lucent-lantiq_falcon](https://github.com/minhng99/alcatel_lucent-lantiq_falcon)
 - [uboot lantiq falcon](https://github.com/minhng99/u-boot_lantiq_falcon)
+- [Usage GPON module SFP in Spain](https://forum.mikrotik.com/viewtopic.php?t=116364&start=300)
 
 

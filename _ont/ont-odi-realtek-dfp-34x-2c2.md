@@ -27,7 +27,7 @@ layout: default
 ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc admin@192.168.1.1
 ```
 
-{% include image.html file="odi.jpg" alt="ODI DFP-34X-C2C" caption="ODI DFP-34X-C2C" %}
+{% include image.html file="realtek-dfp-34x-2c2.jpg" alt="ODI Realtek DFP-34X-C2C" caption="ODI Realtek DFP-34X-C2C" %}
 
 
 ## Firmware is interchangeable with:
