@@ -29,11 +29,11 @@ Once you access the stick via ssh you will be presented with a second tier login
 
 ## Firmware is interchangeable with:
 
-- [Zyxel PMG3000-D20B](ont-Zyxel-PMG3000-D20B)
-- [Halny HL-GSFP](ont-Halny-HL-GSFP)
-- [D-LINK DPN-100-Rev-A2](ont-D-LINK-DPN-100-Rev-A2)
-- [Ziza OP151s](ont-ziza-op151s)
-- [T&W TW2362H-CDEL](ont-T-W-TW2362H-CDEL)
+- [Zyxel PMG3000-D20B](/ont-Zyxel-PMG3000-D20B)
+- [Halny HL-GSFP](/ont-Halny-HL-GSFP)
+- [D-LINK DPN-100-Rev-A2](/ont-D-LINK-DPN-100-Rev-A2)
+- [Ziza OP151s](/ont-ziza-op151s)
+- [T&W TW2362H-CDEL](/ont-T-W-TW2362H-CDEL)
 
 ## List of software versions
 ## List of partitions

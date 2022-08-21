@@ -26,9 +26,9 @@ layout: default
 {% include alert.html content="The UFiber UF-Instant can be used as universal GPON stick with V2801F rootfs, but only with stock UF kernel (4.3.1/4.4.2): needed for Laser controller." alert="Info"  icon="svg-info" color="blue" %}
 
 
-- [VSOL V2801F](ont-vsol-v2801f)
-- [TWCGPON657](ont-twcgpon657)
-- [UFiber UF-Instant](ont-ufiber-uf-instant) 
+- [VSOL V2801F](/ont-vsol-v2801f)
+- [TWCGPON657](/ont-twcgpon657)
+- [UFiber UF-Instant](/ont-ufiber-uf-instant) 
 
 
 ## List of software versions
