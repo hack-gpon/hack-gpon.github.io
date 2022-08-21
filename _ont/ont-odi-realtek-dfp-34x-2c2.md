@@ -30,15 +30,6 @@ ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc admin@192.16
 {% include image.html file="realtek-dfp-34x-2c2.jpg" alt="ODI Realtek DFP-34X-C2C" caption="ODI Realtek DFP-34X-C2C" %}
 
 
-## Firmware is interchangeable with:
-
-- [ODI DFP-34X-C2C](ont-ODI-DFP-34X-C2C)
-- [VSOL V2801F](ont-vsol-V2801F)
-- [TWCGPON657](ont-TWCGPON657)
-- [UFiber UF-Instant](ont-UFiber-UF-Instant) 
-- [DFP-34X-2C2](ont-DFP-34X-2C2)
-- [CarlitoxxPro CPGOS03-0490 v2](ont-CarlitoxxPro-CPGOS03-0490-v2)
-
 ## List of software versions
 - V1.0-220530 Modded by [stich86](https://github.com/stich86) **SUGGESTED** since it has working VLAN translation. Download link: [github.com](https://github.com/Anime4000/RTL960x/files/8821809/M114_sfp_ODI_hybrid_220527_stich86_220530.tar.zip)
 - V1.0-220414
