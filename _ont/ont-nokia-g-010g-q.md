@@ -28,6 +28,8 @@ layout: default
 {% include image.html file="g-010g-q.png"  alt="G-010G-Q " caption="Nokia G-010G-Q" %}
 
 ## List of software versions
+- 3FE49494AOCK21
+
 ## List of partitions
 
 | dev  | size     | erasesize | name     |
