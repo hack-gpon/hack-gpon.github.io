@@ -23,6 +23,9 @@ layout: default
 | SSH         | ✅ user `ONTUSER`, password `7sp!lwUBz1`   |
 | Form Factor | miniONT SFP                                |
 
+{% include image.html file="ont-fs.jpg" alt="ONT FS.com GPON ONU" caption="ONT FS.com GPON ONU" %}
+{% include image.html file="ont-fs-box.jpg" alt="ONT FS.com GPON ONU in the box" caption="ONT FS.com GPON ONU in the box" %}
+
 ## Possible clones
 
 - SourcePhotonics SPS-34-24T-HP-TDFO
