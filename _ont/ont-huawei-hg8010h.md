@@ -189,12 +189,12 @@ success!
 
 ## v1-2
 
-{% include image.html file="HG8010H_Teardown_1.jpg"  alt="HG8010Hv1/2 Teardown" caption="HG8010Hv1/2: Teardown" %}
-{% include image.html file="HG8010H_Teardown_2.jpg"  alt="HG8010Hv1/2 Teardown" caption="HG8010Hv1/2: Teardown" %}
+{% include image.html file="HG8010H_teardown_1.jpg"  alt="HG8010Hv1/2 Teardown" caption="HG8010Hv1/2: Teardown" %}
+{% include image.html file="HG8010H_teardown_2.jpg"  alt="HG8010Hv1/2 Teardown" caption="HG8010Hv1/2: Teardown" %}
 
 ## v6
 
-{% include image.html file="HG8010H_Teardown_1_v6.jpg"  alt="HG8010Hv6 Teardown" caption="HG8010Hv6: Teardown" %}
-{% include image.html file="HG8010H_Teardown_2_v6.jpg"  alt="HG8010Hv6 Teardown" caption="HG8010Hv6: Teardown" %}
+{% include image.html file="HG8010H_teardown_1_v6.jpg"  alt="HG8010Hv6 Teardown" caption="HG8010Hv6: Teardown" %}
+{% include image.html file="HG8010H_teardown_2_v6.jpg"  alt="HG8010Hv6 Teardown" caption="HG8010Hv6: Teardown" %}
 
 
