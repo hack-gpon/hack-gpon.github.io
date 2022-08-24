@@ -43,6 +43,19 @@ layout: default
 ```sh
 set_serial_number ABCD12345678
 ```
+Or:
+```sh
+sfp_i2c -i8 -s "ABCD12345678"
+```
+
+## Obtain S/N setted
+```sh
+fw_printenv | grep nSerial
+```
+Or:
+```sh
+sfp_i2c -g
+```
 
 ## Setting PLOAM Password
 Software 6BA1896SPLQA41 and before:
@@ -80,7 +93,7 @@ sfp_i2c -i7 -s "SPGA"
 
 ## Setting Lantiq MAC address
 ```sh
-uci set network.Ict.macaddr=00:06:B5:07:D6:04
+uci set network.lct.macaddr=00:06:B5:07:D6:04
 uci set network.host.macaddr=00:06:B5:07:D8:04
 uci commit network.lct.macaddr=00:06:B5:07:D6:04
 uci commit network.host.macaddr=00:06:B5:07:D8:04
@@ -92,9 +105,20 @@ fw_setenv ipaddr 192.168.20.60
 fw_setenv gatewayip 192.168.20.1
 ```
 
+## Read all EEPROM
+```sh
+sfp_i2c -r
+```
+
 ## Setting Onu reboot
 ```sh
 reboot
+```
+
+## Reinitialize the EEPROM without rebooting 
+Warning: this will cause you to disconnect from the current ssh session
+```sh
+reload_i2c.sh
 ```
 
 
