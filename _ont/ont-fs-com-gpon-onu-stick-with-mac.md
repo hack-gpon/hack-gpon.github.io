@@ -19,7 +19,7 @@ layout: default
 | Optics      | SC/APC                                     |
 | IP address  | 192.168.1.10                               |
 | Web Gui     |                                            |
-| SSH         | ✅ user `ONTUSER`, password `7sp!lwUBz1.` |
+| SSH         | ✅ user `ONTUSER`, password `7sp!lwUBz1` |
 | Form Factor | miniONT SFP                                |
 
 ## Possible clones
