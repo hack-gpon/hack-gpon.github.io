@@ -137,6 +137,7 @@ reload_i2c.sh
 - 6BA1896SPLQA42 (Sep 18 2021)
 
 ## List of partitions
+When image0 is committed: 
 
 | dev  | size     | erasesize | name          |
 | ---- | -------- | --------- | ------------- |
@@ -146,6 +147,17 @@ reload_i2c.sh
 | mtd3 | 0061eedc | 00010000  | "rootfs"      |
 | mtd4 | 00370000 | 00010000  | "rootfs_data" |
 | mtd5 | 00800000 | 00010000  | "image1"      |
+
+When image1 is committed: 
+
+| dev  | size     | erasesize | name          |
+| ---- | -------- | --------- | ------------- |
+| mtd0 | 00040000 | 00010000  | "uboot"       |
+| mtd1 | 00080000 | 00010000  | "uboot_env"   |
+| mtd2 | 00740000 | 00010000  | "image0"      |
+| mtd3 | 00800000 | 00010000  | "linux"       |
+| mtd4 | 006d8077 | 00010000  | "rootfs"      |
+| mtd5 | 00410000 | 00010000  | "rootfs_data" |
 
 ## List of firmwares and files
 - [6BA1896SPLQA13 MTD0/U-Boot](https://mega.nz/file/wptjyYiS#Xj3cijX2bN0FexsZr1Wn7iRG0Wy4Z8vX0NyNBd1kBWo){: .btn } md5hash: 992b31a67c644aa68cf7f9caf956b1f9
