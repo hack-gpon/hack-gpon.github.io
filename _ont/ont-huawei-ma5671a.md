@@ -47,7 +47,7 @@ Configuration: asc0=0 115200 8-N-1
 
 ## Root procedure
 
-- [Root](ont-huawei-ma5671a-root)
+- [Root](/ont-huawei-ma5671a-root)
 
 ##  Disabling Dying Gasp
 ```sh
