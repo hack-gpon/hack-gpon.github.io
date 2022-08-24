@@ -19,8 +19,11 @@ layout: default
 | Optics      | SC/APC                                     |
 | IP address  | 192.168.1.10                               |
 | Web Gui     |                                            |
-| SSH         | ✅ user `ONTUSER`, password `7sp!lwUBz1` |
+| SSH         | ✅ user `ONTUSER`, password `7sp!lwUBz1`   |
 | Form Factor | miniONT SFP                                |
+
+{% include image.html file="ont-fs.jpg" alt="ONT FS.com GPON ONU" caption="ONT FS.com GPON ONU" %}
+{% include image.html file="ont-fs-box.jpg" alt="ONT FS.com GPON ONU in the box" caption="ONT FS.com GPON ONU in the box" %}
 
 ## Possible clones
 
