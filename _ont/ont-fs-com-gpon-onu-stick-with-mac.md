@@ -134,6 +134,7 @@ reload_i2c.sh
 
 ## List of software versions
 - 6BA1896SPLQA13 (Dec 16 2016)
+- 6BA1896SPLQA41
 - 6BA1896SPLQA42 (Sep 18 2021)
 
 ## List of partitions
