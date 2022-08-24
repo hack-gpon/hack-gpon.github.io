@@ -14,12 +14,13 @@ layout: default
 | Chipset     | Lantiq PEB98035                            |
 | Flash       | 16 MB                                      |
 | RAM         | 64 MB                                      |
-| System      | OpenWRT                                    |
+| Bootloader  | U-Boot 2011.12-lantiq-gpon-1.2.24          |
+| System      | OpenWRT 14.07_ltq (Kernel 3.10.49)         |
 | HSGMII      | Yes                                        |
 | Optics      | SC/APC                                     |
 | IP address  | 192.168.1.10                               |
 | Web Gui     |                                            |
-| SSH         | ✅ user `ONTUSER`, password `7sp!lwUBz1` |
+| SSH         | ✅ user `ONTUSER`, password `7sp!lwUBz1`   |
 | Form Factor | miniONT SFP                                |
 
 ## Possible clones
