@@ -269,60 +269,55 @@ layout: table_wrappers
 
     {%if site.last_edit_timestamp_script and site.gh_owner_name and site.gh_repository_name and page.path %}
     <script>
-        function parseFirstCommit(commit,filename) {
-            fetch(commit.url).then((response) => {
+        var listOfScannedFilename = [];
+
+        async function parseFirstCommit(commit,filename) {
+            return fetch(commit.url).then((response) => {
                 return response.json();
-            }).then((commits) => {
+            }).then(async function(commits) {
                 var old_filename = commits.files.filter(it => it.filename === filename && it.status === 'renamed').map(it => it.previous_filename);
-                if(old_filename[0] !== undefined) {
-                    fetch("https://api.github.com/repos/{{ site.gh_owner_name }}/{{ site.gh_repository_name }}/commits?path="+old_filename[0])
+                if(old_filename[0] !== undefined && !listOfScannedFilename.includes(old_filename[0])) {
+                    listOfScannedFilename.push(old_filename[0]);
+                    return fetch("https://api.github.com/repos/{{ site.gh_owner_name }}/{{ site.gh_repository_name }}/commits?path="+old_filename[0])
                     .then((response) => {
                         return response.json();
-                    }).then((commits) => {
+                    }).then(async function(commits) {
                         return parseCommitsList(commits, old_filename);
                     });
                 }
-                return null;
-            });
-            
+            });           
         }
-        function parseCommitsList(commits, filename) {
+        async function parseCommitsList(commits, filename) {
             var authors = commits.flatMap(x => [{...x.commit.author, ...x.author},{...x.commit.committer, ...x.committer}]).map(({date, ...keepAttrs}) => keepAttrs).filter((value, index, self) =>
                 index === self.findIndex((t) => (
                     t.login === value.login
                 )) && value.login !== "web-flow"
             );
 
-            console.log("initial authors - "+filename);
-            console.log(authors);
+            var inner = await parseFirstCommit(commits[commits.length -1], filename);
 
-            var inners = commits.map(it => (parseFirstCommit(it, filename)));
-
-            var inner = parseFirstCommit(commits[commits.length -1], filename);
-            
-            console.log("inner authors - "+filename);
-            console.log(inner);
 
             if(inner) {
+                inner = inner.filter(it => !authors.map(i => i.login).includes(it.login) && it.login !== "web-flow");
                 authors.push(...inner);
-            }
-            console.log("final authors - "+filename);
-            console.log(authors);
 
+            }
+            
 
             return authors;
         }
-        function setModifiedDate() {
+        async function setModifiedDate() {
         if (document.getElementById('last-modified')) {
+            listOfScannedFilename.push("{{ page.path }}");
             fetch("https://api.github.com/repos/{{ site.gh_owner_name }}/{{ site.gh_repository_name }}/commits?path={{ page.path }}")
                 .then((response) => {
                     return response.json();
                 })
-                .then((commits) => {
+                .then(async function(commits) {
                     var date = new Date(commits[0]['commit']['committer']['date']);
                     var modified = date.toLocaleDateString(undefined);
 
-                    var authors = parseCommitsList(commits, "{{ page.path }}");
+                    var authors = await parseCommitsList(commits, "{{ page.path }}");
                     
                     document.getElementById('last-modified').textContent = "Last Modified: " + modified;
                     document.getElementById('contributors').textContent =  authors.length + " "+ ( authors.length == 1? "Contributor" : "Contributors");
