@@ -63,7 +63,7 @@ Software 6BA1896SPLQA41 and before:
 fw_setenv nPassword "0x30 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39"
 ```
 
-Software 6BA1896SPLQA41 and after:
+Software 6BA1896SPLQA42 and after:
 ```sh
 sfp_i2c -i11 -s "0x30 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39"
 ```
@@ -75,7 +75,7 @@ fw_setenv omci_loid 1234567890
 fw_setenv omci_lpwd password01
 ```
 
-Software 6BA1896SPLQA41 and after:
+Software 6BA1896SPLQA42 and after:
 ```sh
 sfp_i2c -i9 -s "1234567890"
 sfp_i2c -i10 -s "password01"
