@@ -110,6 +110,16 @@ fw_setenv gatewayip 192.168.20.1
 sfp_i2c -r
 ```
 
+## Get Firmware version
+```sh
+strings /opt/lantiq/bin/omcid | grep ^software_Version | awk -F[=,] '{print $2}'
+```
+
+## Get Firmware build time
+```sh
+strings /opt/lantiq/bin/omcid | grep compiled
+```
+
 ## Setting Onu reboot
 ```sh
 reboot
@@ -123,8 +133,12 @@ reload_i2c.sh
 
 
 ## List of software versions
+- 6BA1896SPLQA13 (Dec 16 2016)
+- 6BA1896SPLQA42 (Sep 18 2021)
+
 ## List of partitions
 ## List of firmwares and files
+
 # Known Bugs
 # Miscellaneous Links
 
