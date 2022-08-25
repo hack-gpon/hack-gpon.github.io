@@ -30,7 +30,6 @@ From the zyxel shell you can move to a standard linux shell via the `linuxshell`
 
 ## Firmware is interchangeable with:
 
-- [Zyxel PMG3000-D20B](/ont-zyxel-pmg3000-d20b)
 - [Halny HL-GSFP](/ont-halny-hl-gsfp)
 - [D-LINK DPN-100-Rev-A2](/ont-d-link-dpn-100-rev-a2)
 - [Ziza OP151s](/ont-ziza-op151s)

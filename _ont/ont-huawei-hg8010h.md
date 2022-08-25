@@ -69,7 +69,7 @@ Now that this is done, the modified configuration file can be uploaded via the w
 
 > **Warning**  
 > All results need to be converted from Hex to Ascii  
-> [Converter](ascii-hex)
+> [Converter](/ascii-hex)
 
 - Get OLT information:
 

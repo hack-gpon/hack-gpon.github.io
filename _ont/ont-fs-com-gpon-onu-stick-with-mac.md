@@ -38,7 +38,7 @@ layout: default
 - [Nokia G-010S-P](/ont-nokia-g-010s-p)
 - [Hilink HL23446](/ont-hilink-hl23446)
 - {:.text-red-200 } Dasan H650SFP 
-- {:.text-red-200 } DpOptics D23446    
+- {:.text-red-200 } DpOptics D23446  
 - {:.text-red-200 } Photonics SPS-34-24T-HP-TDFO
 
 # General setting
