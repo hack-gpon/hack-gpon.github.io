@@ -1,7 +1,9 @@
 name: notify-telegram-pr
 
 on:
-  pull_request:
+  pull_request_target:
+    types: [opened, reopened]
+  issues:
     types: [opened, reopened]
 jobs:
   build:
@@ -9,10 +11,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: send telegram message on PR opened
+        if: github.event.pull_request
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
+          if: github.event.issue
           message: |
             ${{ github.actor }} created PR ${{ github.event.pull_request.title }}
             See changes: ${{ github.event.pull_request.html_url }}
+      - name: send telegram message on issue opened
+        if: github.event.issue
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          if: github.event.issue
+          message: |
+            ${{ github.actor }} created issue ${{ github.event.issue.title }}
+            See issue: ${{ github.event.issue.html_url }}
