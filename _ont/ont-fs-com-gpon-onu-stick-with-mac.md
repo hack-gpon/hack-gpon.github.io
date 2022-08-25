@@ -45,7 +45,7 @@ set_serial_number ABCD12345678
 ```
 
 ## Setting PLOAM Password
-Software 6BA1896SPLQA41 and before:
+Software 6BA1896SPLQA41 and before (See [Carlito Firmware](/ont-huawei-ma5671a-carlito))
 ```sh
 fw_setenv nPassword "0x30 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39"
 ```
@@ -56,7 +56,7 @@ sfp_i2c -i11 -s "0x30 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39"
 ```
 
 ## Setting LOID and Checkcode Password
-Software 6BA1896SPLQA41 and before:
+Software 6BA1896SPLQA41 and before (See [Carlito Firmware](/ont-huawei-ma5671a-carlito))
 ```sh
 fw_setenv omci_loid 1234567890
 fw_setenv omci_lpwd password01
