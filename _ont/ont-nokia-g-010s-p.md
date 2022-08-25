@@ -36,7 +36,7 @@ layout: default
 - {:.text-red-200 } DpOptics D23446    
 - {:.text-red-200 } Photonics SPS-34-24T-HP-TDFO
 
-Turning a [Nokia G-010S-P](ont-nokia-g-010s-p) into a [Nokia G-010S-A](ont-nokia-g-010s-a) is possible by changing layout from mtd
+Turning a [Nokia G-010S-P](/ont-nokia-g-010s-p) into a [Nokia G-010S-A](/ont-nokia-g-010s-a) is possible by changing layout from mtd
 
 ## Serial
 
