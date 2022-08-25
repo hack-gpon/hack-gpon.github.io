@@ -18,8 +18,8 @@ layout: default
 | HSGMII      | Yes                                              |
 | Optics      | SC/APC                                           |
 | IP address  | 10.10.1.1                                        |
-| Web Gui     | ✅ username `admin`, password `admin` or `1234` |
-| SSH         | ✅ username `admin`, password `admin` or `1234` |
+| Web Gui     | ✅ username `admin` or `guest`, password `1234` or `guest` |
+| SSH         | ✅ username `admin`, password `admin` |
 | Form Factor | miniONT SFP                                      |
 
 {% include image.html file="pmg3000-d20b.png" alt="PMG3000-D20B" caption="PMG3000-D20B" %}
@@ -30,11 +30,11 @@ From the zyxel shell you can move to a standard linux shell via the `linuxshell`
 
 ## Firmware is interchangeable with:
 
-- [Zyxel PMG3000-D20B](/ont-Zyxel-PMG3000-D20B)
-- [Halny HL-GSFP](/ont-Halny-HL-GSFP)
-- [D-LINK DPN-100-Rev-A2](/ont-D-LINK-DPN-100-Rev-A2)
+- [Zyxel PMG3000-D20B](/ont-zyxel-pmg3000-d20b)
+- [Halny HL-GSFP](/ont-halny-hl-gsfp)
+- [D-LINK DPN-100-Rev-A2](/ont-d-link-dpn-100-rev-a2)
 - [Ziza OP151s](/ont-ziza-op151s)
-- [T&W TW2362H-CDEL](/ont-T-W-TW2362H-CDEL)
+- [T&W TW2362H-CDEL](/ont-t-w-tw2362h-cdel)
 
 # List of software versions
 
@@ -76,7 +76,7 @@ set sn ALCLf0f0f0f0
 {% include alert.html content="the PLOAM is stored in the ASCII format." alert="Note"  icon="svg-info" color="blue" %}
 This can be done easily via web ui. If you prefer to do it via the shell use:
 ```sh
-manufactory
+hal
 set password PLOAMPASS
 ```
 
@@ -150,6 +150,11 @@ set actimage a
 system
 reboot
 ```
+
+# Reset Web Gui admin credentials
+
+Sometimes, under certain circumstances, the Web Gui admin credentials might get changed from the default `admin`/`1234` combination.
+To restore the default combination you can try following [this method](https://github.com/xvzf/zyxel-gpon-sfp/issues/6#issuecomment-1065864650).
 
 # Known Bugs
 - [Not working with Broadcom BCM57810S](https://github.com/xvzf/zyxel-gpon-sfp/issues/10)
