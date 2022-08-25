@@ -183,6 +183,7 @@ success!
 - [Exploring the Huawei HG8010H GPON ONT](https://www.linux.it/~md/text/gpon-sha2017.pdf)
 - [Unlock HG8010Hv3 softmode](https://lafibre.info/orange-installation/unlock-hg8010gv3-softmode/)
 - [Notes on a Huawei HG810H (N.B. SSL error)](https://umbriel.fr/blog/Notes_on_a_Huawei_HG8010H.html)
+- [Encrypt/Decrypt configuration file of most HuaWei HG routers](https://github.com/clippit/huawei-hg)
 
 
 # Teardown and other photos
