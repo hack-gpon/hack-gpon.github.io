@@ -26,3 +26,5 @@ Here some popular list if want to fool the OLT:
 | `DLNK` | Dlink                |
 | `ELTX` | Eltex                |
 | `ISKT` | Iskratel             |
+| `LQDE` | Lantiq               |
+| `SPGA` | SourcePhotonics      |

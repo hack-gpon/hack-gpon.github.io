@@ -28,7 +28,7 @@ layout: default
 
 - [Huawei MA5671A](/ont-huawei-ma5671a)
 - [Nokia G-010S-P](/ont-nokia-g-010s-p)
-- [ONT FS.com GPON ONU Stick with MAC / SourcePhotonics SPS-34-24T-HP-TDFO](/ont-SourcePhotonics-SPS-34-24T-HP-TDFO)
+- [ONT FS.com GPON ONU Stick with MAC / SourcePhotonics SPS-34-24T-HP-TDFO](/ont-fs-com-gpon-onu-stick-with-mac)
 - [Hilink HL23446](/ont-Hilink-HL23446)
 - {:.text-red-200 } Dasan H650SFP 
 - {:.text-red-200 } DpOptics D23446  
@@ -47,7 +47,7 @@ Configuration: asc0=0 115200 8-N-1
 
 ## Root procedure
 
-- [Root](ont-huawei-ma5671a-root)
+- [Root](/ont-huawei-ma5671a-root)
 
 ##  Disabling Dying Gasp
 ```sh
