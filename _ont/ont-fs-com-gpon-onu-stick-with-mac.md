@@ -12,6 +12,8 @@ layout: default
 | Vendor      | SourcePhotonics                            |
 | Model       | SPS-34-24T-HP-TDFO                         |
 | Chipset     | Lantiq PEB98035                            |
+| CPU         | MIPS 34Kc interAptiv                       |
+| CPU Clock   | 400MHz                                     |
 | Flash       | 16 MB                                      |
 | RAM         | 64 MB                                      |
 | Bootloader  | U-Boot 2011.12-lantiq-gpon-1.2.24          |
