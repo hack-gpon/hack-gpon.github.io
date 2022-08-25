@@ -78,6 +78,7 @@ set nDyingGaspEnable disable
 # General setting
 
 - [Carlito General Setting](/ont-huawei-ma5671a-carlito)
+- [Huawei Rooted General Setting](/ont-huawei-ma5671a-rooted)
 
 # Known Bugs
 
