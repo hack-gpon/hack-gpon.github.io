@@ -7,7 +7,6 @@ gem "rake"
 group :jekyll_plugins do
     gem "jekyll-last-modified-at"
     gem "jekyll-redirect-from"
-    gem "jekyll-webp"
     gem "jekyll-remote-theme"
     gem "jekyll-seo-tag"
     gem 'jekyll-default-layout'
