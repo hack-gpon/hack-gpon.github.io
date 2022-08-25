@@ -183,18 +183,19 @@ success!
 - [Exploring the Huawei HG8010H GPON ONT](https://www.linux.it/~md/text/gpon-sha2017.pdf)
 - [Unlock HG8010Hv3 softmode](https://lafibre.info/orange-installation/unlock-hg8010gv3-softmode/)
 - [Notes on a Huawei HG810H (N.B. SSL error)](https://umbriel.fr/blog/Notes_on_a_Huawei_HG8010H.html)
+- [Encrypt/Decrypt configuration file of most HuaWei HG routers](https://github.com/clippit/huawei-hg)
 
 
 # Teardown and other photos
 
 ## v1-2
 
-{% include image.html file="HG8010H_teardown_1.jpg"  alt="HG8010Hv1/2 Teardown" caption="HG8010Hv1/2: Teardown" %}
-{% include image.html file="HG8010H_teardown_2.jpg"  alt="HG8010Hv1/2 Teardown" caption="HG8010Hv1/2: Teardown" %}
+{% include image.html file="hg8010h_teardown_1.jpg"  alt="HG8010Hv1/2 Teardown" caption="HG8010Hv1/2: Teardown" %}
+{% include image.html file="hg8010h_teardown_2.jpg"  alt="HG8010Hv1/2 Teardown" caption="HG8010Hv1/2: Teardown" %}
 
 ## v6
 
-{% include image.html file="HG8010H_teardown_1_v6.jpg"  alt="HG8010Hv6 Teardown" caption="HG8010Hv6: Teardown" %}
-{% include image.html file="HG8010H_teardown_2_v6.jpg"  alt="HG8010Hv6 Teardown" caption="HG8010Hv6: Teardown" %}
+{% include image.html file="hg8010h_teardown_1_v6.jpg"  alt="HG8010Hv6 Teardown" caption="HG8010Hv6: Teardown" %}
+{% include image.html file="hg8010h_teardown_2_v6.jpg"  alt="HG8010Hv6 Teardown" caption="HG8010Hv6: Teardown" %}
 
 

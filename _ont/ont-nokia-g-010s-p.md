@@ -28,10 +28,9 @@ layout: default
 {% include alert.html content="G-010S-P and other models will not expose ethernet interface unless fiber cable is connected ([source](https://forum.mikrotik.com/viewtopic.php?t=116364&start=300))" alert="Warning" icon="svg-warning" color="yellow" %}
 
 ## Firmware is interchangeable with:
-- [Huawei MA5671A](ont-huawei-ma5671a)
-- [Nokia G-010S-P](ont-nokia-g-010s-p)
-- [ONT FS.com GPON ONU Stick with MAC / SourcePhotonics SPS-34-24T-HP-TDFO](ont-SourcePhotonics-SPS-34-24T-HP-TDFO)
-- [Hilink HL23446](ont-Hilink-HL23446)
+- [Huawei MA5671A](/ont-huawei-ma5671a)
+- [ONT FS.com GPON ONU Stick with MAC / SourcePhotonics SPS-34-24T-HP-TDFO](/ont-fs-com-gpon-onu-stick-with-mac)
+- [Hilink HL23446](/ont-hilink-hl23446)
 - {:.text-red-200 } Dasan H650SFP 
 - {:.text-red-200 } DpOptics D23446    
 - {:.text-red-200 } Photonics SPS-34-24T-HP-TDFO
