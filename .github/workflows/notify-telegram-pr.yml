@@ -3,6 +3,8 @@ name: notify-telegram-pr
 on:
   pull_request_target:
     types: [opened, reopened]
+  issues:
+    types: [opened, reopened]
 jobs:
   build:
     name: Notify Telegram
