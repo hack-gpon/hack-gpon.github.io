@@ -29,4 +29,4 @@ jobs:
           if: github.event.issue
           message: |
             ${{ github.actor }} created issue ${{ github.event.issue.title }}
-            See changes: ${{ github.event.issue.html_url }}
+            See issue: ${{ github.event.issue.html_url }}
