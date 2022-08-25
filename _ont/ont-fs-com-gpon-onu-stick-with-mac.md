@@ -129,11 +129,18 @@ reboot
 ```
 
 ## Reinitialize the EEPROM without rebooting 
-Warning: this will cause you to disconnect from the current ssh session
+{% include alert.html content="This will cause you to disconnect from the current ssh session."  alert="Warning"  icon="svg-warning" color="yellow" %}
 ```sh
 reload_i2c.sh
 ```
 
+## Reset EEPROM to default values and reinitialize 
+{% include alert.html content=This command is not reversible, all the EEPROM data will be restored to the factory values!"  alert="Warning"  icon="svg-warning" color="red" %}
+{% include alert.html content="This will cause you to disconnect from the current ssh session."  alert="Warning"  icon="svg-warning" color="yellow" %}
+```sh
+sfp_i2c -d yes
+reload_i2c.sh
+```
 
 ## List of software versions
 - 6BA1896SPLQA13 (Dec 16 2016)
