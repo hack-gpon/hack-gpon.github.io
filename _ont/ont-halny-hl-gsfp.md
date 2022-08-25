@@ -26,13 +26,10 @@ layout: default
 
 ## Firmware is interchangeable with:
 
-- [Huawei MA5671A](/ont-huawei-ma5671a)
-- [Nokia G-010S-P](/ont-nokia-g-010s-p)
-- [ONT FS.com GPON ONU Stick with MAC / SourcePhotonics SPS-34-24T-HP-TDFO](/ont-fs-com-gpon-onu-stick-with-mac)
-- [Hilink HL23446](/ont-Hilink-HL23446)
-- {:.text-red-200 } Dasan H650SFP 
-- {:.text-red-200 } DpOptics D23446    
-- {:.text-red-200 } Photonics SPS-34-24T-HP-TDFO
+- [Zyxel PMG3000-D20B](/ont-zyxel-pmg3000-d20b)
+- [D-LINK DPN-100-Rev-A2](/ont-d-link-dpn-100-rev-a2)
+- [Ziza OP151s](/ont-ziza-op151s)
+- [T&W TW2362H-CDEL](/ont-t-w-tw2362h-cdel)
 
 ## List of software versions
 ## List of partitions

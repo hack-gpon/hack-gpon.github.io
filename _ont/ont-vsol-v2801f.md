@@ -23,7 +23,6 @@ layout: default
 
 ## Firmware is interchangeable with:
 
-- [VSOL V2801F](/ont-vsol-v2801f)
 - [TWCGPON657](/ont-twcgpon657)
 - [UFiber UF-Instant](/ont-ufiber-uf-instant) 
 

@@ -28,6 +28,7 @@ layout: default
 {% include alert.html content="G-010S-P and other models will not expose ethernet interface unless fiber cable is connected ([source](https://forum.mikrotik.com/viewtopic.php?t=116364&start=300))" alert="Warning" icon="svg-warning" color="yellow" %}
 
 ## Firmware is interchangeable with:
+
 - [Huawei MA5671A](/ont-huawei-ma5671a)
 - [ONT FS.com GPON ONU Stick with MAC / SourcePhotonics SPS-34-24T-HP-TDFO](/ont-fs-com-gpon-onu-stick-with-mac)
 - [Hilink HL23446](/ont-hilink-hl23446)
