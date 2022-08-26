@@ -74,6 +74,7 @@ set nDyingGaspEnable disable
 - [Huawei Rooted MTD5](https://ma5671a.s3.nl-ams.scw.cloud/mA5671a_root_mtd5.img){: .btn }  md5hash: 0e4cfdc1b96be6581869b26b48789556
 - [1224abort.bin](https://ma5671a.s3.nl-ams.scw.cloud/1224ABORT.bin){: .btn }  md5hash: 10e94a4b4acdc82dec20c7904b69e5c0
 - [right.com.cn 19 July 2022](https://mega.nz/file/9fpSkYTb#wNyjAj1kOLWC9HozX-gTQ-TS3VFqRYg--x1rm7RSuDg)
+- [right.com.cn 20 Ago 2022](https://mega.nz/file/tShUVBxB#3HMtviRNxAlIiydA76h-lXT288nNdgBKwTtryQoHHHQ)
 
 # General setting
 
