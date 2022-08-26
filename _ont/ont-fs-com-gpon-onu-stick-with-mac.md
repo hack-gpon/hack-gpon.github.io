@@ -47,7 +47,7 @@ layout: default
 {% include alert.html content="It is strongly recommended that you unlock the bootloader before making any major changes to the firmware." alert="Warning"  icon="svg-warning" color="yellow" %}
 ```sh
 fw_setenv bootdelay 5
-fw_setenv asc 0
+fw_setenv asc0 0
 fw_setenv preboot "gpio input 105;gpio input 106;gpio input 107;gpio input 108;gpio set 3;gpio set 109;gpio set 110;gpio clear 423;gpio clear 422;gpio clear 325;gpio clear 402;gpio clear 424"
 ```
 If you haven't done this and the stick doesn't work due to your changes you can follow the [Huawei MA5671A unlock guide](/ont-huawei-ma5671a-root)
