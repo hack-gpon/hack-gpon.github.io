@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="116.52087mm"
+   height="36.783329mm"
+   viewBox="0 0 116.52087 36.783329"
+   version="1.1"
+   id="svg28164"
+   sodipodi:docname="ont-not-found.svg"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   inkscape:export-filename="C:\Users\simon\source\repos\hack-gpon.github.io\assets\vector\ont-not-found.png"
+   inkscape:export-xdpi="25.4"
+   inkscape:export-ydpi="25.4"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs11" />
+  <sodipodi:namedview
+     id="namedview9"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.25128012"
+     inkscape:cx="1353.0716"
+     inkscape:cy="1052.6101"
+     inkscape:window-width="2560"
+     inkscape:window-height="1351"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg28164" />
+  <rect
+     style="fill:#27262b;fill-opacity:1;fill-rule:evenodd;stroke-width:1.65235;stroke-miterlimit:9.33333"
+     id="rect1781"
+     width="512"
+     height="512"
+     x="0"
+     y="0" />
+  <path
+     id="path31930"
+     d="m 7.423,226.18383 v 27.0933 c 0,2.49383 2.0216806,4.51556 4.515553,4.51556 0.436099,0 0.845951,0 1.241334,0 h 12.305314 v 4.51555 c 0,1.12888 2.257773,2.25777 4.515549,2.25777 l 53.029048,2.20923 c 2.111954,2.92247 4.961367,4.56229 7.930874,4.5641 h 56.444368 v -4.51556 h 9.0311 v -4.51554 c 4.98774,0 9.03109,-3.03253 9.03109,-6.77333 0,-3.74079 -4.04335,-6.77332 -9.03109,-6.77332 v -4.51555 h -9.0311 v -4.51556 H 90.960672 c -2.899751,0.0711 -5.66861,1.70271 -7.73244,4.55529 l -53.227482,2.21804 c -2.257776,0 -4.515549,1.12889 -4.515549,2.25778 v 4.51554 H 13.78181 c -0.559308,-0.0179 -1.181041,0 -1.843257,0 v -27.0933 z m 83.537672,18.06221 h 6.773324 v 11.28887 11.28887 h -6.773324 c -3.740808,0 -6.773325,-5.05425 -6.773325,-11.28887 0,-6.23462 3.032517,-11.28887 6.773325,-11.28887 z m 11.288868,0 h 4.51555 v 22.57774 h -4.51555 z m 9.0311,0 h 4.51555 v 22.57774 h -4.51555 z m 9.0311,0 h 22.57775 v 22.57774 h -22.57775 z m -45.155493,4.51555 h 4.515548 v 13.54665 h -13.54665 v -9.03111 h -4.515548 v 7.90222 h -13.54665 v -6.77333 h -4.515548 v 5.64444 H 30.00075 v -9.0311 h 4.515548 v 4.51555 h 4.515548 v -4.51555 h 13.54665 v 5.64444 h 4.515553 v -6.77333 h 13.546649 v 7.90222 h 4.515549 z m 72.248793,0 h 4.51555 v 13.54665 h -4.51555 z m 8.92526,4.51554 c 2.50494,0 4.62139,1.01081 4.62139,2.25778 0,1.24697 -2.11645,2.25778 -4.62139,2.25778 z"
+     style="fill:#3cc285;fill-opacity:1;stroke-width:4.26666" />
+  <path
+     d="M 199.02587,292.877 H 504.57811 V 219.12301 H 199.02587 Z m 49.67103,-4.51555 h -45.15548 v -8.27851 h 34.61922 v -49.60231 h -34.61922 v -6.84206 h 45.15548 z m 186.64278,0 h -182.1272 v -64.72288 h 182.1272 z m 64.7229,0 h -60.20737 v -8.27851 h 51.32678 l -0.15061,-47.41327 h -51.17625 v -9.0311 h 60.20736 z M 233.6451,234.17485 v 42.14513 h -30.10368 v -42.14513 h 16.25598 z m 240.82934,6.02073 v 3.01037 h -7.52593 v 3.01037 h 7.52593 v 3.01036 h -7.52593 v 3.01037 h 7.52593 v 3.01037 h -7.52593 v 3.01036 h 7.52593 v 3.01037 h -7.52593 v 3.01037 h 7.52593 v 3.01036 h -7.52593 v 3.01037 h 7.52593 v 6.02073 h -34.61923 l 0.30123,-17.91168 -0.30123,-21.22308 h 34.61923 z m 12.04149,36.1244 h -7.52592 v -39.13476 l 7.49767,-0.0706"
+     id="path2"
+     style="fill:#ffffff;stroke-width:4.26666" />
+  <rect
+     id="rect13056"
+     height="37.629578"
+     x="60.148411"
+     y="243.86583"
+     width="4.5141273"
+     transform="rotate(-30.427871)"
+     style="fill:#ffffff;stroke-width:4.26666" />
+  <rect
+     id="rect13056-0"
+     height="37.629578"
+     x="-41.968182"
+     y="249.0239"
+     width="4.5141273"
+     transform="rotate(-47.800843)"
+     style="fill:#ffffff;stroke-width:4.26666" />
+  <rect
+     id="rect13056-3"
+     height="37.629578"
+     x="319.45248"
+     y="-197.6151"
+     width="4.5141273"
+     transform="matrix(0.86226741,0.50645328,0.50645326,-0.86226741,0,0)"
+     style="fill:#ffffff;stroke-width:4.26666" />
+  <rect
+     id="rect13056-0-9"
+     height="37.629578"
+     x="337.3288"
+     y="-94.891479"
+     width="4.5141273"
+     transform="matrix(0.67170969,0.74081448,0.74081446,-0.67170971,0,0)"
+     style="fill:#ffffff;stroke-width:4.26666" />
+</svg>
