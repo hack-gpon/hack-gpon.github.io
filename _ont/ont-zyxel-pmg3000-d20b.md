@@ -105,14 +105,14 @@ SW_VER1:0xabcedf
 {% include alert.html content="it's better to enter the software version in hex format, all lowercase precedeed by 0x." alert="Note"  icon="svg-info" color="blue" %}
 
 ## See link speed
-This SFP have HSGMII enabled by default, link_status=`5` HSGMII 2.5Gbit, link_status=`4` SGMII 1Gbit:
+This SFP have HSGMII enabled by default, `link_status=5` HSGMII 2.5Gbit, `link_status=4` SGMII 1Gbit:
 ```
 linuxshell
 onu lanpsg 0
 ```
 
 ## Connection state
-To see the connection state use this command, curr_state=`5` O5 state, curr_state=`1` all states other than O5:
+To see the connection state use this command, `curr_state=5` O5 state, `curr_state=1` all states other than O5:
 ```
 linuxshell
 onu ploamsg
