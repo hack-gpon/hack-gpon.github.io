@@ -134,6 +134,21 @@ sw_active=1
 
 - Auto-sensing mode to switch between SGMII/HiSGMII
 
+# Low level modding
+
+## TTL connection
+
+The stick has exposed TTL pads:
+
+{% include image.html file="ont-odi-realtek-dfp-34x-2c2/ttl.jpg"  alt="DFP-34X-2C2 TTL Connection" caption="DFP-34X-2C2 TTL Connection" %}
+
+- TX is on the left (purple lead);
+- RX on the right (white lead);
+- VCC (+3.3V) is SFP pin 15 or 16;
+- GND is on SFP pin 10;
+
+The serial port uses 115200 baud 8N1
+
 # Miscellaneous Links
 
 - [Hacking RTL960x](https://github.com/Anime4000/RTL960x)
