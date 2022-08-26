@@ -172,7 +172,7 @@ To restore the default combination you can try following [this method](https://g
 - [Not working with Broadcom BCM57810S](https://github.com/xvzf/zyxel-gpon-sfp/issues/10)
 - Issue on IPv6 discovery. But we are not sure if is a edge case of a particular ISP or not
 - [Some stick have a custom password](https://github.com/xvzf/zyxel-gpon-sfp/issues/6)
-- fw_setenv command doesn't work
+
 
 # Miscellaneous Links
 
