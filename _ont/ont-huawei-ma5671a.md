@@ -35,13 +35,13 @@ layout: default
 
 ## Serial
 
-```
-USB TTL(UART) Adapter ------- SFP 20pins Molex connector
-3.3V ---red ------------------pin #15 and #16
-TX -----orange ---------------pin #2
-RX -----yellow ---------------pin #7
-GND ----green --------------- pin #10
-```
+| USB TTL(UART) Adapter | SFP 20pins Molex connector |
+| --------------------- | -------------------------- |
+| 3.3V                  | pin #15 and #16            |
+| TX                    | pin #2                     |
+| RX                    | pin #7                     |
+| GND                   | pin #10                    |
+
 Configuration: asc0=0 115200 8-N-1
 
 ## Root procedure

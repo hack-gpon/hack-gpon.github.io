@@ -1,5 +1,6 @@
 ---
-title: ODI Realtek DFP-34X-C2C (XPON)
+title: ODI Realtek DFP-34X-C2C 
+description: New model 2022
 has_children: false
 layout: default
 ---
@@ -31,9 +32,13 @@ ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc admin@192.16
 
 
 ## List of software versions
-- V1.0-220530 Modded by [stich86](https://github.com/stich86) **SUGGESTED** since it has working VLAN translation. Download link: [github.com](https://github.com/Anime4000/RTL960x/files/8821809/M114_sfp_ODI_hybrid_220527_stich86_220530.tar.zip)
+- V1.0-220530 
 - V1.0-220414
 - V1.0-220304
+
+## List of firmwares and files
+- [V1.0-220530 Modded](https://github.com/Anime4000/RTL960x/files/8821809/M114_sfp_ODI_hybrid_220527_stich86_220530.tar.zip){: .btn } 
+ by [stich86](https://github.com/stich86) **SUGGESTED** since it has working VLAN translation.  
 
 ## List of partitions
  
@@ -57,6 +62,22 @@ ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc admin@192.16
 This stick supports dual boot. 
 
 `k0` and `r0` respectively contain the kernel and firmware of the first image, `k1` and `r1` the kernel and the firmware of the second one
+
+# Serial
+
+The stick has exposed TTL pads:
+
+{% include image.html file="ont-odi-realtek-dfp-34x-2c2/ttl.jpg"  alt="DFP-34X-2C2 TTL Connection" caption="DFP-34X-2C2 TTL Connection" %}
+{% include image.html file="ont-odi-realtek-dfp-34x-2c2/ttl-2.jpg"  alt="DFP-34X-2C2 TTL Pin" caption="DFP-34X-2C2 TTL Pin" %}
+
+| USB TTL(UART) Adapter | wire colour in picture | SFP 20pins Molex connector and TTL pinout |
+| --------------------- | ---------------------- | ----------------------------------------- |
+| 3.3V                  | blue                   | pin #15 and #16                           |
+| TX                    | purple                 | TX                                        |
+| RX                    | white                  | RX                                        |
+| GND                   | green                  | pin #10                                   |
+
+Configuration: asc0=0 115200 8-N-1
 
 # Useful Commands
 
@@ -136,22 +157,11 @@ sw_active=1
 
 # Low level modding
 
-## TTL connection
-
-The stick has exposed TTL pads:
-
-{% include image.html file="ont-odi-realtek-dfp-34x-2c2/ttl.jpg"  alt="DFP-34X-2C2 TTL Connection" caption="DFP-34X-2C2 TTL Connection" %}
-
-- TX is on the left (purple lead);
-- RX on the right (white lead);
-- VCC (+3.3V) is SFP pin 15 or 16;
-- GND is on SFP pin 10;
-
-The serial port uses 115200 baud 8N1
 
 # Miscellaneous Links
 
 - [Hacking RTL960x](https://github.com/Anime4000/RTL960x)
 - [Ditch ONU, use GPON SFP on Business Grade Router, Mikrotik/Ubiquiti/pfSense (Home Networking)](https://forum.lowyat.net/topic/4925452)
+- [For the new model ODI ZTE DFP-34X-C2C](/ont-odi-zte-dfp-34x-2c2)
 
 

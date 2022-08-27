@@ -1,7 +1,9 @@
 ---
-title: ODI ZTE DFP-34X-C2C (GPON)
+title: ODI ZTE DFP-34X-C2C
+description: Old model 2020
 has_children: false
 layout: default
+nav_exclude: true
 ---
 
 # Hardware Specifications
@@ -32,3 +34,4 @@ layout: default
 - [GPON module Dfp-34g-2c2 sfp](https://forum.openwrt.org/t/gpon-module-dfp-34g-2c2-sfp/51641)
 - [Ditch ONU, use GPON SFP on Business Grade Router, Mikrotik/Ubiquiti/pfSense (Home Networking)](https://forum.lowyat.net/topic/4925452)
 - [Usage GPON module SFP in Spain](https://forum.mikrotik.com/viewtopic.php?t=116364&start=300)
+- [For the new model ODI Realtek DFP-34X-C2C](/ont-odi-realtek-dfp-34x-2c2)
