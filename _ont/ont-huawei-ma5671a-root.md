@@ -7,13 +7,12 @@ layout: default
 
 1. take the SFP molex and the 4 coloured cables and solder them to the molex according to the following diagram:
 
-```
-USB TTL(UART) Adapter ------- SFP 20pins Molex connector
-3.3V ---red ------------------pin #15 and #16
-TX -----orange ---------------pin #2
-RX -----yellow ---------------pin #7
-GND ----green --------------- pin #10
-```
+| USB TTL(UART) Adapter | wire colour in picture | SFP 20pins Molex connector |
+| --------------------- | ---------------------- | -------------------------- |
+| 3.3V                  | red                    | pin #15 and #16            |
+| TX                    | orange                 | pin #2                     |
+| RX                    | yellow                 | pin #7                     |
+| GND                   | green                  | pin #10                    |
 
 {% include alert.html content="Use GND wire as ON/OFF switch, otherwise there will be a slight delay before data is displayed on the console (putty/TeraTerm)." alert="Important"  icon="svg-warning" color="yellow" %}
 
@@ -120,5 +119,6 @@ mtd -e image1 write mtd5.bin image1
 - [Come avere i 2.5 Gbps su un unico dispositivo senza il Fastgate](https://forum.fibra.click/d/17836-come-avere-i-25-gbps-su-un-unico-dispositivo-senza-il-fastgate)
 - [Support MA5671A SFP GPON](https://forum.openwrt.org/t/support-ma5671a-sfp-gpon/48042)
 - [La fibre Orange à 2Gbps, sur un routeur MikroTik 10Gbps CCR2004, via un ONT SFP+](https://lafibre.info/remplacer-livebox/guide-de-connexion-fibre-directement-sur-un-routeur-voire-meme-en-2gbps/msg832904/#msg832904)
+- [Bypassing the HH3K up to 2.5Gbps using a BCM57810S NIC](https://www.dslreports.com/forum/r32230041-Internet-Bypassing-the-HH3K-up-to-2-5Gbps-using-a-BCM57810S-NIC)
 - [Bypassing the HH3K up to 2.5Gbps using a BCM57810S NIC](https://www.dslreports.com/forum/r32230041-Internet-Bypassing-the-HH3K-up-to-2-5Gbps-using-a-BCM57810S-NIC)
 

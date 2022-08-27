@@ -43,6 +43,7 @@ This ont seems to support dual boot (notice partitions "ImageA" and "ImageB"), h
 ## List of firmwares and files
 
 # Serial
+
 {% include image.html file="g-010g-q-serial-pinout.jpg"  alt="G-010G-Q " caption="G-010G-Q: serial pinout" %}
 You can easily communicate with the ONT using a TTL converter (for example the CH341A programmer in TTL mode) by connecting the converters' pins to the ONT following the pinout shown in the image above
 
