@@ -86,9 +86,9 @@ This stick supports dual boot.
 
 ## Getting/Setting the ONT's S/N
 ```sh
-# /etc/scripts/bin flash get GPON_SN
+# /etc/scripts/flash get GPON_SN
 GPON_SN=TMBB00000000
-# /etc/scripts/bin flash set GPON_SN TMBB0A1B2C3D
+# /etc/scripts/flash set GPON_SN TMBB0A1B2C3D
 ```
 
 ## Getting/Setting the ONT's PLOAM password
@@ -96,9 +96,9 @@ GPON_SN=TMBB00000000
 {% include alert.html content="The PLOAM password is stored in ASCII format" alert="Info" icon="svg-info" color="blue" %}
 
 ```sh
-# /etc/scripts/bin flash get GPON_PLOAM_PASSWD
+# /etc/scripts/flash get GPON_PLOAM_PASSWD
 GPON_PLOAM_PASSWD=AAAAAAAAAA
-# /etc/scripts/bin flash set GPON_PLOAM_PASSWD AAAAAAAAAA
+# /etc/scripts/flash set GPON_PLOAM_PASSWD AAAAAAAAAA
 ```
 
 ## Enabling the Web UI
@@ -225,8 +225,8 @@ The original file md5sum is: `4aea2f72bacc11256b7e2c1583d2ad4f`
 The patched file md5sum is: `da20327c4c002e4c27f82f6ee63dbc1a`
 ## Enabling PLOAM logging
 ```sh
-/etc/scripts/bin flash set OMCI_DBGLVL 1
-/etc/scripts/bin flash set OMCI_DBGLOGFILE 1
+/etc/scripts/flash set OMCI_DBGLVL 1
+/etc/scripts/flash set OMCI_DBGLOGFILE 1
 reboot
 /bin/omcicli set logfile 1 ffffffff
 ```
