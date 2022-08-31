@@ -2,6 +2,7 @@
 title: D-LINK DPN-100 Rev A2
 has_children: false
 layout: default
+parent: D-LINK
 ---
 
 # Hardware Specifications

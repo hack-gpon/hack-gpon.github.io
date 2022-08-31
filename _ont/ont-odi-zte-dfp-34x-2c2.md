@@ -3,7 +3,7 @@ title: ODI ZTE DFP-34X-C2C
 description: Old model 2020
 has_children: false
 layout: default
-nav_exclude: true
+parent: ODI
 ---
 
 # Hardware Specifications

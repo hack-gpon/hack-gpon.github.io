@@ -2,6 +2,7 @@
 title: ZTE F601 
 has_children: false
 layout: default
+parent: ZTE
 ---
 
 # Hardware Specifications

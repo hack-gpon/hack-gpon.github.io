@@ -3,6 +3,7 @@ title: Zyxel PMG3000-D20B
 has_children: false
 alias: Ziza OP151S, T&W TW2362H-CDEL
 layout: default
+parent: Zyxel
 ---
 
 # Hardware Specifications

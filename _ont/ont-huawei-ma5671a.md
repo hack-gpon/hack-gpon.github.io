@@ -2,6 +2,7 @@
 title: Huawei MA5671A
 has_children: true
 layout: default
+parent: Huawei
 ---
 
 # Hardware Specifications
