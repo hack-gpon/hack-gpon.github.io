@@ -39,7 +39,7 @@ layout: table_wrappers
             </svg>
         </symbol>
         {% include icons/alert.html %}
-        {% include icons/copy.html %}
+        {% include icons/code_copy.html %}
         {% include icons/external_link.html %}
         {% include icons/custom.html %}
     </svg>
@@ -334,6 +334,10 @@ layout: table_wrappers
 {% endif %}
 </body>
 {% if site.mermaid_enabled != false %}
-{%- include mermaid_init.html -%}
+<script>
+  var config = {% include mermaid_config.js %};
+  mermaid.initialize(config);
+  window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+</script>
 {% endif %}
 </html>
