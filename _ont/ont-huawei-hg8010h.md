@@ -2,6 +2,7 @@
 title: Huawei HG8010H 
 has_children: false
 layout: default
+parent: Huawei
 ---
 
 # Hardware Specifications

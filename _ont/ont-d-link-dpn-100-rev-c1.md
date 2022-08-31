@@ -2,6 +2,7 @@
 title: D-LINK DPN-100 Rev C1
 has_children: false
 layout: default
+parent: D-LINK
 ---
 
 # Hardware Specifications

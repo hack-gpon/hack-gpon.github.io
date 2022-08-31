@@ -2,6 +2,7 @@
 title: Nokia G-010G-P
 has_children: false
 layout: default
+parent: Nokia
 ---
 
 # Hardware Specifications

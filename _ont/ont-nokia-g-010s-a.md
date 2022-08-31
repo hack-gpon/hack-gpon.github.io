@@ -2,6 +2,7 @@
 title: Nokia G-010S-A
 has_children: false
 layout: default
+parent: Nokia
 ---
 
 # Hardware Specifications

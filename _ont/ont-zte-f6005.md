@@ -2,6 +2,7 @@
 title: ZTE F6005 
 has_children: false
 layout: default
+parent: ZTE
 ---
 
 # Hardware Specifications
