@@ -34,7 +34,7 @@ plugins:
   - jekyll-default-layout
 
 color_scheme: "light"
-url: "https://hack-gpon.github.io/"
+url: "https://hack-gpon.github.io"
 nav_sort: case_sensitive
 
 aux_links:
