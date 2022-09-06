@@ -56,6 +56,8 @@ set nDyingGaspEnable disable
 
 ## List of software versions
 
+- V8R017C00S202B
+
 ## List of partitions
 
 | dev  | size     | erasesize | name          |
