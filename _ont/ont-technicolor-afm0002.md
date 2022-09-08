@@ -40,6 +40,7 @@ Configuration: asc0=0 115200 8-N-1
 
 
 # List of software versions
+- V1.7.6-170626 (FWB & WND)
 - V1_7_8_180122 
 - V1_7_8_180725
 - V1_7_8_181123
