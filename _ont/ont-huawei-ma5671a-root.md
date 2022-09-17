@@ -84,7 +84,7 @@ except (KeyboardInterrupt, SystemExit):
     ser.close()
     sys.exit(1)
 ```
-
+{:style="counter-reset:none"}
 4. Reboot the stick
 5. Open Tera Term (or other serial terminal emulator), after load press `enter` to activate the console
 
@@ -93,11 +93,9 @@ except (KeyboardInterrupt, SystemExit):
 
 {% include alert.html content="It is possible that there are still linux kernel init outputs, in which case press enter until they are finished (under no circumstances should vim be started if such scripts are sent to stdout), if you do not press `enter` often enough there may be a kernel panic and a stick reboot." alert="Important"  icon="svg-warning" color="yellow" %}
 
-{% include image.html file="new-root-procedure\code-after-enter-shell.jpg"  alt="Linux kernel init output after enter in console" caption="Linux kernel init output after enter in console" %}
+{% include image.html file="new-root-procedure\code-after-enter-shell.png"  alt="Linux kernel init output after enter in console" caption="Linux kernel init output after enter in console" %}
 
-
-
-
+{:style="counter-reset:none"}
 5. With `cat` change the default shell from `/opt/lantiq/bin/minishell` to `/bin/ash` the file `/etc/passwd`:
 
 ```shell
@@ -115,11 +113,12 @@ sed -i  "s|/opt/lantiq/bin/minishell|/bin/ash|g" /etc/passwd
 
 {% include alert.html content="The cause of these kernel panics could be insufficient power supply." alert="Info"  icon="svg-info" color="blue" %}
 
-
+{:style="counter-reset:none"}
 6. Reboot it this time connected to the router with cage or mediaconverter, with the port set to an IP on the 192.168.1.0/24 subnet (the stick has the IP 192.168.1.10)
 
 {% include alert.html content="If your subnet is 192.168.1.0/24 make sure you have no ip conflicts." alert="Note"  icon="svg-warning" color="yellow" %}
 
+{:style="counter-reset:none"}
 7. Run the terminal and login to the stick with ssh
 
 ```shell
@@ -128,6 +127,7 @@ ssh root@192.168.1.10
 
 The password is `admin123`.
 
+{:style="counter-reset:none"}
 9. Make a backup of all partitions, an easy way is:
 - On the stick run:
 ```shell
