@@ -85,7 +85,8 @@ except (KeyboardInterrupt, SystemExit):
     sys.exit(1)
 ```
 
-4. Reboot the stick, after load press `enter` to activate the console
+4. Reboot the stick
+5. Open Tera Term (or other serial terminal emulator), after load press `enter` to activate the console
 
 {% include image.html file="new-root-procedure\press-enter.jpg"  alt="Press enter for activate the console" caption="Press enter for activate the console" %}
 
@@ -94,16 +95,25 @@ except (KeyboardInterrupt, SystemExit):
 
 {% include image.html file="new-root-procedure\code-after-enter-shell.jpg"  alt="Linux kernel init output after enter in console" caption="Linux kernel init output after enter in console" %}
 
-5. With `vim` change the default shell from `minishell` to `ash`:
+
+
+
+5. With `cat` change the default shell from `/opt/lantiq/bin/minishell` to `/bin/ash` the file `/etc/passwd`:
 
 ```shell
-vim /etc/passwd
+sed -i  "s|/opt/lantiq/bin/minishell|/bin/ash|g" /etc/passwd
 ```
-{% include alert.html content="Be careful not to mess with `vim`." alert="Important"  icon="svg-warning" color="red" %}
+{% include alert.html content="Do not use `vim`!" alert="Important" icon="svg-warning" color="red" %}
 
-- Remove `/opt/lantiq/bin/minishell` with `delete` key
-- Press `i` key and type `/bin/ash`
-- Press `esc` key and type `!wq`.
+{% include alert.html content="Take attention to kernel panics, they happen often! Be quick, if a kernel panic happens wait for the reboot and try again." alert="Important"  icon="svg-warning" color="yellow" %}
+
+
+```shell
+[   34.612000] Kernel panic - not syncing: Fatal exception in interrupt
+[   34.612000] Rebooting in 3 seconds..
+```
+
+{% include alert.html content="The cause of these kernel panics could be insufficient power supply." alert="Info"  icon="svg-info" color="blue" %}
 
 
 6. Reboot it this time connected to the router with cage or mediaconverter, with the port set to an IP on the 192.168.1.0/24 subnet (the stick has the IP 192.168.1.10)
@@ -112,11 +122,11 @@ vim /etc/passwd
 
 7. Run the terminal and login to the stick with ssh
 
-{% include alert.html content="SSH uses an outdated set of algorithm/ciphers, you can connect using the following command:" alert="Note"  icon="svg-info" color="blue" %}
-
 ```shell
-ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc root@192.168.1.10
+ssh root@192.168.1.10
 ```
+
+The password is `admin123`.
 
 9. Make a backup of all partitions, an easy way is:
 - On the stick run:
@@ -128,7 +138,7 @@ cat /proc/mtd
 nc -l -p 1234 > mtdX.bin
 ```
 And in the lantiq shell:
-```
+```shell
 cat /dev/mtdX | nc 192.168.1.11 1234
 ```
 10. upload the mtd5 image in  `/tmp` whit the command 
@@ -145,7 +155,7 @@ setenv committed_image 1
 saveenv
 printenv committed_image
 ```
-12. upload the mtd1 image in  `/tmp` whit the command 
+12. upload the mtd1 image in `/tmp` whit the command 
 ```
 scp mtd2.bin root@192.168.1.10:/tmp/
 ```
@@ -153,9 +163,7 @@ then write the mtd2 file it into the second partition (the 0) with the command:
 ```
 mtd -e image1 write mtd2.bin image1
 ```
-
-{% include alert.html content="You could also have done it as a serial, but from here it is much quicker
-" alert="Info"  icon="svg-info" color="blue" %}
+{% include alert.html content="You could also have done it as a serial, but from here it is much quicker with SSH" alert="Info"  icon="svg-info" color="blue" %}
 
 # Miscellaneous Links
 - [Come avere i 2.5 Gbps su un unico dispositivo senza il Fastgate](https://forum.fibra.click/d/17836-come-avere-i-25-gbps-su-un-unico-dispositivo-senza-il-fastgate)
