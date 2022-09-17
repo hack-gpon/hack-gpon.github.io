@@ -18,6 +18,8 @@ layout: default
 | RAM         | 64 MB                                      |
 | Bootloader  | U-Boot 2011.12-lantiq-gpon-1.2.24          |
 | System      | OpenWRT 14.07_ltq (Kernel 3.10.49)         |
+| Serial baud | 115200                                     |
+| Load addr   | 0x80800000                                 |
 | HSGMII      | Yes                                        |
 | Optics      | SC/APC                                     |
 | IP address  | 192.168.1.10                               |
