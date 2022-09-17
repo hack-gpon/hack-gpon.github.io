@@ -1,16 +1,16 @@
 ---
-title: Nokia G-010S-Q
+title: Leox LXT-010S-H
 has_children: false
 layout: default
-parent: Nokia
+parent: Leox
 ---
 
 # Hardware Specifications
 
 |             |             |
 | ----------- | ----------- |
-| Vendor      | Nokia       |
-| Model       | G-010S-Q    |
+| Vendor      | Leox        |
+| Model       | LXT-010S-H  |
 | Chipset     | RTL9601CI   |
 | Flash       |             |
 | RAM         |             |
