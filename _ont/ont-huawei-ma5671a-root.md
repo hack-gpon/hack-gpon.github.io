@@ -152,9 +152,8 @@ mtd -e image1 write mtd5.bin image1
 ```
 12. change the `committed` variabile with
 ```
-setenv committed_image 1
-saveenv
-printenv committed_image
+fw_setenv committed_image 1
+fw_printenv committed_image
 ```
 13. upload the mtd1 image in `/tmp` whit the command 
 ```
