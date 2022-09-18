@@ -28,7 +28,8 @@ pip install pyserial
 {% include image.html file="ma5671a-root-2.jpg"  alt="Molex SFP" caption="Molex SFP" %}
 
 {:style="counter-reset:none"}
-4. Run this programme and only then connect the GND pin
+4. Open Tera Term (or other serial terminal emulator), find the correct serial port of the TTL adapter, change the port on the script on line 7 instead of `COM8`.
+5. After this, run the following python script and connect the GND pin:
 
 ```py
 import sys
