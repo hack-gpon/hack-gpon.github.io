@@ -28,7 +28,8 @@ pip install pyserial
 {% include image.html file="ma5671a-root-2.jpg"  alt="Molex SFP" caption="Molex SFP" %}
 
 {:style="counter-reset:none"}
-4. Run this programme and only then connect the GND pin
+4. Open Tera Term (or other serial terminal emulator), find the correct serial port of the TTL adapter, change the port on the script on line 7 instead of `COM8`.
+5. After this, run the following python script and connect the GND pin:
 
 ```py
 import sys
@@ -151,17 +152,16 @@ mtd -e image1 write mtd5.bin image1
 ```
 12. change the `committed` variabile with
 ```
-setenv committed_image 1
-saveenv
-printenv committed_image
+fw_setenv committed_image 1
+fw_printenv committed_image
 ```
-13. upload the mtd1 image in `/tmp` whit the command 
+13. upload the mtd2 image in `/tmp` whit the command 
 ```
 scp mtd2.bin root@192.168.1.10:/tmp/
 ```
 then write the mtd2 file it into the second partition (the 0) with the command:
 ```
-mtd -e image1 write mtd2.bin image1
+mtd -e image0 write mtd2.bin image0
 ```
 {% include alert.html content="You could also have done it as a serial, but from here it is much quicker with SSH" alert="Info"  icon="svg-info" color="blue" %}
 
