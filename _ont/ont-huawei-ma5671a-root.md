@@ -161,7 +161,7 @@ scp mtd2.bin root@192.168.1.10:/tmp/
 ```
 then write the mtd2 file it into the second partition (the 0) with the command:
 ```
-mtd -e image1 write mtd2.bin image1
+mtd -e image0 write mtd2.bin image0
 ```
 {% include alert.html content="You could also have done it as a serial, but from here it is much quicker with SSH" alert="Info"  icon="svg-info" color="blue" %}
 
