@@ -1,5 +1,5 @@
 ---
 title: Zyxel
-has_children: false
+has_children: true
 layout: default
 ---
