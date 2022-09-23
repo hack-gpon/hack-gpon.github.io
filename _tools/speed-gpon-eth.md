@@ -1,7 +1,7 @@
 ---
 title: Theoretical maximum speed calculator
 has_children: false
-nav_order: 5
+nav_order: 4
 description: Tool for calculating maximum speeds
 layout: default
 ---
