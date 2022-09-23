@@ -2,6 +2,7 @@
 title: Technicolor AFM0003
 has_children: false
 layout: default
+parent: Technicolor
 ---
 
 # Hardware Specifications
