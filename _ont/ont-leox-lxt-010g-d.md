@@ -1,5 +1,5 @@
 ---
-title: Leox LXT-010S-H
+title: Leox LXT-010G-D
 has_children: false
 layout: default
 parent: Leox
@@ -10,17 +10,17 @@ parent: Leox
 |             |                                      |
 | ----------- | ------------------------------------ |
 | Vendor      | Leox                                 |
-| Model       | LXT-010S-H                           |
-| Chipset     | RTL9601CI                            |
+| Model       | LXT-010G-D                           |
+| Chipset     |                                      |
 | Flash       |                                      |
 | RAM         |                                      |
-| System      | Linux 3.18 (Luna SDK 3.3)             |
-| HSGMII      | ✅                                   |
+| System      | Linux (Luna SDK )                    |
+| HSGMII      | No                                   |
 | Optics      |                                      |
 | IP address  | 192.168.100.1/24                     |
 | Web Gui     |                                      |
 | Telnet      | ✅ user `leox`, password `leolabs_7` |
-| Form Factor | miniONT SFP                          |
+| Form Factor | ONT                                  |
 
 
 ## List of software versions

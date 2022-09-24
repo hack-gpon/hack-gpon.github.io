@@ -14,7 +14,7 @@ parent: Nokia
 | Chipset               | Realtek RTL9601B                                                                                                   |
 | Flash                 | Winbond [W25Q128JV](https://www.winbond.com/resource-files/w25q128jv%20revf%2003272018%20plus.pdf) 3V 128M-BIT SPI |
 | RAM                   | DDR2 325MHz                                                                                                        |
-| System                | Linux (Luna SDK)                                                                                                   |
+| System                | Linux (Luna SDK 1.9)                                                                                                   |
 | HSGMII                | No                                                                                                                 |
 | Optics                | SC/APC                                                                                                             |
 | IP address            | 192.168.100.1                                                                                                      |
