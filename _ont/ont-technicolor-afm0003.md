@@ -11,8 +11,8 @@ parent: Technicolor
 | ----------- | ----------------------------------------------- |
 | Vendor      | Technicolor                                     |
 | Model       | AFM0003TIM                                      |
-| Chipset     | Realtek RTL9601CI/D                             |
-| Flash       |                                                 |
+| Chipset     | Realtek RTL9601C                                |
+| Flash       | 256 MB                                          |
 | RAM         |                                                 |
 | System      | Linux 2.6 (Luna SDK 1.9)                        |
 | HSGMII      |                                                 |

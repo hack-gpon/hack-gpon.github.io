@@ -12,7 +12,7 @@ parent: Technicolor
 | Vendor      | Technicolor                                     |
 | Model       | AFM0002TIM/FWB/WND                              |
 | Chipset     | Realtek RTL9601B                                |
-| Flash       |                                                 |
+| Flash       | 32 MB                                           |
 | RAM         |                                                 |
 | System      | Linux (Luna SDK)                                |
 | HSGMII      | NO                                              |
