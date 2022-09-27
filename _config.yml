@@ -100,6 +100,9 @@ collections:
   gpon:
     permalink: "/:path/"
     output: true
+  sfp_cage:
+    permalink: "/:path/"
+    output: true
 
 just_the_docs:
   collections:
@@ -110,4 +113,7 @@ just_the_docs:
       nav_fold: false
     gpon:
       name: GPON
+      nav_fold: false
+    sfp_cage:
+      name: SFP cage
       nav_fold: false
