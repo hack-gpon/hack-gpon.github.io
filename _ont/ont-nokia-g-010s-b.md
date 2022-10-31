@@ -1,5 +1,5 @@
 ---
-title: Nokia G-010S-A
+title: Nokia G-010S-B
 has_children: false
 layout: default
 parent: Nokia
@@ -10,7 +10,7 @@ parent: Nokia
 |             |                                          |
 | ----------- | ---------------------------------------- |
 | Vendor      | Nokia                                    |
-| Model       | G-010S-A                                 |
+| Model       | G-010S-B                                 |
 | Chipset     | Lantiq PEB98035                          |
 | Flash       | 16 MB                                    |
 | RAM         | 64 MB                                    |
