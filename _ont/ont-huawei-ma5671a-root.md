@@ -12,7 +12,7 @@ layout: default
 | 3.3V                  | red                    | pin #15 and #16            |
 | TX                    | orange                 | pin #2                     |
 | RX                    | yellow                 | pin #7                     |
-| GND                   | green                  | pin #10                    |
+| GND                   | green                  | pin #14                    |
 
 {% include alert.html content="Use GND wire as ON/OFF switch, otherwise there will be a slight delay before data is displayed on the console (putty/TeraTerm)." alert="Important"  icon="svg-warning" color="yellow" %}
 
