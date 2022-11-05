@@ -41,7 +41,9 @@ parent: Huawei
 | 3.3V                  | pin #15 and #16            |
 | TX                    | pin #2                     |
 | RX                    | pin #7                     |
-| GND                   | pin #10                    |
+| GND                   | pin #14 and #10            |
+
+For GND prefer pin #14 over #10 as it is disconnected on some board revisions.
 
 Configuration: asc0=0 115200 8-N-1
 
