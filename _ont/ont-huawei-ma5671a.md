@@ -43,9 +43,12 @@ parent: Huawei
 | RX                    | pin #7                     |
 | GND                   | pin #14 and #10            |
 
-For GND prefer pin #14 over #10 as it is disconnected on some board revisions.
-
 Configuration: asc0=0 115200 8-N-1
+
+{% include alert.html content="Try PIN 10 or other GND PINs if it doesn't work with 14." alert="Note"  icon="svg-warning" color="yellow" %}
+
+{% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if it doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
+
 
 ## Root procedure
 
