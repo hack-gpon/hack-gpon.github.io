@@ -124,6 +124,8 @@ ssh root@192.168.1.10
 
 The password is `admin123`.
 
+{% include alert.html content="If you use OpenSSH >= 8.8 you will have to enable some deprecated algorithms: ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss [...]" alert="Info"  icon="svg-info" color="blue" %}
+
 {:style="counter-reset:none"}
 11. Make a backup of all partitions, an easy way is:
 - On the stick run:
@@ -146,6 +148,9 @@ cat /dev/mtdX | nc 192.168.1.11 1234
 ```
 scp mtd5.bin root@192.168.1.10:/tmp/
 ```
+
+{% include alert.html content="If you use OpenSSH >= 8.8 you will have to use the legacy protocol and enable some deprecated algorithms: scp -O -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss [...]" alert="Info"  icon="svg-info" color="blue" %}
+
 then write the mtd5 file it into the second partition (the 1) with the command:
 ```
 mtd -e image1 write mtd5.bin image1
