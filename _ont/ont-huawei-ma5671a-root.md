@@ -16,6 +16,10 @@ layout: default
 
 {% include alert.html content="Use GND wire as ON/OFF switch, otherwise there will be a slight delay before data is displayed on the console (putty/TeraTerm)." alert="Important"  icon="svg-warning" color="yellow" %}
 
+{% include alert.html content="Try PIN 10 or other GND PINs if it doesn't work with 14." alert="Note"  icon="svg-warning" color="yellow" %}
+
+{% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if it doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
+
 {:style="counter-reset:none"}
 1. Install python and `pyserial` with `pip`
 ```shell
