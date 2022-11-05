@@ -87,13 +87,13 @@ except (KeyboardInterrupt, SystemExit):
 ```
 
 {:style="counter-reset:none"}
-5. Reboot the stick
-6. Open Tera Term (or other serial terminal emulator), after load press `enter` to activate the console
+6. Reboot the stick
+7. Open Tera Term (or other serial terminal emulator), after load press `enter` to activate the console
 
 {% include image.html file="new-root-procedure\press-enter.jpg"  alt="Press enter for activate the console" caption="Press enter for activate the console" %}
 
 {:style="counter-reset:none"}
-7. With `sed` change the default shell from `/opt/lantiq/bin/minishell` to `/bin/ash` the file `/etc/passwd`:
+8. With `sed` change the default shell from `/opt/lantiq/bin/minishell` to `/bin/ash` the file `/etc/passwd`:
 
 ```shell
 sed -i  "s|/opt/lantiq/bin/minishell|/bin/ash|g" /etc/passwd
@@ -111,12 +111,12 @@ sed -i  "s|/opt/lantiq/bin/minishell|/bin/ash|g" /etc/passwd
 {% include alert.html content="The cause of these kernel panics could be insufficient power supply." alert="Info"  icon="svg-info" color="blue" %}
 
 {:style="counter-reset:none"}
-8. Reboot it this time connected to the router with cage or mediaconverter, with the port set to an IP on the 192.168.1.0/24 subnet (the stick has the IP 192.168.1.10)
+9. Reboot it this time connected to the router with cage or mediaconverter, with the port set to an IP on the 192.168.1.0/24 subnet (the stick has the IP 192.168.1.10)
 
 {% include alert.html content="If your subnet is 192.168.1.0/24 make sure you have no ip conflicts." alert="Note"  icon="svg-warning" color="yellow" %}
 
 {:style="counter-reset:none"}
-9. Run the terminal and login to the stick with ssh
+10. Run the terminal and login to the stick with ssh
 
 ```shell
 ssh root@192.168.1.10
@@ -125,7 +125,7 @@ ssh root@192.168.1.10
 The password is `admin123`.
 
 {:style="counter-reset:none"}
-10. Make a backup of all partitions, an easy way is:
+11. Make a backup of all partitions, an easy way is:
 - On the stick run:
 ```shell
 cat /proc/mtd
@@ -142,7 +142,7 @@ cat /dev/mtdX | nc 192.168.1.11 1234
 {% include alert.html content="Replace 192.168.1.11 with you machine IP's address" alert="Info" icon="svg-info" color="blue" %}
 
 {:style="counter-reset:none"}
-11. upload the mtd5 image in  `/tmp` whit the command 
+12. upload the mtd5 image in  `/tmp` whit the command 
 ```
 scp mtd5.bin root@192.168.1.10:/tmp/
 ```
@@ -150,7 +150,7 @@ then write the mtd5 file it into the second partition (the 1) with the command:
 ```
 mtd -e image1 write mtd5.bin image1
 ```
-12. change the `committed` variabile with
+13. change the `committed` variabile with
 ```
 fw_setenv committed_image 1
 fw_printenv committed_image
