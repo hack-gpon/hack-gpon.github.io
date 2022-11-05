@@ -115,6 +115,17 @@ sed -i  "s|/opt/lantiq/bin/minishell|/bin/ash|g" /etc/passwd
 
 {% include alert.html content="If your subnet is 192.168.1.0/24 make sure you have no ip conflicts." alert="Note"  icon="svg-warning" color="yellow" %}
 
+{:style="counter-reset:none"}
+1. Run the terminal and login to the stick with ssh
+
+```shell
+ssh root@192.168.1.10
+```
+
+The password is `admin123`.
+
+{% include alert.html content="If you use a modern OpenSSH version (e.g. >= 8.8) you will have to enable some deprecated algorithms: ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss [...]" alert="Info"  icon="svg-info" color="blue" %}
+
 # Miscellaneous Links
 - [Come avere i 2.5 Gbps su un unico dispositivo senza il Fastgate](https://forum.fibra.click/d/17836-come-avere-i-25-gbps-su-un-unico-dispositivo-senza-il-fastgate)
 - [Support MA5671A SFP GPON](https://forum.openwrt.org/t/support-ma5671a-sfp-gpon/48042)
