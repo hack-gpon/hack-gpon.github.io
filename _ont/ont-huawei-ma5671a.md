@@ -49,16 +49,13 @@ Configuration: asc0=0 115200 8-N-1
 
 - [Root](/ont-huawei-ma5671a-root)
 
-##  Disabling Dying Gasp
-```sh
-set nDyingGaspEnable disable
-```
-
 ## List of software versions
 
 - V8R017C00S202B
 
 ## List of partitions
+
+## When booting from image0
 
 | dev  | size     | erasesize | name          |
 | ---- | -------- | --------- | ------------- |
@@ -68,6 +65,17 @@ set nDyingGaspEnable disable
 | mtd3 | 0061eedc | 00010000  | "rootfs"      |
 | mtd4 | 00370000 | 00010000  | "rootfs_data" |
 | mtd5 | 00800000 | 00010000  | "image1"      |
+
+## When booting from image1
+
+| dev  | size     | erasesize | name          |
+| ---- | -------- | --------- | ------------- |
+| mtd0 | 00040000 | 00010000  | "uboot"       |
+| mtd1 | 00080000 | 00010000  | "uboot_env"   |
+| mtd2 | 00740000 | 00010000  | "image0       |
+| mtd3 | 00800000 | 00010000  | "linux"       |
+| mtd4 | 006d8077 | 00010000  | "rootfs"      |
+| mtd5 | 00410000 | 00010000  | "rootfs_data" |
 
 ## List of firmwares and files
 
@@ -83,7 +91,27 @@ set nDyingGaspEnable disable
 - [Carlito General Setting](/ont-huawei-ma5671a-carlito)
 - [Huawei Rooted General Setting](/ont-huawei-ma5671a-rooted)
 
-# Known Bugs
+# Useful commands
+
+## Transferring files to the stick
+
+{% include alert.html content="If you use a modern OpenSSH version (e.g. >= 8.8) you will have to use the legacy protocol and enable some deprecated algorithms: scp -O -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss [...]" alert="Info" icon="svg-info" color="blue" %}
+
+```sh
+# scp rootfs.bin root@192.168.1.10:/tmp/
+```
+
+## Flashing a new rootfs
+
+{% include alert.html content="Only the inactive image can be flashed" alert="Info" icon="svg-info" color="blue" %}
+
+The follwing examples flashes a new rootfs to image1 and boots to it
+```sh
+# mtd -e image1 write /tmp/rootfs.bin image1
+# fw_setenv committed_image 1
+# fw_setenv image1_is_valid 1
+# reboot
+```
 
 # Miscellaneous Links
 
