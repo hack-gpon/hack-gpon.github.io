@@ -153,7 +153,7 @@ scp mtd5.bin root@192.168.1.10:/tmp/
 
 then write the mtd5 file it into the second partition (the 1) with the command:
 ```
-mtd -e image1 write mtd5.bin image1
+mtd -e image1 write /tmp/mtd5.bin image1
 ```
 13. change the `committed` variabile with
 ```
