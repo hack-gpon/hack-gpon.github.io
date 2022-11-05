@@ -8,3 +8,9 @@ layout: default
 # General setting
 
 [Edit sfp_a2_info file](https://forum.openwrt.org/t/support-ma5671a-sfp-gpon/48042/24)
+
+# Disable dying gasp
+
+```sh
+# fw_setenv nDyingGaspEnable 0 
+```
