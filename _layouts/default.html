@@ -284,8 +284,10 @@ layout: table_wrappers
           document.getElementById('contributors').textContent = authors.length + " " + (authors.length == 1 ? "Contributor" : "Contributors");
 
           document.getElementById('contributors-modal-list').innerHTML = authors.map(x => "<li><a href='" + x.html_url + "'><img class='avatar' src='" + x.avatar_url + "'><span>" + x.name + "</span<</a></li>").join('');
-        } catch (error) {
-          console.log(`Error: ${err.message}`);
+        } catch (err) {
+          document.getElementById('last-modified').textContent = "Sorry, last modified not currently available";
+          document.getElementById('contributors').textContent = "Contributors";
+          document.getElementById('contributors-modal-list').innerHTML = "<li>Sorry, list not currently available</li>";
         }
       });
     }

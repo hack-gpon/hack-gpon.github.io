@@ -3,11 +3,13 @@ title: Root Huawei MA5671A Web App
 has_children: false
 parent: Huawei MA5671A
 layout: default
+nav_exclude: true
+search_exclude: true
 ---
 
 <h1>Root Huawei MA5671A Web App</h1>
 <button id="start-button" class="btn" data-toogle="modal" data-target="#root-modal">Start root!</button>
-<div class="modal" data-modal="root-modal" id="root-modal">
+<div class="modal" data-modal="root-modal" data-modal-backdrop="static" id="root-modal">
     <div class="modal-content">
         <div class="modal-header">
         <span class="close">&times;</span>
@@ -20,14 +22,38 @@ layout: default
     </div>
 </div>
 <script>
-    let startButton = document.getElementById("start-button");
+    const acontroller = new AbortController();
+    const cs = acontroller.signal;
+    class LineBreakTransformer {
+        constructor() { 
+            this.chunks = "";
+        }
+        transform(chunk, controller) {
+            this.chunks += chunk;
+            const lines = this.chunks.split("\n");
+            this.chunks = lines.pop();
+            lines.forEach((line) => controller.enqueue(line));
+        }
+        flush(controller) {
+            controller.enqueue(this.chunks);
+        }
+    }
+    let rootModal = document.getElementById("root-modal");
     let textarea = document.getElementById('root-status');
-    startButton.addEventListener('click', async function(event) {
+    rootModal.addEventListener('modal-close', async function(event) {
+        acontroller.abort();
+    });
+    rootModal.addEventListener('modal-open', async function(event) {
+        root({signal: cs});
+    });
+    async function root({ signal } = {}) {
+        textarea.value = "";
         let port;
         try {
             port = await navigator.serial.requestPort();
         } catch (err) {
-            alert(`Error: ${err.message}`);
+            textarea.value += `Error: ${err.message}\n`;
+            console.log(`Error: ${err.message}\n`);
             return;
         }
         if (!port) {
@@ -38,51 +64,54 @@ layout: default
         try {
             await port.open({ baudRate: 115200 });
         } catch (err) {
-            alert(`Error: ${err.message}`);
+            textarea.value += `Error: ${err.message}\n`;
+            console.log(`Error: ${err.message}\n`);
             return;
         }
         for(let i = 0; i <1000; i++) {
-            const reader = port.readable.getReader();
+            const textDecoder = new TextDecoderStream();
+            const textEncoder = new TextEncoder();
+            const reader = textDecoder.readable.pipeThrough(new TransformStream(new LineBreakTransformer())).getReader();            
             const writer = port.writable.getWriter();
-            const encoder = new TextEncoder();
             try {
                 while (true) {
                     console.log('await');
                     const { value, done } = await reader.read();
-                    if (done && value.startsWith('U-Boot')) {
+                    if (value.startsWith('U-Boot')) {
                         textarea.value += '[+] Received! transfer enable command...\n';
                         textarea.value += '[+] Transfer command sequence 1\n';
                         let t_end = Date() + 3000;
                         while (Date() < t_end) 
-                            writer.write(ecnoder.encode(String.fromCharCode(3)));
+                            writer.write(textEncoder.encode(String.fromCharCode(3)));
                         await delay(1000);
                         textarea.value += '[+] Transfer command sequence 2\n';
-                        writer.write(ecnoder.encode('setenv bootdelay 3\n'));
+                        writer.write(textEncoder.encode('setenv bootdelay 3\n'));
                         await delay(1000);
                         textarea.value += '[+] Transfer command sequence 3\n';
-                        writer.write(ecnoder.encode('setenv asc0 0\n'));
+                        writer.write(textEncoder.encode('setenv asc0 0\n'));
                         await delay(1000);
                         textarea.value += '[+] Transfer command sequence 4\n';
-                        writer.write(ecnoder.encode(
+                        writer.write(textEncoder.encode(
                             'setenv preboot "gpio input 105;gpio input 106;gpio input 107;gpio input 108;gpio set 3;gpio set 109;gpio set 110;gpio clear 423;gpio clear 422;gpio clear 325;gpio clear 402;gpio clear 424"\n'));
                         await delay(1000);
                         textarea.value += '[+] Transfer command sequence 5\n';
-                        writer.write(ecnoder.encode('saveenv\n'));
+                        writer.write(textEncoder.encode('saveenv\n'));
                         await delay(1000);
                         textarea.value += '[+] Transfer command sequence 6\n';
-                        writer.write(ecnoder.encode('reset\n'));
+                        writer.write(textEncoder.encode('reset\n'));
                         textarea.value += '[+] Enable command transfer complete! rebooting...\n';
                         break;
                     }
                 }
-            } catch (error) {
-                alert(`Error: ${err.message}`);
+            } catch (err) {
+                textarea.value += `Error: ${err.message}\n`;
+                console.log(`Error: ${err.message}\n`);
             } finally {
                 reader.releaseLock();
                 writer.releaseLock();
             }
         }
-    });
+    }
 </script>
 
 
