@@ -119,6 +119,8 @@ sed -i  "s|/opt/lantiq/bin/minishell|/bin/ash|g" /etc/passwd
 
 {% include alert.html content="If your subnet is 192.168.1.0/24 make sure you have no ip conflicts." alert="Note"  icon="svg-warning" color="yellow" %}
 
+{% include alert.html content="Be sure to disable SFP TX fault detection otherwise the RX loss will prevent you from connecting to the mini SFP ONT at this point. Don't simply attach the fiber optic to work it around or you OLT may ban you." alert="Note"  icon="svg-warning" color="yellow" %}
+
 {:style="counter-reset:none"}
 1. Run the terminal and login to the stick with ssh
 
