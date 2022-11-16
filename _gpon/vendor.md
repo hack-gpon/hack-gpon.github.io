@@ -28,3 +28,4 @@ Here some popular list if want to fool the OLT:
 | `ISKT` | Iskratel             |
 | `LQDE` | Lantiq               |
 | `SPGA` | SourcePhotonics      |
+| `PTIN` | Altice/PT Inovação   |
