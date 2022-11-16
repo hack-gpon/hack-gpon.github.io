@@ -58,7 +58,10 @@ parent: ZTE
 - the F601v7 is mounted 'upside down' to save on waveguides, the LEDs would be on the bottom of the PCB, so it would have to be turned upside down to make it cooler...
 - the F601v6 turns on and runs even with 9 V input
 - F601v7 turns on and runs even with 5 V input
+
 # Miscellaneous Links
+
+- [ZTE config.bin decoder](https://github.com/mkst/zte-config-utility)
 
 
 # Theardown and other photos
