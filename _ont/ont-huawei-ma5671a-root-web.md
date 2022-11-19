@@ -76,10 +76,10 @@ search_exclude: true
             const reader = textDecoder.readable.pipeThrough(new TransformStream(new LineBreakTransformer())).getReader();            
             const textEncoder = new TextEncoderStream();
             const writerStreamClosed = textEncoder.readable.pipeTo(port.writable);
-            const writer = textEncoder.writable;
+            const writer = textEncoder.writable.getWriter();
             const interval = setInterval(function(){ 
                 for(let k=0; k<1000;k++)
-                    writer.write(textEncoder.encode(String.fromCharCode(3))); 
+                    writer.write(String.fromCharCode(3)); 
             }, 0);
             try {
                 while (true) {
