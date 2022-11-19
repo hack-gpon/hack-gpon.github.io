@@ -41,9 +41,11 @@ search_exclude: true
     let rootModal = document.getElementById("root-modal");
     let textarea = document.getElementById('root-status');
     rootModal.addEventListener('modal-close', async function(event) {
+        console.log("abort");
         acontroller.abort();
     });
     rootModal.addEventListener('modal-open', async function(event) {
+        console.log("start");
         root({signal: cs});
     });
     async function root({ signal } = {}) {
@@ -72,11 +74,11 @@ search_exclude: true
             const textDecoder = new TextDecoderStream();
             const readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
             const reader = textDecoder.readable.pipeThrough(new TransformStream(new LineBreakTransformer())).getReader();            
-            const textEncoder = new TextEncoder();
+            const textEncoder = new TextEncoderStream();
             const writerStreamClosed = textEncoder.readable.pipeTo(port.writable);
             const writer = textEncoder.writable;
             const interval = setInterval(function(){ 
-                for(int k=0; k<1000;k++)
+                for(let k=0; k<1000;k++)
                     writer.write(textEncoder.encode(String.fromCharCode(3))); 
             }, 0);
             try {
