@@ -70,20 +70,20 @@ search_exclude: true
         }
         for(let i = 0; i <1000; i++) {
             const textDecoder = new TextDecoderStream();
-            const textEncoder = new TextEncoder();
+            const readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
             const reader = textDecoder.readable.pipeThrough(new TransformStream(new LineBreakTransformer())).getReader();            
-            const writer = port.writable.getWriter();
+            const textEncoder = new TextEncoder();
+            const writerStreamClosed = textEncoder.readable.pipeTo(port.writable);
+            const writer = textEncoder.writable;
+            const interval = setInterval(function(){ writer.write(textEncoder.encode(String.fromCharCode(3))); }, 1);
             try {
                 while (true) {
                     console.log('await');
                     const { value, done } = await reader.read();
                     if (value.startsWith('U-Boot')) {
                         textarea.value += '[+] Received! transfer enable command...\n';
-                        textarea.value += '[+] Transfer command sequence 1\n';
-                        let t_end = Date() + 3000;
-                        while (Date() < t_end) 
-                            writer.write(textEncoder.encode(String.fromCharCode(3)));
                         await delay(1000);
+                        clearInterval(interval);
                         textarea.value += '[+] Transfer command sequence 2\n';
                         writer.write(textEncoder.encode('setenv bootdelay 3\n'));
                         await delay(1000);
