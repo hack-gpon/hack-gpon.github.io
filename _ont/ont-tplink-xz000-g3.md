@@ -11,13 +11,14 @@ layout: default
 | Vendor      | TP-Link                               |
 | Model       | XZ000-G3                              |
 | Chipset     |                                       |
+| CPU         | MIPS32                                |
 | Flash       |                                       |
 | RAM         |                                       |
-| System      |                                       |
+| System      | TCLinux                               |
 | HSGMII      | NO                                    |
 | Optics      | SC/APC                                |
 | IP address  | 192.168.1.1                           |
-| Web Gui     | ✅ username `admin`, password `admin`  |
+| Web Gui     | ✅ username `admin`, password `admin` |
 | SSH         |                                       |
 | Form Factor | ONT                                   |
 
