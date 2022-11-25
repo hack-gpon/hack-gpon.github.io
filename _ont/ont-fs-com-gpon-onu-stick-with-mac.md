@@ -143,7 +143,7 @@ bspatch <your_original_omcid> omcid omcid.bspath
 Now you have to copy via SCP the modified `omcid` binary in the `/opt/lantiq/bin/omcid` path, restart the stick and after that you can change the image version with the command:
 ```
 fw_setenv image0_version YOUR_IMAGE0_VERSION
-fw_setenv image1_version YOUR_IMAGE0_VERSION
+fw_setenv image1_version YOUR_IMAGE1_VERSION
 ```
 
 
