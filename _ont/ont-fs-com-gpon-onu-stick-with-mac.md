@@ -98,18 +98,18 @@ sfp_i2c -i10 -s "password01"
 
 ## Setting eqipment id (ME 257)
 ```sh
-sfp_i2c -i6 -s "22133912P"
+sfp_i2c -i6 -s "YOUR_EQUIPMENT_ID"
 ```
 
 ## Setting vendor id (ME 256)
 ```sh
-sfp_i2c -i7 -s "SPGA"
+sfp_i2c -i7 -s "YOUR_VENDOR_ID"
 ```
 
 ## Change ONU hardware version (ME 256)
 ```sh
 cp /etc/mibs/data_1g_8q.ini /etc/mibs/data_1g_8q.ini.bak
-sed 's/256 0 HWTC 0000000000000/256 0 <your_vendor_id> <your_onu_version>/' /etc/mibs/data_1g_8q.ini
+sed 's/256 0 HWTC 0000000000000/256 0 YOUR_VENDOR_ID YOUR_ONU_VERSION/' -i /etc/mibs/data_1g_8q.ini
 ```
 
 ## Change image software version (ME 7)
@@ -142,8 +142,8 @@ bspatch <your_original_omcid> omcid omcid.bspath
 
 Now you have to copy via SCP the modified `omcid` binary in the `/opt/lantiq/bin/omcid` path, restart the stick and after that you can change the image version with the command:
 ```
-fw_setenv image0_version <your_image0_version>
-fw_setenv image1_version <your_image1_version>
+fw_setenv image0_version YOUR_IMAGE0_VERSION
+fw_setenv image1_version YOUR_IMAGE1_VERSION
 ```
 
 
