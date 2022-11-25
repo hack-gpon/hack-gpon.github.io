@@ -96,15 +96,56 @@ sfp_i2c -i9 -s "1234567890"
 sfp_i2c -i10 -s "password01"
 ```
 
-## Setting eqipment id
+## Setting eqipment id (ME 257)
 ```sh
 sfp_i2c -i6 -s "22133912P"
 ```
 
-## Setting vendor id
+## Setting vendor id (ME 256)
 ```sh
 sfp_i2c -i7 -s "SPGA"
 ```
+
+## Change ONU hardware version (ME 256)
+```sh
+cp /etc/mibs/data_1g_8q.ini /etc/mibs/data_1g_8q.ini.bak
+sed 's/256 0 HWTC 0000000000000/256 0 <your_vendor_id> <your_onu_version>/' /etc/mibs/data_1g_8q.ini
+```
+
+## Change image software version (ME 7)
+{% include alert.html content="The patch below is only compatible with the firmware version `6BA1896SPLQA42`" alert="Info" icon="svg-info" color="blue" %}
+
+The image version normally couldn't be changed because it was hard-coded into the `/opt/lantiq/bin/omcid` binary, 
+so you need to then modify the binary with the following hex patch which removes the hardcoded version.
+
+```
+< 000084c0: 9a43 931f f760 d840 9b64 f760 d864 1a00  .C...`.@.d.`.d..
+< 000084d0: 1acf 6500 1a20 2268 940a 2205 b468 1a00  ..e.. "h.."..h..
+---
+> 000084c0: 9a43 931f f760 d840 9b64 f760 d864 6500  .C...`.@.d.`.de.
+> 000084d0: 6500 6500 1a20 2268 940a 2205 b468 1a00  e.e.. "h.."..h..
+
+```
+
+To make it easier you can use the following base64:
+```
+QlNESUZGNDA1AAAAAAAAAD4AAAAAAAAA2C8JAAAAAABCWmg5MUFZJlNZYqnvBwAACFBSQWAAAMAA
+AAgAQCAAMQwIIwjImgDOdMvi7kinChIMVT3g4EJaaDkxQVkmU1lrJSbUAACFTAjAACAAAAiCAAAI
+IABQYAFKQ01INxUgd6Soj2JURm8pUR8XckU4UJBrJSbUQlpoORdyRThQkAAAAAA=
+```
+
+Save it as `omcid_patch.base64`, then run:
+```
+base64 -d omcid_patch.base64 > omcid.bspath
+bspatch <your_original_omcid> omcid omcid.bspath
+```
+
+Now you have to copy via SCP the modified `omcid` binary in the `/opt/lantiq/bin/omcid` path, restart the stick and after that you can change the image version with the command:
+```
+fw_setenv image0_version <your_image0_version>
+fw_setenv image1_version <your_image1_version>
+```
+
 
 ## Setting Lantiq MAC address
 ```sh
