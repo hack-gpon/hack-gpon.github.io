@@ -109,7 +109,7 @@ sfp_i2c -i7 -s "YOUR_VENDOR_ID"
 ## Change ONU hardware version (ME 256)
 ```sh
 cp /etc/mibs/data_1g_8q.ini /etc/mibs/data_1g_8q.ini.bak
-sed 's/256 0 HWTC 0000000000000/256 0 YOUR_VENDOR_ID YOUR_ONU_VERSION/' /etc/mibs/data_1g_8q.ini
+sed 's/256 0 HWTC 0000000000000/256 0 YOUR_VENDOR_ID YOUR_ONU_VERSION/' -i /etc/mibs/data_1g_8q.ini
 ```
 
 ## Change image software version (ME 7)
