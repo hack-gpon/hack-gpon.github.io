@@ -118,7 +118,7 @@ sed 's/256 0 HWTC 0000000000000/256 0 YOUR_VENDOR_ID YOUR_ONU_VERSION/' -i /etc/
 
 The MIB file `data_1g_8q_us1280_ds512` is very useful to avoid performance problems in situations where 2500 Mbps speed profiles are used, to enable it you need to run this command:
 ```sh
-sed "s/data_1g_8q.ini/data_1g_8q_us1280_ds512.ini/" -i /etc/init.d/omcid.sh
+fw_setenv mib_file data_1g_8q_us1280_ds512.ini
 ```
 
 ## Use custom OMCI MIB file
@@ -126,7 +126,7 @@ sed "s/data_1g_8q.ini/data_1g_8q_us1280_ds512.ini/" -i /etc/init.d/omcid.sh
 
 You have to copy the MIB file to /etc/mibs and then run this command:
 ```sh
-sed "s/data_1g_8q.ini/YOUR_MIB_FILENAME/" -i /etc/init.d/omcid.sh
+fw_setenv mib_file YOUR_MIB_FILENAME
 ```
 
 ## Change image software version (ME 7)
