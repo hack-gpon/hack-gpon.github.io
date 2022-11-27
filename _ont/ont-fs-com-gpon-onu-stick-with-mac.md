@@ -112,6 +112,23 @@ cp /etc/mibs/data_1g_8q.ini /etc/mibs/data_1g_8q.ini.bak
 sed 's/256 0 HWTC 0000000000000/256 0 YOUR_VENDOR_ID YOUR_ONU_VERSION/' -i /etc/mibs/data_1g_8q.ini
 ```
 
+## Enable `data_1g_8q_us1280_ds512.ini` OMCI MIB file for 2500 Mbps profiles
+{% include alert.html content="The patch below is only compatible with the firmware version `6BA1896SPLQA42`" alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="If you need to set the ONU version remember that you will have to do it using the MIB file `/etc/mibs/data_1g_8q_us1280_ds512.ini` instead of `/etc/mibs/data_1g_8q.ini`" alert="Info" icon="svg-info" color="blue" %}
+
+The MIB file `data_1g_8q_us1280_ds512.ini` is very useful to avoid performance problems in situations where 2500 Mbps speed profiles are used, to enable it you need to run this command:
+```sh
+fw_setenv mib_file data_1g_8q_us1280_ds512.ini
+```
+
+## Use custom OMCI MIB file
+{% include alert.html content="If you need to set the ONU version remember that you will have to do it using your custom MIB file instead of `/etc/mibs/data_1g_8q.ini`" alert="Info" icon="svg-info" color="blue" %}
+
+You have to copy the MIB file to /etc/mibs and then run this command:
+```sh
+fw_setenv mib_file YOUR_MIB_FILENAME
+```
+
 ## Change image software version (ME 7)
 {% include alert.html content="The patch below is only compatible with the firmware version `6BA1896SPLQA42`" alert="Info" icon="svg-info" color="blue" %}
 
