@@ -72,9 +72,11 @@ GPON_PLOAM_PASSWD=AAAAAAAAAA
 
 Stock firmware doesn't work @ 2.5GbE. There is a new firmware avaliable from LeoLabs that has these mode:
 
-LAN_SDS_MODE = 1 - 1GbE
-LAN_SDS_MODE = 7 - 1GbE with auto-neg off
-LAN_SDS_MODE = 8 - 2GbE with auto-neg off
+| -------------------- | ------------------------------------ |
+| LAN_SDS_MODE = 1     | 1GbE with auto-neg on                |
+| LAN_SDS_MODE = 7     | 1GbE with auto-neg off               |
+| LAN_SDS_MODE = 8     | 2.5GbE with auto-neg off             |
+
 
 # Miscellaneous Links
 
