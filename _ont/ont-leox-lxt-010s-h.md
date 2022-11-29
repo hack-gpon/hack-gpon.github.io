@@ -12,13 +12,13 @@ parent: Leox
 | Vendor      | Leox                                 |
 | Model       | LXT-010S-H                           |
 | Chipset     | RTL9601CI                            |
-| Flash       |                                      |
-| RAM         |                                      |
+| Flash       | 128MB                                |
+| RAM         | 32MB                                 |
 | System      | Linux 3.18 (Luna SDK 3.3)             |
 | HSGMII      | ✅                                   |
-| Optics      |                                      |
+| Optics      | SC/UPC                               |
 | IP address  | 192.168.100.1/24                     |
-| Web Gui     |                                      |
+| Web Gui     | ✅                                   |
 | Telnet      | ✅ user `leox`, password `leolabs_7` |
 | Form Factor | miniONT SFP                          |
 
@@ -51,10 +51,17 @@ This stick supports dual boot.
 
 # Useful Commands
 
+## Change IP address
+```sh
+# /etc/scripts/flash get LAN_IP_ADDR
+LAN_IP_ADDR=192.168.2.1
+# /etc/scripts/flash set LAN_IP_ADDR 192.168.1.1
+ ```
+
 ## Getting/Setting the ONT's S/N
 ```sh
 # /etc/scripts/flash get GPON_SN
-GPON_SN=TMBB00000000
+GPON_SN=LEOX00000000
 # /etc/scripts/flash set GPON_SN TMBB0A1B2C3D
 ```
 
