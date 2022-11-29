@@ -51,7 +51,7 @@ This stick supports dual boot.
 
 The stick has a TTL 3.3v UART console (115200bps - 8Bit) that can be accessed from the top surface. To accept TX line commands, GND of TTL adapter should be attached to the stick's shield:
 
-![LEOX_SFP_TTL](https://user-images.githubusercontent.com/27808541/204495980-68ebedbd-0977-4f42-9c0c-456195d3c26e.jpg)
+{% include image.html file="ont-leox-lxt-010s-h_ttl.jpg" alt="Leox LXT-010S-H TTL Pinout" caption="Leox LXT-010S-H TTL Pinout" %}
 
 ## List of firmwares and files
 
