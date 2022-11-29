@@ -97,7 +97,7 @@ search_exclude: true
                         await delay(1000);
                         textarea.value += '[+] Transfer command sequence 4\n';
                         writer.write(textEncoder.encode(
-                            'setenv preboot "gpio input 105;gpio input 106;gpio input 107;gpio input 108;gpio set 3;gpio set 109;gpio set 110;gpio clear 423;gpio clear 422;gpio clear 325;gpio clear 402;gpio clear 424"\n'));
+                            'setenv preboot "gpio set 3;gpio input 2;gpio input 105;gpio input 106;gpio input 107;gpio input 108"\n'));
                         await delay(1000);
                         textarea.value += '[+] Transfer command sequence 5\n';
                         writer.write(textEncoder.encode('saveenv\n'));
