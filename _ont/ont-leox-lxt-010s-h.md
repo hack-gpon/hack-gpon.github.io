@@ -47,6 +47,12 @@ This stick supports dual boot.
 
 `k0` and `r0` respectively contain the kernel and firmware of the first image, `k1` and `r1` the kernel and the firmware of the second one
 
+# Serial Console
+
+The stick has a TTL 3.3v UART console (115200bps - 8Bit) that can be accessed from the top surface. To accept TX line commands, GND of TTL adapter should be attached to the stick's shield:
+
+![LEOX_SFP_TTL](https://user-images.githubusercontent.com/27808541/204495980-68ebedbd-0977-4f42-9c0c-456195d3c26e.jpg)
+
 ## List of firmwares and files
 
 # Useful Commands
