@@ -84,18 +84,23 @@ Configuration: asc0=0 115200 8-N-1
 
 ## List of firmwares and files
 
+{% include alert.html content="With the root procedure without tweezers, the firmware already on the Huawei Stick corresponds to rooted firmware in this list." alert="Info" icon="svg-info" color="blue" %}
+
 - [Carlito MTD2](https://ma5671a.s3.nl-ams.scw.cloud/mtd2.bin){: .btn }  md5hash: d3cb6f7efec201b37931139feb4bb23b
 - [Huawei Rooted MTD2](https://ma5671a.s3.nl-ams.scw.cloud/mA5671a_root_mtd2.img){: .btn } md5hash: 3138d2dd06a32bb92bc63610fec6fcd6
-- [Carlito MTD5](https://ma5671a.s3.nl-ams.scw.cloud/mtd5.bin){: .btn }  md5hash > 59d2dc15227d6f693a38131eca89b29e 
+- [Carlito MTD5](https://ma5671a.s3.nl-ams.scw.cloud/mtd5.bin){: .btn }  md5hash: 59d2dc15227d6f693a38131eca89b29e 
 - [Huawei Rooted MTD5](https://ma5671a.s3.nl-ams.scw.cloud/mA5671a_root_mtd5.img){: .btn }  md5hash: 0e4cfdc1b96be6581869b26b48789556
 - [1224abort.bin](https://ma5671a.s3.nl-ams.scw.cloud/1224ABORT.bin){: .btn }  md5hash: 10e94a4b4acdc82dec20c7904b69e5c0
-- [right.com.cn 19 July 2022](https://mega.nz/file/9fpSkYTb#wNyjAj1kOLWC9HozX-gTQ-TS3VFqRYg--x1rm7RSuDg){: .btn } md5hash: 6b5e7e3c659fe3f0204340fa746ac4fc
-- [right.com.cn 29 Aug 2022](https://mega.nz/file/VHFFSBrT#2WhDPcdON5EHR01l6Ut35GC3sl55e4l09Z0NUo_7SWA){: .btn} md5hash: 3d357e2dc7b59c66fe61b4ddf1fb8dc0
+- [right.com.cn (China) 19 July 2022](https://mega.nz/file/9fpSkYTb#wNyjAj1kOLWC9HozX-gTQ-TS3VFqRYg--x1rm7RSuDg){: .btn } md5hash: 6b5e7e3c659fe3f0204340fa746ac4fc
+- [right.com.cn (China) 29 Aug 2022](https://mega.nz/file/VHFFSBrT#2WhDPcdON5EHR01l6Ut35GC3sl55e4l09Z0NUo_7SWA){: .btn} md5hash: 3d357e2dc7b59c66fe61b4ddf1fb8dc0
+- [ONT FS.com GPON ONU Stick with MAC firmware / SourcePhotonics SPS-34-24T-HP-TDFO firmware](/ont-fs-com-gpon-onu-stick-with-mac)
 
 # General setting
 
-- [Carlito General Setting](/ont-huawei-ma5671a-carlito)
-- [Huawei Rooted General Setting](/ont-huawei-ma5671a-rooted)
+- [Huawei Rooted Firmware General Setting](/ont-huawei-ma5671a-rooted)
+- [Carlito Firmware General Setting](/ont-huawei-ma5671a-carlito)
+- [SourcePhotonics Firmware General Setting](/ont-huawei-ma5671a-sf)
+- [right.com.cn (China) Firmware General Setting](/ont--huawei-ma5671a-china)
 
 # Useful commands
 
