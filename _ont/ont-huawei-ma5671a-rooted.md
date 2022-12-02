@@ -98,6 +98,7 @@ layout: default
     }
 </script>
 
+{:style="counter-reset:none"}
 2. Transfer modified file back into variable `sfp_a2_info`, replace `<output>` with the output of web form.
 
 ```shell
