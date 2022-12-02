@@ -7,6 +7,8 @@ layout: default
 
 # General setting
 
+{% include alert.html content="Be careful, back up the goi_config from ubot before changing firmware." alert="Info" icon="svg-info" color="blue" %}
+
 ## Setting image version
 ```sh
 fw_setenv image0_version V1.7.6-170626
