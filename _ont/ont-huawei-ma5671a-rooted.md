@@ -98,6 +98,12 @@ layout: default
     }
 </script>
 
+2. Transfer modified file back into variable `sfp_a2_info`, replace `<output>` with the output of web form.
+
+```shell
+fw_setenv sfp_a2_info <output>
+```
+
 ## Temporary file procedure
 
 1. Save `sfp_a2_info` in into temporary file
@@ -141,7 +147,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASFcC2r7vAAAAAAAAAAAAAAAAAAAA
 5. Transfer modified file back into variable `sfp_a2_info`
 
 ```shell
-fw_setenv sfp_a2_info 'cat /tmp/sfp_a2.txt'
+fw_setenv sfp_a2_info $(cat /tmp/sfp_a2.txt)
 ```
 
 ## Review and testing
