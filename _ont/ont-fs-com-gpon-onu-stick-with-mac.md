@@ -144,25 +144,45 @@ so you need to then modify the binary with the following hex patch which removes
 
 ```
 
-To make it easier you can use the following base64:
+{% include alert.html content="Proceed only if your `md5sum /opt/lantiq/bin/omcid` has the correct checksum `7e97163e24c9cb39439589c65b438168`" alert="Info" icon="svg-info" color="blue" %}
+
+This is the patch, encoded in base64
 ```
 QlNESUZGNDA1AAAAAAAAAD4AAAAAAAAA2C8JAAAAAABCWmg5MUFZJlNZYqnvBwAACFBSQWAAAMAA
 AAgAQCAAMQwIIwjImgDOdMvi7kinChIMVT3g4EJaaDkxQVkmU1lrJSbUAACFTAjAACAAAAiCAAAI
 IABQYAFKQ01INxUgd6Soj2JURm8pUR8XckU4UJBrJSbUQlpoORdyRThQkAAAAAA=
 ```
+Save it on your computer (not on the stick) as `omcid_patch.base64`, then run:
+```sh
+base64 -d omcid_patch.base64 > omcid.bspatch
+bspatch <your_original_omcid> omcid omcid.bspatch
+```
+{% include alert.html content="if you don't have bspatch installed, most distributions includes it in bsdiff package" alert="Info" icon="svg-info" color="blue" %}
 
-Save it as `omcid_patch.base64`, then run:
-```
-base64 -d omcid_patch.base64 > omcid.bspath
-bspatch <your_original_omcid> omcid omcid.bspath
+After patching the resulting patched `omcid` should have an md5 checksum of `525139425009c4138e92766645dad7d0`.
+If that also checks, go on making a backup copy of your original `omcid` on the stick.
+
+```sh
+cd /opt/lantiq/bin
+cp omcid omcid.original
 ```
 
-Now you have to use SCP to copy the modified `omcid` binary in the `/opt/lantiq/bin/omcid` path, restart the stick and after that you can change the image version with the command:
-```
+Now you have to use SCP to copy into modified `omcid` binary in the `/opt/lantiq/bin/omcid` path.
+Before restarting the stick and applying changes, make sure `omcid` has its execution bit set, then reboot the stick and change the image version with the following command:
+
+```sh
+chmod ugo+x /opt/lantiq/bin/omcid
+>>>>>>> main
+
+
+Is also a good time to set the image0/image1_version. Crash has reported if they are not set correctly before reboot.
+```sh
 fw_setenv image0_version YOUR_IMAGE0_VERSION
 fw_setenv image1_version YOUR_IMAGE1_VERSION
 ```
 
+Now you can restart the stick.
+{% include alert.html content="Be aware that sometimes `omcid` can rewrite the two variables when runs in non patched state. After reboot, double check the values you put are still there." alert="Info" icon="svg-info" color="blue" %}
 
 ## Setting Lantiq MAC address
 ```sh
