@@ -167,7 +167,7 @@ cd /opt/lantiq/bin
 cp omcid omcid.original
 ```
 
-Now you have to use SCP to copy into modified `omcid` binary in the `/opt/lantiq/bin/omcid` path.
+Now you have to use SCP to copy the modified `omcid` binary in `/opt/lantiq/bin/omcid`.
 Before restarting the stick and applying changes, make sure `omcid` has its execution bit set, then reboot the stick and change the image version with the following command:
 
 ```sh
