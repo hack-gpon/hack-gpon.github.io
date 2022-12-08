@@ -127,15 +127,15 @@ AAAAAAAAAAJIV1RDESIzRP///////////////////wAAAAAAAAAAAAAAAAAA
 
 The entire S/N, including the PON ID, is encoded first in hexadecimal and then in base64
 
-3. Setting Ploam Password
+3. Setting PLOAM Password
 
-The Ploam Password is stored on the 5th line, for example (`1234567890`):
+The PLOAM Password is stored on the 5th line, for example (`1234567890`):
 ```
 ffffffffffffffff00021437d77db7df7e37e77eb7ef7f37f77d00000000000000000000000000000000000000
 //////////8AAhQ31323334353637383930AAAAAAAAAAAAAAAAAAAAAAAAA
 ```
 
-The entire Ploam, is encoded first in hexadecimal and then in base64
+The entire PLOAM, is encoded first in hexadecimal and then in base64
 
 4. Setting MAC Address
 
@@ -151,7 +151,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASFcC2r7vAAAAAAAAAAAAAAAAAAAA
 fw_setenv sfp_a2_info $(cat /tmp/sfp_a2.txt)
 ```
 
-## Review and testing
+## Reviewing and testing
 
 After rebooting, check whether the new variables have been saved correctly:
 
@@ -161,13 +161,13 @@ fw_printenv gSerial
 fw_printenv ethaddr
 ```
 
-## Check registration status for O5 (successful)
+## Checking whether the connection with the OLT was successful (O5 state)
 
 ```shell
 onu ploamsg
 ```
 
-# Disable dying gasp
+# Disabling dying gasp
 
 ```shell
 fw_setenv nDyingGaspEnable 0 

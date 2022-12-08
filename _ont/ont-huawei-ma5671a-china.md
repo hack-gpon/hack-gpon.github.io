@@ -9,7 +9,7 @@ parent: Huawei MA5671A
 
 {% include alert.html content="Be careful, use this firmware only if you have performance problems with all other firmwares." alert="Info" icon="svg-info" color="blue" %}
 
-{% include alert.html content="Do not use translator in the browser, use a translation app on the phone through virtual reality." alert="Danger" icon="svg-warning" color="red" %}
+{% include alert.html content="Do not use in-browser translators, use a translation app on your phone through virtual reality." alert="Danger" icon="svg-warning" color="red" %}
 
 1. Flash on the 0 partition
 

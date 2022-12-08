@@ -48,7 +48,7 @@ fw_setenv target oem-generic
 fw_printenv target=oem-generic
 ```
 
-## Setting HSGMII
+## Setting HSGMII Mode
 ```sh
 fw_setenv sgmii_mode 5
 ```

@@ -5,8 +5,8 @@ nav_order: 3
 layout: default
 ---
 
-In some sticks, such as those based on lantiq, the serial is exposed in the upper pins of the ONT, in order to read them there are 2 possibilities:
-- the use of an SFP molex ([farnell](https://it.farnell.com/en-IT/molex/74441-0001/connector-sfp-rcpt-20pos-smt/dp/2112385)) to which you solder 4 wires and remove the other pins, this makes the adapter compatible for a single serial combination
+In some sticks, such as those based on Lantiq chipsets, the serial is exposed in the upper pins of the ONT, in order to read them there are two possibilities:
+- the use of an SFP molex ([farnell](https://it.farnell.com/en-IT/molex/74441-0001/connector-sfp-rcpt-20pos-smt/dp/2112385)) to which you solder four wires and remove the other pins, this makes the adapter compatible for a single serial combination
 - the use of a board to which the SFP molex is soldered, exposing the main SFP pins
 
 {% include image.html file="ma5671a-root-1.jpg"  alt="Example of how the sfp-ttl adapter" caption="Example of how the sfp-ttl adapter" %}

@@ -26,7 +26,7 @@ parent: Nokia
 <br/>
 {% include image.html file="g-010s-p-and-ma5671a.jpg"  alt="G-010S-P and MA5671A Teardown" caption="G-010S-P and MA5671A Teardown" %}
 <br/>
-{% include alert.html content="G-010S-P and other models will not expose ethernet interface unless fiber cable is connected ([source](https://forum.mikrotik.com/viewtopic.php?t=116364&start=300))" alert="Warning" icon="svg-warning" color="yellow" %}
+{% include alert.html content="G-010S-P and other models will not expose an ethernet interface unless fiber cable is connected ([source](https://forum.mikrotik.com/viewtopic.php?t=116364&start=300))" alert="Warning" icon="svg-warning" color="yellow" %}
 
 ## Firmware is interchangeable with:
 

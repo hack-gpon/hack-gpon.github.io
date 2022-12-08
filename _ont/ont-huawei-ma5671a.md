@@ -164,7 +164,7 @@ The following commands are used to flash a new rootfs to image1 and then boot to
 
 ## Cloning of mtd1 (image 0) into mtd5 (image 1)
 
-{% include alert.html content="Image 0 can be flashed to image 1 while image 1 cannot be flashed to image 0 because it has larger rootfs_data" alert="Warning" icon="svg-warning" color="yellow" %}
+{% include alert.html content="Image 0 can be flashed to image 1, while image 1 cannot be flashed to image 0 because it has larger rootfs_data" alert="Warning" icon="svg-warning" color="yellow" %}
 
 The following commands are used to clone image0 to image1 and then boot to it
 ```sh
