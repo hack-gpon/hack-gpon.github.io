@@ -9,7 +9,7 @@ layout: default
 
 # Major Chipset Manufacturers
 
-Currently, there are only two main GPON chipsets vendors:
+Currently, there are only two main GPON chipset vendors:
 
 - Realtek manufactures these chipsets:
     * RTL9601B  
