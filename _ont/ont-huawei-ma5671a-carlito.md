@@ -7,7 +7,7 @@ layout: default
 
 # General setting
 
-{% include alert.html content="Be careful, back up the goi_config from ubot before changing firmware." alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="Be careful, back up the goi_config from uboot before changing firmware." alert="Info" icon="svg-info" color="blue" %}
 
 ## Setting image version
 ```sh
@@ -42,13 +42,13 @@ fw_setenv omci_lpwd password01
 ```
 If LOID is disabled in the firmware try alternative software.
 
-## Setting and check oem-generic
+## Setting and checking oem-generic
 ```sh
 fw_setenv target oem-generic
 fw_printenv target=oem-generic
 ```
 
-## Setting HSMIII
+## Setting HSGMII
 ```sh
 fw_setenv sgmii_mode 5
 ```

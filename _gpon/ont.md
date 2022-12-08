@@ -9,7 +9,7 @@ layout: default
 
 # Major Chipset Manufacturers
 
-Currently, there are ony two main GPON chipsets vendors:
+Currently, there are only two main GPON chipsets vendors:
 
 - Realtek manufactures these chipsets:
     * RTL9601B  
@@ -21,12 +21,12 @@ Currently, there are ony two main GPON chipsets vendors:
 
 ## Realtek Chipsets
 
-HSGMII chipsets are relatively recent, starting from 2020, and are used in many ONTs. Realtek offers an official SDK, Luna SDK, which offers very good performance in queue management, unfortunately it is not used by all devices based on these chipsets.
+HSGMII chipsets are relatively recent, they became more common starting in 2020, and are used in many ONTs. Realtek offers an official SDK, Luna SDK, which offers very good performance in queue management, unfortunately it is not used by all devices based on these chipsets.
 
 ## Lantiq Chipsets
 
 Unfortunately Lantiq no longer exists as it has been bought out and dismembered by Intel. This purchase was a huge deal as at the time Lantiq was at the forefront of the GPON and xDSL chipset market.
-The GPON part of Lantiq ended up in `/dev/null`, while the XGS-PON sector ended up in the hands of MaxLinear and the whole Wi-Fi part remained in the hands Intel itself.
+The GPON part of Lantiq ended up in `/dev/null`, while the XGS-PON sector ended up in the hands of MaxLinear and the whole Wi-Fi part remained in the hands of Intel itself.
 
 The last produced batches of these SFPs date back to 2020/2021. All OEMs are currently migrating to Realtek.
 

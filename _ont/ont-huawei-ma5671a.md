@@ -45,9 +45,9 @@ parent: Huawei
 
 Configuration: asc0=0 115200 8-N-1
 
-{% include alert.html content="Try PIN 10 or other GND PINs if it doesn't work with 14." alert="Note"  icon="svg-warning" color="yellow" %}
+{% include alert.html content="Try PIN 10 or other GND PINs if the connection doesn't work by using PIN 14." alert="Note"  icon="svg-warning" color="yellow" %}
 
-{% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if it doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
+{% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
 
 
 ## Root procedure
@@ -104,7 +104,7 @@ For more info [XPONos partition layout](https://github.com/XPONos/linux_lantiq-f
 
 ## List of firmwares and files
 
-{% include alert.html content="With the root procedure without tweezers, the firmware already on the Huawei Stick corresponds to rooted firmware in this list." alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="If the root procedure without tweezers is used, the firmware already on the Huawei Stick corresponds to rooted firmware in this list." alert="Info" icon="svg-info" color="blue" %}
 
 - [Carlito MTD2](https://ma5671a.s3.nl-ams.scw.cloud/mtd2.bin){: .btn }  md5hash: d3cb6f7efec201b37931139feb4bb23b
 - [Huawei Rooted MTD2](https://ma5671a.s3.nl-ams.scw.cloud/mA5671a_root_mtd2.img){: .btn } md5hash: 3138d2dd06a32bb92bc63610fec6fcd6
@@ -152,7 +152,7 @@ cat /dev/mtdX | nc 192.168.1.11 1234
 
 {% include alert.html content="Only the inactive image can be flashed" alert="Info" icon="svg-info" color="blue" %}
 
-The follwing examples flashes a new rootfs to image1 and boots to it
+The following commands are used to flash a new rootfs to image1 and then boot to it
 ```sh
 # mtd -e image1 write /tmp/rootfs.bin image1
 # fw_setenv committed_image 1
@@ -160,13 +160,13 @@ The follwing examples flashes a new rootfs to image1 and boots to it
 # reboot
 ```
 
-{% include alert.html content="Some OLTs only want to boot from image 0 and therefore this procedure must be preceded by the following procedure with obviously inverted images" alert="Warning" icon="svg-warning" color="yellow" %}
+{% include alert.html content="Some OLTs don't like when ONTs don't boot from image 0, therefore the previous procedure must be preceded by the following procedure with inverted images, as to clone image 1 into image 0" alert="Warning" icon="svg-warning" color="yellow" %}
 
 ## Cloning of mtd1 (image 0) into mtd5 (image 1)
 
 {% include alert.html content="Image 0 can be flashed to image 1 while image 1 cannot be flashed to image 0 because it has larger rootfs_data" alert="Warning" icon="svg-warning" color="yellow" %}
 
-The follwing examples clones a image0 to image1 and boots to it
+The following commands are used to clone image0 to image1 and then boot to it
 ```sh
 # cat /dev/mtd2 > /tmp/mtd2.bin
 # mtd -e image1 write /tmp/mtd2.bin image1

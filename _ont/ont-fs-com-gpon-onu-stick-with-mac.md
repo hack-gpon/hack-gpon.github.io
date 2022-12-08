@@ -73,7 +73,7 @@ sfp_i2c -g
 ```
 
 ## Setting PLOAM Password
-Software 6BA1896SPLQA41 and before (See [Carlito Firmware](/ont-huawei-ma5671a-carlito))
+Software 6BA1896SPLQA41 and earlier (See [Carlito Firmware](/ont-huawei-ma5671a-carlito))
 ```sh
 fw_setenv nPassword "0x30 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39"
 ```
@@ -84,7 +84,7 @@ sfp_i2c -i11 -s "0x30 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39"
 ```
 
 ## Setting LOID and Checkcode Password
-Software 6BA1896SPLQA41 and before (See [Carlito Firmware](/ont-huawei-ma5671a-carlito))
+Software 6BA1896SPLQA41 and earlier (See [Carlito Firmware](/ont-huawei-ma5671a-carlito))
 ```sh
 fw_setenv omci_loid 1234567890
 fw_setenv omci_lpwd password01
@@ -157,7 +157,7 @@ base64 -d omcid_patch.base64 > omcid.bspath
 bspatch <your_original_omcid> omcid omcid.bspath
 ```
 
-Now you have to copy via SCP the modified `omcid` binary in the `/opt/lantiq/bin/omcid` path, restart the stick and after that you can change the image version with the command:
+Now you have to use SCP to copy the modified `omcid` binary in the `/opt/lantiq/bin/omcid` path, restart the stick and after that you can change the image version with the command:
 ```
 fw_setenv image0_version YOUR_IMAGE0_VERSION
 fw_setenv image1_version YOUR_IMAGE1_VERSION
