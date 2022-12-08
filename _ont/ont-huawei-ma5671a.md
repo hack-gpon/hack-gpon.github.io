@@ -60,6 +60,26 @@ Configuration: asc0=0 115200 8-N-1
 
 ## List of partitions
 
+Partition layouts change depending on which image is booted, in particular:
+
+When booting image0:
+```
+mtd2 ---> image0 (linux)
+mtd5 --> image1
+mtd3 --> rootfs
+mtd4 --> rootfs_data
+```
+When booting image0:
+```
+mtd2 ---> image0
+mtd3 --> image1 (linux)
+mtd4 --> rootfs
+mtd5 --> rootfs_data
+```
+
+For more info [XPONos partition layout](https://github.com/XPONos/linux_lantiq-falcon/commit/456f68f69a84c846a542a9f0ea47c37476535dcb).
+
+
 ## When booting from image0
 
 | dev  | size     | erasesize | name          |
@@ -112,6 +132,22 @@ Configuration: asc0=0 115200 8-N-1
 # scp rootfs.bin root@192.168.1.10:/tmp/
 ```
 
+## Backup of all partition
+
+Make a backup of all partitions, an easy way is:
+- On the stick run:
+```shell
+cat /proc/mtd
+```
+- For each mtdX run, on computer shell:
+```shell
+nc -l -p 1234 > mtdX.bin
+```
+And in the lantiq shell:
+```shell
+cat /dev/mtdX | nc 192.168.1.11 1234
+```
+
 ## Flashing a new rootfs
 
 {% include alert.html content="Only the inactive image can be flashed" alert="Info" icon="svg-info" color="blue" %}
@@ -119,6 +155,21 @@ Configuration: asc0=0 115200 8-N-1
 The follwing examples flashes a new rootfs to image1 and boots to it
 ```sh
 # mtd -e image1 write /tmp/rootfs.bin image1
+# fw_setenv committed_image 1
+# fw_setenv image1_is_valid 1
+# reboot
+```
+
+{% include alert.html content="Some OLTs only want to boot from image 0 and therefore this procedure must be preceded by the following procedure with obviously inverted images" alert="Warning" icon="svg-warning" color="yellow" %}
+
+## Cloning of mtd1 (image 0) into mtd5 (image 1)
+
+{% include alert.html content="Image 0 can be flashed to image 1 while image 1 cannot be flashed to image 0 because it has larger rootfs_data" alert="Warning" icon="svg-warning" color="yellow" %}
+
+The follwing examples clones a image0 to image1 and boots to it
+```sh
+# cat /dev/mtd2 > /tmp/mtd2.bin
+# mtd -e image1 write /tmp/mtd2.bin image1
 # fw_setenv committed_image 1
 # fw_setenv image1_is_valid 1
 # reboot
