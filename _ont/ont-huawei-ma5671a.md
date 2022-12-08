@@ -60,6 +60,26 @@ Configuration: asc0=0 115200 8-N-1
 
 ## List of partitions
 
+Partition layouts change depending on which image is booted, in particular:
+
+When booting image0:
+```
+mtd2 ---> image0 (linux)
+mtd5 --> image1
+mtd3 --> rootfs
+mtd4 --> rootfs_data
+```
+When booting image0:
+```
+mtd2 ---> image0
+mtd3 --> image1 (linux)
+mtd4 --> rootfs
+mtd5 --> rootfs_data
+```
+
+For more info [XPONos partition layout](https://github.com/XPONos/linux_lantiq-falcon/commit/456f68f69a84c846a542a9f0ea47c37476535dcb).
+
+
 ## When booting from image0
 
 | dev  | size     | erasesize | name          |
