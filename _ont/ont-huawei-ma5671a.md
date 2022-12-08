@@ -146,9 +146,10 @@ The follwing examples flashes a new rootfs to image1 and boots to it
 
 {% include alert.html content="Image 0 can be flashed to image 1 while image 1 cannot be flashed to image 0 because it has larger rootfs_data" alert="Warning" icon="svg-warning" color="yellow" %}
 
+The follwing examples clones a image0 to image1 and boots to it
 ```sh
-# cat /dev/mtd1 > /tmp/mtd1.bin
-# mtd -e image1 write /tmp/mtd1.bin image1
+# cat /dev/mtd2 > /tmp/mtd2.bin
+# mtd -e image1 write /tmp/mtd2.bin image1
 # fw_setenv committed_image 1
 # fw_setenv image1_is_valid 1
 # reboot
