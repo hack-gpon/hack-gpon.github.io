@@ -160,7 +160,7 @@ The follwing examples flashes a new rootfs to image1 and boots to it
 # reboot
 ```
 
-{% include alert.html content="Some OLTs only want to boot from image 0 and therefore this procedure must be preceded by the following procedure with obviously inverted images" alert="Warning" icon="svg-warning" color="yellow" %}
+{% include alert.html content="Some ONTs only want to boot image0. In this case the procedure is: clone image0 into image1, and flash into image0" alert="Warning" icon="svg-warning" color="yellow" %}
 
 ## Cloning of mtd1 (image 0) into mtd5 (image 1)
 
