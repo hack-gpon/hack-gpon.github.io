@@ -206,19 +206,68 @@ figure {
     width: 20px;
 }
 
+
 .animated {
     svg {
         width: 100px;
         display: block;
         margin: 40px auto 0;
     }
+    &.pause {
+        svg .success, svg .error, svg .loading {
+            display: none;
+        }
+    }
     &.success {
         color: $green-500;
         fill: $green-500;
+        svg .error, svg .loading {
+            display: none;
+        }
     }
     &.error {
         color: $red-500;
         fill: $red-500;
+        svg .success, svg .loading {
+            display: none;
+        }
+    }
+    &.loading {
+        svg .success, svg .error {
+            display: none;
+        }
+        svg .path {
+            stroke-dasharray: 300;
+            stroke-dashoffset: 0;
+            -webkit-animation-name: load, spin;
+            -webkit-animation-duration: 3s, 3s;
+            -webkit-animation-timing-function: linear;
+            -webkit-animation-iteration-count: infinite;
+            animation-name: load, spin;
+            animation-duration: 3s, 3s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            -webkit-transform-origin: 50% 50%;
+            -moz-transform-origin: 50px 50px;
+        }
+        svg .fill {
+            stroke-dasharray: 285;
+            stroke-dashoffset: -257;
+            -webkit-animation: spin-fill 3s cubic-bezier(0.700, 0.435, 0.120, 0.600) infinite forwards;
+            animation: spin-fill 3s cubic-bezier(0.700, 0.465, 0.120, 0.600) infinite forwards;
+            -webkit-transform-origin: 50% 50%;
+            -moz-transform-origin: 50px 50px;
+        }
+    }
+    &.complete {
+        svg .path {
+            -webkit-animation: fill 1s ease-out forwards;
+            animation: fill 1s ease-out forwards;
+        }
+        svg .fill {
+            -webkit-animation: fill 1s ease-out forwards;
+            animation: fill 1s ease-out forwards;
+        } 
     }
         
     .path {
@@ -227,17 +276,17 @@ figure {
         &.circle {
             -webkit-animation: dash .9s ease-in-out;
             animation: dash .9s ease-in-out;
-            }
+        }
         &.line {
             stroke-dashoffset: 1000;
             -webkit-animation: dash .9s .35s ease-in-out forwards;
             animation: dash .9s .35s ease-in-out forwards;
-            }
+        }
         &.check {
             stroke-dashoffset: -100;
             -webkit-animation: dash-check .9s .35s ease-in-out forwards;
             animation: dash-check .9s .35s ease-in-out forwards;
-            }
+        }
     }
         
     p {
@@ -279,6 +328,101 @@ figure {
         }
         100% {
             stroke-dashoffset: 900;
+        }
+    }
+
+    @-webkit-keyframes load {
+        0% {
+            stroke-dashoffset: 300;
+            -webkit-animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+        }
+        50% {
+            stroke-dashoffset: 0;
+            -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        }
+        100% {
+            stroke-dashoffset: -300;
+        }
+    }
+    @keyframes load {
+        0% {
+            stroke-dashoffset: 285;
+            animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+        }
+        50% {
+            stroke-dashoffset: 0;
+            animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        }
+        100% {
+            stroke-dashoffset: -285;
+        }
+    }
+    
+    @-webkit-keyframes check {
+        0% {
+            stroke-dashoffset: -110;
+        }
+        100% {
+            stroke-dashoffset: 0;
+        }
+    }
+    @keyframes check {
+        0% {
+            stroke-dashoffset: -110;
+        }
+        100% {
+            stroke-dashoffset: 0;
+        }
+    }
+    
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    
+    @-webkit-keyframes spin-fill {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(720deg);
+        }
+    }
+    @keyframes spin-fill {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(720deg);
+        }
+    }
+    
+    @-webkit-keyframes fill {
+        0% {
+            stroke-dashoffset: 285;
+        }
+        100% {
+            stroke-dashoffset: 0;
+        }
+    }
+    @keyframes fill {
+        0% {
+            stroke-dashoffset: 285;
+        }
+        100% {
+            stroke-dashoffset: 0;
         }
     }
 
