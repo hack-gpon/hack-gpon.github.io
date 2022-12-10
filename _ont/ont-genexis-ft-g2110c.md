@@ -25,11 +25,14 @@ parent: Genexis
 # External/Internal Photo
 
 {% include image.html file="ft-g2110c-front.jpg"  alt="FiberTwist G2110C-2.5G Front" caption="FiberTwist G2110C-2.5G Front" %}
+
 {% include image.html file="ft-g2110c-back.jpg"  alt="FiberTwist G2110C-2.5G Back" caption="FiberTwist G2110C-2.5G Back" %}
 
 ## Optical Header installation backplate
 {% include image.html file="ft-g2110c-optical-header-1.jpg"  alt="FiberTwist G2110C-2.5G Optical Header installation backplate" caption="FiberTwist G2110C-2.5G Optical Header installation backplate" %}
+
 {% include image.html file="ft-g2110c-optical-header-2.jpg"  alt="FiberTwist G2110C-2.5G Optical Header installation backplate" caption="FiberTwist G2110C-2.5G Optical Header installation backplate" %}
+
 {% include image.html file="ft-g2110c-optical-header-3.jpg"  alt="FiberTwist G2110C-2.5G Optical Header installation backplate" caption="FiberTwist G2110C-2.5G Optical Header installation backplate" %}
 
 ## Internal (TTL is on CM3 header)
@@ -66,16 +69,59 @@ This ONT supports dual boot.
 
 # Useful Commands
 
-Change GPON Serial Number:
+## Getting/Setting the ONT's S/N
 
+{% include alert.html content="The GPON S/N can only be changed via U-Boot console" alert="Note"  icon="svg-info" color="blue" %}
+
+Attach TTL adapter to UART console (see Internal photo - CM3 header, for pinout), open a terminal emulator (like Putty or Teraterm), power on the ONT and `CTRL+C` until you see the following prompt:
+
+```sh
+9601D#
+```
+
+On that console you can type the following commands to change the serial number of ONT:
+
+```sh
 set GponSn GNXS05542100
-save env
+saveenv
+reset
+```
 
-Change ONT IP Address:
+You can check if the serial number was correclty changed using the following command:
 
-flash set LAN_IP_ADDR 192.168.1.1
+```sh
+# diag gpon get serialnumber
+GNXS05542100
+```
 
+## Change IP address
+```sh
+# /etc/scripts/flash get LAN_IP_ADDR
+LAN_IP_ADDR=192.168.1.1
+# /etc/scripts/flash set LAN_IP_ADDR 192.168.1.1
+ ```
+
+## Getting/Setting the ONT's PLOAM password
+
+{% include alert.html content="The PLOAM password is stored in ASCII format" alert="Info" icon="svg-info" color="blue" %}
+
+```sh
+# /etc/scripts/flash get GPON_PLOAM_PASSWD
+GPON_PLOAM_PASSWD=AAAAAAAAAA
+# /etc/scripts/flash set GPON_PLOAM_PASSWD AAAAAAAAAA
+```
+Looks like that Genexis has also included an U-Boot variable to store the PLOAM. On currently known firmwares (5.6.1 and 5.7.0) is not readed by `omci_app` daemon.
+If you want to be future proof ready, put your PLOAM also on U-Boot env using the following command on the OS shell:
+
+```sh
+# nv setenv ploampwd 1234567890
+ploampwd=1234567890
+```
 
 # Known Bugs
+
+- ONT Serial Number can only be changed via U-Boot console, if you try to change it from the OS you will receive an error
+- Most of value on XML configuration are not readed by `omci_app` deamon, so changing parameters like `PON_VENDOR_ID`, `OLT_MODE` or `SW_VER*` are not supported. A the moment this unit cannot be fully spoofed like other Realtek's ONT with stock Luna SDK
+
 # Miscellaneous Links
 - [FiberTwist G2110C-2.5G](https://genexis.eu/content/uploads/2020/07/FiberTwist-G2110C-2.5G-Installation-Guide-v1.0-EN.pdf)
