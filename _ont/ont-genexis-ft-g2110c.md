@@ -40,6 +40,7 @@ parent: Genexis
 - C-5.7.0-R
 
 ## List of partitions
+
 | dev   | size     | erasesize | name            |
 | ----- | -------- | --------- | --------------- |
 | mtd0  | 00040000 | 00001000  | "boot"          |
@@ -64,6 +65,15 @@ This ONT supports dual boot.
 ## List of firmwares and files
 
 # Useful Commands
+
+Change GPON Serial Number:
+
+set GponSn GNXS05542100
+save env
+
+Change ONT IP Address:
+
+flash set LAN_IP_ADDR 192.168.1.1
 
 
 # Known Bugs
