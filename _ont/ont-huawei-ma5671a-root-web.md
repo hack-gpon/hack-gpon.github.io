@@ -16,7 +16,26 @@ search_exclude: true
         <h2>Root status</h2>
         </div>
         <div class="modal-body">
-        <textarea class="form-control" id="root-status" readonly style="resize: none;">
+            <div class="loader animated" id="root-loader" style="display: none">
+                <div class="loader-bar"></div>
+            </div>
+            <p id="root-loader-text"></p>
+            <div class="success animated" id="root-success-tick" style="display: none">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                    <circle class="path circle" fill="none" stroke="currentColor" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
+                    <polyline class="path check" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
+                </svg>
+                <p id="root-success-text"></p>
+            </div>
+            <div class="error animated" id="root-error-tick" style="display: none">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                    <circle class="path circle" fill="none" stroke="currentColor" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
+                    <line class="path line" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3"/>
+                    <line class="path line" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2"/>
+                </svg>
+                <p id="root-error-text"></p>
+            </div>
+        <textarea class="form-control" id="root-status" readonly style="resize: none; display: none">
         </textarea>
         </div>
     </div>
@@ -40,6 +59,12 @@ search_exclude: true
     }
     let rootModal = document.getElementById("root-modal");
     let textarea = document.getElementById('root-status');
+    let rootLoader = document.getElementById('root-loader');
+    let rootLoaderText = document.getElementById('root-loader-text');
+    let rootSuccessTick = document.getElementById('root-success-tick');
+    let rootErrorTick = document.getElementById('root-error-tick');
+    let rootSuccessText = document.getElementById('root-success-text');
+    let rootErrorText = document.getElementById('root-error-text');
     rootModal.addEventListener('modal-close', async function(event) {
         console.log("abort");
         acontroller.abort();
@@ -48,25 +73,49 @@ search_exclude: true
         console.log("start");
         root({signal: cs});
     });
+    function showError(message) {
+        rootLoaderText.style.display = "none";
+        rootLoader.style.display = "none";
+        rootSuccessTick.style.display = "none";
+        rootErrorTick.style.display = "block";
+        rootErrorText.textContent = message;
+    }
+    function showSuccess(message) {
+        rootLoader.style.display = "none";
+        rootErrorTick.style.display = "block";
+        rootSuccessTick.style.display = "none";
+        rootSuccessText.textContent = message;
+    }
     async function root({ signal } = {}) {
         textarea.value = "";
+        rootLoader.style.display = "none";
+        rootErrorText.textContent = "";
+        rootSuccessText.textContent = "";
+        rootErrorTick.style.display = "none";
+        rootSuccessTick.style.display = "none";
+        rootLoaderText.textContent = "Waiting for the user to choose the port";
+        rootLoaderText.style.display = "block";
         let port;
         try {
             port = await navigator.serial.requestPort();
         } catch (err) {
-            textarea.value += `Error: ${err.message}\n`;
+            showError(`Error: ${err.message}`);
             console.log(`Error: ${err.message}\n`);
             return;
         }
         if (!port) {
+            showError('Error: port not open');
+            console.log('Error: port not open\n');
             return;
         }
         textarea.value += '[+] Use serial port device\n';
         textarea.value += '[+] Waiting for trigger characters...\n';
+        rootLoader.style.display = "block";
+        rootLoaderText.textContent = "Root in progress: Use serial port device. Waiting for trigger characters...";
         try {
             await port.open({ baudRate: 115200 });
         } catch (err) {
-            textarea.value += `Error: ${err.message}\n`;
+            showError(`Error: ${err.message}`);
             console.log(`Error: ${err.message}\n`);
             return;
         }
@@ -83,126 +132,72 @@ search_exclude: true
             }, 0);
             try {
                 while (true) {
-                    console.log('await');
+                    console.log('await step 1');
                     const { value, done } = await reader.read();
                     if (value.startsWith('U-Boot')) {
-                        textarea.value += '[+] Received! transfer enable command...\n';
+                        rootLoaderText.textContent = "Root in progress: Trigger characters received. Transfer enable command...";
+                        textarea.value += '[+] Received! Transfer enable command...\n';
                         await delay(10000);
                         clearInterval(interval);
+                        rootLoaderText.textContent = "Root in progress: Transfer command sequence 2...";
                         textarea.value += '[+] Transfer command sequence 2\n';
                         writer.write(textEncoder.encode('setenv bootdelay 3\n'));
                         await delay(1000);
+                        rootLoaderText.textContent = "Root in progress: Transfer command sequence 3...";
                         textarea.value += '[+] Transfer command sequence 3\n';
                         writer.write(textEncoder.encode('setenv asc0 0\n'));
                         await delay(1000);
+                        rootLoaderText.textContent = "Root in progress: Transfer command sequence 4...";
                         textarea.value += '[+] Transfer command sequence 4\n';
                         writer.write(textEncoder.encode(
                             'setenv preboot "gpio set 3;gpio input 2;gpio input 105;gpio input 106;gpio input 107;gpio input 108"\n'));
                         await delay(1000);
+                        rootLoaderText.textContent = "Root in progress: Transfer command sequence 5...";
                         textarea.value += '[+] Transfer command sequence 5\n';
                         writer.write(textEncoder.encode('saveenv\n'));
                         await delay(1000);
+                        rootLoaderText.textContent = "Root in progress: Transfer command sequence 6...";
                         textarea.value += '[+] Transfer command sequence 6\n';
                         writer.write(textEncoder.encode('reset\n'));
+                        rootLoaderText.textContent = "Root in progress: Enable command transfer complete! rebooting...";
                         textarea.value += '[+] Enable command transfer complete! rebooting...\n';
+                        showSuccess("Oh Yeah! Step 1/2 completed.");
                         break;
                     }
                 }
             } catch (err) {
-                textarea.value += `Error: ${err.message}\n`;
+                showError(`Error: ${err.message}`);
                 console.log(`Error: ${err.message}\n`);
-            } finally {
-                reader.releaseLock();
-                writer.releaseLock();
+            } 
+            const interval2 = setInterval(function(){ 
+                for(let k=0; k<1000;k++)
+                    writer.write(String.fromCharCode(10)); 
+            }, 0);
+            try {
+                while (true) {
+                    console.log('await step 1');
+                    const { value, done } = await reader.read();
+                    if (value.startsWith('OpenWrt')) {
+                        rootLoaderText.textContent = "Root in progress: Trigger characters received. Transfer enable command...";
+                        textarea.value += '[+] Received! Transfer enable command...\n';
+                        clearInterval(interval2);
+                        rootLoaderText.textContent = "Root in progress: Transfer command sequence 7...";
+                        textarea.value += '[+] Transfer command sequence 7\n';
+                        writer.write(textEncoder.encode('sed -i  "s|/opt/lantiq/bin/minishell|/bin/ash|g" /etc/passwd\n'));
+                        rootLoaderText.style.display = "none";
+                        showSuccess("Oh Yeah! Step 2/2 completed.");
+                        break;
+                    } else if(value.includes("Kernel panic")) {
+                        throw new Error('Kernel panic. The cause of these kernel panics could be insufficient power supply.');
+                        break;
+                    }
+                }
+            } catch (err) {
+                showError(`Error: ${err.message}`);
+                console.log(`Error: ${err.message}\n`);
             }
+            reader.releaseLock();
+            writer.releaseLock();
         }
     }
 </script>
-
-
-{:style="counter-reset:none"}
-5. Reboot the stick
-6. Open Tera Term (or other serial terminal emulator), after load press `enter` to activate the console
-
-{% include image.html file="new-root-procedure\press-enter.jpg"  alt="Press enter for activate the console" caption="Press enter for activate the console" %}
-
-{:style="counter-reset:none"}
-7. With `sed` change the default shell from `/opt/lantiq/bin/minishell` to `/bin/ash` the file `/etc/passwd`:
-
-```shell
-sed -i  "s|/opt/lantiq/bin/minishell|/bin/ash|g" /etc/passwd
-```
-{% include alert.html content="Do not use `vim`!" alert="Important" icon="svg-warning" color="red" %}
-
-{% include alert.html content="Take attention to kernel panics, they happen often! Be quick, if a kernel panic happens wait for the reboot and try again." alert="Important"  icon="svg-warning" color="yellow" %}
-
-
-```shell
-[   34.612000] Kernel panic - not syncing: Fatal exception in interrupt
-[   34.612000] Rebooting in 3 seconds..
-```
-
-{% include alert.html content="The cause of these kernel panics could be insufficient power supply." alert="Info"  icon="svg-info" color="blue" %}
-
-{:style="counter-reset:none"}
-8. Reboot it this time connected to the router with cage or mediaconverter, with the port set to an IP on the 192.168.1.0/24 subnet (the stick has the IP 192.168.1.10)
-
-{% include alert.html content="If your subnet is 192.168.1.0/24 make sure you have no ip conflicts." alert="Note"  icon="svg-warning" color="yellow" %}
-
-{:style="counter-reset:none"}
-9. Run the terminal and login to the stick with ssh
-
-```shell
-ssh root@192.168.1.10
-```
-
-The password is `admin123`.
-
-{:style="counter-reset:none"}
-10. Make a backup of all partitions, an easy way is:
-- On the stick run:
-```shell
-cat /proc/mtd
-```
-- For each mtdX run, on computer shell:
-```shell
-nc -l -p 1234 > mtdX.bin
-```
-And in the lantiq shell:
-```shell
-cat /dev/mtdX | nc 192.168.1.11 1234
-```
-
-{% include alert.html content="Replace 192.168.1.11 with you machine IP's address" alert="Info" icon="svg-info" color="blue" %}
-
-{:style="counter-reset:none"}
-11. upload the mtd5 image in  `/tmp` whit the command 
-```
-scp mtd5.bin root@192.168.1.10:/tmp/
-```
-then write the mtd5 file it into the second partition (the 1) with the command:
-```
-mtd -e image1 write mtd5.bin image1
-```
-12. change the `committed` variabile with
-```
-fw_setenv committed_image 1
-fw_printenv committed_image
-```
-13. upload the mtd2 image in `/tmp` whit the command 
-```
-scp mtd2.bin root@192.168.1.10:/tmp/
-```
-then write the mtd2 file it into the second partition (the 0) with the command:
-```
-mtd -e image0 write mtd2.bin image0
-```
-{% include alert.html content="You could also have done it as a serial, but from here it is much quicker with SSH" alert="Info"  icon="svg-info" color="blue" %}
-
-# Miscellaneous Links
-- [Come avere i 2.5 Gbps su un unico dispositivo senza il Fastgate](https://forum.fibra.click/d/17836-come-avere-i-25-gbps-su-un-unico-dispositivo-senza-il-fastgate)
-- [Support MA5671A SFP GPON](https://forum.openwrt.org/t/support-ma5671a-sfp-gpon/48042)
-- [La fibre Orange à 2Gbps, sur un routeur MikroTik 10Gbps CCR2004, via un ONT SFP+](https://lafibre.info/remplacer-livebox/guide-de-connexion-fibre-directement-sur-un-routeur-voire-meme-en-2gbps/msg832904/#msg832904)
-- [Bypassing the HH3K up to 2.5Gbps using a BCM57810S NIC](https://www.dslreports.com/forum/r32230041-Internet-Bypassing-the-HH3K-up-to-2-5Gbps-using-a-BCM57810S-NIC)
-- [Bypassing the HH3K up to 2.5Gbps using a BCM57810S NIC](https://www.dslreports.com/forum/r32230041-Internet-Bypassing-the-HH3K-up-to-2-5Gbps-using-a-BCM57810S-NIC)
-
