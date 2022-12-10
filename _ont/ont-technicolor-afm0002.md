@@ -37,7 +37,7 @@ Configuration: asc0=0 115200 8-N-1
 - AFM0002WND (IP address: 169.0.0.1)
 
 {% include alert.html content="The version used to obtain the info shown on this page is the AFM0002TIM" alert="Info"  icon="svg-info" color="blue" %}
-{% include alert.html content="The AFM0002FWB can be transformed into AFM0002TIM. The AFM0002FWB has an older software version." alert="Warning"  icon="svg-warning" color="red" %}
+{% include alert.html content="The AFM0002FWB can be transformed into AFM0002TIM. Usually AFM0002FWBs have older software." alert="Warning"  icon="svg-warning" color="red" %}
 
 
 # List of software versions
@@ -69,18 +69,18 @@ Configuration: asc0=0 115200 8-N-1
 
 This stick supports dual boot. 
 
-`k0` and `r0` respectively contain the kernel and firmware of the first image, `k1` and `r1` the kernel and the firmware of the second one
+`k0` and `r0` respectively contain the kernel and firmware of the first image, `k1` and `r1` the kernel and firmware of the second one
 
 # List of firmwares and files
 ## Useful files
 - `/var/config/lastgood.xml` - Contains the user portion of the configuration
-- `/var/config/lastgood-hs.xml` - Contains the "hardware" configuration (i.e. that _should_ not be changed)
+- `/var/config/lastgood-hs.xml` - Contains the "hardware" configuration (which _should not_ be changed)
 - `/tmp/omcilog` - OMCI messages logs (must be enabeled, see below)
 
 ## Useful binaries
-- `/etc/scripts/flash`  - Used to manipulate the config files in a samewhat safe manner
-- `xmlconfig` - Used to low-level manipulate the XML config files. Called by `flash`
-- `nv` - Used to manipulate the nvram storage, including persistent config entries via `nv setenv`/`nv getenv`
+- `/etc/scripts/flash`  - Used to manipulate the config files in a somewhat safe manner
+- `xmlconfig` - Used for low-level manipulation of the XML config files. Called by `flash`
+- `nv` - Used to manipulate nvram storage, including persistent config entries via `nv setenv`/`nv getenv`
 - `omcicli` - Used to interact with the running OMCI daemon
 - `omci_app` - The OMCI daemon
 - `diag` - Used to run low-level diagnostics commands on the stick
@@ -132,7 +132,7 @@ sw_version1=V1_7_8_210412
 
 # Low Level Modding
 
-{% include alert.html content="This section is based on `V1_7_8_210412` firmware version of the stick" alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="This section is based on the `V1_7_8_210412` version of the stick's firmware " alert="Info" icon="svg-info" color="blue" %}
 
 
 ## Transfering files from/to the stick
@@ -161,14 +161,14 @@ From the PC to the stick
 
 So mtd4/5 if you are on image1, mtd6/7 if you are on image0.
 
-The follwing examples flashes a new rootfs to image1 and boots to it
+The following commands are used to flash a new rootfs to image1 and then boot to it
 ```sh
 # flash_eraseall /dev/mtd7
 # cat /tmp/rootfs.new > /dev/mtd7
 # nv setenv sw_commit=1
 # reboot
 ```
-## Adding support to configurable SW and HW versions, VENDOR ID and much more
+## Adding support to configurable SW and HW versions, Vendor ID and much more
 `/etc/scripts/flash` can be flashed in order to add support for some variables implemented in `omci_app` but removed from `xmlconfig`. The patch is below (change the values to suit your needs)
 ```patch
 --- squashfs-root/etc/scripts/flash     2021-09-28 10:38:52.000000000 +0200
@@ -222,7 +222,7 @@ For reference, the patch changes the follwing section of the omci_app:
 -00408cf0 24 05 00 0f     li         a1,0xe
 +00408cf0 24 05 00 0f     li         a1,0xf
 ```
-(It's inside the function referecing the string `OMCI_SW_VER1`)
+(It's inside the function referencing the string `OMCI_SW_VER1`)
 
 The original file md5sum is: `4aea2f72bacc11256b7e2c1583d2ad4f`
 The patched file md5sum is: `da20327c4c002e4c27f82f6ee63dbc1a`
@@ -234,8 +234,8 @@ reboot
 /bin/omcicli set logfile 1 ffffffff
 ```
 1. The binary log will be placed inside: `/tmp/omcilog`
-2. You can convert it into .pcap using [omcilog2pcap](https://github.com/ADeltaX/omcilog2pcap)
-3. You can then open it with Wireshark by installing the OMCI plugin from [wireshark](https://wiki.wireshark.org/Contrib.md)
+2. You can convert it into a .pcap file using [omcilog2pcap](https://github.com/ADeltaX/omcilog2pcap)
+3. You can then open it with Wireshark by installing the OMCI plugin from [Wireshark](https://wiki.wireshark.org/Contrib.md)
    
 If you want to log everything since the stick boots, you can create a custom rootfs. Place the last command inside `etc/runomci.sh` as the last line of the file
 

@@ -45,9 +45,9 @@ parent: Huawei
 
 Configuration: asc0=0 115200 8-N-1
 
-{% include alert.html content="Try PIN 10 or other GND PINs if it doesn't work with 14." alert="Note"  icon="svg-warning" color="yellow" %}
+{% include alert.html content="Try PIN 10 or other GND PINs if the connection doesn't work by using PIN 14." alert="Note"  icon="svg-warning" color="yellow" %}
 
-{% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if it doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
+{% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
 
 
 ## Root procedure
@@ -59,6 +59,26 @@ Configuration: asc0=0 115200 8-N-1
 - V8R017C00S202B
 
 ## List of partitions
+
+Partition layouts change depending on which image is booted, in particular:
+
+When booting image0:
+```
+mtd2 ---> image0 (linux)
+mtd5 --> image1
+mtd3 --> rootfs
+mtd4 --> rootfs_data
+```
+When booting image0:
+```
+mtd2 ---> image0
+mtd3 --> image1 (linux)
+mtd4 --> rootfs
+mtd5 --> rootfs_data
+```
+
+For more info [XPONos partition layout](https://github.com/XPONos/linux_lantiq-falcon/commit/456f68f69a84c846a542a9f0ea47c37476535dcb).
+
 
 ## When booting from image0
 
@@ -84,17 +104,23 @@ Configuration: asc0=0 115200 8-N-1
 
 ## List of firmwares and files
 
+{% include alert.html content="If the root procedure without tweezers is used, the firmware already on the Huawei Stick corresponds to rooted firmware in this list." alert="Info" icon="svg-info" color="blue" %}
+
 - [Carlito MTD2](https://ma5671a.s3.nl-ams.scw.cloud/mtd2.bin){: .btn }  md5hash: d3cb6f7efec201b37931139feb4bb23b
 - [Huawei Rooted MTD2](https://ma5671a.s3.nl-ams.scw.cloud/mA5671a_root_mtd2.img){: .btn } md5hash: 3138d2dd06a32bb92bc63610fec6fcd6
-- [Carlito MTD5](https://ma5671a.s3.nl-ams.scw.cloud/mtd5.bin){: .btn }  md5hash > 59d2dc15227d6f693a38131eca89b29e 
+- [Carlito MTD5](https://ma5671a.s3.nl-ams.scw.cloud/mtd5.bin){: .btn }  md5hash: 59d2dc15227d6f693a38131eca89b29e 
 - [Huawei Rooted MTD5](https://ma5671a.s3.nl-ams.scw.cloud/mA5671a_root_mtd5.img){: .btn }  md5hash: 0e4cfdc1b96be6581869b26b48789556
 - [1224abort.bin](https://ma5671a.s3.nl-ams.scw.cloud/1224ABORT.bin){: .btn }  md5hash: 10e94a4b4acdc82dec20c7904b69e5c0
-- [right.com.cn 19 July 2022](https://mega.nz/file/9fpSkYTb#wNyjAj1kOLWC9HozX-gTQ-TS3VFqRYg--x1rm7RSuDg){: .btn }
+- [right.com.cn (China) 19 July 2022](https://mega.nz/file/9fpSkYTb#wNyjAj1kOLWC9HozX-gTQ-TS3VFqRYg--x1rm7RSuDg){: .btn } md5hash: 6b5e7e3c659fe3f0204340fa746ac4fc
+- [right.com.cn (China) 29 Aug 2022](https://mega.nz/file/VHFFSBrT#2WhDPcdON5EHR01l6Ut35GC3sl55e4l09Z0NUo_7SWA){: .btn} md5hash: 3d357e2dc7b59c66fe61b4ddf1fb8dc0
+- [ONT FS.com GPON ONU Stick with MAC firmware / SourcePhotonics SPS-34-24T-HP-TDFO firmware](/ont-fs-com-gpon-onu-stick-with-mac)
 
 # General setting
 
-- [Carlito General Setting](/ont-huawei-ma5671a-carlito)
-- [Huawei Rooted General Setting](/ont-huawei-ma5671a-rooted)
+- [Huawei Rooted Firmware General Setting](/ont-huawei-ma5671a-rooted)
+- [Carlito Firmware General Setting](/ont-huawei-ma5671a-carlito)
+- [SourcePhotonics Firmware General Setting](/ont-huawei-ma5671a-sf)
+- [right.com.cn (China) Firmware General Setting](/ont--huawei-ma5671a-china)
 
 # Useful commands
 
@@ -106,13 +132,44 @@ Configuration: asc0=0 115200 8-N-1
 # scp rootfs.bin root@192.168.1.10:/tmp/
 ```
 
+## Backup of all partition
+
+Make a backup of all partitions, an easy way is:
+- On the stick run:
+```shell
+cat /proc/mtd
+```
+- For each mtdX run, on computer shell:
+```shell
+nc -l -p 1234 > mtdX.bin
+```
+And in the lantiq shell:
+```shell
+cat /dev/mtdX | nc 192.168.1.11 1234
+```
+
 ## Flashing a new rootfs
 
 {% include alert.html content="Only the inactive image can be flashed" alert="Info" icon="svg-info" color="blue" %}
 
-The follwing examples flashes a new rootfs to image1 and boots to it
+The following commands are used to flash a new rootfs to image1 and then boot to it
 ```sh
 # mtd -e image1 write /tmp/rootfs.bin image1
+# fw_setenv committed_image 1
+# fw_setenv image1_is_valid 1
+# reboot
+```
+
+{% include alert.html content="Some OLTs don't like when ONTs don't boot from image 0, therefore the previous procedure must be preceded by the following procedure with inverted images, as to clone image 1 into image 0" alert="Warning" icon="svg-warning" color="yellow" %}
+
+## Cloning of mtd1 (image 0) into mtd5 (image 1)
+
+{% include alert.html content="Image 0 can be flashed to image 1, while image 1 cannot be flashed to image 0 because it has larger rootfs_data" alert="Warning" icon="svg-warning" color="yellow" %}
+
+The following commands are used to clone image0 to image1 and then boot to it
+```sh
+# cat /dev/mtd2 > /tmp/mtd2.bin
+# mtd -e image1 write /tmp/mtd2.bin image1
 # fw_setenv committed_image 1
 # fw_setenv image1_is_valid 1
 # reboot

@@ -5,7 +5,7 @@ parent: Huawei MA5671A
 layout: default
 ---
 
-1. Take the SFP molex and the 4 coloured cables and solder them to the molex according to the following diagram:
+1. Take the SFP molex and four coloured cables and solder them to the molex according to the following diagram:
 
 | USB TTL(UART) Adapter | wire colour in picture | SFP 20pins Molex connector |
 | --------------------- | ---------------------- | -------------------------- |
@@ -14,25 +14,25 @@ layout: default
 | RX                    | yellow                 | pin #7                     |
 | GND                   | green                  | pin #14                    |
 
-{% include alert.html content="Use GND wire as ON/OFF switch, otherwise there will be a slight delay before data is displayed on the console (putty/TeraTerm)." alert="Important"  icon="svg-warning" color="yellow" %}
+{% include alert.html content="Use the GND wire as an ON/OFF switch, otherwise there will be a slight delay before data is displayed on the console (putty/TeraTerm)." alert="Important"  icon="svg-warning" color="yellow" %}
 
-{% include alert.html content="Try PIN 10 or other GND PINs if it doesn't work with 14." alert="Note"  icon="svg-warning" color="yellow" %}
+{% include alert.html content="Try PIN 10 or other GND PINs if the connection doesn't work with PIN 14." alert="Note"  icon="svg-warning" color="yellow" %}
 
-{% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if it doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
+{% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
 
 {:style="counter-reset:none"}
 1. Install python and `pyserial` with `pip`
 ```shell
 pip install pyserial
 ```
-1. Make the connections as shown to a TTL adapter except for GND (which remains detached and is used as a switch)
+1. Make the connections as shown to a TTL adapter except for GND (which should remain detached as it is used as a switch)
 
 {% include image.html file="ma5671a-root-1.jpg"  alt="Example of how the sfp-ttl connection should look like" caption="Example of how the sfp-ttl connection should look like" %}
 {% include image.html file="new-root-procedure\board-molex-arduino.jpg"  alt="Example of how the sfp-ttl connection should look like with a custom board" caption="Example of how the sfp-ttl connection should look like with a custom board" %}
-{% include image.html file="ma5671a-root-2.jpg"  alt="Molex SFP" caption="Molex SFP" %}
+{% include image.html file="ma5671a-root-2.jpg"  alt="SFP Molex" caption="SFP Molex" %}
 
 {:style="counter-reset:none"}
-1. Open Tera Term (or other serial terminal emulator), find the correct serial port of the TTL adapter, change the port on the script on line 7 instead of `COM8`.
+1. Open Tera Term (or other serial terminal emulators), find the correct serial port of the TTL adapter, change the port on the script on line 7 instead of `COM8`.
 1. After this, run the following python script and connect the GND pin:
 
 ```py
@@ -92,19 +92,19 @@ except (KeyboardInterrupt, SystemExit):
 
 {:style="counter-reset:none"}
 1. Reboot the stick
-1. Open Tera Term (or other serial terminal emulator), after load press `enter` to activate the console
+1. Open Tera Term (or other serial terminal emulators), after it has loaded press `enter` to activate the console
 
-{% include image.html file="new-root-procedure\press-enter.jpg"  alt="Press enter for activate the console" caption="Press enter for activate the console" %}
+{% include image.html file="new-root-procedure\press-enter.jpg"  alt="Press enter to activate the console" caption="Press enter to activate the console" %}
 
 {:style="counter-reset:none"}
-1. With `sed` change the default shell from `/opt/lantiq/bin/minishell` to `/bin/ash` the file `/etc/passwd`:
+1. With `sed` change the default shell from `/opt/lantiq/bin/minishell` to `/bin/ash` by editing the file `/etc/passwd`:
 
 ```shell
 sed -i  "s|/opt/lantiq/bin/minishell|/bin/ash|g" /etc/passwd
 ```
 {% include alert.html content="Do not use `vim`!" alert="Important" icon="svg-warning" color="red" %}
 
-{% include alert.html content="Take attention to kernel panics, they happen often! Be quick, if a kernel panic happens wait for the reboot and try again." alert="Important"  icon="svg-warning" color="yellow" %}
+{% include alert.html content="Be aware that kernel panics happen often! If a kernel panic happens wait for the reboot and quickly try again." alert="Important"  icon="svg-warning" color="yellow" %}
 
 
 ```shell
@@ -112,12 +112,14 @@ sed -i  "s|/opt/lantiq/bin/minishell|/bin/ash|g" /etc/passwd
 [   34.612000] Rebooting in 3 seconds..
 ```
 
-{% include alert.html content="The cause of these kernel panics could be insufficient power supply." alert="Info"  icon="svg-info" color="blue" %}
+{% include alert.html content="The cause of these kernel panics could be insufficient supply of power." alert="Info"  icon="svg-info" color="blue" %}
 
 {:style="counter-reset:none"}
-1. Reboot it this time connected to the router with cage or mediaconverter, with the port set to an IP on the 192.168.1.0/24 subnet (the stick has the IP 192.168.1.10)
+1. After this is done, reboot the stick, after connecting it to the router via an ethernet mediaconverter or directly plug it in in an SFP port, with the port's IP set to whatever IP of the 192.168.1.0/24 subnet (the stick has the IP 192.168.1.10)
 
 {% include alert.html content="If your subnet is 192.168.1.0/24 make sure you have no ip conflicts." alert="Note"  icon="svg-warning" color="yellow" %}
+
+{% include alert.html content="Make sure to disable SFP TX fault detection, otherwise the RX loss will prevent you from connecting to the mini SFP ONT at this point. Don't simply attach the fiber cable to work around this issue as the OLT may ban you." alert="Note"  icon="svg-warning" color="yellow" %}
 
 {:style="counter-reset:none"}
 1. Run the terminal and login to the stick with ssh

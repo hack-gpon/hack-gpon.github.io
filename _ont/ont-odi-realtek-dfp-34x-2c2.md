@@ -23,7 +23,7 @@ parent: ODI
 | SSH         | ✅ user `admin`, password `admin` |
 | Form Factor | miniONT SFP                       |
 
-{% include alert.html content="SSH uses an outdated set of algorithm/ciphers, you can connect using the following command:" alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="SSH uses an outdated set of algorithms/ciphers, you can connect using the following command:" alert="Note"  icon="svg-info" color="blue" %}
 
 ```shell
 ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc admin@192.168.1.1
@@ -39,7 +39,7 @@ ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc admin@192.16
 
 ## List of firmwares and files
 - [V1.0-220530 Modded](https://github.com/Anime4000/RTL960x/files/8821809/M114_sfp_ODI_hybrid_220527_stich86_220530.tar.zip){: .btn } 
- by [stich86](https://github.com/stich86) **SUGGESTED** since it has working VLAN translation.  
+ by [stich86](https://github.com/stich86) **RECOMMENDED** because it has working VLAN translation.  
 
 ## List of partitions
  
@@ -62,7 +62,7 @@ ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc admin@192.16
 
 This stick supports dual boot. 
 
-`k0` and `r0` respectively contain the kernel and firmware of the first image, `k1` and `r1` the kernel and the firmware of the second one
+`k0` and `r0` respectively contain the kernel and firmware of the first image, while `k1` and `r1` respectively contain the kernel and the firmware of the second one
 
 # Serial
 
@@ -91,7 +91,7 @@ GPON_SN=TMBB00000000
 
 ## Getting/Setting the ONT's PLOAM password
 
-{% include alert.html content="The PLOAM password is stored in HEX format, with no 0x or separator" alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="The PLOAM password is stored in HEX format, without any 0x or separators" alert="Note"  icon="svg-info" color="blue" %}
 
 ```sh
 # flash get GPON_PLOAM_PASSWD
@@ -101,7 +101,7 @@ GPON_PLOAM_PASSWD=41414141414141414141
 
 ## Getting/Setting the ONT Vendor ID
 
-{% include alert.html content="this may need OMCI_OLT_MODE set to 3 to work" alert="Note" icon="svg-info" color="blue" %}
+{% include alert.html content="This may need the OMCI_OLT_MODE value to be set to 3 to work" alert="Note" icon="svg-info" color="blue" %}
 
 ```sh
 # flash get PON_VENDOR_ID  
@@ -110,7 +110,7 @@ PON_VENDOR_ID=ZTEG
 ```
 
 ## Getting/Settng the ONT Custom software version
-{% include alert.html content="this needs OMCI_OLT_MODE set to 3 and firmware 220530 modded by stich86" alert="Note" icon="svg-info" color="blue" %}
+{% include alert.html content="This needs the OMCI_OLT_MODE value to be set to 3 and firmware 220530 as modded by stich86" alert="Note" icon="svg-info" color="blue" %}
 
 ```sh
 # nv setenv sw_custom_version0 YOURFIRSTSWVER
@@ -118,7 +118,7 @@ PON_VENDOR_ID=ZTEG
 ```
 
 ## Getting/Setting a custom HW Version
-{% include alert.html content="this probably needs OMCI_OLT_MODE set to 3" alert="Note" icon="svg-info" color="blue" %}
+{% include alert.html content="This may need the OMCI_OLT_MODE value to be set to 3 to work" alert="Note" icon="svg-info" color="blue" %}
 
 
 ```sh
@@ -128,7 +128,7 @@ HW_HWVER=V2.0
 ```
 
 ## Getting/Setting a custom ONT Equipment ID
-{% include alert.html content="this probably needs OMCI_OLT_MODE set to 3" alert="Note" icon="svg-info" color="blue" %}
+{% include alert.html content="This may need the OMCI_OLT_MODE value to be set to 3 to work" alert="Note" icon="svg-info" color="blue" %}
 ```sh
 # flash get GPON_ONU_MODEL
 GPON_ONU_MODEL=DFP-34X-2C2
