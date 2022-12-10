@@ -27,7 +27,7 @@ parent: Zyxel
 {% include image.html file="op151s.png" alt="Ziza OP151S" caption="Ziza OP151S" %}
 
 Once you access the stick via ssh you will be presented with a second tier login. The credentials to access the zyxel shell are: username: `twmanu` , password: `twmanu`.
-From the zyxel shell you can move to a standard linux shell via the `linuxshell` command
+From the Zyxel shell you can move to a standard Linux shell using the `linuxshell` command
 
 ## Firmware is interchangeable with:
 
@@ -57,13 +57,13 @@ This stick supports dual boot, as visible from the presence of `ImageA` and `Ima
 
 # List of firmwares and files
 ## Useful files
-- `/var/config/ont.sys` used to customize various settings on the stick. If you don't have it you can copy the stock one from /ont.sys
+- `/var/config/ont.sys` - Used to customize various settings on the stick. If you don't have it you can copy the stock one from /ont.sys
 
 # Useful Commands
-{% include alert.html content="all commands start from the twmanu shell." alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="All commands start from the twmanu shell." alert="Note"  icon="svg-info" color="blue" %}
 
 ## Changing the ONT's S/N
-{% include alert.html content="the S/N is stored in the ASCII format." alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="The S/N is stored in the ASCII format." alert="Note"  icon="svg-info" color="blue" %}
 ```sh
 manufactory
 set sn ALCLf0f0f0f0
@@ -73,7 +73,7 @@ set sn ALCLf0f0f0f0
 ```
 
 ## Changing the ONT's PLOAM password
-{% include alert.html content="the PLOAM is stored in the ASCII format." alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="The PLOAM password is stored in the ASCII format." alert="Note"  icon="svg-info" color="blue" %}
 This can be done easily via web ui. If you prefer to do it via the shell use:
 ```sh
 hal
@@ -81,7 +81,7 @@ set password PLOAMPASS
 ```
 
 ## Changing the ONT's equipment ID
-{% include alert.html content="model number must be 20 no more than chars total." alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="Model number must not be more than 20 characters long in total." alert="Note"  icon="svg-info" color="blue" %}
 ```sh
 manufactory
 set equipment id MYEQUIPMENTID
@@ -103,21 +103,24 @@ The entries for the software version are:
 SW_VER0:0xabcdef
 SW_VER1:0xabcedf
 ```
-{% include alert.html content="it's better to enter the software version in hex format, all lowercase precedeed by 0x." alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="It's better to enter the software version in hex format, all lowercase precedeed by 0x." alert="Note"  icon="svg-info" color="blue" %}
 
 ## See link speed
-This SFP have HSGMII enabled by default, `link_status=5` HSGMII 2.5Gbit, `link_status=4` SGMII 1Gbit:
+This SFP has HSGMII enabled by default: `link_status=5` for HSGMII 2.5Gbit, `link_status=4` for SGMII 1Gbit:
 ```
 linuxshell
 onu lanpsg 0
 ```
 
-## Connection state
-To see the connection state use this command, `curr_state=5` O5 state, `curr_state=1` all states other than O5:
+## Checking connection state
+To see the connection state use the following command:
 ```
 linuxshell
 onu ploamsg
 ```
+
+`curr_state=5` for O5 state, `curr_state=1` for all other operational states.
+
 ## Querying a particular OMCI ME
 Query via OMCI ME Class Name
 ```sh
@@ -138,7 +141,7 @@ show me classid OmciClassId (e.g 7)
 The stick has a tricky image packing method, fortunately it has been reverse engineered. A script to help you create a custom rootfs can be found here: [https://github.com/nanomad/zyxel-pmg-3000-mod-kit](https://github.com/nanomad/zyxel-pmg-3000-mod-kit)
 
 ## Flashing a new rootfs
-{% include alert.html content="all commands start from the twmanu shell." alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="All commands start from the twmanu shell." alert="Note"  icon="svg-info" color="blue" %}
 
 - Transfer the new mtd on the stick via tftp
 ```
@@ -172,7 +175,7 @@ To restore the default combination you can try following [this method](https://g
 # Known Bugs
 - [Not working with Broadcom BCM57810S](https://github.com/xvzf/zyxel-gpon-sfp/issues/10)
 - Issue on IPv6 discovery. But we are not sure if is a edge case of a particular ISP or not
-- [Some stick have a custom password](https://github.com/xvzf/zyxel-gpon-sfp/issues/6)
+- [Some sticks have a custom password](https://github.com/xvzf/zyxel-gpon-sfp/issues/6)
 
 
 # Miscellaneous Links

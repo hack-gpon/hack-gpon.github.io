@@ -63,7 +63,7 @@ Or:
 sfp_i2c -i8 -s "ABCD12345678"
 ```
 
-## Obtain S/N setted
+## Checking whether the S/N has been correctly set
 ```sh
 fw_printenv | grep nSerial
 ```
@@ -73,7 +73,7 @@ sfp_i2c -g
 ```
 
 ## Setting PLOAM Password
-Software 6BA1896SPLQA41 and before (See [Carlito Firmware](/ont-huawei-ma5671a-carlito))
+Software 6BA1896SPLQA41 and earlier (See [Carlito Firmware](/ont-huawei-ma5671a-carlito))
 ```sh
 fw_setenv nPassword "0x30 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39"
 ```
@@ -84,7 +84,7 @@ sfp_i2c -i11 -s "0x30 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39"
 ```
 
 ## Setting LOID and Checkcode Password
-Software 6BA1896SPLQA41 and before (See [Carlito Firmware](/ont-huawei-ma5671a-carlito))
+Software 6BA1896SPLQA41 and earlier (See [Carlito Firmware](/ont-huawei-ma5671a-carlito))
 ```sh
 fw_setenv omci_loid 1234567890
 fw_setenv omci_lpwd password01
@@ -96,23 +96,23 @@ sfp_i2c -i9 -s "1234567890"
 sfp_i2c -i10 -s "password01"
 ```
 
-## Setting eqipment id (ME 257)
+## Setting Eqipment ID (ME 257)
 ```sh
 sfp_i2c -i6 -s "YOUR_EQUIPMENT_ID"
 ```
 
-## Setting vendor id (ME 256)
+## Setting Vendor ID (ME 256)
 ```sh
 sfp_i2c -i7 -s "YOUR_VENDOR_ID"
 ```
 
-## Change ONU hardware version (ME 256)
+## Changing ONU hardware version (ME 256)
 ```sh
 cp /etc/mibs/data_1g_8q.ini /etc/mibs/data_1g_8q.ini.bak
 sed 's/256 0 HWTC 0000000000000/256 0 YOUR_VENDOR_ID YOUR_ONU_VERSION/' -i /etc/mibs/data_1g_8q.ini
 ```
 
-## Enable `data_1g_8q_us1280_ds512.ini` OMCI MIB file for 2500 Mbps profiles
+## Enabling `data_1g_8q_us1280_ds512.ini` OMCI MIB file for 2500 Mbps profiles
 {% include alert.html content="The patch below is only compatible with the firmware version `6BA1896SPLQA42`" alert="Info" icon="svg-info" color="blue" %}
 {% include alert.html content="If you need to set the ONU version remember that you will have to do it using the MIB file `/etc/mibs/data_1g_8q_us1280_ds512.ini` instead of `/etc/mibs/data_1g_8q.ini`" alert="Info" icon="svg-info" color="blue" %}
 
@@ -121,7 +121,7 @@ The MIB file `data_1g_8q_us1280_ds512.ini` is very useful to avoid performance p
 fw_setenv mib_file data_1g_8q_us1280_ds512.ini
 ```
 
-## Use custom OMCI MIB file
+## Using custom OMCI MIB file
 {% include alert.html content="If you need to set the ONU version remember that you will have to do it using your custom MIB file instead of `/etc/mibs/data_1g_8q.ini`" alert="Info" icon="svg-info" color="blue" %}
 
 You have to copy the MIB file to /etc/mibs and then run this command:
@@ -129,7 +129,7 @@ You have to copy the MIB file to /etc/mibs and then run this command:
 fw_setenv mib_file YOUR_MIB_FILENAME
 ```
 
-## Change image software version (ME 7)
+## Changing image software version (ME 7)
 {% include alert.html content="The patch below is only compatible with the firmware version `6BA1896SPLQA42`" alert="Info" icon="svg-info" color="blue" %}
 
 The image version normally couldn't be changed because it was hard-coded into the `/opt/lantiq/bin/omcid` binary, 
@@ -167,12 +167,13 @@ cd /opt/lantiq/bin
 cp omcid omcid.original
 ```
 
-And finally to copy via SCP the modified `omcid` binary in the `/opt/lantiq/bin/omcid` path.
-Before restarting the stick and applying changes, make sure omcid has execution bit set.
+Now you have to use SCP to copy the modified `omcid` binary in `/opt/lantiq/bin/omcid`.
+Before restarting the stick and applying changes, make sure `omcid` has its execution bit set, then reboot the stick and change the image version with the following command:
 
 ```sh
 chmod ugo+x /opt/lantiq/bin/omcid
-```
+>>>>>>> main
+
 
 Is also a good time to set the image0/image1_version. Crash has reported if they are not set correctly before reboot.
 ```sh
@@ -197,33 +198,33 @@ fw_setenv ipaddr 192.168.20.60
 fw_setenv gatewayip 192.168.20.1
 ```
 
-## Read all EEPROM
+## Reading all EEPROM
 ```sh
 sfp_i2c -r
 ```
 
-## Get Firmware version
+## Getting Firmware version
 ```sh
 strings /opt/lantiq/bin/omcid | grep ^software_Version | awk -F[=,] '{print $2}'
 ```
 
-## Get Firmware build time
+## Getting Firmware build time
 ```sh
 strings /opt/lantiq/bin/omcid | grep compiled
 ```
 
-## Setting Onu reboot
+## Rebooting the ONU
 ```sh
 reboot
 ```
 
-## Reinitialize the EEPROM without rebooting 
+## Reinitializing the EEPROM without rebooting 
 {% include alert.html content="This will cause you to disconnect from the current ssh session."  alert="Warning"  icon="svg-warning" color="yellow" %}
 ```sh
 reload_i2c.sh
 ```
 
-## Reset EEPROM to default values and reinitialize 
+## Resetting EEPROM to default values and reinitializing 
 {% include alert.html content="This command is not reversible, all the EEPROM data will be restored to the factory values!"  alert="Warning"  icon="svg-warning" color="red" %}
 {% include alert.html content="This will cause you to disconnect from the current ssh session."  alert="Warning"  icon="svg-warning" color="yellow" %}
 ```sh

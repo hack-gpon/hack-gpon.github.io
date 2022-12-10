@@ -29,7 +29,7 @@ layout: default
 
 # Known Bugs
 
-The ONT randomly crashes when PPPoE connection is established
+The ONT randomly crashes when PPPoE connection by a connected router is established.
 
-The GPON serial sometimes temporarily disappears after a crash preventing the ONT from reaching O5
+The GPON serial sometimes temporarily disappears after a crash, preventing the ONT from reaching the O5 operational status.
 

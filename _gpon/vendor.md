@@ -7,9 +7,9 @@ layout: default
 
 > 4 ASCII character maximum
 
-Need to set for OLT Authenticate your ONT stick, please read your original ONT Serial Number, either in HEX digit or ASCII, if in HEX digit, you need convert first eight HEX digit to ASCII, for example `48575443` = `HWTC`.
+Needs to be set for the OLT to authenticate your ONT; please read your original ONT's Serial Number, it can be either in HEX or ASCII: if it's codified in HEX, you need to convert the first eight HEX digits to ASCII, for example `48575443` = `HWTC`.
 
-Here some popular list if want to fool the OLT:
+Here is a list of the most popular Vendor IDs:
 
 
 | ID     | Vendor Name          |

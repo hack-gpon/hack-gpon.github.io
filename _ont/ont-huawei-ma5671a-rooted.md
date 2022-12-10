@@ -8,7 +8,7 @@ layout: default
 # General setting
 
 
-{% include alert.html content="Unlike the other firmware in this firmware, the data must be modified in a base64-encoded file. To simplify this, you can use the following web application." alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="In this firmware, unlike the other ones, the data must be modified in a base64-encoded file. To simplify this, you can use the following web application." alert="Info" icon="svg-info" color="blue" %}
 
 ## Web procedure
 
@@ -107,7 +107,7 @@ fw_setenv sfp_a2_info "<output>"
 
 ## Temporary file procedure
 
-1. Save `sfp_a2_info` in into temporary file
+1. Save `sfp_a2_info` in a temporary file
 
 ```shell
 fw_printenv sfp_a2_info | sed "s/^sfp_a2_info=//" > /tmp/sfp_a2.txt
@@ -119,41 +119,41 @@ fw_printenv sfp_a2_info | sed "s/^sfp_a2_info=//" | tr '@' '\n'
 
 2. Setting S/N
 
-The S/N is stored on the 6th line, for sample `4857544311223344` (where `48575443` are hex encoding of `HWTC`) are stored:
+The S/N is stored on the 6th line, for example `4857544311223344` (where `48575443` is the HEX encoding of `HWTC`):
 ```
 AAAAAAAAAAJIV1RDESIzRP///////////////////wAAAAAAAAAAAAAAAAAA
 00000000000000024857544311223344ffffffffffffffffffffffffffffff0000000000000000000000000000
 ```
 
-The entire S/N, including the PON ID, is encoded first in hex and then in base64
+The entire S/N, including the PON ID, is encoded first in hexadecimal and then in base64
 
-3. Setting Ploam Password
+3. Setting PLOAM Password
 
-The Ploam Password is stored on the 5th line, for sample (`1234567890`) are stored:
+The PLOAM Password is stored on the 5th line, for example (`1234567890`):
 ```
 ffffffffffffffff00021437d77db7df7e37e77eb7ef7f37f77d00000000000000000000000000000000000000
 //////////8AAhQ31323334353637383930AAAAAAAAAAAAAAAAAAAAAAAAA
 ```
 
-The entire Ploam, is encoded first in hex and then in base64
+The entire PLOAM, is encoded first in hexadecimal and then in base64
 
 4. Setting MAC Address
 
-The Ploam Password is stored on the 9th line, for sample (`48:57:02:da:be:ef`) are stored:
+The MAC Address is stored on the 9th line, for example (`48:57:02:da:be:ef`):
 ```
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASFcC2r7vAAAAAAAAAAAAAAAAAAAA
 000000000000000000000000000000000000000000000000485702dabeef000000000000000000000000000000
 ```
 
-5. Transfer modified file back into variable `sfp_a2_info`
+5. Transfer the modified file back into variable `sfp_a2_info`
 
 ```shell
 fw_setenv sfp_a2_info $(cat /tmp/sfp_a2.txt)
 ```
 
-## Review and testing
+## Reviewing and testing
 
-After reboot I check for new variables:
+After rebooting, check whether the new variables have been saved correctly:
 
 ```shell
 fw_printenv nPassword
@@ -161,15 +161,13 @@ fw_printenv gSerial
 fw_printenv ethaddr
 ```
 
-After reboot I check for new variables:
-
-## Check registration status for O5 (successful)
+## Checking whether the connection with the OLT was successful (O5 state)
 
 ```shell
 onu ploamsg
 ```
 
-# Disable dying gasp
+# Disabling dying gasp
 
 ```shell
 fw_setenv nDyingGaspEnable 0 
