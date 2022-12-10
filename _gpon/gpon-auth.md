@@ -38,9 +38,9 @@ graph TD
 
 # Fake O5 Status
 
-This known issue with Alcatel/Nokia OLT giving fake `O5` ONU Status, OLT will hold OMCI Provisioning until correct OMCI Information
+There is a known issue with Alcatel/Nokia OLTs giving fake `O5` ONU Status, OLTs will hold OMCI Provisioning until correct OMCI Information is received.
 
-It happens when the OLT detects that the ONT is `drunk`. And try to update the firmware before opening the GEM link. One must try to change the software version or other data.
+It happens when the OLT detects that the ONT is `drunk`, so it tries to update the firmware before opening the GEM link. If this happens, the user has to try changing the software version or other data.
 
 - [The Process for an ONU to go Online](https://forum.huawei.com/enterprise/en/the-process-for-an-onu-to-go-online-gpon-technical-posts-12/thread/462895-100181)
 - [What’s the Authentication of GPON](http://zhangjorna.blogspot.com/2016/05/whats-authentication-of-gpon.html)

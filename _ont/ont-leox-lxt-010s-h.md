@@ -45,18 +45,18 @@ parent: Leox
 
 This stick supports dual boot. 
 
-`k0` and `r0` respectively contain the kernel and firmware of the first image, `k1` and `r1` the kernel and the firmware of the second one
+`k0` and `r0` respectively contain the kernel and firmware of the first image, while `k1` and `r1` respectively contain the kernel and the firmware of the second one.
 
 ## Serial Console
 
 
-The stick has a TTL 3.3v UART console (configured as 115200 8-N-1)  that can be accessed from the top surface. To accept TX line commands, GND of TTL adapter should be attached to the stick's shield:
+The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. To accept TX line commands, the GND of the TTL adapter should be attached to the stick's shield:
 
 {% include image.html file="ont-leox-lxt-010s-h_ttl.jpg" alt="Leox LXT-010S-H TTL Pinout" caption="Leox LXT-010S-H TTL Pinout" %}
 
 ## List firmware version
 
-{% include alert.html content="There is a new firmware avaliable from LeoLabs that fix the 2.5GbE" alert="Note" icon="svg-info" color="blue" %}
+{% include alert.html content="There is a new firmware avaliable from LeoLabs that fixes the 2.5GbE" alert="Note" icon="svg-info" color="blue" %}
 
 - V3.3.4L3
 - V3.3.4L4rc1 (Fix 2.5GbE HiSGMII)
@@ -95,9 +95,9 @@ GPON_PLOAM_PASSWD=AAAAAAAAAA
 | LAN_SDS_MODE = 7     | 1GbE with auto-neg off               |
 | LAN_SDS_MODE = 8     | 2.5GbE with auto-neg off             |
 
-If you try to use a mode not listed here, stick will use 1 as default
+If you try to use any mode not listed here, stick will default to mode 1.
 
-to change the link mode use this command:
+To change the link mode use this command:
 
 ```sh
 # /etc/scripts/flash get LAN_SDS_MODE
@@ -107,7 +107,7 @@ LAN_SDS_MODE=1
 
 # Known Bugs
 
-Stock firmware doesn't work @ 2.5GbE. There is a new firmware avaliable from LeoLabs that fix this issue
+The stock firmware doesn't work @ 2.5GbE. There is a new firmware avaliable from LeoLabs that fixes this issue.
 
 
 # Miscellaneous Links

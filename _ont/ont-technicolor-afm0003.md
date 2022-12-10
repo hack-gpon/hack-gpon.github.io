@@ -57,18 +57,18 @@ Configuration: asc0=0 115200 8-N-1
 
 This stick supports dual boot. 
 
-`k0` and `r0` respectively contain the kernel and firmware of the first image, `k1` and `r1` the kernel and the firmware of the second one
+`k0` and `r0` respectively contain the kernel and firmware of the first image, `k1` and `r1` the kernel and firmware of the second one
 
 # List of firmwares and files
 ## Useful files
 - `/var/config/lastgood.xml` - Contains the user portion of the configuration
-- `/var/config/lastgood-hs.xml` - Contains the "hardware" configuration (i.e. that _should_ not be changed)
+- `/var/config/lastgood-hs.xml` - Contains the "hardware" configuration (which _should not_ be changed)
 - `/tmp/omcilog` - OMCI messages logs (must be enabeled, see below)
 
 ## Useful binaries
-- `/etc/scripts/flash`  - Used to manipulate the config files in a samewhat safe manner
-- `xmlconfig` - Used to low-level manipulate the XML config files. Called by `flash`
-- `nv` - Used to manipulate the nvram storage, including persistent config entries via `nv setenv`/`nv getenv`
+- `/etc/scripts/flash`  - Used to manipulate the config files in a somewhat safe manner
+- `xmlconfig` - Used for low-level manipulation of the XML config files. Called by `flash`
+- `nv` - Used to manipulate nvram storage, including persistent config entries via `nv setenv`/`nv getenv`
 - `omcicli` - Used to interact with the running OMCI daemon
 - `omci_app` - The OMCI daemon
 - `diag` - Used to run low-level diagnostics commands on the stick

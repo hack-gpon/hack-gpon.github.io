@@ -17,13 +17,13 @@ layout: default
 | SGMII  | ✅                   |
 | Type   | PCI express SFP card |
 
-In order to be able to set 2.5G speed you will have to patch your kernel's bnx2x module. The easiest way to do so is via DKMS which rebuilds just that module:
+In order to be able to set 2.5G speed you will have to patch your kernel's bnx2x module. The easiest way to do so is via DKMS which rebuilds only that module:
 
 - [DKMS for Linux 6.0.y](https://github.com/darkbasic/bnx2x-2_5g-dkms/tree/6.0.y)
 
-It also adds a module option that can be set to disable SFP TX fault detection, otherwise you won't be able to access your mini ont SFP if you don't attach the fiber to it.
+It also adds a module option that can be set to disable SFP TX fault detection, otherwise you won't be able to access your SFP mini-ONT if it's not connected to the fiber cable.
 
-Unfortunately despite the patches you will still have to use UEFI eDiag to unlock 2.5G capabilities:
+Unfortunately, despite the patches, you will still have to use UEFI eDiag to unlock 2.5G capabilities:
 
 - [How-to enable 2.5G capability via UEFI eDiag](https://www.dslreports.com/forum/r32230041-Internet-Bypassing-the-HH3K-up-to-2-5Gbps-using-a-BCM57810S-NIC)
 

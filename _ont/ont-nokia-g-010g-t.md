@@ -45,7 +45,7 @@ parent: Nokia
 
 ## Serial Console
 
-The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. To accept TX line commands, GND of TTL adapter should be attached to the ONT's shield (central GND PIN is not connected):
+The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. To accept TX line commands, the GND of the TTL adapter should be attached to the ONT's shield:
 
 {% include image.html file="q-010g-t_ttl.jpg"  alt="Nokia G-010G-T TTL" caption="Nokia G-010G-T TTL" %}
 

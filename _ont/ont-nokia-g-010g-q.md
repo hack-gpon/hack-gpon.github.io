@@ -40,7 +40,7 @@ parent: Nokia
 | mtd2 | 00700000 | 00010000  | "ImageA" |
 | mtd3 | 00700000 | 00010000  | "ImageB" |
 
-This ont seems to support dual boot (notice partitions "ImageA" and "ImageB"), however this has not been tested. 
+This ONT seems to support dual boot (notice partitions "ImageA" and "ImageB"), however this has not been tested. 
 ## List of firmwares and files
 
 # Serial
@@ -52,7 +52,7 @@ You can easily communicate with the ONT using a TTL converter (for example the C
 
 {% include alert.html content="The ONT's serial logic is 3V3." alert="Warning"  icon="svg-warning" color="red" %}
 
-Make sure the logic of your TTL converter is 3V3 too otherwise you might damage the ONT, in my case I wasn't sure the CH341A had a 3V3 logic for the TTL part so I set up a voltage divider made of 2 resistors between the TX pin and ground as shown in the image below.
+Make sure the logic of your TTL converter is 3V3 too otherwise you might damage the ONT, in my case I wasn't sure whether the CH341A programmer used 3V3 logic for the TTL part so I set up a voltage divider made of 2 resistors between the TX pin and ground as shown in the image below.
 
 *Also make sure that your TTL converter RX pin voltage threshold is less than (or equal to) 3V3*
 
