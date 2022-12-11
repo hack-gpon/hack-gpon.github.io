@@ -1,5 +1,5 @@
 ---
-title: Root Procedure for Huawei MA5671A (V1)
+title: Root Procedure for Huawei MA5671A (V3)
 has_children: false
 parent: Huawei MA5671A
 layout: default
