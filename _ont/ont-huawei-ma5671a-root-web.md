@@ -16,13 +16,13 @@ Connect the SFP adapter to the TTL adapter according to the following diagram:
 | RX                     | blue                   | TX (pin #7)                |
 | GND                    | black                  | GND (pin #14)              |
 
-{% include image.html file="web-root-procedure\ttl-sfp.jpg"  alt="Example of how the molex SFP - TTL connection should look like" caption="Example of how the molex SFP - TTL connection should look like" %}
+{% include image.html file="web-root-procedure\ttl-sfp.jpg" alt="Example of how the molex SFP - TTL connection should look like" caption="Example of how the molex SFP - TTL connection should look like" %}
 
-{% include image.html file="web-root-procedure\sfp-sfp.jpg"  alt="Example of how the SFP - molex SFP connection should look like" caption="Example of how the SFP - molex SFP connection should look like" %}
+{% include image.html file="web-root-procedure\sfp-sfp.jpg" alt="Example of how the SFP - molex SFP connection should look like" caption="Example of how the SFP - molex SFP connection should look like" %}
 
 {% include alert.html content="Try PIN 10 or other GND PINs if the connection doesn't work with PIN 14." alert="Note" icon="svg-warning" color="yellow" %}
 
-{% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
+{% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note" icon="svg-warning" color="yellow" %}
 
 Connect the TTL adapter to the computer, once done press the following button <button id="start-button" class="btn" data-toogle="modal" data-target="#root-modal" disabled>Start root!</button>. A window will open that will execute the root.
 
@@ -40,7 +40,7 @@ After this is done, reboot the stick, after connecting it to the router via an e
 
 {% include alert.html content="Make sure to disable SFP TX fault detection, otherwise the RX loss will prevent you from connecting to the mini SFP ONT at this point. Don't simply attach the fiber cable to work around this issue as the OLT may ban you." alert="Note" icon="svg-warning" color="yellow" %}
 
-{% include alert.html content="In media converters and on mikrotik it is not necessary to disable TX fault."  alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="In media converters and on mikrotik it is not necessary to disable TX fault." alert="Info" icon="svg-info" color="blue" %}
 
 Run the terminal and login to the stick with ssh
 
