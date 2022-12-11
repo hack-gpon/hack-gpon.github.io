@@ -74,7 +74,6 @@ fw_setenv preboot "gpio set 3;gpio input 100;gpio input 105;gpio input 106;gpio 
                 <p>Step 1</p>
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
                     <circle class="path circle" fill="none" stroke="currentColor" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
-                    <circle class="fill circle" fill="none" stroke="currentColor" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
                     <polyline class="path check success" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
                     <line class="path line error" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3"/>
                     <line class="path line error" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2"/>
@@ -87,7 +86,6 @@ fw_setenv preboot "gpio set 3;gpio input 100;gpio input 105;gpio input 106;gpio 
                 <p>Step 2</p>
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
                     <circle class="path circle" fill="none" stroke="currentColor" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
-                    <circle class="fill circle" fill="none" stroke="currentColor" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
                     <polyline class="path check success" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
                     <line class="path line error" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3"/>
                     <line class="path line error" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2"/>
@@ -150,26 +148,19 @@ fw_setenv preboot "gpio set 3;gpio input 100;gpio input 105;gpio input 106;gpio 
     }
     function showError(message, i) {
         rootStep[i].classList.remove('pause');
-        rootStep[i].classList.add('complete');
+        rootStep[i].classList.remove('complete');
         rootStep[i].classList.remove('success');
-        setTimeout(() => { 
-            rootStep[i].classList.remove('loading');
-            rootStep[i].classList.remove('complete');
-            rootStep[i].classList.add('error');
-            rootStepText[i].textContent = message;
-        }, 1000);
+        rootStep[i].classList.remove('loading');
+        rootStep[i].classList.add('error');
+        rootStepText[i].textContent = message;
     }
     function showSuccess(message, i) {
         rootStep[i].classList.remove('pause');
-        rootStep[i].classList.add('complete');
         rootStep[i].classList.remove('error');
+        rootStep[i].classList.remove('loading');
+        rootStep[i].classList.remove('complete');
+        rootStep[i].classList.add('success');
         rootStepText[i].textContent = message;
-        setTimeout(() => { 
-            rootStep[i].classList.remove('loading');
-            rootStep[i].classList.remove('complete');
-            rootStep[i].classList.add('success');
-            rootStepText[i].textContent = message;
-        }, 1000);
     }
     function delay(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
