@@ -111,6 +111,9 @@ search_exclude: true
             rootStepText[i].textContent = message;
         }, 1000);
     }
+    function delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
     async function root({ signal } = {}) {
         textarea.value = "";
         loading("Waiting for the user to choose the port",0);
