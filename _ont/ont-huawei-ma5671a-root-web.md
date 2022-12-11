@@ -145,9 +145,9 @@ search_exclude: true
             const textDecoder = new TextDecoderStream();
             const readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
             const reader = textDecoder.readable.pipeThrough(new TransformStream(new LineBreakTransformer())).getReader();            
-            const textEncoder = new TextEncoderStream();
-            const writerStreamClosed = textEncoder.readable.pipeTo(port.writable);
-            const writer = textEncoder.writable.getWriter();
+            const textEncoderStream = new TextEncoderStream();
+            const writerStreamClosed = textEncoderStream.readable.pipeTo(port.writable);
+            const writer = textEncoderStream.writable.getWriter();
             const interval = setInterval(function(){ 
                 for(let k=0; k<1000;k++)
                     writer.write(String.fromCharCode(3)); 
@@ -163,24 +163,23 @@ search_exclude: true
                         clearInterval(interval);
                         loading("Root in progress: Transfer command sequence 2...",0);
                         textarea.value += '[+] Transfer command sequence 2\n';
-                        writer.write(textEncoder.encode('setenv bootdelay 3\n'));
+                        writer.write('setenv bootdelay 3\n');
                         await delay(1000);
                         loading("Root in progress: Transfer command sequence 3...",0);
                         textarea.value += '[+] Transfer command sequence 3\n';
-                        writer.write(textEncoder.encode('setenv asc0 0\n'));
+                        writer.write('setenv asc0 0\n');
                         await delay(1000);
                         loading("Root in progress: Transfer command sequence 4...",0);
                         textarea.value += '[+] Transfer command sequence 4\n';
-                        writer.write(textEncoder.encode(
-                            'setenv preboot "gpio set 3;gpio input 2;gpio input 105;gpio input 106;gpio input 107;gpio input 108"\n'));
+                        writer.write('setenv preboot "gpio set 3;gpio input 2;gpio input 105;gpio input 106;gpio input 107;gpio input 108"\n');
                         await delay(1000);
                         loading("Root in progress: Transfer command sequence 5...",0);
                         textarea.value += '[+] Transfer command sequence 5\n';
-                        writer.write(textEncoder.encode('saveenv\n'));
+                        writer.write('saveenv\n');
                         await delay(1000);
                         loading("Root in progress: Transfer command sequence 6...",0);
                         textarea.value += '[+] Transfer command sequence 6\n';
-                        writer.write(textEncoder.encode('reset\n'));
+                        writer.write('reset\n');
                         loading("Root in progress: Enable command transfer complete! rebooting...",0);
                         textarea.value += '[+] Enable command transfer complete! rebooting...\n';
                         showSuccess("Oh Yeah! Step completed.",0);
@@ -207,7 +206,7 @@ search_exclude: true
                         clearInterval(interval2);
                         loading("Root in progress: Transfer command sequence 1...");
                         textarea.value += '[+] Transfer command sequence 1\n';
-                        writer.write(textEncoder.encode('sed -i  "s|/opt/lantiq/bin/minishell|/bin/ash|g" /etc/passwd\n'));
+                        writer.write('sed -i  "s|/opt/lantiq/bin/minishell|/bin/ash|g" /etc/passwd\n');
                         showSuccess("Oh Yeah! Step completed.",1);
                         break;
                     } else if(value.includes("Kernel panic")) {
