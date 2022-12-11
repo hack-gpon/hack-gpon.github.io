@@ -130,8 +130,7 @@ search_exclude: true
         }
         textarea.value += '[+] Use serial port device\n';
         textarea.value += '[+] Waiting for trigger characters...\n';
-        rootLoader.style.display = "block";
-        rootLoaderText.textContent = "Root in progress: Use serial port device. Waiting for trigger characters...";
+        loading("Root in progress: Use serial port device. Waiting for trigger characters...",0);
         try {
             await port.open({ baudRate: 115200 });
         } catch (err) {
@@ -205,7 +204,6 @@ search_exclude: true
                         loading("Root in progress: Transfer command sequence 1...");
                         textarea.value += '[+] Transfer command sequence 1\n';
                         writer.write(textEncoder.encode('sed -i  "s|/opt/lantiq/bin/minishell|/bin/ash|g" /etc/passwd\n'));
-                        rootLoaderText.style.display = "none";
                         showSuccess("Oh Yeah! Step completed.",1);
                         break;
                     } else if(value.includes("Kernel panic")) {
