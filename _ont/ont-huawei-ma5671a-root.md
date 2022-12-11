@@ -133,7 +133,7 @@ sed -i  "s|/opt/lantiq/bin/minishell|/bin/ash|g" /etc/passwd
 {% include alert.html content="The cause of these kernel panics could be insufficient supply of power." alert="Info" icon="svg-info" color="blue" %}
 
 {:style="counter-reset:none"}
-1. After this is done, reboot the stick, after connecting it to the router via an ethernet mediaconverter or directly plug it in in an SFP port, with the port's IP set to whatever IP of the 192.168.1.0/24 subnet (the stick has the IP 192.168.1.10)
+1. After this is done, reboot the stick, after connecting it to the router via an ethernet mediaconverter or directly plug it in an SFP port, with the port's IP set to whatever IP of the 192.168.1.0/24 subnet (the stick has the IP 192.168.1.10)
 
 {% include alert.html content="If your subnet is 192.168.1.0/24 make sure you have no ip conflicts." alert="Note" icon="svg-warning" color="yellow" %}
 
