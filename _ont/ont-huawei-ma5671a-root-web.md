@@ -24,8 +24,6 @@ Connect the SFP adapter to the TTL adapter according to the following diagram:
 
 {% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note" icon="svg-warning" color="yellow" %}
 
-{% include alert.html content="Please note that some SFP require more current than others, and in some SFP Step 2 is interrupted due to kernel panic, in which case increases the voltage of the stick at 5V." alert="Note" icon="svg-warning" color="yellow" %}
-
 Connect the TTL adapter to the computer, once done press the following button. A window will open that will execute the root.
 
 {: .text-center .fs-6 }
@@ -200,21 +198,20 @@ fw_setenv preboot "gpio set 3;gpio input 100;gpio input 105;gpio input 106;gpio 
             }
         }
     }
-    async function waitShell(writer, reader) {
+    async function waitFailbackShell(writer, reader) {
         while (true) {
             const { value, done } = await reader.read();
 
-            if (value.startsWith('procd: - init complete')) {
-                await delay(10000);
+            if (value.startsWith('Press the [f] key and hit [enter] to enter failsafe mode')) {
+                const interval = setInterval(function() {
+                    writer.write('f\n');
+                }, 10);
+
+                loading("Root in progress: Trigger characters received. Waiting for boot to end...",1);
+                await delay(3000);
+                clearInterval(interval);
                 break;
             }
-            if (value.includes("Kernel panic")) {
-                throw new Error("Kernel panic for insufficient power supply");
-            }
-            if (value.includes("Reset cause: Power-On Reset")) {
-                throw new Error("No power supply or stick removed");
-            }
-            
         }
 
         const interval = setInterval(function() {
@@ -224,14 +221,10 @@ fw_setenv preboot "gpio set 3;gpio input 100;gpio input 105;gpio input 106;gpio 
         while (true) {
             const { value, done } = await reader.read();
 
-            if (value.includes('OpenWrt')) {
-                loading("Root in progress: Trigger characters received. Waiting for boot to end...",1);
-                await delay(10000);
+            if (value.includes('root@(none)')) {
+                await delay(1000);
                 clearInterval(interval);
                 break;
-            }
-            if (value.includes("Kernel panic")) {
-                throw new Error("Kernel panic: the firmware is corrupt. Flash another firmware through x/ymodem from uboot");
             }
         }
     }
@@ -306,9 +299,12 @@ fw_setenv preboot "gpio set 3;gpio input 100;gpio input 105;gpio input 106;gpio 
 
         try {
             loading("Waiting for reboot",1);
-            await waitShell(writer, reader);
+            await waitFailbackShell(writer, reader);
             loading("Root in progress: Enable full Linux shell...",1);
-            writer.write('sed -i  "s|/opt/lantiq/bin/minishell|/bin/ash|g" /etc/passwd\n');
+            writer.write('mount_root && mkdir -p /overlay/etc && sed "s|/opt/lantiq/bin/minishell|/bin/ash|g" /rom/etc/passwd > /overlay/etc/passwd\n');
+            await delay(1000);
+            loading("Root in progress: Umount rootfs partitions...",1);
+            writer.write('umount /overlay && umount -a\n');
             await delay(1000);
             showSuccess("Congratulations! Step completed.",1);
         } catch (err) {
