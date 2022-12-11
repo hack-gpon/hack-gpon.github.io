@@ -236,6 +236,9 @@ fw_setenv preboot "gpio set 3;gpio input 100;gpio input 105;gpio input 106;gpio 
                 clearInterval(interval);
                 break;
             }
+            if (value.includes("Kernel panic")) {
+                throw new Error("Kernel panic");
+            }
         }
     }
     async function root({ signal } = {}) {
