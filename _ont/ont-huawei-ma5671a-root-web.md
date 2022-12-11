@@ -214,6 +214,13 @@ fw_setenv preboot "gpio set 3;gpio input 100;gpio input 105;gpio input 106;gpio 
                 await delay(10000);
                 break;
             }
+            if (value.includes("Kernel panic")) {
+                throw new Error("Kernel panic for insufficient power supply");
+            }
+            if (value.includes("Reset cause: Power-On Reset")) {
+                throw new Error("No power supply or stick removed");
+            }
+            
         }
 
         const interval = setInterval(function() {
