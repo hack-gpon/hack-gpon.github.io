@@ -190,6 +190,7 @@ search_exclude: true
             } catch (err) {
                 showError(`Error: ${err.message}`,0);
                 console.log(`Error: ${err.message}\n`);
+                return;
             } 
             loading("Waiting for reboot",1);
             const interval2 = setInterval(function(){ 
@@ -217,6 +218,7 @@ search_exclude: true
             } catch (err) {
                 showError(`Error: ${err.message}`,1);
                 console.log(`Error: ${err.message}\n`);
+                return;
             }
             reader.releaseLock();
             writer.releaseLock();
