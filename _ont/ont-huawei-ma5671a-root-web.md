@@ -11,13 +11,14 @@ Connect the SFP adapter to the TTL adapter according to the following diagram:
 
 | USB TTL (UART) Adapter | wire colour in picture | SFP 20pins Molex connector |
 | ---------------------- | ---------------------- | -------------------------- |
-| 3.3V                   | red                    | pin #15 and #16            |
-| TX                     | orange                 | pin #2                     |
-| RX                     | yellow                 | pin #7                     |
-| GND                    | green                  | pin #14                    |
+| 3.3V                   | red                    | 3.3 (pin #15 or #16)       |
+| TX                     | green                  | RX (pin #2)                |
+| RX                     | blue                   | TX (pin #7)                |
+| GND                    | black                  | GND (pin #14)              |
 
-{% include image.html file="ma5671a-root-1.jpg"  alt="Example of how the SFP-TTL connection should look like" caption="Example of how the sfp-ttl connection should look like" %}
-{% include image.html file="new-root-procedure\board-molex-arduino.jpg"  alt="Example of how the SFP-TTL connection should look like with a custom board" caption="Example of how the SFP-TTL connection should look like with a custom board" %}
+{% include image.html file="web-root-procedure\ttl-sfp.jpg"  alt="Example of how the molex SFP - TTL connection should look like" caption="Example of how the molex SFP - TTL connection should look like" %}
+
+{% include image.html file="web-root-procedure\sfp-sfp.jpg"  alt="Example of how the SFP - molex SFP connection should look like" caption="Example of how the SFP - molex SFP connection should look like" %}
 
 {% include alert.html content="Try PIN 10 or other GND PINs if the connection doesn't work with PIN 14." alert="Note" icon="svg-warning" color="yellow" %}
 
@@ -25,14 +26,7 @@ Connect the SFP adapter to the TTL adapter according to the following diagram:
 
 Connect the TTL adapter to the computer, once done press the following button <button id="start-button" class="btn" data-toogle="modal" data-target="#root-modal" disabled>Start root!</button>. A window will open that will execute the root.
 
-<script>
-if ('serial' in navigator) {
-    document.getElementById('start-button').disabled = false;
-} else {
-    document.getElementById('browser-error').style.display = 'block';
-}
-</script>
-<p id="browser-error" style="display:none">{% include alert.html content="This browser is not compatible with the web-root procedure. See the <a href='https://developer.mozilla.org/en-US/docs/Web/API/Web_Serial_API#browser_compatibility'>Browser compatibility</a>" alert="Note"  icon="svg-warning" color="red" %}</p>
+<div id="browser-error" style="display:none">{% include alert.html content="This browser is not compatible with the web-root procedure. See the <a href='https://developer.mozilla.org/en-US/docs/Web/API/Web_Serial_API#browser_compatibility'>Browser compatibility</a>" alert="Note"  icon="svg-warning" color="red" %}</div>
 <noscript>
 {% include alert.html content="Your browser does not support JavaScript!" alert="Note"  icon="svg-warning" color="red" %}
 </noscript>
@@ -104,6 +98,11 @@ fw_setenv preboot "gpio set 3;gpio input 100;gpio input 105;gpio input 106;gpio 
     </div>
 </div>
 <script>
+    if ('serial' in navigator) {
+        document.getElementById('start-button').disabled = false;
+    } else {
+        document.getElementById('browser-error').style.display = 'block';
+    }
     const acontroller = new AbortController();
     const cs = acontroller.signal;
     class LineBreakTransformer {
@@ -316,3 +315,6 @@ fw_setenv preboot "gpio set 3;gpio input 100;gpio input 105;gpio input 106;gpio 
         writer.releaseLock();
     }
 </script>
+
+# Miscellaneous Links
+- [List of root procedure for Huawei MA5671A](/ont-huawei-ma5671a-root)
