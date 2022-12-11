@@ -11,7 +11,7 @@ search_exclude: true
 {% include alert.html content="It is strongly recommended that you only ever use the latest version ([Web root procedure](/ont-huawei-ma5671a-root-web)).
 " alert="Info" icon="svg-info" color="blue" %}
 
-# Root Procedure for Huawei MA5671A (V3 - Python)
+# Root Procedure for Huawei MA5671A (V3 - Web serial)
 
 Can be accessed via the link [Web root procedure](/ont-huawei-ma5671a-root-web)
 
