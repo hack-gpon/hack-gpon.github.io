@@ -46,6 +46,8 @@ After this is done, reboot the stick, after connecting it to the router via an e
 
 {% include alert.html content="Make sure to disable SFP TX fault detection, otherwise the RX loss will prevent you from connecting to the mini SFP ONT at this point. Don't simply attach the fiber cable to work around this issue as the OLT may ban you." alert="Note" icon="svg-warning" color="yellow" %}
 
+{% include alert.html content="In media converters and on mikrotik it is not necessary to disable TX fault."  alert="Info" icon="svg-info" color="blue" %}
+
 Run the terminal and login to the stick with ssh
 
 ```shell
