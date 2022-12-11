@@ -118,6 +118,63 @@ search_exclude: true
     function delay(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
+    async function waitUbootStop(writer, reader) {
+        const interval = setInterval(function() {
+            writer.write(String.fromCharCode(3));
+        }, 10);
+
+        while (true) {
+            const { value, done } = await reader.read();
+
+            if (value.startsWith('U-Boot')) {
+                loading("Root in progress: Trigger characters received. DO NOT TOUCH THE HUAWEI MA5671A UNTIL THE PROCEDURE IS COMPLETED!",0);
+                await delay(5000);
+                clearInterval(interval);
+                break;
+            }
+        }
+    }
+    async function checkUbootUnlocked(reader) {
+        while (true) {
+            try {
+                const { value, done } = await Promise.race([
+                    reader.read(),
+                    new Promise((_, reject) => setTimeout(reject, 2000, new Error("timeout")))
+                ]);
+
+                if (value.startsWith('Press SPACE to delay and Ctrl-C to abort autoboot')) {
+                    return true;
+                }
+            } catch (err) {
+                return false;
+            }
+        }
+    }
+    async function waitShell(writer, reader) {
+        while (true) {
+            const { value, done } = await reader.read();
+
+            if (value.startsWith('procd: - init complete')) {
+                await delay(10000);
+                break;
+            }
+        }
+
+        const interval = setInterval(function() {
+            writer.write(String.fromCharCode(10));
+        }, 10);
+
+        while (true) {
+            const { value, done } = await reader.read();
+
+            if (value.includes('OpenWrt')) {
+                loading("Root in progress: Trigger characters received. Waiting for boot to end...",1);
+                await delay(10000);
+                clearInterval(interval);
+                break;
+            }
+        }
+    }
     async function root({ signal } = {}) {
         textarea.value = "";
         loading("Waiting for the user to choose the port",0);
@@ -137,7 +194,7 @@ search_exclude: true
         }
         textarea.value += '[+] Use serial port device\n';
         textarea.value += '[+] Waiting for trigger characters...\n';
-        loading("Root in progress: Use serial port device. Waiting for trigger characters...",0);
+        loading("Please disconnect the Huawei MA5671A from the SFP adapter if it is currently plugged in!",0);
         try {
             await port.open({ baudRate: 115200 });
         } catch (err) {
@@ -145,86 +202,64 @@ search_exclude: true
             console.log(`Error: ${err.message}\n`);
             return;
         }
-        for(let i = 0; i <1000; i++) {
-            const textDecoder = new TextDecoderStream();
-            const readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
-            const reader = textDecoder.readable.pipeThrough(new TransformStream(new LineBreakTransformer())).getReader();            
-            const textEncoderStream = new TextEncoderStream();
-            const writerStreamClosed = textEncoderStream.readable.pipeTo(port.writable);
-            const writer = textEncoderStream.writable.getWriter();
-            const interval = setInterval(function(){ 
-                for(let k=0; k<1000;k++)
-                    writer.write(String.fromCharCode(3)); 
-            }, 0);
-            try {
-                while (true) {
-                    console.log('await step 1');
-                    const { value, done } = await reader.read();
-                    if (value.startsWith('U-Boot')) {
-                        loading("Root in progress: Trigger characters received. Transfer enable command...",0);
-                        textarea.value += '[+] Received! Transfer enable command...\n';
-                        await delay(10000);
-                        clearInterval(interval);
-                        loading("Root in progress: Transfer command sequence 2...",0);
-                        textarea.value += '[+] Transfer command sequence 2\n';
-                        writer.write('setenv bootdelay 3\n');
-                        await delay(1000);
-                        loading("Root in progress: Transfer command sequence 3...",0);
-                        textarea.value += '[+] Transfer command sequence 3\n';
-                        writer.write('setenv asc0 0\n');
-                        await delay(1000);
-                        loading("Root in progress: Transfer command sequence 4...",0);
-                        textarea.value += '[+] Transfer command sequence 4\n';
-                        writer.write('setenv preboot "gpio set 3;gpio input 2;gpio input 105;gpio input 106;gpio input 107;gpio input 108"\n');
-                        await delay(1000);
-                        loading("Root in progress: Transfer command sequence 5...",0);
-                        textarea.value += '[+] Transfer command sequence 5\n';
-                        writer.write('saveenv\n');
-                        await delay(1000);
-                        loading("Root in progress: Transfer command sequence 6...",0);
-                        textarea.value += '[+] Transfer command sequence 6\n';
-                        writer.write('reset\n');
-                        loading("Root in progress: Enable command transfer complete! rebooting...",0);
-                        textarea.value += '[+] Enable command transfer complete! rebooting...\n';
-                        showSuccess("Oh Yeah! Step completed.",0);
-                        break;
-                    }
+        const textDecoder = new TextDecoderStream();
+        const readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
+        const reader = textDecoder.readable.pipeThrough(new TransformStream(new LineBreakTransformer())).getReader();
+        const textEncoderStream = new TextEncoderStream();
+        const writerStreamClosed = textEncoderStream.readable.pipeTo(port.writable);
+        const writer = textEncoderStream.writable.getWriter();
+        try {
+            await delay(10000);
+            loading("Now you need to insert the Huawei MA5671A into the SFP adapter, if the procedure does not go ahead, check the connections and then remove and reconnect the Huawei MA5671A again",0);
+            while(true) {
+                await waitUbootStop(writer, reader);
+                const ubootUnlocked = await checkUbootUnlocked(reader);
+
+                if (ubootUnlocked == true) {
+                    break;
                 }
-            } catch (err) {
-                showError(`Error: ${err.message}`,0);
-                console.log(`Error: ${err.message}\n`);
-                return;
-            } 
-            loading("Waiting for reboot",1);
-            const interval2 = setInterval(function(){ 
-                for(let k=0; k<1000;k++)
-                    writer.write(String.fromCharCode(10)); 
-            }, 0);
-            try {
-                while (true) {
-                    console.log('await step 1');
-                    const { value, done } = await reader.read();
-                    if (value.startsWith('OpenWrt')) {
-                        loading("Root in progress: Trigger characters received. Transfer enable command...");
-                        textarea.value += '[+] Received! Transfer enable command...\n';
-                        clearInterval(interval2);
-                        loading("Root in progress: Transfer command sequence 1...");
-                        textarea.value += '[+] Transfer command sequence 1\n';
-                        writer.write('sed -i  "s|/opt/lantiq/bin/minishell|/bin/ash|g" /etc/passwd\n');
-                        showSuccess("Oh Yeah! Step completed.",1);
-                        break;
-                    } else if(value.includes("Kernel panic")) {
-                        throw new Error('Kernel panic. The cause of these kernel panics could be insufficient power supply.');
-                        break;
-                    }
-                }
-            } catch (err) {
-                showError(`Error: ${err.message}`,1);
-                console.log(`Error: ${err.message}\n`);
-                return;
+
+                loading("Root in progress: Set U-Boot bootdelay to 5...",0);
+                writer.write('setenv bootdelay 5\n');
+                await delay(1000);
+                loading("Root in progress: Enable ASC serial...",0);
+                writer.write('setenv asc0 0\n');
+                await delay(1000);
+                loading("Root in progress: Set GPIO to unlock serial...",0);
+                writer.write('setenv preboot "gpio set 3;gpio input 2;gpio input 105;gpio input 106;gpio input 107;gpio input 108"\n');
+                await delay(1000);
+                loading("Root in progress: Save changes...",0);
+                writer.write('saveenv\n');
+                await delay(1000);
+                loading("Root in progress: Rebooting...",0);
+                writer.write('reset\n');
+                await delay(1000);
             }
-            reader.releaseLock();
-            writer.releaseLock();
+
+            loading("Root in progress: Rebooting...",0);
+            writer.write('reset\n');
+            await delay(1000);
+            showSuccess("Oh Yeah! Step completed.",0);
+        } catch (err) {
+            showError(`Error: ${err.message}`,0);
+            console.log(`Error: ${err.message}\n`);
+            return;
         }
+
+        try {
+            loading("Waiting for reboot",1);
+            await waitShell(writer, reader);
+            loading("Root in progress: Enable full Linux shell...",1);
+            writer.write('sed -i  "s|/opt/lantiq/bin/minishell|/bin/ash|g" /etc/passwd\n');
+            await delay(1000);
+            showSuccess("Oh Yeah! Step completed.",1);
+        } catch (err) {
+            showError(`Error: ${err.message}`,1);
+            console.log(`Error: ${err.message}\n`);
+            return;
+        }
+
+        reader.releaseLock();
+        writer.releaseLock();
     }
 </script>
