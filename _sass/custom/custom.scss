@@ -221,19 +221,19 @@ figure {
     &.success {
         color: $green-500;
         fill: $green-500;
-        svg .error, svg .loading {
+        svg .error, svg .loading, svg .pause {
             display: none;
         }
     }
     &.error {
         color: $red-500;
         fill: $red-500;
-        svg .success, svg .loading {
+        svg .success, svg .loading, svg .pause {
             display: none;
         }
     }
     &.loading {
-        svg .success, svg .error {
+        svg .success, svg .error, svg .pause {
             display: none;
         }
         svg .path {
