@@ -237,7 +237,7 @@ fw_setenv preboot "gpio set 3;gpio input 100;gpio input 105;gpio input 106;gpio 
                 break;
             }
             if (value.includes("Kernel panic")) {
-                throw new Error("Kernel panic");
+                throw new Error("Kernel panic: the firmware is corrupt. Flash another firmware through x/ymodem from uboot");
             }
         }
     }
