@@ -1,9 +1,13 @@
 ---
-title: Root Procedure for Huawei MA5671A
+title: Root Procedure for Huawei MA5671A (V2)
 has_children: false
 parent: Huawei MA5671A
 layout: default
+nav_exclude: true
+search_exclude: true
 ---
+
+{% include alert.html content="This version remains for documentation purposes only. Please use the latest procedure: [Web root procedure](/ont-huawei-ma5671a-root-web)" alert="Important"  icon="svg-warning" color="red" %}
 
 1. Take the SFP molex and four coloured cables and solder them to the molex according to the following diagram:
 
@@ -133,9 +137,8 @@ The password is `admin123`.
 {% include alert.html content="If you use a modern OpenSSH version (e.g. >= 8.8) you will have to enable some deprecated algorithms: ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss [...]" alert="Info"  icon="svg-info" color="blue" %}
 
 # Miscellaneous Links
+- [Latest version of Root Procedure (V1) on hack-gpon](https://github.com/hack-gpon/hack-gpon.github.io/blob/b0edc817a49d42c9ab3a5c096944caeb0a812155/_ont/ont-huawei-ma5671a-root.md)
 - [Come avere i 2.5 Gbps su un unico dispositivo senza il Fastgate](https://forum.fibra.click/d/17836-come-avere-i-25-gbps-su-un-unico-dispositivo-senza-il-fastgate)
 - [Support MA5671A SFP GPON](https://forum.openwrt.org/t/support-ma5671a-sfp-gpon/48042)
 - [La fibre Orange à 2Gbps, sur un routeur MikroTik 10Gbps CCR2004, via un ONT SFP+](https://lafibre.info/remplacer-livebox/guide-de-connexion-fibre-directement-sur-un-routeur-voire-meme-en-2gbps/msg832904/#msg832904)
 - [Bypassing the HH3K up to 2.5Gbps using a BCM57810S NIC](https://www.dslreports.com/forum/r32230041-Internet-Bypassing-the-HH3K-up-to-2-5Gbps-using-a-BCM57810S-NIC)
-- [Bypassing the HH3K up to 2.5Gbps using a BCM57810S NIC](https://www.dslreports.com/forum/r32230041-Internet-Bypassing-the-HH3K-up-to-2-5Gbps-using-a-BCM57810S-NIC)
-

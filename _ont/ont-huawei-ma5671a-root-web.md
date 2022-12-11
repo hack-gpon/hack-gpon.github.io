@@ -1,14 +1,71 @@
 ---
-title: Root Huawei MA5671A Web App
+title: Root Procedure for Huawei MA5671A (V1)
 has_children: false
 parent: Huawei MA5671A
 layout: default
-nav_exclude: true
-search_exclude: true
 ---
 
-<h1>Root Huawei MA5671A Web App</h1>
-<button id="start-button" class="btn" data-toogle="modal" data-target="#root-modal">Start root!</button>
+# Root the stick
+
+Connect the SFP adapter to the TTL adapter according to the following diagram:
+
+| USB TTL (UART) Adapter | wire colour in picture | SFP 20pins Molex connector |
+| ---------------------- | ---------------------- | -------------------------- |
+| 3.3V                   | red                    | pin #15 and #16            |
+| TX                     | orange                 | pin #2                     |
+| RX                     | yellow                 | pin #7                     |
+| GND                    | green                  | pin #14                    |
+
+{% include image.html file="ma5671a-root-1.jpg"  alt="Example of how the SFP-TTL connection should look like" caption="Example of how the sfp-ttl connection should look like" %}
+{% include image.html file="new-root-procedure\board-molex-arduino.jpg"  alt="Example of how the SFP-TTL connection should look like with a custom board" caption="Example of how the SFP-TTL connection should look like with a custom board" %}
+
+{% include alert.html content="Try PIN 10 or other GND PINs if the connection doesn't work with PIN 14." alert="Note" icon="svg-warning" color="yellow" %}
+
+{% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
+
+Connect the TTL adapter to the computer, once done press the following button <button id="start-button" class="btn" data-toogle="modal" data-target="#root-modal" disabled>Start root!</button>. A window will open that will execute the root.
+
+<script>
+if ('serial' in navigator) {
+    document.getElementById('start-button').disabled = false;
+} else {
+    document.getElementById('browser-error').style.display = 'block';
+}
+</script>
+<p id="browser-error" style="display:none">{% include alert.html content="This browser is not compatible with the web-root procedure. See the <a href='https://developer.mozilla.org/en-US/docs/Web/API/Web_Serial_API#browser_compatibility'>Browser compatibility</a>" alert="Note"  icon="svg-warning" color="red" %}</p>
+<noscript>
+{% include alert.html content="Your browser does not support JavaScript!" alert="Note"  icon="svg-warning" color="red" %}
+</noscript>
+
+
+# Connect to the stick via SSH
+
+After this is done, reboot the stick, after connecting it to the router via an ethernet mediaconverter or directly plug it in an SFP port, with the port's IP set to whatever IP of the `192.168.1.0/24` subnet (the stick has the IP `192.168.1.10`)
+
+{% include alert.html content="If your subnet is `192.168.1.0/24` make sure you have no ip conflicts." alert="Note" icon="svg-warning" color="yellow" %}
+
+{% include alert.html content="Make sure to disable SFP TX fault detection, otherwise the RX loss will prevent you from connecting to the mini SFP ONT at this point. Don't simply attach the fiber cable to work around this issue as the OLT may ban you." alert="Note" icon="svg-warning" color="yellow" %}
+
+Run the terminal and login to the stick with ssh
+
+```shell
+ssh root@192.168.1.10
+```
+
+The password is `admin123`.
+
+{% include alert.html content="If you use a modern OpenSSH version (e.g. >= 8.8) you will have to enable some deprecated algorithms: `ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss root@192.168.1.10`" alert="Info" icon="svg-info" color="blue" %}
+
+# Disable serial output
+
+If there is a need to not have the problem of SFP TX fault detection, it is possible to lock the serial (as the TX fault pin is used for serial and would be in a perpetual high state):
+
+```sh
+fw_setenv bootdelay 5
+fw_setenv asc0 0
+fw_setenv preboot "gpio set 3;gpio input 100;gpio input 105;gpio input 106;gpio input 107;gpio input 108"
+```
+
 <div class="modal" data-modal="root-modal" data-modal-backdrop="static" id="root-modal">
     <div class="modal-content">
         <div class="modal-header">
@@ -42,8 +99,6 @@ search_exclude: true
                 </svg>
                 <p id="root-text-step-2"></p>
             </div>
-        <textarea class="form-control" id="root-status" readonly style="resize: none; display: none">
-        </textarea>
         </div>
     </div>
 </div>
@@ -65,7 +120,6 @@ search_exclude: true
         }
     }
     let rootModal = document.getElementById("root-modal");
-    let textarea = document.getElementById('root-status');
     let rootStep = [document.getElementById('root-step-1'),document.getElementById('root-step-2')];
     let rootStepText = [document.getElementById('root-text-step-1'), document.getElementById('root-text-step-2')];
     rootModal.addEventListener('modal-close', async function(event) {
@@ -176,7 +230,6 @@ search_exclude: true
         }
     }
     async function root({ signal } = {}) {
-        textarea.value = "";
         loading("Waiting for the user to choose the port",0);
         pause("",1);
         let port;
@@ -192,8 +245,7 @@ search_exclude: true
             console.log('Error: port not open\n');
             return;
         }
-        textarea.value += '[+] Use serial port device\n';
-        textarea.value += '[+] Waiting for trigger characters...\n';
+
         loading("Please disconnect the Huawei MA5671A from the SFP adapter if it is currently plugged in!",0);
         try {
             await port.open({ baudRate: 115200 });
@@ -239,7 +291,7 @@ search_exclude: true
             loading("Root in progress: Rebooting...",0);
             writer.write('reset\n');
             await delay(1000);
-            showSuccess("Oh Yeah! Step completed.",0);
+            showSuccess("Congratulations! Step completed.",0);
         } catch (err) {
             showError(`Error: ${err.message}`,0);
             console.log(`Error: ${err.message}\n`);
@@ -252,7 +304,7 @@ search_exclude: true
             loading("Root in progress: Enable full Linux shell...",1);
             writer.write('sed -i  "s|/opt/lantiq/bin/minishell|/bin/ash|g" /etc/passwd\n');
             await delay(1000);
-            showSuccess("Oh Yeah! Step completed.",1);
+            showSuccess("Congratulations! Step completed.",1);
         } catch (err) {
             showError(`Error: ${err.message}`,1);
             console.log(`Error: ${err.message}\n`);
