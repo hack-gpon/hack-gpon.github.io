@@ -61,7 +61,6 @@ The password is `admin123`.
 If there is a need to not have the problem of SFP TX fault detection, it is possible to lock the serial (as the TX fault pin is used for serial and would be in a perpetual high state):
 
 ```sh
-fw_setenv bootdelay 5
 fw_setenv asc0 0
 fw_setenv preboot "gpio set 3;gpio input 100;gpio input 105;gpio input 106;gpio input 107;gpio input 108"
 ```
