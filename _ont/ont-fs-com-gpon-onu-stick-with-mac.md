@@ -50,7 +50,7 @@ layout: default
 ```sh
 fw_setenv bootdelay 5
 fw_setenv asc0 0
-fw_setenv preboot "gpio input 105;gpio input 106;gpio input 107;gpio input 108;gpio set 3;gpio set 109;gpio set 110;gpio clear 423;gpio clear 422;gpio clear 325;gpio clear 402;gpio clear 424"
+fw_setenv preboot "gpio set 3;gpio input 2;gpio input 105;gpio input 106;gpio input 107;gpio input 108"
 ```
 If you haven't done this and the stick doesn't work due to your changes you can follow the [Huawei MA5671A unlock guide](/ont-huawei-ma5671a-root)
 
