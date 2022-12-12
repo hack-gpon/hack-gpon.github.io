@@ -270,10 +270,11 @@ layout: table_wrappers
     if (document.getElementById('last-modified')) {
       listOfScannedFilename.push("{{ page.path }}");
       fetch("https://api.github.com/repos/{{ site.gh_owner_name }}/{{ site.gh_repository_name }}/commits?path={{ page.path }}")
-        .then((response) => {
-          return response.json();
-        })
-        .then(async function (commits) {
+      .then((response) => {
+        return response.json();
+      })
+      .then(async function (commits) {
+        try{
           var date = new Date(commits[0]['commit']['committer']['date']);
           var modified = date.toLocaleDateString(undefined);
 
@@ -283,7 +284,12 @@ layout: table_wrappers
           document.getElementById('contributors').textContent = authors.length + " " + (authors.length == 1 ? "Contributor" : "Contributors");
 
           document.getElementById('contributors-modal-list').innerHTML = authors.map(x => "<li><a href='" + x.html_url + "'><img class='avatar' src='" + x.avatar_url + "'><span>" + x.name + "</span<</a></li>").join('');
-        });
+        } catch (err) {
+          document.getElementById('last-modified').textContent = "Sorry, last modified not currently available";
+          document.getElementById('contributors').textContent = "Contributors";
+          document.getElementById('contributors-modal-list').innerHTML = "<li>Sorry, list not currently available</li>";
+        }
+      });
     }
   }
 
