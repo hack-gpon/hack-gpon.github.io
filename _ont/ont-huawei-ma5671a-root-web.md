@@ -43,7 +43,7 @@ After this is done, reboot the stick, after connecting it to the router via an e
 
 {% include alert.html content="Make sure to disable SFP TX fault detection, otherwise the RX loss will prevent you from connecting to the mini SFP ONT at this point. Don't simply attach the fiber cable to work around this issue as the OLT may ban you." alert="Note" icon="svg-warning" color="yellow" %}
 
-{% include alert.html content="In media converters and on mikrotik it is not necessary to disable TX fault." alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="In media converters and on MikroTik it is not necessary to disable TX fault." alert="Info" icon="svg-info" color="blue" %}
 
 Run the terminal and login to the stick with ssh
 
@@ -124,11 +124,9 @@ fw_setenv preboot "gpio set 3;gpio input 100;gpio input 105;gpio input 106;gpio 
     let rootStep = [document.getElementById('root-step-1'),document.getElementById('root-step-2')];
     let rootStepText = [document.getElementById('root-text-step-1'), document.getElementById('root-text-step-2')];
     rootModal.addEventListener('modal-close', async function(event) {
-        console.log("abort");
         acontroller.abort();
     });
     rootModal.addEventListener('modal-open', async function(event) {
-        console.log("start");
         root({signal: cs});
     });
     function pause(message, i) {
@@ -244,7 +242,6 @@ fw_setenv preboot "gpio set 3;gpio input 100;gpio input 105;gpio input 106;gpio 
             console.log('Error: port not open\n');
             return;
         }
-
         loading("Please disconnect the Huawei MA5671A from the SFP adapter if it is currently plugged in!",0);
         try {
             await port.open({ baudRate: 115200 });
@@ -294,9 +291,13 @@ fw_setenv preboot "gpio set 3;gpio input 100;gpio input 105;gpio input 106;gpio 
         } catch (err) {
             showError(`Error: ${err.message}`,0);
             console.log(`Error: ${err.message}\n`);
+            reader.cancel();
+            await readableStreamClosed.catch(() => { /* Ignore the error */ });
+            writer.close();
+            await writerStreamClosed;
+            await port.close();
             return;
         }
-
         try {
             loading("Waiting for reboot",1);
             await waitFailbackShell(writer, reader);
@@ -310,11 +311,19 @@ fw_setenv preboot "gpio set 3;gpio input 100;gpio input 105;gpio input 106;gpio 
         } catch (err) {
             showError(`Error: ${err.message}`,1);
             console.log(`Error: ${err.message}\n`);
+            reader.cancel();
+            await readableStreamClosed.catch(() => { /* Ignore the error */ });
+            writer.close();
+            await writerStreamClosed;
+            await port.close();
             return;
         }
 
-        reader.releaseLock();
-        writer.releaseLock();
+        reader.cancel();
+        await readableStreamClosed.catch(() => { /* Ignore the error */ });
+        writer.close();
+        await writerStreamClosed;
+        await port.close();
     }
 </script>
 
