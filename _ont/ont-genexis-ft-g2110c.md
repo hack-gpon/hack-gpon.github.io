@@ -73,13 +73,13 @@ This ONT supports dual boot.
 
 {% include alert.html content="The GPON S/N can only be changed via U-Boot console" alert="Note"  icon="svg-info" color="blue" %}
 
-Attach TTL adapter to UART console (see Internal photo - CM3 header, for pinout), open a terminal emulator (like Putty or Teraterm), power on the ONT and `CTRL+C` until you see the following prompt:
+Attach a TTL adapter to the UART console port (see Internal photo - CM3 header, for pinout), open a terminal emulator (like Putty or Teraterm), power on the ONT and press `CTRL+C` until you see the following prompt:
 
 ```sh
 9601D#
 ```
 
-On that console you can type the following commands to change the serial number of ONT:
+On that console you can type the following commands to change the GPON serial number:
 
 ```sh
 set GponSn GNXS05542100
@@ -94,7 +94,7 @@ You can check if the serial number was correclty changed using the following com
 GNXS05542100
 ```
 
-## Change IP address
+## Changing the IP address
 ```sh
 # /etc/scripts/flash get LAN_IP_ADDR
 LAN_IP_ADDR=192.168.1.1
@@ -110,8 +110,8 @@ LAN_IP_ADDR=192.168.1.1
 GPON_PLOAM_PASSWD=AAAAAAAAAA
 # /etc/scripts/flash set GPON_PLOAM_PASSWD AAAAAAAAAA
 ```
-Looks like that Genexis has also included an U-Boot variable to store the PLOAM. On currently known firmwares (5.6.1 and 5.7.0) is not readed by `omci_app` daemon.
-If you want to be future proof ready, put your PLOAM also on U-Boot env using the following command on the OS shell:
+Looks like Genexis has also included an U-Boot variable to store the PLOAM. On currently known firmwares (5.6.1 and 5.7.0) it is not read by the `omci_app` daemon.
+If you want to be future proof, put your PLOAM also on U-Boot env using the following command on the OS shell:
 
 ```sh
 # nv setenv ploampwd 1234567890
@@ -121,7 +121,7 @@ ploampwd=1234567890
 # Known Bugs
 
 - ONT Serial Number can only be changed via U-Boot console, if you try to change it from the OS you will receive an error
-- Most of value on XML configuration are not readed by `omci_app` deamon, so changing parameters like `PON_VENDOR_ID`, `OLT_MODE` or `SW_VER*` are not supported. A the moment this unit cannot be fully spoofed like other Realtek's ONT with stock Luna SDK
+- Most of the values inside the XML configuration file are not read by the `omci_app` deamon, so changing parameters like `PON_VENDOR_ID`, `OLT_MODE` or `SW_VER*` is not supported. At the moment this unit cannot be fully spoofed like other Realtek's ONT with stock Luna SDK
 
 # Miscellaneous Links
 - [FiberTwist G2110C-2.5G](https://genexis.eu/content/uploads/2020/07/FiberTwist-G2110C-2.5G-Installation-Guide-v1.0-EN.pdf)
