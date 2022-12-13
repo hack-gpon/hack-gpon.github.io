@@ -41,6 +41,7 @@ parent: Genexis
 ## List of software versions
 - C-5.6.1-R
 - C-5.7.0-R
+- C.5.7.1-DEV
 
 ## List of partitions
 
@@ -69,12 +70,17 @@ This ONT supports dual boot.
 
 # Useful Commands
 
-## Getting/Setting the ONT's S/N
+{% include alert.html content="Some variables are write-protected, you need to unlock them before proceed" alert="Info" icon="svg-info" color="blue" %}
 
-Login on the OS shell and run these commands to change S/N
+Use this command to unlock write-protected variables:
 
 ```sh
 # nv setenv ProtectEnv 0
+```
+
+## Getting/Setting the ONT's S/N
+
+```sh
 # nv setenv GponSn GNXS05542100
 ```
 Reboot ONT to apply the change
@@ -88,22 +94,17 @@ GNXS05542100
 
 ## Changing Hardware Version
 
-Login on the OS shell and run these commands to change S/N
-
 ```sh
-# nv setenv ProtectEnv 0
 # nv setenv HV G2110CE2V1D0
 ```
 Reboot ONT to apply the change
 
 ## Changing Equipment ID
 
-Login on the OS shell and run these commands to change S/N
-
 ```sh
-# nv setenv ProtectEnv 0
 # nv setenv ProdName FT-G2110C-2.5G
 ```
+Reboot ONT to apply the change
 
 ## Changing the IP address
 ```sh
