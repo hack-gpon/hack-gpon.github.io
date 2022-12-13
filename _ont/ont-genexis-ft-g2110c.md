@@ -41,7 +41,7 @@ parent: Genexis
 ## List of software versions
 - C-5.6.1-R
 - C-5.7.0-R
-- C.5.7.1-DEV
+- C.5.7.1-DEV3
 
 ## List of partitions
 
@@ -94,14 +94,14 @@ You can check if the serial number was correclty changed using the following com
 ZTEGaaa01234
 ```
 
-## Changing Hardware Version
+## Changing the Hardware Version
 
 ```sh
 # nv setenv HV G2110CE2V1D0
 ```
 Reboot ONT to apply the change
 
-## Changing Equipment ID
+## Changing the Equipment ID
 
 ```sh
 # nv setenv ProdName FT-G2110C-2.5G
@@ -132,9 +132,52 @@ If you want to be future proof, put your PLOAM also on U-Boot env using the foll
 ploampwd=1234567890
 ```
 
+## Spoofing firmware version
+
+{% include alert.html content="To change this information you need to upload a modified firmware. Do it at your own risk!" alert="Info" icon="svg-warn" color="red" %}
+
+- Download the modded firmware from [here](https://mega.nz/file/TxZDjKxL#S9xqbhQDP-Vyt0rR5GdHkeABemDbvRP9NL2xOhoHnts) md5:  `96785ab3bc86bd83aeb6bdc8d0e2dfde`
+- Logon on OS shell of the ONT and run this command: `iptables -F`
+- Open a web browser and go to `http://192.168.1.1/upgrade.asp` or `http://192.168.100.1/upgrade.asp`, enter same credentials used for telnet session, select the modded firmware and click on `Upgrade`
+- After upgrade is done and you can reach again the ONT (using ping to check it), logon again on OS shell and run these commands to change firmware version (both sw0 and sw1):
+
+```sh
+# /etc/scripts/flash set OMCI_OLT_MODE 3
+OMCI_OLT_MODE=3
+# nv setenv sw_custom_version0=V6.0.10N14
+# nv setenv sw_custom_version1=V6.0.10N14
+```
+
+Reboot the ONT and check if version was correct applied with this command (take look at `Version` field):
+
+```sh
+# omcicli mib get 7
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+SWImage
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+=================================
+EntityID: 0x00
+Active: 0
+Committed: 0
+Valid: 1
+*Version: V6.0.10N14*
+ProductCode:
+ImageHash: 0x00000000000000000000000000000000
+=================================
+=================================
+EntityID: 0x01
+Active: 1
+Committed: 1
+Valid: 1
+*Version: V6.0.10N14*
+ProductCode:
+ImageHash: 0x00000000000000000000000000000000
+=================================
+```
+
 # Known Bugs
 
-- Most of the values inside the XML configuration file are not read by the `omci_app` deamon, so changing parameters like `PON_VENDOR_ID`, `OLT_MODE` or `SW_VER*` is not supported. At the moment this unit cannot be fully spoofed like other Realtek's ONT with stock Luna SDK
+- Modded image (based on 5.7.1-DEV3) has Web Gui enabled, but without attached fiber the daemon will crash
 
 # Miscellaneous Links
 - [FiberTwist G2110C-2.5G](https://genexis.eu/content/uploads/2020/07/FiberTwist-G2110C-2.5G-Installation-Guide-v1.0-EN.pdf)
