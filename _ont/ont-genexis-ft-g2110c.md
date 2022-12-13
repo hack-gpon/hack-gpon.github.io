@@ -132,7 +132,6 @@ ploampwd=1234567890
 
 # Known Bugs
 
-- ONT Serial Number can only be changed via U-Boot console, if you try to change it from the OS you will receive an error
 - Most of the values inside the XML configuration file are not read by the `omci_app` deamon, so changing parameters like `PON_VENDOR_ID`, `OLT_MODE` or `SW_VER*` is not supported. At the moment this unit cannot be fully spoofed like other Realtek's ONT with stock Luna SDK
 
 # Miscellaneous Links
