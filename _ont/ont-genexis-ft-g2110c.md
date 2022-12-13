@@ -80,6 +80,8 @@ Use this command to unlock write-protected variables:
 
 ## Getting/Setting the ONT's S/N
 
+{% include alert.html content="If you serial has letters after the VID (ex. ZTEG), put the rest of it in lower case" alert="Info" icon="svg-info" color="blue" %}
+
 ```sh
 # nv setenv GponSn GNXS05542100
 ```
