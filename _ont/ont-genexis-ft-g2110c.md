@@ -71,27 +71,38 @@ This ONT supports dual boot.
 
 ## Getting/Setting the ONT's S/N
 
-{% include alert.html content="The GPON S/N can only be changed via U-Boot console" alert="Note"  icon="svg-info" color="blue" %}
-
-Attach a TTL adapter to the UART console port (see Internal photo - CM3 header, for pinout), open a terminal emulator (like Putty or Teraterm), power on the ONT and press `CTRL+C` until you see the following prompt:
+Login on the OS shell and run these commands to change S/N
 
 ```sh
-9601D#
+# nv setenv ProtectEnv 0
+# nv setenv GponSn GNXS05542100
 ```
-
-On that console you can type the following commands to change the GPON serial number:
-
-```sh
-set GponSn GNXS05542100
-saveenv
-reset
-```
+Reboot ONT to apply the change
 
 You can check if the serial number was correclty changed using the following command:
 
 ```sh
 # diag gpon get serialnumber
 GNXS05542100
+```
+
+## Changing Hardware Version
+
+Login on the OS shell and run these commands to change S/N
+
+```sh
+# nv setenv ProtectEnv 0
+# nv setenv HV G2110CE2V1D0
+```
+Reboot ONT to apply the change
+
+## Changing Equipment ID
+
+Login on the OS shell and run these commands to change S/N
+
+```sh
+# nv setenv ProtectEnv 0
+# nv setenv ProdName FT-G2110C-2.5G
 ```
 
 ## Changing the IP address
