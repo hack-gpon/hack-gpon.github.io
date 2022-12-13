@@ -41,7 +41,7 @@ parent: Genexis
 ## List of software versions
 - C-5.6.1-R
 - C-5.7.0-R
-- C.5.7.1-DEV3
+- C-5.7.1-DEV3
 
 ## List of partitions
 
@@ -72,7 +72,7 @@ This ONT supports dual boot.
 
 {% include alert.html content="Some variables are write-protected, you need to unlock them before proceed" alert="Info" icon="svg-info" color="blue" %}
 
-Use this command to unlock write-protected variables:
+Use the following command to unlock write-protected variables:
 
 ```sh
 # nv setenv ProtectEnv 0
@@ -80,7 +80,7 @@ Use this command to unlock write-protected variables:
 
 ## Getting/Setting the ONT's S/N
 
-{% include alert.html content="If your serial has letters after the VID (ex. ZTEGAAA01234), put the rest of it in lower case (ex. ZTEGaaa01234)" alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="If your serial has letters after the VID (ex. ZTEGAAA01234), put them in lower case (ex. ZTEGaaa01234)" alert="Info" icon="svg-info" color="blue" %}
 
 ```sh
 # nv setenv GponSn ZTEGaaa01234
@@ -134,12 +134,12 @@ ploampwd=1234567890
 
 ## Spoofing firmware version
 
-{% include alert.html content="To change this information you need to upload a modified firmware. Do it at your own risk!" alert="Info" icon="svg-warn" color="red" %}
+{% include alert.html content="To change this information you need to upload a modified firmware. Do it at your own risk!" alert="Warning" icon="svg-warning" color="red" %}
 
-- Download the modded firmware from [here](https://mega.nz/file/TxZDjKxL#S9xqbhQDP-Vyt0rR5GdHkeABemDbvRP9NL2xOhoHnts) md5:  `96785ab3bc86bd83aeb6bdc8d0e2dfde`
+- Download the modified firmware from [here](https://mega.nz/file/yspFRTJT#JjeDS7NwLZxCzFklQGMJVIuPawo8utQRGbMGEXQv84M) md5:  `91946ad8aada2e469b7fff1d38ee7474`
 - Logon on OS shell of the ONT and run this command: `iptables -F`
-- Open a web browser and go to `http://192.168.1.1/upgrade.asp` or `http://192.168.100.1/upgrade.asp`, enter same credentials used for telnet session, select the modded firmware and click on `Upgrade`
-- After upgrade is done and you can reach again the ONT (using ping to check it), logon again on OS shell and run these commands to change firmware version (both sw0 and sw1):
+- Open a web browser and go to `http://192.168.1.1/upgrade.asp` or `http://192.168.100.1/upgrade.asp`, enter same credentials used for telnet session, select the modified firmware and click on `Upgrade`
+- After upgrade is done and you are able to reach the ONT via telnet, logon back and run these commands to change firmware version on both banks:
 
 ```sh
 # /etc/scripts/flash set OMCI_OLT_MODE 3
@@ -148,7 +148,7 @@ OMCI_OLT_MODE=3
 # nv setenv sw_custom_version1=V6.0.10N14
 ```
 
-Reboot the ONT and check if version was correct applied with this command (take look at `Version` field):
+Reboot the ONT and check if version was correct applied with this command (take a look at `Version` field):
 
 ```sh
 # omcicli mib get 7
@@ -176,8 +176,7 @@ ImageHash: 0x00000000000000000000000000000000
 ```
 
 # Known Bugs
-
-- Modded image (based on 5.7.1-DEV3) has Web Gui enabled, but without attached fiber the daemon will crash
+- Modified image (based on C-5.7.1-DEV3) has Web Gui enabled, but without attached fiber the daemon will crash
 
 # Miscellaneous Links
 - [FiberTwist G2110C-2.5G](https://genexis.eu/content/uploads/2020/07/FiberTwist-G2110C-2.5G-Installation-Guide-v1.0-EN.pdf)
