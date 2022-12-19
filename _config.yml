@@ -128,3 +128,26 @@ webp:
   # Default transforms `image.png` to `image.webp`, while changing to true transforms `image.png` to `image.png.webp`
   append_ext: false
 ############################################################
+
+
+collections:
+  ont:
+    permalink: "/:path/"
+    output: true
+  tools:
+    permalink: "/:path/"
+    output: true
+  gpon:
+    permalink: "/:path/"
+    output: true
+
+just_the_docs:
+  collections:
+    ont:
+      name: ONT
+    tools:
+      name: Tools
+      nav_fold: false
+    gpon:
+      name: GPON
+      nav_fold: false
