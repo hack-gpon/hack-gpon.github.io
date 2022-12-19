@@ -80,12 +80,12 @@ Use the following command to unlock write-protected variables:
 
 ## Getting/Setting the ONT's S/N
 
-{% include alert.html content="If your serial has letters after the VID (ex. ZTEGAAA01234), put them in lower case (ex. ZTEGaaa01234)" alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="If your serial number has letters after the Vendor ID (e.g. ZTEGAAA01234), put them in lower case (e.g. ZTEGaaa01234)" alert="Info" icon="svg-info" color="blue" %}
 
 ```sh
 # nv setenv GponSn ZTEGaaa01234
 ```
-Reboot ONT to apply the change
+Reboot the ONT to apply any changes
 
 You can check if the serial number was correclty changed using the following command:
 
@@ -125,7 +125,7 @@ GPON_PLOAM_PASSWD=AAAAAAAAAA
 # /etc/scripts/flash set GPON_PLOAM_PASSWD AAAAAAAAAA
 ```
 Looks like Genexis has also included an U-Boot variable to store the PLOAM. On currently known firmwares (5.6.1 and 5.7.0) it is not read by the `omci_app` daemon.
-If you want to be future proof, put your PLOAM also on U-Boot env using the following command on the OS shell:
+If you want to be future proof, put your PLOAM also on U-Boot env using the following command in the OS shell:
 
 ```sh
 # nv setenv ploampwd 1234567890
@@ -134,12 +134,12 @@ ploampwd=1234567890
 
 ## Spoofing firmware version
 
-{% include alert.html content="To change this information you need to upload a modified firmware. Do it at your own risk!" alert="Warning" icon="svg-warning" color="red" %}
+{% include alert.html content="To change this data you need to upload a modified firmware. Do it at your own risk!" alert="Warning" icon="svg-warning" color="red" %}
 
 - Download the modified firmware from [here](https://mega.nz/file/yspFRTJT#JjeDS7NwLZxCzFklQGMJVIuPawo8utQRGbMGEXQv84M) md5:  `91946ad8aada2e469b7fff1d38ee7474`
-- Logon on OS shell of the ONT and run this command: `iptables -F`
-- Open a web browser and go to `http://192.168.1.1/upgrade.asp` or `http://192.168.100.1/upgrade.asp`, enter same credentials used for telnet session, select the modified firmware and click on `Upgrade`
-- After upgrade is done and you are able to reach the ONT via telnet, logon back and run these commands to change firmware version on both banks:
+- Logon on the OS shell of the ONT and run this command: `iptables -F`
+- Open a web browser and go to `http://192.168.1.1/upgrade.asp` or `http://192.168.100.1/upgrade.asp`, enter the same credentials used for telnet session, select the modified firmware and click on `Upgrade`
+- Once the upgrade is done and you are able to reach the ONT via telnet, log back in and run these commands to change the firmware version on both banks:
 
 ```sh
 # /etc/scripts/flash set OMCI_OLT_MODE 3
@@ -148,7 +148,7 @@ OMCI_OLT_MODE=3
 # nv setenv sw_custom_version1=V6.0.10N14
 ```
 
-Reboot the ONT and check if version was correct applied with this command (take a look at `Version` field):
+Reboot the ONT and check if the version was correctly applied with this command (take a look at the `Version` field):
 
 ```sh
 # omcicli mib get 7
@@ -176,7 +176,7 @@ ImageHash: 0x00000000000000000000000000000000
 ```
 
 # Known Bugs
-- Modified image (based on C-5.7.1-DEV3) has Web Gui enabled, but without attached fiber the daemon will crash
+- Modified image (based on C-5.7.1-DEV3) has the Web UI enabled, but without an attached fiber the daemon will crash
 
 # Miscellaneous Links
 - [FiberTwist G2110C-2.5G](https://genexis.eu/content/uploads/2020/07/FiberTwist-G2110C-2.5G-Installation-Guide-v1.0-EN.pdf)
