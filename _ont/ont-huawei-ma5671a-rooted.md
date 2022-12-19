@@ -22,7 +22,7 @@ layout: default
     </div>
     <div class="form-floating mb-3">
         <input type="text" class="form-control" placeholder="GPON S/N" name="gpon-sn" id="gpon-sn" value="">
-        <label for="gpon-sn">GPON S/N in format  GPON00001234or 47504F4E12345678, empty for not modify it</label>
+        <label for="gpon-sn">GPON S/N in format GPON12345678 or 47504F4E12345678, empty for not modify it</label>
     </div>
     <div class="form-floating mb-3">
         <input type="text" class="form-control" placeholder="GPON Ploam Password" name="gpon-password" id="gpon-password" value="">

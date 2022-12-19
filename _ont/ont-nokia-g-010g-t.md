@@ -79,10 +79,10 @@ To access a complete linux shell just type:
 ```sh
 #ONT>system
 #ONT/system>misc
-#ONT/system/misc>eqsn set ""
+#ONT/system/misc>eqsn set "ALCL00000001"
 ---ATECMDRESULT--- OK
 #ONT/system/misc>eqsn get
-eqsn: 
+eqsn: ALCL00000001
 ---ATECMDRESULT--- OK
 ```
 
