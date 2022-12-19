@@ -85,24 +85,17 @@ layout: table_wrappers
                 </div>
             {% endif %}
             {% include header_custom.html %}
-            {% if site.aux_links %}
-                <nav aria-label="Auxiliary" class="aux-nav">
-                    <ul class="aux-nav-list">
-                        {% for link in site.aux_links %}
-                            <li class="aux-nav-list-item">
-                                <a href="{{ link.last }}" class="site-button"
-                                    {% if site.aux_links_new_tab %}
-                                    target="_blank" rel="noopener noreferrer"
-                                    {% endif %}
-                                >
-                                    {{ link.first }}
-                                </a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </nav>
-            {% endif %}
             <nav class="aux-nav"><ul class="aux-nav-list">
+                {% if site.aux_links %}
+                    {% for link in site.aux_links %}
+                        <li class="aux-nav-list-item">
+                            <span class="site-button ">
+                                <a href="{{ link.last.link }}" class="btn btn-{{ link.last.color }}">{{ link.first }}  <img style="width:auto;height:20px;vertical-align:middle;" src="{{ link.last.logo }}"></img></a>
+                                {{ link }}
+                            </span>
+                        </li>
+                    {% endfor %}
+                {% endif %}
                 <li class="aux-nav-list-item"><span class="site-button "><a class="btn js-toggle-dark-mode">Dark mode</a></span></li>
             </ul></nav>
         </div>
