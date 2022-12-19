@@ -21,10 +21,10 @@ parent: ONT
 | SSH         | ✅ user `ONTUSER`, password `SUGAR2A041`                         |
 | Form Factor | miniONT SFP                                                      |
 
-{% include image.html file="g-s010s-p.jpg"  alt="G-010S-P" caption="G-010S-P" %}
+{% include image.html file="g-010s-p.jpg"  alt="G-010S-P" caption="G-010S-P" %}
 
 
-{% include image.html file="g-s010s-p-and-ma5671a.jpg"  alt="G-010S-P and MA5671A Teardown" caption="G-010S-P and MA5671A Teardown" %}
+{% include image.html file="g-010s-p-and-ma5671a.jpg"  alt="G-010S-P and MA5671A Teardown" caption="G-010S-P and MA5671A Teardown" %}
 
 
 {% include alert.html content="G-010S-P and other models will not expose ethernet interface unless fiber cable is connected ([source](https://forum.mikrotik.com/viewtopic.php?t=116364&start=300))" alert="Warning" icon="svg-warning" color="yellow" %}
@@ -37,7 +37,7 @@ parent: ONT
 - {:.text-red-200 } Dasan H650SFP 
 - {:.text-red-200 } DpOptics D23446  
 
-Turning a [Nokia G-010S-P](ont-nokia-g-010s-p) into a [Nokia G-010S-A](ont-nokia-g-010s-A) is possible by changing layout from mtd
+Turning a [Nokia G-010S-P](ont-nokia-g-010s-p) into a [Nokia G-010S-A](ont-nokia-g-010s-a) is possible by changing layout from mtd
 
 ## Serial
 

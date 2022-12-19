@@ -21,10 +21,13 @@ parent: ONT
 | SSH         | ✅ user `root`, password `admin123` |
 | Form Factor | miniONT SFP                         |
 
+{% include image.html file="g-010s-p-and-ma5671a.jpg"  alt="G-010S-P and MA5671A Teardown" caption="G-010S-P and MA5671A Teardown" %}
+
+
 ##  Firmware is interchangeable with:
 
 - [Huawei MA5671A](ont-huawei-ma5671a)
-- [Nokia G-010S-P](ont-nokia-g-s010s-p)
+- [Nokia G-010S-P](ont-nokia-g-010s-p)
 - [ONT FS.com GPON ONU Stick with MAC / SourcePhotonics SPS-34-24T-HP-TDFO](ont-SourcePhotonics-SPS-34-24T-HP-TDFO)
 - [Hilink HL23446](ont-Hilink-HL23446)
 - {:.text-red-200 } Dasan H650SFP 
