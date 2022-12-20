@@ -1,5 +1,5 @@
 ---
-title: MikroTik RB5009, CRS305-1G-4S+IN, CCR2004-1G-12S+2XS, CCR2116-12G-4S+	
+title: MikroTik	Router & Switch
 has_children: false
 layout: default
 ---
