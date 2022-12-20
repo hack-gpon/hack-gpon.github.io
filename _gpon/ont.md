@@ -4,6 +4,7 @@ has_children: false
 nav_order: 2
 description: Resources to access and modify ONTs
 layout: default
+redirect_to: https://hack-xpon.github.io/ont
 ---
 
 

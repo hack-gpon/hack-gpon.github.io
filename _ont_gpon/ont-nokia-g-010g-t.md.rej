@@ -1,0 +1,13 @@
+diff a/_ont_gpon/ont-nokia-g-010g-t.md b/_ont_gpon/ont-nokia-g-010g-t.md	(rejected hunks)
+@@ -79,10 +80,10 @@ To access a complete linux shell just type:
+ ```sh
+ #ONT>system
+ #ONT/system>misc
+-#ONT/system/misc>eqsn set "GNXS05546fb0"
++#ONT/system/misc>eqsn set ""
+ ---ATECMDRESULT--- OK
+ #ONT/system/misc>eqsn get
+-eqsn: GNXS05546fb0
++eqsn:
+ ---ATECMDRESULT--- OK
+ ```

@@ -3,6 +3,7 @@ title: DIGITUS 10Gbps DN-82211
 has_children: false
 alias: HPE 530SFP+, DELL N20KJ
 layout: default
+redirect_to: https://hack-xpon.github.io/digitus-10gbps-dn-82211
 ---
 
 # Hardware Specifications

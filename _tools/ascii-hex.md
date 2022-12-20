@@ -4,6 +4,7 @@ has_children: false
 nav_order: 1
 description: Tool for converter ASCII and Hex
 layout: default
+redirect_to: https://hack-xpon.github.io/ascii-hex
 ---
 
 <h1>ASCII To Hex</h1>

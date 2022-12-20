@@ -3,6 +3,7 @@ title: Molex ONT
 has_children: false
 nav_order: 3
 layout: default
+redirect_to: https://hack-xpon.github.io/molex-ont
 ---
 
 In some sticks, such as those based on Lantiq chipsets, the serial is exposed in the upper pins of the ONT, in order to read them there are two possibilities:

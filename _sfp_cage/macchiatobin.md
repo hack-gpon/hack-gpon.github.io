@@ -3,6 +3,7 @@ title: MACCHIATObin
 has_children: false
 alias: Single Slot, Dual Shot
 layout: default
+redirect_to: https://hack-xpon.github.io/macchiatobin
 ---
 
 # Hardware Specifications

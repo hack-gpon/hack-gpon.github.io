@@ -3,6 +3,7 @@ title: PON Vendor ID
 has_children: false
 nav_order: 4
 layout: default
+redirect_to: https://hack-xpon.github.io/vendor
 ---
 
 > 4 ASCII character maximum

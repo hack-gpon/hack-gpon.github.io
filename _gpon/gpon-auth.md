@@ -4,6 +4,7 @@ has_children: false
 nav_order: 3
 description: ONU Online Status
 layout: default
+redirect_to: https://hack-xpon.github.io/gpon-auth
 ---
 
 

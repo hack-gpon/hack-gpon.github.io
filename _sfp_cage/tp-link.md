@@ -2,6 +2,7 @@
 title: TP-Link Router TL-XDR5480, TL-ER2260T 
 has_children: false
 layout: default
+redirect_to: https://hack-xpon.github.io/tp-link
 ---
 
 

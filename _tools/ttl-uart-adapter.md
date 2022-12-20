@@ -3,6 +3,7 @@ title: TTL UART Adapter
 has_children: false
 nav_order: 2
 layout: default
+redirect_to: https://hack-xpon.github.io/tt-uart-adapter
 ---
 
 A TTL UART adapter makes it possible to connect the stick's serial to a computer via a USB interface, which makes it easy to send commands on modern computers through serial emulation, just like the serial ports of the 1990s.

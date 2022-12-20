@@ -1,5 +1,5 @@
 remote_theme: simonebortolin/just-the-docs
-title: "Hack GPON"
+title: "Hack XPON"
 baseurl: 
 permalink: '/:title'
 search_enabled: true
@@ -34,40 +34,40 @@ plugins:
   - jekyll-default-layout
 
 color_scheme: "light"
-url: "https://hack-gpon.github.io"
+url: "https://hack-xpon.github.io"
 nav_sort: case_sensitive
 
 aux_links:
   - title: "GitHub"
     color: 'purple'
     icon: 'svg-github'
-    link: '//github.com/hack-gpon/hack-gpon.github.io'
+    link: '//github.com/hack-xpon/hack-xpon.github.io'
   - title: "Telegram"
     color: 'blue'
     icon: 'svg-telegram'
-    link: '//t.me/HackGPON'
+    link: '//t.me/HackXPON'
       
 #aux_links:
-#  "Hack GPON on GitHub":
-#    - "//github.com/hack-gpon/hack-gpon.github.io"
-#  "Hack GPON on Telegram":
-#    - "//t.me/HackGPON"
+#  "Hack XPON on GitHub":
+#    - "//github.com/hack-xpon/hack-xpon.github.io"
+#  "Hack XPON on Telegram":
+#    - "//t.me/HackXPON"
 
 back_to_top: true
 back_to_top_text: "Back to top"
 
-footer_content: "Copyright &copy; 2022. Distributed by an <a href=\"https://github.com/hack-gpon/hack-gpon.github.io/blob/main/LICENSE\">MIT License</a>. <a href=\"/privacy-policy\">Privacy Policy</a>."
+footer_content: "Copyright &copy; 2022. Distributed by an <a href=\"https://github.com/hack-xpon/hack-xpon.github.io/blob/main/LICENSE\">MIT License</a>. <a href=\"/privacy-policy\">Privacy Policy</a>."
 
 last_edit_timestamp_script: true
 
 gh_edit_link: true # show or hide edit this page link
 gh_edit_link_text: "Edit this page on GitHub"
-gh_edit_repository: "https://github.com/hack-gpon/hack-gpon.github.io" # the github URL for your repo
+gh_edit_repository: "https://github.com/hack-xpon/hack-xpon.github.io" # the github URL for your repo
 gh_edit_branch: "main" # the branch that your docs is served from
 # gh_edit_source: docs # the source that your files originate from
 gh_edit_view_mode: "tree"
-gh_owner_name: hack-gpon
-gh_repository_name: hack-gpon.github.io
+gh_owner_name: hack-xpon
+gh_repository_name: hack-xpon.github.io
 
 whitelist:
   - jekyll-redirect-from
@@ -91,7 +91,7 @@ mermaid:
   #   topPadding: 50
 
 collections:
-  ont:
+  ont_gpon:
     permalink: "/:path/"
     output: true
   tools:
@@ -106,8 +106,8 @@ collections:
 
 just_the_docs:
   collections:
-    ont:
-      name: ONT
+    ont_gpon:
+      name: ONT GPON
     tools:
       name: Tools
       nav_fold: false

@@ -3,6 +3,7 @@ title: Broadcom 57810S
 has_children: false
 alias: HPE 530SFP+, DELL N20KJ
 layout: default
+redirect_to: https://hack-xpon.github.io/broadcom-57810s
 ---
 
 # Hardware Specifications

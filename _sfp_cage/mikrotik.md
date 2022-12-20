@@ -2,6 +2,7 @@
 title: MikroTik RB5009, CRS305-1G-4S+IN, CCR2004-1G-12S+2XS, CCR2116-12G-4S+	
 has_children: false
 layout: default
+redirect_to: https://hack-xpon.github.io/mikrotik
 ---
 
 # Hardware Specifications

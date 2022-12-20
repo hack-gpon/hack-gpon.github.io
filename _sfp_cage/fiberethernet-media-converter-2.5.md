@@ -2,6 +2,7 @@
 title: FiberEthernet Media Converter 2.5 
 has_children: false
 layout: default
+redirect_to: https://hack-xpon.github.io/fiberethernet-media-converter-2.5
 ---
 
 # Hardware Specifications

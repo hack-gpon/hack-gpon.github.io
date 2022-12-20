@@ -4,6 +4,7 @@ has_children: false
 nav_order: 4
 description: Tool for calculating maximum speeds
 layout: default
+redirect_to: https://hack-xpon.github.io/speed-gpon-eth
 ---
 
 
