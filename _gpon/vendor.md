@@ -21,6 +21,7 @@ Here is a list of the most popular Vendor IDs:
 | `GNXS` | Genexis              |
 | `GPON` | Generic vendor name  |
 | `HALN` | Halany               |
+| `HBMT` | Hisense              |
 | `HWTC` | Huawei               |
 | `ISKT` | Iskratel             |
 | `LEOX` | LEOX                 |
