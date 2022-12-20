@@ -14,18 +14,23 @@ Here is a list of the most popular Vendor IDs:
 
 | ID     | Vendor Name          |
 | ------ | -------------------- |
-| `HWTC` | Huawei               |
-| `ZTEG` | ZTE                  |
 | `ALCL` | Nokia/Alcatel-Lucent |
-| `UBNT` | Ubiquiti             |
-| `FHTT` | Fiber Home           |
-| `RTKG` | Realtek              |
-| `TPLG` | TP-Link              |
-| `SCOM` | Sercomm              |
-| `TMBB` | Technicolor          |
 | `DLNK` | Dlink                |
 | `ELTX` | Eltex                |
+| `FHTT` | Fiber Home           |
+| `GNXS` | Genexis              |
+| `GPON` | Generic vendor name  |
+| `HALN` | Halany               |
+| `HWTC` | Huawei               |
 | `ISKT` | Iskratel             |
+| `LEOX` | LEOX                 |
 | `LQDE` | Lantiq               |
-| `SPGA` | SourcePhotonics      |
 | `PTIN` | Altice/PT Inovação   |
+| `RTKG` | Realtek              |
+| `SCOM` | Sercomm              |
+| `SPGA` | SourcePhotonics      |
+| `TMBB` | Technicolor          |
+| `TPLG` | TP-Link              |
+| `UBNT` | Ubiquiti             |
+| `ZTEG` | ZTE                  |
+| `ZYWN` | Zyxel                |
