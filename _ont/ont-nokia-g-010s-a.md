@@ -28,7 +28,7 @@ parent: Nokia
 
 ## Modifying firmware
 
-Turning a [Nokia G-010S-P](/ont-nokia-g-010s-p) into a [Nokia G-010S-A](/ont-nokia-g-010s-a) is possible by changing layout from mtd
+Turning a Nokia G-010S-A into a [Nokia G-010S-P](/ont-nokia-g-010s-p) is possible by changing layout from mtd
 
 ## List of software versions
 
