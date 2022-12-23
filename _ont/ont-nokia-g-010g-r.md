@@ -12,7 +12,7 @@ parent: Nokia
 | Vendor      | Nokia                                                               |
 | Model       | G-010G-R                                                            |
 | Manufacter  | CIG G-97C                                                           |
-| Chipset     | RTL9601D                                                            |
+| Chipset     | RTL9601B                                                            |
 | Flash       | 16MB                                                                |
 | RAM         | 32MB                                                                |
 | System      | Linux (Luna SDK 1.9.0)                                              |
