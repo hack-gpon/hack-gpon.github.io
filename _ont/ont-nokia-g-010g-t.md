@@ -182,6 +182,12 @@ The following must be typed from the standard linux shell:
 # echo SWVER=C-5.6.1-R > /mnt/rwdir/sys.cfg
 ```
 
+# Telnet
+
+To calculate the password for telnet access, you can use this tool, simply by entering the S/N
+
+{% include cig_password.html username="ONTUSER" %}
+
 # Miscellaneous Links
 - [MIB file parser](https://github.com/nanomad/nokia-ont-mib-parser)  for NOKIA's GPON ONTs (*helps you parsing the .mib file located in `/mnt/rwdir`*)
 - [ispreview.co.uk](https://www.ispreview.co.uk/index.php/2022/09/pictured-openreachs-future-2-5gbps-ont-for-fttp-broadband.html)

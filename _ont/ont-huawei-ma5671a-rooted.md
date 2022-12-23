@@ -21,15 +21,15 @@ layout: default
         <label for="sfp-a2-info">sfp_a2_info input</label>
     </div>
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" placeholder="GPON S/N" name="gpon-sn" id="gpon-sn" value="">
+        <input type="text" class="form-control" placeholder="GPON S/N" name="gpon-sn" id="gpon-sn" value="" pattern="([A-Z]{4}[0-9A-F]{8})|([0-9A-F]{8}[0-9A-F]{8})">
         <label for="gpon-sn">GPON S/N in format GPON12345678 or 47504F4E12345678, empty for not modify it</label>
     </div>
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" placeholder="GPON Ploam Password" name="gpon-password" id="gpon-password" value="">
+        <input type="text" class="form-control" placeholder="GPON Ploam Password" name="gpon-password" id="gpon-password" value="" maxlength="22">
         <label for="gpon-password">GPON S/N in format 1234567890, 31323334353637383930 or 0x31323334353637383930, empty for not modify it</label>
     </div>
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" placeholder="MAC address" name="mac-addr" id="mac-addr" value="">
+        <input type="text" class="form-control" placeholder="MAC address" name="mac-addr" id="mac-addr" value="" pattern="[0-9A-Fa-f]{2}[:-]?[0-9A-Fa-f]{2}[:-]?[0-9A-Fa-f]{2}[:-]?[0-9A-Fa-f]{2}[:-]?[0-9A-Fa-f]{2}[:-]?[0-9A-Fa-f]{2}">
         <label for="mac-addr">MAC Address in format 48:57:02:da:be:ef, 48-57-02-da-be-ef or 485702dabeef, empty for not modify it</label>
     </div>
     <div class="mb-3">

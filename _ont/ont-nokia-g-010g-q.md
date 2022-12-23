@@ -72,6 +72,12 @@ Once you're logged in, a custom menu will be shown, and you'll be able to access
 
 To exit the shell and reach the parent menu type `exit` or `x`, in each menu the `help` command will show how to use the shell
 
+# Telnet
+
+To calculate the password for telnet access, you can use this tool, simply by entering the S/N:
+
+{% include cig_password.html username="ONTUSER" %}
+
 # Known Bugs
 
 # Miscellaneous Links
