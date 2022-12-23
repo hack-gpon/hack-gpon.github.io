@@ -20,7 +20,7 @@ parent: Nokia
 | Optics      | SC/APC                                                                                              |
 | IP address  | 192.168.100.1  (factory reseted unit use IP 10.89.42.157/16)                                        |
 | Web Gui     | ✅ user `admin`, password `1234`                                                                    |
-| Telnet      | ✅ user `ONTUSER` password should be calculated, calculated by hash of a username and serial number |
+| Telnet      | ✅ user `ONTUSER`, password should be computed based on a hash of the username and the serial number |
 | SSH         | Can be enabled, locked down by iptables rule                                                        |
 | Form Factor | ONT                                                                                                 |
 

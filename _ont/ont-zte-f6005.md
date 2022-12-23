@@ -20,7 +20,7 @@ parent: ZTE
 | Optics      | SC/APC                            |
 | IP address  | 192.168.1.1                       |
 | Web Gui     | ✅ user `admin`, password `admin` |
-| Telnet      | ✅ user `ont` password should be calculated, calculated by hash of a username and serial number |
+| Telnet      | ✅ user `ont`, password should be computed based on a hash of the username and the serial number |
 | SSH         |                                   |
 | Form Factor | ONT                               |
  

@@ -22,7 +22,7 @@ parent: Nokia
 | Web Gui (HTTP)        | ✅ Port 80 (⚠️ *only available when the PON connection **IS NOT** estabilished*)                                 |
 | Web Gui (HTTPS)       | ✅ Port 443 **NO SSL SUPPORT**                                                                                     |
 | Web Gui Default Login | user `admin` password `1234`                                                                                       |
-| Telnet                | ✅ user `ONTUSER` password should be calculated, calculated by hash of a username and serial number                |
+| Telnet                | ✅ user `ONTUSER`, password should be computed based on a hash of the username and the serial number                |
 | SSH                   |                                                                                                                    |
 | Form Factor           | ONT                                                                                                                |
 

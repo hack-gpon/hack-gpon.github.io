@@ -26,7 +26,7 @@ layout: default
 
 # Note
 
-This ONT shares with the [Nokia G-010G-T](/ont-nokia-g-010g-t) all the hardware and with the [ZTE F6005](/ont-zte-f6005) also the plastic case.
+This ONT has the same internal hardware as  the [Nokia G-010G-T](/ont-nokia-g-010g-t) and even the same plastic shell of the [ZTE F6005](/ont-zte-f6005).
 
 
 
