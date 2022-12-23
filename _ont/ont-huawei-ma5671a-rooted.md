@@ -21,7 +21,7 @@ layout: default
         <label for="sfp-a2-info">sfp_a2_info input</label>
     </div>
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" placeholder="GPON S/N" name="gpon-sn" id="gpon-sn" value="" pattern="([A-Z]{4}[0-9A-F]{8})|([0-9A-F]{8}[0-9A-F]{8})">
+        <input type="text" class="form-control" placeholder="GPON S/N" name="gpon-sn" id="gpon-sn" value="" pattern="([A-Z]{4}[0-9A-Za-z]{8})|([0-9A-F]{8}[0-9A-Za-z]{8})">
         <label for="gpon-sn">GPON S/N in format GPON12345678 or 47504F4E12345678, empty for not modify it</label>
     </div>
     <div class="form-floating mb-3">
