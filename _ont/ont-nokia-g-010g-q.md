@@ -7,24 +7,24 @@ parent: Nokia
 
 # Hardware Specifications
 
-|                       |                                                                                                                    |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Vendor                | Nokia                                                                                                              |
-| Model                 | G-010G-Q                                                                                                           |
-| Chipset               | Realtek RTL9601B                                                                                                   |
-| Manufacter            | CIG G-97CM                                                                                                         |
-| Flash                 | Winbond [W25Q128JV](https://www.winbond.com/resource-files/w25q128jv%20revf%2003272018%20plus.pdf) 3V 128M-BIT SPI |
-| RAM                   | DDR2 325MHz                                                                                                        |
-| System                | Linux (Luna SDK 1.9.0)                                                                                             |
-| HSGMII                | No                                                                                                                 |
-| Optics                | SC/APC                                                                                                             |
-| IP address            | 192.168.100.1                                                                                                      |
-| Web Gui (HTTP)        | ✅ Port 80 (⚠️ *only available when the PON connection **IS NOT** estabilished*)                                 |
-| Web Gui (HTTPS)       | ✅ Port 443 **NO SSL SUPPORT**                                                                                     |
-| Web Gui Default Login | user `admin` password `1234`                                                                                       |
-| Telnet                | ✅ user `ONTUSER`, password should be computed based on a hash of the username and the serial number                |
-| SSH                   |                                                                                                                    |
-| Form Factor           | ONT                                                                                                                |
+|                       |                                                                                                                                            |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| Vendor                | Nokia                                                                                                                                      |
+| Model                 | G-010G-Q                                                                                                                                   |
+| Chipset               | Realtek RTL9601B                                                                                                                           |
+| Manufacter            | CIG G-97CM                                                                                                                                 |
+| Flash                 | Winbond [W25Q128JV](https://www.winbond.com/resource-files/w25q128jv%20revf%2003272018%20plus.pdf) 3V 128M-BIT SPI                         |
+| RAM                   | DDR2 325MHz                                                                                                                                |
+| System                | Linux (Luna SDK 1.9.0)                                                                                                                     |
+| HSGMII                | No                                                                                                                                         |
+| Optics                | SC/APC                                                                                                                                     |
+| IP address            | 192.168.100.1                                                                                                                              |
+| Web Gui (HTTP)        | ✅ Port 80 (⚠️ *only available when the PON connection **IS NOT** estabilished*)                                                         |
+| Web Gui (HTTPS)       | ✅ Port 443 **NO SSL SUPPORT**                                                                                                             |
+| Web Gui Default Login | user `admin` password `1234`                                                                                                               |
+| Telnet                | ✅ user `ONTUSER`, password should be computed based on a hash of the username and the serial number (see the paragraph [Telnet](#telnet)) |
+| SSH                   |                                                                                                                                            |
+| Form Factor           | ONT                                                                                                                                        |
 
 ## Hardware revisions
 

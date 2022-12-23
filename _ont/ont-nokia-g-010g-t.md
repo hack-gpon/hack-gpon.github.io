@@ -7,22 +7,22 @@ parent: Nokia
 
 # Hardware Specifications
 
-|             |                                                                                                     |
-| ----------- | --------------------------------------------------------------------------------------------------- |
-| Vendor      | Nokia                                                                                               |
-| Model       | G-010G-T                                                                                            |
-| Manufacter  | [CIG G-97CP](/ont-cig-g-97cp)                                                                       |
-| Chipset     | RTL9601D                                                                                            |
-| Flash       | 16MB                                                                                                |
-| RAM         | 32MB                                                                                                |
-| System      | Linux (Luna SDK 1.9.0)                                                                              |
-| HSGMII      | ✅                                                                                                  |
-| Optics      | SC/APC                                                                                              |
-| IP address  | 192.168.100.1  (factory reseted unit use IP 10.89.42.157/16)                                        |
-| Web Gui     | ✅ user `admin`, password `1234`                                                                    |
-| Telnet      | ✅ user `ONTUSER`, password should be computed based on a hash of the username and the serial number |
-| SSH         | Can be enabled, locked down by iptables rule                                                        |
-| Form Factor | ONT                                                                                                 |
+|             |                                                                                                                                            |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| Vendor      | Nokia                                                                                                                                      |
+| Model       | G-010G-T                                                                                                                                   |
+| Manufacter  | [CIG G-97CP](/ont-cig-g-97cp)                                                                                                              |
+| Chipset     | RTL9601D                                                                                                                                   |
+| Flash       | 16MB                                                                                                                                       |
+| RAM         | 32MB                                                                                                                                       |
+| System      | Linux (Luna SDK 1.9.0)                                                                                                                     |
+| HSGMII      | ✅                                                                                                                                         |
+| Optics      | SC/APC                                                                                                                                     |
+| IP address  | 192.168.100.1  (factory reseted unit use IP 10.89.42.157/16)                                                                               |
+| Web Gui     | ✅ user `admin`, password `1234`                                                                                                           |
+| Telnet      | ✅ user `ONTUSER`, password should be computed based on a hash of the username and the serial number (see the paragraph [Telnet](#telnet)) |
+| SSH         | Can be enabled, locked down by iptables rule                                                                                               |
+| Form Factor | ONT                                                                                                                                        |
 
 # External/Internal Photo
 
