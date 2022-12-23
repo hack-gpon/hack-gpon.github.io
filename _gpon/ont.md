@@ -9,15 +9,30 @@ layout: default
 
 # Major Chipset Manufacturers
 
-Currently, there are only two main GPON chipset vendors:
+Currently, there are only a few main GPON chipset vendors:
 
-- Realtek manufactures these chipsets:
-    * RTL9601B  
-    * RTL9601CI (HSGMII)
-    * RTL9601D (HSGMII)
-- Lantiq used to manufacture these chipsets:
+- Realtek:
+    * RTL9601 (for ONT)
+        - RTL9601B  
+        - RTL9601CI (HSGMII)
+        - RTL9601D (HSGMII)
+    * RTL9602/RTL9603 series (for router with integrated PON)
+    * Cortina QWCS8032E
+- Lantiq:
     * PEB98035 (HSGMII)
     * PEB98036
+- ZTE:
+    * FA626TE 
+    * ZX279110a1
+    * ZX279125
+- HiSilicon (Huawei)
+    * SD5116
+- Marvell 
+    * 88F6601
+- Broadcom
+    * BCM68 series
+- MediaTek/Econet
+    * MT/EN752 series (EN7520T HSGMII)
 
 ## Realtek Chipsets
 
