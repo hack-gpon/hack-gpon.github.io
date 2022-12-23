@@ -7,20 +7,21 @@ parent: Nokia
 
 # Hardware Specifications
 
-|             |          |
-| ----------- | -------- |
-| Vendor      | Nokia    |
-| Model       | G-010G-P |
-| Chipset     |          |
-| Flash       |          |
-| RAM         |          |
-| System      |          |
-| HSGMII      | No       |
-| Optics      | SC/APC   |
-| IP address  | 192.168.100.1 |
-| Web Gui     |          |
+|             |                                     |
+| ----------- | ----------------------------------- |
+| Vendor      | Nokia                               |
+| Model       | G-010G-P                            |
+| Chipset     | Realtek RTL9601B                    |
+| Manufacter  |                                     |
+| Flash       |                                     |
+| RAM         |                                     |
+| System      | Linux (Luna SDK 1.9.0)              |
+| HSGMII      | No                                  |
+| Optics      | SC/APC                              |
+| IP address  | 192.168.100.1                       |
+| Web Gui     |                                     |
 | Telnet      | ✅ user `root`, password `huigu309` |
-| Form Factor | ONT      |
+| Form Factor | ONT                                 |
 
 {% include image.html file="g-010g-p.jpg"  alt="G-010G-P" caption="Nokia G-010G-P" %}
 

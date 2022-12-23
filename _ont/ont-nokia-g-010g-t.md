@@ -7,21 +7,22 @@ parent: Nokia
 
 # Hardware Specifications
 
-|             |          |
-| ----------- | -------- |
-| Vendor      | Nokia    |
-| Model       | G-010G-T |
-| Chipset     | RTL9601D |
-| Flash       | 16MB     |
-| RAM         | 32MB     |
-| System      | CIG (Luna SDK 1.9.0) |
-| HSGMII      | ✅       |
-| Optics      | SC/APC   |
-| IP address  | 192.168.100.1  (factory reseted unit use IP 10.89.42.157/16) |
-| Web Gui     | ✅ user `admin`, password `1234`      |
-| Telnet      | ✅ user `ONTUSER` password should be calculated, each ONT has a different one |
-| SSH         | Can be enabled, locked down by iptables rule |
-| Form Factor | ONT      |
+|             |                                                                                                     |
+| ----------- | --------------------------------------------------------------------------------------------------- |
+| Vendor      | Nokia                                                                                               |
+| Model       | G-010G-T                                                                                            |
+| Manufacter  | [CIG G-97CP](/ont-cig-g-97cp)                                                                       |
+| Chipset     | RTL9601D                                                                                            |
+| Flash       | 16MB                                                                                                |
+| RAM         | 32MB                                                                                                |
+| System      | Linux (Luna SDK 1.9.0)                                                                              |
+| HSGMII      | ✅                                                                                                  |
+| Optics      | SC/APC                                                                                              |
+| IP address  | 192.168.100.1  (factory reseted unit use IP 10.89.42.157/16)                                        |
+| Web Gui     | ✅ user `admin`, password `1234`                                                                    |
+| Telnet      | ✅ user `ONTUSER` password should be calculated, calculated by hash of a username and serial number |
+| SSH         | Can be enabled, locked down by iptables rule                                                        |
+| Form Factor | ONT                                                                                                 |
 
 # External/Internal Photo
 
@@ -36,12 +37,12 @@ parent: Nokia
 
 ## List of partitions
 
-| dev   | size     | erasesize | name            |
-| ----- | -------- | --------- | --------------- |
-| mtd0  | 00040000 | 00001000  | "Boot"          |
-| mtd1  | 00002000 | 00001000  | "Config"        |
-| mtd2  | 00002000 | 00001000  | "ImageA"        |
-| mtd3  | 0003c000 | 00001000  | "ImageB"        |
+| dev  | size     | erasesize | name     |
+| ---- | -------- | --------- | -------- |
+| mtd0 | 00040000 | 00001000  | "Boot"   |
+| mtd1 | 00002000 | 00001000  | "Config" |
+| mtd2 | 00002000 | 00001000  | "ImageA" |
+| mtd3 | 0003c000 | 00001000  | "ImageB" |
 
 ## Serial Console
 
