@@ -2,6 +2,7 @@
 title: Adtran SDX 611Q
 has_children: false
 layout: default
+tag: gpon hsgmii
 ---
 
 # Hardware Specifications

@@ -3,6 +3,7 @@ title: CarlitoxxPro CPGOS03-0490 v2
 has_children: false
 layout: default
 parent: CarlitoxxPro
+tag: gpon
 ---
 
 # Hardware Specifications

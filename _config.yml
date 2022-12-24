@@ -32,6 +32,7 @@ plugins:
   - jekyll-last-modified-at
   - jekyll-redirect-from
   - jekyll-default-layout
+  - jekyll-tagging
 
 color_scheme: "light"
 url: "https://hack-gpon.github.io"
@@ -117,3 +118,6 @@ just_the_docs:
     sfp_cage:
       name: SFP cage
       nav_fold: false
+
+tag_page_layout: tag_page
+tag_page_dir: tag
