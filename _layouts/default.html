@@ -247,8 +247,11 @@ layout: table_wrappers
       }
     });
   }
+  function parseCoAuthor(commitMessage) {
+    return commitMessage.split('\n')?.filter(line => line.startsWith('Co-authored-by:')).map(line => line.replace('Co-authored-by:','').replace('\r','').trim()).map(line => line.split("<").map(it => it.slice(0, -1))).map(([name, email]) => ({name, email}));
+  }
   async function parseCommitsList(commits, filename) {
-    var authors = commits.flatMap(x => [{ ...x.commit.author, ...x.author }, { ...x.commit.committer, ...x.committer }]).map(({ date, ...keepAttrs }) => keepAttrs).filter((value, index, self) =>
+    var authors = commits.flatMap(x => [{ ...x.commit.author, ...x.author }, { ...x.commit.committer, ...x.committer }].concat(parseCoAuthor(x.commit.message))).map(({ date, ...keepAttrs }) => keepAttrs).filter((value, index, self) =>
       index === self.findIndex((t) => (
         t.login === value.login
       )) && value.login !== "web-flow"
@@ -283,8 +286,9 @@ layout: table_wrappers
           document.getElementById('last-modified').textContent = "Last Modified: " + modified;
           document.getElementById('contributors').textContent = authors.length + " " + (authors.length == 1 ? "Contributor" : "Contributors");
 
-          document.getElementById('contributors-modal-list').innerHTML = authors.map(x => "<li><a href='" + x.html_url + "'><img class='avatar' src='" + x.avatar_url + "'><span>" + x.name + "</span<</a></li>").join('');
+          document.getElementById('contributors-modal-list').innerHTML = authors.map(x => "<li><a href='" + x.html_url  + "'><img class='avatar' src='" + (x.avatar_url ?? '/assets/vector/ont-found.png') + "'><span>" + x.name + "</span<</a></li>").join('');
         } catch (err) {
+          console.log(err);
           document.getElementById('last-modified').textContent = "Sorry, last modified not currently available";
           document.getElementById('contributors').textContent = "Contributors";
           document.getElementById('contributors-modal-list').innerHTML = "<li>Sorry, list not currently available</li>";
