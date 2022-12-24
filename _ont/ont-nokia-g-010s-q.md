@@ -3,6 +3,7 @@ title: Nokia G-010S-Q
 has_children: false
 layout: default
 parent: Nokia
+alias: CIG G-97S
 ---
 
 # Hardware Specifications
@@ -37,5 +38,6 @@ parent: Nokia
 # Miscellaneous Links
 
 - [Nokia G-010S-Q](https://github.com/Anime4000/RTL960x/issues/52)
+- [CUG G-97S DataSheet](https://www.cigtech.com/wp-content/uploads/2018/09/G-97S_DataSheet_V2.pdf)
 
 
