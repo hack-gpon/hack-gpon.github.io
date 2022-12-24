@@ -31,6 +31,11 @@ parent: VSOL
 ## List of partitions
 ## List of firmwares and files
 
+- [Firmware repository by Anime4000](https://github.com/Anime4000/RTL960x/tree/main/Firmware/V2801F)
+
+The reccomended version are `V2801F_V1.9.0-220425.tar` because it has Modern WebGUI, 2.5GbE, patched `runlansds.sh`, `tftpd`, ...
+
+
 # Known Bugs
 
 VLAN swap issue (MEID 171), auto-sensing mode to switch between SGMII/HiSGMII

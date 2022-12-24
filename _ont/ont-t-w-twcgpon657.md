@@ -1,15 +1,16 @@
 ---
-title: TWC GPON657
+title: T&W TWC GPON 657
 has_children: false
 layout: default
+parent: T&W
 ---
 
 # Hardware Specifications
 
 |             |                                    |
 | ----------- | ---------------------------------- |
-| Vendor      | TWC                                |
-| Model       | GPON657                            |
+| Vendor      | T&W                                |
+| Model       | TWC GPON657                        |
 | Chipset     | Realtek RTL9601CI                  |
 | Flash       | 16 MB                              |
 | RAM         | 64 MB                              |
@@ -29,6 +30,11 @@ layout: default
 ## List of software versions
 ## List of partitions
 ## List of firmwares and files
+
+- [Firmware repository by Anime4000](https://github.com/Anime4000/RTL960x/tree/main/Firmware/TWCGPON657)
+
+The reccomended version are `C00R657V2801F_V1.9.0-220404.tar` because it is the V2801F for TWCGPON657
+
 
 # Known Bugs
 

@@ -38,8 +38,9 @@ ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc admin@192.16
 - V1.0-220304
 
 ## List of firmwares and files
-- [V1.0-220530 Modded](https://github.com/Anime4000/RTL960x/files/8821809/M114_sfp_ODI_hybrid_220527_stich86_220530.tar.zip){: .btn } 
- by [stich86](https://github.com/stich86) **RECOMMENDED** because it has working VLAN translation.  
+- [Firmware repository by Anime4000](https://github.com/Anime4000/RTL960x/tree/main/Firmware/V2801F)
+
+The reccomended version are `M114_sfp_ODI_hybrid_220527.tar` or `M114_sfp_ODI_hybrid_220916.tar` because it has working VLAN translation.  
 
 ## List of partitions
  
