@@ -9,8 +9,8 @@ parent: Adtran
 
 |             |             |
 | ----------- | ----------- |
-| Vendor      | Adtran       |
-| Model       | SDX 611    |
+| Vendor      | Adtran      |
+| Model       | SDX 611     |
 | Chipset     |             |
 | Flash       |             |
 | RAM         |             |

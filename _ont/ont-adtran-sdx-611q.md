@@ -9,7 +9,7 @@ parent: Adtran
 
 |             |             |
 | ----------- | ----------- |
-| Vendor      | Adtran       |
+| Vendor      | Adtran      |
 | Model       | SDX 611Q    |
 | Chipset     |             |
 | Flash       |             |
