@@ -2,6 +2,7 @@
 title: UFiber UF-Instant
 has_children: false
 layout: default
+parent: UFiber
 ---
 
 # Hardware Specifications

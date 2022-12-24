@@ -2,6 +2,7 @@
 title: Halny HL-GSFP
 has_children: false
 layout: default
+parent: Halny
 ---
 
 # Hardware Specifications

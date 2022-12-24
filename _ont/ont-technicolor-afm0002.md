@@ -3,6 +3,7 @@ title: Technicolor AFM0002
 has_children: false
 layout: default
 parent: Technicolor
+alias: Hisense LTE3415-SCA+
 ---
 
 # Hardware Specifications

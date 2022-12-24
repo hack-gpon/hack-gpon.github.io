@@ -2,6 +2,7 @@
 title: CIG G-97CP 
 has_children: false
 layout: default
+parent: CIG
 ---
 
 # Hardware Specifications
