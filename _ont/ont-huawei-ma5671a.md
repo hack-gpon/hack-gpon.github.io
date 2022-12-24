@@ -12,6 +12,7 @@ parent: Huawei
 | Vendor      | Huawei                              |
 | Model       | MA5671A                             |
 | Chipset     | Lantiq PEB98035                     |
+| Manufacter  | SourcePhotonics                     |
 | Flash       | 16 MB                               |
 | RAM         | 64 MB                               |
 | System      | OpenWRT                             |

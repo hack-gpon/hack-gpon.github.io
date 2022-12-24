@@ -12,6 +12,7 @@ parent: Nokia
 | Vendor      | Nokia                                    |
 | Model       | G-010S-A                                 |
 | Chipset     | Lantiq PEB98035                          |
+| Manufacter  | SourcePhotonics                          |
 | Flash       | 16 MB                                    |
 | RAM         | 64 MB                                    |
 | System      | OpenWRT                                  |
@@ -39,12 +40,12 @@ Turning a [Nokia G-010S-P](/ont-nokia-g-010s-p) into a [Nokia G-010S-A](/ont-nok
 
 ## Serial
 
-| USB TTL(UART) Adapter |  SFP 20pins Molex connector |
-| --------------------- |  -------------------------- |
-| 3.3V                  |  pin #15 and #16            |
-| TX                    |  pin #3                     |
-| RX                    |  pin #6                     |
-| GND                   |  pin #10                    |
+| USB TTL(UART) Adapter | SFP 20pins Molex connector |
+| --------------------- | -------------------------- |
+| 3.3V                  | pin #15 and #16            |
+| TX                    | pin #3                     |
+| RX                    | pin #6                     |
+| GND                   | pin #10                    |
 
 Configuration: asc0=0 115200 8-N-1
 

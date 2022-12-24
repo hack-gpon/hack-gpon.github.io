@@ -12,6 +12,7 @@ parent: Nokia
 | Vendor      | Nokia                                    |
 | Model       | G-010S-B                                 |
 | Chipset     | Lantiq PEB98035                          |
+| Manufacter  | SourcePhotonics                          |
 | Flash       | 16 MB                                    |
 | RAM         | 64 MB                                    |
 | System      | OpenWRT                                  |

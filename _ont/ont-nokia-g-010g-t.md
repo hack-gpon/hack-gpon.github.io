@@ -11,8 +11,8 @@ parent: Nokia
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | Vendor      | Nokia                                                                                                                                      |
 | Model       | G-010G-T                                                                                                                                   |
-| Manufacter  | [CIG G-97CP](/ont-cig-g-97cp)                                                                                                              |
 | Chipset     | RTL9601D                                                                                                                                   |
+| Manufacter  | [CIG G-97CP](/ont-cig-g-97cp)                                                                                                              |
 | Flash       | 16MB                                                                                                                                       |
 | RAM         | 32MB                                                                                                                                       |
 | System      | Linux (Luna SDK 1.9.0)                                                                                                                     |
@@ -23,8 +23,6 @@ parent: Nokia
 | Telnet      | ✅ user `ONTUSER`, password should be computed based on a hash of the username and the serial number (see the paragraph [Telnet](#telnet)) |
 | SSH         | Can be enabled, locked down by iptables rule                                                                                               |
 | Form Factor | ONT                                                                                                                                        |
-
-# External/Internal Photo
 
 {% include image.html file="q-010g-t_front.jpg"  alt="Nokia G-010G-T Front" caption="Nokia G-010G-T Front" %}
 {% include image.html file="q-010g-t_back.jpg"  alt="Nokia G-010G-T Back" caption="Nokia G-010G-T Back" %}

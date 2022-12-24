@@ -1,6 +1,6 @@
 ---
 title: ODI Realtek DFP-34X-C2C 
-description: New model 2022
+description: New model 2022 - v05
 has_children: false
 layout: default
 parent: ODI
