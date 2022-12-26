@@ -1,5 +1,5 @@
 ---
-title: T&W TWC GPON 657
+title: T&W TWC GPON657
 has_children: false
 layout: default
 parent: T&W
