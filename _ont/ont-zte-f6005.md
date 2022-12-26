@@ -36,9 +36,9 @@ parent: ZTE
 ## List of partitions
 ## List of firmwares and files
 
-# Telnet
+## Enable password
 
-To calculate the password for telnet access, you can use this tool, simply by entering the S/N
+You can use this tool to generate the enable password:
 
 {% include cig_password.html username="ont" %}
 
