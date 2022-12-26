@@ -24,7 +24,7 @@ parent: VSOL
 
 ## Firmware is interchangeable with:
 
-- [TWCGPON657](/ont-twcgpon657)
+- [T&W TWC GPON657](/ont-t-w-twcgpon657)
 - [UFiber UF-Instant](/ont-ufiber-uf-instant) 
 
 ## List of software versions

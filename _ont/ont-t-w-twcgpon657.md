@@ -33,7 +33,7 @@ parent: T&W
 
 - [Firmware repository by Anime4000](https://github.com/Anime4000/RTL960x/tree/main/Firmware/TWCGPON657)
 
-The reccomended version are `C00R657V2801F_V1.9.0-220404.tar` because it is the V2801F for TWCGPON657
+The reccomended version are `C00R657V2801F_V1.9.0-220404.tar` because it is the V2801F for T&W TWC GPON657
 
 
 # Known Bugs
