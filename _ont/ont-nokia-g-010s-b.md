@@ -60,14 +60,16 @@ parent: Nokia
 
 Configuration: asc0=0 115200 8-N-1
 
+# HW Modding
+
+- [Nokia G-010S-A Pin 6 Iusse - Rsaxvc.net](https://rsaxvc.net/blog/2020/8/15/Nokia_G-010S-A_Pin_6_Issue.html)
+
+# Useful Commands
+
 ##  Disabling Dying Gasp
 ```sh
 uci set gpon.gtc.nDyingGaspEnable='0'; uci commit gpon
 ```
-
-# HW Modding
-
-- [Nokia G-010S-A Pin 6 Iusse - Rsaxvc.net](https://rsaxvc.net/blog/2020/8/15/Nokia_G-010S-A_Pin_6_Issue.html)
 
 # Known Bugs
 

@@ -21,7 +21,7 @@ alias: CIG G-97S
 | Optics      |                                                                                                                   |
 | IP address  | 192.168.100.1                                                                                                     |
 | Web Gui     | ✅ Port 80 (⚠️ *only available when the PON connection **IS NOT** estabilished*), user `admin`, password `1234` |
-| Telnet      | ✅ user `admin`, password `1234`                                                                                  |
+| Telnet      | ✅ user `admin`, password `1234`, but has access to GponSLID and not GponCLI                                      |
 | SSH         |                                                                                                                   |
 | Form Factor | miniONT SFP                                                                                                       |
 

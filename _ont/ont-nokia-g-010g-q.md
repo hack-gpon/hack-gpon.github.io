@@ -22,7 +22,7 @@ parent: Nokia
 | Web Gui (HTTP)        | ✅ Port 80 (⚠️ *only available when the PON connection **IS NOT** estabilished*)                                |
 | Web Gui (HTTPS)       | ✅ Port 443 **NO SSL SUPPORT**                                                                                    |
 | Web Gui Default Login | user `admin` password `1234`                                                                                      |
-| Telnet                | ✅ user `ONTUSER`, but has access to GponCLI and not GponSLID                                                              |
+| Telnet                | ✅ user `ONTUSER`, but has access to GponSLID and not GponCLI                                                     |
 | SSH                   |                                                                                                                   |
 | Form Factor           | ONT                                                                                                               |
 

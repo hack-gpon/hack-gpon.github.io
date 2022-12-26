@@ -7,22 +7,22 @@ parent: Nokia
 
 # Hardware Specifications
 
-|             |                                                                     |
-| ----------- | ------------------------------------------------------------------- |
-| Vendor      | Nokia                                                               |
-| Model       | G-010G-R                                                            |
-| Chipset     | RTL9601B                                                            |
-| Manufacter  | CIG G-97C                                                           |
-| Flash       | 16MB                                                                |
-| RAM         | 32MB                                                                |
-| System      | Linux (Luna SDK 1.9.0)                                              |
-| HSGMII      | ✅                                                                  |
-| Optics      | SC/APC                                                              |
-| IP address  | 192.168.100.1  (after a factory reset the ONT uses 10.89.42.157/16)        |
-| Web Gui     | ✅ user `admin`, password `1234`                                    |
-| Telnet      | ✅ user `admin`, password `1234`, but has access to GponCLI and not GponSLID |
-| SSH         |                                                                     |
-| Form Factor | ONT                                                                 |
+|             |                                                                              |
+| ----------- | ---------------------------------------------------------------------------- |
+| Vendor      | Nokia                                                                        |
+| Model       | G-010G-R                                                                     |
+| Chipset     | RTL9601B                                                                     |
+| Manufacter  | CIG G-97C                                                                    |
+| Flash       | 16MB                                                                         |
+| RAM         | 32MB                                                                         |
+| System      | Linux (Luna SDK 1.9.0)                                                       |
+| HSGMII      | ✅                                                                           |
+| Optics      | SC/APC                                                                       |
+| IP address  | 192.168.100.1  (after a factory reset the ONT uses 10.89.42.157/16)          |
+| Web Gui     | ✅ user `admin`, password `1234`                                             |
+| Telnet      | ✅ user `admin`, password `1234`, but has access to GponSLID and not GponCLI |
+| SSH         |                                                                              |
+| Form Factor | ONT                                                                          |
 
 ## List of software versions
 - 3FE49717AOCK12 
