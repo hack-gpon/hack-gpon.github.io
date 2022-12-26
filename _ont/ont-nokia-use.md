@@ -11,7 +11,7 @@ User name:ONTUSER
 Password: ****
 ```
 
-The enable password can be calculated using the following form:
+The enable password can be generated using the following form:
 
 {% include cig_password.html username="ONTUSER" %}
 
