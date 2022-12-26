@@ -15,7 +15,7 @@ layout: default
 | XGMII    | ✅              | ✅              | ✅                 | ✅              |
 | HSGMII   | ✅              | ✅              | ✅                 | ✅              |
 | SGMII    | ✅              | ✅              | ✅                 | ✅              |
-| Type     | Switch          | Switch          | Switch             | Switch          |
+| Type     | Router          | Switch          | Switch             | Router          |
 
 # CRS305-1G-4S+IN
 
