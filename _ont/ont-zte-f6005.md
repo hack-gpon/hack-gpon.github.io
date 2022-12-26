@@ -36,6 +36,8 @@ parent: ZTE
 ## List of partitions
 ## List of firmwares and files
 
+# Use
+
 ## Enable password
 
 You can use this tool to generate the enable password:
