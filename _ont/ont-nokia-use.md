@@ -2,7 +2,7 @@
 ## Login and enable
 
 
-Once you're logged in, a custom menu will be shown, and you'll be able to access the linux shell by first typing `system` and finally `shell`:
+Once you're logged in, a custom menu will be shown and you'll be able to access the linux shell by first typing `system` followed by `shell`:
 
 ```sh
 ONT>enable

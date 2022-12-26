@@ -20,7 +20,7 @@ parent: Nokia
 | Optics      | SC/APC                                                              |
 | IP address  | 192.168.100.1  (factory reseted unit use IP 10.89.42.157/16)        |
 | Web Gui     | ✅ user `admin`, password `1234`                                    |
-| Telnet      | ✅ user `admin`, password `1234`, but open GponCLI and not GponSLID |
+| Telnet      | ✅ user `admin`, password `1234`, but has access to GponCLI and not GponSLID |
 | SSH         |                                                                     |
 | Form Factor | ONT                                                                 |
 

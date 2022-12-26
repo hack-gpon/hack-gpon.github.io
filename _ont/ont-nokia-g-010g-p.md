@@ -19,7 +19,7 @@ alias: CIG G-97C1
 | System      | Linux (Luna SDK 1.9.0)                                       |
 | HSGMII      | No                                                           |
 | Optics      | SC/APC                                                       |
-| IP address  | 192.168.100.1  (factory reseted unit use IP 10.89.42.157/16) |
+| IP address  | 192.168.100.1  (after a factory reset the ONT uses 10.89.42.157/16) |
 | Web Gui     | ✅ user `admin`, password `1234`                             |
 | Telnet      | ✅ user `root`, password `huigu309`                          |
 | SSH         |                                                              |
