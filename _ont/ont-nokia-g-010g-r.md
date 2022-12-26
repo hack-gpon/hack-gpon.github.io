@@ -18,7 +18,7 @@ parent: Nokia
 | System      | Linux (Luna SDK 1.9.0)                                              |
 | HSGMII      | ✅                                                                  |
 | Optics      | SC/APC                                                              |
-| IP address  | 192.168.100.1  (factory reseted unit use IP 10.89.42.157/16)        |
+| IP address  | 192.168.100.1  (after a factory reset the ONT uses 10.89.42.157/16)        |
 | Web Gui     | ✅ user `admin`, password `1234`                                    |
 | Telnet      | ✅ user `admin`, password `1234`, but has access to GponCLI and not GponSLID |
 | SSH         |                                                                     |
