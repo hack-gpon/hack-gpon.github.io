@@ -2,6 +2,7 @@
 title: UFiber UF-Instant
 has_children: false
 layout: default
+parent: UFiber
 ---
 
 # Hardware Specifications
@@ -27,7 +28,7 @@ layout: default
 
 
 - [VSOL V2801F](/ont-vsol-v2801f)
-- [TWCGPON657](/ont-twcgpon657)
+- [T&W TWC GPON657](/ont-t-w-twcgpon657)
 
 
 ## List of software versions

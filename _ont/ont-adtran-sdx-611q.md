@@ -2,13 +2,14 @@
 title: Adtran SDX 611Q
 has_children: false
 layout: default
+parent: Adtran
 ---
 
 # Hardware Specifications
 
 |             |             |
 | ----------- | ----------- |
-| Vendor      | Adtran       |
+| Vendor      | Adtran      |
 | Model       | SDX 611Q    |
 | Chipset     |             |
 | Flash       |             |

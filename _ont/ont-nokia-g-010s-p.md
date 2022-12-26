@@ -7,20 +7,21 @@ parent: Nokia
 
 # Hardware Specifications
 
-|             |                                                                  |
-| ----------- | ---------------------------------------------------------------- |
-| Vendor      | Nokia                                                            |
-| Model       | G-010S-P                                                         |
-| Chipset     | Lantiq PEB98035                                                  |
-| Flash       | 16 MB                                                            |
-| RAM         | 64 MB                                                            |
-| System      | OpenWRT                                                          |
-| HSGMII      | Yes                                                              |
-| Optics      | SC/APC                                                           |
-| IP address  |                                                                  |
-| Web Gui     | ✅ [after enabling](https://www.dslreports.com/forum/r32458588-) |
-| SSH         | ✅ user `ONTUSER`, password `SUGAR2A041`                         |
-| Form Factor | miniONT SFP                                                      |
+|             |                                          |
+| ----------- | ---------------------------------------- |
+| Vendor      | Nokia                                    |
+| Model       | G-010S-P                                 |
+| Chipset     | Lantiq PEB98035                          |
+| Manufacter  | SourcePhotonics                          |
+| Flash       | 16 MB                                    |
+| RAM         | 64 MB                                    |
+| System      | OpenWRT                                  |
+| HSGMII      | Yes                                      |
+| Optics      | SC/APC                                   |
+| IP address  |                                          |
+| Web Gui     | Can be enabled                           |
+| SSH         | ✅ user `ONTUSER`, password `SUGAR2A041` |
+| Form Factor | miniONT SFP                              |
 
 {% include image.html file="g-010s-p.jpg"  alt="G-010S-P" caption="G-010S-P" %}
 <br/>
@@ -64,10 +65,16 @@ Configuration: asc0=0 115200 8-N-1
 
 ## List of firmwares and files
 
+# Useful Commands
+
 ##  Disabling Dying Gasp
 ```sh
 fw_setenv nDyingGaspEnable 0
 ```
+
+## Enabling the Web UI
+
+To activate the web-ui you can use the following guide on [dslreport](https://www.dslreports.com/forum/r32458588-).
 
 # Known Bugs
 # Miscellaneous Links
