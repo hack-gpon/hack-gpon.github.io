@@ -121,43 +121,47 @@ layout: default
         });
     });
     form.addEventListener('submit',(event) => {
+        if (!form.checkValidity()) {
+            event.preventDefault();
+        } else {
+            event.preventDefault();
 
-        var formdata = new FormData(form);
-        event.preventDefault();
-        var overheadipv4 = {
-            "ipoe" : 20,
-            "pppoe" : 28,
-            "map-t" : 40,
-            "map-e" : 60,
-        };
-        var overheadipv6 = {
-            "ipoe" : 40,
-            "pppoe" : 48,
-        };
-        var overheadtcp = 20;
-        var overheadeth = 14;
-        var overheadfcs = 4;
-        var overheadgap = {
-            '10' : 5.875,
-            '100' : 12,
-            '200' : 8,
-            '500' : 8,
-            '1000' : 8,
-            '2500' : 5,
-            '5000' : 5,
-            '10000' : 5,
-        };
-        var preamble = 8;
-        var cip = formdata.get('ip');
-        var coverheadip = formdata.get('ip') === '4' ? overheadipv4[formdata.get('ipv4protocol')] : overheadipv6[formdata.get('ipv6protocol')];
-        var mtu = formdata.get('mtu');
-        var mss = mtu - coverheadip;
-        var overhead = overheadtcp + overheadeth + overheadfcs + overheadgap[formdata.get('speed')] + preamble + coverheadip;
-        document.getElementById('overhead').value = overhead/mss  * 100;
-        var th =  mss /(overhead + mss);
-        
-        document.getElementById('maxSpeed').value = th * formdata.get('speed');
-
+            var formdata = new FormData(form);
+            var overheadipv4 = {
+                "ipoe" : 20,
+                "pppoe" : 28,
+                "map-t" : 40,
+                "map-e" : 60,
+            };
+            var overheadipv6 = {
+                "ipoe" : 40,
+                "pppoe" : 48,
+            };
+            var overheadtcp = 20;
+            var overheadeth = 14;
+            var overheadfcs = 4;
+            var overheadgap = {
+                '10' : 5.875,
+                '100' : 12,
+                '200' : 8,
+                '500' : 8,
+                '1000' : 8,
+                '2500' : 5,
+                '5000' : 5,
+                '10000' : 5,
+            };
+            var preamble = 8;
+            var cip = formdata.get('ip');
+            var coverheadip = formdata.get('ip') === '4' ? overheadipv4[formdata.get('ipv4protocol')] : overheadipv6[formdata.get('ipv6protocol')];
+            var mtu = formdata.get('mtu');
+            var mss = mtu - coverheadip;
+            var overhead = overheadtcp + overheadeth + overheadfcs + overheadgap[formdata.get('speed')] + preamble + coverheadip;
+            document.getElementById('overhead').value = overhead/mss  * 100;
+            var th =  mss /(overhead + mss);
+            
+            document.getElementById('maxSpeed').value = th * formdata.get('speed');
+        }
+        [...form.elements].map(e => e.parentNode).forEach(e => e.classList.toggle('was-validated', true));
     });
     var formgpon = document.getElementById('gpon-speed-mtu');
     var radioIp = document.getElementsByName('gpon-ip');
@@ -169,37 +173,40 @@ layout: default
         });
     });
     formgpon.addEventListener('submit',(event) => {
+        if (!formgpon.checkValidity()) {
+            event.preventDefault();
+        } else {
+            event.preventDefault();
+            var formdata = new FormData(formgpon);
+            var gtc = 38880;
+            var overheadgem = 5;
+            var overheadpcbd = 30 + 8*formdata.get('gpon-ont');
+            var overheadipv4 = {
+                "ipoe" : 20,
+                "pppoe" : 28,
+                "map-t" : 40,
+                "map-e" : 60,
+            };
+            var overheadipv6 = {
+                "ipoe" : 40,
+                "pppoe" : 48,
+            };
+            var overheadtcp = 20;
+            var overheadeth = 14;
+            var overheadfcs = 4;
+            var cip = formdata.get('gpon-ip');
+            var coverheadip = formdata.get('gpon-ip') === '4' ? overheadipv4[formdata.get('gpon-ipv4protocol')] : overheadipv6[formdata.get('gpon-ipv6protocol')];
+            var overheadframeeth = overheadtcp + overheadeth + overheadfcs + coverheadip;
+            var overheadgtc = overheadgem + formdata.get('gpon-gem') * (overheadpcbd+overheadframeeth); 
+            var payload = gtc - overheadgtc;
+            document.getElementById('gpon-average-packet-size').value = payload/formdata.get('gpon-gem');
 
-        var formdata = new FormData(formgpon);
-        event.preventDefault();
-        var gtc = 38880;
-        var overheadgem = 5;
-        var overheadpcbd = 30 + 8*formdata.get('gpon-ont');
-        var overheadipv4 = {
-            "ipoe" : 20,
-            "pppoe" : 28,
-            "map-t" : 40,
-            "map-e" : 60,
-        };
-        var overheadipv6 = {
-            "ipoe" : 40,
-            "pppoe" : 48,
-        };
-        var overheadtcp = 20;
-        var overheadeth = 14;
-        var overheadfcs = 4;
-        var cip = formdata.get('gpon-ip');
-        var coverheadip = formdata.get('gpon-ip') === '4' ? overheadipv4[formdata.get('gpon-ipv4protocol')] : overheadipv6[formdata.get('gpon-ipv6protocol')];
-        var overheadframeeth = overheadtcp + overheadeth + overheadfcs + coverheadip;
-        var overheadgtc = overheadgem + formdata.get('gpon-gem') * (overheadpcbd+overheadframeeth); 
-        var payload = gtc - overheadgtc;
-        document.getElementById('gpon-average-packet-size').value = payload/formdata.get('gpon-gem');
 
-
-        document.getElementById('gpon-overhead').value = overheadgtc/payload  * 100;
-        var th =  payload /gtc;
-        
-        document.getElementById('gpon-maxSpeed').value = th * 2.48832;
-
+            document.getElementById('gpon-overhead').value = overheadgtc/payload  * 100;
+            var th =  payload /gtc;
+            
+            document.getElementById('gpon-maxSpeed').value = th * 2.48832;
+        }
+        [...formgpon.elements].map(e => e.parentNode).forEach(e => e.classList.toggle('was-validated', true));
     });
 </script>
