@@ -58,6 +58,7 @@ layout: table_wrappers
     {% include icons/code_copy.html %}
     {% include icons/external_link.html %}
     {% include icons/custom.html %}
+    {% include icons/theme_switch.html %}
   </svg>
 
   <div class="side-bar">
@@ -97,8 +98,8 @@ layout: table_wrappers
       {% endif %}
       {% include header_custom.html %}
       <nav class="aux-nav">
+        {% if site.aux_links or site.enable_switch_theme_button == true %}
         <ul class="aux-nav-list">
-          {% if site.aux_links %}
           {% for link in site.aux_links %}
           <li class="aux-nav-list-item">
             <span class="site-button">
@@ -116,10 +117,15 @@ layout: table_wrappers
             </span>
           </li>
           {% endfor %}
+          {% if site.enable_switch_theme_button == true %}
+            <li class="aux-nav-list-item">
+              <a href="#" class="site-button color-scheme-switch-theme-button">
+                <svg aria-hidden="true" class="site-button-icon"><use href="#svg-{{ site.color_scheme | default: 'light' }}"></use></svg>
+              </a>
+            </li>
           {% endif %}
-          <li class="aux-nav-list-item"><span class="site-button "><a class="btn js-toggle-dark-mode">Dark
-                mode</a></span></li>
         </ul>
+        {% endif %}
       </nav>
     </div>
     <div id="main-content-wrap" class="main-content-wrap">

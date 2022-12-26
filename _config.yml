@@ -33,7 +33,9 @@ plugins:
   - jekyll-redirect-from
   - jekyll-default-layout
 
-color_scheme: "light"
+color_scheme: "auto"
+enable_switch_theme_button: true 
+
 url: "https://hack-gpon.github.io"
 nav_sort: case_sensitive
 
