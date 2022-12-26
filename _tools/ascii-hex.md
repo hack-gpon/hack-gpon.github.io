@@ -11,6 +11,9 @@ layout: default
     <div class="form-floating mb-3">
         <input type="text" class="form-control" placeholder="ASCII" name="ascii-to-hex" id="ascii-to-hex" required>
         <label for="ascii-to-hex">ASCII</label>
+        <div class="invalid-feedback">
+            Please provide a valid input text.
+        </div>
     </div>
     <div class="form-floating mb-3">
         <input type="text" class="form-control" placeholder="Glue" name="ascii-to-hex-glue" id="ascii-to-hex-glue" value=" ">
@@ -29,6 +32,9 @@ layout: default
     <div class="form-floating mb-3">
         <input type="text" class="form-control" placeholder="HEX" name="hex-to-ascii" id="hex-to-ascii" required>
         <label for="hex-to-ascii">HEX</label>
+        <div class="invalid-feedback">
+            Please provide a valid input text.
+        </div>
     </div>
     <div class="form-floating mb-3">
         <input type="text" class="form-control" placeholder="Separator" name="hex-to-ascii-separator" id="hex-to-ascii-separator" value=" ">

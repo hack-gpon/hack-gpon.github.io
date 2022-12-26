@@ -8,9 +8,9 @@ layout: default
 
 
 <h1>Ethernet calculator</h1>
-<form id="eth-speed-mtu">
+<form id="eth-speed-mtu" novalidate>
     <div class="form-floating mb-3">
-        <input type="number" class="form-control" placeholder="MTU L2" name="mtu" id="mtu" value="1500" min="1000" max="10000">
+        <input type="number" class="form-control" placeholder="MTU L2" name="mtu" id="mtu" value="1500" min="1000" max="10000" required>
         <label for="mtu">MTU L2 (no overhead for PPPoE/MAP, only Ethernet PPPoE)</label>
     </div>
     <div class="form-floating mb-3">
@@ -25,20 +25,20 @@ layout: default
             </div>
         </div>
     </div>
-    <select class="form-select mb-3"  placeholder="IPv4 L2 protocol" name="ipv4protocol" id="ipv4protocol">
-        <option  disabled selected>Select a Protocol</option>
+    <select class="form-select mb-3"  placeholder="IPv4 L2 protocol" name="ipv4protocol" id="ipv4protocol" required>
+        <option value disabled selected>Select a Protocol</option>
         <option value="ipoe">IPoE</option>
         <option value="pppoe">PPPoE</option>
         <option value="map-t">MAP-T</option>
         <option value="map-e">MAP-E/4in6</option>
     </select>
-    <select class="form-select mb-3"  placeholder="IPv6 L2 protocol" name="ipv6protocol" id="ipv6protocol" disabled>
-        <option disabled selected>Select a Protocol</option>
+    <select class="form-select mb-3"  placeholder="IPv6 L2 protocol" name="ipv6protocol" id="ipv6protocol" disabled required>
+        <option value disabled selected>Select a Protocol</option>
         <option value="ipoe">IPoE</option>
         <option value="pppoe">PPPoE</option>
     </select>
-    <select class="form-select mb-3"  placeholder="Speed" name="speed">
-        <option  disabled selected>Select a link speed</option>
+    <select class="form-select mb-3"  placeholder="Speed" name="speed" required>
+        <option value disabled selected>Select a link speed</option>
         <option value="10">10 Mbps</option>
         <option value="100">100 Mbps</option>
         <option value="200">200 Mbps</option>
@@ -62,7 +62,7 @@ layout: default
 
 </form>
 <h1>Gpon calculator</h1>
-<form id="gpon-speed-mtu">
+<form id="gpon-speed-mtu" novalidate>
     <div class="form-floating mb-3">
         <input step="1" type="number" class="form-control" placeholder="ONT number" name="gpon-ont" id="gpon-ont" value="10" min="1" max="128" required>
         <label for="gpon-ont">ONT number</label>
@@ -82,14 +82,14 @@ layout: default
         </div>
     </div>
     <select class="form-select mb-3"  placeholder="IPv4 L2 protocol" name="gpon-ipv4protocol" id="gpon-ipv4protocol" required>
-        <option  disabled selected>Select a Protocol</option>
+        <option value disabled selected>Select a Protocol</option>
         <option value="ipoe">IPoE</option>
         <option value="pppoe">PPPoE</option>
         <option value="map-t">MAP-T</option>
         <option value="map-e">MAP-E/4in6</option>
     </select>
     <select class="form-select mb-3"  placeholder="IPv6 L2 protocol" name="gpon-ipv6protocol" id="gpon-ipv6protocol" disabled required>
-        <option disabled selected>Select a Protocol</option>
+        <option value disabled selected>Select a Protocol</option>
         <option value="ipoe">IPoE</option>
         <option value="pppoe">PPPoE</option>
     </select>
