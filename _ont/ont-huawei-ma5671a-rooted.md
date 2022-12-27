@@ -20,20 +20,35 @@ layout: default
         <input type="text" class="form-control" placeholder="sfp_a2_info input" name="sfp-a2-info" id="sfp-a2-info"    >
         <label for="sfp-a2-info">sfp_a2_info input</label>
     </div>
-    <div class="form-floating mb-3">
-        <input type="text" class="form-control" placeholder="GPON S/N" name="gpon-sn" id="gpon-sn" value="">
-        <label for="gpon-sn">GPON S/N in format GPON12345678 or 47504F4E12345678, empty for not modify it</label>
+    <div class="mb-3">
+        <input type="submit" class="btn btn-primary" value="Show!" name="submit">
     </div>
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" placeholder="GPON Ploam Password" name="gpon-password" id="gpon-password" value="">
-        <label for="gpon-password">GPON S/N in format 1234567890, 31323334353637383930 or 0x31323334353637383930, empty for not modify it</label>
+        <input type="text" class="form-control" placeholder="GPON S/N" name="gpon-serial" id="gpon-serial" value="">
+        <label for="gpon-serial">GPON S/N in format GPON12345678 or 47504F4E12345678, empty for not modify it</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" placeholder="GPON Ploam Password" name="gpon-ploam" id="gpon-ploam" value="">
+        <label for="gpon-ploam">GPON Ploam in format 1234567890, 31323334353637383930, empty for not modify it</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" placeholder="GPON LoID User" name="gpon-loid" id="gpon-loid" value="">
+        <label for="gpon-loid">GPON LoID User in hex format 0123456789ABCDEF, empty for not modify it</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" placeholder="GPON LoPW Password" name="gpon-lopw" id="gpon-lopw" value="">
+        <label for="gpon-lopw">GPON LoPW Passwrd in hex format 0123456789ABCDEF, empty for not modify it</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" placeholder="GPON Ploam/LoID Switch" name="gpon-loid-ploam-switch" id="gpon-loid-ploam-switch" value="">
+        <label for="gpon-loid-ploam-switch">GPON Ploam/LoID Switch</label>
     </div>
     <div class="form-floating mb-3">
         <input type="text" class="form-control" placeholder="MAC address" name="mac-addr" id="mac-addr" value="">
         <label for="mac-addr">MAC Address in format 48:57:02:da:be:ef, 48-57-02-da-be-ef or 485702dabeef, empty for not modify it</label>
     </div>
     <div class="mb-3">
-        <input type="submit" class="btn btn-primary" value="Calculate!">
+        <input type="submit" class="btn btn-primary" value="Calculate!" name="submit">
     </div>
     <div class="form-floating mb-3">
         <input readonly class="form-control" type="text" id="result" placeholder="sfp_a2_info result">
@@ -47,7 +62,26 @@ layout: default
         var fomrdata = new FormData(form);
         var sfp_a2_info = fomrdata.get('sfp-a2-info');
         var sfp_a2_info_arr = sfp_a2_info.split('@');
-        if(sfp_a2_info_arr.length > 10 && sfp_a2_info_arr[0] === 'begin-base64 644 sfp_a2_info ') {
+        var sfp_a2_info_0 = sfp_a2_info_arr.splice(0);
+        var sfp_a2_decode = sfp_a2_info_arr.map(it => base64ToHex(it)).join('');
+        var eeprom = new eeprom1(sfp_a2_decode);
+        console.log(eeprom);
+        if(fomrdata.get('submit') == "Show!") {
+            fomrdata.set('gpon-serial', eeprom.serial);
+            fomrdata.set('gpon-ploam', eeprom.ploam);
+            fomrdata.set('gpon-loid', eeprom.loid);
+            fomrdata.set('gpon-lpwd', eeprom.lopw);
+            fomrdata.set('gpon-loid-ploam-switch', eeprom.loidPloamSwitch);
+            populateForm(form, fomrdata);
+        } else {
+            eeprom.serial = fomrdata.get('gpon-serial');
+            eeprom.ploam = fomrdata.get('gpon-ploam');
+            eeprom.loid = fomrdata.get('gpon-loid');
+            eeprom.lopw = fomrdata.get('gpon-lopw');
+            eeprom.loidPloamSwitch = fomrdata.get('gpon-loid-ploam-switch');
+            document.getElementById('result').value =  eeprom.hex; 
+        }
+        /*if(sfp_a2_info_arr.length > 10 && sfp_a2_info_arr[0] === 'begin-base64 644 sfp_a2_info ') {
             var gpon_sn = fomrdata.get('gpon-sn');
             if(gpon_sn.length == 12) {  
                 var vendor_id = gpon_sn.substring(0, 4);
@@ -84,11 +118,10 @@ layout: default
                 var hex = base64ToHex(sfp_a2_info_arr[9]);
                 hex = hex.substring(0,48) + mac_addr + hex.substring(61);
                 sfp_a2_info_arr[9] = hexToBase64(hex);
-            }
-            document.getElementById('result').value =  sfp_a2_info_arr.join('@');       
+            }   
         } else {
             document.getElementById('result').value = 'sfp_a2_info variable in wrong format!';
-        }
+        }*/
     });
     function hexToBase64(hexStr) {
         return btoa([...hexStr].reduce((acc, _, i) => acc += !(i - 1 & 1) ? String.fromCharCode(parseInt(hexStr.substring(i - 1, i + 1), 16)) : '', ''));

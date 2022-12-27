@@ -139,7 +139,13 @@ class uuencoding {
         outBytes[outIndex + 2] = b3 & 0xFF;
     }
 }
-/*
+
+function getChunks(s, i) {
+    var a = [];
+    do{ a.push(s.substring(0, i)) }  while( (s = s.substring(i)) != "" );
+    return a;
+}
+
 class asciiHex {
     static asciiToHex(str, prefix = "0x", glue = " ") {
         var prefixi = glue !== "" ? prefix : "";
@@ -159,40 +165,41 @@ class gponSerial {
     #vendor;
     #progressive;
     constructor(vendor, progressive) {
-        if(vendor.length == 4) {
-            this.#vendor = vendor.toUpperCase();
-        } else if(vendor.length == 8) {
-            this.#vendor = asciiHex.hexToAscii(vendor,'','').toUpperCase();
+        if(progressive !== undefined) {
+            if(vendor.length == 4) {
+                this.#vendor = vendor.toUpperCase();
+            } else if(vendor.length == 8) {
+                this.#vendor = asciiHex.hexToAscii(vendor,'','').toUpperCase();
+            } else {
+                throw "vendor length unvalid";
+            }
+            if(progressive.length == 8) {
+                this.#progressive = progressive.toLowerCase();
+            } else {
+                throw "progressive length unvalid";
+            }
         } else {
-            throw "vendor length unvalid";
-        }
-        if(progressive.length == 8) {
-            this.#progressive = progressive.toLowerCase();
-        } else {
-            throw "progressive length unvalid";
-        }
-    }
-    constructor(serial) {
-        if(serial.length == 12) {
-            this.#vendor = serial.substring(0, 4).toUpperCase();
-            this.#progressive = serial.substring(4).toLowerCase();
-        } else if(serial.length == 16) {
-            this.#vendor = asciiHex.hexToAscii(serial.substring(0, 8)).toUpperCase();
-            this.#progressive = serial.substring(8).toLowerCase();
-        }  else {
-            throw "serial length unvalid";
+            if(vendor.length == 12) {
+                this.#vendor = vendor.substring(0, 4).toUpperCase();
+                this.#progressive = vendor.substring(4).toLowerCase();
+            } else if(vendor.length == 16) {
+                this.#vendor = asciiHex.hexToAscii(serial.substring(0, 8)).toUpperCase();
+                this.#progressive = vendor.substring(8).toLowerCase();
+            }  else {
+                throw "serial length unvalid";
+            }
         }
     }
-    get [vendorHex]() {
-        return ([...this.#vendor].map((elem, n) => Number(this.#vendor.charCodeAt(n)).toString(16)).join(''));
+    get vendorHex() {
+        return ([...this.#vendor].map((_, n) => Number(this.#vendor.charCodeAt(n)).toString(16)).join(''));
     }
-    get [vendor]() {
+    get vendor() {
         return this.#vendor;
     }
-    get [progressive]() {
+    get progressive() {
         return this.#progressive;
     }
-    get [serial]() {
+    get serial() {
         return `${this.#vendor}${this.#progressive}`;
     }   
 }
@@ -201,26 +208,26 @@ class gponPloam {
     #ploam;
     constructor(ploam) {
         if(ploam.length <= 10) {  
-            this.#ploam = ([...gpon_password].map((elem, n) => Number(gpon_password.charCodeAt(n)).toString(16)).join(''));
+            this.#ploam = ([...gpon_password].map((_, n) => Number(gpon_password.charCodeAt(n)).toString(16)).join(''));
             this.#ploam += '0'.repeat(20-gpon_password.length);
         }
         else if(ploam.length === 20) {
             this.#ploam = ploam;
         }
-        else if(ploam.length === 22 && ploam.startsWith("0x")) {
-            this.#ploam = ploam.substring(2);
+        else {
+            throw "ploam length unvalid";
         }
     }
-    get [ploam]() {
+    get ploam() {
         return asciiHex.hexToAscii(this.#ploam, '','');
     }
-    get [ploamEncoding]() {
+    get ploamEncoding() {
         return JSON.stringify(ploam);
     }
-    get [ploamHex] () {
+    get ploamHex() {
         return this.#ploam;
     }
-}*/
+}
 
 class eeprom1 {
     #hex;
@@ -237,74 +244,159 @@ class eeprom1 {
         if(value.length != calcLength) {
             value += '0'.repeat(calcLength-value.length);
         }    
-        this.#hex.splice(startIndex, calcLength, ...[...value]);
+        this.#hex.splice(startIndex*2, calcLength, ...[...value]);
     }
 
-    getHex() {
+    get hex() {
       return this.#hex.join('');
     }
 
-    getSerial() {
+    get serial() {
         return this.getPart(233, 240);
     }
 
-    setSerial(value) {
+    set serial(value) {
         this.setPart(233, 240, value);
     }
 
-    getPloam() {
+    get ploam() {
         return this.getPart(191, 214);
     }
 
-    setPloam(value) {
+    set ploam(value) {
         this.setPart(191, 214, value);
     }
 
-    getLoid() {
+    get loid() {
         return this.getPart(191, 214);
     }
 
-    setLoid(value) {
+    set loid(value) {
         this.setPart(191, 214, value);
     }
 
-    getLpwd() {
+    get lpwd() {
         return this.getPart(215, 231);
     }
 
-    setLpwd(value) {
+    set lpwd(value) {
         this.setPart(215, 231, value);
     }
 
-    getLoidPloamSwitch() {
+    get loidPloamSwitch() {
         return this.getPart(232, 232);
     }
 
-    setLoidPloamSwitch(value) {
+    set loidPloamSwitch(value) {
         this.setPart(232, 232, value);
     }
 
-    getEquipmentID() {
+    get equipmentID() {
         return this.getPart(512, 531);
     }
 
-    setEquipmentID(value) {
+    set equipmentID(value) {
         this.setPart(512, 531, value);
     }
 
-    getVendorID() {
+    get vendorID() {
         return this.getPart(532, 535);
     }
 
-    setVendorID(value) {
+    set vendorID(value) {
         this.setPart(532, 535, value);
     }
 
-    getMacAddress() {
+    get macAddress() {
         return this.getPart(384, 389);
     }
 
-    setMacAddress(value) {
+    set macAddress(value) {
         this.setPart(384, 389, value);
+    }
+}
+
+function populateForm(form, data, basename) {
+    for (const key in data) {
+        if (!data.hasOwnProperty(key)) {
+            continue;
+        }
+
+        let name = key;
+        let value = data[key];
+
+        if ('undefined' === typeof value)
+            value = '';
+
+        if (null === value)
+            value = '';
+
+        // add basename
+        if (typeof(basename) !== "undefined")
+            name = basename + "-" + key;
+
+        if (value.constructor === Array) {
+            if(typeof(basename) !== "undefined")
+                name += '[]';
+        } else if(typeof value == "object") {
+            if(Object.keys(value).length === 1) {
+                if (typeof(basename) !== "undefined")
+                    name += "-" + Object.keys(value)[0];
+                value = value[Object.keys(value)[0]];
+            } else {
+                if (typeof(basename) !== "undefined")
+                    populateForm(form, value, name);
+                else
+                    populateForm(form, value);
+                continue;
+            }
+        }
+
+        // only proceed if element is set
+        let element = form.elements.namedItem(name);
+        if (! element) {
+            continue;
+        }
+
+        let type = element.type || element[0].type;
+
+        switch(type ) {
+            default:
+                element.value = value;
+                break;
+
+            case 'radio':
+            case 'checkbox': {
+                let values = value.constructor === Array ? value : [value];
+                for (let j = 0; j < element.length; j++) {
+                    element[j].checked = (values.findIndex(it => it.toString() === element[j].value) > -1);
+                }
+                break;
+            }
+            case 'select-multiple': {
+                let values = value.constructor === Array ? value : [value];
+                for (let j = 0; j < element.options.length; j++) {
+                    element.options[j].selected = (values.findIndex(it => it.toString() === element.options[j].value) > -1);
+                }
+                break;
+            }
+            case 'select':
+            case 'select-one':
+                element.value = value.toString() || value;
+                break;
+
+            case 'date':
+                let date = new Date(value);
+                date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
+                element.value = date.toISOString().substring(0, 10);
+                break;
+
+            case 'datetime-local':
+                let datetime = new Date(value);
+                datetime.setMinutes(datetime.getMinutes() - datetime.getTimezoneOffset());
+                element.value = datetime.toISOString().substring(0, 16);
+                break;
+        }
+
     }
 }
