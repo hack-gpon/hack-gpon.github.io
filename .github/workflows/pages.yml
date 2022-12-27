@@ -39,7 +39,7 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v2
-      - run: bundle exec jekyll build --baseurl ${{ steps.pages.outputs.base_path }} # defaults output to '/_site'
+      - run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}" # defaults output to '/_site'
         env:
           JEKYLL_ENV: production
       - name: Upload artifact
