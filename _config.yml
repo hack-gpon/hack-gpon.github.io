@@ -34,19 +34,19 @@ plugins:
   - jekyll-default-layout
 
 color_scheme: "auto"
-enable_switch_theme_button: true 
+enable_switch_color_scheme: true 
 
 url: "https://hack-gpon.github.io"
 nav_sort: case_sensitive
 
-aux_links:
+aux_buttons:
   - title: "GitHub"
     color: 'purple'
-    icon: 'svg-github'
+    icon: 'github'
     link: '//github.com/hack-gpon/hack-gpon.github.io'
   - title: "Telegram"
     color: 'blue'
-    icon: 'svg-telegram'
+    icon: 'telegram'
     link: '//t.me/HackGPON'
       
 #aux_links:
@@ -91,6 +91,8 @@ mermaid:
   # gantt:
   #   barGap: 4
   #   topPadding: 50
+
+enable_modal: true
 
 collections:
   ont:
