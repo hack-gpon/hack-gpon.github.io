@@ -54,6 +54,7 @@ From the Zyxel shell you can move to a standard Linux shell using the `linuxshel
 
 This stick supports dual boot, as visible from the presence of `ImageA` and `ImageB`, which contain the rootfs.
 
+
 # List of firmwares and files
 ## Useful files
 - `/var/config/ont.sys` - Used to customize various settings on the stick. If you don't have it you can copy the stock one from /ont.sys
@@ -178,7 +179,7 @@ On the I2C interface there will be two memories of 256 bytes each at the address
 
 The Zyxel PMG3000-D20B stores the content of the emulated EEPROM1 (A2h) in `/tmp/config/sfp_eeprom1` to restore it after a reboot.
 
-{% include alert.html content="The contents of EEPROM0 (A0h) are not stored anywhere and are regenerated at each boot" alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="The contents of EEPROM0 (A0h) are not stored anywhere and is regenerated at each boot" alert="Info" icon="svg-info" color="blue" %}
 
 ### EEPROM0 layout
 
