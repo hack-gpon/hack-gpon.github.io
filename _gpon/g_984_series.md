@@ -5,6 +5,7 @@ nav_order: 3
 layout: default
 ---
 
+The information on this page is taken from the GPON standard and information from the major vendors of GPON equipment, each individual item containing a verifiable citation in the standard. Feel free to cite this page as: `{{ page.title }}, Hack GPON. Available at: https://hack-gpon.github.io{{ page.url }}`.
 
 | G.984.1                 | G.984.2                             | G.984.3                        | G.984.4                            | G.988 (ex G.Imp984.4)    |
 | ----------------------- | ----------------------------------- | ------------------------------ | ---------------------------------- | ------------------------ |

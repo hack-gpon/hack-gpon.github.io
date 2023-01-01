@@ -5,6 +5,7 @@ nav_order: 3
 layout: default
 ---
 
+The information on this page is taken from the GPON standard and information from the major vendors of GPON equipment, each individual item containing a verifiable citation in the standard. Feel free to cite this page as: `{{ page.title }}, Hack GPON. Available at: https://hack-gpon.github.io{{ page.url }}`.
 
 # GPON Status: `Ox`[^huawei],[^standardgpon]
 The process for an ONU to go online unconfigured involves five states:
