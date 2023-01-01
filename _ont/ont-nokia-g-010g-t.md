@@ -3,6 +3,7 @@ title: Nokia G-010G-T
 has_children: false
 layout: default
 parent: Nokia
+alias: CIG G-97CP/G-97CU
 ---
 
 # Hardware Specifications
@@ -53,5 +54,5 @@ The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be acc
 {% include_relative ont-nokia-userful-command.md %}
 
 # Miscellaneous Links
-- [MIB file parser](https://github.com/nanomad/nokia-ont-mib-parser)  for NOKIA's GPON ONTs (*helps you parsing the .mib file located in `/mnt/rwdir`*)
+- [MIB file parser](https://github.com/nanomad/nokia-ont-mib-parser) for NOKIA's GPON ONTs (*helps you parsing the .mib file located in `/mnt/rwdir`*)
 - [ispreview.co.uk](https://www.ispreview.co.uk/index.php/2022/09/pictured-openreachs-future-2-5gbps-ont-for-fttp-broadband.html)

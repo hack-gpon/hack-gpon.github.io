@@ -3,6 +3,7 @@ title: Nokia G-010G-Q
 has_children: false
 layout: default
 parent: Nokia
+alias: CIG G-97CU
 ---
 
 # Hardware Specifications
@@ -69,6 +70,6 @@ ONT>
 {% include_relative ont-nokia-userful-command.md %}
 
 # Miscellaneous Links
-- <a href="https://github.com/nanomad/nokia-ont-mib-parser">MIB file parser</a> for NOKIA's GPON ONTs (*helps you parsing the .mib file located in `/mnt/rwdir`*)
+- [MIB file parser](https://github.com/nanomad/nokia-ont-mib-parser) for NOKIA's GPON ONTs (*helps you parsing the .mib file located in `/mnt/rwdir`*)
 
 

@@ -112,7 +112,8 @@ collections:
 just_the_docs:
   collections:
     ont:
-      name: ONT
+      name: ONT GPON
+      nav_fold: true
     tools:
       name: Tools
       nav_fold: false

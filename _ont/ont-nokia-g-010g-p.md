@@ -3,7 +3,7 @@ title: Nokia G-010G-P
 has_children: false
 layout: default
 parent: Nokia
-alias: CIG G-97C1
+alias: CIG G-97C1/CIG G-97CU
 ---
 
 # Hardware Specifications
@@ -49,6 +49,6 @@ To exit the shell and reach the parent menu type `exit` or `x`, in each menu the
 {% include_relative ont-nokia-userful-command.md %}
 
 # Miscellaneous Links
-- <a href="https://github.com/nanomad/nokia-ont-mib-parser">MIB file parser</a> for NOKIA's GPON ONTs (*helps you parsing the .mib file located in `/mnt/rwdir`*)
+- [MIB file parser](https://github.com/nanomad/nokia-ont-mib-parser) for NOKIA's GPON ONTs (*helps you parsing the .mib file located in `/mnt/rwdir`*)
 
 

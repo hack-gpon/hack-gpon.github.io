@@ -12,9 +12,11 @@ parent: Nokia
 | Vendor      | Nokia                                    |
 | Model       | G-010S-B                                 |
 | Chipset     | Lantiq PEB98035                          |
+| CPU         | MIPS 34Kc interAptiv                     |
+| CPU Clock   | 400MHz                                   |
 | Manufacter  | SourcePhotonics                          |
-| Flash       | 16 MB                                    |
-| RAM         | 64 MB                                    |
+| Flash       | Macronix MX25L25635FZ2R-10G 16 MB        |
+| RAM         | Winbond W9751G6KB-25I 64 MB              |
 | System      | OpenWRT                                  |
 | HSGMII      | Yes                                      |
 | Optics      | SC/UPC                                   |
@@ -78,4 +80,5 @@ uci set gpon.gtc.nDyingGaspEnable='0'; uci commit gpon
 - [G-010S-A](https://github.com/hwti/G-010S-A)
 - [Usage GPON module SFP in Spain](https://forum.mikrotik.com/viewtopic.php?t=116364&start=300)
 - [Bypassing the HH3K up to 2.5Gbps using a BCM57810S NIC](https://www.dslreports.com/forum/r32230041-Internet-Bypassing-the-HH3K-up-to-2-5Gbps-using-a-BCM57810S-NIC)
+- [Tech Info Depot Wiki](http://en.techinfodepot.shoutwiki.com/wiki/Nokia_G-010S-B)
 
