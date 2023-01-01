@@ -17,7 +17,7 @@ parent: ZTE
 | Flash       | 16 MB (SPI Flash w25q128)                                         | 16 MB (SPI Flash mx25l12805d)                                     |             |                           |
 | RAM         | 64 MB                                                             | 32 MB                                                             |             | 128 MB (ESMT M15T1G1664A) |
 | System      |                                                                   |                                                                   |             |                           |
-| HSGMII      | No                                                                | No                                                                | No          | No                        |
+| 2.5GBaseT   | No                                                                | No                                                                | No          | No                        |
 | Optics      | SC/APC or SC/UPC                                                  | SC/APC                                                            | SC/APC      | SC/APC                    |
 | IP address  | 192.168.1.1                                                       | 192.168.1.1                                                       | 192.168.1.1 |                           |
 | Web Gui     | ✅ user `admin`, password `admin` or user `user`, password `user` | ✅ user `admin`, password `admin` or user `user`, password `user` |             |                           |

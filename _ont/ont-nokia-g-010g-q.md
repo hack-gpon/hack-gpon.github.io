@@ -17,7 +17,7 @@ alias: CIG G-97CU
 | Flash                 | 16 MB (Winbond [W25Q128JV](https://www.winbond.com/resource-files/w25q128jv%20revf%2003272018%20plus.pdf) 3V SPI) |
 | RAM                   | DDR2 325MHz                                                                                                       |
 | System                | Linux (Luna SDK 1.9.0)                                                                                            |
-| HSGMII                | No                                                                                                                |
+| 2.5GBaseT             | No                                                                                                                |
 | Optics                | SC/APC                                                                                                            |
 | IP address            | 192.168.100.1                                                                                                     |
 | Web Gui (HTTP)        | ✅ Port 80 (⚠️ *only available when the PON connection **IS NOT** estabilished*)                                |

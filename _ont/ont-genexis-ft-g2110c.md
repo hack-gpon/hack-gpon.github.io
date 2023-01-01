@@ -15,7 +15,7 @@ parent: Genexis
 | Flash       | 128MB                                                        |
 | RAM         | 32MB                                                         |
 | System      | Linux 3.18 (Luna SDK 3.3)                                    |
-| HSGMII      | ✅                                                           |
+| 2.5GBaseT   | Yes                                                          |
 | Optics      | SC/APC                                                       |
 | IP address  | 192.168.100.1/24 or 192.168.1.1/24                           |
 | Web Gui     | Can be enabled, locked down by iptables rule and missing CSS |

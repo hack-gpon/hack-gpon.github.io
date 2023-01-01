@@ -13,7 +13,7 @@ parent: D-LINK
 | Model       | DPN-100 Rev C1    |
 | Chipset     | Realtek RTL9601CI |
 | Flash       |                   |
-| RAM         | B                 |
+| RAM         |                   |
 | System      |                   |
 | HSGMII      |                   |
 | Optics      | SC/APC            |

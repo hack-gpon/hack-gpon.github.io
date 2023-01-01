@@ -7,20 +7,20 @@ parent: Adtran
 
 # Hardware Specifications
 
-|             |             |
-| ----------- | ----------- |
-| Vendor      | Adtran      |
-| Model       | SDX 611Q    |
-| Chipset     |             |
-| Flash       |             |
-| RAM         |             |
-| System      |             |
-| HSGMII      | ✅          |
-| Optics      |             |
-| IP address  |             |
-| Web Gui     |             |
-| SSH         |             |
-| Form Factor | ONT         |
+|             |          |
+| ----------- | -------- |
+| Vendor      | Adtran   |
+| Model       | SDX 611Q |
+| Chipset     |          |
+| Flash       |          |
+| RAM         |          |
+| System      |          |
+| 2.5GbaseT   | Yes      |
+| Optics      |          |
+| IP address  |          |
+| Web Gui     |          |
+| SSH         |          |
+| Form Factor | ONT      |
 
 
 ## List of software versions

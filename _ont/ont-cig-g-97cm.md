@@ -7,20 +7,20 @@ parent: CIG
 
 # Hardware Specifications
 
-|             |                                   |
-| ----------- | --------------------------------- |
-| Vendor      | CIG                               |
-| Model       | G-97CM                            |
-| Chipset     | Realtek RTL9601B                  |
-| Flash       |                                   |
-| RAM         |                                   |
-| System      | Linux                             |
-| HSGMII      | Yes                               |
-| Optics      | SC/APC                            |
-| IP address  | 192.168.1.1                       |
-| Web Gui     |                                   |
-| SSH         |                                   |
-| Form Factor | ONT                               |
+|             |                  |
+| ----------- | ---------------- |
+| Vendor      | CIG              |
+| Model       | G-97CM           |
+| Chipset     | Realtek RTL9601B |
+| Flash       |                  |
+| RAM         |                  |
+| System      | Linux            |
+| 2.5GbaseT   | No               |
+| Optics      | SC/APC           |
+| IP address  | 192.168.1.1      |
+| Web Gui     |                  |
+| SSH         |                  |
+| Form Factor | ONT              |
 
 # Miscellaneous Links
 

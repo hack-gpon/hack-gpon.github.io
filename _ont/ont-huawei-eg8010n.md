@@ -16,7 +16,7 @@ parent: Huawei
 | RAM         |         |
 | CPU         |         |
 | System      |         |
-| HSGMII      | ✅      |
+| 2.5GBaseT   | Yes     |
 | Optics      |         |
 | IP address  |         |
 | Web Gui     |         |

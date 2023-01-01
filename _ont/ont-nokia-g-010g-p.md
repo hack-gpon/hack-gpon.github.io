@@ -17,7 +17,7 @@ alias: CIG G-97C1/CIG G-97CU
 | Flash       |                                                                     |
 | RAM         |                                                                     |
 | System      | Linux (Luna SDK 1.9.0)                                              |
-| HSGMII      | No                                                                  |
+| 2.5GBaseT   | No                                                                  |
 | Optics      | SC/APC                                                              |
 | IP address  | 192.168.100.1  (after a factory reset the ONT uses 10.89.42.157/16) |
 | Web Gui     | ✅ user `admin`, password `1234`                                    |

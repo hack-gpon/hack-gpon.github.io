@@ -16,7 +16,7 @@ parent: Huawei
 | RAM         | 256MiB                                                                               |
 | CPU         | Hisilicon A9 dual core (ARMv7)                                                       |
 | System      | Dopra Linux                                                                          |
-| HSGMII      | No                                                                                   |
+| 2.5GBaseT   | No                                                                                   |
 | Optics      | SC/APC and SC/UPC                                                                    |
 | IP address  | 192.168.100.1                                                                        |
 | Web Gui     | ✅ user `root`, password `admin` or `adminHW` and user `Epadmin`, password `adminEp` |
