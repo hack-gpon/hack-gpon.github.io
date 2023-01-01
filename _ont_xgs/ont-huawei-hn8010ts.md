@@ -16,10 +16,14 @@ parent: Huawei
 | Flash       |          |
 | RAM         |          |
 | System      |          |
-| 10GBaseT    | ✅       |
+| 10GBaseT    | Yes      |
 | Optics      |          |
 | IP address  |          |
 | Web Gui     |          |
 | Telnet      |          |
 | SSH         |          |
 | Form Factor | ONT      |
+
+## Software Version
+
+- V5R02C0C10S165

@@ -11,12 +11,12 @@ parent: Hisense
 | ----------- | ------------ |
 | Vendor      | Hisense      |
 | Model       | LTF7267-BHA+ |
-| Chipset     |              |
+| Chipset     | Cortina      |
 | Manufacter  |              |
 | Flash       |              |
 | RAM         |              |
 | System      |              |
-| XSGMII      | ✅           |
+| XSGMII      | Yes          |
 | Optics      |              |
 | IP address  |              |
 | Web Gui     |              |

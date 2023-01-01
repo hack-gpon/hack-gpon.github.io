@@ -16,7 +16,7 @@ parent: Nokia
 | Flash       |           |
 | RAM         |           |
 | System      |           |
-| 10GBaseT    | ✅        |
+| 10GBaseT    | Yes       |
 | Optics      |           |
 | IP address  |           |
 | Web Gui     |           |
