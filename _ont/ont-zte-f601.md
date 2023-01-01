@@ -7,27 +7,26 @@ parent: ZTE
 
 # Hardware Specifications
 
-|             |                                                                   |                                                                   |             |           |
-| ----------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------- | --------- |
-| Vendor      | ZTE                                                               | ZTE                                                               | ZTE         | ZTE       |
-| Model       | F601v6                                                            | F601v7                                                            | F601v8      | F601v9    |
-| CPU         | ZTE FA626TE                                                       | ZTE ZX279125@A9                                                   |             | ZX279127S |
-| CPU Clock   | 266 MHz                                                           | 600 MHz                                                           |             |           |
-| Chipset     | ZTE FA626TE                                                       | ZTE ZX279125@A9                                                   |             |           |
-| Flash       | SPI Flash w25q128 16 MB                                           | SPI Flash mx25l12805d 16 MB                                       |             |           |
-| RAM         | 64 MB                                                             | 32 MB                                                             |             | 128 MB    |
-| System      |                                                                   |                                                                   |             |           |
-| HSGMII      | No                                                                | No                                                                | No          | No        |
-| Optics      | SC/APC or SC/UPC                                                  | SC/APC                                                            | SC/APC      | SC/APC    |
-| IP address  | 192.168.1.1                                                       | 192.168.1.1                                                       | 192.168.1.1 |           |
-| Web Gui     | ✅ user `admin`, password `admin` or user `user`, password `user` | ✅ user `admin`, password `admin` or user `user`, password `user` |             |           |
-| SSH         |                                                                   |                                                                   |             |           |
-| Form Factor | ONT                                                               | ONT                                                               |             |           |
+|             |                                                                   |                                                                   |             |                           |
+| ----------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------- | ------------------------- |
+| Vendor      | ZTE                                                               | ZTE                                                               | ZTE         | ZTE                       |
+| Model       | F601v6                                                            | F601v7                                                            | F601v8      | F601v9                    |
+| CPU         | ZTE FA626TE                                                       | ZTE ZX279125@A9                                                   |             | ZX279127S                 |
+| CPU Clock   | 266 MHz                                                           | 600 MHz                                                           |             |                           |
+| Chipset     | ZTE FA626TE                                                       | ZTE ZX279125@A9                                                   |             |                           |
+| Flash       | 16 MB (SPI Flash w25q128)                                         | 16 MB (SPI Flash mx25l12805d)                                     |             |                           |
+| RAM         | 64 MB                                                             | 32 MB                                                             |             | 128 MB (ESMT M15T1G1664A) |
+| System      |                                                                   |                                                                   |             |                           |
+| HSGMII      | No                                                                | No                                                                | No          | No                        |
+| Optics      | SC/APC or SC/UPC                                                  | SC/APC                                                            | SC/APC      | SC/APC                    |
+| IP address  | 192.168.1.1                                                       | 192.168.1.1                                                       | 192.168.1.1 |                           |
+| Web Gui     | ✅ user `admin`, password `admin` or user `user`, password `user` | ✅ user `admin`, password `admin` or user `user`, password `user` |             |                           |
+| SSH         |                                                                   |                                                                   |             |                           |
+| Form Factor | ONT                                                               | ONT                                                               |             |                           |
 
 {% include image.html file="f601_v6_1.jpg" alt="F601 v6" caption="F601 v6" %}
 {% include image.html file="f601_v7.jpg" alt="F601 v7" caption="A wall made out of broken F601 v7s" %}
 {% include image.html file="f601v9/front.jpg" alt="F601 v9" caption="F601 v9 <a href='https://forum.fibra.click/u/mirko991'>@mirko991</a>" %}
-
 
 ## List of software versions
 ### HW V6.0

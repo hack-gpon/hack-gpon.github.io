@@ -15,8 +15,8 @@ parent: Nokia
 | CPU         | MIPS 34Kc interAptiv                     |
 | CPU Clock   | 400MHz                                   |
 | Manufacter  | SourcePhotonics                          |
-| Flash       | Macronix MX25L25635FZ2R-10G 16 MB        |
-| RAM         | Winbond W9751G6KB-25I 64 MB              |
+| Flash       | 16 MB (Macronix MX25L25635FZ2R-10G)      |
+| RAM         | 64 MB (Winbond W9751G6KB-25I)            |
 | System      | OpenWRT                                  |
 | HSGMII      | Yes                                      |
 | Optics      | SC/UPC                                   |

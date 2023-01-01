@@ -12,7 +12,7 @@ parent: Huawei
 | Vendor      | Huawei                                                                                         |
 | Model       | HG8010H                                                                                        |
 | Chipset     | Hisilicon                                                                                      |
-| Flash       | 128MiB SLC NAND (DS35Q1GA-IB)                                                                  |
+| Flash       | 128MiB (SLC NAND DS35Q1GA-IB)                                                                  |
 | RAM         | 256MiB                                                                                         |
 | CPU         | Hisilicon A9 dual core (ARMv7)                                                                 |
 | System      | Dopra Linux                                                                                    |

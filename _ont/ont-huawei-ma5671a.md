@@ -14,9 +14,9 @@ parent: Huawei
 | Chipset     | Lantiq PEB98035                     |
 | Manufacter  | SourcePhotonics                     |
 | Flash       | 16 MB                               |
+| RAM         | 64 MB (Winbond W25Q128FV)           |
 | CPU         | MIPS 34Kc interAptiv                |
 | CPU Clock   | 400MHz                              |
-| RAM         | Winbond W25Q128FV 64 MB             |
 | System      | OpenWRT                             |
 | HSGMII      | ✅                                  |
 | Optics      | SC/APC                              |

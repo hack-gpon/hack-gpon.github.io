@@ -14,8 +14,8 @@ parent: Ziza
 | Chipset     | Lantiq PEB98035                                            |
 | CPU         | MIPS 34Kc interAptiv                                       |
 | CPU Clock   | 400MHz                                                     |
-| Flash       | GigaDevice GD25Q64CW16 8 MB                                |
-| RAM         | Nanya NT5TU32M16FG-AC1 64 MB                               |
+| Flash       | 8 MB (GigaDevice GD25Q64CW16)                              |
+| RAM         | 64 MB (Nanya NT5TU32M16FG-AC1)                             |
 | System      | OpenWRT                                                    |
 | HSGMII      | Yes                                                        |
 | Optics      | SC/APC                                                     |
