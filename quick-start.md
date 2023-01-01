@@ -6,11 +6,11 @@ description:
 layout: default
 ---
 
-{% include alert.html content="Playing with ONTs can cause your serial number/PLOAM password to be banned and faults to the optics, ONTs and OLTs. Always pay close attention to the calibration of the laser, under no circumstances should the calibration be changed." alert="Warning"  icon="svg-warning" color="red" %}
+{% include alert.html content="Playing with ONTs can cause your serial number/PLOAM password to be banned and faults to the optics, ONTs and OLTs. Always pay close attention to the calibration of the laser, under no circumstances should the calibration be changed." alert="Warning" icon="svg-warning" color="red" %}
 
 # Fiber Optic Connectors
 
-Numerous connectors, both standard and proprietary, are used in the ﬁeld of telecommunication equipment, data lines, television and cable, and other industrial fields. 
+Numerous connectors, both standard and proprietary, are used in the field of telecommunication equipment, data lines, television and cable, and other industrial fields. 
 
 {% include image.html file="quick-start\optic-fiber-connectors.jpg"  alt="Some of the common connector" caption="Some of the common connector" %}
 
@@ -33,48 +33,73 @@ The main connector are:
 
 ## Polishing of Fiber Optic Connectors
 
-APC and UPC are different polishing of fiber optic ferrules, and are types of fiber patch cable connectors. Which determine the quality of the fiber optic lightwave transmission, mostly performed in optical return loss and insertion loss.
+APC and UPC are different polishing of fiber optic ferrules, and are types of fiber patch cable connectors. Which determine the quality of the fiber optic lightwave transmission, mostly performed in optical return loss and insertion loss[^wolon].
 
 {% include image.html file="quick-start\apc-upc.jpg" alt="Picture of APC and UPC" caption="Picture of APC and UPC" %}
 
-Angled physical connectors are used in the ONT side to reduce back reflections. In
-case RF signal (1550nm) is introduced there will be two signals traveling in the
-downstream direction (1490nm + 1550nm), since RF systems are highly sensitive to
-reflections then the APC connectors reduce the return loss value.
+Angled physical connectors are used in the ONT side to reduce back reflections. In case RF signal (1550nm) is introduced there will be two signals traveling in the downstream direction (1490nm + 1550nm), since RF systems are highly sensitive to reflections then the APC connectors reduce the return loss value[^zyxel].
 
-Next generation systems are planned to operate in over 1500nm wavelengths,
-converting APC connectors on the ONT side into planning to the future.
+Next generation systems are planned to operate in over 1500 nm wavelengths, converting APC connectors on the ONT side into planning to the future[^zyxel].
 
-
-
-# PON Networks
+# PON Networks[^huawei]
 
 - PON is a kind of passive optical network featuring one-to-multiple-point architecture;
 - PON is short for Passive Optical Network;
-- PON consists of Optical Line Terminal (OLT), Optical Network Unit (ONU) and
-Passive Optical Splitter.
+- PON consists of Optical Line Terminal (OLT), Optical Network Unit (ONU) and Passive Optical Splitter.
 
-- APON: ATM Passive Optical Networks
-- EPON: Ethernet Passive Optical Networks
-- GPON: Gigabit-capable Passive Optical Networks
-- XG(S)-GPON: 10 Gigabit-capable Passive Optical Networks
+- APON: ATM Passive Optical Networks;
+- EPON: Ethernet Passive Optical Networks;
+- GPON: Gigabit-capable Passive Optical Networks;
+- XG(S)-GPON: 10 Gigabit-capable Passive Optical Networks[^standardxgpon];
+
+EPON and GPON are complementary and compete against each other in some aspects. So in the following contents, we'd like to make clear the EPON and GPON comparison [^fs].
 
 ## Why GPON?
 
-- GPON supports Triple - play service, providing competitive all-service solution.
-- GPON supports high-bandwidth transmission to break down the bandwidth
-bottleneck of the access over twisted pair cables, so as to satisfy the
-requirements of high-bandwidth services, such as IPTV and live TV broadcasts.
-- GPON supports the long-reach (up to 20 km) service coverage to overcome the
-obstacle of the access technology over twisted pair cables and reduce the
-network nodes.
-- With complete standards and high technical requirements, GPON supports
-integrated services in a good way.
-GPON is the choice of large carriers in the international market.
+- GPON is defined by ITU, International Telecomunication Union[^standardgpon].
+- GPON supports Triple - play service, providing competitive all-service solution[^huawei].
+- GPON supports high-bandwidth transmission to break down the bandwidth bottleneck of the access over twisted pair cables, so as to satisfy the requirements of high-bandwidth services, such as IPTV and live TV broadcasts[^huawei].
+- GPON supports the long-reach (up to 20 km) service coverage to overcome the obstacle of the access technology over twisted pair cables and reduce the network nodes[^huawei].
+- With complete standards and high technical requirements, GPON supports integrated services in a good way[^huawei].
+- GPON is the choice of large carriers in the international market[^huawei].
+- GPON is high broadband efficiency, like 92%[^huawei].
+- GPON has integrated QoS handling that makes it better than EPON, because EPON QoS is high cost relative to GPON[^fs].
+- GPON supports splitting up to 1:128, XG(S)-PON up to 1:256[^fs],[^standardxgpon].
+- Security: the data transmitted down to ONUs/ONTs are encrypted based on the AES mechanism[^telecom].
 
 
+## Why EPON?
+- EPON is defined by IEEE 802.3 standard, ratified as 802.3ah-2004 for 1.25 Gbps (1.0 Gbps prior to 8B/10B coding) and IEEE 802.3av standard for 10Gbps (10G-EPON)[^standard1epon],[^standard10epon].
+- 1/1-EPON supports splitting up to 1:32, 10/*-EPON up to 1:128[^fs],[^standard10epon].
+- In EPON, both downstream and upstream line rates are 1.25 Gbps, but due to the 8B/10B line encoding, the bit rate for data transmission is 1 Gbps[^medium].
+- The use of EPON allows carriers to eliminate complex and expensive ATM and Sonet elements and to simplify their networks, thereby lowering costs to subscribers. Currently, GPON equipment costs are approximately 1.5 to 2 times higher than an EPON[^medium],[^fs].
 
-# Wavelength
+## Layer 
+
+Layering model and the associated management services are all mapped over Ethernet (directly or via IP). 
+
+- GPON support the encapsulation of other protocols besides Ethernet, such as ATM[^cisco],[^huawei],[^fs].
+- XG(S)-PON remove the support of ATM encapsulation[^telecom].
+- GPON use two layers of encapsulation are required. First, TDM and Ethernet frames are wrapped into GTC Encapsulation Method (GEM) frames, which have a GFP-like format (derived from Generic Frame Procedure ITU G.7401). Secondly, ATM and GEM frames are both encapsulated into GTC frames that are finally transported over the PON[^medium],[^fs].
+- The main purpose of the GEM frame is to provide a frame-oriented service, as an alternative to ATM, in order to efficiently accommodate Ethernet and TDM frames. With GEM, all traffic is mapped across the GPON network using a variant of SONET/SDH GFP. GEM supports a native transport of voice, video, and data without an added ATM or IP encapsulation layer. That's why GPON supports downstream rates as high as 2.5 Gbps and upstream rates from 155 Mbps to 2.5 Gbps. It is much faster than EPON[^medium]. 
+- However, EPON clearly offers a much simpler and more straightforward solution than GPON. The support of ATM and the double encapsulation of GPON serve no real benefit over a pure Ethernet transport scheme[^medium].
+- In EPON, Ethernet frames are carried in their native format on the PON, which greatly simplifies the layering model and the associated management. EPON employs a single layer that uses IP (Internet Protocol) to carry data, voice, and video[^medium],[^fs].
+
+{% include image.html file="epon_gpon.jpg"  alt="EPON vs GPON Layer" caption="EPON vs GPON Layer" %}
+
+## Comunication between ONT and OLT[^fs]
+
+- EPON utilizes IEEE 802.3ah OAM messages for provisioning, fault isolation and performance monitoring in conjunction with SNMP (Simple Network Management Protocol) sets and gets through IETF (Internet Engineering Task Force) and MIBs (Management Information Bases). Additional control messages are MPCP GATEs/REPORTs for bandwidth granting.
+- In GPON there are three different types of control messages: OMCI (ONT Management and Control Interface), OAM, and PLOAM (Physical Layer OAM). Their roles are shown in the table below.
+
+| Control channel | Format          | Used for                                                                                                           |
+| --------------- | --------------- | ------------------------------------------------------------------------------------------------------------------ |
+| OMCI            | Ethernet or ATM | Provisioning of ONT service defining layers above the GTC                                                          |
+| Embedded OAM    | Header overhead | BW granting, encryption key switching, and DBA                                                                     |
+| PLOAM           | ATM             | Auto discovery and all other PMD and GTC management info. PLOAM messages are directed to ONTs or FF for broadcasts |
+
+
+## Wavelength[^huaweimultiplexing]
 
 PON adopts Wavelength Division Multiplexing (WDM) technology, facilitating bi-direction communication over a single fiber.
 
@@ -84,22 +109,14 @@ To separate upstream/downstream signals of multiple users over a single fibre, P
 
 {% include image.html file="quick-start\optical-fiber-transmission-windows.svg"  alt="Fiber Optic Operation Wavelength and Window" caption="Fiber Optic Operation Wavelength and Window" %}
 
-In GPON and 1/1-EPON:
-- Upstream 1310 nm (1260 nm-1360 nm)
-- Downstream 1490 nm (1480 nm-1500 nm)
-- RF-Overlay 1550 nm (1550 nm-1560 nm)
 
-In 10/1-EPON:
-- Upstream 1310 nm (1260 nm-1360 nm)
-- Downstream 1577.5 nm (1575 nm-1580 nm)
-- RF-Overlay 1550 nm (1550 nm-1560 nm)
+|            | GPON                      | 1/1-EPON                  | XG(S)-GPON                  | 10/1-EPON                   | 10/10-EPON                  |
+| ---------- | ------------------------- | ------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| Upstream   | 1310 nm (1260 nm-1360 nm) | 1310 nm (1260 nm-1360 nm) | 1270 nm (1260 nm-1280 nm)   | 1310 nm (1260 nm-1360 nm)   | 1270 nm (1260 nm-1280 nm)   |
+| Downstream | 1490 nm (1480 nm-1500 nm) | 1490 nm (1480 nm-1500 nm) | 1577.5 nm (1575 nm-1580 nm) | 1577.5 nm (1575 nm-1580 nm) | 1577.5 nm (1575 nm-1580 nm) |
+| RF-Overlay | 1550 nm (1550 nm-1560 nm) | 1550 nm (1550 nm-1560 nm) | 1550 nm (1550 nm-1560 nm)   | 1550 nm (1550 nm-1560 nm)   | 1550 nm (1550 nm-1560 nm)   |
 
-In XG(S)-GPON and 10/10-EPON:
-- Upstream 1270 nm (1260 nm-1280 nm)
-- Downstream 1577.5 nm (1575 nm-1580 nm) 
-- RF-Overlay 1550 nm (1550 nm-1560 nm)
-
-# Power Budget 
+# Power Budget[^zyxel],[^cisco]
 
 - Splitter attenuation
 
@@ -117,84 +134,28 @@ In XG(S)-GPON and 10/10-EPON:
 
 - Connector attenuation: ≤ 0.3 dB (Per Connector)
 
-# G.984 Series
+# Classes for laser[^cisco]
 
-| G.984.1                 | G.984.2                             | G.984.3                        | G.984.4                            |
-| ----------------------- | ----------------------------------- | ------------------------------ | ---------------------------------- |
-| General Characteristics | Physical Media Dependant Layer      | Transmission Convergence Layer | ONT Management & Control Interface |
-| Architecture            | Bit Rate/coding                     | GTC Protocol                   | Reference model                    |
-| Distance/Reach          | Wavelength                          | GTC Framing                    | OMCI requirement                   |
-| Split Ratio             | Optical element specs and operation | ONU Activation                 | MIBs                               |
-| Protection              | Link budget (amendment)             | Security / FEC                 | OMCC                               |
-|                         |                                     | Alarms / Monitoring            |                                    |
-|                         |                                     | OMCI                           |                                    |
+|              | Class A | Class B | Class B+ | Class C |
+| ------------ | ------- | ------- | -------- | ------- |
+| Minimum loss | 5 dB    | 10 dB   | 13 dB    | 15 dB   |
+| Maximun loss | 20 dB   | 25 dB   | 28 dB    | 30 dB   |
 
-## General Concepts
+The requirements of a particular class may be more stringent for one system type than for another.
 
-- Bit Rate: 1.2Gbit/s Upstream; 2.4Gbit/s Downstream.
-- Physical Reach: Max physical distance between OLT and ONT.
-- Differential Fiber Distance: Distance between closest and farthest ONT from OLT (max = 20km.)
+<hr>
 
-### GPON Terminology
-- ONU Identifier (ONU-ID)
-    * 8 bit identifier (0~255)
-        * 0 .. 253 Assignable
-        * 254 Reserved
-        * 255 Broadcast/unassigned
-    * OLT assigns to an ONU during the ONU's activation using the PLOAM channel.
-    * ONU-ID is unique across the PON and remains valid until the ONU is powered off,
-    deactivated by the OLT or moves itself into an inactive state.
-- Allocation Identifier (Alloc-ID).
-    * Alloc-ID is a 12-bit identifier (0 .. 4095) that the OLT assigns to an ONU’s traffic-bearing entity.
-        * 0 .. 253 Default
-        * 254 Broadcast
-        * 255 Unassigned
-        * 256 .. 4095 Assignable
-    * A Traffic-bearing entity can be represented either by a T-CONT or by the upstream OMCC.
-        * A Transmission Container (T-CONT) is an ONU object representing a group of logical connections that appear as a single entity for the purpose of upstream bandwidth assignment on the PON.
-        * Bandwidth assignment and QoS control are performed in every T-CONT by fixed and dynamic methods.
-        * There are 5 types of T-CONT Traffic Descriptors:
-            *  Type 1: fixed bandwidth type.
-            *  Type 2 and Type 3: guaranteed bandwidth types.  
-            *  Type 4: best-effort type.
-            *  Type 5: mixed type, involving all bandwidth types and bearing all services
-    * Each ONU is assigned at least one Alloc-ID which is equal to that ONU's ONU-ID and may be assigned additional Alloc-IDs per the OLT's discretion.
-    * Default Alloc-ID is used to carry the upstream PLOAM and OMCC traffic and may carry user data traffic.
-- Transmission Containers (TCONT).
-- Dynamic Bandwidth Allocation (DBA).
-
-{% include image.html file="quick-start\gpon-terminology.png" alt="GPON Terminology" caption="GPON Terminology" %}
-
-{% include image.html file="quick-start\gtc-layer-frame.png" alt="GTC Layer framing" caption="GTC Layer framing" %}
-
-{% include image.html file="quick-start\gtc-layer-frame.png" alt="Downstream GTC frame" caption="Downstream GTC frame" %}
-
-{% include image.html file="quick-start\gpon-downstream.jpg" alt="GPON Downstream" caption="GPON Downstream" %}
-
-GPON use Broadcast downstream data transmission with AES (Advanced Encryption
-Standard) to ensure secure delivery to destination:
-- Traffic multiplexing is centralized.
-- GEM Port-ID is the key to identify the GEM frames that belong to different downstream logical connections.
-- Each ONU filters the downstream GEM frame based on their GEM Port-ID and processes only the GEM frames that belong to that ONU.
-- Shaded GEM ports on the figure indicate multicast.
-
-{% include image.html file="quick-start\downstream-multiplexing.png" alt="Downstream multiplexing (shaded GEM port indicates multicast)" caption="Downstream multiplexing (shaded GEM port indicates multicast)" %}
-
-- Downstream, the GEM frames are carried in the GTC payload and arrive at all the ONUs. The ONU framing sublayer extracts the frames, and the GEM TC adapter filters the frames based on their GEM Port-ID. Only frames with the appropriate Port-IDs are allowed through to the GEM client function.
-- Upstream, the GEM traffic is carried over one or more T-CONTs. The OLT receives the transmission associated with the T-CONT and the frames are forwarded to the GEM TC adapter and then the GEM client.
-
-{% include image.html file="quick-start\uplane.png" alt="The U-plane protocol stack and identification by Port-ID" caption="The U-plane protocol stack and identification by Port-ID" %}
-
-{% include image.html file="quick-start\gpon-upstream.jpg" alt="GPON Upstream" caption="GPON Upstream" %}
-- Use Time Division Multiple Access (TDMA) for upstream data transmission with AES
-encryption.
-- Dynamic Bandwidth Allocation (DBA).
-- Traffic multiplexing is distributed.
-- The OLT grants the upstream bandwidth allocation.
-- The ONU traffic-bearing entities are identified by their Allocations IDs.
-- The alloc-IDs are multiplexed in time as specified by the bandwidth-map (given by the OLT in the downstream frame).
-- Within the bandwidth allocation, the ONU uses the GEM Port-IF as key to identify upstream GEM frames
-
-{% include image.html file="quick-start\upstream-multiplexing.png" alt="Upstream multiplexing" caption="Upstream multiplexing" %}
-
+[^standardgpon]: *G.984.1: Gigabit-capable passive optical networks (GPON): General characteristics* https://www.itu.int/rec/T-REC-G.984.1
+[^standardxgpon]: *G.987.1: 10-Gigabit-capable passive optical networks (XG-PON): General requirements* https://www.itu.int/rec/T-REC-G.987.1
+[^standard1epon]: *IEEE 802.3ah-2004: IEEE Standard for Information technology-- Local and metropolitan area networks-- Part 3: CSMA/CD Access Method and Physical Layer Specifications Amendment: Media Access Control Parameters, Physical Layers, and Management Parameters for Subscriber Access Networks* https://standards.ieee.org/ieee/802.3ah/3179/
+[^standard10epon]: *IEEE 802.3av-2009: IEEE Standard for Information technology-- Local and metropolitan area networks-- Specific requirements-- Part 3: CSMA/CD Access Method and Physical Layer Specifications Amendment 1: Physical Layer Specifications and Management Parameters for 10 Gb/s Passive Optical Networks* https://standards.ieee.org/ieee/802.3av/4060/
+[^fs]: *Comparison of EPON and GPON* https://community.fs.com/blog/comparison-of-epon-and-gpon.html
+[^zyxel]: *GPON E2E Fundamentals*, Zyxel 2018
+[^huawei]: *GPON Fundamentals*, Huawei 2010  http://jm.telecoms.free.fr/QCM_Fibre/GPON-Fundamentals_Huawei.pdf
+[^broadbandforum]: *GPON in FTTx Broadband Deployments*, Broadband Forum 2010 https://www.broadband-forum.org/download/MR-246.pdf
+[^wolon]: *Fiber SFP Module Compatibility with APC, UPC, PC* https://www.wolonte.com/news.asp?id=599
+[^cisco]: *Understand GPON Technology* https://www.cisco.com/c/en/us/support/docs/switches/catalyst-pon-series/216230-understand-gpon-technology.html
+[^medium]: *HTFuture: EPON vs GPON Standard* https://medium.com/@ivyhtfuture/epon-vs-gpon-standard-b8ec20c55bb3
+[^telecom]: *Fifty Years of Fixed Optical Networks Evolution: A Survey of Architectural and Technological Developments in a Layered Approach* https://doi.org/10.3390/telecom3040035
+[^huaweimultiplexing]: *GPON Principle---Data Multiplexing* https://forum.huawei.com/enterprise/en/gpon-principle-data-multiplexing/thread/458243-100181
 

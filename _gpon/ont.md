@@ -1,8 +1,7 @@
 ---
-title: ONT
+title: GPON ONT Chipset
 has_children: false
 nav_order: 2
-description: Resources to access and modify ONTs
 layout: default
 ---
 

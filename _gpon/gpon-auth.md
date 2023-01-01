@@ -1,13 +1,12 @@
 ---
-title: GPON Auth
+title: GPON Auth (ONU Online Status)
 has_children: false
 nav_order: 3
-description: ONU Online Status
 layout: default
 ---
 
 
-# GPON Status: Ox
+# GPON Status: `Ox`[^huawei],[^standardgpon]
 The process for an ONU to go online unconfigured involves five states:
 
 - **`O1` Initial:** the OLT sends a message to the ONU to start the ONU, and the ONU enters the standby state;
@@ -36,12 +35,16 @@ graph TD
     O5 & O4 ---->|Deactive ONU-ID Request| O1
 ```
 
-# Fake O5 Status
+# Fake O5 Status[^anime4000]
 
 There is a known issue with Alcatel/Nokia OLTs giving fake `O5` ONU Status, OLTs will hold OMCI Provisioning until correct OMCI Information is received.
 
 It happens when the OLT detects that the ONT is `drunk`, so it tries to update the firmware before opening the GEM link. If this happens, the user has to try changing the software version or other data.
 
-- [The Process for an ONU to go Online](https://forum.huawei.com/enterprise/en/the-process-for-an-onu-to-go-online-gpon-technical-posts-12/thread/462895-100181)
-- [What’s the Authentication of GPON](http://zhangjorna.blogspot.com/2016/05/whats-authentication-of-gpon.html)
-- [`O5` No Internet](https://github.com/Anime4000/RTL960x/blob/main/Docs/fakeO5.md)
+This is most likely to reduce logs from misconfigured ONTs and to be able to send updates automatically to ONTs.
+
+<hr>
+
+[^huawei]: *The Process for an ONU to go Online* https://forum.huawei.com/enterprise/en/the-process-for-an-onu-to-go-online-gpon-technical-posts-12/thread/462895-100181
+[^standardgpon]: *G.984.3: Gigabit-capable passive optical networks (GPON): Transmission convergence layer specification* https://www.itu.int/rec/T-REC-G.984.3
+[^anime4000]: *`O5` No Internet* https://github.com/Anime4000/RTL960x/blob/main/Docs/fakeO5.md

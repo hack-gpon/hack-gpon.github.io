@@ -1,5 +1,5 @@
 ---
-title: PON Vendor ID
+title: GPON Vendor ID
 has_children: false
 nav_order: 4
 layout: default
@@ -15,6 +15,7 @@ Here is a list of the most popular Vendor IDs:
 | ID     | Vendor Name          |
 | ------ | -------------------- |
 | `ALCL` | Nokia/Alcatel-Lucent |
+| `CIGG` | Cig                  |
 | `DLNK` | Dlink                |
 | `ELTX` | Eltex                |
 | `FHTT` | Fiber Home           |
