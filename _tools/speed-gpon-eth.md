@@ -8,9 +8,9 @@ layout: default
 
 
 <h1>Ethernet calculator</h1>
-<form id="eth-speed-mtu">
+<form id="eth-speed-mtu" novalidate>
     <div class="form-floating mb-3">
-        <input type="number" class="form-control" placeholder="MTU L2" name="mtu" id="mtu" value="1500" min="1000" max="10000">
+        <input type="number" class="form-control" placeholder="MTU L2" name="mtu" id="mtu" value="1500" min="1000" max="10000" required>
         <label for="mtu">MTU L2 (no overhead for PPPoE/MAP, only Ethernet PPPoE)</label>
     </div>
     <div class="form-floating mb-3">
@@ -25,20 +25,20 @@ layout: default
             </div>
         </div>
     </div>
-    <select class="form-select mb-3"  placeholder="IPv4 L2 protocol" name="ipv4protocol" id="ipv4protocol">
-        <option  disabled selected>Select a Protocol</option>
+    <select class="form-select mb-3"  placeholder="IPv4 L2 protocol" name="ipv4protocol" id="ipv4protocol" required>
+        <option value disabled selected>Select a Protocol</option>
         <option value="ipoe">IPoE</option>
         <option value="pppoe">PPPoE</option>
         <option value="map-t">MAP-T</option>
         <option value="map-e">MAP-E/4in6</option>
     </select>
-    <select class="form-select mb-3"  placeholder="IPv6 L2 protocol" name="ipv6protocol" id="ipv6protocol" disabled>
-        <option disabled selected>Select a Protocol</option>
+    <select class="form-select mb-3"  placeholder="IPv6 L2 protocol" name="ipv6protocol" id="ipv6protocol" disabled required>
+        <option value disabled selected>Select a Protocol</option>
         <option value="ipoe">IPoE</option>
         <option value="pppoe">PPPoE</option>
     </select>
-    <select class="form-select mb-3"  placeholder="Speed" name="speed">
-        <option  disabled selected>Select a link speed</option>
+    <select class="form-select mb-3"  placeholder="Speed" name="speed" required>
+        <option value disabled selected>Select a link speed</option>
         <option value="10">10 Mbps</option>
         <option value="100">100 Mbps</option>
         <option value="200">200 Mbps</option>
@@ -62,7 +62,7 @@ layout: default
 
 </form>
 <h1>Gpon calculator</h1>
-<form id="gpon-speed-mtu">
+<form id="gpon-speed-mtu" novalidate>
     <div class="form-floating mb-3">
         <input step="1" type="number" class="form-control" placeholder="ONT number" name="gpon-ont" id="gpon-ont" value="10" min="1" max="128" required>
         <label for="gpon-ont">ONT number</label>
@@ -82,14 +82,14 @@ layout: default
         </div>
     </div>
     <select class="form-select mb-3"  placeholder="IPv4 L2 protocol" name="gpon-ipv4protocol" id="gpon-ipv4protocol" required>
-        <option  disabled selected>Select a Protocol</option>
+        <option value disabled selected>Select a Protocol</option>
         <option value="ipoe">IPoE</option>
         <option value="pppoe">PPPoE</option>
         <option value="map-t">MAP-T</option>
         <option value="map-e">MAP-E/4in6</option>
     </select>
     <select class="form-select mb-3"  placeholder="IPv6 L2 protocol" name="gpon-ipv6protocol" id="gpon-ipv6protocol" disabled required>
-        <option disabled selected>Select a Protocol</option>
+        <option value disabled selected>Select a Protocol</option>
         <option value="ipoe">IPoE</option>
         <option value="pppoe">PPPoE</option>
     </select>
@@ -121,43 +121,47 @@ layout: default
         });
     });
     form.addEventListener('submit',(event) => {
+        if (!form.checkValidity()) {
+            event.preventDefault();
+        } else {
+            event.preventDefault();
 
-        var formdata = new FormData(form);
-        event.preventDefault();
-        var overheadipv4 = {
-            "ipoe" : 20,
-            "pppoe" : 28,
-            "map-t" : 40,
-            "map-e" : 60,
-        };
-        var overheadipv6 = {
-            "ipoe" : 40,
-            "pppoe" : 48,
-        };
-        var overheadtcp = 20;
-        var overheadeth = 14;
-        var overheadfcs = 4;
-        var overheadgap = {
-            '10' : 5.875,
-            '100' : 12,
-            '200' : 8,
-            '500' : 8,
-            '1000' : 8,
-            '2500' : 5,
-            '5000' : 5,
-            '10000' : 5,
-        };
-        var preamble = 8;
-        var cip = formdata.get('ip');
-        var coverheadip = formdata.get('ip') === '4' ? overheadipv4[formdata.get('ipv4protocol')] : overheadipv6[formdata.get('ipv6protocol')];
-        var mtu = formdata.get('mtu');
-        var mss = mtu - coverheadip;
-        var overhead = overheadtcp + overheadeth + overheadfcs + overheadgap[formdata.get('speed')] + preamble + coverheadip;
-        document.getElementById('overhead').value = overhead/mss  * 100;
-        var th =  mss /(overhead + mss);
-        
-        document.getElementById('maxSpeed').value = th * formdata.get('speed');
-
+            var formdata = new FormData(form);
+            var overheadipv4 = {
+                "ipoe" : 20,
+                "pppoe" : 28,
+                "map-t" : 40,
+                "map-e" : 60,
+            };
+            var overheadipv6 = {
+                "ipoe" : 40,
+                "pppoe" : 48,
+            };
+            var overheadtcp = 20;
+            var overheadeth = 14;
+            var overheadfcs = 4;
+            var overheadgap = {
+                '10' : 5.875,
+                '100' : 12,
+                '200' : 8,
+                '500' : 8,
+                '1000' : 8,
+                '2500' : 5,
+                '5000' : 5,
+                '10000' : 5,
+            };
+            var preamble = 8;
+            var cip = formdata.get('ip');
+            var coverheadip = formdata.get('ip') === '4' ? overheadipv4[formdata.get('ipv4protocol')] : overheadipv6[formdata.get('ipv6protocol')];
+            var mtu = formdata.get('mtu');
+            var mss = mtu - coverheadip;
+            var overhead = overheadtcp + overheadeth + overheadfcs + overheadgap[formdata.get('speed')] + preamble + coverheadip;
+            document.getElementById('overhead').value = overhead/mss  * 100;
+            var th =  mss /(overhead + mss);
+            
+            document.getElementById('maxSpeed').value = th * formdata.get('speed');
+        }
+        [...form.elements].map(e => e.parentNode).forEach(e => e.classList.toggle('was-validated', true));
     });
     var formgpon = document.getElementById('gpon-speed-mtu');
     var radioIp = document.getElementsByName('gpon-ip');
@@ -169,37 +173,40 @@ layout: default
         });
     });
     formgpon.addEventListener('submit',(event) => {
+        if (!formgpon.checkValidity()) {
+            event.preventDefault();
+        } else {
+            event.preventDefault();
+            var formdata = new FormData(formgpon);
+            var gtc = 38880;
+            var overheadgem = 5;
+            var overheadpcbd = 30 + 8*formdata.get('gpon-ont');
+            var overheadipv4 = {
+                "ipoe" : 20,
+                "pppoe" : 28,
+                "map-t" : 40,
+                "map-e" : 60,
+            };
+            var overheadipv6 = {
+                "ipoe" : 40,
+                "pppoe" : 48,
+            };
+            var overheadtcp = 20;
+            var overheadeth = 14;
+            var overheadfcs = 4;
+            var cip = formdata.get('gpon-ip');
+            var coverheadip = formdata.get('gpon-ip') === '4' ? overheadipv4[formdata.get('gpon-ipv4protocol')] : overheadipv6[formdata.get('gpon-ipv6protocol')];
+            var overheadframeeth = overheadtcp + overheadeth + overheadfcs + coverheadip;
+            var overheadgtc = overheadgem + formdata.get('gpon-gem') * (overheadpcbd+overheadframeeth); 
+            var payload = gtc - overheadgtc;
+            document.getElementById('gpon-average-packet-size').value = payload/formdata.get('gpon-gem');
 
-        var formdata = new FormData(formgpon);
-        event.preventDefault();
-        var gtc = 38880;
-        var overheadgem = 5;
-        var overheadpcbd = 30 + 8*formdata.get('gpon-ont');
-        var overheadipv4 = {
-            "ipoe" : 20,
-            "pppoe" : 28,
-            "map-t" : 40,
-            "map-e" : 60,
-        };
-        var overheadipv6 = {
-            "ipoe" : 40,
-            "pppoe" : 48,
-        };
-        var overheadtcp = 20;
-        var overheadeth = 14;
-        var overheadfcs = 4;
-        var cip = formdata.get('gpon-ip');
-        var coverheadip = formdata.get('gpon-ip') === '4' ? overheadipv4[formdata.get('gpon-ipv4protocol')] : overheadipv6[formdata.get('gpon-ipv6protocol')];
-        var overheadframeeth = overheadtcp + overheadeth + overheadfcs + coverheadip;
-        var overheadgtc = overheadgem + formdata.get('gpon-gem') * (overheadpcbd+overheadframeeth); 
-        var payload = gtc - overheadgtc;
-        document.getElementById('gpon-average-packet-size').value = payload/formdata.get('gpon-gem');
 
-
-        document.getElementById('gpon-overhead').value = overheadgtc/payload  * 100;
-        var th =  payload /gtc;
-        
-        document.getElementById('gpon-maxSpeed').value = th * 2.48832;
-
+            document.getElementById('gpon-overhead').value = overheadgtc/payload  * 100;
+            var th =  payload /gtc;
+            
+            document.getElementById('gpon-maxSpeed').value = th * 2.48832;
+        }
+        [...formgpon.elements].map(e => e.parentNode).forEach(e => e.classList.toggle('was-validated', true));
     });
 </script>

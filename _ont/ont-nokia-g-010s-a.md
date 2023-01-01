@@ -12,6 +12,7 @@ parent: Nokia
 | Vendor      | Nokia                                    |
 | Model       | G-010S-A                                 |
 | Chipset     | Lantiq PEB98035                          |
+| Manufacter  | SourcePhotonics                          |
 | Flash       | 16 MB                                    |
 | RAM         | 64 MB                                    |
 | System      | OpenWRT                                  |
@@ -28,7 +29,7 @@ parent: Nokia
 
 ## Modifying firmware
 
-Turning a [Nokia G-010S-P](/ont-nokia-g-010s-p) into a [Nokia G-010S-A](/ont-nokia-g-010s-a) is possible by changing layout from mtd
+The Nokia G-010S-A can be flashed with the [Nokia G-010S-P](/ont-nokia-g-010s-p) firmware, provided the MTD layout has been changed beforehand to match the new one. For the full procedure, see the post on [lafibre.info](https://lafibre.info/remplacer-livebox/guide-de-connexion-fibre-directement-sur-un-routeur-voire-meme-en-2gbps/msg870551/#msg870551)
 
 ## List of software versions
 
@@ -39,14 +40,16 @@ Turning a [Nokia G-010S-P](/ont-nokia-g-010s-p) into a [Nokia G-010S-A](/ont-nok
 
 ## Serial
 
-| USB TTL(UART) Adapter |  SFP 20pins Molex connector |
-| --------------------- |  -------------------------- |
-| 3.3V                  |  pin #15 and #16            |
-| TX                    |  pin #3                     |
-| RX                    |  pin #6                     |
-| GND                   |  pin #10                    |
+| USB TTL(UART) Adapter | SFP 20pins Molex connector |
+| --------------------- | -------------------------- |
+| 3.3V                  | pin #15 and #16            |
+| TX                    | pin #3                     |
+| RX                    | pin #6                     |
+| GND                   | pin #10                    |
 
 Configuration: asc0=0 115200 8-N-1
+
+# Useful Commands
 
 ##  Disabling Dying Gasp
 ```sh

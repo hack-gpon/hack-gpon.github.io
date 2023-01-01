@@ -7,21 +7,22 @@ parent: ZTE
 
 # Hardware Specifications
 
-|             |                                                                   |
-| ----------- | ----------------------------------------------------------------- |
-| Vendor      | ZTE                                                               |
-| Model       | F601                                                              |
-| SoC/CPU     | v6: ZTE FA626TE 266 MHz, v7: ZTE ZX279125@A9,600MHZ               |
-| Chipset     |                                                                   |
-| Flash       | v6, v7: 16 MB                                                     |
-| RAM         | v6: 64 MB, v7: 32 MB                                              |
-| System      |                                                                   |
-| HSGMII      | No                                                                |
-| Optics      | SC/APC                                                            |
-| IP address  | 192.168.1.1                                                       |
-| Web Gui     | ✅ user `admin`, password `admin` or user `user`, password `user` |
-| SSH         |                                                                   |
-| Form Factor | ONT                                                               |
+|             |                                                                   |                                                                   |             |        |
+| ----------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------- | ------ |
+| Vendor      | ZTE                                                               | ZTE                                                               | ZTE         | ZTE    |
+| Model       | F601v6                                                            | F601v7                                                            | F601v8      | F601v9 |
+| CPU         | ZTE FA626TE                                                       | ZTE ZX279125@A9                                                   |             |        |
+| CPU Clock   | 266 MHz                                                           | 600 MHz                                                           |             |        |
+| Chipset     | ZTE FA626TE                                                       | ZTE ZX279125@A9                                                   |             |        |
+| Flash       | 16 MB                                                             | 16 MB                                                             |             |        |
+| RAM         | 64 MB                                                             | 32 MB                                                             |             |        |
+| System      |                                                                   |                                                                   |             |        |
+| HSGMII      | No                                                                | No                                                                | No          | No     |
+| Optics      | SC/APC or SC/UPC                                                  | SC/APC                                                            | SC/APC      | SC/APC |
+| IP address  | 192.168.1.1                                                       | 192.168.1.1                                                       | 192.168.1.1 |        |
+| Web Gui     | ✅ user `admin`, password `admin` or user `user`, password `user` | ✅ user `admin`, password `admin` or user `user`, password `user` |             |        |
+| SSH         |                                                                   |                                                                   |             |        |
+| Form Factor | ONT                                                               | ONT                                                               |             |        |
 
 {% include image.html file="f601_v6_1.jpg" alt="F601 v6" caption="F601 v6" %}
 {% include image.html file="f601_v7.jpg" alt="F601 v7" caption="A wall made out of broken F601 v7s" %}
@@ -81,3 +82,8 @@ parent: ZTE
 {% include image.html file="f601_v7_teardown_2.jpg"  alt="Teardown of the F601 v7" caption="Teardown of the F601 v7 <a href='https://forum.fibra.click/u/LATIITAY'>@LATIITAY</a>" %}
 {% include image.html file="f601_v7_teardown_3.jpg"  alt="Teardown of the F601 v7" caption="Teardown of the F601 v7 <a href='https://forum.fibra.click/u/LATIITAY'>@LATIITAY</a>" %}
 {% include image.html file="f601_v7_teardown_4.jpg"  alt="Teardown of the F601 v7" caption="Teardown of the F601 v7 <a href='https://forum.fibra.click/u/LATIITAY'>@LATIITAY</a>" %}
+
+# Miscellaneous Links
+
+- [Usource GPON ONU STICK](https://www.usourcetech.com/web/userfiles/download/GPONSTICKSFPCLASSB-2B_Rev01.pdf)
+- [GPON module Dfp-34g-2c2 sfp](https://forum.openwrt.org/t/gpon-module-dfp-34g-2c2-sfp/51641)

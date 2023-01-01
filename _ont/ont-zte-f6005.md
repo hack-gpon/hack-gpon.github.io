@@ -12,13 +12,15 @@ parent: ZTE
 | Vendor      | ZTE                               |
 | Model       | F6005                             |
 | Chipset     | Realtek RTL9601D                  |
+| Manufacter  | [CIG G-97CP](/ont-cig-g-97cp)     |
 | Flash       |                                   |
 | RAM         |                                   |
-| System      | Linux (ZTE custom SDK)            |
+| System      | Linux (Luna SDK 1.9.0)            |
 | HSGMII      | Yes                               |
 | Optics      | SC/APC                            |
 | IP address  | 192.168.1.1                       |
 | Web Gui     | ✅ user `admin`, password `admin` |
+| Telnet      |                                   |
 | SSH         |                                   |
 | Form Factor | ONT                               |
  
@@ -33,6 +35,14 @@ parent: ZTE
 
 ## List of partitions
 ## List of firmwares and files
+
+# Use
+
+## Enable password
+
+You can use this tool to generate the enable password:
+
+{% include cig_password.html username="ont" %}
 
 # Known Bugs
 

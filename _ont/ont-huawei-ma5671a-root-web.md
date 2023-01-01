@@ -27,7 +27,7 @@ Connect the SFP adapter to the TTL adapter according to the following diagram:
 Connect the TTL adapter to the computer, once done press the following button. A window will open that will execute the root.
 
 {: .text-center .fs-6 }
-<button id="start-button" class="btn btn-blue" data-toogle="modal" data-target="#root-modal" disabled>Start root!</button>
+<button id="start-button" class="btn btn-blue" data-jtd-toogle="modal" data-jtd-target="#root-modal" disabled>Start root!</button>
 
 <div id="browser-error" style="display:none">{% include alert.html content="This browser is not compatible with the web-root procedure. See the <a href='https://developer.mozilla.org/en-US/docs/Web/API/Web_Serial_API#browser_compatibility'>Browser compatibility</a>" alert="Note"  icon="svg-warning" color="red" %}</div>
 <noscript>
@@ -64,7 +64,7 @@ fw_setenv asc0 1
 fw_setenv preboot "gpio set 3;gpio input 100;gpio input 105;gpio input 106;gpio input 107;gpio input 108"
 ```
 
-<div class="modal" data-modal="root-modal" data-modal-backdrop="static" id="root-modal">
+<div class="modal" data-jtd-modal="root-modal" data-jtd-modal-backdrop="static" id="root-modal">
     <div class="modal-content">
         <div class="modal-header">
         <span class="close">&times;</span>
@@ -123,10 +123,10 @@ fw_setenv preboot "gpio set 3;gpio input 100;gpio input 105;gpio input 106;gpio 
     let rootModal = document.getElementById("root-modal");
     let rootStep = [document.getElementById('root-step-1'),document.getElementById('root-step-2')];
     let rootStepText = [document.getElementById('root-text-step-1'), document.getElementById('root-text-step-2')];
-    rootModal.addEventListener('modal-close', async function(event) {
+    rootModal.addEventListener('modal-jtd-close', async function(event) {
         acontroller.abort();
     });
-    rootModal.addEventListener('modal-open', async function(event) {
+    rootModal.addEventListener('modal-jtd-open', async function(event) {
         root({signal: cs});
     });
     function pause(message, i) {

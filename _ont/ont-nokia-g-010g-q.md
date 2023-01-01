@@ -7,24 +7,24 @@ parent: Nokia
 
 # Hardware Specifications
 
-|                       |                                                                                                                    |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Vendor                | Nokia                                                                                                              |
-| Model                 | G-010G-Q                                                                                                           |
-| Chipset               | Realtek RTL9601B                                                                                                   |
-| Flash                 | Winbond [W25Q128JV](https://www.winbond.com/resource-files/w25q128jv%20revf%2003272018%20plus.pdf) 3V 128M-BIT SPI |
-| RAM                   | DDR2 325MHz                                                                                                        |
-| System                | Linux (Luna SDK 1.9)                                                                                                   |
-| HSGMII                | No                                                                                                                 |
-| Optics                | SC/APC                                                                                                             |
-| IP address            | 192.168.100.1                                                                                                      |
-| Web Gui (HTTP)        | ✅ Port 80 (⚠️ *only available when the PON connection **IS NOT** estabilished*)                                 |
-| Web Gui (HTTPS)       | ✅ Port 443 **NO SSL SUPPORT**                                                                                     |
-| Web Gui Default Login | user `admin` password `1234`                                                                                       |
-| SSH                   |                                                                                                                    |
-| Form Factor           | ONT                                                                                                                |
-
-## Hardware revisions
+|                       |                                                                                                                   |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Vendor                | Nokia                                                                                                             |
+| Model                 | G-010G-Q                                                                                                          |
+| Chipset               | Realtek RTL9601B                                                                                                  |
+| Manufacter            | CIG G-97C                                                                                                         |
+| Flash                 | 16 MB (Winbond [W25Q128JV](https://www.winbond.com/resource-files/w25q128jv%20revf%2003272018%20plus.pdf) 3V SPI) |
+| RAM                   | DDR2 325MHz                                                                                                       |
+| System                | Linux (Luna SDK 1.9.0)                                                                                            |
+| HSGMII                | No                                                                                                                |
+| Optics                | SC/APC                                                                                                            |
+| IP address            | 192.168.100.1                                                                                                     |
+| Web Gui (HTTP)        | ✅ Port 80 (⚠️ *only available when the PON connection **IS NOT** estabilished*)                                |
+| Web Gui (HTTPS)       | ✅ Port 443 **NO SSL SUPPORT**                                                                                    |
+| Web Gui Default Login | user `admin` password `1234`                                                                                      |
+| Telnet                | ✅ user `ONTUSER`, but has access to GponSLID and not GponCLI                                                     |
+| SSH                   |                                                                                                                   |
+| Form Factor           | ONT                                                                                                               |
 
 {% include image.html file="g-010g-q.png"  alt="G-010G-Q " caption="Nokia G-010G-Q" %}
 
@@ -41,7 +41,6 @@ parent: Nokia
 | mtd3 | 00700000 | 00010000  | "ImageB" |
 
 This ONT seems to support dual boot (notice partitions "ImageA" and "ImageB"), however this has not been tested. 
-## List of firmwares and files
 
 # Serial
 
@@ -64,13 +63,10 @@ You'll see a shell-like prompt:
 ```
 ONT>
 ```
-Here you'll have to type `enable` and then `login`, unfortunately there is no default username and password
 
-Once you're logged in, a custom menu will be shown, and you'll be able to access the linux shell by first typing `system` and finally `shell`
+{% include_relative ont-nokia-use.md %}
 
-To exit the shell and reach the parent menu type `exit` or `x`, in each menu the `help` command will show how to use the shell
-
-# Known Bugs
+{% include_relative ont-nokia-userful-command.md %}
 
 # Miscellaneous Links
 - <a href="https://github.com/nanomad/nokia-ont-mib-parser">MIB file parser</a> for NOKIA's GPON ONTs (*helps you parsing the .mib file located in `/mnt/rwdir`*)

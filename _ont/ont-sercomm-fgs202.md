@@ -2,6 +2,7 @@
 title: Sercomm FGS202
 has_children: false
 layout: default
+parent: Sercomm
 ---
 
 # Hardware Specifications

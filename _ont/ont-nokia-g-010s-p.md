@@ -7,20 +7,21 @@ parent: Nokia
 
 # Hardware Specifications
 
-|             |                                                                  |
-| ----------- | ---------------------------------------------------------------- |
-| Vendor      | Nokia                                                            |
-| Model       | G-010S-P                                                         |
-| Chipset     | Lantiq PEB98035                                                  |
-| Flash       | 16 MB                                                            |
-| RAM         | 64 MB                                                            |
-| System      | OpenWRT                                                          |
-| HSGMII      | Yes                                                              |
-| Optics      | SC/APC                                                           |
-| IP address  |                                                                  |
-| Web Gui     | ✅ [after enabling](https://www.dslreports.com/forum/r32458588-) |
-| SSH         | ✅ user `ONTUSER`, password `SUGAR2A041`                         |
-| Form Factor | miniONT SFP                                                      |
+|             |                                          |
+| ----------- | ---------------------------------------- |
+| Vendor      | Nokia                                    |
+| Model       | G-010S-P                                 |
+| Chipset     | Lantiq PEB98035                          |
+| Manufacter  | SourcePhotonics                          |
+| Flash       | 16 MB                                    |
+| RAM         | 64 MB                                    |
+| System      | OpenWRT                                  |
+| HSGMII      | Yes                                      |
+| Optics      | SC/APC                                   |
+| IP address  |                                          |
+| Web Gui     | Can be enabled                           |
+| SSH         | ✅ user `ONTUSER`, password `SUGAR2A041` |
+| Form Factor | miniONT SFP                              |
 
 {% include image.html file="g-010s-p.jpg"  alt="G-010S-P" caption="G-010S-P" %}
 <br/>
@@ -37,7 +38,7 @@ parent: Nokia
 - {:.text-red-200 } DpOptics D23446    
 - {:.text-red-200 } Photonics SPS-34-24T-HP-TDFO
 
-Turning a [Nokia G-010S-P](/ont-nokia-g-010s-p) into a [Nokia G-010S-A](/ont-nokia-g-010s-a) is possible by changing layout from mtd
+The [Nokia G-010S-A](/ont-nokia-g-010s-a) can be flashed with the Nokia G-010S-P firmware, provided the MTD layout has been changed beforehand to match the new one. For the full procedure, see the post on [lafibre.info](https://lafibre.info/remplacer-livebox/guide-de-connexion-fibre-directement-sur-un-routeur-voire-meme-en-2gbps/msg870551/#msg870551)
 
 ## Serial
 
@@ -64,10 +65,16 @@ Configuration: asc0=0 115200 8-N-1
 
 ## List of firmwares and files
 
+# Useful Commands
+
 ##  Disabling Dying Gasp
 ```sh
 fw_setenv nDyingGaspEnable 0
 ```
+
+## Enabling the Web UI
+
+To activate the web-ui you can use the following guide on [dslreport](https://www.dslreports.com/forum/r32458588-).
 
 # Known Bugs
 # Miscellaneous Links
