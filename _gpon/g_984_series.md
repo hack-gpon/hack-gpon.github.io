@@ -39,7 +39,7 @@ The information on this page is taken from the GPON standard and information fro
 
 # GPON Terminology
 
-{% include image.html file="quick-start\gpon-terminology.png" alt="Overview of GPON Terminology" caption="Overview of GPON Terminology" %}
+{% include image.html file="quick-start/gpon-terminology.png" alt="Overview of GPON Terminology" caption="Overview of GPON Terminology" %}
 
 ## ONU Identifier (ONU-ID)[^zyxel]
 * 8 bit identifier (0~255)
@@ -81,7 +81,7 @@ A Transmission Container (T-CONT) is an ONU object representing a group of logic
 
 ## Dynamic Bandwidth Allocation (DBA)
 
-{% include image.html file="quick-start\pon_dba.jpg" alt="PON DBA Abstraction" caption="PON DBA Abstraction" %}
+{% include image.html file="quick-start/pon_dba.jpg" alt="PON DBA Abstraction" caption="PON DBA Abstraction" %}
 
 
 Dynamic Bandwidth Allocation (DBA) is a technique by which traffic bandwidth in a shared telecommunications medium can be allocated on demand and fairly between different users of that bandwidth. And it is performed on the upstream traffic[^zyxel].
@@ -94,7 +94,7 @@ DBA basic model supports[^zyxel]:
 - Non-assured bandwidth
 - Best-effort bandwidth (lowest priority)
 
-{% include image.html file="quick-start\bda-pratical.jpg" alt="Bandwidth Assignment practical example" caption="Bandwidth Assignment practical example" %}
+{% include image.html file="quick-start/bda-pratical.jpg" alt="Bandwidth Assignment practical example" caption="Bandwidth Assignment practical example" %}
 
 ## GPON transmission basics[^cisco]
 
@@ -120,15 +120,15 @@ ITU-T G.984 defines GEM as the only data transport scheme for GPON. Bandwidth al
 
 As shown in the image, the difference between a downstream and upstream frame. 
 
-{% include image.html file="quick-start\gtc-layer-framing.png" alt="Downstream and Upstream GTC frame" caption="Downstream and Upstream GTC frame" %}
+{% include image.html file="quick-start/gtc-layer-framing.png" alt="Downstream and Upstream GTC frame" caption="Downstream and Upstream GTC frame" %}
 
 ### Downstream[^zyxel],[^broadbandforum],[^cisco]
 
-{% include image.html file="quick-start\gpon-downstream.jpg" alt="GPON Downstream" caption="GPON Downstream" %}
+{% include image.html file="quick-start/gpon-downstream.jpg" alt="GPON Downstream" caption="GPON Downstream" %}
 
 A downstream GPON frame has a fixed length of 125 μs and is 38880 bytes long which corresponds to the downstream data rate of 2.48832 Gbps, comprised of two components: physical control block downstream (PCBd) and payload.
 
-{% include image.html file="quick-start\gtc-layer-frame.png" alt="GTC Layer framing" caption="GTC Layer framing" %}
+{% include image.html file="quick-start/gtc-layer-frame.png" alt="GTC Layer framing" caption="GTC Layer framing" %}
 
 The PCBd length range depends on the number of allocation structures per frame. 
 
@@ -142,7 +142,7 @@ PCBd consists of the GTC header and BWmap:
 - GTC Header - Used for frame delimitation, synchronization, and forward error correction (FEC).
 - BWmap - Field notifies very ONU of upstream bandwidth allocation. Specifies the start and end upstream time slots for the T-CONTs of each ONU. This ensures that all ONUs send data based on the time slots specified by the OLT to prevent data conflict.
 
-{% include image.html file="quick-start\downstream-multiplexing.png" alt="Downstream multiplexing (shaded GEM port indicates multicast)" caption="Downstream multiplexing (shaded GEM port indicates multicast)" %}
+{% include image.html file="quick-start/downstream-multiplexing.png" alt="Downstream multiplexing (shaded GEM port indicates multicast)" caption="Downstream multiplexing (shaded GEM port indicates multicast)" %}
 
 1. OLT sends Ethernet frames from Uplink ports to the GPON service processing module based on configured rules to the PON ports.
 2. GPON service processing module then encapsulates the Ethernet frames into GEM port data packets for downstream transmission. 
@@ -152,7 +152,7 @@ PCBd consists of the GTC header and BWmap:
 
 ### Upstream[^zyxel],[^broadbandforum],[^cisco]
 
-{% include image.html file="quick-start\gpon-upstream.jpg" alt="GPON Upstream" caption="GPON Upstream" %}
+{% include image.html file="quick-start/gpon-upstream.jpg" alt="GPON Upstream" caption="GPON Upstream" %}
 
 In the Upstream the GEM traffic is carried over one or more T-CONTs. The OLT receives the transmission associated with the T-CONT and the frames are forwarded to the GEM TC adapter and then the GEM client.
 
@@ -176,7 +176,7 @@ In the Upstream the GEM traffic is carried over one or more T-CONTs. The OLT rec
 - Burst Technology: Upstream packet flow is achieved via bursts, with each ONU/ONT responsible for data transmission within its allocated time slots. When an ONU/ONT is not within its time slot, the device disables transmission of its optical transceiver to prevent other ONU/ONT impact. 
 
 
-{% include image.html file="quick-start\upstream-multiplexing.png" alt="Upstream multiplexing" caption="Upstream multiplexing" %}
+{% include image.html file="quick-start/upstream-multiplexing.png" alt="Upstream multiplexing" caption="Upstream multiplexing" %}
 
 1. ONT/ONU send Ethernet frames to GEM ports based on configured rules that map service ports and GEM ports.
 2. GEM ports encapsulate the Ethernet frames into GEM PDUs and add these PDUs to T-CONT queues based on rules that map GEM ports and T-CONT queues.
@@ -191,7 +191,7 @@ PLOAM and OMCI. The embedded OAM and PLOAM channels manage the functions of the 
 and the GTC layers. The OMCI provides a uniform system for managing higher (service-defining)
 layers.
 
-{% include image.html file="quick-start\uplane.png" alt="The U-plane protocol stack and identification by Port-ID" caption="The U-plane protocol stack and identification by Port-ID" %}
+{% include image.html file="quick-start/uplane.png" alt="The U-plane protocol stack and identification by Port-ID" caption="The U-plane protocol stack and identification by Port-ID" %}
 
 ## Configuration Methods[^zyxel]
 
@@ -214,7 +214,7 @@ The GPON protocol has its own stack, just Ethernet or IP.
 
 The Ethernet frames are carried directly in the GEM frame payload. The preamble and start frame delimiter (SFD) bytes are discarded prior to GEM encapsulation. Each Ethernet frame shall be mapped to a single GEM frame (as shown in Figure) or multiple GEM frames, in which case the fragmentation rules apply.
 
-{% include image.html file="quick-start\gem_frame.jpg" alt="Frame structure for Ethernet mapping into GEM frame" caption="Frame structure for Ethernet mapping into GEM frame" %}
+{% include image.html file="quick-start/gem_frame.jpg" alt="Frame structure for Ethernet mapping into GEM frame" caption="Frame structure for Ethernet mapping into GEM frame" %}
 
 Resolves Ethernet frames and directly maps the data of Ethernet frames into the GEM payload. GEM frames automatically encapsulate header information.
 
@@ -262,7 +262,7 @@ When the ONU uploads the MIB, the ONU reports only the mandatory MEs and support
 
 The ONU should be used according to the device type and report either VEIP or PPTP during MIB upload. The SFU only uses and reports PPTP. VEIP should not be used. HGUs can only use and report VEIPs. PPTP should not be used. The OLT determines the ONU type based on the ONU Type attribute in ME:ONU Capability. Only one VEIP is allowed in each HGU. ONU will report VEIP or PPTP (Physical Path Termination Point) when MIB is uploaded according to the type of the device, while HGU can only use and report VEIP rather than PPTP. OLT will judge the type of ONU devices according to the attribution of ONU type in ONU capability.
 
-{% include image.html file="quick-start\veip.jpg" alt="Service Process of HGU ONU" caption="Service Process of HGU ONU" %}
+{% include image.html file="quick-start/veip.jpg" alt="Service Process of HGU ONU" caption="Service Process of HGU ONU" %}
 
 
 SFU ONU only supports the OMCI management domain. PPTP is what SFU uses and reports, while VEIP is not available. The processing mode of OMCI configured data flow is different from that of RG flow. For OMCI data flow, there is a one-to-one mapping between the GEM port on the WAN side and the UNI port on the LAN side. All data packets can pass through without MAC address learning or forwarding. Wireless interfaces are not allowed in OMCI.
