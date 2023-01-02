@@ -42,6 +42,7 @@ parent: Genexis
 - C-5.6.1-R
 - C-5.7.0-R
 - C-5.7.1-DEV3
+- C-5.7.1-EFT1
 
 ## List of partitions
 
@@ -136,7 +137,7 @@ ploampwd=1234567890
 
 {% include alert.html content="To change this data you need to upload a modified firmware. Do it at your own risk!" alert="Warning" icon="svg-warning" color="red" %}
 
-- Download the modified firmware from [here](https://mega.nz/file/yspFRTJT#JjeDS7NwLZxCzFklQGMJVIuPawo8utQRGbMGEXQv84M) md5:  `91946ad8aada2e469b7fff1d38ee7474`
+- Download the modified firmware from [here](https://mega.nz/file/f0QGwLSb#pyxCUQmlD-KgFU595mHYUsPPUFKJGD2Ug__mCyYIdWs) md5: `2a12b2bbc0971d76fa8201a046544a44`
 - Logon on the OS shell of the ONT and run this command: `iptables -F`
 - Open a web browser and go to `http://192.168.1.1/upgrade.asp` or `http://192.168.100.1/upgrade.asp`, enter the same credentials used for telnet session, select the modified firmware and click on `Upgrade`
 - Once the upgrade is done and you are able to reach the ONT via telnet, log back in and run these commands to change the firmware version on both banks:
@@ -176,7 +177,9 @@ ImageHash: 0x00000000000000000000000000000000
 ```
 
 # Known Bugs
-- Modified image (based on C-5.7.1-DEV3) has the Web UI enabled, but without an attached fiber the daemon will crash
+- Modified image (based on C-5.7.1-DEV3 and C-5.7.1-EFT1) has the Web UI enabled, but without an attached fiber the daemon will crash
 
 # Miscellaneous Links
 - [FiberTwist G2110C-2.5G](https://genexis.eu/content/uploads/2020/07/FiberTwist-G2110C-2.5G-Installation-Guide-v1.0-EN.pdf)
+- [Modded Firmware C-5.7.1-DEV3](https://mega.nz/file/yspFRTJT#JjeDS7NwLZxCzFklQGMJVIuPawo8utQRGbMGEXQv84M)
+- [Modded Firmware C-5.7.1-EFT1](https://mega.nz/file/f0QGwLSb#pyxCUQmlD-KgFU595mHYUsPPUFKJGD2Ug__mCyYIdWs)
