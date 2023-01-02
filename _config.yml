@@ -99,6 +99,9 @@ collections:
   ont:
     permalink: "/:path/"
     output: true
+  ont_xgs:
+    permalink: "/xgs/:path/"
+    output: true
   tools:
     permalink: "/:path/"
     output: true
@@ -112,13 +115,17 @@ collections:
 just_the_docs:
   collections:
     ont:
-      name: ONT
+      name: ONT GPON
+      nav_fold: true
+    ont_xgs:
+      name: ONT XGS-PON
+      nav_fold: true
     tools:
       name: Tools
-      nav_fold: false
+      nav_fold: true
     gpon:
       name: GPON
-      nav_fold: false
+      nav_fold: true
     sfp_cage:
       name: SFP cage
-      nav_fold: false
+      nav_fold: true
