@@ -33,7 +33,7 @@ parent: Hisense
 
 ## UART Console (115200, 8bit)
 
-It's near the SFP header (look at red-square on _Internals Pic_), TX and RX pads and groun need to be connected on USB2TTL adapters
+It's near the SFP header (look at the red-square on _Internals Pic_). TX, RX and ground pads need to be connected to a USB2TTL adapter supporting a logic level of 3.3V
 
 ## List of software versions
 - 22.05.26.1 - 20220527052622 (from /etc/hi_version - /etc/version)
@@ -66,12 +66,12 @@ To access Cortina Shell (needed to check OMCI stuff and XGSPON status) you can u
 ```sh
 # app-cli
 ```
-This console can be also reached opening a connection to `192.168.0.1:2233`
+This console can also be reached by opening a telnet connection to `192.168.0.1:2233`
 
 
 ## Check Activation Status (from app-cli and telnet\ssh session)
 
-Open two sessions, one to `192.168.0.1` and one to `192.168.0.1:2233`
+Open two telnet sessions, one to `192.168.0.1` and one to `192.168.0.1:2233`
 
 Before running any commands on the second connection, on the first one tail the `/var/log/messages` file (needed to see the output of the next steps)
 
@@ -306,7 +306,7 @@ Reboot ONT to apply the change
 # vi /config/scfg.txt
 ```
 
-Append line below to the file and save it to change EQID
+Append the line below to the file and save it to change EQID
 
 ```
 CHAR-ARRAY      CFG_ID_GPON_EQID = {0x46,0x49,0x42,0x45, 0x52,0x20,0x42,0x6f, 0x78,0x00,0x00,0x00, 0x00,0x00,0x00,0x00, 0x00,0x00,0x00,0x00}; ##GPON ME ONU2G equiment id value, default is saturn
@@ -335,7 +335,7 @@ Reboot ONT to apply the change
 # vi /config/scfg.txt
 ```
 
-Append line below to the file and save it to change Serial Number
+Append lines below to the file and save it to change Serial Number
 
 ```
 STRING          CFG_ID_PON_OLT_TYPE                             = ALCL; ##GPON OLT Vendor name, support ZTE,ADTRAN,ALCL,CALIX,SUMITOMO,CORTINA,HUAWEI
@@ -345,14 +345,14 @@ Reboot ONT to apply the change
 
 ## Changing OMCC Version
 
-{% include alert.html content="In Italy, if you are under Huawei OLT it's mandatory to use 0xA3, while on Alcatel 0xB4, otherwise you will get O5 status but no MIBs - Note that this can be quirk of TIM Italy" alert="Warning" icon="svg-warning" color="red" %}
+{% include alert.html content="In Italy, if you are under some Huawei OLT it's mandatory to use 0xA3, while on Alcatel 0xB4, otherwise you will get O5 status but no MIBs - Note that this can be quirk of TIM Italy" alert="Warning" icon="svg-warning" color="red" %}
 
 
 ```sh
 # vi /config/scfg.txt
 ```
 
-Append line below to the file and save it to change Serial Number
+Append the line below to the file and save it to change Serial Number
 
 ```
 CHAR            CFG_ID_OMCC_VERSION                             = 0xB2;
@@ -362,14 +362,14 @@ Reboot ONT to apply the change
 
 ## Changing LOID Username/Password
 
-{% include alert.html content="The value 0x0 is null, take note of your LoID and password from original ONT" color="red" %}
+{% include alert.html content="The value 0x0 is null, take note of your LoID and password from the original ONT" color="red" %}
 
 
 ```sh
 # vi /config/scfg.txt
 ```
 
-Append line below to the file and save it to change Serial Number
+Append lines below to the file and save it to change LoID and LoID password
 
 ```
 CHAR-ARRAY      CFG_ID_LOID                                                         = {0x30,0x30,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0};
