@@ -54,7 +54,7 @@ This ONT supports dual boot.
 
 # Useful Commands
 
-To access Cortina Shell (needed to check OMCI stuaff and XGSPON status) you can use the following command:
+To access Cortina Shell (needed to check OMCI stuff and XGSPON status) you can use the following command:
 
 ```sh
 # app-cli
@@ -66,7 +66,7 @@ This console can be also reached opening a connection to `192.168.0.1:2233`
 
 Open two sessions, one to `192.168.0.1` and one to `192.168.0.1:2233`
 
-Before run any command on second connection, on the first one tail the `/var/log/messages` file (it necessary later to see the current status)
+Before run any command on second connection, on the first one tail the `/var/log/messages` file (it's necessary later to see the current status)
 
 ```sh
 Cortina> enable
@@ -331,7 +331,6 @@ Append line below to the file and save it to change Serial Number
 
 ```
 STRING          CFG_ID_PON_OLT_TYPE                             = ALCL; ##GPON OLT Vendor name, support ZTE,ADTRAN,ALCL,CALIX,SUMITOMO,CORTINA,HUAWEI
-
 ```
 
 Reboot ONT to apply the change
