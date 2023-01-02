@@ -124,7 +124,7 @@ just_the_docs:
       name: Tools
       nav_fold: true
     gpon:
-      name: GPON
+      name: GPON Resources
       nav_fold: true
     sfp_cage:
       name: SFP cage
