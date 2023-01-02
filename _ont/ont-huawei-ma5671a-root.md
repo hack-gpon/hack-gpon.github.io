@@ -45,7 +45,7 @@ pip install pyserial
 1. Make the connections as shown to a TTL adapter except for GND (which should remain detached as it is used as a switch)
 
 {% include image.html file="ma5671a-root-1.jpg" alt="Example of how the sfp-ttl connection should look like" caption="Example of how the sfp-ttl connection should look like" %}
-{% include image.html file="new-root-procedure\board-molex-arduino.jpg" alt="Example of how the sfp-ttl connection should look like with a custom board" caption="Example of how the sfp-ttl connection should look like with a custom board" %}
+{% include image.html file="new-root-procedure/board-molex-arduino.jpg" alt="Example of how the sfp-ttl connection should look like with a custom board" caption="Example of how the sfp-ttl connection should look like with a custom board" %}
 {% include image.html file="ma5671a-root-2.jpg" alt="SFP Molex" caption="SFP Molex" %}
 
 {:style="counter-reset:none"}
@@ -112,7 +112,7 @@ except (KeyboardInterrupt, SystemExit):
 1. Reboot the stick
 1. Open Tera Term (or other serial terminal emulators), after it has loaded press `enter` to activate the console
 
-{% include image.html file="new-root-procedure\press-enter.jpg" alt="Press enter to activate the console" caption="Press enter to activate the console" %}
+{% include image.html file="new-root-procedure/press-enter.jpg" alt="Press enter to activate the console" caption="Press enter to activate the console" %}
 
 {:style="counter-reset:none"}
 1. With `sed` change the default shell from `/opt/lantiq/bin/minishell` to `/bin/ash` by editing the file `/etc/passwd`:

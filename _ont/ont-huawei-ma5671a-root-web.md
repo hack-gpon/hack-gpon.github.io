@@ -16,9 +16,9 @@ Connect the SFP adapter to the TTL adapter according to the following diagram:
 | RX                     | blue                   | TX (pin #7)                |
 | GND                    | black                  | GND (pin #14)              |
 
-{% include image.html file="web-root-procedure\ttl-sfp.jpg" alt="Example of how the molex SFP - TTL connection should look like" caption="Example of how the molex SFP - TTL connection should look like" %}
+{% include image.html file="web-root-procedure/ttl-sfp.jpg" alt="Example of how the molex SFP - TTL connection should look like" caption="Example of how the molex SFP - TTL connection should look like" %}
 
-{% include image.html file="web-root-procedure\sfp-sfp.jpg" alt="Example of how the SFP - molex SFP connection should look like" caption="Example of how the SFP - molex SFP connection should look like" %}
+{% include image.html file="web-root-procedure/sfp-sfp.jpg" alt="Example of how the SFP - molex SFP connection should look like" caption="Example of how the SFP - molex SFP connection should look like" %}
 
 {% include alert.html content="Try PIN 10 or other GND PINs if the connection doesn't work with PIN 14." alert="Note" icon="svg-warning" color="yellow" %}
 
