@@ -235,8 +235,8 @@ reboot
 /bin/omcicli set logfile 1 ffffffff
 ```
 1. The binary log will be placed inside: `/tmp/omcilog`
-2. You can convert it into a .pcap file using [omcilog2pcap](https://github.com/ADeltaX/omcilog2pcap)
-3. You can then open it with Wireshark by installing the OMCI plugin from [Wireshark](https://wiki.wireshark.org/Contrib.md)
+2. You can convert it into a .pcap file using [omcilog2pcap](https://github.com/hack-gpon/omcilog2pcap)
+3. You can then open it with Wireshark by installing the OMCI plugin from [GitHub](https://github.com/hack-gpon/omci-wireshark-dissector)
    
 If you want to log everything since the stick boots, you can create a custom rootfs. Place the last command inside `etc/runomci.sh` as the last line of the file
 
@@ -244,4 +244,4 @@ If you want to log everything since the stick boots, you can create a custom roo
 
 # Miscellaneous Links
 
-- [omcilog2pcap](https://github.com/ADeltaX/omcilog2pcap)
+- [omcilog2pcap](https://github.com/hack-gpon/omcilog2pcap)

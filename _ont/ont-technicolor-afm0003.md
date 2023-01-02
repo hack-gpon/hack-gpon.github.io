@@ -125,4 +125,5 @@ sw_version1=V1_7_8_210412
 
 # Miscellaneous Links
 
-- [omcilog2pcap](https://github.com/ADeltaX/omcilog2pcap)
+- [omcilog2pcap](https://github.com/hack-gpon/omcilog2pcap)
+
