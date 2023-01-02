@@ -1,5 +1,5 @@
 ---
-title: GPON Vendor ID
+title: ONU Vendor ID
 has_children: false
 nav_order: 4
 layout: default
