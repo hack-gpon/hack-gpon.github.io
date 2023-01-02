@@ -15,6 +15,8 @@ parent: Nokia
 | Manufacter  | SourcePhotonics                          |
 | Flash       | 16 MB                                    |
 | RAM         | 64 MB                                    |
+| CPU         | MIPS 34Kc interAptiv                     |
+| CPU Clock   | 400MHz                                   |
 | System      | OpenWRT                                  |
 | HSGMII      | Yes                                      |
 | Optics      | SC/UPC                                   |

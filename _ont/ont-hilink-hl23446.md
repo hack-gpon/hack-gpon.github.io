@@ -8,20 +8,22 @@ parent: Hilink
 
 # Hardware Specifications
 
-|             |                              |
-| ----------- | ---------------------------- |
-| Vendor      | Hilink                       |
-| Model       | HL23446                      |
-| Chipset     | Lantiq PEB98035              |
-| Flash       | 16 MB                        |
-| RAM         | 64 MB                        |
-| System      | OpenWRT                      |
-| HSGMII      | Yes                          |
-| Optics      | SC/APC                       |
-| IP address  |                              |
-| Web Gui     | ✅                           |
-| SSH         |                              |
-| Form Factor | miniONT SFP                  |
+|             |                      |
+| ----------- | -------------------- |
+| Vendor      | Hilink               |
+| Model       | HL23446              |
+| Chipset     | Lantiq PEB98035      |
+| Flash       | 16 MB                |
+| RAM         | 64 MB                |
+| CPU         | MIPS 34Kc interAptiv |
+| CPU Clock   | 400MHz               |
+| System      | OpenWRT              |
+| HSGMII      | Yes                  |
+| Optics      | SC/APC               |
+| IP address  |                      |
+| Web Gui     | ✅                   |
+| SSH         |                      |
+| Form Factor | miniONT SFP          |
 
 {% include image.html file="hl23446.png" alt="Hilink HL23446" caption="Hilink HL23446" %}
 

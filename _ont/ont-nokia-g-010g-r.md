@@ -16,7 +16,7 @@ parent: Nokia
 | Flash       | 16MB                                                                         |
 | RAM         | 32MB                                                                         |
 | System      | Linux (Luna SDK 1.9.0)                                                       |
-| HSGMII      | ✅                                                                           |
+| 2.5GBaseT   | No                                                                           |
 | Optics      | SC/APC                                                                       |
 | IP address  | 192.168.100.1  (after a factory reset the ONT uses 10.89.42.157/16)          |
 | Web Gui     | ✅ user `admin`, password `1234`                                             |
@@ -47,3 +47,4 @@ The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be acc
 # Miscellaneous Links
 - [MIB file parser](https://github.com/nanomad/nokia-ont-mib-parser)  for NOKIA's GPON ONTs (*helps you parsing the .mib file located in `/mnt/rwdir`*)
 - [ispreview.co.uk](https://www.ispreview.co.uk/index.php/2022/09/pictured-openreachs-future-2-5gbps-ont-for-fttp-broadband.html)
+- [MIB file parser](https://github.com/nanomad/nokia-ont-mib-parser) for NOKIA's GPON ONTs (*helps you parsing the .mib file located in `/mnt/rwdir`*)

@@ -7,20 +7,20 @@ parent: Genexis
 
 # Hardware Specifications
 
-|             |                                      |
-| ----------- | ------------------------------------ |
-| Vendor      | Genexis                              |
-| Model       | FiberTwist G2110C-2.5G               |
-| Chipset     | RTL9601D                             |
-| Flash       | 128MB                                |
-| RAM         | 32MB                                 |
-| System      | Linux 3.18 (Luna SDK 3.3)            |
-| HSGMII      | ✅                                   |
-| Optics      | SC/APC                               |
-| IP address  | 192.168.100.1/24 or 192.168.1.1/24   |
+|             |                                                              |
+| ----------- | ------------------------------------------------------------ |
+| Vendor      | Genexis                                                      |
+| Model       | FiberTwist G2110C-2.5G                                       |
+| Chipset     | RTL9601D                                                     |
+| Flash       | 128MB                                                        |
+| RAM         | 32MB                                                         |
+| System      | Linux 3.18 (Luna SDK 3.3)                                    |
+| 2.5GBaseT   | Yes                                                          |
+| Optics      | SC/APC                                                       |
+| IP address  | 192.168.100.1/24 or 192.168.1.1/24                           |
 | Web Gui     | Can be enabled, locked down by iptables rule and missing CSS |
-| Telnet      | ✅ user `company`, password `amyM77yY` |
-| Form Factor | ONT                                  |
+| Telnet      | ✅ user `company`, password `amyM77yY`                       |
+| Form Factor | ONT                                                          |
 
 # External/Internal Photo
 

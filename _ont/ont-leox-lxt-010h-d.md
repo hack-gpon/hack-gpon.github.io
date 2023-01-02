@@ -14,8 +14,8 @@ parent: Leox
 | Chipset     | RTL9601CI                            |
 | Flash       |                                      |
 | RAM         |                                      |
-| System      | Linux 3.18 (Luna SDK 3.3)             |
-| HSGMII      | ✅                                   |
+| System      | Linux 3.18 (Luna SDK 3.3)            |
+| 2.5GBaseT   | Yes                                  |
 | Optics      |                                      |
 | IP address  | 192.168.100.1/24                     |
 | Web Gui     |                                      |

@@ -15,7 +15,7 @@ parent: Zyxel
 | Flash       |                 |
 | RAM         |                 |
 | System      |                 |
-| HSGMII      | No              |
+| 2.5GBaseT   | No              |
 | Optics      | SC/APC          |
 | IP address  |                 |
 | Web Gui     | ✅              |

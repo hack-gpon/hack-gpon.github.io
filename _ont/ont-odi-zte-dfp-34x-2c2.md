@@ -18,7 +18,7 @@ parent: ODI
 | Flash       | 16 MB            |
 | RAM         | 32 MB            |
 | System      | System ZTE Linux |
-| HSGMII      |                  |
+| HSGMII      | No               |
 | Optics      |                  |
 | IP address  |                  |
 | Web Gui     | ✅               |
