@@ -13,7 +13,7 @@ The information on this page is taken from the GPON/EPON standard and informatio
 
 Numerous connectors, both standard and proprietary, are used in the field of telecommunication equipment, data lines, television and cable, and other industrial fields. 
 
-{% include image.html file="quick-start\optic-fiber-connectors.jpg"  alt="Some of the common connector" caption="Some of the common connector" %}
+{% include image.html file="quick-start/optic-fiber-connectors.jpg"  alt="Some of the common connector" caption="Some of the common connector" %}
 
 The main connector are:
 - Bionic Connector
@@ -36,7 +36,7 @@ The main connector are:
 
 APC and UPC are different polishing of fiber optic ferrules, and are types of fiber patch cable connectors. Which determine the quality of the fiber optic lightwave transmission, mostly performed in optical return loss and insertion loss[^wolon].
 
-{% include image.html file="quick-start\apc-upc.jpg" alt="Picture of APC and UPC" caption="Picture of APC and UPC" %}
+{% include image.html file="quick-start/apc-upc.jpg" alt="Picture of APC and UPC" caption="Picture of APC and UPC" %}
 
 Angled physical connectors are used in the ONT side to reduce back reflections. In case RF signal (1550nm) is introduced there will be two signals traveling in the downstream direction (1490nm + 1550nm), since RF systems are highly sensitive to reflections then the APC connectors reduce the return loss value[^zyxel].
 
@@ -108,7 +108,7 @@ To separate upstream/downstream signals of multiple users over a single fibre, P
 - In downstream direction, data packets are transmitted in a broadcast manner;
 - In upstream direction, data packets are transmitted in a TDMA manner.
 
-{% include image.html file="quick-start\optical-fiber-transmission-windows.svg"  alt="Fiber Optic Operation Wavelength and Window" caption="Fiber Optic Operation Wavelength and Window" %}
+{% include image.html file="quick-start/optical-fiber-transmission-windows.svg"  alt="Fiber Optic Operation Wavelength and Window" caption="Fiber Optic Operation Wavelength and Window" %}
 
 
 |            | GPON                      | 1/1-EPON                  | XG(S)-GPON                  | 10/1-EPON                   | 10/10-EPON                  |
