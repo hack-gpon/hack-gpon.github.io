@@ -26,7 +26,14 @@ parent: Hisense
 
 # External/Internal Photo
 
+{% include image.html file="ont-hisense-ltf7267-bha+_front.jpg" alt="Hisense LTF7267-BHA+ External" caption="Hisense LTF7267-BHA+ External" %}
+
+{% include image.html file="ont-hisense-ltf7267-bha+_inside.jpg" alt="Hisense LTF7267-BHA+ Internals" caption="Hisense LTF7267-BHA+ Internals" %}
+
+
 ## UART Console (115200, 8bit)
+
+It's near the SFP header (look at red-square on _Internals Pic_), TX and RX pads and groun need to be connected on USB2TTL adapters
 
 ## List of software versions
 - 22.05.26.1 - 20220527052622 (from /etc/hi_version - /etc/version)
