@@ -73,7 +73,7 @@ This console can be also reached opening a connection to `192.168.0.1:2233`
 
 Open two sessions, one to `192.168.0.1` and one to `192.168.0.1:2233`
 
-Before run any command on second connection, on the first one tail the `/var/log/messages` file (it's necessary later to see the current status)
+Before running any commands on the second connection, on the first one tail the `/var/log/messages` file (needed to see the output of the next steps)
 
 ```sh
 Cortina> enable
@@ -116,7 +116,7 @@ Cortina(config)# omci
 Cortina(config-omci)# show info
 ```
 
-You will see the following output on the first shell:
+You will see the following output:
 
 ```sh
 =======================================
@@ -157,6 +157,7 @@ psk        :0x0000000000000000
 =======================================
 XGe Port idx 0 map to Port 6
 ```
+Please note that some of the above fields are decoded incorrectly, such as `sn` and `versionId`
 
 ## Check OLT Vendor (from app-cli session)
 
@@ -167,7 +168,7 @@ Cortina(config)# omci
 Cortina(config-omci)# show me olt_g
 ```
 
-You will see the following output on the first shell:
+You will see the following output:
 
 ```sh
 me oltG has [1] instance
@@ -238,7 +239,7 @@ Cortina(config)# omci
 Cortina(config-omci)# show connection
 ```
 
-You will see the following output on the first shell:
+You will see the following output:
 
 ```sh
 GEM:65534  | (DS, TCONT:NULL)
@@ -265,7 +266,7 @@ Cortina(config)# omci
 Cortina(config-omci)# show stream
 ```
 
-You will see the following output on the first shell:
+You will see the following output:
 
 ```sh
 Link to PPTP eth: ------->instance 0x301
@@ -344,7 +345,7 @@ Reboot ONT to apply the change
 
 ## Changing OMCC Version
 
-{% include alert.html content="In Italy, if you are under Huawei OLT it's mandatory to use 0xA3, while on Alcatel 0xB4, otherwise you will get O5 status but no MIBs" alert="Warning" icon="svg-warning" color="red" %}
+{% include alert.html content="In Italy, if you are under Huawei OLT it's mandatory to use 0xA3, while on Alcatel 0xB4, otherwise you will get O5 status but no MIBs - Note that this can be quirk of TIM Italy" alert="Warning" icon="svg-warning" color="red" %}
 
 
 ```sh
@@ -361,7 +362,7 @@ Reboot ONT to apply the change
 
 ## Changing LOID Username/Password
 
-{% include alert.html content="The value 0x0 is null, take not of your LoID and password from original ONT" color="red" %}
+{% include alert.html content="The value 0x0 is null, take note of your LoID and password from original ONT" color="red" %}
 
 
 ```sh
@@ -387,7 +388,7 @@ Reboot ONT to apply the change
 Reboot ONT to apply the change
 
 # Known Bugs
-- `ALCL` OLT mode use some static configuration on MIBs, so if your OLT has strict configuration, it might not work
+- `ALCL` OLT mode uses some static configurations on MIBs, so if your OLT has strict configuration checks it might not work properly
 - During initial tests the only currently working mode of the stick is `PPTP EthUni`
 - Stick can be configured also emulate `VEIP` mode(adding it to the scfg.txt file), but current firmware doesn't link correctly the XGBE interface, so no traffic is passing between LAN and PON interfaces
 
