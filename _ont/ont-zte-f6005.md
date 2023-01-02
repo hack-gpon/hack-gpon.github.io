@@ -16,7 +16,7 @@ parent: ZTE
 | Flash       |                                   |
 | RAM         |                                   |
 | System      | Linux (Luna SDK 1.9.0)            |
-| HSGMII      | Yes                               |
+| 2.5GBaseT   | Yes                               |
 | Optics      | SC/APC                            |
 | IP address  | 192.168.1.1                       |
 | Web Gui     | ✅ user `admin`, password `admin` |

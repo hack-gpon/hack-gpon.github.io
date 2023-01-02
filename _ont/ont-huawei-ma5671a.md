@@ -14,9 +14,11 @@ parent: Huawei
 | Chipset     | Lantiq PEB98035                     |
 | Manufacter  | SourcePhotonics                     |
 | Flash       | 16 MB                               |
-| RAM         | 64 MB                               |
+| RAM         | 64 MB (Winbond W25Q128FV)           |
+| CPU         | MIPS 34Kc interAptiv                |
+| CPU Clock   | 400MHz                              |
 | System      | OpenWRT                             |
-| HSGMII      | Yes                                 |
+| HSGMII      | ✅                                  |
 | Optics      | SC/APC                              |
 | IP address  | 192.168.1.10                        |
 | Web Gui     | After root                          |
@@ -115,123 +117,123 @@ The Huawei MA5671A stores the content of the emulated EEPROM in U-Boot env varia
 
 ### EEPROM0 layout
 
-| address   | size     | name                              | default value                                                                               | description                                                         |
-| --------- | -------- | --------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-|           |          | **BASE ID FIELDS (SFF-8472)**     |                                                                                             |                                                                     |
-| 0         | 1        | Identifier                        | `0x03` (SFP)                                                                                | Type of transceiver                                                 |
-| 1         | 1        | Ext identifier                    | `0x04` (MOD_DEF 4)                                                                          | Additional information about the transceiver                        |
-| 2         | 1        | Connector                         | `0x01` (SC)                                                                                 | Type of media connector                                             |
-| 3-10      | 8        | Transceiver                       | `0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00`                                                   | Code for optical compatibility                                      |
-| 11        | 1        | Encoding                          | `0x03` (NRZ)                                                                                | High speed serial encoding algorithm                                |
-| 12        | 1        | Signaling Rate, Nominal           | `0x0C` (1.244Gbps)                                                                          | Nominal signaling rate                                              |
-| 13        | 1        | Rate Identifier                   | `0x00` (Not used)                                                                           | Type of rate select functionality                                   |
-| 14        | 1        | Length (SMF,km)                   | `0x14` (20 km)                                                                              | Link length supported for single-mode fiber, units of km            |
-| 15        | 1        | Length (SMF)                      | `0xC8` (200 x 100m)                                                                         | Link length supported for single-mode fiber, units of 100 m         |
-| 16        | 1        | Length (50 um, OM2)               | `0x00` (No support)                                                                         | Link length supported for 50 um OM2 fiber, units of 10 m            |
-| 17        | 1        | Length (62.5 um, OM1)             | `0x00` (No support)                                                                         | Link length supported for 62.5 um OM1 fiber, units of 10 m          |
-| 18        | 1        | Length copper cable               | `0x00` (No support)                                                                         | Link length supported for copper or direct attach cable, units of m |
-| 19        | 1        | Length (50 um, OM3)               | `0x00` (No support)                                                                         | Link length supported for 50 um OM3 fiber, units of 10 m            |
-| 20-35     | 16       | Vendor name                       | `0x48 0x55 0x41 0x57 0x45 0x49 0x20 0x20 0x20 0x20 0x20 0x20 0x20 0x20 0x20 0x20 ` (HUAWEI) | SFP vendor name (ASCII)                                             |
-| 36        | 1        | Transceiver                       | `0x00` (No support)                                                                         | Code for optical compatibility                                      |
-| 37-39     | 3        | Vendor OUI                        | `0x00 0x00 0x00` (No specified)                                                             | SFP vendor IEEE company ID                                          |
-| 40-55     | 16       | Vendor PN                         | `0x4D 0x41 0x35 0x36 0x37 0x31 0x41 0x20 0x20 0x20 0x20 0x20 0x20 0x20 0x20 0x20` (MA5671A) | Part number provided by SFP vendor (ASCII)                          |
-| 56-59     | 4        | Vendor rev                        | `0x30 0x30 0x30 0x30` (0000)                                                                | Revision level for part number provided by vendor (ASCII)           |
-| 60-61     | 2        | Wavelength                        | `0x05 0x1E` (1310nm TX)                                                                     | Laser wavelength                                                    |
-| 62        | 1        | Fibre Channel Speed 2             | `0x00` (No support)                                                                         | Transceiver's Fibre Channel speed capabilities                      |
-| 63        | 1        | CC_BASE                           |                                                                                             | Check code for Base ID Fields (addresses 0 to 62)                   |
-|           |          | **EXTENDED ID FIELDS (SFF-8472)** |                                                                                             |                                                                     |
-| 64-65     | 2        | Options                           | `0x00 0x1A` (TX DISABLE, TX FAULT, RX LOS)                                                  | Indicates which optional transceiver signals are implemented        |
-| 66        | 1        | Signaling Rate, max               | `0x00` (No specified)                                                                       | Upper signaling rate margin, units of %                             |
-| 67        | 1        | Signaling Rate, min               | `0x00` (No specified)                                                                       | Lower signaling rate margin, units of %                             |
-| 68-83     | 16       | Vendor SN                         | Unique in each SFP                                                                          | Serial number provided by vendor (ASCII)                            |
-| 84-91     | 8        | Date code                         | Unique in each SFP                                                                          | Vendor's manufacturing date code                                    |
-| 92        | 1        | Diagnostic Monitoring Type        | `0x68` (Digital diagnostic, Internally calibrated, Received average power type)             | Indicates which type of diagnostic monitoring is implemented        |
-| 93        | 1        | Enhanced Options                  | `0xE0` (Alarm/warning flags, soft TX_DISABLE control, soft TX_FAULT monitoring)             | Indicates which optional enhanced features are implemented          |
-| 94        | 1        | SFF-8472 Compliance               | `0x03` (Rev 10.2 of SFF-8472)                                                               | Indicates which revision of SFF-8472 the transceiver complies with  |
-| 95        | 1        | CC_EXT                            |                                                                                             | Check code for the Extended ID Fields (addresses 64 to 94)          |
-|           |          | **VENDOR SPECIFIC FIELDS**        |                                                                                             |                                                                     |
-| 96-127    | 32       | Vendor data                       | Not sure if it's unique or not                                                              | Vendor specifc data (ASCII)                                         |
-| 128-255   | 128      | Reserved                          | `0x00 0x00 0x00...`                                                                         | Reserved                                                            |
-|           |          | **EXTRA EEPROM FIELDS**           |                                                                                             | **Not exposed to I2C interface**                                    |
-| 256-639   | 384      | Reserved                          | `0x00 0x00 0x00...`                                                                         | Reserved                                                            |
+| address | size | name                              | default value                                                                               | description                                                         |
+| ------- | ---- | --------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+|         |      | **BASE ID FIELDS (SFF-8472)**     |                                                                                             |                                                                     |
+| 0       | 1    | Identifier                        | `0x03` (SFP)                                                                                | Type of transceiver                                                 |
+| 1       | 1    | Ext identifier                    | `0x04` (MOD_DEF 4)                                                                          | Additional information about the transceiver                        |
+| 2       | 1    | Connector                         | `0x01` (SC)                                                                                 | Type of media connector                                             |
+| 3-10    | 8    | Transceiver                       | `0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00`                                                   | Code for optical compatibility                                      |
+| 11      | 1    | Encoding                          | `0x03` (NRZ)                                                                                | High speed serial encoding algorithm                                |
+| 12      | 1    | Signaling Rate, Nominal           | `0x0C` (1.244Gbps)                                                                          | Nominal signaling rate                                              |
+| 13      | 1    | Rate Identifier                   | `0x00` (Not used)                                                                           | Type of rate select functionality                                   |
+| 14      | 1    | Length (SMF,km)                   | `0x14` (20 km)                                                                              | Link length supported for single-mode fiber, units of km            |
+| 15      | 1    | Length (SMF)                      | `0xC8` (200 x 100m)                                                                         | Link length supported for single-mode fiber, units of 100 m         |
+| 16      | 1    | Length (50 um, OM2)               | `0x00` (No support)                                                                         | Link length supported for 50 um OM2 fiber, units of 10 m            |
+| 17      | 1    | Length (62.5 um, OM1)             | `0x00` (No support)                                                                         | Link length supported for 62.5 um OM1 fiber, units of 10 m          |
+| 18      | 1    | Length copper cable               | `0x00` (No support)                                                                         | Link length supported for copper or direct attach cable, units of m |
+| 19      | 1    | Length (50 um, OM3)               | `0x00` (No support)                                                                         | Link length supported for 50 um OM3 fiber, units of 10 m            |
+| 20-35   | 16   | Vendor name                       | `0x48 0x55 0x41 0x57 0x45 0x49 0x20 0x20 0x20 0x20 0x20 0x20 0x20 0x20 0x20 0x20 ` (HUAWEI) | SFP vendor name (ASCII)                                             |
+| 36      | 1    | Transceiver                       | `0x00` (No support)                                                                         | Code for optical compatibility                                      |
+| 37-39   | 3    | Vendor OUI                        | `0x00 0x00 0x00` (No specified)                                                             | SFP vendor IEEE company ID                                          |
+| 40-55   | 16   | Vendor PN                         | `0x4D 0x41 0x35 0x36 0x37 0x31 0x41 0x20 0x20 0x20 0x20 0x20 0x20 0x20 0x20 0x20` (MA5671A) | Part number provided by SFP vendor (ASCII)                          |
+| 56-59   | 4    | Vendor rev                        | `0x30 0x30 0x30 0x30` (0000)                                                                | Revision level for part number provided by vendor (ASCII)           |
+| 60-61   | 2    | Wavelength                        | `0x05 0x1E` (1310nm TX)                                                                     | Laser wavelength                                                    |
+| 62      | 1    | Fibre Channel Speed 2             | `0x00` (No support)                                                                         | Transceiver's Fibre Channel speed capabilities                      |
+| 63      | 1    | CC_BASE                           |                                                                                             | Check code for Base ID Fields (addresses 0 to 62)                   |
+|         |      | **EXTENDED ID FIELDS (SFF-8472)** |                                                                                             |                                                                     |
+| 64-65   | 2    | Options                           | `0x00 0x1A` (TX DISABLE, TX FAULT, RX LOS)                                                  | Indicates which optional transceiver signals are implemented        |
+| 66      | 1    | Signaling Rate, max               | `0x00` (No specified)                                                                       | Upper signaling rate margin, units of %                             |
+| 67      | 1    | Signaling Rate, min               | `0x00` (No specified)                                                                       | Lower signaling rate margin, units of %                             |
+| 68-83   | 16   | Vendor SN                         | Unique in each SFP                                                                          | Serial number provided by vendor (ASCII)                            |
+| 84-91   | 8    | Date code                         | Unique in each SFP                                                                          | Vendor's manufacturing date code                                    |
+| 92      | 1    | Diagnostic Monitoring Type        | `0x68` (Digital diagnostic, Internally calibrated, Received average power type)             | Indicates which type of diagnostic monitoring is implemented        |
+| 93      | 1    | Enhanced Options                  | `0xE0` (Alarm/warning flags, soft TX_DISABLE control, soft TX_FAULT monitoring)             | Indicates which optional enhanced features are implemented          |
+| 94      | 1    | SFF-8472 Compliance               | `0x03` (Rev 10.2 of SFF-8472)                                                               | Indicates which revision of SFF-8472 the transceiver complies with  |
+| 95      | 1    | CC_EXT                            |                                                                                             | Check code for the Extended ID Fields (addresses 64 to 94)          |
+|         |      | **VENDOR SPECIFIC FIELDS**        |                                                                                             |                                                                     |
+| 96-127  | 32   | Vendor data                       | Not sure if it's unique or not                                                              | Vendor specifc data (ASCII)                                         |
+| 128-255 | 128  | Reserved                          | `0x00 0x00 0x00...`                                                                         | Reserved                                                            |
+|         |      | **EXTRA EEPROM FIELDS**           |                                                                                             | **Not exposed to I2C interface**                                    |
+| 256-639 | 384  | Reserved                          | `0x00 0x00 0x00...`                                                                         | Reserved                                                            |
 
 
 ### EEPROM1 layout
 
-| address   | size     | name                              | default value                                                                               | description                                                         |
-| --------- | -------- | --------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-|           |          | **DIAGNOSTIC AND CONTROL FIELDS** |                                                                                             |                                                                     |
-| 0-1       | 2        | Temp High Alarm                   | `0x5F 0x00` (95℃)                                                                          |                                                                     |
-| 2-3       | 2        | Temp Low Alarm                    | `0xCE 0x00` (-50℃)                                                                         |                                                                     |
-| 4-5       | 2        | Temp High Warning                 | `0x5A 0x00` (90℃)                                                                          |                                                                     |
-| 6-7       | 2        | Temp Low Warning                  | `0xD3 0x00` (-45℃)                                                                         |                                                                     |
-| 8-9       | 2        | Voltage High Alarm                | `0x8C 0xA0` (3.6V)                                                                          |                                                                     |
-| 10-11     | 2        | Voltage Low Alarm                 | `0x75 0x30` (3.0V)                                                                          |                                                                     |
-| 12-13     | 2        | Voltage High Warning              | `0x88 0xB8` (3.5V)                                                                          |                                                                     |
-| 14-15     | 2        | Voltage Low Warning               | `0x79 0x18` (3.1V)                                                                          |                                                                     |
-| 16-17     | 2        | Bias High Alarm                   | `0xAF 0xC8` (90mA)                                                                          |                                                                     |
-| 18-19     | 2        | Bias Low Alarm                    | `0x00 0x00` (0mA)                                                                           |                                                                     |
-| 20-21     | 2        | Bias High Warning                 | `0x88 0xB8` (70mA)                                                                          |                                                                     |
-| 22-23     | 2        | Bias Low Warning                  | `0x00 0x00` (0mA)                                                                           |                                                                     |
-| 24-25     | 2        | TX Power High Alarm               | `0x9B 0x82` (6dBm)                                                                          | Value expressed in watts subunits                                   |
-| 26-27     | 2        | TX Power Low Alarm                | `0x22 0xD0` (-1dBm)                                                                         | Value expressed in watts subunits                                   |
-| 28-29     | 2        | TX Power High Warning             | `0x7B 0x86` (5dBm)                                                                          | Value expressed in watts subunits                                   |
-| 30-31     | 2        | TX Power Low Warning              | `0x2B 0xD4` (0dBm)                                                                          | Value expressed in watts subunits                                   |
-| 32-33     | 2        | RX Power High Alarm               | `0x09 0xCF` (-6dBm)                                                                         | Value expressed in watts subunits                                   |
-| 34-35     | 2        | RX Power Low Alarm                | `0x00 0x0D` (-29dBm)                                                                        | Value expressed in watts subunits                                   |
-| 36-37     | 2        | RX Power High Warning             | `0x07 0xCB` (-7dBm)                                                                         | Value expressed in watts subunits                                   |
-| 38-39     | 2        | RX Power Low Warning              | `0x00 0x10` (-28dBm)                                                                        | Value expressed in watts subunits                                   |
-| 40-45     | 6        | MAC address                       | Unique in each SFP                                                                          | Contains the mac address of the SFP, it could also be empty         |
-| 46-55     | 10       | Reserved                          | `0x00 0x00 0x00...`                                                                         | Reserved                                                            |
-| 56-59     | 4        | RX_PWR(4) Calibration             | `0x00 0x00 0x00 0x00`                                                                       | 4th order RSSI calibration coefficient                              |
-| 60-63     | 4        | RX_PWR(3) Calibration             | `0x00 0x00 0x00 0x00`                                                                       | 3rd order RSSI calibration coefficient                              |
-| 64-67     | 4        | RX_PWR(2) Calibration             | `0x00 0x00 0x00 0x00`                                                                       | 2nd order RSSI calibration coefficient                              |
-| 68-71     | 4        | RX_PWR(1) Calibration             | `0x3F 0x80 0x00 0x00`                                                                       | 1st order RSSI calibration coefficient                              |
-| 72-75     | 4        | RX_PWR(0) Calibration             | `0x00 0x00 0x00 0x00`                                                                       | 0th order RSSI calibration coefficient                              |
-| 76-77     | 2        | TX_I(Slope) Calibration           | `0x01 0x00`                                                                                 | Slope for Bias calibration                                          |
-| 78-79     | 2        | TX_I(Offset) Calibration          | `0x00 0x00`                                                                                 | Offset for Bias calibration                                         |
-| 80-81     | 2        | TX_PWR(Slope) Calibration         | `0x01 0x00`                                                                                 | Slope for TX Power calibration                                      |
-| 82-83     | 2        | TX_PWR(Offset) Calibration        | `0x00 0x00`                                                                                 | Offset for TX Power calibration                                     |
-| 84-85     | 2        | T(Slope) Calibration              | `0x01 0x00`                                                                                 | Slope for Temperature calibration                                   |
-| 86-87     | 2        | T(Offset) Calibration             | `0x00 0x00`                                                                                 | Offset for Temperature calibration, in units of 256ths °C           |
-| 88-89     | 2        | V(Slope) Calibration              | `0x01 0x00`                                                                                 | Slope for VCC calibration                                           |
-| 90-91     | 2        | V(Offset) Calibration             | `0x00 0x00`                                                                                 | Offset for VCC calibration                                          |
-| 92-94     | 3        | Reserved                          | `0x00 0x00 0x00`                                                                            | Reserved                                                            |
-| 95        | 1        | CC_DMI                            |                                                                                             | Check code for Base Diagnostic Fields (addresses 0 to 94)           |
-| 96        | 1        | Temperature MSB                   |                                                                                             | Internally measured module temperature                              |
-| 97        | 1        | Temperature LSB                   |                                                                                             |                                                                     |
-| 98        | 1        | Vcc MSB                           |                                                                                             | Internally measured supply voltage in transceiver                   |
-| 99        | 1        | Vcc LSB                           |                                                                                             |                                                                     |
-| 100       | 1        | TX Bias MSB                       |                                                                                             | Internally measured TX Bias Current                                 |
-| 101       | 1        | TX Bias LSB                       |                                                                                             |                                                                     |
-| 102       | 1        | TX Power MSB                      |                                                                                             | Measured TX output power                                            |
-| 103       | 1        | TX Power LSB                      |                                                                                             |                                                                     |
-| 104       | 1        | RX Power MSB                      |                                                                                             | Measured RX input power                                             |
-| 105       | 1        | RX Power LSB                      |                                                                                             |                                                                     |
-| 106-109   | 4        | Optional Diagnostics              | `0xFF 0xFF 0xFF 0xFF` (No support)                                                          | Monitor Data for Optional Laser temperature and TEC current         |
-| 110       | 1        | Status/Control                    | `0x00` (No support)                                                                         | Optional Status and Control Bits                                    |
-| 111       | 1        | Reserved                          | `0x00`                                                                                      | Reserved                                                            |
-| 112-113   | 2        | Alarm Flags                       | `0x00 0x00` (No support)                                                                    | Diagnostic Alarm Flag Status Bits                                   |
-| 114       | 1        | Tx Input EQ control               | `0xFF` (No support)                                                                         | Tx Input equalization level control                                 |
-| 115       | 1        | Rx Out Emphasis control           | `0xFF` (No support)                                                                         | Rx Output emphasis level control                                    |
-| 116-117   | 2        | Warning Flags                     | `0x00 0x00` (No support)                                                                    | Diagnostic Warning Flag Status Bits                                 |
-| 118-119   | 2        | Ext Status/Control                | `0x00 0x00` (No support)                                                                    | Extended module control and status bytes                            |
-|           |          | **GENERAL USE FIELDS**            |                                                                                             |                                                                     |
-| 120-126   | 7        | Vendor Specific                   | `0x70 0x00 0x00 0x00 0x00 0x00 0x00`                                                        | Vendor specific memory addresses                                    |
-| 127       | 1        | Table Select                      | `0x00`                                                                                      | Optional Page Select                                                |
-|           |          | **USER WRITABLE EEPROM**          |                                                                                             |                                                                     |
-| 128-190   | 63       | Reserved                          | `0xFF 0xFF 0xFF...`                                                                         | Reserved                                                            |
-| 191-214   | 24       | GPON LOID or PLOAM                | Depends on the configuration of the SFP                                                     | GPON Logical ONU ID or PLOAM, depends on `GPON LOID/PLOAM switch`   |
-| 215-231   | 17       | GPON LPWD                         | Depends on the configuration of the SFP                                                     | GPON Logical Password                                               |
-| 232       | 1        | GPON LOID/PLOAM switch            | Depends on the configuration of the SFP                                                     | `0x01` to enable LOID, `0x02` to enable PLOAM                       |
-| 233-240   | 8        | GPON SN                           | Unique in each SFP                                                                          | GPON Serial Number (ME 256)                                         |
-| 241-247   | 7        | Reserved                          | `0xFF 0xFF 0xFF...`                                                                         | Reserved                                                            |
-| 248-255   | 8        | Vendor Control                    | `0xFF 0xFF 0xFF...` (Not used)                                                              | Vendor specific control functions                                   |
-|           |          | **EXTRA EEPROM FIELDS**           |                                                                                             | **Not exposed to I2C interface**                                    |
-| 256-511   | 256      | Unknown vendor specific           |                                                                                             | Probably not used in current SFPs                                   |
-| 512-531   | 20       | GPON Equipment ID                 |                                                                                             | GPON Equipment ID (ME 257), may not work in some firmwares          |
-| 532-535   | 4        | GPON Vendor ID                    |                                                                                             | GPON Vendor ID (ME 256 and more), may not work in some firmware     |
-| 536-639   | 104      | Reserved                          |                                                                                             | Reserved                                                            |
+| address | size | name                              | default value                           | description                                                       |
+| ------- | ---- | --------------------------------- | --------------------------------------- | ----------------------------------------------------------------- |
+|         |      | **DIAGNOSTIC AND CONTROL FIELDS** |                                         |                                                                   |
+| 0-1     | 2    | Temp High Alarm                   | `0x5F 0x00` (95℃)                       |                                                                   |
+| 2-3     | 2    | Temp Low Alarm                    | `0xCE 0x00` (-50℃)                      |                                                                   |
+| 4-5     | 2    | Temp High Warning                 | `0x5A 0x00` (90℃)                       |                                                                   |
+| 6-7     | 2    | Temp Low Warning                  | `0xD3 0x00` (-45℃)                      |                                                                   |
+| 8-9     | 2    | Voltage High Alarm                | `0x8C 0xA0` (3.6V)                      |                                                                   |
+| 10-11   | 2    | Voltage Low Alarm                 | `0x75 0x30` (3.0V)                      |                                                                   |
+| 12-13   | 2    | Voltage High Warning              | `0x88 0xB8` (3.5V)                      |                                                                   |
+| 14-15   | 2    | Voltage Low Warning               | `0x79 0x18` (3.1V)                      |                                                                   |
+| 16-17   | 2    | Bias High Alarm                   | `0xAF 0xC8` (90mA)                      |                                                                   |
+| 18-19   | 2    | Bias Low Alarm                    | `0x00 0x00` (0mA)                       |                                                                   |
+| 20-21   | 2    | Bias High Warning                 | `0x88 0xB8` (70mA)                      |                                                                   |
+| 22-23   | 2    | Bias Low Warning                  | `0x00 0x00` (0mA)                       |                                                                   |
+| 24-25   | 2    | TX Power High Alarm               | `0x9B 0x82` (6dBm)                      | Value expressed in watts subunits                                 |
+| 26-27   | 2    | TX Power Low Alarm                | `0x22 0xD0` (-1dBm)                     | Value expressed in watts subunits                                 |
+| 28-29   | 2    | TX Power High Warning             | `0x7B 0x86` (5dBm)                      | Value expressed in watts subunits                                 |
+| 30-31   | 2    | TX Power Low Warning              | `0x2B 0xD4` (0dBm)                      | Value expressed in watts subunits                                 |
+| 32-33   | 2    | RX Power High Alarm               | `0x09 0xCF` (-6dBm)                     | Value expressed in watts subunits                                 |
+| 34-35   | 2    | RX Power Low Alarm                | `0x00 0x0D` (-29dBm)                    | Value expressed in watts subunits                                 |
+| 36-37   | 2    | RX Power High Warning             | `0x07 0xCB` (-7dBm)                     | Value expressed in watts subunits                                 |
+| 38-39   | 2    | RX Power Low Warning              | `0x00 0x10` (-28dBm)                    | Value expressed in watts subunits                                 |
+| 40-45   | 6    | MAC address                       | Unique in each SFP                      | Contains the mac address of the SFP, it could also be empty       |
+| 46-55   | 10   | Reserved                          | `0x00 0x00 0x00...`                     | Reserved                                                          |
+| 56-59   | 4    | RX_PWR(4) Calibration             | `0x00 0x00 0x00 0x00`                   | 4th order RSSI calibration coefficient                            |
+| 60-63   | 4    | RX_PWR(3) Calibration             | `0x00 0x00 0x00 0x00`                   | 3rd order RSSI calibration coefficient                            |
+| 64-67   | 4    | RX_PWR(2) Calibration             | `0x00 0x00 0x00 0x00`                   | 2nd order RSSI calibration coefficient                            |
+| 68-71   | 4    | RX_PWR(1) Calibration             | `0x3F 0x80 0x00 0x00`                   | 1st order RSSI calibration coefficient                            |
+| 72-75   | 4    | RX_PWR(0) Calibration             | `0x00 0x00 0x00 0x00`                   | 0th order RSSI calibration coefficient                            |
+| 76-77   | 2    | TX_I(Slope) Calibration           | `0x01 0x00`                             | Slope for Bias calibration                                        |
+| 78-79   | 2    | TX_I(Offset) Calibration          | `0x00 0x00`                             | Offset for Bias calibration                                       |
+| 80-81   | 2    | TX_PWR(Slope) Calibration         | `0x01 0x00`                             | Slope for TX Power calibration                                    |
+| 82-83   | 2    | TX_PWR(Offset) Calibration        | `0x00 0x00`                             | Offset for TX Power calibration                                   |
+| 84-85   | 2    | T(Slope) Calibration              | `0x01 0x00`                             | Slope for Temperature calibration                                 |
+| 86-87   | 2    | T(Offset) Calibration             | `0x00 0x00`                             | Offset for Temperature calibration, in units of 256ths °C         |
+| 88-89   | 2    | V(Slope) Calibration              | `0x01 0x00`                             | Slope for VCC calibration                                         |
+| 90-91   | 2    | V(Offset) Calibration             | `0x00 0x00`                             | Offset for VCC calibration                                        |
+| 92-94   | 3    | Reserved                          | `0x00 0x00 0x00`                        | Reserved                                                          |
+| 95      | 1    | CC_DMI                            |                                         | Check code for Base Diagnostic Fields (addresses 0 to 94)         |
+| 96      | 1    | Temperature MSB                   |                                         | Internally measured module temperature                            |
+| 97      | 1    | Temperature LSB                   |                                         |                                                                   |
+| 98      | 1    | Vcc MSB                           |                                         | Internally measured supply voltage in transceiver                 |
+| 99      | 1    | Vcc LSB                           |                                         |                                                                   |
+| 100     | 1    | TX Bias MSB                       |                                         | Internally measured TX Bias Current                               |
+| 101     | 1    | TX Bias LSB                       |                                         |                                                                   |
+| 102     | 1    | TX Power MSB                      |                                         | Measured TX output power                                          |
+| 103     | 1    | TX Power LSB                      |                                         |                                                                   |
+| 104     | 1    | RX Power MSB                      |                                         | Measured RX input power                                           |
+| 105     | 1    | RX Power LSB                      |                                         |                                                                   |
+| 106-109 | 4    | Optional Diagnostics              | `0xFF 0xFF 0xFF 0xFF` (No support)      | Monitor Data for Optional Laser temperature and TEC current       |
+| 110     | 1    | Status/Control                    | `0x00` (No support)                     | Optional Status and Control Bits                                  |
+| 111     | 1    | Reserved                          | `0x00`                                  | Reserved                                                          |
+| 112-113 | 2    | Alarm Flags                       | `0x00 0x00` (No support)                | Diagnostic Alarm Flag Status Bits                                 |
+| 114     | 1    | Tx Input EQ control               | `0xFF` (No support)                     | Tx Input equalization level control                               |
+| 115     | 1    | Rx Out Emphasis control           | `0xFF` (No support)                     | Rx Output emphasis level control                                  |
+| 116-117 | 2    | Warning Flags                     | `0x00 0x00` (No support)                | Diagnostic Warning Flag Status Bits                               |
+| 118-119 | 2    | Ext Status/Control                | `0x00 0x00` (No support)                | Extended module control and status bytes                          |
+|         |      | **GENERAL USE FIELDS**            |                                         |                                                                   |
+| 120-126 | 7    | Vendor Specific                   | `0x70 0x00 0x00 0x00 0x00 0x00 0x00`    | Vendor specific memory addresses                                  |
+| 127     | 1    | Table Select                      | `0x00`                                  | Optional Page Select                                              |
+|         |      | **USER WRITABLE EEPROM**          |                                         |                                                                   |
+| 128-190 | 63   | Reserved                          | `0xFF 0xFF 0xFF...`                     | Reserved                                                          |
+| 191-214 | 24   | GPON LOID or PLOAM                | Depends on the configuration of the SFP | GPON Logical ONU ID or PLOAM, depends on `GPON LOID/PLOAM switch` |
+| 215-231 | 17   | GPON LPWD                         | Depends on the configuration of the SFP | GPON Logical Password                                             |
+| 232     | 1    | GPON LOID/PLOAM switch            | Depends on the configuration of the SFP | `0x01` to enable LOID, `0x02` to enable PLOAM                     |
+| 233-240 | 8    | GPON SN                           | Unique in each SFP                      | GPON Serial Number (ME 256)                                       |
+| 241-247 | 7    | Reserved                          | `0xFF 0xFF 0xFF...`                     | Reserved                                                          |
+| 248-255 | 8    | Vendor Control                    | `0xFF 0xFF 0xFF...` (Not used)          | Vendor specific control functions                                 |
+|         |      | **EXTRA EEPROM FIELDS**           |                                         | **Not exposed to I2C interface**                                  |
+| 256-511 | 256  | Unknown vendor specific           |                                         | Probably not used in current SFPs                                 |
+| 512-531 | 20   | GPON Equipment ID                 |                                         | GPON Equipment ID (ME 257), may not work in some firmwares        |
+| 532-535 | 4    | GPON Vendor ID                    |                                         | GPON Vendor ID (ME 256 and more), may not work in some firmware   |
+| 536-639 | 104  | Reserved                          |                                         | Reserved                                                          |
 
 {% include alert.html content="For more information, see the SFF-8472 Rev 10.2 specification." alert="Info" icon="svg-info" color="blue" %}
 
@@ -321,3 +323,5 @@ The following commands are used to clone image0 to image1 and then boot to it
 - [General setting of lantiq](https://forum.fibra.click/d/23881-ma5671a-e-vodafone-25-gbps/64)
 - [Manual and firmware for reflashing of HUAWEI MA5671A SFP module](https://github.com/nikbyte/huawei_ma5671a)
 - [Usage GPON module SFP in Spain](https://forum.mikrotik.com/viewtopic.php?t=116364&start=300)
+- [Tech Info Depot Wiki](http://en.techinfodepot.shoutwiki.com/wiki/Huawei_MA5671A)
+

@@ -39,5 +39,6 @@ alias: CIG G-97S
 
 - [Nokia G-010S-Q](https://github.com/Anime4000/RTL960x/issues/52)
 - [CUG G-97S DataSheet](https://www.cigtech.com/wp-content/uploads/2018/09/G-97S_DataSheet_V2.pdf)
+- [MIB file parser](https://github.com/nanomad/nokia-ont-mib-parser) for NOKIA's GPON ONTs (*helps you parsing the .mib file located in `/mnt/rwdir`*)
 
 

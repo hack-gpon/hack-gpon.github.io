@@ -12,11 +12,11 @@ parent: Huawei
 | Vendor      | Huawei                                                                                         |
 | Model       | HG8010H                                                                                        |
 | Chipset     | HiSilicon SD5116                                                                               |
-| Flash       | 128MiB SLC NAND (DS35Q1GA-IB)                                                                  |
+| Flash       | 128MiB (SLC NAND DS35Q1GA-IB)                                                                  |
 | RAM         | 256MiB                                                                                         |
 | CPU         | Hisilicon A9 dual core (ARMv7)                                                                 |
 | System      | Dopra Linux                                                                                    |
-| HSGMII      | No                                                                                             |
+| 2.5GBaseT   | No                                                                                             |
 | Optics      | SC/APC and SC/UPC                                                                              |
 | IP address  | 192.168.100.1                                                                                  |
 | Web Gui     | ✅ user `root`, password `admin` or `adminHW` and user `telecomadmin`, password `admintelecom` |

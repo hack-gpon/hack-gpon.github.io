@@ -16,7 +16,7 @@ parent: TP-Link
 | Flash       |                                       |
 | RAM         |                                       |
 | System      | TCLinux                               |
-| HSGMII      | NO                                    |
+| HSGMII      | No                                    |
 | Optics      | SC/APC                                |
 | IP address  | 192.168.1.1                           |
 | Web Gui     | ✅ username `admin`, password `admin` |

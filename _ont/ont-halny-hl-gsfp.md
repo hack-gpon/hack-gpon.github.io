@@ -7,20 +7,22 @@ parent: Halny
 
 # Hardware Specifications
 
-|             |                 |
-| ----------- | --------------- |
-| Vendor      | Halny           |
-| Model       | HL-GSFP         |
-| Chipset     | Lantiq PEB98035 |
-| Flash       | 8 MB            |
-| RAM         | 64 MB           |
-| System      | OpenWRT         |
-| HSGMII      | Yes             |
-| Optics      | SC/APC          |
-| IP address  |                 |
-| Web Gui     |                 |
-| SSH         |                 |
-| Form Factor | miniONT SFP     |
+|             |                      |
+| ----------- | -------------------- |
+| Vendor      | Halny                |
+| Model       | HL-GSFP              |
+| Chipset     | Lantiq PEB98035      |
+| Flash       | 8 MB                 |
+| RAM         | 64 MB                |
+| CPU         | MIPS 34Kc interAptiv |
+| CPU Clock   | 400MHz               |
+| System      | OpenWRT              |
+| HSGMII      | Yes                  |
+| Optics      | SC/APC               |
+| IP address  |                      |
+| Web Gui     |                      |
+| SSH         |                      |
+| Form Factor | miniONT SFP          |
 
 {% include image.html file="hl-gsfp-1.png"  alt="Halny HL-GSFP top" caption="Halny HL-GSFP top" %}
 {% include image.html file="hl-gsfp-2.png"  alt="Halny HL-GSFP bottom" caption="Halny HL-GSFP bottom" %}

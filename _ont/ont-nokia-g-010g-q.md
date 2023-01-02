@@ -3,6 +3,7 @@ title: Nokia G-010G-Q
 has_children: false
 layout: default
 parent: Nokia
+alias: CIG G-97CU
 ---
 
 # Hardware Specifications
@@ -16,7 +17,7 @@ parent: Nokia
 | Flash                 | 16 MB (Winbond [W25Q128JV](https://www.winbond.com/resource-files/w25q128jv%20revf%2003272018%20plus.pdf) 3V SPI) |
 | RAM                   | DDR2 325MHz                                                                                                       |
 | System                | Linux (Luna SDK 1.9.0)                                                                                            |
-| HSGMII                | No                                                                                                                |
+| 2.5GBaseT             | No                                                                                                                |
 | Optics                | SC/APC                                                                                                            |
 | IP address            | 192.168.100.1                                                                                                     |
 | Web Gui (HTTP)        | ✅ Port 80 (⚠️ *only available when the PON connection **IS NOT** estabilished*)                                |
@@ -69,6 +70,6 @@ ONT>
 {% include_relative ont-nokia-userful-command.md %}
 
 # Miscellaneous Links
-- <a href="https://github.com/nanomad/nokia-ont-mib-parser">MIB file parser</a> for NOKIA's GPON ONTs (*helps you parsing the .mib file located in `/mnt/rwdir`*)
+- [MIB file parser](https://github.com/nanomad/nokia-ont-mib-parser) for NOKIA's GPON ONTs (*helps you parsing the .mib file located in `/mnt/rwdir`*)
 
 

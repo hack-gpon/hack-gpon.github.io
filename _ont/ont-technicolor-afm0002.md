@@ -16,7 +16,7 @@ alias: Hisense LTE3415-SCA+
 | Flash       | 32 MB                                           |
 | RAM         |                                                 |
 | System      | Linux (Luna SDK)                                |
-| HSGMII      | NO                                              |
+| HSGMII      | No                                              |
 | Optics      |                                                 |
 | IP address  | 192.168.2.1 / 169.0.0.1                         |
 | Web Gui     | Can be enabled, user `admin`, password `system` |

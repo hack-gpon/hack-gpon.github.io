@@ -3,7 +3,7 @@ title: Nokia G-010G-P
 has_children: false
 layout: default
 parent: Nokia
-alias: CIG G-97C1
+alias: CIG G-97C1/CIG G-97CU
 ---
 
 # Hardware Specifications
@@ -17,7 +17,7 @@ alias: CIG G-97C1
 | Flash       |                                                                     |
 | RAM         |                                                                     |
 | System      | Linux (Luna SDK 1.9.0)                                              |
-| HSGMII      | No                                                                  |
+| 2.5GBaseT   | No                                                                  |
 | Optics      | SC/APC                                                              |
 | IP address  | 192.168.100.1  (after a factory reset the ONT uses 10.89.42.157/16) |
 | Web Gui     | ✅ user `admin`, password `1234`                                    |
@@ -49,6 +49,6 @@ To exit the shell and reach the parent menu type `exit` or `x`, in each menu the
 {% include_relative ont-nokia-userful-command.md %}
 
 # Miscellaneous Links
-- <a href="https://github.com/nanomad/nokia-ont-mib-parser">MIB file parser</a> for NOKIA's GPON ONTs (*helps you parsing the .mib file located in `/mnt/rwdir`*)
+- [MIB file parser](https://github.com/nanomad/nokia-ont-mib-parser) for NOKIA's GPON ONTs (*helps you parsing the .mib file located in `/mnt/rwdir`*)
 
 
