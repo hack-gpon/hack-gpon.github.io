@@ -236,7 +236,7 @@ At this point it will appear:
 
 {:style="counter-reset:none"}
 1. From the teratem menu do `FILE` → `TRANSFER` → `KERMIT` → `SEND` → `[mtd2.bin]`.
-It will start uploading the file at a speed of about 3-4 KBbs. Now you will have to wait more than half an hour for the upload to complete.
+It will start uploading the file at a speed of about 3-4 KBps. Now you will have to wait more than half an hour for the upload to complete.
 
 1. Once finished, the image loaded on the stick must also be saved to the corresponding system partition (the first of the 2) with the commands
 ```
