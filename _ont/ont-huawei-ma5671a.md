@@ -305,34 +305,23 @@ The following commands are used to flash a new rootfs to image1 and then boot to
 2. Open Tera Term (or any other programme capable of connecting to the serial terminal)
 3. Connect the SFP stick to the SFP molex, from the terminal you will have 5 seconds to lock the bootloader by doing a simple CTRL+C. Now upload the firmware image of the new rootfs partition to the stick with the command
 ```
-FALCON => loadb 0x80800000
+FALCON => loady 0x80800000
 ```
 At this point it will appear:
 
 {% include image.html file="ma5671a-root-13.jpg" alt="shell requiring `mtd2` upload" caption="shell requiring `mtd2` upload" %}
 
 {:style="counter-reset:none"}
-1. From the teratem menu do `FILE` → `TRANSFER` → `KERMIT` → `SEND` → `[mtd2.bin]`.
+1. From the teratem menu do `FILE` → `TRANSFER` → `YMODEM` → `SEND` → `[mtd2.bin]`.
 It will start uploading the file at a speed of about 3-4 KBps. Now you will have to wait more than half an hour for the upload to complete.
 
 1. Once finished, the image loaded on the stick must also be saved to the corresponding system partition (the first of the 2) with the commands
 ```
-FALCON => sf probe 0
-FALCON => sf erase C0000 740000
-FALCON => sf write 80800000 C0000 740000
-```
-
-1. check that the stick is configured to boot from partition 0 (yes I know mtd2 goes on 0 and mtd5 goes on 1, complain to Laniq) with the command
-```
-FALCON => printenv committed_image
-```
-1. If it is 0, fine, otherwise configure partition 0 with the commands, and check if are 0.
-```
 FALCON => setenv committed_image 0
+FALCON => setenv image0_is_valid 1
 FALCON => saveenv
-FALCON => printenv committed_image
+FALCON => sf probe 0 && sf erase C0000 740000 && sf write 80800000 C0000 740000 && reset
 ```
-
 ## Cloning of mtd1 (image 0) into mtd5 (image 1)
 
 {% include alert.html content="Image 0 can be flashed to image 1, while image 1 cannot be flashed to image 0 because it has larger rootfs_data" alert="Warning" icon="svg-warning" color="yellow" %}
