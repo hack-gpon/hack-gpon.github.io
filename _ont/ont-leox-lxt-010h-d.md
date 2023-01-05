@@ -11,14 +11,14 @@ parent: Leox
 | ----------- | ------------------------------------ |
 | Vendor      | Leox                                 |
 | Model       | LXT-010H-D                           |
-| Chipset     | RTL9601CI                            |
-| Flash       |                                      |
-| RAM         |                                      |
+| Chipset     | RTL9601D                             |
+| Flash       | SPI NOR 16MB                         |
+| RAM         | 32MB                                 |
 | System      | Linux 3.18 (Luna SDK 3.3)            |
 | 2.5GBaseT   | Yes                                  |
-| Optics      |                                      |
+| Optics      | Bosa on Board (BoB)                  |
 | IP address  | 192.168.100.1/24                     |
-| Web Gui     |                                      |
+| Web Gui     | yes                                  |
 | Telnet      | ✅ user `leox`, password `leolabs_7` |
 | Form Factor | ONT                                  |
 
@@ -38,7 +38,7 @@ GPON_SN=TMBB00000000
 
 ## Getting/Setting the ONT's PLOAM password
 
-{% include alert.html content="The PLOAM password is stored in ASCII format" alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="The PLOAM password is stored in ASCII format, however if you can use hex if string starts from 0x" alert="Info" icon="svg-info" color="blue" %}
 
 ```sh
 # /etc/scripts/flash get GPON_PLOAM_PASSWD
