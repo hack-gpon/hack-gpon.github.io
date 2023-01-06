@@ -299,7 +299,7 @@ The following commands are used to flash a new rootfs to image1 and then boot to
 
 ## Flashing a new rootfs via serial
 
-{% include alert.html content="Use this procedure only if you are unable to do the procedure from SSH" alert="Warning" icon="svg-danger" color="red" %}
+{% include alert.html content="Use this procedure only if you are unable to do the procedure from SSH" alert="Warning" icon="svg-warning" color="red" %}
 
 1. Connecting the molex-serial adapter and the serial to the computer as indicated in [Root Procedure](/ont-huawei-ma5671a-web-root)
 2. Open Tera Term (or any other programme capable of connecting to the serial terminal)
@@ -322,6 +322,7 @@ FALCON => setenv image0_is_valid 1
 FALCON => saveenv
 FALCON => sf probe 0 && sf erase C0000 740000 && sf write 80800000 C0000 740000 && reset
 ```
+
 ## Cloning of mtd1 (image 0) into mtd5 (image 1)
 
 {% include alert.html content="Image 0 can be flashed to image 1, while image 1 cannot be flashed to image 0 because it has larger rootfs_data" alert="Warning" icon="svg-warning" color="yellow" %}
