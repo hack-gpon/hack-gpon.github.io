@@ -41,7 +41,7 @@ async function waitFailbackShell(writer, reader, outputMsgCallback) {
                 writer.write('f\n');
             }, 10);
 
-            outputMsgCallback("Root in progress: Trigger characters received. Waiting for boot to end...",1);
+            outputMsgCallback("Root in progress: Trigger characters received. Waiting for boot to end...");
             await delay(3000);
             clearInterval(interval);
             break;
