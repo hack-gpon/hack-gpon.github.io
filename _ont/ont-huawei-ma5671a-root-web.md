@@ -41,7 +41,7 @@ After this is done, reboot the stick, after connecting it to the router via an e
 
 {% include alert.html content="If your subnet is `192.168.1.0/24` make sure you have no ip conflicts." alert="Note" icon="svg-warning" color="yellow" %}
 
-{% include alert.html content="On some SFP host devices you might not be able to connect to the stick if there's no optical signal, in that case you need to connect the fiber to make changes on the stick" alert="Note" icon="svg-warning" color="yellow" %}
+{% include alert.html content="On some SFP host devices you might not be able to connect to the stick if there's no optical signal (RX loss), in that case you need to connect the fiber to make changes on the stick" alert="Note" icon="svg-warning" color="yellow" %}
 
 Run the terminal and login to the stick with ssh
 
@@ -65,8 +65,8 @@ fw_setenv preboot "gpio set 3;gpio input 100;gpio input 105;gpio input 106;gpio 
 In case you need to re-enable it issue the following commands from the bootloader (FALCON)
 
 ```sh
-setenv asc0 0
-saveenv
+FALCON => setenv asc0 0
+FALCON => saveenv
 ```
 
 <div class="modal" data-jtd-modal="root-modal" data-jtd-modal-backdrop="static" id="root-modal">
