@@ -1,7 +1,3 @@
-function delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 async function waitUbootStop(writer, reader, outputMsgCallback) {
     const interval = setInterval(function() {
         writer.write(String.fromCharCode(3));
@@ -67,47 +63,69 @@ async function waitFailbackShell(writer, reader, outputMsgCallback) {
     }
 }
 
-async function lantiqRootUboot(writer, reader, outputMsgCallback) {
-    await delay(10000);
-    outputMsgCallback("Now you need to insert the Huawei MA5671A into the SFP adapter, if the procedure does not go ahead, check the connections and then remove and reconnect the Huawei MA5671A again",0);
+async function lantiqRootUboot(port, outputMsgCallback, outputErrorCallback, successCallback, baudRate = 115200) {
+    outputMsgCallback("Please disconnect the Huawei MA5671A from the SFP adapter if it is currently plugged in!");
 
-    while(true) {
-        await waitUbootStop(writer, reader, outputMsgCallback);
-        const ubootUnlocked = await checkUbootUnlocked(reader);
+    const { reader, writer, readableStreamClosed, writerStreamClosed } = await openPortLineBreak(port, baudRate, outputErrorCallback);
 
-        if (ubootUnlocked == true) {
-            break;
+    try {
+        await delay(10000);
+        outputMsgCallback("Now you need to insert the Huawei MA5671A into the SFP adapter, if the procedure does not go ahead, check the connections and then remove and reconnect the Huawei MA5671A again",0);
+
+        while(true) {
+            await waitUbootStop(writer, reader, outputMsgCallback);
+            const ubootUnlocked = await checkUbootUnlocked(reader);
+
+            if (ubootUnlocked == true) {
+                break;
+            }
+
+            outputMsgCallback("Root in progress: Set U-Boot bootdelay to 5...");
+            writer.write('setenv bootdelay 5\n');
+            await delay(1000);
+            outputMsgCallback("Root in progress: Enable ASC serial...");
+            writer.write('setenv asc0 0\n');
+            await delay(1000);
+            outputMsgCallback("Root in progress: Set GPIO to unlock serial...");
+            writer.write('setenv preboot "gpio set 3;gpio input 2;gpio input 105;gpio input 106;gpio input 107;gpio input 108"\n');
+            await delay(1000);
+            outputMsgCallback("Root in progress: Save changes...");
+            writer.write('saveenv\n');
+            await delay(1000);
+            outputMsgCallback("Root in progress: Rebooting...");
+            writer.write('reset\n');
+            await delay(1000);
         }
 
-        outputMsgCallback("Root in progress: Set U-Boot bootdelay to 5...");
-        writer.write('setenv bootdelay 5\n');
-        await delay(1000);
-        outputMsgCallback("Root in progress: Enable ASC serial...");
-        writer.write('setenv asc0 0\n');
-        await delay(1000);
-        outputMsgCallback("Root in progress: Set GPIO to unlock serial...");
-        writer.write('setenv preboot "gpio set 3;gpio input 2;gpio input 105;gpio input 106;gpio input 107;gpio input 108"\n');
-        await delay(1000);
-        outputMsgCallback("Root in progress: Save changes...");
-        writer.write('saveenv\n');
-        await delay(1000);
+        successCallback();
+    } catch (err) {
+        outputErrorCallback(`Error: ${err.message}`);
+    } finally {
+        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
+        return;
+    }
+}
+
+async function unlockHuaweiShell(port, outputMsgCallback, outputErrorCallback, successCallback, baudRate = 115200) {
+    const { reader, writer, readableStreamClosed, writerStreamClosed } = await openPortLineBreak(port, baudRate, outputErrorCallback);
+
+    try {
         outputMsgCallback("Root in progress: Rebooting...");
         writer.write('reset\n');
         await delay(1000);
+        outputMsgCallback("Waiting for reboot");
+        await waitFailbackShell(writer, reader, outputMsgCallback);
+        outputMsgCallback("Root in progress: Enable full Linux shell...");
+        writer.write('mount_root && mkdir -p /overlay/etc && sed "s|/opt/lantiq/bin/minishell|/bin/ash|g" /rom/etc/passwd > /overlay/etc/passwd\n');
+        await delay(1000);
+        outputMsgCallback("Root in progress: Umount rootfs partitions...");
+        writer.write('umount /overlay && umount -a\n');
+        await delay(1000);
+        successCallback();
+    } catch (err) {
+        outputErrorCallback(`Error: ${err.message}`);
+    } finally {
+        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
+        return;
     }
-
-    outputMsgCallback("Root in progress: RebootingYY...");
-    writer.write('reset\n');
-    await delay(1000);
-}
-
-async function unlockHuaweiShell(writer, reader, outputMsgCallback) {
-    outputMsgCallback("Waiting for reboot");
-    await waitFailbackShell(writer, reader);
-    outputMsgCallback("Root in progress: Enable full Linux shell...");
-    writer.write('mount_root && mkdir -p /overlay/etc && sed "s|/opt/lantiq/bin/minishell|/bin/ash|g" /rom/etc/passwd > /overlay/etc/passwd\n');
-    await delay(1000);
-    outputMsgCallback("Root in progress: Umount rootfs partitions...");
-    writer.write('umount /overlay && umount -a\n');
-    await delay(1000);
 }

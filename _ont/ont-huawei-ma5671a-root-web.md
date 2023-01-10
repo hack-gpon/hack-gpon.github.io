@@ -103,6 +103,7 @@ FALCON => saveenv
         </div>
     </div>
 </div>
+<script type="text/javascript" src="/assets/js/utils.js"></script>
 <script type="text/javascript" src="/assets/js/rootLantiq.js"></script>
 <script>
     if ('serial' in navigator) {
@@ -183,58 +184,32 @@ FALCON => saveenv
             console.log('Error: port not open\n');
             return;
         }
-        loading("Please disconnect the Huawei MA5671A from the SFP adapter if it is currently plugged in!",0);
-        try {
-            await port.open({ baudRate: 115200 });
-        } catch (err) {
-            showError(`Error: ${err.message}`,0);
-            console.log(`Error: ${err.message}\n`);
-            return;
-        }
-        const textDecoder = new TextDecoderStream();
-        const readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
-        const reader = textDecoder.readable.pipeThrough(new TransformStream(new LineBreakTransformer())).getReader();
-        const textEncoderStream = new TextEncoderStream();
-        const writerStreamClosed = textEncoderStream.readable.pipeTo(port.writable);
-        const writer = textEncoderStream.writable.getWriter();
-        try {
-            await lantiqRootUboot(writer, reader, (msg) => {
+
+        await lantiqRootUboot(port,
+            (msg) => {
                 loading(msg, 0);
-            });
+            },
+            (err) => {
+                showError(err, 0);
+                console.log(err);
+            },
+            () => {
+                showSuccess("Congratulations! Step completed.", 0);
+            }
+        );
 
-            showSuccess("Congratulations! Step completed.", 0);
-        } catch (err) {
-            showError(`Error: ${err.message}`,0);
-            console.log(`Error: ${err.message}\n`);
-            reader.cancel();
-            await readableStreamClosed.catch(() => { /* Ignore the error */ });
-            writer.close();
-            await writerStreamClosed;
-            await port.close();
-            return;
-        }
-        try {
-            await unlockHuaweiShell(writer, reader, (msg) => {
+        await unlockHuaweiShell(port,
+            (msg) => {
                 loading(msg, 1);
-            });
-
-            showSuccess("Congratulations! Step completed.",1);
-        } catch (err) {
-            showError(`Error: ${err.message}`,1);
-            console.log(`Error: ${err.message}\n`);
-            reader.cancel();
-            await readableStreamClosed.catch(() => { /* Ignore the error */ });
-            writer.close();
-            await writerStreamClosed;
-            await port.close();
-            return;
-        }
-
-        reader.cancel();
-        await readableStreamClosed.catch(() => { /* Ignore the error */ });
-        writer.close();
-        await writerStreamClosed;
-        await port.close();
+            },
+            (err) => {
+                showError(err, 1);
+                console.log(err);
+            },
+            () => {
+                showSuccess("Congratulations! Step completed.", 1);
+            }
+        );
     }
 </script>
 
