@@ -198,37 +198,11 @@ FALCON => saveenv
         const writerStreamClosed = textEncoderStream.readable.pipeTo(port.writable);
         const writer = textEncoderStream.writable.getWriter();
         try {
-            await delay(10000);
-            loading("Now you need to insert the Huawei MA5671A into the SFP adapter, if the procedure does not go ahead, check the connections and then remove and reconnect the Huawei MA5671A again",0);
-            while(true) {
-                await waitUbootStop(writer, reader);
-                const ubootUnlocked = await checkUbootUnlocked(reader);
+            await lantiqRootUboot(writer, reader, (msg) => {
+                loading(msg, 0);
+            });
 
-                if (ubootUnlocked == true) {
-                    break;
-                }
-
-                loading("Root in progress: Set U-Boot bootdelay to 5...",0);
-                writer.write('setenv bootdelay 5\n');
-                await delay(1000);
-                loading("Root in progress: Enable ASC serial...",0);
-                writer.write('setenv asc0 0\n');
-                await delay(1000);
-                loading("Root in progress: Set GPIO to unlock serial...",0);
-                writer.write('setenv preboot "gpio set 3;gpio input 2;gpio input 105;gpio input 106;gpio input 107;gpio input 108"\n');
-                await delay(1000);
-                loading("Root in progress: Save changes...",0);
-                writer.write('saveenv\n');
-                await delay(1000);
-                loading("Root in progress: Rebooting...",0);
-                writer.write('reset\n');
-                await delay(1000);
-            }
-
-            loading("Root in progress: Rebooting...",0);
-            writer.write('reset\n');
-            await delay(1000);
-            showSuccess("Congratulations! Step completed.",0);
+            showSuccess("Congratulations! Step completed.", 0);
         } catch (err) {
             showError(`Error: ${err.message}`,0);
             console.log(`Error: ${err.message}\n`);
@@ -240,14 +214,10 @@ FALCON => saveenv
             return;
         }
         try {
-            loading("Waiting for reboot",1);
-            await waitFailbackShell(writer, reader);
-            loading("Root in progress: Enable full Linux shell...",1);
-            writer.write('mount_root && mkdir -p /overlay/etc && sed "s|/opt/lantiq/bin/minishell|/bin/ash|g" /rom/etc/passwd > /overlay/etc/passwd\n');
-            await delay(1000);
-            loading("Root in progress: Umount rootfs partitions...",1);
-            writer.write('umount /overlay && umount -a\n');
-            await delay(1000);
+            await unlockHuaweiShell(writer, reader, (msg) => {
+                loading(msg, 1);
+            });
+
             showSuccess("Congratulations! Step completed.",1);
         } catch (err) {
             showError(`Error: ${err.message}`,1);
