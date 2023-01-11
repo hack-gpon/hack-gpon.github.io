@@ -103,7 +103,7 @@ FALCON => saveenv
         </div>
     </div>
 </div>
-<script type="text/javascript" src="/assets/js/utils.js"></script>
+<script type="text/javascript" src="/assets/js/serialUtil.js"></script>
 <script type="text/javascript" src="/assets/js/rootLantiq.js"></script>
 <script>
     if ('serial' in navigator) {
