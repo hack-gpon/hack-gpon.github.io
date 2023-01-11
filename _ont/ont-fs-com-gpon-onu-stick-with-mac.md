@@ -220,20 +220,6 @@ strings /opt/lantiq/bin/omcid | grep compiled
 reboot
 ```
 
-## Reinitializing the EEPROM without rebooting 
-{% include alert.html content="This will cause you to disconnect from the current ssh session."  alert="Warning"  icon="svg-warning" color="yellow" %}
-```sh
-reload_i2c.sh
-```
-
-## Resetting EEPROM to default values and reinitializing 
-{% include alert.html content="This command is not reversible, all the EEPROM data will be restored to the factory values!"  alert="Warning"  icon="svg-warning" color="red" %}
-{% include alert.html content="This will cause you to disconnect from the current ssh session."  alert="Warning"  icon="svg-warning" color="yellow" %}
-```sh
-sfp_i2c -d yes
-reload_i2c.sh
-```
-
 ## List of software versions
 - 6BA1896SPLQA13 (Dec 16 2016)
 - 6BA1896SPLQA41
