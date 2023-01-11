@@ -1,0 +1,160 @@
+<div class="modal" data-jtd-modal="root-modal" data-jtd-modal-backdrop="static" id="root-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>Root status</h2>
+        </div>
+        <div class="modal-body" style="display:flex">
+{% if include.unlockHuaweiShell %}
+            <div class="animated" id="root-step-1"  style="width:50%">
+{% else %}
+            <div class="animated" id="root-step-1"  style="width:100%">
+{% endif %}
+                <p>Step 1</p>
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                    <circle class="path circle" fill="none" stroke="currentColor" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
+                    <polyline class="path check success" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
+                    <line class="path line error" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3"/>
+                    <line class="path line error" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2"/>
+                    <line class="path line pause" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3"/>
+                    <line class="path line pause" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2"/>
+                </svg>
+                <p id="root-text-step-1"></p>
+            </div>
+
+{% if include.unlockHuaweiShell %}
+            <div class="animated" id="root-step-2" style="width:50%"  >
+                <p>Step 2</p>
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                    <circle class="path circle" fill="none" stroke="currentColor" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
+                    <polyline class="path check success" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
+                    <line class="path line error" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3"/>
+                    <line class="path line error" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2"/>
+                    <line class="path line pause" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="49.4" y1="37.9" x2="49.4" y2="92.3"/>
+                    <line class="path line pause" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="80.8" y1="38" x2="80.8" y2="92.2"/>
+                </svg>
+                <p id="root-text-step-2"></p>
+            </div>
+{% endif %}
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/assets/js/serialUtil.js"></script>
+<script type="text/javascript" src="/assets/js/rootLantiq.js"></script>
+<script>
+    if ('serial' in navigator) {
+        document.getElementById('start-button').disabled = false;
+    } else {
+        document.getElementById('browser-error').style.display = 'block';
+    }
+    const acontroller = new AbortController();
+    const cs = acontroller.signal;
+
+    let rootModal = document.getElementById("root-modal");
+
+    let rootStep = [document.getElementById('root-step-1')];
+
+    if ({{include.unlockHuaweiShell}}) {
+        rootStep.push(document.getElementById('root-step-2'));
+    }
+
+    let rootStepText = [document.getElementById('root-text-step-1')];
+
+    if ({{include.unlockHuaweiShell}}) {
+        rootStepText.push(document.getElementById('root-text-step-2'));
+    }
+
+    rootModal.addEventListener('modal-jtd-close', async function(event) {
+        acontroller.abort();
+    });
+    rootModal.addEventListener('modal-jtd-open', async function(event) {
+        root({signal: cs});
+    });
+    function pause(message, i) {
+        rootStep[i].classList.add('pause');
+        rootStep[i].classList.remove('complete');
+        rootStep[i].classList.remove('loading');
+        rootStep[i].classList.remove('error');
+        rootStep[i].classList.remove('success');
+        rootStepText[i].textContent = message;
+    }
+    function loading(message, i) {
+        rootStep[i].classList.remove('pause');
+        rootStep[i].classList.remove('complete');
+        rootStep[i].classList.add('loading');
+        rootStep[i].classList.remove('error');
+        rootStep[i].classList.remove('success');
+        rootStepText[i].textContent = message;
+    }
+    function showError(message, i) {
+        rootStep[i].classList.remove('pause');
+        rootStep[i].classList.remove('complete');
+        rootStep[i].classList.remove('success');
+        rootStep[i].classList.remove('loading');
+        rootStep[i].classList.add('error');
+        rootStepText[i].textContent = message;
+    }
+    function showSuccess(message, i) {
+        rootStep[i].classList.remove('pause');
+        rootStep[i].classList.remove('error');
+        rootStep[i].classList.remove('loading');
+        rootStep[i].classList.remove('complete');
+        rootStep[i].classList.add('success');
+        rootStepText[i].textContent = message;
+    }
+    async function root({ signal } = {}) {
+        loading("Waiting for the user to choose the port",0);
+
+        if ({{include.unlockHuaweiShell}}) {
+            pause("",1);
+        }
+
+        let port;
+        try {
+            port = await navigator.serial.requestPort();
+        } catch (err) {
+            showError(`Error: ${err.message}`,0);
+            console.log(`Error: ${err.message}\n`);
+            return;
+        }
+        if (!port) {
+            showError('Error: port not open',0);
+            console.log('Error: port not open\n');
+            return;
+        }
+
+        let result = await lantiqRootUboot(port, "Huawei MA5671A",
+            (msg) => {
+                loading(msg, 0);
+            },
+            (err) => {
+                showError(err, 0);
+                console.log(err);
+            }
+        );
+
+        if (result) {
+            showSuccess("Congratulations! Step completed.", 0);
+        } else {
+            return;
+        }
+
+        if (!{{include.unlockHuaweiShell}}) {
+            return;
+        }
+
+        result = await unlockHuaweiShell(port,
+            (msg) => {
+                loading(msg, 1);
+            },
+            (err) => {
+                showError(err, 1);
+                console.log(err);
+            }
+        );
+
+        if (result) {
+            showSuccess("Congratulations! Step completed.", 1);
+        }
+    }
+</script>

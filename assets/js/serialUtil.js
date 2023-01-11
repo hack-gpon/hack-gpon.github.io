@@ -2,6 +2,23 @@ function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+class LineBreakTransformer {
+    constructor() {
+        this.chunks = "";
+    }
+
+    transform(chunk, controller) {
+        this.chunks += chunk;
+        const lines = this.chunks.split("\n");
+        this.chunks = lines.pop();
+        lines.forEach((line) => controller.enqueue(line));
+    }
+
+    flush(controller) {
+        controller.enqueue(this.chunks);
+    }
+}
+
 async function openPortLineBreak(port, baudRate) {
     await port.open({ baudRate: baudRate });
     const textDecoder = new TextDecoderStream();
