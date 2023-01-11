@@ -64,11 +64,12 @@ async function waitFailbackShell(writer, reader, outputMsgCallback) {
 }
 
 async function lantiqRootUboot(port, sfpModel, outputMsgCallback, outputErrorCallback, baudRate = 115200) {
-    outputMsgCallback(`Please disconnect the ${sfpModel} from the SFP adapter if it is currently plugged in!`);
-
-    const { reader, writer, readableStreamClosed, writerStreamClosed } = await openPortLineBreak(port, baudRate, outputErrorCallback);
+    let reader,writer, readableStreamClosed, writerStreamClosed;
 
     try {
+        outputMsgCallback(`Please disconnect the ${sfpModel} from the SFP adapter if it is currently plugged in!`);
+        ({ reader, writer, readableStreamClosed, writerStreamClosed } = await openPortLineBreak(port, baudRate));
+
         await delay(10000);
         outputMsgCallback(`Now you need to insert the ${sfpModel} into the SFP adapter, if the procedure does not go ahead, check the connections and then remove and reconnect the ${sfpModel} again`);
 
@@ -107,9 +108,10 @@ async function lantiqRootUboot(port, sfpModel, outputMsgCallback, outputErrorCal
 }
 
 async function unlockHuaweiShell(port, outputMsgCallback, outputErrorCallback, baudRate = 115200) {
-    const { reader, writer, readableStreamClosed, writerStreamClosed } = await openPortLineBreak(port, baudRate, outputErrorCallback);
+    let reader,writer, readableStreamClosed, writerStreamClosed;
 
     try {
+        ({ reader, writer, readableStreamClosed, writerStreamClosed } = await openPortLineBreak(port, baudRate));
         outputMsgCallback("Root in progress: Rebooting...");
         writer.write('reset\n');
         await delay(1000);
