@@ -21,9 +21,23 @@ async function openPortLineBreak(port, baudRate, outputErrorCallback) {
 }
 
 async function closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed) {
-    reader.cancel();
-    await readableStreamClosed.catch(() => { /* Ignore the error */ });
-    writer.close();
-    await writerStreamClosed;
-    await port.close();
+    if (reader) {
+        reader.cancel();
+    }
+
+    if (readableStreamClosed) {
+        await readableStreamClosed.catch(() => { /* Ignore the error */ });
+    }
+
+    if (writer) {
+        writer.close();
+    }
+
+    if (writerStreamClosed) {
+        await writerStreamClosed;
+    }
+
+    if (port) {
+        await port.close();
+    }
 }
