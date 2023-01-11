@@ -61,15 +61,18 @@ layout: default
     </div>
 
 </form>
-<h1>Gpon calculator</h1>
+<h1>XG(S)-PON/GPON calculator</h1>
 <form id="gpon-speed-mtu" novalidate>
     <div class="form-floating mb-3">
         <input step="1" type="number" class="form-control" placeholder="ONT number" name="gpon-ont" id="gpon-ont" value="10" min="1" max="128" required>
         <label for="gpon-ont">ONT number</label>
     </div>
     <div class="form-floating mb-3">
-        <input step="1" type="number" class="form-control" placeholder="GEM frame number" name="gpon-gem" id="gpon-gem" value="26" min="1" max="40" required>
-        <label for="gpon-gem">GEM frame number</label>
+        <select class="form-select mb-3" placeholder="GPON Speed" name="gpon-speed" required>
+            <option value="2488.32" selected>GPON</option>
+            <option value="9953.28">XG(S)-PON/GPON</option>
+        </select>
+        <label for="gpon-speed">GPON speed</label>
     </div>
     <div class="mb-3">
         <div class="form-check form-check-inline">
@@ -97,8 +100,12 @@ layout: default
         <input type="submit" class="btn btn-primary" value="Calculate!">
     </div>
     <div class="form-floating mb-3">
+        <input step="1" type="number" class="form-control" placeholder="GEM frame number" name="gpon-gem-real" id="gpon-gem-real" min="1" max="40" readonly>
+        <label for="gpon-gem-real">GEM frame number</label>
+    </div>
+    <div class="form-floating mb-3">
         <input  type="number" class="form-control" placeholder="GPON Average Ethernet Frame Size (Byte)" name="gpon-average-packet-size" id="gpon-average-packet-size" readonly>
-        <label for="gpon-average-packet-size">GPON Average Ethernet Frame Size (Byte) must be inside 1000-1500</label>
+        <label for="gpon-average-packet-size">GPON Average Ethernet Frame Size (Byte)</label>
     </div>
     <div class="form-floating mb-3">
         <input  type="number" class="form-control" placeholder="Theoretical maximum speed (Gbps)" name="gpon-maxSpeed" id="gpon-maxSpeed" readonly>
@@ -156,10 +163,10 @@ layout: default
             var mtu = formdata.get('mtu');
             var mss = mtu - coverheadip;
             var overhead = overheadtcp + overheadeth + overheadfcs + overheadgap[formdata.get('speed')] + preamble + coverheadip;
-            document.getElementById('overhead').value = overhead/mss  * 100;
+            document.getElementById('overhead').value = ((1-mss /(overhead + mss))  * 100).toFixed(2);
             var th =  mss /(overhead + mss);
             
-            document.getElementById('maxSpeed').value = th * formdata.get('speed');
+            document.getElementById('maxSpeed').value = (th * formdata.get('speed')).toFixed(2);
         }
         [...form.elements].map(e => e.parentNode).forEach(e => e.classList.toggle('was-validated', true));
     });
@@ -197,15 +204,21 @@ layout: default
             var cip = formdata.get('gpon-ip');
             var coverheadip = formdata.get('gpon-ip') === '4' ? overheadipv4[formdata.get('gpon-ipv4protocol')] : overheadipv6[formdata.get('gpon-ipv6protocol')];
             var overheadframeeth = overheadtcp + overheadeth + overheadfcs + coverheadip;
-            var overheadgtc = overheadgem + formdata.get('gpon-gem') * (overheadpcbd+overheadframeeth); 
-            var payload = gtc - overheadgtc;
-            document.getElementById('gpon-average-packet-size').value = payload/formdata.get('gpon-gem');
+            var gem, overheadgtc, payload;
+            for(gem = 0; gem < 40; gem++) {
+                overheadgtc = overheadgem + gem * (overheadpcbd+overheadframeeth); 
+                payload = gtc - overheadgtc;
+                if(payload/gem < 1500)  break;
+            }
+
+            document.getElementById('gpon-gem-real').value = gem;
+            document.getElementById('gpon-average-packet-size').value = (payload/gem).toFixed(2);
 
 
-            document.getElementById('gpon-overhead').value = overheadgtc/payload  * 100;
+            document.getElementById('gpon-overhead').value = ((1-payload/(payload+overheadgtc)) * 100).toFixed(2);
             var th =  payload /gtc;
             
-            document.getElementById('gpon-maxSpeed').value = th * 2.48832;
+            document.getElementById('gpon-maxSpeed').value = (th * formdata.get('gpon-speed')).toFixed(2);
         }
         [...formgpon.elements].map(e => e.parentNode).forEach(e => e.classList.toggle('was-validated', true));
     });
