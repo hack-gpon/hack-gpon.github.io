@@ -185,31 +185,35 @@ FALCON => saveenv
             return;
         }
 
-        await lantiqRootUboot(port,
+        let result = await lantiqRootUboot(port, "Huawei MA5671A",
             (msg) => {
                 loading(msg, 0);
             },
             (err) => {
                 showError(err, 0);
                 console.log(err);
-            },
-            () => {
-                showSuccess("Congratulations! Step completed.", 0);
             }
         );
 
-        await unlockHuaweiShell(port,
+        if (result) {
+            showSuccess("Congratulations! Step completed.", 0);
+        } else {
+            return;
+        }
+
+        result = await unlockHuaweiShell(port,
             (msg) => {
                 loading(msg, 1);
             },
             (err) => {
                 showError(err, 1);
                 console.log(err);
-            },
-            () => {
-                showSuccess("Congratulations! Step completed.", 1);
             }
         );
+
+        if (result) {
+            showSuccess("Congratulations! Step completed.", 1);
+        }
     }
 </script>
 
