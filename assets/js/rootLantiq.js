@@ -1,4 +1,4 @@
-async function waitUbootStop(writer, reader, outputMsgCallback) {
+async function waitUbootStop(writer, reader, sfpModel, outputMsgCallback) {
     const interval = setInterval(function() {
         writer.write(String.fromCharCode(3));
     }, 10);
@@ -7,7 +7,7 @@ async function waitUbootStop(writer, reader, outputMsgCallback) {
         const { value, done } = await reader.read();
 
         if (value.startsWith('U-Boot')) {
-            outputMsgCallback("Root in progress: Trigger characters received. DO NOT TOUCH THE HUAWEI MA5671A UNTIL THE PROCEDURE IS COMPLETED!");
+            outputMsgCallback(`Root in progress: Trigger characters received. DO NOT TOUCH THE ${sfpModel} UNTIL THE PROCEDURE IS COMPLETED!`);
             await delay(5000);
             clearInterval(interval);
             break;
@@ -63,17 +63,17 @@ async function waitFailbackShell(writer, reader, outputMsgCallback) {
     }
 }
 
-async function lantiqRootUboot(port, outputMsgCallback, outputErrorCallback, successCallback, baudRate = 115200) {
-    outputMsgCallback("Please disconnect the Huawei MA5671A from the SFP adapter if it is currently plugged in!");
+async function lantiqRootUboot(port, sfpModel, outputMsgCallback, outputErrorCallback, baudRate = 115200) {
+    outputMsgCallback(`Please disconnect the ${sfpModel} from the SFP adapter if it is currently plugged in!`);
 
     const { reader, writer, readableStreamClosed, writerStreamClosed } = await openPortLineBreak(port, baudRate, outputErrorCallback);
 
     try {
         await delay(10000);
-        outputMsgCallback("Now you need to insert the Huawei MA5671A into the SFP adapter, if the procedure does not go ahead, check the connections and then remove and reconnect the Huawei MA5671A again",0);
+        outputMsgCallback(`Now you need to insert the ${sfpModel} into the SFP adapter, if the procedure does not go ahead, check the connections and then remove and reconnect the ${sfpModel} again`);
 
         while(true) {
-            await waitUbootStop(writer, reader, outputMsgCallback);
+            await waitUbootStop(writer, reader, sfpModel, outputMsgCallback);
             const ubootUnlocked = await checkUbootUnlocked(reader);
 
             if (ubootUnlocked == true) {
@@ -97,16 +97,16 @@ async function lantiqRootUboot(port, outputMsgCallback, outputErrorCallback, suc
             await delay(1000);
         }
 
-        successCallback();
+        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
+        return true;
     } catch (err) {
         outputErrorCallback(`Error: ${err.message}`);
-    } finally {
         await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
-        return;
+        return false;
     }
 }
 
-async function unlockHuaweiShell(port, outputMsgCallback, outputErrorCallback, successCallback, baudRate = 115200) {
+async function unlockHuaweiShell(port, outputMsgCallback, outputErrorCallback, baudRate = 115200) {
     const { reader, writer, readableStreamClosed, writerStreamClosed } = await openPortLineBreak(port, baudRate, outputErrorCallback);
 
     try {
@@ -121,11 +121,11 @@ async function unlockHuaweiShell(port, outputMsgCallback, outputErrorCallback, s
         outputMsgCallback("Root in progress: Umount rootfs partitions...");
         writer.write('umount /overlay && umount -a\n');
         await delay(1000);
-        successCallback();
+        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
+        return true;
     } catch (err) {
         outputErrorCallback(`Error: ${err.message}`);
-    } finally {
         await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
-        return;
+        return false;
     }
 }
