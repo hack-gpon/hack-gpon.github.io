@@ -28,7 +28,7 @@ Connect the TTL adapter to the computer, once done press the following button. A
 
 {: .text-center .fs-6 }
 <button id="start-button" class="btn btn-blue" data-jtd-toogle="modal" data-jtd-target="#root-modal" disabled>Start root!</button>
-{% include root_lantiq.html unlockHuaweiShell=true %}
+{% include root_lantiq.html modelName="Huawei MA5671A" unlockHuaweiShell=true %}
 
 <div id="browser-error" style="display:none">{% include alert.html content="This browser is not compatible with the web-root procedure. See the <a href='https://developer.mozilla.org/en-US/docs/Web/API/Web_Serial_API#browser_compatibility'>Browser compatibility</a>" alert="Note"  icon="svg-warning" color="red" %}</div>
 <noscript>

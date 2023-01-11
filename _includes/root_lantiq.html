@@ -123,7 +123,7 @@
             return;
         }
 
-        let result = await lantiqRootUboot(port, "Huawei MA5671A",
+        let result = await lantiqRootUboot(port, "{{include.modelName}}",
             (msg) => {
                 loading(msg, 0);
             },
