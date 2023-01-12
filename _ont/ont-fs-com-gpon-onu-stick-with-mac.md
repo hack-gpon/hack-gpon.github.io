@@ -54,7 +54,30 @@ fw_setenv bootdelay 5
 fw_setenv asc0 0
 fw_setenv preboot "gpio set 3;gpio input 2;gpio input 105;gpio input 106;gpio input 107;gpio input 108"
 ```
-If you haven't done this and the stick doesn't work due to your changes you can follow the [Huawei MA5671A unlock guide](/ont-huawei-ma5671a-root)
+
+## Emergency bootloader unlock via TTL serial
+
+{% include alert.html content="This is not necessary if you have already unlocked the bootloader from the shell as specified above." alert="Warning"  icon="svg-warning" color="yellow" %}
+
+If for for some reason you are in the situation where you do not have a bootable firmware on your SFP stick you can do an emergency unlock via TTL serial.
+
+To perform the emergency unlock is necessary to have:
+- TTL-USB adapter
+- SFP adapter to connect the TTL-USB cables to the SFP stick
+
+The electrical connections are the same as those of the Huawei MA5671A, see the [Huawei root guide](/ont-huawei-ma5671a-root-web) for accurate details on how to connect the TTL-USB to the SFP adapter.
+
+When you are ready with everything plugged in you need to press the button below. A window will open that will execute the emergency unlock.
+
+{: .text-center .fs-6 }
+<button id="start-button" class="btn btn-blue" data-jtd-toogle="modal" data-jtd-target="#root-modal" disabled>Start emergency unlock!</button>
+{% include root_lantiq.html modelName="FS GPON ONU Stick" unlockHuaweiShell=false %}
+
+<div id="browser-error" style="display:none">{% include alert.html content="This browser is not compatible with the emergency unlock procedure. See the <a href='https://developer.mozilla.org/en-US/docs/Web/API/Web_Serial_API#browser_compatibility'>Browser compatibility</a>" alert="Note"  icon="svg-warning" color="red" %}</div>
+<noscript>
+{% include alert.html content="Your browser does not support JavaScript!" alert="Note"  icon="svg-warning" color="red" %}
+</noscript>
+
 
 ## Setting S/N
 ```sh
