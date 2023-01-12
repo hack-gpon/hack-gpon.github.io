@@ -20,7 +20,7 @@ alias: Hisense LTE3415-SH+
 | Optics      |                                                 |
 | IP address  | 192.168.2.1                                     |
 | Web Gui     | Can be enabled, user `admin`, password `system` |
-| SSH         | ✅ user `admin`, password `system`              |
+| Telnet      | ✅                                              |
 | Form Factor | miniONT SFP                                     |
 | Multicast   | ✅                                              |
 
