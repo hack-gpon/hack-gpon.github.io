@@ -54,15 +54,15 @@
 
     let rootStep = [document.getElementById('root-step-1')];
 
-    if ({{include.unlockHuaweiShell}}) {
-        rootStep.push(document.getElementById('root-step-2'));
-    }
+{% if include.unlockHuaweiShell %}
+    rootStep.push(document.getElementById('root-step-2'));
+{% endif %}
 
     let rootStepText = [document.getElementById('root-text-step-1')];
 
-    if ({{include.unlockHuaweiShell}}) {
-        rootStepText.push(document.getElementById('root-text-step-2'));
-    }
+{% if include.unlockHuaweiShell %}
+    rootStepText.push(document.getElementById('root-text-step-2'));
+{% endif %}
 
     rootModal.addEventListener('modal-jtd-close', async function(event) {
         acontroller.abort();
@@ -105,9 +105,9 @@
     async function root({ signal } = {}) {
         loading("Waiting for the user to choose the port",0);
 
-        if ({{include.unlockHuaweiShell}}) {
-            pause("",1);
-        }
+{% if include.unlockHuaweiShell %}
+        pause("",1);
+{% endif %}
 
         let port;
         try {
@@ -139,10 +139,7 @@
             return;
         }
 
-        if (!{{include.unlockHuaweiShell}}) {
-            return;
-        }
-
+{% if include.unlockHuaweiShell %}
         result = await unlockHuaweiShell(port,
             (msg) => {
                 loading(msg, 1);
@@ -156,5 +153,6 @@
         if (result) {
             showSuccess("Congratulations! Step completed.", 1);
         }
+{% endif %}
     }
 </script>
