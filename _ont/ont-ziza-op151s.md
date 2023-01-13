@@ -24,6 +24,15 @@ parent: Ziza
 | SSH         | ✅ username `admin`, password `admin`                      |
 | Form Factor | miniONT SFP                                                |
 
+{% include image.html file="op151s.png" alt="Ziza OP151S" caption="Ziza OP151S" %}
+
+## Firmware is interchangeable with:
+
+- [Halny HL-GSFP](/ont-halny-hl-gsfp)
+- [D-LINK DPN-100-Rev-A2](/ont-d-link-dpn-100-rev-a2)
+- [Ziza OP151s](/ont-ziza-op151s)
+- [T&W TW2362H-CDEL](/ont-t-w-tw2362h-cdel)
+
 # Miscellaneous Links
 
 - [Tech Info Depot Wiki](http://en.techinfodepot.shoutwiki.com/wiki/ZISA_OP151S)

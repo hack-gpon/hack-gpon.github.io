@@ -25,7 +25,6 @@ parent: Zyxel
 | Form Factor | miniONT SFP                                                |
 
 {% include image.html file="pmg3000-d20b.png" alt="PMG3000-D20B" caption="PMG3000-D20B" %}
-{% include image.html file="op151s.png" alt="Ziza OP151S" caption="Ziza OP151S" %}
 
 Once you access the stick via ssh you will be presented with a second tier login. The credentials to access the zyxel shell are: username: `twmanu` , password: `twmanu`.
 From the Zyxel shell you can move to a standard Linux shell using the `linuxshell` command
