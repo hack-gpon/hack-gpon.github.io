@@ -33,28 +33,15 @@ layout: default
 
 <button id="flash-start-button" class="btn btn-blue" data-jtd-toogle="modal" data-jtd-target="#flash-modal">Start flash!</button>
 
+<script type="text/javascript" src="/assets/js/serialUtil.js"></script>
 <script>
     const acontroller = new AbortController();
     const cs = acontroller.signal;
-    class LineBreakTransformer {
-        constructor() { 
-            this.chunks = "";
-        }
-        transform(chunk, controller) {
-            this.chunks += chunk;
-            const lines = this.chunks.split("\n");
-            this.chunks = lines.pop();
-            lines.forEach((line) => controller.enqueue(line));
-        }
-        flush(controller) {
-            controller.enqueue(this.chunks);
-        }
-    }
     let flashModal = document.getElementById("flash-modal");
     let flashForm = document.getElementById("flash-form");
     let flashProgress = document.getElementById("flash-progress");
 
-    flashForm.addEventListener('submit',(event) => {
+    flashForm.addEventListener('submit', async function(event) {
         if (!flashForm.checkValidity()) {
             event.preventDefault();
         } else {
