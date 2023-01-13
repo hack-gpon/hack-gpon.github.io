@@ -21,7 +21,7 @@ Here is a list of the most popular Vendor IDs:
 | `FHTT` | `46485454` | Fiber Home           |
 | `GNXS` | `474e5853` | Genexis              |
 | `GPON` | `47504f4e` | Generic vendor name  |
-| `HALN` | `48414c4e` | Halany               |
+| `HALN` | `48414c4e` | Halny                |
 | `HBMT` | `48424d54` | Hisense              |
 | `HWTC` | `48575443` | Huawei               |
 | `ISKT` | `49534b54` | Iskratel             |
