@@ -16,7 +16,7 @@ parent: Leox
 | RAM         | 32MB                                 |
 | Manufacter  | Hisense LTE3415-SH+                  |
 | System      | Linux 3.18 (Luna SDK 3.3)            |
-| HSGMII      | ✅                                   |
+| HSGMII      | Yes                                  |
 | Optics      | SC/UPC                               |
 | IP address  | 192.168.100.1/24                     |
 | Web Gui     | ✅                                   |
