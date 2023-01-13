@@ -1,7 +1,6 @@
 ---
 title: Zyxel PMG3000-D20B
 has_children: false
-alias: Ziza OP151S, T&W TW2362H-CDEL
 layout: default
 parent: Zyxel
 ---
@@ -17,7 +16,7 @@ parent: Zyxel
 | RAM         | 64 MB                                                      |
 | CPU         | MIPS 34Kc interAptiv                                       |
 | CPU Clock   | 400MHz                                                     |
-| System      | OpenWRT                                                    |
+| System      | eCoS                                                       |
 | HSGMII      | Yes                                                        |
 | Optics      | SC/APC                                                     |
 | IP address  | 10.10.1.1                                                  |
@@ -39,6 +38,9 @@ From the Zyxel shell you can move to a standard Linux shell using the `linuxshel
 - [T&W TW2362H-CDEL](/ont-t-w-tw2362h-cdel)
 
 # List of software versions
+- V1.00(ABVJ.0)b3s (2020)
+- V1.00(ABVJ.0)b3i (2020)
+- V2.50(ABVJ.0)b1b (2022)
 
 # List of partitions
  
@@ -297,9 +299,10 @@ The Zyxel PMG3000-D20B stores the content of the emulated EEPROM1 (A2h) in `/tmp
 - [Not working with Broadcom BCM57810S](https://github.com/xvzf/zyxel-gpon-sfp/issues/10)
 - Issue on IPv6 discovery. But we are not sure if is a edge case of a particular ISP or not
 - [Some sticks have a custom password](https://github.com/xvzf/zyxel-gpon-sfp/issues/6)
-
+- On V2.5 the Lantiq SDK has been updated from 6.4.2 to 7.5.1, but breaking upload performance
 
 # Miscellaneous Links
 
 - [Zyxel gpon-sfp](https://github.com/xvzf/zyxel-gpon-sfp)
 - [Zyxel PMG-3000 mod kit](https://github.com/nanomad/zyxel-pmg-3000-mod-kit)
+- [Rollback SFP Zyxel con il W3 HUB per risolvere il problema dell'upload cappato](https://forum.fibra.click/d/36541-rollback-sfp-zyxel-con-il-w3-hub-per-risolvere-il-problema-dellupload-cappato)

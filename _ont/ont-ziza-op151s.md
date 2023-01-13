@@ -16,7 +16,7 @@ parent: Ziza
 | CPU Clock   | 400MHz                                                     |
 | Flash       | 8 MB (GigaDevice GD25Q64CW16)                              |
 | RAM         | 64 MB (Nanya NT5TU32M16FG-AC1)                             |
-| System      | OpenWRT                                                    |
+| System      | eCoS                                                       |
 | HSGMII      | Yes                                                        |
 | Optics      | SC/APC                                                     |
 | IP address  | 10.10.1.1                                                  |
