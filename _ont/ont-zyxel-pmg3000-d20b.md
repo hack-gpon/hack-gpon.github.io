@@ -115,6 +115,13 @@ linuxshell
 onu lanpsg 0
 ```
 
+## Set link speed
+{% include alert.html content="This command forces the speed to 2.5 and is instantaneous and permanent, use it only if your hardware supports HSGMII and be compatible (not to be used with Broadcom 57810s NIC)" alert="Note" icon="svg-warning" color="red" %}
+```sh
+hal
+set speed 2.5g mode full
+```
+
 ## Checking connection state
 To see the connection state use the following command:
 ```
