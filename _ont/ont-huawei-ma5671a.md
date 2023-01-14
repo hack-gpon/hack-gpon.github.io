@@ -18,7 +18,7 @@ parent: Huawei
 | CPU         | MIPS 34Kc interAptiv                |
 | CPU Clock   | 400MHz                              |
 | System      | OpenWRT                             |
-| HSGMII      | ✅                                  |
+| HSGMII      | Yes                                 |
 | Optics      | SC/APC                              |
 | IP address  | 192.168.1.10                        |
 | Web Gui     | After root                          |
