@@ -1,7 +1,6 @@
 ---
 title: Zyxel PMG3000-D20B
 has_children: false
-alias: Ziza OP151S, T&W TW2362H-CDEL
 layout: default
 parent: Zyxel
 ---
@@ -17,7 +16,7 @@ parent: Zyxel
 | RAM         | 64 MB                                                      |
 | CPU         | MIPS 34Kc interAptiv                                       |
 | CPU Clock   | 400MHz                                                     |
-| System      | OpenWRT                                                    |
+| System      | eCoS                                                       |
 | HSGMII      | Yes                                                        |
 | Optics      | SC/APC                                                     |
 | IP address  | 10.10.1.1                                                  |
@@ -26,7 +25,6 @@ parent: Zyxel
 | Form Factor | miniONT SFP                                                |
 
 {% include image.html file="pmg3000-d20b.png" alt="PMG3000-D20B" caption="PMG3000-D20B" %}
-{% include image.html file="op151s.png" alt="Ziza OP151S" caption="Ziza OP151S" %}
 
 Once you access the stick via ssh you will be presented with a second tier login. The credentials to access the zyxel shell are: username: `twmanu` , password: `twmanu`.
 From the Zyxel shell you can move to a standard Linux shell using the `linuxshell` command
@@ -39,6 +37,9 @@ From the Zyxel shell you can move to a standard Linux shell using the `linuxshel
 - [T&W TW2362H-CDEL](/ont-t-w-tw2362h-cdel)
 
 # List of software versions
+- V1.00(ABVJ.0)b3s (2020)
+- V1.00(ABVJ.0)b3i (2020)
+- V2.50(ABVJ.0)b1b (2022)
 
 # List of partitions
  
@@ -112,6 +113,13 @@ This SFP has HSGMII enabled by default: `link_status=5` for HSGMII 2.5Gbit, `lin
 ```
 linuxshell
 onu lanpsg 0
+```
+
+## Set link speed
+{% include alert.html content="This command forces the speed to 2.5 and is instantaneous and permanent, use it only if your hardware supports HSGMII and be compatible (not to be used with Broadcom 57810s NIC)" alert="Note" icon="svg-warning" color="red" %}
+```sh
+hal
+set speed 2.5g mode full
 ```
 
 ## Checking connection state
@@ -297,9 +305,10 @@ The Zyxel PMG3000-D20B stores the content of the emulated EEPROM1 (A2h) in `/tmp
 - [Not working with Broadcom BCM57810S](https://github.com/xvzf/zyxel-gpon-sfp/issues/10)
 - Issue on IPv6 discovery. But we are not sure if is a edge case of a particular ISP or not
 - [Some sticks have a custom password](https://github.com/xvzf/zyxel-gpon-sfp/issues/6)
-
+- On V2.5 the Lantiq SDK has been updated from 6.4.2 to 7.5.1, but breaking upload performance
 
 # Miscellaneous Links
 
 - [Zyxel gpon-sfp](https://github.com/xvzf/zyxel-gpon-sfp)
 - [Zyxel PMG-3000 mod kit](https://github.com/nanomad/zyxel-pmg-3000-mod-kit)
+- [Rollback SFP Zyxel con il W3 HUB per risolvere il problema dell'upload cappato](https://forum.fibra.click/d/36541-rollback-sfp-zyxel-con-il-w3-hub-per-risolvere-il-problema-dellupload-cappato)
