@@ -139,7 +139,6 @@ async function startYmodemLoad(port, outputMsgCallback, outputErrorCallback, bau
         ({ reader, writer, readableStreamClosed, writerStreamClosed } = await openPortLineBreak(port, baudRate));
         outputMsgCallback(`Start Ymodem: loady ${address}`);
         writer.write(`loady ${address}\n`);
-        await delay(1000);
         await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
         return true;
     } catch (err) {
