@@ -158,7 +158,7 @@ From the PC to the stick
 ```
 ## Flashing a new rootfs
 
-{% include alert.html content="Only the inactive image can be flashed" alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="Only the inactive image can be flashed, change sw_versionX and sw_commit X based on the bank you have flashed" alert="Info" icon="svg-info" color="blue" %}
 
 So mtd4/5 if you are on image1, mtd6/7 if you are on image0.
 
@@ -166,7 +166,8 @@ The following commands are used to flash a new rootfs to image1 and then boot to
 ```sh
 # flash_eraseall /dev/mtd7
 # cat /tmp/rootfs.new > /dev/mtd7
-# nv setenv sw_commit=1
+# nv setenv sw_version1 NEW_SOFTWARE_VERSION
+# nv setenv sw_commit 1
 # reboot
 ```
 ## Adding support to configurable SW and HW versions, Vendor ID and much more
