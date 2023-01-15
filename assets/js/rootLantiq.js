@@ -1,3 +1,5 @@
+const LOAD_ADDR = "80800000"
+
 async function detectUboot(reader) {
     while (true) {
         const { value, done } = await reader.read();
@@ -168,18 +170,39 @@ async function changeBaudrate(port, newBaudrate, currBaudrate, outputErrorCallba
     }
 }
 
-async function startYmodemLoad(port, outputMsgCallback, outputErrorCallback, baudRate = 115200, address = "0x80800000") {
+async function sendImageMtd(port, data, baudRate, outputErrorCallback, progressCallback) {
     let reader,writer, readableStreamClosed, writerStreamClosed;
 
     try {
         ({ reader, writer, readableStreamClosed, writerStreamClosed } = await openPortLineBreak(port, baudRate));
-        outputMsgCallback(`Start Ymodem: loady ${address}`);
-        writer.write(`loady ${address}\n`);
-        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
-        return true;
+        await writer.write(`loady 0x${LOAD_ADDR}\n`);
+        await delay(1000);
+        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);   /* XYMini needs reopen the port */
     } catch (err) {
         outputErrorCallback(`Error: ${err.message}`);
         await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
+        return false;
+    }
+
+    try {
+        await port.open({ baudRate: baudRate });
+        reader = port.readable.getReader();
+        writer = port.writable.getWriter();
+
+        await sendXYMini(reader, writer, data, baudRate,
+            (byteTransfered) => {
+                progressCallback(byteTransfered);
+            }
+        );
+        await reader.cancel();
+        await writer.close();
+        await port.close();
+        return true;
+    } catch (err) {
+        await reader.cancel();
+        await writer.close();
+        await port.close();
+        outputErrorCallback(`Error: ${err.message}`);
         return false;
     }
 }
