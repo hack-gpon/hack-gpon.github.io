@@ -1,18 +1,22 @@
+async function detectUboot(reader) {
+    while (true) {
+        const { value, done } = await reader.read();
+
+        if (value.startsWith('U-Boot')) {
+            return;
+        }
+    }
+}
+
 async function waitUbootStop(writer, reader, sfpModel, outputMsgCallback) {
     const interval = setInterval(function() {
         writer.write(String.fromCharCode(3));
     }, 10);
 
-    while (true) {
-        const { value, done } = await reader.read();
-
-        if (value.startsWith('U-Boot')) {
-            outputMsgCallback(`Root in progress: Trigger characters received. DO NOT TOUCH THE ${sfpModel} UNTIL THE PROCEDURE IS COMPLETED!`);
-            await delay(5000);
-            clearInterval(interval);
-            break;
-        }
-    }
+    await detectUboot(reader);
+    outputMsgCallback(`Root in progress: Trigger characters received. DO NOT TOUCH THE ${sfpModel} UNTIL THE PROCEDURE IS COMPLETED!`);
+    await delay(5000);
+    clearInterval(interval);
 }
 
 async function checkUbootUnlocked(reader) {
