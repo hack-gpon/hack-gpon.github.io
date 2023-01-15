@@ -42,6 +42,7 @@ layout: default
 </div>
 
 <button id="flash-start-button" class="btn btn-blue" data-jtd-toogle="modal" data-jtd-target="#flash-modal">Start flash!</button>
+
 <script type="text/javascript" src="/assets/js/xymini.js"></script>
 <script type="text/javascript" src="/assets/js/serialUtil.js"></script>
 <script>
