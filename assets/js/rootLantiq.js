@@ -1,4 +1,6 @@
 const LOAD_ADDR = "80800000"
+const IMAGE0_ADDR = "C0000 740000";
+const IMAGE1_ADDR = "800000 800000";
 
 async function detectUboot(reader) {
     while (true) {
@@ -222,6 +224,30 @@ async function waitEndImageLoad(port, baudRate, outputErrorCallback) {
         }
 
         await(1000);
+        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
+        return true;
+    } catch (err) {
+        outputErrorCallback(`Error: ${err.message}`);
+        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
+        return false;
+    }
+}
+
+async function flashImageMtd(port, image, baudRate, outputErrorCallback) {
+    let reader, writer, readableStreamClosed, writerStreamClosed;
+
+    try {
+        ({ reader, writer, readableStreamClosed, writerStreamClosed } = await openPortLineBreak(port, baudRate));
+        if (image == "image0") {
+            await writer.write(`sf probe 0 && sf erase ${IMAGE0_ADDR} && sf write ${LOAD_ADDR} ${IMAGE0_ADDR} && setenv committed_image 0 && setenv image0_is_valid 1 && saveenv && reset\n`);
+        } else {
+            await writer.write(`sf probe 0 && sf erase ${IMAGE1_ADDR} && sf write ${LOAD_ADDR} ${IMAGE1_ADDR} && setenv committed_image 1 && setenv image1_is_valid 1 && saveenv && reset\n`);
+        }
+
+        await delay(1000);
+
+        /* Wait to avoid the user from disconnecting the SFP while the image is being flashed */
+        await detectUboot(reader);
         await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
         return true;
     } catch (err) {
