@@ -136,6 +136,22 @@ async function unlockHuaweiShell(port, outputMsgCallback, outputErrorCallback, b
     }
 }
 
+async function changeBaudrate(port, newBaudrate, currBaudrate, outputErrorCallback) {
+    let reader,writer, readableStreamClosed, writerStreamClosed;
+
+    try {
+        ({ reader, writer, readableStreamClosed, writerStreamClosed } = await openPortLineBreak(port, currBaudrate));
+        await writer.write(`setenv baudrate ${newBaudrate}\n`);
+        await delay(1000);
+        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
+        return true;
+    } catch (err) {
+        outputErrorCallback(`Error: ${err.message}`);
+        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
+        return false;
+    }
+}
+
 async function startYmodemLoad(port, outputMsgCallback, outputErrorCallback, baudRate = 115200, address = "0x80800000") {
     let reader,writer, readableStreamClosed, writerStreamClosed;
 
