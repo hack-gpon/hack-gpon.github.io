@@ -44,6 +44,7 @@ layout: default
 <button id="flash-start-button" class="btn btn-blue" data-jtd-toogle="modal" data-jtd-target="#flash-modal">Start flash!</button>
 
 <script type="text/javascript" src="/assets/js/xymini.js"></script>
+<script type="text/javascript" src="/assets/js/rootLantiq.js"></script>
 <script type="text/javascript" src="/assets/js/serialUtil.js"></script>
 <script>
     const acontroller = new AbortController();
@@ -91,20 +92,104 @@ layout: default
             } else {
                 event.preventDefault();
                 var fomrdata = new FormData(flashForm);
-                var baudRate = fomrdata.get('baud-rate');
                 var file = fomrdata.get('flash-mtd');
+                var image = fomrdata.get('image');
                 var data = new Uint8Array(await file.arrayBuffer());
                 console.log(data);
-                [reader, writer, readableStreamClosed, writerStreamClosed] = openPortLineBreak(port, 115200); /* TODO ?*/
-                if(fomrdata.has('baud-rate-oc')) {
-                    /* TODO*/
-                } else {
-                    writer.write("loady 0x80800000");
-                    sendXYMini(reader, writer, data, function(byte) {
-                        flashProgress.value = byte/data.size;
-                    });
+
+                /* Unlock U-Boot if needed and stop booting */
+                let result = await lantiqRootUboot(port, "Huawei MA5671A",
+                    (msg) => {
+                        loading(msg);
+                        console.log(msg);
+                    },
+                    (err) => {
+                        showError(err);
+                        console.log(err);
+                    }
+                );
+
+                if (!result) {
+                    return;
                 }
-                closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed); /* TODO ?*/
+
+                let baudrate = 115200;
+                if(fomrdata.has('baud-rate-oc')) {
+                    let newBaudrate = 230400;
+                    loading(`Changing baudrate to: ${newBaudrate}`);
+
+                    result = await changeBaudrate(port, newBaudrate, baudrate,
+                        (err) => {
+                            showError(err);
+                            console.log(err);
+                        }
+                    );
+
+                    if (result) {
+                        baudrate = newBaudrate;
+                    } else {
+                        return;
+                    }
+                }
+
+                loading("Start sending image to the SFP...");
+                result = await sendImageMtd(port, data, baudrate,
+                    (err) => {
+                        showError(err);
+                        console.log(err);
+                    },
+                    (byteTransfered) => {
+                        const perc = (byteTransfered/data.length) * 100;
+                        const percTrunc = Math.trunc(perc*100)/100;  /* Two decimal trunc */
+                        flashProgress.value = perc;
+                        loading(`Image transfer: ${percTrunc}% complete`)
+                    }
+                );
+
+                if (!result) {
+                    return;
+                }
+
+                result = await waitEndImageLoad(port, baudrate,
+                    (err) => {
+                        showError(err);
+                        console.log(err);
+                    }
+                );
+
+                if (!result) {
+                    return;
+                }
+
+                if(fomrdata.has('baud-rate-oc')) {
+                    let newBaudrate = 115200;
+                    loading(`Restore baudrate to: ${newBaudrate}`);
+
+                    result = await changeBaudrate(port, newBaudrate, baudrate,
+                        (err) => {
+                            showError(err);
+                            console.log(err);
+                        }
+                    );
+
+                    if (result) {
+                        baudrate = newBaudrate;
+                    } else {
+                        return;
+                    }
+                }
+
+                loading("Transfer complete, image flash in progress. DO NOT REMOVE the SFP!");
+                result = await flashImageMtd(port, image, baudrate,
+                    (err) => {
+                        showError(err);
+                        console.log(err);
+                    }
+                );
+
+                if (result) {
+                    showSuccess("Flash completed, now you can remove SFP");
+                }
             }
         });
     };
