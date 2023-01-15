@@ -144,6 +144,22 @@ async function changeBaudrate(port, newBaudrate, currBaudrate, outputErrorCallba
         await writer.write(`setenv baudrate ${newBaudrate}\n`);
         await delay(1000);
         await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
+        ({ reader, writer, readableStreamClosed, writerStreamClosed } = await openPortLineBreak(port, newBaudrate));
+
+        const interval = setInterval(function() {
+            writer.write(String.fromCharCode(13));
+        }, 10);
+
+        while (true) {
+            const { value, done } = await reader.read();
+
+            if (value.startsWith('FALCON')) {
+                clearInterval(interval);
+                break;
+            }
+        }
+
+        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
         return true;
     } catch (err) {
         outputErrorCallback(`Error: ${err.message}`);
