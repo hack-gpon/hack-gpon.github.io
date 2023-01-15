@@ -206,3 +206,27 @@ async function sendImageMtd(port, data, baudRate, outputErrorCallback, progressC
         return false;
     }
 }
+
+async function waitEndImageLoad(port, baudRate, outputErrorCallback) {
+    let reader, writer, readableStreamClosed, writerStreamClosed;
+
+    try {
+        ({ reader, writer, readableStreamClosed, writerStreamClosed } = await openPortLineBreak(port, baudRate));
+
+        while (true) {
+            const { value, done } = await reader.read();
+
+            if (value.includes('Total Size')) {
+                break;
+            }
+        }
+
+        await(1000);
+        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
+        return true;
+    } catch (err) {
+        outputErrorCallback(`Error: ${err.message}`);
+        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
+        return false;
+    }
+}
