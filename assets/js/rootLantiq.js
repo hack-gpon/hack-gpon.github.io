@@ -1,18 +1,26 @@
+const LOAD_ADDR = "80800000"
+const IMAGE0_ADDR = "C0000 740000";
+const IMAGE1_ADDR = "800000 800000";
+
+async function detectUboot(reader) {
+    while (true) {
+        const { value, done } = await reader.read();
+
+        if (value.startsWith('U-Boot')) {
+            return;
+        }
+    }
+}
+
 async function waitUbootStop(writer, reader, sfpModel, outputMsgCallback) {
     const interval = setInterval(function() {
         writer.write(String.fromCharCode(3));
     }, 10);
 
-    while (true) {
-        const { value, done } = await reader.read();
-
-        if (value.startsWith('U-Boot')) {
-            outputMsgCallback(`Root in progress: Trigger characters received. DO NOT TOUCH THE ${sfpModel} UNTIL THE PROCEDURE IS COMPLETED!`);
-            await delay(5000);
-            clearInterval(interval);
-            break;
-        }
-    }
+    await detectUboot(reader);
+    outputMsgCallback(`Root in progress: Trigger characters received. DO NOT TOUCH THE ${sfpModel} UNTIL THE PROCEDURE IS COMPLETED!`);
+    await delay(5000);
+    clearInterval(interval);
 }
 
 async function checkUbootUnlocked(reader) {
@@ -123,6 +131,123 @@ async function unlockHuaweiShell(port, outputMsgCallback, outputErrorCallback, b
         outputMsgCallback("Root in progress: Umount rootfs partitions...");
         writer.write('umount /overlay && umount -a\n');
         await delay(1000);
+        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
+        return true;
+    } catch (err) {
+        outputErrorCallback(`Error: ${err.message}`);
+        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
+        return false;
+    }
+}
+
+async function changeBaudrate(port, newBaudrate, currBaudrate, outputErrorCallback) {
+    let reader,writer, readableStreamClosed, writerStreamClosed;
+
+    try {
+        ({ reader, writer, readableStreamClosed, writerStreamClosed } = await openPortLineBreak(port, currBaudrate));
+        await writer.write(`setenv baudrate ${newBaudrate}\n`);
+        await delay(1000);
+        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
+        ({ reader, writer, readableStreamClosed, writerStreamClosed } = await openPortLineBreak(port, newBaudrate));
+
+        const interval = setInterval(function() {
+            writer.write(String.fromCharCode(13));
+        }, 10);
+
+        while (true) {
+            const { value, done } = await reader.read();
+
+            if (value.startsWith('FALCON')) {
+                clearInterval(interval);
+                break;
+            }
+        }
+
+        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
+        return true;
+    } catch (err) {
+        outputErrorCallback(`Error: ${err.message}`);
+        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
+        return false;
+    }
+}
+
+async function sendImageMtd(port, data, baudRate, outputErrorCallback, progressCallback) {
+    let reader,writer, readableStreamClosed, writerStreamClosed;
+
+    try {
+        ({ reader, writer, readableStreamClosed, writerStreamClosed } = await openPortLineBreak(port, baudRate));
+        await writer.write(`loady 0x${LOAD_ADDR}\n`);
+        await delay(1000);
+        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);   /* XYMini needs reopen the port */
+    } catch (err) {
+        outputErrorCallback(`Error: ${err.message}`);
+        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
+        return false;
+    }
+
+    try {
+        await port.open({ baudRate: baudRate });
+        reader = port.readable.getReader();
+        writer = port.writable.getWriter();
+
+        await sendXYMini(reader, writer, data, baudRate,
+            (byteTransfered) => {
+                progressCallback(byteTransfered);
+            }
+        );
+        await reader.cancel();
+        await writer.close();
+        await port.close();
+        return true;
+    } catch (err) {
+        await reader.cancel();
+        await writer.close();
+        await port.close();
+        outputErrorCallback(`Error: ${err.message}`);
+        return false;
+    }
+}
+
+async function waitEndImageLoad(port, baudRate, outputErrorCallback) {
+    let reader, writer, readableStreamClosed, writerStreamClosed;
+
+    try {
+        ({ reader, writer, readableStreamClosed, writerStreamClosed } = await openPortLineBreak(port, baudRate));
+
+        while (true) {
+            const { value, done } = await reader.read();
+
+            if (value.includes('Total Size')) {
+                break;
+            }
+        }
+
+        await(1000);
+        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
+        return true;
+    } catch (err) {
+        outputErrorCallback(`Error: ${err.message}`);
+        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
+        return false;
+    }
+}
+
+async function flashImageMtd(port, image, baudRate, outputErrorCallback) {
+    let reader, writer, readableStreamClosed, writerStreamClosed;
+
+    try {
+        ({ reader, writer, readableStreamClosed, writerStreamClosed } = await openPortLineBreak(port, baudRate));
+        if (image == "image0") {
+            await writer.write(`sf probe 0 && sf erase ${IMAGE0_ADDR} && sf write ${LOAD_ADDR} ${IMAGE0_ADDR} && setenv committed_image 0 && setenv image0_is_valid 1 && saveenv && reset\n`);
+        } else {
+            await writer.write(`sf probe 0 && sf erase ${IMAGE1_ADDR} && sf write ${LOAD_ADDR} ${IMAGE1_ADDR} && setenv committed_image 1 && setenv image1_is_valid 1 && saveenv && reset\n`);
+        }
+
+        await delay(1000);
+
+        /* Wait to avoid the user from disconnecting the SFP while the image is being flashed */
+        await detectUboot(reader);
         await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
         return true;
     } catch (err) {
