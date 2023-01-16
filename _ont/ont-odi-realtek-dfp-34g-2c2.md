@@ -1,5 +1,5 @@
 ---
-title: ODI Realtek DFP-34X-2C2 
+title: ODI Realtek DFP-34G-2C2 
 description: New model 2022 - v05
 has_children: false
 layout: default
@@ -11,7 +11,7 @@ parent: ODI
 |             |                                   |
 | ----------- | --------------------------------- |
 | Vendor      | ODI                               |
-| Model       | DFP-34X-2C2                       |
+| Model       | DFP-34G-2C2                       |
 | Chipset     | Realtek RTL9601D                  |
 | Flash       | 8 MB                              |
 | RAM         | 64 MB                             |
@@ -29,7 +29,7 @@ parent: ODI
 ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc admin@192.168.1.1
 ```
 
-{% include image.html file="realtek-dfp-34x-2c2.jpg" alt="ODI Realtek DFP-34X-C2C" caption="ODI Realtek DFP-34X-C2C" %}
+{% include image.html file="realtek-dfp-34g-2c2.jpg" alt="ODI Realtek DFP-34X-C2C" caption="ODI Realtek DFP-34X-C2C" %}
 
 
 ## List of software versions
@@ -81,7 +81,7 @@ The stick has exposed TTL pads:
 
 Configuration: 115200 8-N-1
 
-{% include_relative luna-sdk-userful-commands.md flash='flash' ploam='hex' %}
+{% include_relative luna-sdk-userful-commands.md flash='flash' flash='flash' ploam='hex' %}
 
 ## Getting/Setting the ONT Vendor ID
 
@@ -118,7 +118,6 @@ HW_HWVER=V2.0
 GPON_ONU_MODEL=DFP-34X-2C2
 # flash set GPON_ONU_MODEL DFP-34X-XXX
 ```
-
 
 # Known Bugs
 
