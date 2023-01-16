@@ -17,7 +17,7 @@ layout: default
                 <label for="flash-mtd">Flash MTD</label>
             </div>
             <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="baud-rate-oc" name="baud-rate-oc" disabled>
+                <input type="checkbox" class="form-check-input" id="baud-rate-oc" name="baud-rate-oc">
                 <label class="form-check-label" for="baud-rate-oc">230400 baud rate, do not enable unless told to do so</label>
             </div>
             <div class="form-check">
@@ -59,6 +59,11 @@ layout: default
     flashModal.addEventListener('modal-jtd-open', async function(event) {
         flash({signal: cs});
     });
+    function initTextStep() {
+        flashTextStep.textContent = "";
+        flashTextStep.classList.remove('success');
+        flashTextStep.classList.remove('error');
+    }
     function pause(message) {
         flashTextStep.textContent = message;
     }
@@ -67,11 +72,16 @@ layout: default
     }
     function showError(message) {
         flashTextStep.textContent = message;
+        flashTextStep.classList.add('error');
+        flashTextStep.classList.remove('success');
     }
     function showSuccess(message) {
         flashTextStep.textContent = message;
+        flashTextStep.classList.add('success');
+        flashTextStep.classList.remove('error');
     }
     async function flash({ signal } = {}) {
+        initTextStep();
         let port;
         try {
             port = await navigator.serial.requestPort();
