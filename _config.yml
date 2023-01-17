@@ -32,6 +32,7 @@ plugins:
   - jekyll-last-modified-at
   - jekyll-redirect-from
   - jekyll-default-layout
+  - jekyll-sitemap
 
 color_scheme: "auto"
 enable_switch_color_scheme: true 
