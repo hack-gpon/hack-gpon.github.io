@@ -15,6 +15,8 @@ search_exclude: true
 
 Can be accessed via the link [Web root procedure](/ont-huawei-ma5671a-root-web)
 
+{% include alert.html content="If this procedure does not work, you can use this [alternative procedure](/ont-huawei-ma5671a-ymodem). Do not use the V2 and V1 versions under any circumstances." alert="Info" icon="svg-warning" color="red" %}
+
 # Root Procedure for Huawei MA5671A (V2 - Python)
 
 {% include alert.html content="This version remains for documentation purposes only. Please use the latest procedure: [Web root procedure](/ont-huawei-ma5671a-root-web)" alert="Important" icon="svg-warning" color="red" %}
