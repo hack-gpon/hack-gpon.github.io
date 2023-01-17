@@ -7,19 +7,19 @@ parent: Nokia
 
 # Hardware Specifications
 
-|             |          |
-| ----------- | -------- |
-| Vendor      | Nokia    |
-| Model       | G-010G-A |
-| Chipset     |          |
-| Manufacter  |          |
-| Flash       |          |
-| RAM         |          |
-| System      |          |
-| 2.5GBaseT   | No       |
-| Optics      | SC/APC   |
-| IP address  |          |
-| Web Gui     |          |
-| Telnet      |          |
-| SSH         |          |
-| Form Factor | ONT      |
+|                |          |
+| -------------- | -------- |
+| Vendor/Brand   | Nokia    |
+| Model          | G-010G-A |
+| Chipset        |          |
+| Flash          |          |
+| RAM            |          |
+| System         |          |
+| 2.5GBaseT      | No       |
+| Optics         | SC/APC   |
+| IP address     |          |
+| Web Gui        |          |
+| SSH            |          |
+| Telnet         |          |
+| Serial         |          |
+| Form Factor    | ONT      |

@@ -7,23 +7,25 @@ parent: CIG
 
 # Hardware Specifications
 
-|             |                 |
-| ----------- | --------------- |
-| Vendor      | CIG             |
-| Model       | G-97S           |
-| Chipset     | Lantiq PEB98035 |
-| Manufacter  | CIG             |
-| CPU         |                 |
-| CPU Clock   |                 |
-| Flash       |                 |
-| RAM         |                 |
-| HSGMII      |                 |
-| Optics      | SC              |
-| IP address  |                 |
-| Web Gui     |                 |
-| SSH         |                 |
-| Form Factor | miniONT SFP     |
-
+|                  |                 |
+| ---------------- | --------------- |
+| Vendor/Brand     | CIG             |
+| Model            | G-97S           |
+| ODM              | CIG             |
+| ODM Product Code | G-97S           |
+| Chipset          | Lantiq PEB98035 |
+| CPU              |                 |
+| CPU Clock        |                 |
+| Flash            |                 |
+| RAM              |                 |
+| HSGMII           |                 |
+| Optics           | SC              |
+| IP address       |                 |
+| Web Gui          |                 |
+| SSH              |                 |
+| Telnet           |                 |
+| Serial           |                 |
+| Form Factor      | miniONT SFP     |
 
 # Miscellaneous Links
 

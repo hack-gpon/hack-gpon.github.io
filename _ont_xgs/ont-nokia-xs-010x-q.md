@@ -7,19 +7,22 @@ parent: Nokia
 
 # Hardware Specifications
 
-|             |           |
-| ----------- | --------- |
-| Vendor      | Nokia     |
-| Model       | XS-010X-Q |
-| Chipset     |           |
-| Manufacter  |           |
-| Flash       |           |
-| RAM         |           |
-| System      |           |
-| 10GBaseT    | Yes       |
-| Optics      |           |
-| IP address  |           |
-| Web Gui     |           |
-| Telnet      |           |
-| SSH         |           |
-| Form Factor | ONT       |
+|                  |           |
+| ---------------- | --------- |
+| Vendor           | Nokia     |
+| Model            | XS-010X-Q |
+| ODM              | CIG       |
+| ODM Product Code | XG-99C    |
+| Chipset          |           |
+| Manufacter       |           |
+| Flash            |           |
+| RAM              |           |
+| System           |           |
+| 10GBaseT         | Yes       |
+| Optics           |           |
+| IP address       |           |
+| Web Gui          |           |
+| SSH              |           |
+| Telnet           |           |
+| Serial           |           |
+| Form Factor      | ONT       |

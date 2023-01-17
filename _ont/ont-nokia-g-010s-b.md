@@ -7,27 +7,31 @@ parent: Nokia
 
 # Hardware Specifications
 
-|             |                                          |
-| ----------- | ---------------------------------------- |
-| Vendor      | Nokia                                    |
-| Model       | G-010S-B                                 |
-| Chipset     | Lantiq PEB98035                          |
-| CPU         | MIPS 34Kc interAptiv                     |
-| CPU Clock   | 400MHz                                   |
-| Manufacter  | SourcePhotonics                          |
-| Flash       | 16 MB (Macronix MX25L25635FZ2R-10G)      |
-| RAM         | 64 MB (Winbond W9751G6KB-25I)            |
-| System      | OpenWRT                                  |
-| HSGMII      | Yes                                      |
-| Optics      | SC/UPC                                   |
-| IP address  | 192.168.1.10                             |
-| Web Gui     | ✅ user `adminadmin`, password `ALC#FGU` |
-| SSH         | ✅ user `ONTUSER`, password `SUGAR2A041` |
-| Form Factor | miniONT SFP                              |
+|                  |                                          |
+| ---------------- | ---------------------------------------- |
+| Vendor/Brand     | Nokia                                    |
+| Model            | G-010S-B                                 |
+| ODM              | SourcePhotonics                          |
+| ODM Product Code |                                          |
+| Chipset          | Lantiq PEB98035                          |
+| CPU              | MIPS 34Kc interAptiv                     |
+| CPU Clock        | 400MHz                                   |
+| Flash            | 16 MB (Macronix MX25L25635FZ2R-10G)      |
+| RAM              | 64 MB (Winbond W9751G6KB-25I)            |
+| System           | OpenWRT                                  |
+| HSGMII           | Yes                                      |
+| Optics           | SC/UPC                                   |
+| IP address       | 192.168.1.10                             |
+| Web Gui          | ✅ user `adminadmin`, password `ALC#FGU` |
+| SSH              | ✅ user `ONTUSER`, password `SUGAR2A041` |
+| Telnet           |                                          |
+| Serial           | ✅ on SFP                                |
+| Serial baud      | 115200                                   |
+| Serial encoding  | 8-N-1                                    |
+| Form Factor      | miniONT SFP                              |
 
 {% include image.html file="g-010s-b_teardown_1.jpg"  alt="G-010S-B Teardown" caption="G-010S-B Teardown" %}
 {% include image.html file="g-010s-b_teardown_2.jpg"  alt="G-010S-B Teardown" caption="G-010S-B Teardown" %}
-
 
 
 ## List of partitions
@@ -49,31 +53,31 @@ parent: Nokia
 | mtd12 | 00010000 | 00010000  | "ribackup"    |
 | mtd13 | 00010000 | 00010000  | "reserve"     |
 
-## List of firmwares and files
-
 ## Serial
+
+The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the SFP connector.
 
 | USB TTL(UART) Adapter | SFP 20pins Molex connector |
 | --------------------- | -------------------------- |
 | 3.3V                  | pin #15 and #16            |
 | TX                    | pin #2                     |
 | RX                    | pin #7                     |
-| GND                   | pin #10                    |
+| GND                   | pin #14 and #10            |
 
-Configuration: asc0=0 115200 8-N-1
+{% include alert.html content="Try PIN 10 or other GND PINs if the connection doesn't work by using PIN 14." alert="Note"  icon="svg-warning" color="yellow" %}
 
-# HW Modding
+{% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
 
-- [Nokia G-010S-A Pin 6 Iusse - Rsaxvc.net](https://rsaxvc.net/blog/2020/8/15/Nokia_G-010S-A_Pin_6_Issue.html)
-
-# Useful Commands
+# General Settings and Useful Commands
 
 ##  Disabling Dying Gasp
 ```sh
 uci set gpon.gtc.nDyingGaspEnable='0'; uci commit gpon
 ```
 
-# Known Bugs
+# Hardware Modding
+
+- [Nokia G-010S-A Pin 6 Iusse - Rsaxvc.net](https://rsaxvc.net/blog/2020/8/15/Nokia_G-010S-A_Pin_6_Issue.html)
 
 # Miscellaneous Links
 

@@ -7,20 +7,24 @@ parent: CIG
 
 # Hardware Specifications
 
-|             |                  |
-| ----------- | ---------------- |
-| Vendor      | CIG              |
-| Model       | G-97CP           |
-| Chipset     | Realtek RTL9601D |
-| Flash       |                  |
-| RAM         |                  |
-| System      | Linux            |
-| 2.5GbaseT   | Yes              |
-| Optics      | SC/APC           |
-| IP address  | 192.168.1.1      |
-| Web Gui     |                  |
-| SSH         |                  |
-| Form Factor | ONT              |
+|                  |                  |
+| ---------------- | ---------------- |
+| Vendor/Brand     | CIG              |
+| Model            | G-97CP           |
+| ODM              | CIG              |
+| ODM Product Code | G-97CP           |
+| Chipset          | Realtek RTL9601D |
+| Flash            |                  |
+| RAM              |                  |
+| System           | Linux            |
+| 2.5GbaseT        | Yes              |
+| Optics           | SC/APC           |
+| IP address       | 192.168.1.1      |
+| Web Gui          |                  |
+| SSH              |                  |
+| Telnet           |                  |
+| Serial           |                  |
+| Form Factor      | ONT              |
  
 {% include image.html file="cig/cig-1.jpg" alt="CIG G-97CP Unidata" caption="CIG G-97CP Unidata <a href='https://forum.fibra.click/u/papin'>@papin</a>" %}
 {% include image.html file="cig/cig-2.jpg" alt="CIG G-97CP Unidata" caption="CIG G-97CP Unidata <a href='https://forum.fibra.click/u/papin'>@papin</a>" %}

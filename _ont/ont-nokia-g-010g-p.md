@@ -8,22 +8,26 @@ alias: CIG G-97C1/CIG G-97CU
 
 # Hardware Specifications
 
-|             |                                                                     |
-| ----------- | ------------------------------------------------------------------- |
-| Vendor      | Nokia                                                               |
-| Model       | G-010G-P                                                            |
-| Chipset     | Realtek RTL9601B                                                    |
-| Manufacter  | CIG G-97C1                                                          |
-| Flash       |                                                                     |
-| RAM         |                                                                     |
-| System      | Linux (Luna SDK 1.9.0)                                              |
-| 2.5GBaseT   | No                                                                  |
-| Optics      | SC/APC                                                              |
-| IP address  | 192.168.100.1  (after a factory reset the ONT uses 10.89.42.157/16) |
-| Web Gui     | ✅ user `admin`, password `1234`                                    |
-| Telnet      | ✅ user `root`, password `huigu309`                                 |
-| SSH         |                                                                     |
-| Form Factor | ONT                                                                 |
+|                  |                                                                     |
+| ---------------- | ------------------------------------------------------------------- |
+| Vendor/Brand     | Nokia                                                               |
+| Model            | G-010G-P                                                            |
+| ODM              | CIG                                                                 |
+| ODM Product Code | G-97C1                                                              |
+| Chipset          | Realtek RTL9601B                                                    |
+| Flash            |                                                                     |
+| RAM              |                                                                     |
+| System           | Linux (Luna SDK 1.9.0)                                              |
+| 2.5GBaseT        | No                                                                  |
+| Optics           | SC/APC                                                              |
+| IP address       | 192.168.100.1  (after a factory reset the ONT uses 10.89.42.157/16) |
+| Web Gui          | ✅ user `admin`, password `1234`                                    |
+| SSH              |                                                                     |
+| Telnet           | ✅ user `root`, password `huigu309`                                 |
+| Serial           | ✅                                                                  |
+| Serial baud      | 115200                                                              |
+| Serial encoding  | 8-N-1                                                               |
+| Form Factor      | ONT                                                                 |
 
 {% include image.html file="g-010g-p.jpg"  alt="G-010G-P" caption="Nokia G-010G-P" %}
 
@@ -31,8 +35,6 @@ alias: CIG G-97C1/CIG G-97CU
 
 - 3FE45655AOCK94
 - 3FE45655AOCK88
-
-## List of partitions
 
 # Use of GponSLID
 
