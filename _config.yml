@@ -105,6 +105,9 @@ collections:
   tools:
     permalink: "/:path/"
     output: true
+  sfp:
+    permalink: "/:path/"
+    output: true
   gpon:
     permalink: "/:path/"
     output: true
@@ -123,8 +126,11 @@ just_the_docs:
     tools:
       name: Tools
       nav_fold: true
+    sfp:
+      name: SFP Resources & standard
+      nav_fold: true
     gpon:
-      name: GPON Resources
+      name: GPON Resources & standard
       nav_fold: true
     sfp_cage:
       name: SFP cage
