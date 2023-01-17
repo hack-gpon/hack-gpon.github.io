@@ -7,26 +7,23 @@ parent: TP-Link
 
 # Hardware Specifications
 
-|             |                                       |
-| ----------- | ------------------------------------- |
-| Vendor      | TP-Link                               |
-| Model       | XZ000-G3                              |
-| Chipset     |                                       |
-| CPU         | MIPS32                                |
-| Flash       |                                       |
-| RAM         |                                       |
-| System      | TCLinux                               |
-| HSGMII      | No                                    |
-| Optics      | SC/APC                                |
-| IP address  | 192.168.1.1                           |
-| Web Gui     | ✅ username `admin`, password `admin` |
-| SSH         |                                       |
-| Form Factor | ONT                                   |
-
-
-## List of software versions
-## List of partitions
-## List of firmwares and files
+|              |                                       |
+| ------------ | ------------------------------------- |
+| Vendor/Brand | TP-Link                               |
+| Model        | XZ000-G3                              |
+| Chipset      |                                       |
+| CPU          | MIPS32                                |
+| Flash        |                                       |
+| RAM          |                                       |
+| System       | TCLinux                               |
+| HSGMII       | No                                    |
+| Optics       | SC/APC                                |
+| IP address   | 192.168.1.1                           |
+| Web Gui      | ✅ username `admin`, password `admin` |
+| SSH          |                                       |
+| Telnet       |                                       |
+| Serial       |                                       |
+| Form Factor  | ONT                                   |
 
 # Known Bugs
 
