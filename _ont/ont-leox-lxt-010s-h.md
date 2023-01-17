@@ -1,30 +1,34 @@
 ---
-title: Leox LXT-010S-H
+title: LEOX LXT-010S-H
 has_children: false
 layout: default
-parent: Leox
+parent: LEOX
 ---
 
 # Hardware Specifications
 
-|             |                                      |
-| ----------- | ------------------------------------ |
-| Vendor      | Leox                                 |
-| Model       | LXT-010S-H                           |
-| Chipset     | RTL9601CI                            |
-| Flash       | 128MB                                |
-| RAM         | 32MB                                 |
-| Manufacter  | Hisense LTE3415-SH+                  |
-| System      | Linux 3.18 (Luna SDK 3.3)            |
-| HSGMII      | Yes                                  |
-| Optics      | SC/UPC                               |
-| IP address  | 192.168.100.1/24                     |
-| Web Gui     | ✅                                   |
-| Telnet      | ✅ user `leox`, password `leolabs_7` |
-| Form Factor | miniONT SFP                          |
+|                  |                                         |
+| ---------------- | --------------------------------------- |
+| Vendor/Brand     | LEOX                                    |
+| Model            | LXT-010S-H                              |
+| ODM Manufacturer | Hisense                                 |
+| ODM Product Code | [LTE3415-SH+](/ont-hisense-lte3415-sh+) |
+| Chipset          | Realtek RTL9601CI                       |
+| Flash            | 128MB                                   |
+| RAM              | 32MB                                    |
+| System           | Linux 3.18 (Luna SDK 3.3)               |
+| HSGMII           | Yes                                     |
+| Optics           | SC/UPC                                  |
+| IP address       | 192.168.100.1/24                        |
+| Web Gui          | ✅                                      |
+| SSH              |                                         |
+| Telnet           | ✅ user `leox`, password `leolabs_7`    |
+| Serial           | ✅                                      |
+| Serial baud      | 115200                                  |
+| Serial encoding  | 8-N-1                                   |
+| Form Factor      | miniONT SFP                             |
 
 
-## List of software versions
 ## List of partitions
 
 | dev   | size     | erasesize | name            |
@@ -48,12 +52,13 @@ This stick supports dual boot.
 
 `k0` and `r0` respectively contain the kernel and firmware of the first image, while `k1` and `r1` respectively contain the kernel and the firmware of the second one.
 
-## Serial Console
-
+## Serial
 
 The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. To accept TX line commands, the GND of the TTL adapter should be attached to the stick's shield:
 
 {% include image.html file="ont-leox-lxt-010s-h_ttl.jpg" alt="Leox LXT-010S-H TTL Pinout" caption="Leox LXT-010S-H TTL Pinout" %}
+
+{% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
 
 ## List firmware version
 
@@ -62,39 +67,15 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 - V3.3.4L3
 - V3.3.4L4rc1 (Fix 2.5GbE HiSGMII)
 
-# Useful Commands
-
-## Change IP address
-```sh
-# /etc/scripts/flash get LAN_IP_ADDR
-LAN_IP_ADDR=192.168.2.1
-# /etc/scripts/flash set LAN_IP_ADDR 192.168.1.1
- ```
-
-## Getting/Setting the ONT's S/N
-```sh
-# /etc/scripts/flash get GPON_SN
-GPON_SN=LEOX00000000
-# /etc/scripts/flash set GPON_SN TMBB0A1B2C3D
-```
-
-## Getting/Setting the ONT's PLOAM password
-
-{% include alert.html content="The PLOAM password is stored in ASCII format" alert="Info" icon="svg-info" color="blue" %}
-
-```sh
-# /etc/scripts/flash get GPON_PLOAM_PASSWD
-GPON_PLOAM_PASSWD=AAAAAAAAAA
-# /etc/scripts/flash set GPON_PLOAM_PASSWD AAAAAAAAAA
-```
+{% include_relative ont-leox-userful-command.md %}
 
 ## LAN SDS Mode (with firmware V3.3.4L4rc1):
 
-|       mode           |             description              |
-| -------------------- | ------------------------------------ |
-| LAN_SDS_MODE = 1     | 1GbE with auto-neg on                |
-| LAN_SDS_MODE = 7     | 1GbE with auto-neg off               |
-| LAN_SDS_MODE = 8     | 2.5GbE with auto-neg off             |
+| mode             | description              |
+| ---------------- | ------------------------ |
+| LAN_SDS_MODE = 1 | 1GbE with auto-neg on    |
+| LAN_SDS_MODE = 7 | 1GbE with auto-neg off   |
+| LAN_SDS_MODE = 8 | 2.5GbE with auto-neg off |
 
 If you try to use any mode not listed here, stick will default to mode 1.
 
@@ -109,8 +90,3 @@ LAN_SDS_MODE=1
 # Known Bugs
 
 The stock firmware doesn't work @ 2.5GbE. There is a new firmware avaliable from LeoLabs that fixes this issue.
-
-
-# Miscellaneous Links
-
-
