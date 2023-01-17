@@ -57,9 +57,8 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 | 3.3V                  | pin #15 and #16            |
 | TX                    | pin #2                     |
 | RX                    | pin #7                     |
-| GND                   | pin #14 and #10            |
+| GND                   | pin #14                    |
 
-{% include alert.html content="Try PIN 10 or other GND PINs if the connection doesn't work by using PIN 14." alert="Note"  icon="svg-warning" color="yellow" %}
 
 {% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
 
