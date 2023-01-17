@@ -7,33 +7,37 @@ parent: Hisense
 
 # Hardware Specifications
 
-|             |              |
-| ----------- | ------------ |
-| Vendor      | Hisense      |
-| Model       | LTF7267-BHA+ |
-| Chipset     | Cortina      |
-| Manufacter  | Hisense      |
-| Flash       | 128MB        |
-| RAM         | 128MB        |
-| System      | Custom Linux by Cortina (Saturn SDK) based on Kernel 4.4 |
-| XSGMII      | Yes          |
-| Optics      | SC/APC       |
-| IP address  | 192.168.0.1  |
-| Web Gui     | ✅ user `admin`, password `system` |
-| Telnet      | ✅ user `root`, password `hbmtsfp` |
-| SSH         | ✅ user `root`, password `hbmtsfp` |
-| Form Factor | miniONT SFP+  |
+|                 |                                                          |
+| --------------- | -------------------------------------------------------- |
+| Vendor/Brand    | Hisense                                                  |
+| Model           | LTF7267-BHA+                                             |
+| ODM             | Hisense                                                  |
+| Chipset         | Cortina                                                  |
+| Flash           | 128MB                                                    |
+| RAM             | 128MB                                                    |
+| System          | Custom Linux by Cortina (Saturn SDK) based on Kernel 4.4 |
+| XSGMII          | Yes                                                      |
+| Optics          | SC/APC                                                   |
+| IP address      | 192.168.0.1                                              |
+| Web Gui         | ✅ user `admin`, password `system`                       |
+| SSH             | ✅ user `root`, password `hbmtsfp`                       |
+| Telnet          | ✅ user `root`, password `hbmtsfp`                       |
+| Serial          | ✅                                                       |
+| Serial baud     | 115200                                                   |
+| Serial encoding | 8-N-1                                                    |
+| Form Factor     | miniONT SFP+                                             |
 
 # External/Internal Photo
 
 {% include image.html file="ont-hisense-ltf7267-bha+_front.jpg" alt="Hisense LTF7267-BHA+ External" caption="Hisense LTF7267-BHA+ External" %}
 
+## Serial
+
+The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. It's near the SFP header. TX, RX and ground pads need to be connected to a USB2TTL adapter supporting a logic level of 3.3V.
+
 {% include image.html file="ont-hisense-ltf7267-bha+_inside.jpg" alt="Hisense LTF7267-BHA+ Internals" caption="Hisense LTF7267-BHA+ Internals" %}
 
-
-## UART Console (115200, 8bit)
-
-It's near the SFP header (look at the red-square on _Internals Pic_). TX, RX and ground pads need to be connected to a USB2TTL adapter supporting a logic level of 3.3V
+{% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
 
 ## List of software versions
 - 22.05.26.1 - 20220527052622 (from /etc/hi_version - /etc/version)
@@ -59,7 +63,7 @@ This ONT supports dual boot.
 
 `kernel0` and `rootfs0` respectively contain the kernel and firmware of the first image, `kernel1` and `rootfs1` the kernel and the firmware of the second one
 
-# Useful Commands
+# General Settings and Useful Commands
 
 To access Cortina Shell (needed to check OMCI stuff and XGSPON status) you can use the following command:
 
@@ -391,5 +395,3 @@ Reboot ONT to apply the change
 - `ALCL` OLT mode uses some static configurations on MIBs, so if your OLT has strict configuration checks it might not work properly
 - During initial tests the only currently working mode of the stick is `PPTP EthUni`
 - Stick can be configured also emulate `VEIP` mode(adding it to the scfg.txt file), but current firmware doesn't link correctly the XGBE interface, so no traffic is passing between LAN and PON interfaces
-
-# Miscellaneous Links

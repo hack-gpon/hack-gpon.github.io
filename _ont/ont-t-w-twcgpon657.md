@@ -7,34 +7,34 @@ parent: T&W
 
 # Hardware Specifications
 
-|             |                                    |
-| ----------- | ---------------------------------- |
-| Vendor      | T&W                                |
-| Model       | TWC GPON657                        |
-| Chipset     | Realtek RTL9601CI                  |
-| Flash       | 16 MB                              |
-| RAM         | 64 MB                              |
-| System      | Linux (Luna SDK)                   |
-| HSGMII      | Yes                                |
-| Optics      | SC/APC                             |
-| IP address  |                                    |
-| Web Gui     | ✅ user `admin`, password `system` |
-| SSH         | ✅ user `admin`, password `system` |
-| Form Factor | miniONT SFP                        |
+|              |                                    |
+| ------------ | ---------------------------------- |
+| Vendor/Brand | T&W                                |
+| Model        | TWC GPON657                        |
+| ODM          | T&W                                |
+| Chipset      | Realtek RTL9601CI                  |
+| Flash        | 16 MB                              |
+| RAM          | 64 MB                              |
+| System       | Linux (Luna SDK)                   |
+| HSGMII       | Yes                                |
+| Optics       | SC/APC                             |
+| IP address   |                                    |
+| Web Gui      | ✅ user `admin`, password `system` |
+| SSH          | ✅ user `admin`, password `system` |
+| Telnet       |                                    |
+| Serial       |                                    |
+| Form Factor  | miniONT SFP                        |
 
 ## Firmware is interchangeable with:
 
 - [VSOL V2801F](/ont-vsol-v2801f)
 - [UFiber UF-Instant](/ont-ufiber-uf-instant) 
 
-## List of software versions
-## List of partitions
 ## List of firmwares and files
 
 - [Firmware repository by Anime4000](https://github.com/Anime4000/RTL960x/tree/main/Firmware/TWCGPON657)
 
 The reccomended version are `C00R657V2801F_V1.9.0-220404.tar` because it is the V2801F for T&W TWC GPON657
-
 
 # Known Bugs
 

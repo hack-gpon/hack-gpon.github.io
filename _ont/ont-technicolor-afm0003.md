@@ -8,27 +8,36 @@ alias: Hisense LTE3415-SH+
 
 # Hardware Specifications
 
-|             |                                                 |
-| ----------- | ----------------------------------------------- |
-| Vendor      | Technicolor                                     |
-| Model       | AFM0003TIM                                      |
-| Chipset     | Realtek RTL9601C                                |
-| Flash       | 256 MB                                          |
-| RAM         |                                                 |
-| System      | Linux 2.6 (Luna SDK 1.9)                        |
-| HSGMII      | Yes, but not working with stock firmware        |
-| Optics      |                                                 |
-| IP address  | 192.168.2.1                                     |
-| Web Gui     | Can be enabled, user `admin`, password `system` |
-| Telnet      | ✅                                              |
-| Form Factor | miniONT SFP                                     |
-| Multicast   | ✅                                              |
+|                 |                                                 |
+| --------------- | ----------------------------------------------- |
+| Vendor/Brand    | Technicolor                                     |
+| Model           | AFM0003TIM                                      |
+| ODM             | Hisense LTE3415-SCA+                            |
+| Chipset         | Realtek RTL9601CI                               |
+| Flash           | 256 MB                                          |
+| RAM             |                                                 |
+| System          | Linux 2.6 (Luna SDK 1.9)                        |
+| HSGMII          | Yes, but not working with stock firmware        |
+| Optics          |                                                 |
+| IP address      | 192.168.2.1                                     |
+| Web Gui         | Can be enabled, user `admin`, password `system` |
+| SSH             | No                                              |
+| Telnet          | ✅                                              |
+| Form Factor     | miniONT SFP                                     |
+| Serial          | ✅                                              |
+| Serial baud     | 115200                                          |
+| Serial encoding | 8-N-1                                           |
+| Multicast       | ✅                                              |
 
 {% include image.html file="afm0003tim.jpg" alt="AFM0003TIM" caption="AFM0003TIM" %}
 
 ## Serial
 
-Configuration: 115200 8-N-1
+The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. To accept TX line commands, the GND of the TTL adapter should be attached to the stick's shield:
+
+{% include image.html file="ont-leox-lxt-010s-h_ttl.jpg" alt="Technicolor AFM0003 TTL Pinout" caption="Technicolor AFM0003 TTL Pinout" %}
+
+{% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
 
 # Hardware Revisions
 
@@ -80,10 +89,6 @@ This stick supports dual boot.
 ```sh
 # /bin/iptables -D INPUT -p tcp --dport 80 -j DROP
 ```
-
-# Low Level Modding
-
-# Known Bugs
 
 # Miscellaneous Links
 

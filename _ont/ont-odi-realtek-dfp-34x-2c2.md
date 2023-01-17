@@ -8,20 +8,22 @@ parent: ODI
 
 # Hardware Specifications
 
-|             |                                   |
-| ----------- | --------------------------------- |
-| Vendor      | ODI                               |
-| Model       | DFP-34X-2C2                       |
-| Chipset     | Realtek RTL9601D                  |
-| Flash       | 8 MB                              |
-| RAM         | 64 MB                             |
-| System      | Linux (Luna SDK 1.9)              |
-| HSGMII      | Yes                               |
-| Optics      | SC/UPC                            |
-| IP address  | 192.168.1.1                       |
-| Web Gui     | ✅ user `admin`, password `admin` |
-| SSH         | ✅ user `admin`, password `admin` |
-| Form Factor | miniONT SFP                       |
+|              |                                   |
+| ------------ | --------------------------------- |
+| Vendor/Brand | ODI                               |
+| Model        | DFP-34X-2C2                       |
+| Chipset      | Realtek RTL9601D                  |
+| Flash        | 8 MB                              |
+| RAM          | 64 MB                             |
+| System       | Linux (Luna SDK 1.9)              |
+| HSGMII       | Yes                               |
+| Optics       | SC/UPC                            |
+| IP address   | 192.168.1.1                       |
+| Web Gui      | ✅ user `admin`, password `admin` |
+| SSH          | ✅ user `admin`, password `admin` |
+| Telnet       |                                   |
+| Serial       |                                   |
+| Form Factor  | miniONT SFP                       |
 
 {% include alert.html content="SSH uses an outdated set of algorithms/ciphers, you can connect using the following command:" alert="Note"  icon="svg-info" color="blue" %}
 
@@ -65,21 +67,14 @@ This stick supports dual boot.
 
 `k0` and `r0` respectively contain the kernel and firmware of the first image, while `k1` and `r1` respectively contain the kernel and the firmware of the second one
 
-# Serial
+## Serial
 
-The stick has exposed TTL pads:
+The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. It's near the SFP header. TX, RX and ground pads need to be connected to a USB2TTL adapter supporting a logic level of 3.3V.
 
 {% include image.html file="ont-odi-realtek-dfp-34x-2c2/ttl.jpg"  alt="DFP-34X-2C2 TTL Connection" caption="DFP-34X-2C2 TTL Connection" %}
 {% include image.html file="ont-odi-realtek-dfp-34x-2c2/ttl-2.jpg"  alt="DFP-34X-2C2 TTL Pin" caption="DFP-34X-2C2 TTL Pin" %}
 
-| USB TTL(UART) Adapter | wire colour in picture | SFP 20pins Molex connector and TTL pinout |
-| --------------------- | ---------------------- | ----------------------------------------- |
-| 3.3V                  | blue                   | pin #15 and #16                           |
-| TX                    | purple                 | TX                                        |
-| RX                    | white                  | RX                                        |
-| GND                   | green                  | pin #10                                   |
-
-Configuration: 115200 8-N-1
+{% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
 
 {% include_relative luna-sdk-userful-commands.md flash='flash' ploam='hex' %}
 
@@ -119,13 +114,9 @@ GPON_ONU_MODEL=DFP-34X-2C2
 # flash set GPON_ONU_MODEL DFP-34X-XXX
 ```
 
-
 # Known Bugs
 
 - Auto-sensing mode to switch between SGMII/HiSGMII
-
-# Low level modding
-
 
 # Miscellaneous Links
 

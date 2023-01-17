@@ -7,20 +7,22 @@ parent: UFiber
 
 # Hardware Specifications
 
-|             |                   |
-| ----------- | ----------------- |
-| Vendor      | UFiber            |
-| Model       | UFiber UF-Instant |
-| Chipset     | Realtek RTL9601CI |
-| Flash       | 16 MB             |
-| RAM         | 64 MB             |
-| System      | Linux (Luna SDK)  |
-| HSGMII      | No                |
-| Optics      | SC/APC            |
-| IP address  |                   |
-| Web Gui     | ✅                |
-| SSH         | ✅                |
-| Form Factor | miniONT SFP       |
+|              |                   |
+| ------------ | ----------------- |
+| Vendor/Brand | UFiber            |
+| Model        | UFiber UF-Instant |
+| Chipset      | Realtek RTL9601CI |
+| Flash        | 16 MB             |
+| RAM          | 64 MB             |
+| System       | Linux (Luna SDK)  |
+| HSGMII       | No                |
+| Optics       | SC/APC            |
+| IP address   |                   |
+| Web Gui      | ✅                |
+| SSH          | ✅                |
+| Telnet       |                   |
+| Serial       |                   |
+| Form Factor  | miniONT SFP       |
 
 ## Firmware is interchangeable with:
 
@@ -30,8 +32,6 @@ parent: UFiber
 - [VSOL V2801F](/ont-vsol-v2801f)
 - [T&W TWC GPON657](/ont-t-w-twcgpon657)
 
-
-## List of software versions
 ## List of partitions
 
 | dev  | size     | erasesize | name     |
@@ -46,8 +46,6 @@ parent: UFiber
 | mtd7 | 004b0000 | 00001000  | "r1"     |
 | mtd8 | 00010000 | 00001000  | "hw"     |
 | mtd9 | 00010000 | 00001000  | "sec"    |
-
-## List of firmwares and files
 
 # Know Bugs
 
