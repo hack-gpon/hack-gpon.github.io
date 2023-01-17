@@ -7,25 +7,26 @@ parent: Hisense
 
 # Hardware Specifications
 
-|                 |                                                          |
-| --------------- | -------------------------------------------------------- |
-| Vendor/Brand    | Hisense                                                  |
-| Model           | LTF7267-BHA+                                             |
-| ODM             | Hisense                                                  |
-| Chipset         | Cortina                                                  |
-| Flash           | 128MB                                                    |
-| RAM             | 128MB                                                    |
-| System          | Custom Linux by Cortina (Saturn SDK) based on Kernel 4.4 |
-| XSGMII          | Yes                                                      |
-| Optics          | SC/APC                                                   |
-| IP address      | 192.168.0.1                                              |
-| Web Gui         | ✅ user `admin`, password `system`                       |
-| SSH             | ✅ user `root`, password `hbmtsfp`                       |
-| Telnet          | ✅ user `root`, password `hbmtsfp`                       |
-| Serial          | ✅                                                       |
-| Serial baud     | 115200                                                   |
-| Serial encoding | 8-N-1                                                    |
-| Form Factor     | miniONT SFP+                                             |
+|                  |                                                          |
+| ---------------- | -------------------------------------------------------- |
+| Vendor/Brand     | Hisense                                                  |
+| Model            | LTF7267-BHA+                                             |
+| ODM Manufacter   | Hisense                                                  |
+| ODM Product Code | LTF7267-BHA+                                             |
+| Chipset          | Cortina                                                  |
+| Flash            | 128MB                                                    |
+| RAM              | 128MB                                                    |
+| System           | Custom Linux by Cortina (Saturn SDK) based on Kernel 4.4 |
+| XSGMII           | Yes                                                      |
+| Optics           | SC/APC                                                   |
+| IP address       | 192.168.0.1                                              |
+| Web Gui          | ✅ user `admin`, password `system`                       |
+| SSH              | ✅ user `root`, password `hbmtsfp`                       |
+| Telnet           | ✅ user `root`, password `hbmtsfp`                       |
+| Serial           | ✅                                                       |
+| Serial baud      | 115200                                                   |
+| Serial encoding  | 8-N-1                                                    |
+| Form Factor      | miniONT SFP+                                             |
 
 # External/Internal Photo
 

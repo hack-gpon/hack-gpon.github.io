@@ -8,26 +8,27 @@ alias: Hisense LTE3415-SH+
 
 # Hardware Specifications
 
-|                 |                                                 |
-| --------------- | ----------------------------------------------- |
-| Vendor/Brand    | Technicolor                                     |
-| Model           | AFM0003TIM                                      |
-| ODM             | Hisense LTE3415-SCA+                            |
-| Chipset         | Realtek RTL9601CI                               |
-| Flash           | 256 MB                                          |
-| RAM             |                                                 |
-| System          | Linux 2.6 (Luna SDK 1.9)                        |
-| HSGMII          | Yes, but not working with stock firmware        |
-| Optics          |                                                 |
-| IP address      | 192.168.2.1                                     |
-| Web Gui         | Can be enabled, user `admin`, password `system` |
-| SSH             | No                                              |
-| Telnet          | ✅                                              |
-| Form Factor     | miniONT SFP                                     |
-| Serial          | ✅                                              |
-| Serial baud     | 115200                                          |
-| Serial encoding | 8-N-1                                           |
-| Multicast       | ✅                                              |
+|                  |                                                 |
+| ---------------- | ----------------------------------------------- |
+| Vendor/Brand     | Technicolor                                     |
+| Model            | AFM0003TIM                                      |
+| ODM Manufacturer | Hisense                                         |
+| ODM Product Code | LTE3415-SCA+                                    |
+| Chipset          | Realtek RTL9601CI                               |
+| Flash            | 256 MB                                          |
+| RAM              |                                                 |
+| System           | Linux 2.6 (Luna SDK 1.9)                        |
+| HSGMII           | Yes, but not working with stock firmware        |
+| Optics           |                                                 |
+| IP address       | 192.168.2.1                                     |
+| Web Gui          | Can be enabled, user `admin`, password `system` |
+| SSH              | No                                              |
+| Telnet           | ✅                                              |
+| Form Factor      | miniONT SFP                                     |
+| Serial           | ✅                                              |
+| Serial baud      | 115200                                          |
+| Serial encoding  | 8-N-1                                           |
+| Multicast        | ✅                                              |
 
 {% include image.html file="afm0003tim.jpg" alt="AFM0003TIM" caption="AFM0003TIM" %}
 

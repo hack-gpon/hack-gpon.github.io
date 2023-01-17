@@ -7,23 +7,24 @@ parent: T&W
 
 # Hardware Specifications
 
-|              |                                    |
-| ------------ | ---------------------------------- |
-| Vendor/Brand | T&W                                |
-| Model        | TWC GPON657                        |
-| ODM          | T&W                                |
-| Chipset      | Realtek RTL9601CI                  |
-| Flash        | 16 MB                              |
-| RAM          | 64 MB                              |
-| System       | Linux (Luna SDK)                   |
-| HSGMII       | Yes                                |
-| Optics       | SC/APC                             |
-| IP address   |                                    |
-| Web Gui      | ✅ user `admin`, password `system` |
-| SSH          | ✅ user `admin`, password `system` |
-| Telnet       |                                    |
-| Serial       |                                    |
-| Form Factor  | miniONT SFP                        |
+|                  |                                    |
+| ---------------- | ---------------------------------- |
+| Vendor/Brand     | T&W                                |
+| Model            | TWC GPON657                        |
+| ODM Manufacturer | T&W                                |
+| ODM Product Code | TWC GPON657                        |
+| Chipset          | Realtek RTL9601CI                  |
+| Flash            | 16 MB                              |
+| RAM              | 64 MB                              |
+| System           | Linux (Luna SDK)                   |
+| HSGMII           | Yes                                |
+| Optics           | SC/APC                             |
+| IP address       |                                    |
+| Web Gui          | ✅ user `admin`, password `system` |
+| SSH              | ✅ user `admin`, password `system` |
+| Telnet           |                                    |
+| Serial           |                                    |
+| Form Factor      | miniONT SFP                        |
 
 ## Firmware is interchangeable with:
 
