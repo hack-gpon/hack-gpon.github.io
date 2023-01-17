@@ -199,5 +199,3 @@ success!
 
 {% include image.html file="hg8010h_teardown_1_v6.jpg"  alt="HG8010Hv6 Teardown" caption="HG8010Hv6: Teardown" %}
 {% include image.html file="hg8010h_teardown_2_v6.jpg"  alt="HG8010Hv6 Teardown" caption="HG8010Hv6: Teardown" %}
-
-

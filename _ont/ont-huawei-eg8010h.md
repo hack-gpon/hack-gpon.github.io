@@ -36,5 +36,3 @@ parent: Huawei
 ## List of software versions
 
 - V5R020C10S035
-
-
