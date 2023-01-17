@@ -32,6 +32,7 @@ plugins:
   - jekyll-last-modified-at
   - jekyll-redirect-from
   - jekyll-default-layout
+  - jekyll-sitemap
 
 color_scheme: "auto"
 enable_switch_color_scheme: true 
@@ -135,3 +136,10 @@ just_the_docs:
     sfp_cage:
       name: SFP cage
       nav_fold: true
+
+defaults:
+  -
+    scope:
+      path:            "assets/**/*.pdf"
+    values:
+      sitemap:         false
