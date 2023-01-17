@@ -96,10 +96,10 @@
         flashForm.addEventListener('submit', async function(event) {
             if (!flashForm.checkValidity()) {
                 event.preventDefault();
-                [...flashForm.elements].map(function(e){return e.parentNode}).forEach(function(e){e.classList.add('was-validated', true)});
+                [...flashForm.elements].map(function(e){return e.parentNode}).forEach(function(e){e.classList.add('was-validated')});
             } else {
                 event.preventDefault();
-                [...flashForm.elements].map(function(e){return e.parentNode}).forEach(function(e){e.classList.remove('was-validated', true)});
+                [...flashForm.elements].map(function(e){return e.parentNode}).forEach(function(e){e.classList.remove('was-validated')});
                 var fomrdata = new FormData(flashForm);
                 var file = fomrdata.get('flash-mtd');
                 var image = fomrdata.get('image');
