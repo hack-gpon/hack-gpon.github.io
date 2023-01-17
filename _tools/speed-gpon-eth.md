@@ -130,7 +130,9 @@ layout: default
     form.addEventListener('submit',(event) => {
         if (!form.checkValidity()) {
             event.preventDefault();
-        } else {
+            [...form.elements].map(e => e.parentNode).forEach(e => e.classList.toggle('was-validated', true));
+        } else { 
+            [...form.elements].map(e => e.parentNode).forEach(e => e.classList.toggle('was-validated', false));
             event.preventDefault();
 
             var formdata = new FormData(form);
@@ -168,7 +170,6 @@ layout: default
             
             document.getElementById('maxSpeed').value = (th * formdata.get('speed')).toFixed(2);
         }
-        [...form.elements].map(e => e.parentNode).forEach(e => e.classList.toggle('was-validated', true));
     });
     var formgpon = document.getElementById('gpon-speed-mtu');
     var radioIp = document.getElementsByName('gpon-ip');
@@ -182,8 +183,10 @@ layout: default
     formgpon.addEventListener('submit',(event) => {
         if (!formgpon.checkValidity()) {
             event.preventDefault();
+            [...formgpon.elements].map(e => e.parentNode).forEach(e => e.classList.toggle('was-validated', true));
         } else {
             event.preventDefault();
+            [...formgpon.elements].map(e => e.parentNode).forEach(e => e.classList.toggle('was-validated', false));
             var formdata = new FormData(formgpon);
             var gtc = 38880;
             var overheadgem = 5;
@@ -220,6 +223,5 @@ layout: default
             
             document.getElementById('gpon-maxSpeed').value = (th * formdata.get('gpon-speed')).toFixed(2);
         }
-        [...formgpon.elements].map(e => e.parentNode).forEach(e => e.classList.toggle('was-validated', true));
     });
 </script>
