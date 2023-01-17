@@ -7,27 +7,28 @@ parent: Nokia
 
 # Hardware Specifications
 
-|                 |                                          |
-| --------------- | ---------------------------------------- |
-| Vendor/Brand    | Nokia                                    |
-| Model           | G-010S-B                                 |
-| ODM             | SourcePhotonics                          |
-| Chipset         | Lantiq PEB98035                          |
-| CPU             | MIPS 34Kc interAptiv                     |
-| CPU Clock       | 400MHz                                   |
-| Flash           | 16 MB (Macronix MX25L25635FZ2R-10G)      |
-| RAM             | 64 MB (Winbond W9751G6KB-25I)            |
-| System          | OpenWRT                                  |
-| HSGMII          | Yes                                      |
-| Optics          | SC/UPC                                   |
-| IP address      | 192.168.1.10                             |
-| Web Gui         | ✅ user `adminadmin`, password `ALC#FGU` |
-| SSH             | ✅ user `ONTUSER`, password `SUGAR2A041` |
-| Telnet          |                                          |
-| Serial          | ✅ on SFP                                |
-| Serial baud     | 115200                                   |
-| Serial encoding | 8-N-1                                    |
-| Form Factor     | miniONT SFP                              |
+|                  |                                          |
+| ---------------- | ---------------------------------------- |
+| Vendor/Brand     | Nokia                                    |
+| Model            | G-010S-B                                 |
+| ODM Manufacter   | SourcePhotonics                          |
+| ODM Product Code |                                          |
+| Chipset          | Lantiq PEB98035                          |
+| CPU              | MIPS 34Kc interAptiv                     |
+| CPU Clock        | 400MHz                                   |
+| Flash            | 16 MB (Macronix MX25L25635FZ2R-10G)      |
+| RAM              | 64 MB (Winbond W9751G6KB-25I)            |
+| System           | OpenWRT                                  |
+| HSGMII           | Yes                                      |
+| Optics           | SC/UPC                                   |
+| IP address       | 192.168.1.10                             |
+| Web Gui          | ✅ user `adminadmin`, password `ALC#FGU` |
+| SSH              | ✅ user `ONTUSER`, password `SUGAR2A041` |
+| Telnet           |                                          |
+| Serial           | ✅ on SFP                                |
+| Serial baud      | 115200                                   |
+| Serial encoding  | 8-N-1                                    |
+| Form Factor      | miniONT SFP                              |
 
 {% include image.html file="g-010s-b_teardown_1.jpg"  alt="G-010S-B Teardown" caption="G-010S-B Teardown" %}
 {% include image.html file="g-010s-b_teardown_2.jpg"  alt="G-010S-B Teardown" caption="G-010S-B Teardown" %}

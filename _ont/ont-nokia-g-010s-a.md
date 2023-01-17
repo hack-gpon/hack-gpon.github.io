@@ -7,27 +7,28 @@ parent: Nokia
 
 # Hardware Specifications
 
-|                 |                                          |
-| --------------- | ---------------------------------------- |
-| Vendor/Brand    | Nokia                                    |
-| Model           | G-010S-A                                 |
-| ODM             | SourcePhotonics                          |
-| Chipset         | Lantiq PEB98035                          |
-| Flash           | 16 MB                                    |
-| RAM             | 64 MB                                    |
-| CPU             | MIPS 34Kc interAptiv                     |
-| CPU Clock       | 400MHz                                   |
-| System          | OpenWRT                                  |
-| HSGMII          | Yes                                      |
-| Optics          | SC/UPC                                   |
-| IP address      | 192.168.1.10                             |
-| Web Gui         | ✅ user `adminadmin`, password `ALC#FGU` |
-| SSH             | ✅ user `ONTUSER`, password `SUGAR2A041` |
-| Telnet          |                                          |
-| Serial          | ✅ on SFP                                |
-| Serial baud     | 115200                                   |
-| Serial encoding | 8-N-1                                    |
-| Form Factor     | miniONT SFP                              |
+|                  |                                          |
+| ---------------- | ---------------------------------------- |
+| Vendor/Brand     | Nokia                                    |
+| Model            | G-010S-A                                 |
+| ODM Manufacter   | SourcePhotonics                          |
+| ODM Product Code |                                          |
+| Chipset          | Lantiq PEB98035                          |
+| Flash            | 16 MB                                    |
+| RAM              | 64 MB                                    |
+| CPU              | MIPS 34Kc interAptiv                     |
+| CPU Clock        | 400MHz                                   |
+| System           | OpenWRT                                  |
+| HSGMII           | Yes                                      |
+| Optics           | SC/UPC                                   |
+| IP address       | 192.168.1.10                             |
+| Web Gui          | ✅ user `adminadmin`, password `ALC#FGU` |
+| SSH              | ✅ user `ONTUSER`, password `SUGAR2A041` |
+| Telnet           |                                          |
+| Serial           | ✅ on SFP                                |
+| Serial baud      | 115200                                   |
+| Serial encoding  | 8-N-1                                    |
+| Form Factor      | miniONT SFP                              |
 
 {% include image.html file="g-010s-a.png"  alt="G-010S-A" caption="G-010S-A" %}
 {% include image.html file="g-010s-a-teardown.jpg"  alt="G-010S-A Teardown" caption="G-010S-A Teardown" %}

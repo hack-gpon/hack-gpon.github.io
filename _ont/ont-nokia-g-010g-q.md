@@ -12,7 +12,8 @@ alias: CIG G-97CU
 | --------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | Vendor/Brand          | Nokia                                                                                                             |
 | Model                 | G-010G-Q                                                                                                          |
-| ODM                   | CIG                                                                                                               |
+| ODM Manufacter        | CIG                                                                                                               |
+| ODM Product Code      | G-97C                                                                                                            |
 | Chipset               | Realtek RTL9601B                                                                                                  |
 | Flash                 | 16 MB (Winbond [W25Q128JV](https://www.winbond.com/resource-files/w25q128jv%20revf%2003272018%20plus.pdf) 3V SPI) |
 | RAM                   | DDR2 325MHz                                                                                                       |
@@ -25,7 +26,7 @@ alias: CIG G-97CU
 | Web Gui Default Login | user `admin` password `1234`                                                                                      |
 | SSH                   |                                                                                                                   |
 | Telnet                | ✅ user `ONTUSER`, but has access to GponSLID and not GponCLI                                                     |
-| Serial                | ✅                                                                                                           |
+| Serial                | ✅                                                                                                                |
 | Serial baud           | 115200                                                                                                            |
 | Serial encoding       | 8-N-1                                                                                                             |
 | Form Factor           | ONT                                                                                                               |

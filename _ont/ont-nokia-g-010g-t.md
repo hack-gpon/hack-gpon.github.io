@@ -8,25 +8,26 @@ alias: CIG G-97CP/G-97CU
 
 # Hardware Specifications
 
-|                 |                                                                                |
-| --------------- | ------------------------------------------------------------------------------ |
-| Vendor/Brand    | Nokia                                                                          |
-| Model           | G-010G-T                                                                       |
-| ODM             | [CIG G-97CP](/ont-cig-g-97cp)                                                  |
-| Chipset         | RTL9601D                                                                       |
-| Flash           | 16MB                                                                           |
-| RAM             | 32MB                                                                           |
-| System          | Linux (Luna SDK 1.9.0)                                                         |
-| 2.5GBaseT       | Yes                                                                            |
-| Optics          | SC/APC                                                                         |
-| IP address      | 192.168.100.1  (after a factory reset the ONT uses 10.89.42.157/16)            |
-| Web Gui         | ✅ user `admin`, password `1234`                                               |
-| SSH             | Can be enabled, locked down by iptables rule                                   |
-| Telnet          | ✅ user `ONTUSER`, password `1234`, but has access to GponSLID and not GponCLI |
-| Serial          | ✅                                                                             |
-| Serial baud     | 115200                                                                         |
-| Serial encoding | 8-N-1                                                                          |
-| Form Factor     | ONT                                                                            |
+|                  |                                                                                |
+| ---------------- | ------------------------------------------------------------------------------ |
+| Vendor/Brand     | Nokia                                                                          |
+| Model            | G-010G-T                                                                       |
+| ODM Manufacter   | CIG                                                                            |
+| ODM Product Code | [G-97CP](/ont-cig-g-97cp)                                                      |
+| Chipset          | RTL9601D                                                                       |
+| Flash            | 16MB                                                                           |
+| RAM              | 32MB                                                                           |
+| System           | Linux (Luna SDK 1.9.0)                                                         |
+| 2.5GBaseT        | Yes                                                                            |
+| Optics           | SC/APC                                                                         |
+| IP address       | 192.168.100.1  (after a factory reset the ONT uses 10.89.42.157/16)            |
+| Web Gui          | ✅ user `admin`, password `1234`                                               |
+| SSH              | Can be enabled, locked down by iptables rule                                   |
+| Telnet           | ✅ user `ONTUSER`, password `1234`, but has access to GponSLID and not GponCLI |
+| Serial           | ✅                                                                             |
+| Serial baud      | 115200                                                                         |
+| Serial encoding  | 8-N-1                                                                          |
+| Form Factor      | ONT                                                                            |
 
 {% include image.html file="q-010g-t_front.jpg"  alt="Nokia G-010G-T Front" caption="Nokia G-010G-T Front" %}
 {% include image.html file="q-010g-t_back.jpg"  alt="Nokia G-010G-T Back" caption="Nokia G-010G-T Back" %}

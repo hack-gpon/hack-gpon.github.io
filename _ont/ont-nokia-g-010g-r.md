@@ -7,25 +7,26 @@ parent: Nokia
 
 # Hardware Specifications
 
-|                 |                                                                              |
-| --------------- | ---------------------------------------------------------------------------- |
-| Vendor/Brand    | Nokia                                                                        |
-| Model           | G-010G-R                                                                     |
-| ODM             | CIG                                                                          |
-| Chipset         | RTL9601B                                                                     |
-| Flash           | 16MB                                                                         |
-| RAM             | 32MB                                                                         |
-| System          | Linux (Luna SDK 1.9.0)                                                       |
-| 2.5GBaseT       | No                                                                           |
-| Optics          | SC/APC                                                                       |
-| IP address      | 192.168.100.1  (after a factory reset the ONT uses 10.89.42.157/16)          |
-| Web Gui         | ✅ user `admin`, password `1234`                                             |
-| SSH             |                                                                              |
-| Telnet          | ✅ user `admin`, password `1234`, but has access to GponSLID and not GponCLI |
-| Serial          | ✅                                                                           |
-| Serial baud     | 115200                                                                       |
-| Serial encoding | 8-N-1                                                                        |
-| Form Factor     | ONT                                                                          |
+|                  |                                                                              |
+| ---------------- | ---------------------------------------------------------------------------- |
+| Vendor/Brand     | Nokia                                                                        |
+| Model            | G-010G-R                                                                     |
+| ODM Manufacter   | CIG                                                                          |
+| ODM Product Code | G-97C                                                                        |
+| Chipset          | RTL9601B                                                                     |
+| Flash            | 16MB                                                                         |
+| RAM              | 32MB                                                                         |
+| System           | Linux (Luna SDK 1.9.0)                                                       |
+| 2.5GBaseT        | No                                                                           |
+| Optics           | SC/APC                                                                       |
+| IP address       | 192.168.100.1  (after a factory reset the ONT uses 10.89.42.157/16)          |
+| Web Gui          | ✅ user `admin`, password `1234`                                             |
+| SSH              |                                                                              |
+| Telnet           | ✅ user `admin`, password `1234`, but has access to GponSLID and not GponCLI |
+| Serial           | ✅                                                                           |
+| Serial baud      | 115200                                                                       |
+| Serial encoding  | 8-N-1                                                                        |
+| Form Factor      | ONT                                                                          |
 
 ## List of software versions
 - 3FE49717AOCK12 
