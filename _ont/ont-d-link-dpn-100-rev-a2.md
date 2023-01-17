@@ -7,20 +7,23 @@ parent: D-LINK
 
 # Hardware Specifications
 
-|             |                 |
-| ----------- | --------------- |
-| Vendor      | D-LINK          |
-| Model       | DPN-100 Rev A2  |
-| Chipset     | Lantiq PEB98035 |
-| Flash       | 8 MB            |
-| RAM         | 64 MB           |
-| System      |                 |
-| HSGMII      |                 |
-| Optics      |                 |
-| IP address  |                 |
-| Web Gui     |                 |
-| SSH         |                 |
-| Form Factor | miniONT SFP     |
+|              |                 |
+| ------------ | --------------- |
+| Vendor/Brand | D-LINK          |
+| Model        | DPN-100 Rev A2  |
+| Chipset      | Lantiq PEB98035 |
+| ODM          | T&W             |
+| Flash        | 8 MB            |
+| RAM          | 64 MB           |
+| System       |                 |
+| HSGMII       |                 |
+| Optics       |                 |
+| IP address   |                 |
+| Web Gui      |                 |
+| SSH          |                 |
+| Telnet       |                 |
+| Serial       |                 |
+| Form Factor  | miniONT SFP     |
 
 {% include image.html file="dpn-100-rev-a2.jpg"  alt="DPN-100 Rev A2" caption="DPN-100 Rev A2" %}
 
@@ -35,11 +38,7 @@ Once you access the stick via ssh you will be presented with a second tier login
 - [Ziza OP151s](/ont-ziza-op151s)
 - [T&W TW2362H-CDEL](/ont-t-w-tw2362h-cdel)
 
-## List of software versions
-## List of partitions
-## List of firmwares and files
-
-# Useful Commands
+# General Settings and Useful Commands
 
 {% include alert.html content="all commands start from the twmanu shell." alert="Note"  icon="svg-info" color="blue" %}
 
@@ -70,14 +69,11 @@ manufactory
 set password hex 31323334353637383939
 ```
 
-
-
 ## Show ONT info
 ```sh
 show info
 ```
 
-# Known Bugs
 # Miscellaneous Links
 
 - [Dlink DPN 100 Change of Serial Number and PLOAM Password](https://www.youtube.com/watch?v=5hpMPJCpUaQ)
