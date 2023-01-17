@@ -7,23 +7,27 @@ parent: Huawei
 
 # Hardware Specifications
 
-|             |                                     |
-| ----------- | ----------------------------------- |
-| Vendor      | Huawei                              |
-| Model       | MA5671A                             |
-| Chipset     | Lantiq PEB98035                     |
-| Manufacter  | SourcePhotonics                     |
-| Flash       | 16 MB                               |
-| RAM         | 64 MB (Winbond W25Q128FV)           |
-| CPU         | MIPS 34Kc interAptiv                |
-| CPU Clock   | 400MHz                              |
-| System      | OpenWRT                             |
-| HSGMII      | Yes                                 |
-| Optics      | SC/APC                              |
-| IP address  | 192.168.1.10                        |
-| Web Gui     | After root                          |
-| SSH         | ✅ user `root`, password `admin123` |
-| Form Factor | miniONT SFP                         |
+|                 |                                     |
+| --------------- | ----------------------------------- |
+| Vendor/Brand    | Huawei                              |
+| Model           | MA5671A                             |
+| ODM             | SourcePhotonics                     |
+| Chipset         | Lantiq PEB98035                     |
+| Flash           | 16 MB                               |
+| RAM             | 64 MB (Winbond W25Q128FV)           |
+| CPU             | MIPS 34Kc interAptiv                |
+| CPU Clock       | 400MHz                              |
+| System          | OpenWRT                             |
+| HSGMII          | Yes                                 |
+| Optics          | SC/APC                              |
+| IP address      | 192.168.1.10                        |
+| Web Gui         | After root                          |
+| SSH             | ✅ user `root`, password `admin123` |
+| Telnet          |                                     |
+| Serial          | ✅ on SFP                           |
+| Serial baud     | 115200                              |
+| Serial encoding | 8-N-1                               |
+| Form Factor     | miniONT SFP                         |
 
 {% include image.html file="g-010s-p-and-ma5671a.jpg"  alt="G-010S-P and MA5671A Teardown" caption="G-010S-P and MA5671A Teardown" %}
 
@@ -39,6 +43,8 @@ parent: Huawei
 
 ## Serial
 
+The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the SFP connector.
+
 | USB TTL(UART) Adapter | SFP 20pins Molex connector |
 | --------------------- | -------------------------- |
 | 3.3V                  | pin #15 and #16            |
@@ -46,12 +52,9 @@ parent: Huawei
 | RX                    | pin #7                     |
 | GND                   | pin #14 and #10            |
 
-Configuration: asc0=0 115200 8-N-1
-
 {% include alert.html content="Try PIN 10 or other GND PINs if the connection doesn't work by using PIN 14." alert="Note"  icon="svg-warning" color="yellow" %}
 
 {% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
-
 
 ## Root procedure
 
@@ -250,14 +253,12 @@ The Huawei MA5671A stores the content of the emulated EEPROM in U-Boot env varia
 - [right.com.cn (China) 29 Aug 2022](https://mega.nz/file/VHFFSBrT#2WhDPcdON5EHR01l6Ut35GC3sl55e4l09Z0NUo_7SWA){: .btn} md5hash: 3d357e2dc7b59c66fe61b4ddf1fb8dc0
 - [ONT FS.com GPON ONU Stick with MAC firmware / SourcePhotonics SPS-34-24T-HP-TDFO firmware](/ont-fs-com-gpon-onu-stick-with-mac)
 
-# General setting
+# General Settings and Useful Commands
 
 - [Huawei Rooted Firmware General Setting](/ont-huawei-ma5671a-rooted)
 - [Carlito Firmware General Setting](/ont-huawei-ma5671a-carlito)
 - [SourcePhotonics Firmware General Setting](/ont-huawei-ma5671a-sf)
 - [right.com.cn (China) Firmware General Setting](/ont--huawei-ma5671a-china)
-
-# Useful commands
 
 ## Transferring files to the stick
 
