@@ -7,27 +7,28 @@ parent: Huawei
 
 # Hardware Specifications
 
-|                 |                                     |
-| --------------- | ----------------------------------- |
-| Vendor/Brand    | Huawei                              |
-| Model           | MA5671A                             |
-| ODM             | SourcePhotonics                     |
-| Chipset         | Lantiq PEB98035                     |
-| Flash           | 16 MB                               |
-| RAM             | 64 MB (Winbond W25Q128FV)           |
-| CPU             | MIPS 34Kc interAptiv                |
-| CPU Clock       | 400MHz                              |
-| System          | OpenWRT                             |
-| HSGMII          | Yes                                 |
-| Optics          | SC/APC                              |
-| IP address      | 192.168.1.10                        |
-| Web Gui         | After root                          |
-| SSH             | ✅ user `root`, password `admin123` |
-| Telnet          |                                     |
-| Serial          | ✅ on SFP                           |
-| Serial baud     | 115200                              |
-| Serial encoding | 8-N-1                               |
-| Form Factor     | miniONT SFP                         |
+|                  |                                     |
+| ---------------- | ----------------------------------- |
+| Vendor/Brand     | Huawei                              |
+| Model            | MA5671A                             |
+| ODM              | SourcePhotonics                     |
+| ODM Product Code |                                     |
+| Chipset          | Lantiq PEB98035                     |
+| Flash            | 16 MB                               |
+| RAM              | 64 MB (Winbond W25Q128FV)           |
+| CPU              | MIPS 34Kc interAptiv                |
+| CPU Clock        | 400MHz                              |
+| System           | OpenWRT                             |
+| HSGMII           | Yes                                 |
+| Optics           | SC/APC                              |
+| IP address       | 192.168.1.10                        |
+| Web Gui          | After root                          |
+| SSH              | ✅ user `root`, password `admin123` |
+| Telnet           |                                     |
+| Serial           | ✅ on SFP                           |
+| Serial baud      | 115200                              |
+| Serial encoding  | 8-N-1                               |
+| Form Factor      | miniONT SFP                         |
 
 {% include image.html file="g-010s-p-and-ma5671a.jpg"  alt="G-010S-P and MA5671A Teardown" caption="G-010S-P and MA5671A Teardown" %}
 
