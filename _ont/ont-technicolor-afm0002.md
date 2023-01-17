@@ -8,30 +8,40 @@ alias: Hisense LTE3415-SCA+
 
 # Hardware Specifications
 
-|             |                                                 |
-| ----------- | ----------------------------------------------- |
-| Vendor      | Technicolor                                     |
-| Model       | AFM0002TIM/FWB/WND                              |
-| Chipset     | Realtek RTL9601B                                |
-| Flash       | 32 MB                                           |
-| RAM         |                                                 |
-| System      | Linux (Luna SDK)                                |
-| HSGMII      | No                                              |
-| Optics      |                                                 |
-| IP address  | 192.168.2.1 / 169.0.0.1                         |
-| Web Gui     | Can be enabled, user `admin`, password `system` |
-| SSH         | ✅ user `admin`, password `system`              |
-| Form Factor | miniONT SFP                                     |
-| Multicast   | ✅                                             |
+|                  |                                                 |
+| ---------------- | ----------------------------------------------- |
+| Vendor/Brand     | Technicolor                                     |
+| Model            | AFM0002TIM/FWB/WND                              |
+| ODM              | Hisense                                         |
+| ODM Product Code | LTE3415-SCA+                                    |
+| Chipset          | Realtek RTL9601B                                |
+| Flash            | 32 MB                                           |
+| RAM              |                                                 |
+| System           | Linux (Luna SDK 1.9)                            |
+| HSGMII           | No                                              |
+| Optics           |                                                 |
+| IP address       | 192.168.2.1 / 169.0.0.1                         |
+| Web Gui          | Can be enabled, user `admin`, password `system` |
+| SSH              | ✅ user `admin`, password `system`              |
+| Telnet           |                                                 |
+| Serial           | ✅                                              |
+| Serial baud      | 115200                                          |
+| Serial encoding  | 8-N-1                                           |
+| Form Factor      | miniONT SFP                                     |
+| Multicast        | ✅                                              |
 
 {% include image.html file="afm0002tim.jpg" alt="AFM0002TIM" caption="AFM0002TIM" %}
 {% include image.html file="afm0002fwb.jpg" alt="AFM0002FWB" caption="AFM0002FWB" %}
 
 ## Serial
 
-Configuration: 115200 8-N-1
+The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. To accept TX line commands, the GND of the TTL adapter should be attached to the stick's shield:
 
-# Hardware Revisions
+{% include image.html file="ont-leox-lxt-010s-h_ttl.jpg" alt="Technicolor AFM0002 TTL Pinout" caption="Technicolor AFM0002 TTL Pinout" %}
+
+{% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
+
+## Hardware Revisions
 
 - AFM0002TIM (IP address: 192.168.2.1)
 - AFM0002FWB (IP address: 169.0.0.1)
@@ -41,7 +51,7 @@ Configuration: 115200 8-N-1
 {% include alert.html content="The AFM0002FWB can be transformed into AFM0002TIM. Usually AFM0002FWBs have older software." alert="Warning"  icon="svg-warning" color="red" %}
 
 
-# List of software versions
+## List of software versions
 - V1.7.6-170626 (FWB & WND)
 - V1_7_8_180122 
 - V1_7_8_180725
@@ -49,7 +59,7 @@ Configuration: 115200 8-N-1
 - V1_7_8_210412
 - V1_7_8_210928
 
-# List of partitions
+## List of partitions
 
 | dev   | size     | erasesize | name            |
 | ----- | -------- | --------- | --------------- |
@@ -92,10 +102,6 @@ This stick supports dual boot.
 ```sh
 # /bin/iptables -D INPUT -p tcp --dport 80 -j DROP
 ```
-# Low Level Modding
-
-{% include alert.html content="This section is based on the `V1_7_8_210412` version of the stick's firmware " alert="Info" icon="svg-info" color="blue" %}
-
 
 ## Transfering files from/to the stick
 Works with binary files too, just run md5sum on source and destination to make sure you are not corrupting anything...
@@ -131,6 +137,11 @@ The following commands are used to flash a new rootfs to image1 and then boot to
 # nv setenv sw_commit 1
 # reboot
 ```
+
+# Low Level Modding
+
+{% include alert.html content="This section is based on the `V1_7_8_210412` version of the stick's firmware " alert="Info" icon="svg-info" color="blue" %}
+
 ## Adding support to configurable SW and HW versions, Vendor ID and much more
 `/etc/scripts/flash` can be flashed in order to add support for some variables implemented in `omci_app` but removed from `xmlconfig`. The patch is below (change the values to suit your needs)
 ```patch
@@ -189,7 +200,9 @@ For reference, the patch changes the follwing section of the omci_app:
 
 The original file md5sum is: `4aea2f72bacc11256b7e2c1583d2ad4f`
 The patched file md5sum is: `da20327c4c002e4c27f82f6ee63dbc1a`
+
 ## Enabling PLOAM logging
+
 ```sh
 /etc/scripts/flash set OMCI_DBGLVL 1
 /etc/scripts/flash set OMCI_DBGLOGFILE 1

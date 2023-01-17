@@ -1,4 +1,4 @@
-# Useful Commands
+# General Settings and Useful Commands
 
 ## Getting/Setting the ONT's S/N
 ```sh

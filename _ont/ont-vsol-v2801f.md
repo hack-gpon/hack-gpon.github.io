@@ -7,34 +7,33 @@ parent: VSOL
 
 # Hardware Specifications
 
-|             |                                       |
-| ----------- | ------------------------------------- |
-| Vendor      | VSOL                                  |
-| Model       | V2801F                                |
-| Chipset     | Realtek RTL9601CI                     |
-| Flash       | 8 MB                                  |
-| RAM         | 64 MB                                 |
-| System      | Linux (Luna SDK)                      |
-| HSGMII      | No                                    |
-| Optics      | SC/APC                                |
-| IP address  |                                       |
-| Web Gui     | ✅ user `admin`, password `stdONU101` |
-| SSH         | ✅ user `admin`, password `stdONU101` |
-| Form Factor | miniONT SFP                           |
+|              |                                       |
+| ------------ | ------------------------------------- |
+| Vendor/Brand | VSOL                                  |
+| Model        | V2801F                                |
+| Chipset      | Realtek RTL9601CI                     |
+| Flash        | 8 MB                                  |
+| RAM          | 64 MB                                 |
+| System       | Linux (Luna SDK)                      |
+| HSGMII       | No                                    |
+| Optics       | SC/APC                                |
+| IP address   |                                       |
+| Web Gui      | ✅ user `admin`, password `stdONU101` |
+| SSH          | ✅ user `admin`, password `stdONU101` |
+| Telnet       |                                       |
+| Serial       |                                       |
+| Form Factor  | miniONT SFP                           |
 
 ## Firmware is interchangeable with:
 
 - [T&W TWC GPON657](/ont-t-w-twcgpon657)
 - [UFiber UF-Instant](/ont-ufiber-uf-instant) 
 
-## List of software versions
-## List of partitions
 ## List of firmwares and files
 
 - [Firmware repository by Anime4000](https://github.com/Anime4000/RTL960x/tree/main/Firmware/V2801F)
 
 The reccomended version are `V2801F_V1.9.0-220425.tar` because it has Modern WebGUI, 2.5GbE, patched `runlansds.sh`, `tftpd`, ...
-
 
 # Known Bugs
 

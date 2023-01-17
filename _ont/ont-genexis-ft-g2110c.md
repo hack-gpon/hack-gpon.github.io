@@ -7,22 +7,24 @@ parent: Genexis
 
 # Hardware Specifications
 
-|             |                                                              |
-| ----------- | ------------------------------------------------------------ |
-| Vendor      | Genexis                                                      |
-| Model       | FiberTwist G2110C-2.5G                                       |
-| Chipset     | RTL9601D                                                     |
-| Flash       | 128MB                                                        |
-| RAM         | 32MB                                                         |
-| System      | Linux 3.18 (Luna SDK 3.3)                                    |
-| 2.5GBaseT   | Yes                                                          |
-| Optics      | SC/APC                                                       |
-| IP address  | 192.168.100.1/24 or 192.168.1.1/24                           |
-| Web Gui     | Can be enabled, locked down by iptables rule and missing CSS |
-| Telnet      | ✅ user `company`, password `amyM77yY`                       |
-| Form Factor | ONT                                                          |
-
-# External/Internal Photo
+|                 |                                                              |
+| --------------- | ------------------------------------------------------------ |
+| Vendor/Brand    | Genexis FiberTwist                                           |
+| Model           | G2110C-2.5G                                                  |
+| Chipset         | Realtek RTL9601D                                             |
+| Flash           | 128MB                                                        |
+| RAM             | 32MB                                                         |
+| System          | Linux 3.18 (Luna SDK 3.3)                                    |
+| 2.5GBaseT       | Yes                                                          |
+| Optics          | SC/APC                                                       |
+| IP address      | 192.168.100.1/24 or 192.168.1.1/24                           |
+| Web Gui         | Can be enabled, locked down by iptables rule and missing CSS |
+| SSH             |                                                              |
+| Telnet          | ✅ user `company`, password `amyM77yY`                       |
+| Serial          | ✅                                                           |
+| Serial baud     | 115200                                                       |
+| Serial encoding | 8-N-1                                                        |
+| Form Factor     | ONT                                                          |
 
 {% include image.html file="ft-g2110c-front.jpg"  alt="FiberTwist G2110C-2.5G Front" caption="FiberTwist G2110C-2.5G Front" %}
 
@@ -35,8 +37,13 @@ parent: Genexis
 
 {% include image.html file="ft-g2110c-optical-header-3.jpg"  alt="FiberTwist G2110C-2.5G Optical Header installation backplate" caption="FiberTwist G2110C-2.5G Optical Header installation backplate" %}
 
-## Internal (TTL is on CM3 header)
+## Serial
+
+The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. To accept TX line commands, the GND of the TTL adapter should be attached to the ONT's shield:
+
 {% include image.html file="ft-g2110c-internal.jpg"  alt="FiberTwist G2110C-2.5G Internal" caption="FiberTwist G2110C-2.5G Internal" %}
+
+{% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
 
 ## List of software versions
 - C-5.6.1-R
@@ -67,9 +74,7 @@ This ONT supports dual boot.
 
 `k0` and `r0` respectively contain the kernel and firmware of the first image, `k1` and `r1` the kernel and the firmware of the second one
 
-## List of firmwares and files
-
-# Useful Commands
+# General Settings and Useful Commands
 
 {% include alert.html content="Some variables are write-protected, you need to unlock them before proceed" alert="Info" icon="svg-info" color="blue" %}
 

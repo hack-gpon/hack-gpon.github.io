@@ -7,21 +7,22 @@ parent: CarlitoxxPro
 
 # Hardware Specifications
 
-|             |                   |
-| ----------- | ----------------- |
-| Vendor      | CarlitoxxPro      |
-| Model       | CPGOS03-0490 v2   |
-| Chipset     | Realtek RTL9601CI |
-| Flash       | 8 MB              |
-| RAM         | 64 MB             |
-| System      | Linux (Luna SDK)  |
-| HSGMII      | No                |
-| Optics      | SC/APC            |
-| IP address  |                   |
-| Web Gui     | ✅                |
-| SSH         | ✅                |
-| Form Factor | miniONT SFP       |
-
+|              |                   |
+| ------------ | ----------------- |
+| Vendor/Brand | CarlitoxxPro      |
+| Model        | CPGOS03-0490 v2   |
+| Chipset      | Realtek RTL9601CI |
+| Flash        | 8 MB              |
+| RAM          | 64 MB             |
+| System       | Linux (Luna SDK)  |
+| HSGMII       | No                |
+| Optics       | SC/APC            |
+| IP address   |                   |
+| Web Gui      | ✅                |
+| SSH          | ✅                |
+| Telnet       |                   |
+| Serial       |                   |
+| Form Factor  | miniONT SFP       |
 
 # Known Bugs
 
