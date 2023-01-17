@@ -10,10 +10,10 @@ alias: CIG G-97CU
 
 |                       |                                                                                                                   |
 | --------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Vendor                | Nokia                                                                                                             |
+| Vendor/Brand          | Nokia                                                                                                             |
 | Model                 | G-010G-Q                                                                                                          |
+| ODM                   | CIG                                                                                                               |
 | Chipset               | Realtek RTL9601B                                                                                                  |
-| Manufacter            | CIG G-97C                                                                                                         |
 | Flash                 | 16 MB (Winbond [W25Q128JV](https://www.winbond.com/resource-files/w25q128jv%20revf%2003272018%20plus.pdf) 3V SPI) |
 | RAM                   | DDR2 325MHz                                                                                                       |
 | System                | Linux (Luna SDK 1.9.0)                                                                                            |
@@ -23,8 +23,11 @@ alias: CIG G-97CU
 | Web Gui (HTTP)        | ✅ Port 80 (⚠️ *only available when the PON connection **IS NOT** estabilished*)                                |
 | Web Gui (HTTPS)       | ✅ Port 443 **NO SSL SUPPORT**                                                                                    |
 | Web Gui Default Login | user `admin` password `1234`                                                                                      |
-| Telnet                | ✅ user `ONTUSER`, but has access to GponSLID and not GponCLI                                                     |
 | SSH                   |                                                                                                                   |
+| Telnet                | ✅ user `ONTUSER`, but has access to GponSLID and not GponCLI                                                     |
+| Serial                | ✅                                                                                                           |
+| Serial baud           | 115200                                                                                                            |
+| Serial encoding       | 8-N-1                                                                                                             |
 | Form Factor           | ONT                                                                                                               |
 
 {% include image.html file="g-010g-q.png"  alt="G-010G-Q " caption="Nokia G-010G-Q" %}
@@ -43,7 +46,7 @@ alias: CIG G-97CU
 
 This ONT seems to support dual boot (notice partitions "ImageA" and "ImageB"), however this has not been tested. 
 
-# Serial
+## Serial
 
 {% include image.html file="g-010g-q-serial-pinout.jpg"  alt="G-010G-Q " caption="G-010G-Q: serial pinout" %}
 You can easily communicate with the ONT using a TTL converter (for example the CH341A programmer in TTL mode) by connecting the converters' pins to the ONT following the pinout shown in the image above

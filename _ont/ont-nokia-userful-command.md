@@ -1,4 +1,4 @@
-# Useful Commands
+# General Settings and Useful Commands
 
 ## Committing changes to the OMCI MIB tables for GPON operation
 ```sh

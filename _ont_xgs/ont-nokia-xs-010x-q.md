@@ -11,6 +11,7 @@ parent: Nokia
 | ----------- | --------- |
 | Vendor      | Nokia     |
 | Model       | XS-010X-Q |
+| ODM         | CIG       |
 | Chipset     |           |
 | Manufacter  |           |
 | Flash       |           |
@@ -20,6 +21,7 @@ parent: Nokia
 | Optics      |           |
 | IP address  |           |
 | Web Gui     |           |
-| Telnet      |           |
 | SSH         |           |
+| Telnet      |           |
+| Serial      |           |
 | Form Factor | ONT       |
