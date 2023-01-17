@@ -37,17 +37,17 @@ alias: Usourcetech UGP-N1S
 
 ## List of partitions
  
-| dev   | size     | erasesize | name            |
-| ----- | -------- | --------- | --------------- |
-| mtd0  | 00800000 | 00001000  | "whole flash"   |
-| mtd1  | 00040000 | 00001000  | "uboot"         |
-| mtd2  | 00130000 | 00001000  | "kernel0"       |
-| mtd3  | 00130000 | 00001000  | "kernel1"       |
-| mtd4  | 00010000 | 00001000  | "others"        |
+| dev   | size     | erasesize | name             |
+| ----- | -------- | --------- | ---------------- |
+| mtd0  | 00800000 | 00001000  | "whole flash"    |
+| mtd1  | 00040000 | 00001000  | "uboot"          |
+| mtd2  | 00130000 | 00001000  | "kernel0"        |
+| mtd3  | 00130000 | 00001000  | "kernel1"        |
+| mtd4  | 00010000 | 00001000  | "others"         |
 | mtd5  | 00010000 | 00001000  | "parameter tags" |
-| mtd6  | 00060000 | 00001000  | "usercfg"       |
-| mtd7  | 00270000 | 00001000  | "rootfs0"       |
-| mtd8  | 00270000 | 00001000  | "rootfs1"       |
+| mtd6  | 00060000 | 00001000  | "usercfg"        |
+| mtd7  | 00270000 | 00001000  | "rootfs0"        |
+| mtd8  | 00270000 | 00001000  | "rootfs1"        |
 
 
 This stick supports dual boot. 
