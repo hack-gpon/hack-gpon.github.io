@@ -11,7 +11,7 @@ parent: Nokia
 | ---------------- | --------- |
 | Vendor           | Nokia     |
 | Model            | XS-010X-Q |
-| ODM Manufacter   | CIG       |
+| ODM              | CIG       |
 | ODM Product Code | XG-99C    |
 | Chipset          |           |
 | Manufacter       |           |

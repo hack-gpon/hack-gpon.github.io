@@ -11,7 +11,7 @@ parent: Nokia
 | ---------------- | ---------------------------------------------------------------------------- |
 | Vendor/Brand     | Nokia                                                                        |
 | Model            | G-010G-R                                                                     |
-| ODM Manufacter   | CIG                                                                          |
+| ODM              | CIG                                                                          |
 | ODM Product Code | G-97C                                                                        |
 | Chipset          | RTL9601B                                                                     |
 | Flash            | 16MB                                                                         |

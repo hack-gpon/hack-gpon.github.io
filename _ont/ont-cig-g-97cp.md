@@ -11,7 +11,7 @@ parent: CIG
 | ---------------- | ---------------- |
 | Vendor/Brand     | CIG              |
 | Model            | G-97CP           |
-| ODM Manufacter   | CIG              |
+| ODM              | CIG              |
 | ODM Product Code | G-97CP           |
 | Chipset          | Realtek RTL9601D |
 | Flash            |                  |

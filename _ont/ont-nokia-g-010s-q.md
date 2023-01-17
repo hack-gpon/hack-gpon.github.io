@@ -12,7 +12,7 @@ alias: CIG G-97S
 | ---------------- | ----------------------------------------------------------------------------------------------------------------- |
 | Vendor/Brand     | Nokia                                                                                                             |
 | Model            | G-010S-Q                                                                                                          |
-| ODM Manufacter   | CIG                                                                                                               |
+| ODM              | CIG                                                                                                               |
 | ODM Product Code | G-97S                                                                                                             |
 | Chipset          | RTL9601CI                                                                                                         |
 | Flash            | 16 MB (Macronix MX25L12835F)                                                                                      |

@@ -12,7 +12,7 @@ alias: CIG G-97C1/CIG G-97CU
 | ---------------- | ------------------------------------------------------------------- |
 | Vendor/Brand     | Nokia                                                               |
 | Model            | G-010G-P                                                            |
-| ODM Manufacter   | CIG                                                                 |
+| ODM              | CIG                                                                 |
 | ODM Product Code | G-97C1                                                              |
 | Chipset          | Realtek RTL9601B                                                    |
 | Flash            |                                                                     |

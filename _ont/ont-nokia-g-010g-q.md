@@ -12,7 +12,7 @@ alias: CIG G-97CU
 | --------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | Vendor/Brand          | Nokia                                                                                                             |
 | Model                 | G-010G-Q                                                                                                          |
-| ODM Manufacter        | CIG                                                                                                               |
+| ODM                   | CIG                                                                                                               |
 | ODM Product Code      | G-97C                                                                                                            |
 | Chipset               | Realtek RTL9601B                                                                                                  |
 | Flash                 | 16 MB (Winbond [W25Q128JV](https://www.winbond.com/resource-files/w25q128jv%20revf%2003272018%20plus.pdf) 3V SPI) |

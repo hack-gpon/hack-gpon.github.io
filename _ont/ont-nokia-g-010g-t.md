@@ -12,7 +12,7 @@ alias: CIG G-97CP/G-97CU
 | ---------------- | ------------------------------------------------------------------------------ |
 | Vendor/Brand     | Nokia                                                                          |
 | Model            | G-010G-T                                                                       |
-| ODM Manufacter   | CIG                                                                            |
+| ODM              | CIG                                                                            |
 | ODM Product Code | [G-97CP](/ont-cig-g-97cp)                                                      |
 | Chipset          | RTL9601D                                                                       |
 | Flash            | 16MB                                                                           |

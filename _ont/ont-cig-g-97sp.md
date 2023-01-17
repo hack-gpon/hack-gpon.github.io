@@ -11,7 +11,7 @@ parent: CIG
 | ---------------- | --------------- |
 | Vendor/Brand     | CIG             |
 | Model            | G-97S           |
-| ODM Manufacter   | CIG             |
+| ODM              | CIG             |
 | ODM Product Code | G-97S           |
 | Chipset          | Lantiq PEB98035 |
 | CPU              |                 |

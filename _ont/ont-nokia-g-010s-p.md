@@ -11,7 +11,7 @@ parent: Nokia
 | ---------------- | ---------------------------------------- |
 | Vendor/Brand     | Nokia                                    |
 | Model            | G-010S-P                                 |
-| ODM Manufacter   | SourcePhotonics                          |
+| ODM              | SourcePhotonics                          |
 | ODM Product Code |                                          |
 | Chipset          | Lantiq PEB98035                          |
 | Flash            | 16 MB                                    |
