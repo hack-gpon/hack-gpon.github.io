@@ -7,26 +7,25 @@ parent: ZTE
 
 # Hardware Specifications
 
-|                  |                                                                   |                                                                   |             |                           |
-| ---------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------- | ------------------------- |
-| Vendor/Brand     | ZTE                                                               | ZTE                                                               | ZTE         | ZTE                       |
-| Model            | F601v6                                                            | F601v7                                                            | F601v8      | F601v9                    |
-| ODM              | ZTE                                                               | ZTE                                                               | ZTE         | ZTE                       |
-| ODM Product Code |                                                                   |                                                                   |             |                           |
-| CPU              | ZTE FA626TE                                                       | ZTE ZX279125@A9                                                   |             | ZX279127S                 |
-| CPU Clock        | 266 MHz                                                           | 600 MHz                                                           |             |                           |
-| Chipset          | ZTE FA626TE                                                       | ZTE ZX279125@A9                                                   |             |                           |
-| Flash            | 16 MB (SPI Flash w25q128)                                         | 16 MB (SPI Flash mx25l12805d)                                     |             |                           |
-| RAM              | 64 MB                                                             | 32 MB                                                             |             | 128 MB (ESMT M15T1G1664A) |
-| System           |                                                                   |                                                                   |             |                           |
-| 2.5GBaseT        | No                                                                | No                                                                | No          | No                        |
-| Optics           | SC/APC or SC/UPC                                                  | SC/APC                                                            | SC/APC      | SC/APC                    |
-| IP address       | 192.168.1.1                                                       | 192.168.1.1                                                       | 192.168.1.1 |                           |
-| Web Gui          | ✅ user `admin`, password `admin` or user `user`, password `user` | ✅ user `admin`, password `admin` or user `user`, password `user` |             |                           |
-| SSH              |                                                                   |                                                                   |             |                           |
-| Telnet           |                                                                   |                                                                   |             |                           |
-| Serial           |                                                                   |                                                                   |             |                           |
-| Form Factor      | ONT                                                               | ONT                                                               |             |                           |
+|              |                                                                   |                                                                   |             |                           |
+| ------------ | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------- | ------------------------- |
+| Vendor/Brand | ZTE                                                               | ZTE                                                               | ZTE         | ZTE                       |
+| Model        | F601v6                                                            | F601v7                                                            | F601v8      | F601v9                    |
+| ODM          | ✅                                                                | ✅                                                                | ✅          |                           |
+| CPU          | ZTE FA626TE                                                       | ZTE ZX279125@A9                                                   |             | ZX279127S                 |
+| CPU Clock    | 266 MHz                                                           | 600 MHz                                                           |             |                           |
+| Chipset      | ZTE FA626TE                                                       | ZTE ZX279125@A9                                                   |             |                           |
+| Flash        | 16 MB (SPI Flash w25q128)                                         | 16 MB (SPI Flash mx25l12805d)                                     |             |                           |
+| RAM          | 64 MB                                                             | 32 MB                                                             |             | 128 MB (ESMT M15T1G1664A) |
+| System       |                                                                   |                                                                   |             |                           |
+| 2.5GBaseT    | No                                                                | No                                                                | No          | No                        |
+| Optics       | SC/APC or SC/UPC                                                  | SC/APC                                                            | SC/APC      | SC/APC                    |
+| IP address   | 192.168.1.1                                                       | 192.168.1.1                                                       | 192.168.1.1 |                           |
+| Web Gui      | ✅ user `admin`, password `admin` or user `user`, password `user` | ✅ user `admin`, password `admin` or user `user`, password `user` |             |                           |
+| SSH          |                                                                   |                                                                   |             |                           |
+| Telnet       |                                                                   |                                                                   |             |                           |
+| Serial       |                                                                   |                                                                   |             |                           |
+| Form Factor  | ONT                                                               | ONT                                                               |             |                           |
 
 {% include image.html file="f601_v6_1.jpg" alt="F601 v6" caption="F601 v6" %}
 {% include image.html file="f601_v7.jpg" alt="F601 v7" caption="A wall made out of broken F601 v7s" %}
