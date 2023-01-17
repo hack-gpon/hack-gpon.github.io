@@ -11,7 +11,7 @@ parent: ZTE
 | ---------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------- | ------------------------- |
 | Vendor/Brand     | ZTE                                                               | ZTE                                                               | ZTE         | ZTE                       |
 | Model            | F601v6                                                            | F601v7                                                            | F601v8      | F601v9                    |
-| ODM Manufacter   | ZTE                                                               | ZTE                                                               | ZTE         | ZTE                       |
+| ODM              | ZTE                                                               | ZTE                                                               | ZTE         | ZTE                       |
 | ODM Product Code |                                                                   |                                                                   |             |                           |
 | CPU              | ZTE FA626TE                                                       | ZTE ZX279125@A9                                                   |             | ZX279127S                 |
 | CPU Clock        | 266 MHz                                                           | 600 MHz                                                           |             |                           |

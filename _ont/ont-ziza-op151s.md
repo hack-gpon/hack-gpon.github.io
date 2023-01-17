@@ -11,7 +11,7 @@ parent: Ziza
 | ---------------- | ---------------------------------------------------------- |
 | Vendor/Brand     | Ziza                                                       |
 | Model            | OP151S                                                     |
-| ODM Manufacter   | T&W                                                        |
+| ODM              | T&W                                                        |
 | ODM Product Code | TW2362H-CDEL                                               |
 | Chipset          | Lantiq PEB98035                                            |
 | CPU              | MIPS 34Kc interAptiv                                       |
