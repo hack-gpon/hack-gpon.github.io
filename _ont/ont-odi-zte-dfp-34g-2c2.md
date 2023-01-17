@@ -9,23 +9,23 @@ alias: Usourcetech UGP-N1S
 
 # Hardware Specifications
 
-|              |                  |
-| ------------ | ---------------- |
-| Vendor/Brand | ODI              |
-| Model        | DFP-34G-2C2      |
-| CPU          | ZTE ZX279125     |
-| CPU Clock    | 600Mhz           |
-| Flash        | 16 MB            |
-| RAM          | 32 MB            |
+|              |                                                 |
+| ------------ | ----------------------------------------------- |
+| Vendor/Brand | ODI                                             |
+| Model        | DFP-34G-2C2                                     |
+| CPU          | ZTE ZX279125                                    |
+| CPU Clock    | 600Mhz                                          |
+| Flash        | 16 MB                                           |
+| RAM          | 32 MB                                           |
 | System       | System ZTE Linux (based on Linux Kernel 2.6.32) |
-| HSGMII       | No               |
-| Optics       | SC/UPC           |
-| IP address   | 192.168.1.1      |
-| Web Gui      | ✅ user `admin`, password `admin` |
-| SSH          |                  |
-| Telnet       | ✅ user `root`, password `Pon521`                                  |
-| Serial       |                  |
-| Form Factor  | miniONT SFP      |
+| HSGMII       | No                                              |
+| Optics       | SC/UPC                                          |
+| IP address   | 192.168.1.1                                     |
+| Web Gui      | ✅ user `admin`, password `admin`               |
+| SSH          |                                                 |
+| Telnet       | ✅ user `root`, password `Pon521`               |
+| Serial       |                                                 |
+| Form Factor  | miniONT SFP                                     |
 
 
 {% include image.html file="zte-dfp-34x-2c2.jpg" alt="ODI ZTE DFP-34X-C2C" caption="ODI ZTE DFP-34X-C2C" %}
