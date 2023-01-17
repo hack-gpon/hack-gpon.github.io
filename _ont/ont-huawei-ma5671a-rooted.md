@@ -5,8 +5,7 @@ parent: Huawei MA5671A
 layout: default
 ---
 
-# General setting
-
+# General Settings and Useful Commands
 
 {% include alert.html content="In this firmware, unlike the other ones, the data must be modified in a base64-encoded file. To simplify this, you can use the following web application." alert="Info" icon="svg-info" color="blue" %}
 

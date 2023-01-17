@@ -7,22 +7,23 @@ parent: Huawei
 
 # Hardware Specifications
 
-|             |                                                                                                |
-| ----------- | ---------------------------------------------------------------------------------------------- |
-| Vendor      | Huawei                                                                                         |
-| Model       | HG8010H                                                                                        |
-| Chipset     | HiSilicon SD5116                                                                               |
-| Flash       | 128MiB (SLC NAND DS35Q1GA-IB)                                                                  |
-| RAM         | 256MiB                                                                                         |
-| CPU         | Hisilicon A9 dual core (ARMv7)                                                                 |
-| System      | Dopra Linux                                                                                    |
-| 2.5GBaseT   | No                                                                                             |
-| Optics      | SC/APC and SC/UPC                                                                              |
-| IP address  | 192.168.100.1                                                                                  |
-| Web Gui     | ✅ user `root`, password `admin` or `adminHW` and user `telecomadmin`, password `admintelecom` |
-| Telnet      | After Enabling user `root`, password `admin` or `adminHW`                                      |
-| SSH         |                                                                                                |
-| Form Factor | ONT                                                                                            |
+|              |                                                                                                |
+| ------------ | ---------------------------------------------------------------------------------------------- |
+| Vendor/Brand | Huawei                                                                                         |
+| Model        | HG8010H                                                                                        |
+| Chipset      | HiSilicon SD5116                                                                               |
+| Flash        | 128MiB (SLC NAND DS35Q1GA-IB)                                                                  |
+| RAM          | 256MiB                                                                                         |
+| CPU          | Hisilicon A9 dual core (ARMv7)                                                                 |
+| System       | Dopra Linux                                                                                    |
+| 2.5GBaseT    | No                                                                                             |
+| Optics       | SC/APC and SC/UPC                                                                              |
+| IP address   | 192.168.100.1                                                                                  |
+| Web Gui      | ✅ user `root`, password `admin` or `adminHW` and user `telecomadmin`, password `admintelecom` |
+| SSH          |                                                                                                |
+| Telnet       | After Enabling user `root`, password `admin` or `adminHW`                                      |
+| Serial       |                                                                                                |
+| Form Factor  | ONT                                                                                            |
 
 
 {% include image.html file="hg8010h.jpg"  alt="HG8010H" caption="HG8010H: Horizontal PON port (left, middle); vertical PON port (right)" %}
@@ -198,5 +199,3 @@ success!
 
 {% include image.html file="hg8010h_teardown_1_v6.jpg"  alt="HG8010Hv6 Teardown" caption="HG8010Hv6: Teardown" %}
 {% include image.html file="hg8010h_teardown_2_v6.jpg"  alt="HG8010Hv6 Teardown" caption="HG8010Hv6: Teardown" %}
-
-

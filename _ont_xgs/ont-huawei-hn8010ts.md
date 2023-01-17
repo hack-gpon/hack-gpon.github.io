@@ -20,8 +20,9 @@ parent: Huawei
 | Optics      |          |
 | IP address  |          |
 | Web Gui     |          |
-| Telnet      |          |
 | SSH         |          |
+| Telnet      |          |
+| Serial      |          |
 | Form Factor | ONT      |
 
 ## Software Version
