@@ -11,7 +11,7 @@ parent: LEOX
 | ---------------- | --------------------------------------- |
 | Vendor/Brand     | LEOX                                    |
 | Model            | LXT-010S-H                              |
-| ODM Manufacturer | Hisense                                 |
+| ODM              | Hisense                                 |
 | ODM Product Code | [LTE3415-SH+](/ont-hisense-lte3415-sh+) |
 | Chipset          | Realtek RTL9601CI                       |
 | Flash            | 128MB                                   |

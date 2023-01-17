@@ -11,7 +11,7 @@ parent: Zyxel
 | ---------------- | ---------------------------------------------------------- |
 | Vendor/Brand     | Zyxel                                                      |
 | Model            | PMG3000-D20B                                               |
-| ODM Manufacter   | T&W                                                        |
+| ODM              | T&W                                                        |
 | ODM Product Code | TW2362H-CDEL                                               |
 | Chipset          | Lantiq PEB98035                                            |
 | Flash            | 8 MB                                                       |

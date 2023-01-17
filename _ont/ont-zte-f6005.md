@@ -11,7 +11,7 @@ parent: ZTE
 | ---------------- | --------------------------------- |
 | Vendor/Brand     | ZTE                               |
 | Model            | F6005                             |
-| ODM Manufacter   | CIG                               |
+| ODM              | CIG                               |
 | ODM Product Code | [G-97CP](/ont-cig-g-97cp)         |
 | Chipset          | Realtek RTL9601D                  |
 | Flash            |                                   |
