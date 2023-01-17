@@ -11,10 +11,10 @@ parent: Huawei
 | ------------ | ------------------------------------------------------------------------------------ |
 | Vendor/Brand | Huawei                                                                               |
 | Model        | EG8010H                                                                              |
-| Chipset      | Hisilicon                                                                            |
+| Chipset      | HiSilicon                                                                            |
 | Flash        | 128MiB SLC NAND (DS35Q1GA-IB)                                                        |
 | RAM          | 256MiB                                                                               |
-| CPU          | Hisilicon A9 dual core (ARMv7)                                                       |
+| CPU          | HiSilicon A9 dual core (ARMv7)                                                       |
 | System       | Dopra Linux                                                                          |
 | 2.5GBaseT    | No                                                                                   |
 | Optics       | SC/APC and SC/UPC                                                                    |
