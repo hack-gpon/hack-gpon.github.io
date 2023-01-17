@@ -3,10 +3,9 @@ title: Root Procedure for Huawei MA5671A (flash firmware)
 has_children: false
 parent: Huawei MA5671A
 layout: default
-nav_exclude: true
 ---
 
-This procedure flashes the firmware in the inactive MTD via serial. You have to get firmware to flash, some are listed on the [Huawei MA5671A page](/ont-huawei-ma5671a).
+This procedure flashes the firmware in the stick via serial. You have to get firmware to flash, some are listed on the [Huawei MA5671A page](/ont-huawei-ma5671a).
 
 {: .text-center .fs-6 }
 <button id="flash-start-button" class="btn btn-blue" data-jtd-toogle="modal" data-jtd-target="#flash-modal">Start flash!</button>
