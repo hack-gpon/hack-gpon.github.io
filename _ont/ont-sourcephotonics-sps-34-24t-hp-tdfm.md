@@ -7,28 +7,29 @@ parent: SourcePhotonics
 
 # Hardware Specifications
 
-|              |                    |
-| ------------ | ------------------ |
-| Vendor/Brand | SourcePhotonics    |
-| Model        | SPS-34-24T-HP-TDFM |
-| ODM          | SourcePhotonics    |
-| Chipset      | Lantiq PEB98035    |
-| CPU          |                    |
-| CPU Clock    |                    |
-| Flash        |                    |
-| RAM          |                    |
-| Bootloader   |                    |
-| System       |                    |
-| Serial baud  |                    |
-| Load addr    |                    |
-| HSGMII       |                    |
-| Optics       | SC                 |
-| IP address   |                    |
-| Web Gui      |                    |
-| SSH          |                    |
-| Telnet       |                    |
-| Serial       |                    |
-| Form Factor  | miniONT SFP        |
+|                    |                    |
+| ------------------ | ------------------ |
+| Vendor/Brand       | SourcePhotonics    |
+| Model              | SPS-34-24T-HP-TDFM |
+| ODM Manufacter     | SourcePhotonics    |
+| Model Product Code | SPS-34-24T-HP-TDFM |
+| Chipset            | Lantiq PEB98035    |
+| CPU                |                    |
+| CPU Clock          |                    |
+| Flash              |                    |
+| RAM                |                    |
+| Bootloader         |                    |
+| System             |                    |
+| Serial baud        |                    |
+| Load addr          |                    |
+| HSGMII             |                    |
+| Optics             | SC                 |
+| IP address         |                    |
+| Web Gui            |                    |
+| SSH                |                    |
+| Telnet             |                    |
+| Serial             |                    |
+| Form Factor        | miniONT SFP        |
 
 # Miscellaneous Links
 

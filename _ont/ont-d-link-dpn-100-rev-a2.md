@@ -7,23 +7,24 @@ parent: D-LINK
 
 # Hardware Specifications
 
-|              |                 |
-| ------------ | --------------- |
-| Vendor/Brand | D-LINK          |
-| Model        | DPN-100 Rev A2  |
-| Chipset      | Lantiq PEB98035 |
-| ODM          | T&W             |
-| Flash        | 8 MB            |
-| RAM          | 64 MB           |
-| System       |                 |
-| HSGMII       |                 |
-| Optics       |                 |
-| IP address   |                 |
-| Web Gui      |                 |
-| SSH          |                 |
-| Telnet       |                 |
-| Serial       |                 |
-| Form Factor  | miniONT SFP     |
+|                  |                 |
+| ---------------- | --------------- |
+| Vendor/Brand     | D-LINK          |
+| Model            | DPN-100 Rev A2  |
+| Chipset          | Lantiq PEB98035 |
+| ODM Manufacter   | T&W             |
+| ODM Product Code | TW2362H-CDEL    |
+| Flash            | 8 MB            |
+| RAM              | 64 MB           |
+| System           |                 |
+| HSGMII           |                 |
+| Optics           |                 |
+| IP address       |                 |
+| Web Gui          |                 |
+| SSH              |                 |
+| Telnet           |                 |
+| Serial           |                 |
+| Form Factor      | miniONT SFP     |
 
 {% include image.html file="dpn-100-rev-a2.jpg"  alt="DPN-100 Rev A2" caption="DPN-100 Rev A2" %}
 
