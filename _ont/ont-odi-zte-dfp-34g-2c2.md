@@ -52,7 +52,7 @@ alias: Usourcetech UGP-N1S
 
 This stick supports dual boot. 
 
-`k0` and `r0` respectively contain the kernel and firmware of the first image, while `k1` and `r1` respectively contain the kernel and the firmware of the second one
+`kernel0` and `rootfs0` respectively contain the kernel and firmware of the first image, while `kernel1` and `rootfs1` respectively contain the kernel and the firmware of the second one
 
 # Miscellaneous Links
 
