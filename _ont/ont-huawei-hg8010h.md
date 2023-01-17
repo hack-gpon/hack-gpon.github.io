@@ -11,6 +11,7 @@ parent: Huawei
 | ------------ | ---------------------------------------------------------------------------------------------- |
 | Vendor/Brand | Huawei                                                                                         |
 | Model        | HG8010H                                                                                        |
+| ODM          | ✅                                                                                             |
 | Chipset      | HiSilicon SD5116                                                                               |
 | Flash        | 128MiB (SLC NAND DS35Q1GA-IB)                                                                  |
 | RAM          | 256MiB                                                                                         |

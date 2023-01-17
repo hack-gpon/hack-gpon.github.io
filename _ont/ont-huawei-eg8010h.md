@@ -11,6 +11,7 @@ parent: Huawei
 | ------------ | ------------------------------------------------------------------------------------ |
 | Vendor/Brand | Huawei                                                                               |
 | Model        | EG8010H                                                                              |
+| ODM          | ✅                                                                                   |
 | Chipset      | HiSilicon                                                                            |
 | Flash        | 128MiB SLC NAND (DS35Q1GA-IB)                                                        |
 | RAM          | 256MiB                                                                               |

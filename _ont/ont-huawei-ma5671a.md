@@ -11,8 +11,7 @@ parent: Huawei
 | ---------------- | ----------------------------------- |
 | Vendor/Brand     | Huawei                              |
 | Model            | MA5671A                             |
-| ODM              | SourcePhotonics                     |
-| ODM Product Code |                                     |
+| ODM              | ✅                                  |
 | Chipset          | Lantiq PEB98035                     |
 | Flash            | 16 MB                               |
 | RAM              | 64 MB (Winbond W25Q128FV)           |
