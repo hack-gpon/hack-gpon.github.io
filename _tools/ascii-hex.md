@@ -61,8 +61,10 @@ layout: default
     asciiToHexForm.addEventListener('submit',(event) => {
         if (!asciiToHexForm.checkValidity()) {
             event.preventDefault();
+            [...asciiToHexForm.elements].map(e => e.parentNode).forEach(e => e.classList.toggle('was-validated', true));
         } else {
             event.preventDefault();
+            [...hexToAsciiForm.elements].map(e => e.parentNode).forEach(e => e.classList.toggle('was-validated', false));
             var fomrdata = new FormData(asciiToHexForm);
             var str = fomrdata.get('ascii-to-hex');
             var glue = fomrdata.get('ascii-to-hex-glue');
@@ -71,22 +73,22 @@ layout: default
             var hex = prefix + ([...str].map((elem, n) => prefixi+Number(str.charCodeAt(n)).toString(16)).join(glue));
             document.getElementById('hex-result').value = hex;
         }
-        [...asciiToHexForm.elements].map(e => e.parentNode).forEach(e => e.classList.toggle('was-validated', true));
     });
 
     var hexToAsciiForm = document.getElementById('hex-to-ascii');
     hexToAsciiForm.addEventListener('submit',(event) => {
         if (!hexToAsciiForm.checkValidity()) {
             event.preventDefault();
+            [...hexToAsciiForm.elements].map(e => e.parentNode).forEach(e => e.classList.toggle('was-validated', true));
         } else {
             event.preventDefault();
+            [...hexToAsciiForm.elements].map(e => e.parentNode).forEach(e => e.classList.toggle('was-validated', false));
             var fomrdata = new FormData(hexToAsciiForm);
             var str = fomrdata.get('hex-to-ascii');
             var separator = fomrdata.get('hex-to-ascii-separator');
             var ascii = separator === "" ? getChunks(str.substring(2),2).map(el => String.fromCharCode(parseInt(el, 16))).join('') : str.split(separator).map(el => String.fromCharCode(Number(el))).join('');
             document.getElementById('ascii-result').value = ascii;
         }
-        [...hexToAsciiForm.elements].map(e => e.parentNode).forEach(e => e.classList.toggle('was-validated', true));
         
     });
     
