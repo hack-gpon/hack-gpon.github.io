@@ -7,23 +7,24 @@ parent: ZTE
 
 # Hardware Specifications
 
-|              |                                   |
-| ------------ | --------------------------------- |
-| Vendor/Brand | ZTE                               |
-| Model        | F6005                             |
-| ODM          | [CIG G-97CP](/ont-cig-g-97cp)     |
-| Chipset      | Realtek RTL9601D                  |
-| Flash        |                                   |
-| RAM          |                                   |
-| System       | Linux (Luna SDK 1.9.0)            |
-| 2.5GBaseT    | Yes                               |
-| Optics       | SC/APC                            |
-| IP address   | 192.168.1.1                       |
-| Web Gui      | ✅ user `admin`, password `admin` |
-| SSH          |                                   |
-| Telnet       |                                   |
-| Serial       |                                   |
-| Form Factor  | ONT                               |
+|                  |                                   |
+| ---------------- | --------------------------------- |
+| Vendor/Brand     | ZTE                               |
+| Model            | F6005                             |
+| ODM Manufacter   | CIG                               |
+| ODM Product Code | [G-97CP](/ont-cig-g-97cp)         |
+| Chipset          | Realtek RTL9601D                  |
+| Flash            |                                   |
+| RAM              |                                   |
+| System           | Linux (Luna SDK 1.9.0)            |
+| 2.5GBaseT        | Yes                               |
+| Optics           | SC/APC                            |
+| IP address       | 192.168.1.1                       |
+| Web Gui          | ✅ user `admin`, password `admin` |
+| SSH              |                                   |
+| Telnet           |                                   |
+| Serial           |                                   |
+| Form Factor      | ONT                               |
  
 {% include image.html file="f6005_of.jpg" alt="F6005 Open Fiber" caption="F6005 with Open Fiber branding <a href='https://forum.fibra.click/u/mirko991'>@mirko991</a>" %}
 {% include image.html file="f6005_tim.jpg" alt="F6005 TIM" caption="F6005 with ZTE branding, like the ones used by TIM" %}

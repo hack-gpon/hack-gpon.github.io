@@ -7,27 +7,28 @@ parent: Zyxel
 
 # Hardware Specifications
 
-|                 |                                                            |
-| --------------- | ---------------------------------------------------------- |
-| Vendor/Brand    | Zyxel                                                      |
-| Model           | PMG3000-D20B                                               |
-| ODM             | T&W                                                        |
-| Chipset         | Lantiq PEB98035                                            |
-| Flash           | 8 MB                                                       |
-| RAM             | 64 MB                                                      |
-| CPU             | MIPS 34Kc interAptiv                                       |
-| CPU Clock       | 400MHz                                                     |
-| System          | eCoS                                                       |
-| HSGMII          | Yes                                                        |
-| Optics          | SC/APC                                                     |
-| IP address      | 10.10.1.1                                                  |
-| Web Gui         | ✅ username `admin` or `guest`, password `1234` or `guest` |
-| SSH             | ✅ username `admin`, password `admin`                      |
-| Telnet          |                                                            |
-| Serial          | ✅                                                         |
-| Serial baud     | 115200                                                     |
-| Serial encoding | 8-N-1                                                      |
-| Form Factor     | miniONT SFP                                                |
+|                  |                                                            |
+| ---------------- | ---------------------------------------------------------- |
+| Vendor/Brand     | Zyxel                                                      |
+| Model            | PMG3000-D20B                                               |
+| ODM Manufacter   | T&W                                                        |
+| ODM Product Code | TW2362H-CDEL                                               |
+| Chipset          | Lantiq PEB98035                                            |
+| Flash            | 8 MB                                                       |
+| RAM              | 64 MB                                                      |
+| CPU              | MIPS 34Kc interAptiv                                       |
+| CPU Clock        | 400MHz                                                     |
+| System           | eCoS                                                       |
+| HSGMII           | Yes                                                        |
+| Optics           | SC/APC                                                     |
+| IP address       | 10.10.1.1                                                  |
+| Web Gui          | ✅ username `admin` or `guest`, password `1234` or `guest` |
+| SSH              | ✅ username `admin`, password `admin`                      |
+| Telnet           |                                                            |
+| Serial           | ✅                                                         |
+| Serial baud      | 115200                                                     |
+| Serial encoding  | 8-N-1                                                      |
+| Form Factor      | miniONT SFP                                                |
 
 {% include image.html file="pmg3000-d20b.png" alt="PMG3000-D20B" caption="PMG3000-D20B" %}
 {% include image.html file="tw236h-cdel-th.jpg" alt="PMG3000-D20B Teardown" caption="PMG3000-D20B Teardown" %}
