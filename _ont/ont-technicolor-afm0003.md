@@ -12,7 +12,7 @@ alias: Hisense LTE3415-SH+
 | ---------------- | ----------------------------------------------- |
 | Vendor/Brand     | Technicolor                                     |
 | Model            | AFM0003TIM                                      |
-| ODM Manufacturer | Hisense                                         |
+| ODM              | Hisense                                         |
 | ODM Product Code | LTE3415-SCA+                                    |
 | Chipset          | Realtek RTL9601CI                               |
 | Flash            | 256 MB                                          |

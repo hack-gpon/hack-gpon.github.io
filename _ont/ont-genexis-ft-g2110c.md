@@ -9,7 +9,7 @@ parent: Genexis
 
 |                 |                                                              |
 | --------------- | ------------------------------------------------------------ |
-| Vendor/Brand    | FiberTwist                                                   |
+| Vendor/Brand    | Genexis FiberTwist                                           |
 | Model           | G2110C-2.5G                                                  |
 | Chipset         | Realtek RTL9601D                                             |
 | Flash           | 128MB                                                        |

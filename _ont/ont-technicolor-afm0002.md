@@ -12,7 +12,7 @@ alias: Hisense LTE3415-SCA+
 | ---------------- | ----------------------------------------------- |
 | Vendor/Brand     | Technicolor                                     |
 | Model            | AFM0002TIM/FWB/WND                              |
-| ODM Manufacturer | Hisense                                         |
+| ODM              | Hisense                                         |
 | ODM Product Code | LTE3415-SCA+                                    |
 | Chipset          | Realtek RTL9601B                                |
 | Flash            | 32 MB                                           |

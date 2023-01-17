@@ -11,7 +11,7 @@ parent: T&W
 | ---------------- | ---------------------------------- |
 | Vendor/Brand     | T&W                                |
 | Model            | TWC GPON657                        |
-| ODM Manufacturer | T&W                                |
+| ODM              | T&W                                |
 | ODM Product Code | TWC GPON657                        |
 | Chipset          | Realtek RTL9601CI                  |
 | Flash            | 16 MB                              |

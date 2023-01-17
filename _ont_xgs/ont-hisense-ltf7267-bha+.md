@@ -11,7 +11,7 @@ parent: Hisense
 | ---------------- | -------------------------------------------------------- |
 | Vendor/Brand     | Hisense                                                  |
 | Model            | LTF7267-BHA+                                             |
-| ODM Manufacter   | Hisense                                                  |
+| ODM              | Hisense                                                  |
 | ODM Product Code | LTF7267-BHA+                                             |
 | Chipset          | Cortina                                                  |
 | Flash            | 128MB                                                    |
