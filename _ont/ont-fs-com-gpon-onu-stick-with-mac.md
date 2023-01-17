@@ -12,7 +12,7 @@ layout: default
 | ---------------- | ---------------------------------------- |
 | Vendor/Brand     | FS.com                                   |
 | Model            | GPON-ONU-34-20BI                         |
-| ODM Manufacter   | SourcePhotonics                          |
+| ODM              | SourcePhotonics                          |
 | ODM Product Code | SPS-34-24T-HP-TDFO                       |
 | Chipset          | Lantiq PEB98035                          |
 | CPU              | MIPS 34Kc interAptiv                     |

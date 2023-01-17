@@ -11,7 +11,7 @@ parent: HALNy
 | ---------------- | -------------------- |
 | Vendor/Brand     | HALNy                |
 | Model            | HL-GSFP              |
-| ODM Manufacter   | T&W                  |
+| ODM              | T&W                  |
 | ODM Product Code | TW2362H-CDEL         |
 | Chipset          | Lantiq PEB98035      |
 | Flash            | 8 MB                 |
