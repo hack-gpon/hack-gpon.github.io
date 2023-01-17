@@ -1,8 +1,8 @@
 ---
-title: Leox LXT-010G-D
+title: LEOX LXT-010G-D
 has_children: false
 layout: default
-parent: Leox
+parent: LEOX
 ---
 
 # Hardware Specifications
