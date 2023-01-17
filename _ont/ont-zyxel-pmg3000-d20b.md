@@ -7,27 +7,43 @@ parent: Zyxel
 
 # Hardware Specifications
 
-|             |                                                            |
-| ----------- | ---------------------------------------------------------- |
-| Vendor      | Zyxel                                                      |
-| Model       | PMG3000-D20B                                               |
-| Chipset     | Lantiq PEB98035                                            |
-| Flash       | 8 MB                                                       |
-| RAM         | 64 MB                                                      |
-| CPU         | MIPS 34Kc interAptiv                                       |
-| CPU Clock   | 400MHz                                                     |
-| System      | eCoS                                                       |
-| HSGMII      | Yes                                                        |
-| Optics      | SC/APC                                                     |
-| IP address  | 10.10.1.1                                                  |
-| Web Gui     | ✅ username `admin` or `guest`, password `1234` or `guest` |
-| SSH         | ✅ username `admin`, password `admin`                      |
-| Form Factor | miniONT SFP                                                |
+|                  |                                                            |
+| ---------------- | ---------------------------------------------------------- |
+| Vendor/Brand     | Zyxel                                                      |
+| Model            | PMG3000-D20B                                               |
+| ODM Manufacter   | T&W                                                        |
+| ODM Product Code | TW2362H-CDEL                                               |
+| Chipset          | Lantiq PEB98035                                            |
+| Flash            | 8 MB                                                       |
+| RAM              | 64 MB                                                      |
+| CPU              | MIPS 34Kc interAptiv                                       |
+| CPU Clock        | 400MHz                                                     |
+| System           | eCoS                                                       |
+| HSGMII           | Yes                                                        |
+| Optics           | SC/APC                                                     |
+| IP address       | 10.10.1.1                                                  |
+| Web Gui          | ✅ username `admin` or `guest`, password `1234` or `guest` |
+| SSH              | ✅ username `admin`, password `admin`                      |
+| Telnet           |                                                            |
+| Serial           | ✅                                                         |
+| Serial baud      | 115200                                                     |
+| Serial encoding  | 8-N-1                                                      |
+| Form Factor      | miniONT SFP                                                |
 
 {% include image.html file="pmg3000-d20b.png" alt="PMG3000-D20B" caption="PMG3000-D20B" %}
+{% include image.html file="tw236h-cdel-th.jpg" alt="PMG3000-D20B Teardown" caption="PMG3000-D20B Teardown" %}
+{% include image.html file="tw236h-cdel-th-back.jpg" alt="PMG3000-D20B Teardown" caption="PMG3000-D20B Teardown" %}
 
 Once you access the stick via ssh you will be presented with a second tier login. The credentials to access the zyxel shell are: username: `twmanu` , password: `twmanu`.
 From the Zyxel shell you can move to a standard Linux shell using the `linuxshell` command
+
+## Serial
+
+The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. It's near the SFP header. TX, RX and ground pads need to be connected to a USB2TTL adapter supporting a logic level of 3.3V.
+
+{% include image.html file="tw236h-cdel-serial.jpg" alt="PMG3000-D20B Serial Pinout" caption="PMG3000-D20B Serial Pinout" %}
+
+{% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
 
 ## Firmware is interchangeable with:
 
@@ -36,12 +52,12 @@ From the Zyxel shell you can move to a standard Linux shell using the `linuxshel
 - [Ziza OP151s](/ont-ziza-op151s)
 - [T&W TW2362H-CDEL](/ont-t-w-tw2362h-cdel)
 
-# List of software versions
+## List of software versions
 - V1.00(ABVJ.0)b3s (2020)
 - V1.00(ABVJ.0)b3i (2020)
 - V2.50(ABVJ.0)b1b (2022)
 
-# List of partitions
+## List of partitions
  
 | dev  | size     | erasesize | name           |
 | ---- | -------- | --------- | -------------- |
@@ -62,7 +78,7 @@ This stick supports dual boot, as visible from the presence of `ImageA` and `Ima
 ## Useful files
 - `/var/config/ont.sys` - Used to customize various settings on the stick. If you don't have it you can copy the stock one from /ont.sys
 
-# Useful Commands
+# General Settings and Useful Commands
 {% include alert.html content="All commands start from the twmanu shell." alert="Note"  icon="svg-info" color="blue" %}
 
 ## Changing the ONT's S/N
