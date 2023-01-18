@@ -11,7 +11,7 @@ parent: Nokia
 | -------------- | -------- |
 | Vendor/Brand   | Nokia    |
 | Model          | G-010G-A |
-| Chipset        | BCM6838  |
+| Chipset        | Broadcom BCM6838  |
 | Flash          |          |
 | RAM            |          |
 | System         |          |
