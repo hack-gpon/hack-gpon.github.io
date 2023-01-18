@@ -35,6 +35,7 @@ Connect the TTL adapter to the computer, once done press the following button. A
 {% include alert.html content="Your browser does not support JavaScript!" alert="Note"  icon="svg-warning" color="red" %}
 </noscript>
 
+{% include alert.html content="If this procedure does not work, you can use this [alternative procedure](/ont-huawei-ma5671a-ymodem)" alert="Info" icon="svg-info" color="blue" %}
 
 # Connect to the stick via SSH
 
