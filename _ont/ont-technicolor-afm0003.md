@@ -70,25 +70,38 @@ This stick supports dual boot.
 
 `k0` and `r0` respectively contain the kernel and firmware of the first image, `k1` and `r1` the kernel and firmware of the second one
 
-# List of firmwares and files
-## Useful files
-- `/var/config/lastgood.xml` - Contains the user portion of the configuration
-- `/var/config/lastgood-hs.xml` - Contains the "hardware" configuration (which _should not_ be changed)
-- `/tmp/omcilog` - OMCI messages logs (must be enabeled, see below)
-
-## Useful binaries
-- `/etc/scripts/flash` - Used to manipulate the config files in a somewhat safe manner
-- `xmlconfig` - Used for low-level manipulation of the XML config files. Called by `flash`
-- `nv` - Used to manipulate nvram storage, including persistent config entries via `nv setenv`/`nv getenv`
-- `omcicli` - Used to interact with the running OMCI daemon
-- `omci_app` - The OMCI daemon
-- `diag` - Used to run low-level diagnostics commands on the stick
-
 {% include_relative luna-sdk-userful-commands.md flash='/etc/scripts/flash' ploam='ascii' %}
 
 ## Enabling the Web UI
 ```sh
 # /bin/iptables -D INPUT -p tcp --dport 80 -j DROP
+```
+
+## Transfering files from/to the stick
+Works with binary files too, just run md5sum on source and destination to make sure you are not corrupting anything...
+From the stick to the PC:
+```sh
+# tftp <IP>
+tftp> put <filename> <directory>
+tftp> q
+```
+From the PC to the stick:
+```sh
+# tftp <IP>
+tftp> get <filename>
+tftp> q
+```
+
+## Getting/Setting the MTU
+Getting/Setting the MTU of the L2 bridge
+```sh
+diag
+RTK.0> switch get max-pkt-len port all 
+Port Speed 
+---------- 
+0 1538 
+2 2031 
+RTK.0> switch set max-pkt-len port all length 9000
 ```
 
 # Miscellaneous Links

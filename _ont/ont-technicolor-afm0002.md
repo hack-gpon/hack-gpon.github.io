@@ -82,20 +82,6 @@ This stick supports dual boot.
 
 `k0` and `r0` respectively contain the kernel and firmware of the first image, `k1` and `r1` the kernel and firmware of the second one
 
-# List of firmwares and files
-## Useful files
-- `/var/config/lastgood.xml` - Contains the user portion of the configuration
-- `/var/config/lastgood-hs.xml` - Contains the "hardware" configuration (which _should not_ be changed)
-- `/tmp/omcilog` - OMCI messages logs (must be enabeled, see below)
-
-## Useful binaries
-- `/etc/scripts/flash` - Used to manipulate the config files in a somewhat safe manner
-- `xmlconfig` - Used for low-level manipulation of the XML config files. Called by `flash`
-- `nv` - Used to manipulate nvram storage, including persistent config entries via `nv setenv`/`nv getenv`
-- `omcicli` - Used to interact with the running OMCI daemon
-- `omci_app` - The OMCI daemon
-- `diag` - Used to run low-level diagnostics commands on the stick
-
 {% include_relative luna-sdk-userful-commands.md flash='/etc/scripts/flash' ploam='ascii' %}
 
 ## Enabling the Web UI
@@ -109,7 +95,7 @@ From the stick to the PC:
 ```sh
 # ssh admin@192.168.2.1 "cat /tmp/omcilog" > omcilog.log
 ```
-From the PC to the stick
+From the PC to the stick:
 ```sh
 # cat lastgood.xml | ssh admin@192.168.2.1  "cat > /var/config/lastgood.xml"
 ```
