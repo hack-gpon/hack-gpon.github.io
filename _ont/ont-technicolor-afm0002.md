@@ -3,7 +3,7 @@ title: Technicolor AFM0002
 has_children: false
 layout: default
 parent: Technicolor
-alias: Hisense LTE3415-SCA+
+alias: HiSense LTE3415-SCA+
 ---
 
 # Hardware Specifications
@@ -12,7 +12,7 @@ alias: Hisense LTE3415-SCA+
 | ---------------- | ----------------------------------------------- |
 | Vendor/Brand     | Technicolor                                     |
 | Model            | AFM0002TIM/FWB/WND                              |
-| ODM              | Hisense                                         |
+| ODM              | HiSense                                         |
 | ODM Product Code | LTE3415-SCA+                                    |
 | Chipset          | Realtek RTL9601B                                |
 | Flash            | 32 MB                                           |
