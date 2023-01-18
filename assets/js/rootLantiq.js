@@ -191,11 +191,7 @@ async function sendImageMtd(port, data, baudRate, outputErrorCallback, progressC
         reader = port.readable.getReader();
         writer = port.writable.getWriter();
 
-        await sendXYMini(reader, writer, data, baudRate,
-            (byteTransfered) => {
-                progressCallback(byteTransfered);
-            }
-        );
+        await sendXYMini(reader, writer, data, baudRate, progressCallback);
         await reader.cancel();
         await writer.close();
         await port.close();
