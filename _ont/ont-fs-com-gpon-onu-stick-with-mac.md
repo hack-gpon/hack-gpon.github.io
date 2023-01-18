@@ -87,7 +87,7 @@ The electrical connections are the same as those of the Huawei MA5671A, see the 
 When you are ready with everything plugged in you need to press the button below. A window will open that will execute the emergency unlock.
 
 {: .text-center .fs-6 }
-<button id="start-button" class="btn btn-blue" data-jtd-toogle="modal" data-jtd-target="#root-modal" disabled>Start emergency unlock!</button>
+<button id="start-button" class="btn btn-blue" data-jtd-toggle="modal" data-jtd-target="#root-modal" disabled>Start emergency unlock!</button>
 {% include root_lantiq.html modelName="FS GPON ONU Stick" unlockHuaweiShell=false %}
 
 <div id="browser-error" style="display:none">{% include alert.html content="This browser is not compatible with the emergency unlock procedure. See the <a href='https://developer.mozilla.org/en-US/docs/Web/API/Web_Serial_API#browser_compatibility'>Browser compatibility</a>" alert="Note"  icon="svg-warning" color="red" %}</div>
