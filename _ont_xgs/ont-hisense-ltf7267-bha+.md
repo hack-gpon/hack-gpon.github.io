@@ -1,15 +1,15 @@
 ---
-title: Hisense LTF7267-BHA+
+title: HiSense LTF7267-BHA+
 has_children: false
 layout: default
-parent: Hisense
+parent: HiSense
 ---
 
 # Hardware Specifications
 
 |                  |                                                          |
 | ---------------- | -------------------------------------------------------- |
-| Vendor/Brand     | Hisense                                                  |
+| Vendor/Brand     | HiSense                                                  |
 | Model            | LTF7267-BHA+                                             |
 | ODM              | ✅                                                       |
 | Chipset          | Cortina                                                  |
@@ -29,13 +29,13 @@ parent: Hisense
 
 # External/Internal Photo
 
-{% include image.html file="ont-hisense-ltf7267-bha+_front.jpg" alt="Hisense LTF7267-BHA+ External" caption="Hisense LTF7267-BHA+ External" %}
+{% include image.html file="ont-hisense-ltf7267-bha+_front.jpg" alt="HiSense LTF7267-BHA+ External" caption="HiSense LTF7267-BHA+ External" %}
 
 ## Serial
 
 The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. It's near the SFP header. TX, RX and ground pads need to be connected to a USB2TTL adapter supporting a logic level of 3.3V.
 
-{% include image.html file="ont-hisense-ltf7267-bha+_inside.jpg" alt="Hisense LTF7267-BHA+ Internals" caption="Hisense LTF7267-BHA+ Internals" %}
+{% include image.html file="ont-hisense-ltf7267-bha+_inside.jpg" alt="HiSense LTF7267-BHA+ Internals" caption="HiSense LTF7267-BHA+ Internals" %}
 
 {% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
 

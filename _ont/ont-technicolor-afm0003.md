@@ -3,7 +3,7 @@ title: Technicolor AFM0003
 has_children: false
 layout: default
 parent: Technicolor
-alias: Hisense LTE3415-SH+
+alias: HiSense LTE3415-SH+
 ---
 
 # Hardware Specifications
@@ -12,7 +12,7 @@ alias: Hisense LTE3415-SH+
 | ---------------- | ----------------------------------------------- |
 | Vendor/Brand     | Technicolor                                     |
 | Model            | AFM0003TIM                                      |
-| ODM              | Hisense                                         |
+| ODM              | HiSense                                         |
 | ODM Product Code | LTE3415-SH+                                     |
 | Chipset          | Realtek RTL9601CI                               |
 | Flash            | 256 MB                                          |
