@@ -8,26 +8,29 @@ layout: default
 
 # Hardware Specifications
 
-|             |                                          |
-| ----------- | ---------------------------------------- |
-| Vendor      | SourcePhotonics                          |
-| Model       | SPS-34-24T-HP-TDFO                       |
-| Chipset     | Lantiq PEB98035                          |
-| Manufacter  | SourcePhotonics                          |
-| CPU         | MIPS 34Kc interAptiv                     |
-| CPU Clock   | 400MHz                                   |
-| Flash       | 16 MB                                    |
-| RAM         | 64 MB                                    |
-| Bootloader  | U-Boot 2011.12-lantiq-gpon-1.2.24        |
-| System      | OpenWRT 14.07_ltq (Kernel 3.10.49)       |
-| Serial baud | 115200                                   |
-| Load addr   | 0x80800000                               |
-| HSGMII      | Yes                                      |
-| Optics      | SC/APC                                   |
-| IP address  | 192.168.1.10                             |
-| Web Gui     |                                          |
-| SSH         | ✅ user `ONTUSER`, password `7sp!lwUBz1` |
-| Form Factor | miniONT SFP                              |
+|                  |                                          |
+| ---------------- | ---------------------------------------- |
+| Vendor/Brand     | FS.com                                   |
+| Model            | GPON-ONU-34-20BI                         |
+| ODM              | ✅                                       |
+| Chipset          | Lantiq PEB98035                          |
+| CPU              | MIPS 34Kc interAptiv                     |
+| CPU Clock        | 400MHz                                   |
+| Flash            | 16 MB                                    |
+| RAM              | 64 MB                                    |
+| Bootloader       | U-Boot 2011.12-lantiq-gpon-1.2.24        |
+| System           | OpenWRT 14.07_ltq (Kernel 3.10.49)       |
+| Load addr        | 0x80800000                               |
+| HSGMII           | Yes                                      |
+| Optics           | SC/APC                                   |
+| IP address       | 192.168.1.10                             |
+| Web Gui          |                                          |
+| SSH              | ✅ user `ONTUSER`, password `7sp!lwUBz1` |
+| Telnet           |                                          |
+| Serial           | ✅ on SFP                                |
+| Serial baud      | 115200                                   |
+| Serial encoding  | 8-N-1                                    |
+| Form Factor      | miniONT SFP                              |
 
 {% include image.html file="ont-fs.jpg" alt="ONT FS.com GPON ONU" caption="ONT FS.com GPON ONU" %}
 {% include image.html file="ont-fs-box.jpg" alt="ONT FS.com GPON ONU in the box" caption="ONT FS.com GPON ONU in the box" %}
@@ -45,7 +48,21 @@ layout: default
 - {:.text-red-200 } DpOptics D23446  
 - {:.text-red-200 } Photonics SPS-34-24T-HP-TDFO
 
-# General setting
+## Serial
+
+The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the SFP connector.
+
+| USB TTL(UART) Adapter | SFP 20pins Molex connector |
+| --------------------- | -------------------------- |
+| 3.3V                  | pin #15 and #16            |
+| TX                    | pin #2                     |
+| RX                    | pin #7                     |
+| GND                   | pin #14                    |
+
+
+{% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
+
+# General Settings and Useful Commands
 
 ## Bootloader unlock from shell
 {% include alert.html content="It is strongly recommended that you unlock the bootloader before making any major changes to the firmware." alert="Warning"  icon="svg-warning" color="yellow" %}
