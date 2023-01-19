@@ -71,11 +71,8 @@ PON_VENDOR_ID=ZTEG
 ```
 
 ## Getting/Settng the ONT Custom software version
-{% if include.customSwVersionAlert %}
-    {% include alert.html content=include.customSwVersionAlert alert="Note" icon="svg-info" color="blue" %}
-{% else %}
-    {% include alert.html content="This needs the OMCI_OLT_MODE value to be set to 3" alert="Note" icon="svg-info" color="blue" %}
-{% endif %}
+{% assign customSwVersionAlert = include.customSwVersionAlert | default: "This needs the OMCI_OLT_MODE value to be set to 3" %}
+{% include alert.html content=customSwVersionAlert alert="Note" icon="svg-info" color="blue" %}
 
 ```sh
 # nv setenv sw_custom_version0 YOURFIRSTSWVER

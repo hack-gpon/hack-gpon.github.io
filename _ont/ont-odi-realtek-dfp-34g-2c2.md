@@ -34,17 +34,17 @@ ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc admin@192.16
 {% include image.html file="realtek-dfp-34g-2c2.jpg" alt="ODI Realtek DFP-34X-C2C" caption="ODI Realtek DFP-34X-C2C" %}
 
 ## List of software versions
-- V1.0-220923
+- V1.0-220923 (hybrid by @lanseyujie and @stick86)
 - V1.0-220817
-- V1.0-220530 
-- V1.0-220414 
+- V1.0-220530 (hybrid by @stick86)
+- V1.0-220414 (vlan working)
 - V1.0-220304
 - V1.0-210702
 
 ## List of firmwares and files
 - [Firmware repository by Anime4000](https://github.com/Anime4000/RTL960x/tree/main/Firmware/DFP-34X-2C2)
 
-The reccomended version are `M114_sfp_ODI_hybrid_220527.tar` or `M114_sfp_ODI_hybrid_220916.tar` because it has working VLAN translation.  
+The reccomended version are `M114_sfp_ODI_Vlan_220414.tar`, `M114_sfp_ODI_hybrid_220527.tar` or `M114_sfp_ODI_hybrid_220916.tar` because it has working VLAN translation.  
 
 ## List of partitions
  
@@ -78,7 +78,7 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 
 {% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
 
-{% include_relative luna-sdk-userful-commands.md flash='flash' flash='flash' ploam='hex' %}
+{% include_relative luna-sdk-userful-commands.md flash='flash' ploam='hex' customSwVersionAlert='This needs the OMCI_OLT_MODE value to be set to 3 and firmware 220530 or 220923 modded by @stich86' %}
 
 # Known Bugs
 

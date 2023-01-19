@@ -95,7 +95,7 @@ tftp> q
 ## Getting/Setting the MTU
 Getting/Setting the MTU of the L2 bridge
 ```sh
-diag
+# diag
 RTK.0> switch get max-pkt-len port all 
 Port Speed 
 ---------- 
