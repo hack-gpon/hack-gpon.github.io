@@ -31,4 +31,4 @@ parent: LEOX
 
 The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface.
 
-{% include_relative ont-leox-userful-command.md %}
+{% include_relative ont-luna-sdk-userful-commands.md ploam='ascii' flash='/etc/scripts/flash' %}
