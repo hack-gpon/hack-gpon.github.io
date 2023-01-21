@@ -260,6 +260,12 @@ strings /opt/lantiq/bin/omcid | grep compiled
 reboot
 ```
 
+## Checking whether the connection with the OLT was successful (O5 state)
+
+```shell
+onu ploamsg
+```
+
 ## List of software versions
 - 6BA1896SPLQA13 (Dec 16 2016)
 - 6BA1896SPLQA41
