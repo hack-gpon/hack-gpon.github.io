@@ -70,7 +70,7 @@ This stick supports dual boot.
 
 `k0` and `r0` respectively contain the kernel and firmware of the first image, `k1` and `r1` the kernel and firmware of the second one
 
-{% include_relative ont-luna-sdk-useful-commands.md flash='/etc/scripts/flash' ploam='ascii' speedLan='12345' customSpeedLanAlert='The defualt firmware does not allow modification of the `LAN_SDS_MODE` parameter. Is it necessary to use the modded firmware. Before editing the speed make sure your hardware supports it.' %}
+{% include_relative ont-luna-sdk-useful-commands.md flash='/etc/scripts/flash' ploam='ascii' speedLan='12345' customSpeedLanAlert='The defualt firmware does not allow modification of the `LAN_SDS_MODE` parameter. Is it necessary to use the modded firmware. Before editing the speed make sure your hardware supports it.' lastgoodHs=true %}
 
 ## Enabling the Web UI
 ```sh
@@ -90,6 +90,28 @@ From the PC to the stick:
 # tftp <IP>
 tftp> get <filename>
 tftp> q
+```
+
+## Extracting and repacking the rootfs
+{% include alert.html content="Make sure you run both commands as root, otherwise you might get a damaged rootfs image" alert="Warning" icon="svg-warning" color="red" %}
+
+```sh
+# unsquashfs mtd5.bin
+# mksquashfs squashfs-root rootfs -b 131072 -comp lzma -no-recovery
+```
+## Flashing a new rootfs
+
+{% include alert.html content="Only the inactive image can be flashed, change sw_versionX and sw_commit X based on the bank you have flashed" alert="Info" icon="svg-info" color="blue" %}
+
+So mtd4/5 if you are on image1, mtd6/7 if you are on image0.
+
+The following commands are used to flash a new rootfs to image1 and then boot to it
+```sh
+# flash_eraseall /dev/mtd7
+# cat /tmp/rootfs.new > /dev/mtd7
+# nv setenv sw_version1 NEW_SOFTWARE_VERSION
+# nv setenv sw_commit 1
+# reboot
 ```
 
 # Miscellaneous Links
