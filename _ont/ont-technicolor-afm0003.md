@@ -70,25 +70,48 @@ This stick supports dual boot.
 
 `k0` and `r0` respectively contain the kernel and firmware of the first image, `k1` and `r1` the kernel and firmware of the second one
 
-# List of firmwares and files
-## Useful files
-- `/var/config/lastgood.xml` - Contains the user portion of the configuration
-- `/var/config/lastgood-hs.xml` - Contains the "hardware" configuration (which _should not_ be changed)
-- `/tmp/omcilog` - OMCI messages logs (must be enabeled, see below)
-
-## Useful binaries
-- `/etc/scripts/flash` - Used to manipulate the config files in a somewhat safe manner
-- `xmlconfig` - Used for low-level manipulation of the XML config files. Called by `flash`
-- `nv` - Used to manipulate nvram storage, including persistent config entries via `nv setenv`/`nv getenv`
-- `omcicli` - Used to interact with the running OMCI daemon
-- `omci_app` - The OMCI daemon
-- `diag` - Used to run low-level diagnostics commands on the stick
-
-{% include_relative luna-sdk-userful-commands.md flash='/etc/scripts/flash' ploam='ascii' %}
+{% include_relative ont-luna-sdk-useful-commands.md flash='/etc/scripts/flash' ploam='ascii' speedLan='12345' customSpeedLanAlert='The defualt firmware does not allow modification of the `LAN_SDS_MODE` parameter. Is it necessary to use the modded firmware. Before editing the speed make sure your hardware supports it.' lastgoodHs=true %}
 
 ## Enabling the Web UI
 ```sh
 # /bin/iptables -D INPUT -p tcp --dport 80 -j DROP
+```
+
+## Transfering files from/to the stick
+Works with binary files too, just run md5sum on source and destination to make sure you are not corrupting anything...
+From the stick to the PC:
+```sh
+# tftp <IP>
+tftp> put <filename> <directory>
+tftp> q
+```
+From the PC to the stick:
+```sh
+# tftp <IP>
+tftp> get <filename>
+tftp> q
+```
+
+## Extracting and repacking the rootfs
+{% include alert.html content="Make sure you run both commands as root, otherwise you might get a damaged rootfs image" alert="Warning" icon="svg-warning" color="red" %}
+
+```sh
+# unsquashfs mtd5.bin
+# mksquashfs squashfs-root rootfs -b 131072 -comp lzma -no-recovery
+```
+## Flashing a new rootfs
+
+{% include alert.html content="Only the inactive image can be flashed, change sw_versionX and sw_commit X based on the bank you have flashed" alert="Info" icon="svg-info" color="blue" %}
+
+So mtd4/5 if you are on image1, mtd6/7 if you are on image0.
+
+The following commands are used to flash a new rootfs to image1 and then boot to it
+```sh
+# flash_eraseall /dev/mtd7
+# cat /tmp/rootfs.new > /dev/mtd7
+# nv setenv sw_version1 NEW_SOFTWARE_VERSION
+# nv setenv sw_commit 1
+# reboot
 ```
 
 # Miscellaneous Links

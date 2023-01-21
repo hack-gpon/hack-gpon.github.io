@@ -34,13 +34,15 @@ parent: T&W
 
 - [Firmware repository by Anime4000](https://github.com/Anime4000/RTL960x/tree/main/Firmware/TWCGPON657)
 
-The reccomended version are `C00R657V2801F_V1.9.0-220404.tar` because it is the V2801F for T&W TWC GPON657
+The reccomended version are `C00R657V2801F_V1.9.0-220404.tar` because it is the V2801F firmware for T&W TWC GPON657.
+
+{% include_relative ont-luna-sdk-useful-commands.md flash='flash' ploam='ascii' speedLan='12345' customSpeedLanAlert='Please use recommended version `C00R657V2801F_V1.9.0-220404.tar`. Before editing the speed make sure your hardware supports it.' %}
 
 # Known Bugs
 
 VLAN swap issue (MEID 171), auto-sensing mode to switch between SGMII/HiSGMII
 
-You should use the VID/VLAN shown by executing the command "omcicli mib get 84" via telnet to bring up PPPoE
+You should use the VID/VLAN shown by executing the command `omcicli mib get 84` via telnet to bring up PPPoE
 
 
 # Miscellaneous Links

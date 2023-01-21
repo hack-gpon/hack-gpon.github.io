@@ -67,25 +67,7 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 - V3.3.4L3
 - V3.3.4L4rc1 (Fix 2.5GbE HiSGMII)
 
-{% include_relative ont-leox-userful-command.md %}
-
-## LAN SDS Mode (with firmware V3.3.4L4rc1):
-
-| mode             | description              |
-| ---------------- | ------------------------ |
-| LAN_SDS_MODE = 1 | 1GbE with auto-neg on    |
-| LAN_SDS_MODE = 7 | 1GbE with auto-neg off   |
-| LAN_SDS_MODE = 8 | 2.5GbE with auto-neg off |
-
-If you try to use any mode not listed here, stick will default to mode 1.
-
-To change the link mode use this command:
-
-```sh
-# /etc/scripts/flash get LAN_SDS_MODE
-LAN_SDS_MODE=1
-# /etc/scripts/flash set LAN_SDS_MODE 1
-```
+{% include_relative ont-luna-sdk-useful-commands.md ploam='ascii' speedLan='178' customSpeedLanAlert='You need firmware `V3.3.4L4rc1` or higher. Before editing the speed make sure your hardware supports it. If you try to use any mode not listed here, stick will default to mode 1.' flash='/etc/scripts/flash' %}
 
 # Known Bugs
 
