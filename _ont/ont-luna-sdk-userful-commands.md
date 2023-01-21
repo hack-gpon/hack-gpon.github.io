@@ -24,9 +24,19 @@ GPON_SN=TMBB00000000
 ```
 
 ## Getting/Setting the ONT's PLOAM password
-{% if include.ploam == 'hex' %}
+{% if include.ploam == 'asciiAndHex' %}
 
-{% include alert.html content="The PLOAM password is stored in HEX format, without any 0x or separators" alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="The ploam can be saved in either ASCII or HEX format, without any 0x or separators" alert="Note" icon="svg-info" color="blue" %}
+
+```sh
+# {{ include.flash }} get GPON_PLOAM_PASSWD
+GPON_PLOAM_PASSWD=41414141414141414141
+# {{ include.flash }} set GPON_PLOAM_PASSWD 41414141414141414141
+```
+
+{% elsif include.ploam == 'hex' %}
+
+{% include alert.html content="The PLOAM password is stored in HEX format, without any 0x or separators" alert="Note" icon="svg-info" color="blue" %}
 
 ```sh
 # {{ include.flash }} get GPON_PLOAM_PASSWD
@@ -157,6 +167,12 @@ LAN_SDS_MODE=0
 # {{ flash }} get LAN_IP_ADDR
 LAN_IP_ADDR=192.168.2.1
 # {{ flash }} set LAN_IP_ADDR 192.168.1.1
+```
+
+## Checking whether the connection with the OLT was successful (O5 state)
+
+```sh
+diag gpon get onu-state
 ```
 
 ## Querying a particular OMCI ME
