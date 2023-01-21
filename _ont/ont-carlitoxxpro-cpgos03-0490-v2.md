@@ -30,7 +30,7 @@ parent: CarlitoxxPro
 
 - You should use the VID/VLAN shown by executing the command `omcicli mib get 84` via telnet to bring up PPPoE
 
-{% include_relative ont-luna-sdk-userful-commands.md flash='flash' ploam='asciiAndHex' %}
+{% include_relative ont-luna-sdk-useful-commands.md flash='flash' ploam='asciiAndHex' %}
 
 
 # Miscellaneous Links

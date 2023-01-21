@@ -70,7 +70,7 @@ This stick supports dual boot.
 
 `k0` and `r0` respectively contain the kernel and firmware of the first image, `k1` and `r1` the kernel and firmware of the second one
 
-{% include_relative ont-luna-sdk-userful-commands.md flash='/etc/scripts/flash' ploam='ascii' speedLan='12345' customSpeedLanAlert='The defualt firmware does not allow modification of the `LAN_SDS_MODE` parameter. Is it necessary to use the modded firmware. Before editing the speed make sure your hardware supports it.' %}
+{% include_relative ont-luna-sdk-useful-commands.md flash='/etc/scripts/flash' ploam='ascii' speedLan='12345' customSpeedLanAlert='The defualt firmware does not allow modification of the `LAN_SDS_MODE` parameter. Is it necessary to use the modded firmware. Before editing the speed make sure your hardware supports it.' %}
 
 ## Enabling the Web UI
 ```sh
