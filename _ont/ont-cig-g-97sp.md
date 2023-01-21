@@ -1,5 +1,5 @@
 ---
-title: CIG G-97S
+title: CIG G-97SP
 has_children: false
 layout: default
 parent: CIG
@@ -10,7 +10,7 @@ parent: CIG
 |                  |                 |
 | ---------------- | --------------- |
 | Vendor/Brand     | CIG             |
-| Model            | G-97S           |
+| Model            | G-97SP          |
 | ODM              | ✅              |
 | Chipset          | Lantiq PEB98035 |
 | CPU              |                 |
