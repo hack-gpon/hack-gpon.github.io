@@ -31,7 +31,7 @@ alias: CIG G-97S
 {% include image.html file="g-010s-q-teardown-1.jpg" alt="Nokia G-010S-Q Teardown Up" caption="Nokia G-010S-Q Teardown Up" %}
 {% include image.html file="g-010s-q-teardown-2.jpg" alt="Nokia G-010S-Q Teardown Down" caption="Nokia G-010S-Q Teardown Down" %}
 
-{% include_relative ont-nokia-useful-command.md %}
+{% include_relative ont-nokia-userful-command.md %}
 
 # Miscellaneous Links
 

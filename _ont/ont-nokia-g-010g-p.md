@@ -48,7 +48,7 @@ To access a complete linux shell just type:
 
 To exit the shell and reach the parent menu type `exit` or `x`, in each menu the `help` command will show how to use the shell
 
-{% include_relative ont-nokia-useful-command.md %}
+{% include_relative ont-nokia-userful-command.md %}
 
 # Miscellaneous Links
 - [MIB file parser](https://github.com/nanomad/nokia-ont-mib-parser) for NOKIA's GPON ONTs (*helps you parsing the .mib file located in `/mnt/rwdir`*)
