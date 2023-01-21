@@ -214,7 +214,7 @@ Before restarting the stick and applying changes, make sure `omcid` has its exec
 
 ```sh
 chmod ugo+x /opt/lantiq/bin/omcid
->>>>>>> main
+```
 
 
 Is also a good time to set the image0/image1_version. Crash has reported if they are not set correctly before reboot.
