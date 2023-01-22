@@ -266,6 +266,45 @@ reboot
 onu ploamsg
 ```
 
+## Disable RX_LOS status
+{% include alert.html content="The patch below is only compatible with the firmware version `6BA1896SPLQA42`" alert="Info" icon="svg-info" color="blue" %}
+
+Some switches/routers (e.g. Mikrotik) do not allow access to the magament interface without the fiber connected because the SFP reports RX_LOS status, it's possible to modify the `mod_optic.ko` driver to spoof non RX_LOS status by setting PIN 8 (RX_LOS) to be always low.
+
+This is the change to be made in hex format:
+
+```
+< 00013740: 2404 0003 2405 0001 0c00 0000 ac43 0980  $...$........C..
+---
+> 00013740: 2404 0003 2405 0000 0c00 0000 ac43 0980  $...$........C..
+```
+
+{% include alert.html content="Proceed only if your `md5sum /lib/modules/3.10.49/mod_optic.ko` has the correct checksum `7c718c3410c4120fe98fa7a9a5c6c407`" alert="Info" icon="svg-info" color="blue" %}
+
+This is the patch, encoded in base64:
+```
+QlNESUZGNDA2AAAAAAAAADYAAAAAAAAAXEEFAAAAAABCWmg5MUFZJlNZ5TTrjgAAB+ZARjAEACAA
+AARAACAAMQZMQRppiFkgKGTeXi7kinChIcpp1xxCWmg5MUFZJlNZcaVLvQABOOCAwAAAAQAIAAig
+ACClRgZoMhUf9JKbgIk3hdyRThQkHGlS70BCWmg5F3JFOFCQAAAAAA==
+```
+
+Save it on your computer (not on the stick) as `mod_optic.base64`, then run:
+```sh
+base64 -d mod_optic.base64 > mod_optic.bspatch
+bspatch <your_original_mod_optic.ko> mod_optic.ko mod_optic.bspatch
+```
+{% include alert.html content="if you don't have bspatch installed, most distributions includes it in bsdiff package" alert="Info" icon="svg-info" color="blue" %}
+
+After patching the resulting patched `mod_optic.ko` should have an md5 checksum of `e14a5a70b023873853afe920870f076e`.
+If that also checks, go on making a backup copy of your original `mod_optic.ko` on the stick.
+
+```sh
+cd /lib/modules/3.10.49/
+cp mod_optic.ko mod_optic.ko.original
+```
+
+Now you have to use SCP to copy the modified `mod_optic.ko` kernel module in `/lib/modules/3.10.49/mod_optic.ko`.
+
 ## List of software versions
 - 6BA1896SPLQA13 (Dec 16 2016)
 - 6BA1896SPLQA41
