@@ -36,7 +36,7 @@ parent: LEOX
 
 The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface (see red square).
 
-{% include image.html file="ont-leox-lxt-010-h-d_ttl" alt="Leox LXT-010H-D TTL Pinout" caption="Leox LXT-010H-D TTL Pinout" %}
+{% include image.html file="ont-leox-lxt-010-h-d_ttl.jpg" alt="Leox LXT-010H-D TTL Pinout" caption="Leox LXT-010H-D TTL Pinout" %}
 
 {% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
 
@@ -68,7 +68,7 @@ This ONT supports dual boot.
 - V3.3.2L6
 - V3.3.2L7
 
-{% include alert.html content="Before proceed on any modification, make a backup of files rtl8290b.data and europa.data from /var/config folder. These files include optical calibration of your ONT's laser, if you accidentally delete or  ruin them, your ONT will be unusable" alert="Note" icon="svg-warning" color="yellow" %}
+{% include alert.html content="Before proceed on any modification, make a backup of files rtl8290b.data and europa.data from /var/config folder. These files include optical calibration of your ONT's laser, if you accidentally delete or ruin them, your ONT will be unusable" alert="Note" icon="svg-warning" color="yellow" %}
 
 {% include_relative ont-luna-sdk-useful-commands.md ploam='ascii' flash='/etc/scripts/flash' %}
 
