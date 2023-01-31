@@ -71,7 +71,7 @@ ONT>
 
 {% include_relative ont-nokia-use.md %}
 
-{% include_relative ont-nokia-userful-command.md %}
+{% include_relative ont-nokia-useful-command.md %}
 
 # Miscellaneous Links
 - [MIB file parser](https://github.com/nanomad/nokia-ont-mib-parser) for NOKIA's GPON ONTs (*helps you parsing the .mib file located in `/mnt/rwdir`*)
