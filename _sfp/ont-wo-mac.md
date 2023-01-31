@@ -71,6 +71,8 @@ For utility reasons all SFPs w/o PON MAC are not illustrated on Hack GPON as the
 
 In particular, the SFP ONU of the AVM Fritz!Box 5530/5590 belongs in this category, and that the above-mentioned devices are not compatible with any other SFP using MMI/Ethernet/Fibre Channel, while for example the FreeBox or IliadBox supports both ONU w/o PON MAC and some SFP with MAC.
 
+In general, these devices do not have enough customisation to allow the required parameters to be changed other than the GPON Serial Number and GPON Ploam Password. This means that in most scenarios these devices with ONT w/o MAC are not flexible enough to be used as a replacement for an ISP-provided ONT.
+
 ---
 
 [^sfpstandard]: *Specification for SFP (Small Formfactor Pluggable) Transceiver* INF-8074
