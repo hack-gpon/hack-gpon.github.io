@@ -8,14 +8,14 @@ layout: default
 
 |          | RB5009          | CRS305-1G-4S+IN | CCR2004-1G-12S+2XS | CCR2116-12G-4S+ |
 | -------- | --------------- | --------------- | ------------------ | --------------- |
-| Vendor   | MikroTik        |                 |                    |                 |
+| Vendor   | MikroTik        | Mikrotik        | Mikrotik           | Mikrotik        |
 | Model    | RB5009          | CRS305-1G-4S+IN | CCR2004-1G-12S+2XS | CCR2116-12G-4S+ |
 | SFP      | 1 SFP+          | 4 SFP+          | 12 SFP+, 2 SFP28   | 4 SFP+          |
 | Ethernet | 1 2.5GbE, 7 GbE | 1 GbE           | 1 GbE              | 13 GbE          |
 | XGMII    | ✅              | ✅              | ✅                 | ✅              |
 | HSGMII   | ✅              | ✅              | ✅                 | ✅              |
 | SGMII    | ✅              | ✅              | ✅                 | ✅              |
-| Type     | Router          | Switch          | Switch             | Router          |
+| Type     | Router          | Switch          | Router             | Router          |
 
 # CRS305-1G-4S+IN
 
