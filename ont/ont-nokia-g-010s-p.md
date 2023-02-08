@@ -212,7 +212,7 @@ reboot
 
 ## Checking whether the connection with the OLT was successful (O5 state)
 
-```shell
+```sh
 onu ploamsg
 ```
 
@@ -243,8 +243,35 @@ cp /dev/mtdX /tmp
 {% include alert.html content="If you use a modern OpenSSH version (e.g. >= 8.8) you will have to use the legacy protocol and enable some deprecated algorithms: `scp -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss [...]`" alert="Info" icon="svg-info" color="blue" %}
 
 And in the computer shell:
-```shell
+```sh
 scp ONTUSER@192.168.1.10:/tmp/mtdX ./
+```
+
+## Checking the currently active image
+
+```sh
+# fw_printenv committed_image
+```
+
+## Booting to a different image
+
+
+```sh
+# fw_setenv committed_image 0|1
+# fw_setenv image0|1_is_valid 1
+```
+
+## Cloning of mtd1 (image 0) into mtd5 (image 1)
+
+{% include alert.html content="Image 0 can be flashed to image 1, while image 1 cannot be flashed to image 0 because it has larger rootfs_data" alert="Warning" icon="svg-warning" color="yellow" %}
+
+The following commands are used to clone image0 to image1 and then boot to it
+```sh
+# cat /dev/mtd2 > /tmp/mtd2.bin
+# mtd -e image1 write /tmp/mtd2.bin image1
+# fw_setenv committed_image 1
+# fw_setenv image1_is_valid 1
+# reboot
 ```
 
 ## Flashing a new rootfs via SSH
