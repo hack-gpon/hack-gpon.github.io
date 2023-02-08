@@ -67,12 +67,14 @@ layout: default
         var sfp_a2_decode = sfp_a2_info_arr.map(it => base64ToHex(it)).join('');
         theeeprom = new eeprom1(sfp_a2_decode);
         if(event.submitter.getAttribute('data-js') === "show") {
-            fomrdata.set('gpon-serial', theeeprom.serial);
-            fomrdata.set('gpon-ploam', theeeprom.ploam);
-            fomrdata.set('gpon-loid', theeeprom.loid);
-            fomrdata.set('gpon-lpwd', theeeprom.lopw);
-            fomrdata.set('gpon-loid-ploam-switch', theeeprom.loidPloamSwitch);
-            populateForm(form, fomrdata);
+            object = {
+                'gpon-serial': theeeprom.serial,
+                'gpon-ploam': theeeprom.ploam,
+                'gpon-loid': theeeprom.loid,
+                'gpon-lpwd': theeeprom.lopw,
+                'gpon-loid-ploam-switch': theeeprom.loidPloamSwitch
+            };
+            populateForm(form, object);
         } else {
             theeeprom.serial = fomrdata.get('gpon-serial');
             theeeprom.ploam = fomrdata.get('gpon-ploam');
