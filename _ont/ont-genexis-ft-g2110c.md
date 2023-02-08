@@ -7,22 +7,24 @@ parent: Genexis
 
 # Hardware Specifications
 
-|             |                                      |
-| ----------- | ------------------------------------ |
-| Vendor      | Genexis                              |
-| Model       | FiberTwist G2110C-2.5G               |
-| Chipset     | RTL9601D                             |
-| Flash       | 128MB                                |
-| RAM         | 32MB                                 |
-| System      | Linux 3.18 (Luna SDK 3.3)            |
-| HSGMII      | ✅                                   |
-| Optics      | SC/APC                               |
-| IP address  | 192.168.100.1/24 or 192.168.1.1/24   |
-| Web Gui     | Can be enabled, locked down by iptables rule and missing CSS |
-| Telnet      | ✅ user `company`, password `amyM77yY` |
-| Form Factor | ONT                                  |
-
-# External/Internal Photo
+|                 |                                                              |
+| --------------- | ------------------------------------------------------------ |
+| Vendor/Brand    | Genexis FiberTwist                                           |
+| Model           | G2110C-2.5G                                                  |
+| Chipset         | Realtek RTL9601D                                             |
+| Flash           | 128MB                                                        |
+| RAM             | 32MB                                                         |
+| System          | Linux 3.18 (Luna SDK 3.3)                                    |
+| 2.5GBaseT       | Yes                                                          |
+| Optics          | SC/APC                                                       |
+| IP address      | 192.168.100.1/24 or 192.168.1.1/24                           |
+| Web Gui         | Can be enabled, locked down by iptables rule and missing CSS |
+| SSH             |                                                              |
+| Telnet          | ✅ user `company`, password `amyM77yY`                       |
+| Serial          | ✅                                                           |
+| Serial baud     | 115200                                                       |
+| Serial encoding | 8-N-1                                                        |
+| Form Factor     | ONT                                                          |
 
 {% include image.html file="ft-g2110c-front.jpg"  alt="FiberTwist G2110C-2.5G Front" caption="FiberTwist G2110C-2.5G Front" %}
 
@@ -35,13 +37,19 @@ parent: Genexis
 
 {% include image.html file="ft-g2110c-optical-header-3.jpg"  alt="FiberTwist G2110C-2.5G Optical Header installation backplate" caption="FiberTwist G2110C-2.5G Optical Header installation backplate" %}
 
-## Internal (TTL is on CM3 header)
+## Serial
+
+The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. To accept TX line commands, the GND of the TTL adapter should be attached to the ONT's shield:
+
 {% include image.html file="ft-g2110c-internal.jpg"  alt="FiberTwist G2110C-2.5G Internal" caption="FiberTwist G2110C-2.5G Internal" %}
+
+{% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
 
 ## List of software versions
 - C-5.6.1-R
 - C-5.7.0-R
 - C-5.7.1-DEV3
+- C-5.7.1-EFT1
 
 ## List of partitions
 
@@ -66,9 +74,7 @@ This ONT supports dual boot.
 
 `k0` and `r0` respectively contain the kernel and firmware of the first image, `k1` and `r1` the kernel and the firmware of the second one
 
-## List of firmwares and files
-
-# Useful Commands
+# General Settings and Useful Commands
 
 {% include alert.html content="Some variables are write-protected, you need to unlock them before proceed" alert="Info" icon="svg-info" color="blue" %}
 
@@ -136,7 +142,7 @@ ploampwd=1234567890
 
 {% include alert.html content="To change this data you need to upload a modified firmware. Do it at your own risk!" alert="Warning" icon="svg-warning" color="red" %}
 
-- Download the modified firmware from [here](https://mega.nz/file/yspFRTJT#JjeDS7NwLZxCzFklQGMJVIuPawo8utQRGbMGEXQv84M) md5:  `91946ad8aada2e469b7fff1d38ee7474`
+- Download the modified firmware from [here](https://mega.nz/file/f0QGwLSb#pyxCUQmlD-KgFU595mHYUsPPUFKJGD2Ug__mCyYIdWs) md5: `2a12b2bbc0971d76fa8201a046544a44`
 - Logon on the OS shell of the ONT and run this command: `iptables -F`
 - Open a web browser and go to `http://192.168.1.1/upgrade.asp` or `http://192.168.100.1/upgrade.asp`, enter the same credentials used for telnet session, select the modified firmware and click on `Upgrade`
 - Once the upgrade is done and you are able to reach the ONT via telnet, log back in and run these commands to change the firmware version on both banks:
@@ -176,7 +182,9 @@ ImageHash: 0x00000000000000000000000000000000
 ```
 
 # Known Bugs
-- Modified image (based on C-5.7.1-DEV3) has the Web UI enabled, but without an attached fiber the daemon will crash
+- Modified image (based on C-5.7.1-DEV3 and C-5.7.1-EFT1) has the Web UI enabled, but without an attached fiber the daemon will crash
 
 # Miscellaneous Links
 - [FiberTwist G2110C-2.5G](https://genexis.eu/content/uploads/2020/07/FiberTwist-G2110C-2.5G-Installation-Guide-v1.0-EN.pdf)
+- [Modded Firmware C-5.7.1-DEV3](https://mega.nz/file/yspFRTJT#JjeDS7NwLZxCzFklQGMJVIuPawo8utQRGbMGEXQv84M)
+- [Modded Firmware C-5.7.1-EFT1](https://mega.nz/file/f0QGwLSb#pyxCUQmlD-KgFU595mHYUsPPUFKJGD2Ug__mCyYIdWs)

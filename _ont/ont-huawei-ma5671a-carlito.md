@@ -5,7 +5,7 @@ parent: Huawei MA5671A
 layout: default
 ---
 
-# General setting
+# General Settings and Useful Commands
 
 {% include alert.html content="Be careful, back up the goi_config from uboot before changing firmware." alert="Info" icon="svg-info" color="blue" %}
 

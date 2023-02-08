@@ -1,6 +1,6 @@
 ---
-title: ODI Realtek DFP-34X-C2C 
-description: New model 2022
+title: ODI Realtek DFP-34X-2C2 
+description: New model 2022 - v05
 has_children: false
 layout: default
 parent: ODI
@@ -8,20 +8,22 @@ parent: ODI
 
 # Hardware Specifications
 
-|             |                                   |
-| ----------- | --------------------------------- |
-| Vendor      | ODI                               |
-| Model       | DFP-34X-C2C                       |
-| Chipset     | Realtek RTL9601D                  |
-| Flash       | 8 MB                              |
-| RAM         | 64 MB                             |
-| System      | Linux (Luna SDK 1.9)              |
-| HSGMII      | Yes                               |
-| Optics      | SC/UPC                            |
-| IP address  | 192.168.1.1                       |
-| Web Gui     | ✅ user `admin`, password `admin` |
-| SSH         | ✅ user `admin`, password `admin` |
-| Form Factor | miniONT SFP                       |
+|              |                                   |
+| ------------ | --------------------------------- |
+| Vendor/Brand | ODI                               |
+| Model        | DFP-34X-2C2                       |
+| Chipset      | Realtek RTL9601D                  |
+| Flash        | 8 MB                              |
+| RAM          | 64 MB                             |
+| System       | Linux (Luna SDK 1.9)              |
+| HSGMII       | Yes                               |
+| Optics       | SC/UPC                            |
+| IP address   | 192.168.1.1                       |
+| Web Gui      | ✅ user `admin`, password `admin` |
+| SSH          | ✅ user `admin`, password `admin` |
+| Telnet       |                                   |
+| Serial       |                                   |
+| Form Factor  | miniONT SFP                       |
 
 {% include alert.html content="SSH uses an outdated set of algorithms/ciphers, you can connect using the following command:" alert="Note"  icon="svg-info" color="blue" %}
 
@@ -33,13 +35,17 @@ ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc admin@192.16
 
 
 ## List of software versions
-- V1.0-220530 
-- V1.0-220414
+- V1.0-220923 (hybrid by @lanseyujie and @stick86)
+- V1.0-220817
+- V1.0-220530 (hybrid by @stick86)
+- V1.0-220414 (vlan working)
 - V1.0-220304
+- V1.0-210702
 
 ## List of firmwares and files
-- [V1.0-220530 Modded](https://github.com/Anime4000/RTL960x/files/8821809/M114_sfp_ODI_hybrid_220527_stich86_220530.tar.zip){: .btn } 
- by [stich86](https://github.com/stich86) **RECOMMENDED** because it has working VLAN translation.  
+- [Firmware repository by Anime4000](https://github.com/Anime4000/RTL960x/tree/main/Firmware/DFP-34X-2C2)
+
+The reccomended version are `M114_sfp_ODI_hybrid_220527.tar` or `M114_sfp_ODI_hybrid_220916.tar` because it has working VLAN translation.  
 
 ## List of partitions
  
@@ -64,100 +70,20 @@ This stick supports dual boot.
 
 `k0` and `r0` respectively contain the kernel and firmware of the first image, while `k1` and `r1` respectively contain the kernel and the firmware of the second one
 
-# Serial
+## Serial
 
-The stick has exposed TTL pads:
+The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. It's near the SFP header. TX, RX and ground pads need to be connected to a USB2TTL adapter supporting a logic level of 3.3V.
 
 {% include image.html file="ont-odi-realtek-dfp-34x-2c2/ttl.jpg"  alt="DFP-34X-2C2 TTL Connection" caption="DFP-34X-2C2 TTL Connection" %}
 {% include image.html file="ont-odi-realtek-dfp-34x-2c2/ttl-2.jpg"  alt="DFP-34X-2C2 TTL Pin" caption="DFP-34X-2C2 TTL Pin" %}
 
-| USB TTL(UART) Adapter | wire colour in picture | SFP 20pins Molex connector and TTL pinout |
-| --------------------- | ---------------------- | ----------------------------------------- |
-| 3.3V                  | blue                   | pin #15 and #16                           |
-| TX                    | purple                 | TX                                        |
-| RX                    | white                  | RX                                        |
-| GND                   | green                  | pin #10                                   |
+{% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
 
-Configuration: asc0=0 115200 8-N-1
-
-# Useful Commands
-
-## Getting/Setting the ONT's S/N
-```sh
-# flash get GPON_SN
-GPON_SN=TMBB00000000
-# flash set GPON_SN TMBB0A1B2C3D
-```
-
-## Getting/Setting the ONT's PLOAM password
-
-{% include alert.html content="The PLOAM password is stored in HEX format, without any 0x or separators" alert="Note"  icon="svg-info" color="blue" %}
-
-```sh
-# flash get GPON_PLOAM_PASSWD
-GPON_PLOAM_PASSWD=41414141414141414141
-# flash set GPON_PLOAM_PASSWD 41414141414141414141
-```
-
-## Getting/Setting the ONT Vendor ID
-
-{% include alert.html content="This may need the OMCI_OLT_MODE value to be set to 3 to work" alert="Note" icon="svg-info" color="blue" %}
-
-```sh
-# flash get PON_VENDOR_ID  
-PON_VENDOR_ID=ZTEG
-# flash set PON_VENDOR_ID HWTC
-```
-
-## Getting/Settng the ONT Custom software version
-{% include alert.html content="This needs the OMCI_OLT_MODE value to be set to 3 and firmware 220530 as modded by stich86" alert="Note" icon="svg-info" color="blue" %}
-
-```sh
-# nv setenv sw_custom_version0 YOURFIRSTSWVER
-# nv setenv sw_custom_version1 YOURSECONDSWVER
-```
-
-## Getting/Setting a custom HW Version
-{% include alert.html content="This may need the OMCI_OLT_MODE value to be set to 3 to work" alert="Note" icon="svg-info" color="blue" %}
-
-
-```sh
-# flash get HW_HWVER
-HW_HWVER=V2.0
-# flash set HW_HWVER MYHWVERSION
-```
-
-## Getting/Setting a custom ONT Equipment ID
-{% include alert.html content="This may need the OMCI_OLT_MODE value to be set to 3 to work" alert="Note" icon="svg-info" color="blue" %}
-```sh
-# flash get GPON_ONU_MODEL
-GPON_ONU_MODEL=DFP-34X-2C2
-# flash set GPON_ONU_MODEL DFP-34X-XXX
-```
-
-## Checking the currently active image
-```sh
-# nv getenv sw_active
-sw_active=1
-```
-
-## Booting to a different image
-```sh
-# nv setenv sw_commit 0|1
-# reboot
-```
-
-## Querying a particular OMCI ME
-```sh
-# omcicli mib get MIB_IDX
-```
+{% include_relative ont-luna-sdk-useful-commands.md flash='flash' ploam='hex' customSwVersionAlert='This needs the `OMCI_OLT_MODE` value to be set to 3 and firmware 220530 or 220923 modded by @stich86' speedLan='1234567' %}
 
 # Known Bugs
 
 - Auto-sensing mode to switch between SGMII/HiSGMII
-
-# Low level modding
-
 
 # Miscellaneous Links
 

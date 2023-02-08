@@ -15,6 +15,8 @@ search_exclude: true
 
 Can be accessed via the link [Web root procedure](/ont-huawei-ma5671a-root-web)
 
+{% include alert.html content="If this procedure does not work, you can use this [alternative procedure](/ont-huawei-ma5671a-ymodem). Do not use the V2 and V1 versions under any circumstances." alert="Info" icon="svg-warning" color="red" %}
+
 # Root Procedure for Huawei MA5671A (V2 - Python)
 
 {% include alert.html content="This version remains for documentation purposes only. Please use the latest procedure: [Web root procedure](/ont-huawei-ma5671a-root-web)" alert="Important" icon="svg-warning" color="red" %}
@@ -45,7 +47,7 @@ pip install pyserial
 1. Make the connections as shown to a TTL adapter except for GND (which should remain detached as it is used as a switch)
 
 {% include image.html file="ma5671a-root-1.jpg" alt="Example of how the sfp-ttl connection should look like" caption="Example of how the sfp-ttl connection should look like" %}
-{% include image.html file="new-root-procedure\board-molex-arduino.jpg" alt="Example of how the sfp-ttl connection should look like with a custom board" caption="Example of how the sfp-ttl connection should look like with a custom board" %}
+{% include image.html file="new-root-procedure/board-molex-arduino.jpg" alt="Example of how the sfp-ttl connection should look like with a custom board" caption="Example of how the sfp-ttl connection should look like with a custom board" %}
 {% include image.html file="ma5671a-root-2.jpg" alt="SFP Molex" caption="SFP Molex" %}
 
 {:style="counter-reset:none"}
@@ -112,7 +114,7 @@ except (KeyboardInterrupt, SystemExit):
 1. Reboot the stick
 1. Open Tera Term (or other serial terminal emulators), after it has loaded press `enter` to activate the console
 
-{% include image.html file="new-root-procedure\press-enter.jpg" alt="Press enter to activate the console" caption="Press enter to activate the console" %}
+{% include image.html file="new-root-procedure/press-enter.jpg" alt="Press enter to activate the console" caption="Press enter to activate the console" %}
 
 {:style="counter-reset:none"}
 1. With `sed` change the default shell from `/opt/lantiq/bin/minishell` to `/bin/ash` by editing the file `/etc/passwd`:
@@ -236,7 +238,7 @@ At this point it will appear:
 
 {:style="counter-reset:none"}
 1. From the teratem menu do `FILE` → `TRANSFER` → `KERMIT` → `SEND` → `[mtd2.bin]`.
-It will start uploading the file at a speed of about 3-4 KBbs. Now you will have to wait more than half an hour for the upload to complete.
+It will start uploading the file at a speed of about 3-4 KBps. Now you will have to wait more than half an hour for the upload to complete.
 
 1. Once finished, the image loaded on the stick must also be saved to the corresponding system partition (the first of the 2) with the commands
 ```

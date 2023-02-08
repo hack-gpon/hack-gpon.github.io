@@ -2,24 +2,27 @@
 title: UFiber UF-Instant
 has_children: false
 layout: default
+parent: UFiber
 ---
 
 # Hardware Specifications
 
-|             |                   |
-| ----------- | ----------------- |
-| Vendor      | UFiber            |
-| Model       | UFiber UF-Instant |
-| Chipset     | Realtek RTL9601CI |
-| Flash       | 16 MB             |
-| RAM         | 64 MB             |
-| System      | Linux (Luna SDK)  |
-| HSGMII      | No                |
-| Optics      | SC/APC            |
-| IP address  |                   |
-| Web Gui     | ✅                |
-| SSH         | ✅                |
-| Form Factor | miniONT SFP       |
+|              |                   |
+| ------------ | ----------------- |
+| Vendor/Brand | UFiber            |
+| Model        | UFiber UF-Instant |
+| Chipset      | Realtek RTL9601CI |
+| Flash        | 16 MB             |
+| RAM          | 64 MB             |
+| System       | Linux (Luna SDK)  |
+| HSGMII       | No                |
+| Optics       | SC/APC            |
+| IP address   |                   |
+| Web Gui      | ✅                |
+| SSH          | ✅                |
+| Telnet       |                   |
+| Serial       |                   |
+| Form Factor  | miniONT SFP       |
 
 ## Firmware is interchangeable with:
 
@@ -27,10 +30,8 @@ layout: default
 
 
 - [VSOL V2801F](/ont-vsol-v2801f)
-- [TWCGPON657](/ont-twcgpon657)
+- [T&W TWC GPON657](/ont-t-w-twcgpon657)
 
-
-## List of software versions
 ## List of partitions
 
 | dev  | size     | erasesize | name     |
@@ -46,13 +47,11 @@ layout: default
 | mtd8 | 00010000 | 00001000  | "hw"     |
 | mtd9 | 00010000 | 00001000  | "sec"    |
 
-## List of firmwares and files
-
 # Know Bugs
 
 VLAN swap issue (MEID 171), auto-sensing mode to switch between SGMII/HiSGMII
 
-You should use the VID/VLAN shown by executing the command "omcicli mib get 84" via telnet to bring up PPPoE
+You should use the VID/VLAN shown by executing the command `omcicli mib get 84` via telnet to bring up PPPoE
 
 
 # Miscellaneous Links

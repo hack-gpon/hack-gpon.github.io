@@ -5,8 +5,7 @@ parent: Huawei MA5671A
 layout: default
 ---
 
-# General setting
-
+# General Settings and Useful Commands
 
 {% include alert.html content="In this firmware, unlike the other ones, the data must be modified in a base64-encoded file. To simplify this, you can use the following web application." alert="Info" icon="svg-info" color="blue" %}
 
@@ -24,7 +23,7 @@ layout: default
         <input type="submit" class="btn btn-primary" value="Show!" name="submit">
     </div>
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" placeholder="GPON S/N" name="gpon-serial" id="gpon-serial" value="">
+        <input type="text" class="form-control" placeholder="GPON S/N" name="gpon-serial" id="gpon-serial" value="" pattern="([A-Z]{4}[0-9A-Za-z]{8})|([0-9A-F]{8}[0-9A-Za-z]{8})">
         <label for="gpon-serial">GPON S/N in format GPON12345678 or 47504F4E12345678, empty for not modify it</label>
     </div>
     <div class="form-floating mb-3">
@@ -44,7 +43,7 @@ layout: default
         <label for="gpon-loid-ploam-switch">GPON Ploam/LoID Switch</label>
     </div>
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" placeholder="MAC address" name="mac-addr" id="mac-addr" value="">
+        <input type="text" class="form-control" placeholder="MAC address" name="mac-addr" id="mac-addr" value="" pattern="[0-9A-Fa-f]{2}[:-]?[0-9A-Fa-f]{2}[:-]?[0-9A-Fa-f]{2}[:-]?[0-9A-Fa-f]{2}[:-]?[0-9A-Fa-f]{2}[:-]?[0-9A-Fa-f]{2}">
         <label for="mac-addr">MAC Address in format 48:57:02:da:be:ef, 48-57-02-da-be-ef or 485702dabeef, empty for not modify it</label>
     </div>
     <div class="mb-3">

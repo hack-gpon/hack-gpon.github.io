@@ -32,19 +32,23 @@ plugins:
   - jekyll-last-modified-at
   - jekyll-redirect-from
   - jekyll-default-layout
+  - jekyll-sitemap
 
-color_scheme: "light"
+color_scheme: "auto"
+enable_switch_color_scheme: true 
+enable_localstorage_color_scheme: true
+
 url: "https://hack-gpon.github.io"
 nav_sort: case_sensitive
 
-aux_links:
+aux_buttons:
   - title: "GitHub"
     color: 'purple'
-    icon: 'svg-github'
+    icon: 'github'
     link: '//github.com/hack-gpon/hack-gpon.github.io'
   - title: "Telegram"
     color: 'blue'
-    icon: 'svg-telegram'
+    icon: 'telegram'
     link: '//t.me/HackGPON'
       
 #aux_links:
@@ -90,11 +94,19 @@ mermaid:
   #   barGap: 4
   #   topPadding: 50
 
+enable_modal: true
+
 collections:
   ont:
     permalink: "/:path/"
     output: true
+  ont_xgs:
+    permalink: "/xgs/:path/"
+    output: true
   tools:
+    permalink: "/:path/"
+    output: true
+  sfp:
     permalink: "/:path/"
     output: true
   gpon:
@@ -107,13 +119,27 @@ collections:
 just_the_docs:
   collections:
     ont:
-      name: ONT
+      name: ONT GPON
+      nav_fold: true
+    ont_xgs:
+      name: ONT XGS-PON
+      nav_fold: true
     tools:
       name: Tools
-      nav_fold: false
+      nav_fold: true
+    sfp:
+      name: SFP Resources & standard
+      nav_fold: true
     gpon:
-      name: GPON
-      nav_fold: false
+      name: GPON Resources & standard
+      nav_fold: true
     sfp_cage:
       name: SFP cage
-      nav_fold: false
+      nav_fold: true
+
+defaults:
+  -
+    scope:
+      path:            "assets/**/*.pdf"
+    values:
+      sitemap:         false

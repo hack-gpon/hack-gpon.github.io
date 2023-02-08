@@ -1,5 +1,5 @@
 ---
-title: TP-Link Router TL-XDR5480, TL-ER2260T 
+title: TP-Link Router 
 has_children: false
 layout: default
 ---

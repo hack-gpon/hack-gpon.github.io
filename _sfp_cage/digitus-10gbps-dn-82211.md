@@ -1,7 +1,7 @@
 ---
 title: DIGITUS 10Gbps DN-82211
 has_children: false
-alias: HPE 530SFP+, DELL N20KJ
+alias:
 layout: default
 ---
 

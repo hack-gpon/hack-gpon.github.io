@@ -3,34 +3,45 @@ title: Technicolor AFM0002
 has_children: false
 layout: default
 parent: Technicolor
+alias: HiSense LTE3415-SCA+
 ---
 
 # Hardware Specifications
 
-|             |                                                 |
-| ----------- | ----------------------------------------------- |
-| Vendor      | Technicolor                                     |
-| Model       | AFM0002TIM/FWB/WND                              |
-| Chipset     | Realtek RTL9601B                                |
-| Flash       | 32 MB                                           |
-| RAM         |                                                 |
-| System      | Linux (Luna SDK)                                |
-| HSGMII      | NO                                              |
-| Optics      |                                                 |
-| IP address  | 192.168.2.1 / 169.0.0.1                         |
-| Web Gui     | Can be enabled, user `admin`, password `system` |
-| SSH         | ✅ user `admin`, password `system`              |
-| Form Factor | miniONT SFP                                     |
-| Multicast   | ✅                                             |
+|                  |                                                 |
+| ---------------- | ----------------------------------------------- |
+| Vendor/Brand     | Technicolor                                     |
+| Model            | AFM0002TIM/FWB/WND                              |
+| ODM              | HiSense                                         |
+| ODM Product Code | LTE3415-SCA+                                    |
+| Chipset          | Realtek RTL9601B                                |
+| Flash            | 32 MB                                           |
+| RAM              |                                                 |
+| System           | Linux (Luna SDK 1.9)                            |
+| HSGMII           | No                                              |
+| Optics           |                                                 |
+| IP address       | 192.168.2.1 / 169.0.0.1                         |
+| Web Gui          | Can be enabled, user `admin`, password `system` |
+| SSH              | ✅ user `admin`, password `system`              |
+| Telnet           |                                                 |
+| Serial           | ✅                                              |
+| Serial baud      | 115200                                          |
+| Serial encoding  | 8-N-1                                           |
+| Form Factor      | miniONT SFP                                     |
+| Multicast        | ✅                                              |
 
 {% include image.html file="afm0002tim.jpg" alt="AFM0002TIM" caption="AFM0002TIM" %}
 {% include image.html file="afm0002fwb.jpg" alt="AFM0002FWB" caption="AFM0002FWB" %}
 
 ## Serial
 
-Configuration: asc0=0 115200 8-N-1
+The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. To accept TX line commands, the GND of the TTL adapter should be attached to the stick's shield:
 
-# Hardware Revisions
+{% include image.html file="ont-leox-lxt-010s-h_ttl.jpg" alt="Technicolor AFM0002 TTL Pinout" caption="Technicolor AFM0002 TTL Pinout" %}
+
+{% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
+
+## Hardware Revisions
 
 - AFM0002TIM (IP address: 192.168.2.1)
 - AFM0002FWB (IP address: 169.0.0.1)
@@ -40,7 +51,7 @@ Configuration: asc0=0 115200 8-N-1
 {% include alert.html content="The AFM0002FWB can be transformed into AFM0002TIM. Usually AFM0002FWBs have older software." alert="Warning"  icon="svg-warning" color="red" %}
 
 
-# List of software versions
+## List of software versions
 - V1.7.6-170626 (FWB & WND)
 - V1_7_8_180122 
 - V1_7_8_180725
@@ -48,7 +59,7 @@ Configuration: asc0=0 115200 8-N-1
 - V1_7_8_210412
 - V1_7_8_210928
 
-# List of partitions
+## List of partitions
 
 | dev   | size     | erasesize | name            |
 | ----- | -------- | --------- | --------------- |
@@ -71,69 +82,12 @@ This stick supports dual boot.
 
 `k0` and `r0` respectively contain the kernel and firmware of the first image, `k1` and `r1` the kernel and firmware of the second one
 
-# List of firmwares and files
-## Useful files
-- `/var/config/lastgood.xml` - Contains the user portion of the configuration
-- `/var/config/lastgood-hs.xml` - Contains the "hardware" configuration (which _should not_ be changed)
-- `/tmp/omcilog` - OMCI messages logs (must be enabeled, see below)
-
-## Useful binaries
-- `/etc/scripts/flash`  - Used to manipulate the config files in a somewhat safe manner
-- `xmlconfig` - Used for low-level manipulation of the XML config files. Called by `flash`
-- `nv` - Used to manipulate nvram storage, including persistent config entries via `nv setenv`/`nv getenv`
-- `omcicli` - Used to interact with the running OMCI daemon
-- `omci_app` - The OMCI daemon
-- `diag` - Used to run low-level diagnostics commands on the stick
-
-# Useful Commands
-
-## Getting/Setting the ONT's S/N
-```sh
-# /etc/scripts/flash get GPON_SN
-GPON_SN=TMBB00000000
-# /etc/scripts/flash set GPON_SN TMBB0A1B2C3D
-```
-
-## Getting/Setting the ONT's PLOAM password
-
-{% include alert.html content="The PLOAM password is stored in ASCII format" alert="Info" icon="svg-info" color="blue" %}
-
-```sh
-# /etc/scripts/flash get GPON_PLOAM_PASSWD
-GPON_PLOAM_PASSWD=AAAAAAAAAA
-# /etc/scripts/flash set GPON_PLOAM_PASSWD AAAAAAAAAA
-```
+{% include_relative ont-luna-sdk-useful-commands.md flash='/etc/scripts/flash' ploam='ascii' lastgoodHs=true %}
 
 ## Enabling the Web UI
 ```sh
 # /bin/iptables -D INPUT -p tcp --dport 80 -j DROP
 ```
-
-## Checking the currently active image
-```sh
-# nv getenv sw_active
-sw_active=1
-# nv getenv sw_version0
-sw_version0=V1_7_8_210412
-# nv getenv sw_version1
-sw_version1=V1_7_8_210412
-```
-
-## Booting to a different image
-```sh
-# nv setenv sw_commit 0|1
-# reboot
-```
-
-## Querying a particular OMCI ME
-```sh
-# omcicli mib get MIB_IDX
-```
-
-# Low Level Modding
-
-{% include alert.html content="This section is based on the `V1_7_8_210412` version of the stick's firmware " alert="Info" icon="svg-info" color="blue" %}
-
 
 ## Transfering files from/to the stick
 Works with binary files too, just run md5sum on source and destination to make sure you are not corrupting anything...
@@ -141,7 +95,7 @@ From the stick to the PC:
 ```sh
 # ssh admin@192.168.2.1 "cat /tmp/omcilog" > omcilog.log
 ```
-From the PC to the stick
+From the PC to the stick:
 ```sh
 # cat lastgood.xml | ssh admin@192.168.2.1  "cat > /var/config/lastgood.xml"
 ```
@@ -157,7 +111,7 @@ From the PC to the stick
 ```
 ## Flashing a new rootfs
 
-{% include alert.html content="Only the inactive image can be flashed" alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="Only the inactive image can be flashed, change sw_versionX and sw_commit X based on the bank you have flashed" alert="Info" icon="svg-info" color="blue" %}
 
 So mtd4/5 if you are on image1, mtd6/7 if you are on image0.
 
@@ -165,9 +119,15 @@ The following commands are used to flash a new rootfs to image1 and then boot to
 ```sh
 # flash_eraseall /dev/mtd7
 # cat /tmp/rootfs.new > /dev/mtd7
-# nv setenv sw_commit=1
+# nv setenv sw_version1 NEW_SOFTWARE_VERSION
+# nv setenv sw_commit 1
 # reboot
 ```
+
+# Low Level Modding
+
+{% include alert.html content="This section is based on the `V1_7_8_210412` version of the stick's firmware " alert="Info" icon="svg-info" color="blue" %}
+
 ## Adding support to configurable SW and HW versions, Vendor ID and much more
 `/etc/scripts/flash` can be flashed in order to add support for some variables implemented in `omci_app` but removed from `xmlconfig`. The patch is below (change the values to suit your needs)
 ```patch
@@ -226,7 +186,9 @@ For reference, the patch changes the follwing section of the omci_app:
 
 The original file md5sum is: `4aea2f72bacc11256b7e2c1583d2ad4f`
 The patched file md5sum is: `da20327c4c002e4c27f82f6ee63dbc1a`
+
 ## Enabling PLOAM logging
+
 ```sh
 /etc/scripts/flash set OMCI_DBGLVL 1
 /etc/scripts/flash set OMCI_DBGLOGFILE 1
@@ -234,8 +196,8 @@ reboot
 /bin/omcicli set logfile 1 ffffffff
 ```
 1. The binary log will be placed inside: `/tmp/omcilog`
-2. You can convert it into a .pcap file using [omcilog2pcap](https://github.com/ADeltaX/omcilog2pcap)
-3. You can then open it with Wireshark by installing the OMCI plugin from [Wireshark](https://wiki.wireshark.org/Contrib.md)
+2. You can convert it into a .pcap file using [omcilog2pcap](https://github.com/hack-gpon/omcilog2pcap)
+3. You can then open it with Wireshark by installing the OMCI plugin from [GitHub](https://github.com/hack-gpon/omci-wireshark-dissector)
    
 If you want to log everything since the stick boots, you can create a custom rootfs. Place the last command inside `etc/runomci.sh` as the last line of the file
 
@@ -243,4 +205,4 @@ If you want to log everything since the stick boots, you can create a custom roo
 
 # Miscellaneous Links
 
-- [omcilog2pcap](https://github.com/ADeltaX/omcilog2pcap)
+- [omcilog2pcap](https://github.com/hack-gpon/omcilog2pcap)

@@ -3,31 +3,42 @@ title: Technicolor AFM0003
 has_children: false
 layout: default
 parent: Technicolor
+alias: HiSense LTE3415-SH+
 ---
 
 # Hardware Specifications
 
-|             |                                                 |
-| ----------- | ----------------------------------------------- |
-| Vendor      | Technicolor                                     |
-| Model       | AFM0003TIM                                      |
-| Chipset     | Realtek RTL9601C                                |
-| Flash       | 256 MB                                          |
-| RAM         |                                                 |
-| System      | Linux 2.6 (Luna SDK 1.9)                        |
-| HSGMII      |                                                 |
-| Optics      |                                                 |
-| IP address  | 192.168.2.1                                     |
-| Web Gui     | Can be enabled, user `admin`, password `system` |
-| SSH         | ✅ user `admin`, password `system`              |
-| Form Factor | miniONT SFP                                     |
-| Multicast   | ✅                                              |
+|                  |                                                 |
+| ---------------- | ----------------------------------------------- |
+| Vendor/Brand     | Technicolor                                     |
+| Model            | AFM0003TIM                                      |
+| ODM              | HiSense                                         |
+| ODM Product Code | LTE3415-SH+                                     |
+| Chipset          | Realtek RTL9601CI                               |
+| Flash            | 256 MB                                          |
+| RAM              |                                                 |
+| System           | Linux 2.6 (Luna SDK 1.9)                        |
+| HSGMII           | Yes, but not working with stock firmware        |
+| Optics           |                                                 |
+| IP address       | 192.168.2.1                                     |
+| Web Gui          | Can be enabled, user `admin`, password `system` |
+| SSH              | No                                              |
+| Telnet           | ✅                                              |
+| Form Factor      | miniONT SFP                                     |
+| Serial           | ✅                                              |
+| Serial baud      | 115200                                          |
+| Serial encoding  | 8-N-1                                           |
+| Multicast        | ✅                                              |
 
 {% include image.html file="afm0003tim.jpg" alt="AFM0003TIM" caption="AFM0003TIM" %}
 
 ## Serial
 
-Configuration: asc0=0 115200 8-N-1
+The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. To accept TX line commands, the GND of the TTL adapter should be attached to the stick's shield:
+
+{% include image.html file="ont-leox-lxt-010s-h_ttl.jpg" alt="Technicolor AFM0003 TTL Pinout" caption="Technicolor AFM0003 TTL Pinout" %}
+
+{% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
 
 # Hardware Revisions
 
@@ -59,69 +70,51 @@ This stick supports dual boot.
 
 `k0` and `r0` respectively contain the kernel and firmware of the first image, `k1` and `r1` the kernel and firmware of the second one
 
-# List of firmwares and files
-## Useful files
-- `/var/config/lastgood.xml` - Contains the user portion of the configuration
-- `/var/config/lastgood-hs.xml` - Contains the "hardware" configuration (which _should not_ be changed)
-- `/tmp/omcilog` - OMCI messages logs (must be enabeled, see below)
-
-## Useful binaries
-- `/etc/scripts/flash`  - Used to manipulate the config files in a somewhat safe manner
-- `xmlconfig` - Used for low-level manipulation of the XML config files. Called by `flash`
-- `nv` - Used to manipulate nvram storage, including persistent config entries via `nv setenv`/`nv getenv`
-- `omcicli` - Used to interact with the running OMCI daemon
-- `omci_app` - The OMCI daemon
-- `diag` - Used to run low-level diagnostics commands on the stick
-
-# Useful Commands
-
-## Getting/Setting the ONT's S/N
-```sh
-# /etc/scripts/flash get GPON_SN
-GPON_SN=TMBB00000000
-# /etc/scripts/flash set GPON_SN TMBB0A1B2C3D
-```
-
-## Getting/Setting the ONT's PLOAM password
-
-{% include alert.html content="The PLOAM password is stored in ASCII format" alert="Info" icon="svg-info" color="blue" %}
-
-```sh
-# /etc/scripts/flash get GPON_PLOAM_PASSWD
-GPON_PLOAM_PASSWD=AAAAAAAAAA
-# /etc/scripts/flash set GPON_PLOAM_PASSWD AAAAAAAAAA
-```
+{% include_relative ont-luna-sdk-useful-commands.md flash='/etc/scripts/flash' ploam='ascii' speedLan='12345' customSpeedLanAlert='The defualt firmware does not allow modification of the `LAN_SDS_MODE` parameter. Is it necessary to use the modded firmware. Before editing the speed make sure your hardware supports it.' lastgoodHs=true %}
 
 ## Enabling the Web UI
 ```sh
 # /bin/iptables -D INPUT -p tcp --dport 80 -j DROP
 ```
 
-## Checking the currently active image
+## Transfering files from/to the stick
+Works with binary files too, just run md5sum on source and destination to make sure you are not corrupting anything...
+From the stick to the PC:
 ```sh
-# nv getenv sw_active
-sw_active=1
-# nv getenv sw_version0
-sw_version0=V1_7_8_210412
-# nv getenv sw_version1
-sw_version1=V1_7_8_210412
+# tftp <IP>
+tftp> put <filename> <directory>
+tftp> q
+```
+From the PC to the stick:
+```sh
+# tftp <IP>
+tftp> get <filename>
+tftp> q
 ```
 
-## Booting to a different image
+## Extracting and repacking the rootfs
+{% include alert.html content="Make sure you run both commands as root, otherwise you might get a damaged rootfs image" alert="Warning" icon="svg-warning" color="red" %}
+
 ```sh
-# nv setenv sw_commit 0|1
+# unsquashfs mtd5.bin
+# mksquashfs squashfs-root rootfs -b 131072 -comp lzma -no-recovery
+```
+## Flashing a new rootfs
+
+{% include alert.html content="Only the inactive image can be flashed, change sw_versionX and sw_commit X based on the bank you have flashed" alert="Info" icon="svg-info" color="blue" %}
+
+So mtd4/5 if you are on image1, mtd6/7 if you are on image0.
+
+The following commands are used to flash a new rootfs to image1 and then boot to it
+```sh
+# flash_eraseall /dev/mtd7
+# cat /tmp/rootfs.new > /dev/mtd7
+# nv setenv sw_version1 NEW_SOFTWARE_VERSION
+# nv setenv sw_commit 1
 # reboot
 ```
 
-## Querying a particular OMCI ME
-```sh
-# omcicli mib get MIB_IDX
-```
-
-# Low Level Modding
-
-# Known Bugs
-
 # Miscellaneous Links
 
-- [omcilog2pcap](https://github.com/ADeltaX/omcilog2pcap)
+- [omcilog2pcap](https://github.com/hack-gpon/omcilog2pcap)
+

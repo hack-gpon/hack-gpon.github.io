@@ -7,37 +7,29 @@ parent: Huawei
 
 # Hardware Specifications
 
-|             |                                                                                                |
-| ----------- | ---------------------------------------------------------------------------------------------- |
-| Vendor      | Huawei                                                                                         |
-| Model       | HG8010H                                                                                        |
-| Chipset     | Hisilicon                                                                                      |
-| Flash       | 128MiB SLC NAND (DS35Q1GA-IB)                                                                  |
-| RAM         | 256MiB                                                                                         |
-| CPU         | Hisilicon A9 dual core (ARMv7)                                                                 |
-| System      | Dopra Linux                                                                                    |
-| HSGMII      | No                                                                                             |
-| Optics      | SC/APC and SC/UPC                                                                              |
-| IP address  | 192.168.100.1                                                                                  |
-| Web Gui     | ✅ user `root`, password `admin` or `adminHW` and user `telecomadmin`, password `admintelecom` |
-| Telnet      | After Enabling user `root`, password `admin` or `adminHW`                                      |
-| SSH         |                                                                                                |
-| Form Factor | ONT                                                                                            |
+|              |                                                                                                |
+| ------------ | ---------------------------------------------------------------------------------------------- |
+| Vendor/Brand | Huawei                                                                                         |
+| Model        | HG8010H                                                                                        |
+| ODM          | ✅                                                                                             |
+| Chipset      | HiSilicon SD5116                                                                               |
+| Flash        | 128MiB (SLC NAND DS35Q1GA-IB)                                                                  |
+| RAM          | 256MiB                                                                                         |
+| CPU          | Hisilicon A9 dual core (ARMv7)                                                                 |
+| System       | Dopra Linux                                                                                    |
+| 2.5GBaseT    | No                                                                                             |
+| Optics       | SC/APC and SC/UPC                                                                              |
+| IP address   | 192.168.100.1                                                                                  |
+| Web Gui      | ✅ user `root`, password `admin` or `adminHW` and user `telecomadmin`, password `admintelecom` |
+| SSH          |                                                                                                |
+| Telnet       | After Enabling user `root`, password `admin` or `adminHW`                                      |
+| Serial       |                                                                                                |
+| Form Factor  | ONT                                                                                            |
 
 
 {% include image.html file="hg8010h.jpg"  alt="HG8010H" caption="HG8010H: Horizontal PON port (left, middle); vertical PON port (right)" %}
 {% include image.html file="hg8010hvorr.jpg"  alt="HG8010Hv3/4/5" caption="Bottom of the HG8010Hv3/4/5" %}
 {% include image.html file="hg8010hv6.jpg"  alt="HG8010Hv6" caption="Bottom of the HG8010Hv6" %}
-
-## Enabling telnet
-
-We need access to a specific shell and in order to get it we have to enable telnet. On the unit, the telnet server accepts connections but doesn't read any input, nor does it send anything.
-
-To enable telnet we’ll use one of the web interface’s features: the configuration backup and restore page. The configuration can be downloaded as an XML, which contains a lot more options than the web interface and a couple of them can be modified to enable telnet access: under the `X_HW_CLITelnetAccess` node, set the `Access` attribute to `1` and in `AclServices`, `TELNETLanEnable` should also be set to `1`. I had to set both but your mileage may vary. 
-
-It is possible that this won't work/has been fixed in more recent versions.
-
-Now that this is done, the modified configuration file can be uploaded via the web interface, the ONT will restart and telnet should be accessible on port 23.
 
 ## Hardware revisions
 - v1: Horizontal PON port 
@@ -54,7 +46,7 @@ Now that this is done, the modified configuration file can be uploaded via the w
 - V3R015C10S106
 - V3R016C10S003 (V300R016C10SPC003B010)
 - V3R017C00S100
-- V3R017C10S201
+- V3R017C10S201 (V300R017C10SPC201B255) 
 - V5R020C10S020 (V500R020C10SPC020B014 - V500R020C10SPC020A2011020049)
 - V5R020C10S024 (V500R020C10SPC024B001)
 - V5R020C10S025 (V500R020C10SPC025B002)
@@ -65,14 +57,24 @@ Now that this is done, the modified configuration file can be uploaded via the w
 0x000000000000-0x000000100000 : "bootcode" (1MiB)  
 0x000000100000-0x000008000000 : "ubilayer_v5" (127MiB)  
 
-## List of firmwares and files
-## List of useful commands
+# Use
 
-> **Warning**  
-> All results need to be converted from HEX to ASCII  
-> [Converter](/ascii-hex)
+## Enabling telnet
 
-- Get OLT information:
+We need access to a specific shell and in order to get it we have to enable telnet. On the unit, the telnet server accepts connections but doesn't read any input, nor does it send anything.
+
+To enable telnet we’ll use one of the web interface’s features: the configuration backup and restore page. The configuration can be downloaded as an XML, which contains a lot more options than the web interface and a couple of them can be modified to enable telnet access: under the `X_HW_CLITelnetAccess` node, set the `Access` attribute to `1` and in `AclServices`, `TELNETLanEnable` should also be set to `1`. I had to set both but your mileage may vary. 
+
+It is possible that this won't work/has been fixed in more recent versions.
+
+Now that this is done, the modified configuration file can be uploaded via the web interface, the ONT will restart and telnet should be accessible on port 23.
+
+
+# General Settings and Useful Commands
+
+{% include alert.html content="All results need to be converted from HEX to ASCII. You can use our [Converter](/ascii-hex), taking care to add 0x in front and remove the spaces every 8 hex digits." alert="Warning" icon="svg-info" color="blue" %}
+
+## Getting the OLT vendor
 
 ```
 WAP>omcicmd mib show meid 131 instid 0
@@ -90,7 +92,7 @@ success!
 ```
 *0x48575443* → *HWTC* (Huawei)
 
-- Get SW Version 0 and 1:
+## Getting the ONT SW Version 0 and 1
 
 ```
 WAP>omcicmd mib show meid 7 instid 0
@@ -120,7 +122,7 @@ success!
 ```
 *0x56355230 32304331 30533131 3500* → *V5R020C10S115*
 
-- Get ONT Vendor ID and HW Version:
+## Getting the ONT Vendor ID and HW Version:
 
 ```
 WAP>omcicmd mib show meid 256 instid 0
@@ -149,7 +151,7 @@ success!
 *0x48575443* → *HWTC*
 *0x32343046 2e41* → *240F.A*
 
-- Get ONT Equipment ID:
+## Getting the ONT Equipment ID
 
 ```
 WAP>omcicmd mib show meid 257 instid 0
@@ -178,7 +180,6 @@ success!
 
 *0x48473830 31304876 36* → *HG8010Hv6*
 
-# Known Bugs
 # Miscellaneous Links
 
 - [Exploring the Huawei HG8010H GPON ONT](https://www.linux.it/~md/text/gpon-sha2017.pdf)
@@ -198,5 +199,3 @@ success!
 
 {% include image.html file="hg8010h_teardown_1_v6.jpg"  alt="HG8010Hv6 Teardown" caption="HG8010Hv6: Teardown" %}
 {% include image.html file="hg8010h_teardown_2_v6.jpg"  alt="HG8010Hv6 Teardown" caption="HG8010Hv6: Teardown" %}
-
-
