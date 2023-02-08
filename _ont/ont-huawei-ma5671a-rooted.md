@@ -20,7 +20,7 @@ layout: default
         <label for="sfp-a2-info">sfp_a2_info input</label>
     </div>
     <div class="mb-3">
-        <input type="submit" class="btn btn-primary" value="Show!" name="submit">
+        <input type="submit" class="btn btn-primary" value="Show!" data-js="show">
     </div>
     <div class="form-floating mb-3">
         <input type="text" class="form-control" placeholder="GPON S/N" name="gpon-serial" id="gpon-serial" value="" pattern="([A-Z]{4}[0-9A-Za-z]{8})|([0-9A-F]{8}[0-9A-Za-z]{8})">
@@ -47,7 +47,7 @@ layout: default
         <label for="mac-addr">MAC Address in format 48:57:02:da:be:ef, 48-57-02-da-be-ef or 485702dabeef, empty for not modify it</label>
     </div>
     <div class="mb-3">
-        <input type="submit" class="btn btn-primary" value="Calculate!" name="submit">
+        <input type="submit" class="btn btn-primary" value="Calculate!" data-js="calculate">
     </div>
     <div class="form-floating mb-3">
         <input readonly class="form-control" type="text" id="result" placeholder="sfp_a2_info result">
@@ -59,13 +59,14 @@ layout: default
     var form = document.getElementById('huawei-rooted');
     form.addEventListener('submit',(event) => {
         event.preventDefault();
+        console.log(event.submitter.getAttribute('data-js'));
         var fomrdata = new FormData(form);
         var sfp_a2_info = fomrdata.get('sfp-a2-info');
         var sfp_a2_info_arr = sfp_a2_info.split('@');
         var sfp_a2_info_0 = sfp_a2_info_arr.shift();
         var sfp_a2_decode = sfp_a2_info_arr.map(it => base64ToHex(it)).join('');
         theeeprom = new eeprom1(sfp_a2_decode);
-        if(fomrdata.get('submit') == "Show!") {
+        if(event.submitter.getAttribute('data-js') === "show") {
             fomrdata.set('gpon-serial', theeeprom.serial);
             fomrdata.set('gpon-ploam', theeeprom.ploam);
             fomrdata.set('gpon-loid', theeeprom.loid);
