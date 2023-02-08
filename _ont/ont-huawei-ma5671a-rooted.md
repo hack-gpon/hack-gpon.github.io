@@ -64,6 +64,7 @@ layout: default
         var sfp_a2_info = fomrdata.get('sfp-a2-info');
         var sfp_a2_info_arr = sfp_a2_info.split('@');
         var sfp_a2_info_0 = sfp_a2_info_arr.shift();
+        var sfp_a2_info_last = sfp_a2_info_arr.pop();
         var sfp_a2_decode = sfp_a2_info_arr.map(it => base64ToHex(it)).join('');
         theeeprom = new eeprom1(sfp_a2_decode);
         if(event.submitter.getAttribute('data-js') === "show") {
@@ -81,7 +82,11 @@ layout: default
             theeeprom.loid = fomrdata.get('gpon-loid');
             theeeprom.lopw = fomrdata.get('gpon-lopw');
             theeeprom.loidPloamSwitch = fomrdata.get('gpon-loid-ploam-switch');
-            document.getElementById('result').value =  theeeprom.hex; 
+            var sfp_a2_new = (theeeprom.hex.match(/.{1,90}/g) ?? []).map(it => hexToBase64(it));
+            sfp_a2_new.unshift(sfp_a2_info_0);
+            sfp_a2_new.push(sfp_a2_info_last);
+            sfp_a2_new.push('');
+            document.getElementById('result').value =  sfp_a2_new.join('@'); 
         }
         /*if(sfp_a2_info_arr.length > 10 && sfp_a2_info_arr[0] === 'begin-base64 644 sfp_a2_info ') {
             var gpon_sn = fomrdata.get('gpon-sn');
