@@ -132,10 +132,18 @@ layout: default
 </script>
 
 {:style="counter-reset:none"}
-2. Transfer modified file back into variable `sfp_a2_info`, replace `<output>` with the output of web form.
+{% include alert.html content="Executing these commands requires a minimum of familiarity with  `vim`. If you do not know `vim`, follow the commands precisely." alert="Danger"  icon="svg-warning" color="red" %}
+
+
+1. Copy the script's output to the clipboard 
+1. Run the comman `vim /tmp/sfp_a2.txt` in the stick
+1. Press the right mouse button in the terminal or `CTRL`+`V`
+1. Press `ESC` command from keyboard
+1. Type `:wq`
+1. Run:
 
 ```shell
-fw_setenv sfp_a2_info "<output>"
+fw_setenv sfp_a2_info ($cat /tmp/sfp_a2.txt)
 ```
 
 ## Temporary file procedure
