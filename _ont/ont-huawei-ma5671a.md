@@ -301,50 +301,6 @@ And in the lantiq shell:
 cat /dev/mtdX | nc 192.168.1.11 1234
 ```
 
-## Flashing a new rootfs via SSH
-
-{% include alert.html content="Only the inactive image can be flashed" alert="Info" icon="svg-info" color="blue" %}
-
-The following commands are used to flash a new rootfs to image1 and then boot to it
-```sh
-# mtd -e image1 write /tmp/rootfs.bin image1
-# fw_setenv committed_image 1
-# fw_setenv image1_is_valid 1
-# reboot
-```
-
-{% include alert.html content="Some OLTs don't like when ONTs don't boot from image 0, therefore the previous procedure must be preceded by the following procedure with inverted images, as to clone image 1 into image 0" alert="Warning" icon="svg-warning" color="yellow" %}
-
-## Flashing a new rootfs via serial
-
-If you wish to change the firmware via serial, we recommend using the web app: [Web Serial Flash](/ont-huawei-ma5671a-ymodem)
-
-{% include alert.html content="We recommend using the flash web app." alert="Info" icon="svg-warning" color="yellow" %}
-
-{% include alert.html content="Use this procedure only if you are unable to do the procedure from SSH" alert="Warning" icon="svg-warning" color="red" %}
-
-1. Connecting the molex-serial adapter and the serial to the computer as indicated in [Root Procedure](/ont-huawei-ma5671a-web-root)
-2. Open Tera Term (or any other programme capable of connecting to the serial terminal)
-3. Connect the SFP stick to the SFP molex, from the terminal you will have 5 seconds to lock the bootloader by doing a simple CTRL+C. Now upload the firmware image of the new rootfs partition to the stick with the command
-```
-FALCON => loady 0x80800000
-```
-At this point it will appear:
-
-{% include image.html file="ma5671a-root-13.jpg" alt="shell requiring `mtd2` upload" caption="shell requiring `mtd2` upload" %}
-
-{:style="counter-reset:none"}
-1. From the teratem menu do `FILE` → `TRANSFER` → `YMODEM` → `SEND` → `[mtd2.bin]`.
-It will start uploading the file at a speed of about 3-4 KBps. Now you will have to wait more than half an hour for the upload to complete.
-
-1. Once finished, the image loaded on the stick must also be saved to the corresponding system partition (the first of the 2) with the commands
-```
-FALCON => setenv committed_image 0
-FALCON => setenv image0_is_valid 1
-FALCON => saveenv
-FALCON => sf probe 0 && sf erase C0000 740000 && sf write 80800000 C0000 740000 && reset
-```
-
 ## Checking the currently active image
 
 ```sh
@@ -371,6 +327,53 @@ The following commands are used to clone image0 to image1 and then boot to it
 # fw_setenv image1_is_valid 1
 # reboot
 ```
+
+## Flashing a new rootfs via SSH
+
+{% include alert.html content="Only the inactive image can be flashed" alert="Info" icon="svg-info" color="blue" %}
+
+The following commands are used to flash a new rootfs to image1 and then boot to it
+```sh
+# mtd -e image1 write /tmp/rootfs.bin image1
+# fw_setenv committed_image 1
+# fw_setenv image1_is_valid 1
+# reboot
+```
+
+{% include alert.html content="Some OLTs don't like when ONTs don't boot from image 0, therefore the previous procedure must be preceded by the following procedure with inverted images, as to clone image 1 into image 0" alert="Warning" icon="svg-warning" color="yellow" %}
+
+## Flashing a new rootfs via serial
+
+{% include alert.html content="We recommend using the flash web app." alert="Info" icon="svg-warning" color="yellow" %}
+
+If you wish to change the firmware via serial, we recommend using the web app: [Web Serial Flash](/ont-huawei-ma5671a-ymodem)
+
+{% include alert.html content="Use this procedure only if you are unable to do the procedure from SSH" alert="Warning" icon="svg-warning" color="red" %}
+
+1. Connecting the molex-serial adapter and the serial to the computer as indicated in [Root Procedure](/ont-huawei-ma5671a-web-root)
+2. Open Tera Term (or any other programme capable of connecting to the serial terminal)
+3. Connect the SFP stick to the SFP molex, from the terminal you will have 5 seconds to lock the bootloader by doing a simple CTRL+C. Now upload the firmware image of the new rootfs partition to the stick with the command
+```
+FALCON => loady 0x80800000
+```
+At this point it will appear:
+
+{% include image.html file="ma5671a-root-13.jpg" alt="shell requiring `mtd2` upload" caption="shell requiring `mtd2` upload" %}
+
+{:style="counter-reset:none"}
+1. From the teratem menu do `FILE` → `TRANSFER` → `YMODEM` → `SEND` → `[mtd2.bin]`.
+It will start uploading the file at a speed of about 3-4 KBps. Now you will have to wait more than half an hour for the upload to complete.
+
+1. Once finished, the image loaded on the stick must also be saved to the corresponding system partition (the first of the 2) with the commands
+```
+FALCON => setenv committed_image 0
+FALCON => setenv image0_is_valid 1
+FALCON => saveenv
+FALCON => sf probe 0 && sf erase C0000 740000 && sf write 80800000 C0000 740000 && reset
+```
+
+{% include alert.html content="If you need to flash to image 2, you must use the following command `FALCON => sf probe 0 && sf erase 800000 800000 && sf write 80800000 800000 800000 && reset`" alert="Warning" icon="svg-warning" color="red" %}
+
 
 # Miscellaneous Links
 
