@@ -11,7 +11,7 @@ parent: Huawei
 | ---------------- | ----------------------------------- |
 | Vendor/Brand     | Huawei                              |
 | Model            | MA5671A                             |
-| ODM              | ✅                                  |
+| ODM              |                                     |
 | Chipset          | Lantiq PEB98035                     |
 | Flash            | 16 MB                               |
 | RAM              | 64 MB (Winbond W25Q128FV)           |
@@ -259,6 +259,7 @@ The Huawei MA5671A stores the content of the emulated EEPROM in U-Boot env varia
 - [Carlito Firmware General Setting](/ont-huawei-ma5671a-carlito)
 - [SourcePhotonics Firmware General Setting](/ont-huawei-ma5671a-sf)
 - [right.com.cn (China) Firmware General Setting](/ont--huawei-ma5671a-china)
+- [Nokia G-010S-P Firmware General Setting](/ont-nokia-g-010s-p)
 
 ## Transferring files to the stick
 
@@ -272,15 +273,31 @@ The Huawei MA5671A stores the content of the emulated EEPROM in U-Boot env varia
 
 Make a backup of all partitions, an easy way is:
 - On the stick run:
-```shell
+```sh
 cat /proc/mtd
 ```
+
+### Via SCP 
+- For each mtdX run in the lantiq shell:
+```sh
+cp /dev/mtdX /tmp
+```
+
+{% include alert.html content="If you use a modern OpenSSH version (e.g. >= 8.8) you will have to use the legacy protocol and enable some deprecated algorithms: `scp -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss [...]`" alert="Info" icon="svg-info" color="blue" %}
+
+And in the computer shell:
+```sh
+scp root@192.168.1.10:/tmp/mtdX ./
+```
+
+### Via NC
+
 - For each mtdX run, on computer shell:
-```shell
+```sh
 nc -l -p 1234 > mtdX.bin
 ```
 And in the lantiq shell:
-```shell
+```sh
 cat /dev/mtdX | nc 192.168.1.11 1234
 ```
 
@@ -326,6 +343,20 @@ FALCON => setenv committed_image 0
 FALCON => setenv image0_is_valid 1
 FALCON => saveenv
 FALCON => sf probe 0 && sf erase C0000 740000 && sf write 80800000 C0000 740000 && reset
+```
+
+## Checking the currently active image
+
+```sh
+# fw_printenv committed_image
+```
+
+## Booting to a different image
+
+
+```sh
+# fw_setenv committed_image 0|1
+# fw_setenv image0|1_is_valid 1
 ```
 
 ## Cloning of mtd1 (image 0) into mtd5 (image 1)

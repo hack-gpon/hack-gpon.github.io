@@ -100,7 +100,7 @@ layout: default
 {:style="counter-reset:none"}
 2. Transfer modified file back into variable `sfp_a2_info`, replace `<output>` with the output of web form.
 
-```shell
+```sh
 fw_setenv sfp_a2_info "<output>"
 ```
 
@@ -108,11 +108,11 @@ fw_setenv sfp_a2_info "<output>"
 
 1. Save `sfp_a2_info` in a temporary file
 
-```shell
+```sh
 fw_printenv sfp_a2_info | sed "s/^sfp_a2_info=//" > /tmp/sfp_a2.txt
 ```
 And print a pretty version:
-```shell
+```sh
 fw_printenv sfp_a2_info | sed "s/^sfp_a2_info=//" | tr '@' '\n'
 ```
 
@@ -146,7 +146,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASFcC2r7vAAAAAAAAAAAAAAAAAAAA
 
 5. Transfer the modified file back into variable `sfp_a2_info`
 
-```shell
+```sh
 fw_setenv sfp_a2_info $(cat /tmp/sfp_a2.txt)
 ```
 
@@ -154,7 +154,7 @@ fw_setenv sfp_a2_info $(cat /tmp/sfp_a2.txt)
 
 After rebooting, check whether the new variables have been saved correctly:
 
-```shell
+```sh
 fw_printenv nPassword
 fw_printenv gSerial
 fw_printenv ethaddr
@@ -162,13 +162,13 @@ fw_printenv ethaddr
 
 ## Checking whether the connection with the OLT was successful (O5 state)
 
-```shell
+```sh
 onu ploamsg
 ```
 
 # Disabling dying gasp
 
-```shell
+```sh
 fw_setenv nDyingGaspEnable 0 
 ```
 
