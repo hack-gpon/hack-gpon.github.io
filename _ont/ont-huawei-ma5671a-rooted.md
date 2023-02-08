@@ -132,7 +132,7 @@ layout: default
 </script>
 
 {:style="counter-reset:none"}
-{% include alert.html content="Executing these commands requires a minimum of familiarity with  `vim`. If you do not know `vim`, follow the commands precisely." alert="Danger"  icon="svg-warning" color="red" %}
+{% include alert.html content="Executing these commands requires a minimum of familiarity with `vim`. If you do not know `vim`, follow the commands precisely." alert="Danger"  icon="svg-warning" color="red" %}
 
 
 1. Copy the script's output to the clipboard 
