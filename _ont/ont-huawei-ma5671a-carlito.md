@@ -48,7 +48,20 @@ fw_setenv target oem-generic
 fw_printenv target=oem-generic
 ```
 
-## Setting HSGMII Mode
+## Getting/Setting Speed LAN Mode
+
+| Velue | Speed    |
+| ----- | -------- |
+| 4     | 1 Gbps   |
+| 5     | 2.5 Gbps |
+
+To set the (H)SGMII Mode:
+
 ```sh
 fw_setenv sgmii_mode 5
+```
+
+To remove the value (back to default):
+```sh
+fw_setenv sgmii_mode
 ```

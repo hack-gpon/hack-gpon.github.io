@@ -86,7 +86,7 @@ mtd5 --> rootfs_data
 For more info [XPONos partition layout](https://github.com/XPONos/linux_lantiq-falcon/commit/456f68f69a84c846a542a9f0ea47c37476535dcb).
 
 
-## When booting from image0
+### When booting from image0
 
 | dev  | size     | erasesize | name          |
 | ---- | -------- | --------- | ------------- |
@@ -97,7 +97,7 @@ For more info [XPONos partition layout](https://github.com/XPONos/linux_lantiq-f
 | mtd4 | 00370000 | 00010000  | "rootfs_data" |
 | mtd5 | 00800000 | 00010000  | "image1"      |
 
-## When booting from image1
+### When booting from image1
 
 | dev  | size     | erasesize | name          |
 | ---- | -------- | --------- | ------------- |
@@ -262,7 +262,7 @@ The Huawei MA5671A stores the content of the emulated EEPROM in U-Boot env varia
 
 ## Transferring files to the stick
 
-{% include alert.html content="If you use a modern OpenSSH version (e.g. >= 8.8) you will have to use the legacy protocol and enable some deprecated algorithms: scp -O -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss [...]" alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="If you use a modern OpenSSH version (e.g. >= 8.8) you will have to use the legacy protocol and enable some deprecated algorithms: scp `-oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss [...]`" alert="Info" icon="svg-info" color="blue" %}
 
 ```sh
 # scp rootfs.bin root@192.168.1.10:/tmp/
@@ -299,6 +299,10 @@ The following commands are used to flash a new rootfs to image1 and then boot to
 {% include alert.html content="Some OLTs don't like when ONTs don't boot from image 0, therefore the previous procedure must be preceded by the following procedure with inverted images, as to clone image 1 into image 0" alert="Warning" icon="svg-warning" color="yellow" %}
 
 ## Flashing a new rootfs via serial
+
+If you wish to change the firmware via serial, we recommend using the web app: [Web Serial Flash](/ont-huawei-ma5671a-ymodem)
+
+{% include alert.html content="We recommend using the flash web app." alert="Info" icon="svg-warning" color="yellow" %}
 
 {% include alert.html content="Use this procedure only if you are unable to do the procedure from SSH" alert="Warning" icon="svg-warning" color="red" %}
 

@@ -12,7 +12,8 @@ layout: default
 | ---------------- | ---------------------------------------- |
 | Vendor/Brand     | FS.com                                   |
 | Model            | GPON-ONU-34-20BI                         |
-| ODM              | ✅                                       |
+| ODM              | SourcePhotonics                          |
+| ODM Product Code | SPS-34-24T-HP-TDFO                       |
 | Chipset          | Lantiq PEB98035                          |
 | CPU              | MIPS 34Kc interAptiv                     |
 | CPU Clock        | 400MHz                                   |
@@ -76,7 +77,7 @@ fw_setenv preboot "gpio set 3;gpio input 2;gpio input 105;gpio input 106;gpio in
 
 {% include alert.html content="This is not necessary if you have already unlocked the bootloader from the shell as specified above." alert="Warning"  icon="svg-warning" color="yellow" %}
 
-If for for some reason you are in the situation where you do not have a bootable firmware on your SFP stick you can do an emergency unlock via TTL serial.
+If for some reason you are in the situation where you do not have a bootable firmware on your SFP stick you can do an emergency unlock via TTL serial.
 
 To perform the emergency unlock is necessary to have:
 - TTL-USB adapter
@@ -311,7 +312,27 @@ Now you have to use SCP to copy the modified `mod_optic.ko` kernel module in `/l
 - 6BA1896SPLQA42 (Sep 18 2021)
 
 ## List of partitions
-When image0 is committed: 
+
+Partition layouts change depending on which image is booted, in particular:
+
+When booting image0:
+```
+mtd2 ---> image0 (linux)
+mtd5 --> image1
+mtd3 --> rootfs
+mtd4 --> rootfs_data
+```
+When booting image0:
+```
+mtd2 ---> image0
+mtd3 --> image1 (linux)
+mtd4 --> rootfs
+mtd5 --> rootfs_data
+```
+
+For more info [XPONos partition layout](https://github.com/XPONos/linux_lantiq-falcon/commit/456f68f69a84c846a542a9f0ea47c37476535dcb).
+
+### When booting from image0
 
 | dev  | size     | erasesize | name          |
 | ---- | -------- | --------- | ------------- |
@@ -322,7 +343,7 @@ When image0 is committed:
 | mtd4 | 00370000 | 00010000  | "rootfs_data" |
 | mtd5 | 00800000 | 00010000  | "image1"      |
 
-When image1 is committed: 
+### When booting from image1
 
 | dev  | size     | erasesize | name          |
 | ---- | -------- | --------- | ------------- |
@@ -464,6 +485,22 @@ The FS GPON-ONU-34-20BI stores the content of the emulated EEPROM in U-Boot env 
 | 536-639 | 104  | Reserved                          |                                                                                             | Reserved                                                          |
 
 {% include alert.html content="For more information, see the SFF-8472 Rev 11.0 specification." alert="Info" icon="svg-info" color="blue" %}
+
+# TX Fault / Serial
+
+The stick stays in a perpetual "TX Fault" state since the same SFP pin is used for both serial and TX Fault signaling, if that causes you issues (normally it shouldn't) you can issue the commands below to disable it. Note that it will disable both the TX Fault signal and Serial on the stick after boot.
+
+```sh
+fw_setenv asc0 1
+fw_setenv preboot "gpio set 3;gpio input 100;gpio input 105;gpio input 106;gpio input 107;gpio input 108"
+```
+
+In case you need to re-enable it issue the following commands from the bootloader (FALCON)
+
+```sh
+FALCON => setenv asc0 0
+FALCON => saveenv
+```
 
 ## List of firmwares and files
 - [6BA1896SPLQA13 MTD0/U-Boot](https://mega.nz/file/wptjyYiS#Xj3cijX2bN0FexsZr1Wn7iRG0Wy4Z8vX0NyNBd1kBWo){: .btn } md5hash: 992b31a67c644aa68cf7f9caf956b1f9
