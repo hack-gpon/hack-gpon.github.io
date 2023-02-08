@@ -12,7 +12,7 @@ layout: default
 ## Web procedure
 
 
-1. Get `sfp_a2_info` and paste into the form
+1. Get `fw_printenv sfp_a2_info` and paste into the form
 
 <form id="huawei-rooted">
     <div class="form-floating mb-3">
@@ -55,30 +55,30 @@ layout: default
     </div>
 </form>
 <script>
+    var theeeprom;
     var form = document.getElementById('huawei-rooted');
     form.addEventListener('submit',(event) => {
         event.preventDefault();
         var fomrdata = new FormData(form);
         var sfp_a2_info = fomrdata.get('sfp-a2-info');
         var sfp_a2_info_arr = sfp_a2_info.split('@');
-        var sfp_a2_info_0 = sfp_a2_info_arr.splice(0);
+        var sfp_a2_info_0 = sfp_a2_info_arr.shift();
         var sfp_a2_decode = sfp_a2_info_arr.map(it => base64ToHex(it)).join('');
-        var eeprom = new eeprom1(sfp_a2_decode);
-        console.log(eeprom);
+        theeeprom = new eeprom1(sfp_a2_decode);
         if(fomrdata.get('submit') == "Show!") {
-            fomrdata.set('gpon-serial', eeprom.serial);
-            fomrdata.set('gpon-ploam', eeprom.ploam);
-            fomrdata.set('gpon-loid', eeprom.loid);
-            fomrdata.set('gpon-lpwd', eeprom.lopw);
-            fomrdata.set('gpon-loid-ploam-switch', eeprom.loidPloamSwitch);
+            fomrdata.set('gpon-serial', theeeprom.serial);
+            fomrdata.set('gpon-ploam', theeeprom.ploam);
+            fomrdata.set('gpon-loid', theeeprom.loid);
+            fomrdata.set('gpon-lpwd', theeeprom.lopw);
+            fomrdata.set('gpon-loid-ploam-switch', theeeprom.loidPloamSwitch);
             populateForm(form, fomrdata);
         } else {
-            eeprom.serial = fomrdata.get('gpon-serial');
-            eeprom.ploam = fomrdata.get('gpon-ploam');
-            eeprom.loid = fomrdata.get('gpon-loid');
-            eeprom.lopw = fomrdata.get('gpon-lopw');
-            eeprom.loidPloamSwitch = fomrdata.get('gpon-loid-ploam-switch');
-            document.getElementById('result').value =  eeprom.hex; 
+            theeeprom.serial = fomrdata.get('gpon-serial');
+            theeeprom.ploam = fomrdata.get('gpon-ploam');
+            theeeprom.loid = fomrdata.get('gpon-loid');
+            theeeprom.lopw = fomrdata.get('gpon-lopw');
+            theeeprom.loidPloamSwitch = fomrdata.get('gpon-loid-ploam-switch');
+            document.getElementById('result').value =  theeeprom.hex; 
         }
         /*if(sfp_a2_info_arr.length > 10 && sfp_a2_info_arr[0] === 'begin-base64 644 sfp_a2_info ') {
             var gpon_sn = fomrdata.get('gpon-sn');
@@ -122,12 +122,6 @@ layout: default
             document.getElementById('result').value = 'sfp_a2_info variable in wrong format!';
         }*/
     });
-    function hexToBase64(hexStr) {
-        return btoa([...hexStr].reduce((acc, _, i) => acc += !(i - 1 & 1) ? String.fromCharCode(parseInt(hexStr.substring(i - 1, i + 1), 16)) : '', ''));
-    }
-    function base64ToHex(base64Value) {
-        return [...atob(base64Value)].map(c=> c.charCodeAt(0).toString(16).padStart(2,0)).join('');
-    }
 </script>
 
 {:style="counter-reset:none"}

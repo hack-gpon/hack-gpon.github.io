@@ -142,7 +142,7 @@ class uuencoding {
 
 function getChunks(s, i) {
     var a = [];
-    do{ a.push(s.substring(0, i)) }  while( (s = s.substring(i)) != "" );
+    do { a.push(s.substring(0, i)) } while ((s = s.substring(i)) != "");
     return a;
 }
 
@@ -150,13 +150,13 @@ class asciiHex {
     static asciiToHex(str, prefix = "0x", glue = " ") {
         var prefixi = glue !== "" ? prefix : "";
         var prefixs = glue === "" ? prefix : "";
-        var hex = prefixs + ([...str].map((elem, n) => prefixi+Number(str.charCodeAt(n)).toString(16)).join(glue));
+        var hex = prefixs + ([...str].map((elem, n) => prefixi + Number(str.charCodeAt(n)).toString(16)).join(glue));
         return hex;
     }
     static hexToAscii(str, prefix = "0x", separator = " ") {
-        if(prefix != "" && str.startsWith(prefix)) 
+        if (prefix != "" && str.startsWith(prefix))
             str = str.substring(prefix.length);
-        var ascii = separator === "" ? getChunks(str.substring(2),2).map(el => String.fromCharCode(parseInt(el, 16))).join('') : str.split(separator).map(el => String.fromCharCode(Number(el))).join('');
+        var ascii = separator === "" ? getChunks(str.substring(2), 2).map(el => String.fromCharCode(parseInt(el, 16))).join('') : str.split(separator).map(el => String.fromCharCode(Number(el))).join('');
         return ascii;
     }
 }
@@ -165,27 +165,27 @@ class gponSerial {
     #vendor;
     #progressive;
     constructor(vendor, progressive) {
-        if(progressive !== undefined) {
-            if(vendor.length == 4) {
+        if (progressive !== undefined) {
+            if (vendor.length == 4) {
                 this.#vendor = vendor.toUpperCase();
-            } else if(vendor.length == 8) {
-                this.#vendor = asciiHex.hexToAscii(vendor,'','').toUpperCase();
+            } else if (vendor.length == 8) {
+                this.#vendor = asciiHex.hexToAscii(vendor, '', '').toUpperCase();
             } else {
                 throw "vendor length unvalid";
             }
-            if(progressive.length == 8) {
+            if (progressive.length == 8) {
                 this.#progressive = progressive.toLowerCase();
             } else {
                 throw "progressive length unvalid";
             }
         } else {
-            if(vendor.length == 12) {
+            if (vendor.length == 12) {
                 this.#vendor = vendor.substring(0, 4).toUpperCase();
                 this.#progressive = vendor.substring(4).toLowerCase();
-            } else if(vendor.length == 16) {
+            } else if (vendor.length == 16) {
                 this.#vendor = asciiHex.hexToAscii(serial.substring(0, 8)).toUpperCase();
                 this.#progressive = vendor.substring(8).toLowerCase();
-            }  else {
+            } else {
                 throw "serial length unvalid";
             }
         }
@@ -201,17 +201,17 @@ class gponSerial {
     }
     get serial() {
         return `${this.#vendor}${this.#progressive}`;
-    }   
+    }
 }
 
 class gponPloam {
     #ploam;
     constructor(ploam) {
-        if(ploam.length <= 10) {  
+        if (ploam.length <= 10) {
             this.#ploam = ([...gpon_password].map((_, n) => Number(gpon_password.charCodeAt(n)).toString(16)).join(''));
-            this.#ploam += '0'.repeat(20-gpon_password.length);
+            this.#ploam += '0'.repeat(20 - gpon_password.length);
         }
-        else if(ploam.length === 20) {
+        else if (ploam.length === 20) {
             this.#ploam = ploam;
         }
         else {
@@ -219,7 +219,7 @@ class gponPloam {
         }
     }
     get ploam() {
-        return asciiHex.hexToAscii(this.#ploam, '','');
+        return asciiHex.hexToAscii(this.#ploam, '', '');
     }
     get ploamEncoding() {
         return JSON.stringify(ploam);
@@ -229,28 +229,31 @@ class gponPloam {
     }
 }
 
-class eeprom1 {
+class eeprom {
     #hex;
-    constructor(hex) {
+    constructor(hex, size=256) {
         this.#hex = [...hex];
+        if (this.#hex.length < size*2) throw new Error('EEPROM size error!');
     }
 
-    getPart = function(startIndex, endIndex) {
-        return this.#hex.slice(startIndex*2, (endIndex+1)*2).join('');
+    getPart = function (startIndex, endIndex) {
+        return this.#hex.slice(startIndex * 2, (endIndex + 1) * 2).join('');
     }
 
-    setPart = function(startIndex, endIndex, value) {
-        let calcLength = (endIndex+1-startIndex)*2;
-        if(value.length != calcLength) {
-            value += '0'.repeat(calcLength-value.length);
-        }    
-        this.#hex.splice(startIndex*2, calcLength, ...[...value]);
+    setPart = function (startIndex, endIndex, value) {
+        let calcLength = (endIndex + 1 - startIndex) * 2;
+        if (value.length != calcLength) {
+            value += '0'.repeat(calcLength - value.length);
+        }
+        this.#hex.splice(startIndex * 2, calcLength, ...[...value]);
     }
 
     get hex() {
-      return this.#hex.join('');
+        return this.#hex.join('');
     }
+}
 
+class eeprom1 extends eeprom {
     get serial() {
         return this.getPart(233, 240);
     }
@@ -332,19 +335,19 @@ function populateForm(form, data, basename) {
             value = '';
 
         // add basename
-        if (typeof(basename) !== "undefined")
+        if (typeof (basename) !== "undefined")
             name = basename + "-" + key;
 
         if (value.constructor === Array) {
-            if(typeof(basename) !== "undefined")
+            if (typeof (basename) !== "undefined")
                 name += '[]';
-        } else if(typeof value == "object") {
-            if(Object.keys(value).length === 1) {
-                if (typeof(basename) !== "undefined")
+        } else if (typeof value == "object") {
+            if (Object.keys(value).length === 1) {
+                if (typeof (basename) !== "undefined")
                     name += "-" + Object.keys(value)[0];
                 value = value[Object.keys(value)[0]];
             } else {
-                if (typeof(basename) !== "undefined")
+                if (typeof (basename) !== "undefined")
                     populateForm(form, value, name);
                 else
                     populateForm(form, value);
@@ -354,13 +357,13 @@ function populateForm(form, data, basename) {
 
         // only proceed if element is set
         let element = form.elements.namedItem(name);
-        if (! element) {
+        if (!element) {
             continue;
         }
 
         let type = element.type || element[0].type;
 
-        switch(type ) {
+        switch (type) {
             default:
                 element.value = value;
                 break;
@@ -399,4 +402,56 @@ function populateForm(form, data, basename) {
         }
 
     }
+}
+
+
+var _table_ = document.createElement('table'),
+    _tr_ = document.createElement('tr'),
+    _th_ = document.createElement('th'),
+    _td_ = document.createElement('td');
+
+// Builds the HTML Table out of myList json data from Ivy restful service.
+function buildHtmlTable(arr) {
+    var table = _table_.cloneNode(false),
+        columns = addAllColumnHeaders(arr, table);
+    for (var i = 0, maxi = arr.length; i < maxi; ++i) {
+        var tr = _tr_.cloneNode(false);
+        for (var j = 0, maxj = columns.length; j < maxj; ++j) {
+            var td = _td_.cloneNode(false);
+            var cellValue = arr[i][columns[j]];
+            td.appendChild(document.createTextNode(arr[i][columns[j]] || ''));
+            tr.appendChild(td);
+        }
+        table.appendChild(tr);
+    }
+    return table;
+}
+
+// Adds a header row to the table and returns the set of columns.
+// Need to do union of keys from all records as some records may not contain
+// all records
+function addAllColumnHeaders(arr, table) {
+    var columnSet = [],
+        tr = _tr_.cloneNode(false);
+    for (var i = 0, l = arr.length; i < l; i++) {
+        for (var key in arr[i]) {
+            if (arr[i].hasOwnProperty(key) && columnSet.indexOf(key) === -1) {
+                columnSet.push(key);
+                var th = _th_.cloneNode(false);
+                th.appendChild(document.createTextNode(key));
+                tr.appendChild(th);
+            }
+        }
+    }
+    table.appendChild(tr);
+    return columnSet;
+}
+
+function hexToBase64(hexStr) {
+    return btoa([...hexStr].reduce((acc, _, i) => acc += !(i - 1 & 1) ? String.fromCharCode(parseInt(hexStr.substring(i - 1, i + 1), 16)) : '', ''));
+}
+function base64ToHex(base64Value) {
+    try {
+    return [...atob(base64Value)].map(c=> c.charCodeAt(0).toString(16).padStart(2,0)).join('');
+    } catch { return ''; }
 }
