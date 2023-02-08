@@ -34,7 +34,7 @@ layout: default
         var sfp_a2_info_arr = sfp_a2_info.split('@');
         var sfp_a2_info_0 = sfp_a2_info_arr.shift();
         var sfp_a2_decode = sfp_a2_info_arr.map(it => base64ToHex(it)).join('');
-        var eeprom = new eeprom1(sfp_a2_decode);
+        var eeprom = new eeprom(sfp_a2_decode);
         var table = eepromTable(eeprom,0);
         var htmlTable = buildHtmlTable(table);
         eepromA0.parentNode.insertBefore(htmlTable, eepromA0.nextSibling);
