@@ -142,7 +142,7 @@ class uuencoding {
 
 function getChunks(s, i) {
     var a = [];
-    do { a.push(s.substring(0, i)) } while ((s = s.substring(i)) != "");
+    do { a.push(s?.substring(0, i)) } while (s = s?.substring(i));
     return a;
 }
 
@@ -154,44 +154,89 @@ class asciiHex {
         return hex;
     }
     static hexToAscii(str, prefix = "0x", separator = " ") {
-        if (prefix != "" && str.startsWith(prefix))
-            str = str.substring(prefix.length);
-        var ascii = separator === "" ? getChunks(str.substring(2), 2).map(el => String.fromCharCode(parseInt(el, 16))).join('') : str.split(separator).map(el => String.fromCharCode(Number(el))).join('');
+        if(prefix)
+            str = stripHexPrefix(str, prefix);
+        var ascii = separator === "" ? getChunks(str, 2).map(el => String.fromCharCode(parseInt(el, 16))).join('') : str.split(separator).map(el => String.fromCharCode(Number(el))).join('');
         return ascii;
+    }
+}
+
+
+function isHexPrefixed(str, prefix = '0x') {
+    if (typeof str !== 'string') {
+      throw new Error("[is-hex-prefixed] value must be type 'string', is currently type " + (typeof str) + ", while checking isHexPrefixed.");
+    }
+  
+    return str.slice(0, 2) === prefix;
+}
+
+function stripHexPrefix(str, prefix = '0x') {
+    if (typeof str !== 'string') {
+      return str;
+    }
+  
+    return isHexPrefixed(str, prefix) ? str.slice(prefix.length) : str;
+}
+
+class mac {
+    #mac;
+    constructor(mac) {
+        if(mac.length == 12) {
+            this.#mac = mac;
+        }
+        if(mac.length == 14) {
+            this.#mac = stripHexPrefix(mac);
+        }
+        if(mac.length == 17) {
+            this.#mac = mac.split(mac[2]).join('');
+        }
+    }
+    get hex() {
+        return this.#mac;
+    }
+
+    prettier(glue=':') {
+        return getChunks(this.#mac,2).join(glue);
     }
 }
 
 class gponSerial {
     #vendor;
     #progressive;
-    constructor(vendor, progressive) {
-        if (progressive !== undefined) {
-            if (vendor.length == 4) {
-                this.#vendor = vendor.toUpperCase();
-            } else if (vendor.length == 8) {
-                this.#vendor = asciiHex.hexToAscii(vendor, '', '').toUpperCase();
+    constructor(first, second) {
+        first = first.replace(/\0/g, '');
+        second = second?.replace(/\0/g, '');
+        if (second !== undefined) {
+            if (first.length == 4) {
+                this.#vendor = first.toUpperCase();
+            } else if (first.length == 8) {
+                this.#vendor = asciiHex.hexToAscii(first, '', '').toUpperCase();
             } else {
                 throw "vendor length unvalid";
             }
-            if (progressive.length == 8) {
-                this.#progressive = progressive.toLowerCase();
+            if (second.length == 8) {
+                this.#progressive = second.toLowerCase();
             } else {
                 throw "progressive length unvalid";
             }
         } else {
-            if (vendor.length == 12) {
-                this.#vendor = vendor.substring(0, 4).toUpperCase();
-                this.#progressive = vendor.substring(4).toLowerCase();
-            } else if (vendor.length == 16) {
-                this.#vendor = asciiHex.hexToAscii(serial.substring(0, 8)).toUpperCase();
-                this.#progressive = vendor.substring(8).toLowerCase();
+            if (first.length == 12) {
+                this.#vendor = first.substring(0, 4).toUpperCase();
+                this.#progressive = first.substring(4).toLowerCase();
+            } else if (first.length == 16) {
+                this.#vendor = asciiHex.hexToAscii(first.substring(0, 8), '', '').toUpperCase();
+                this.#progressive = first.substring(8).toLowerCase();
+            } else if (first.length == 18) {
+                first = stripHexPrefix(first);
+                this.#vendor = asciiHex.hexToAscii(first.substring(0, 8), '', '').toUpperCase();
+                this.#progressive = first.substring(8).toLowerCase();
             } else {
                 throw "serial length unvalid";
             }
         }
     }
     get vendorHex() {
-        return ([...this.#vendor].map((_, n) => Number(this.#vendor.charCodeAt(n)).toString(16)).join(''));
+        return asciiHex.asciiToHex(this.#vendor,'','');
     }
     get vendor() {
         return this.#vendor;
@@ -202,17 +247,34 @@ class gponSerial {
     get serial() {
         return `${this.#vendor}${this.#progressive}`;
     }
+    get serialHex() {
+        return `${this.vendorHex}${this.#progressive}`;
+    }
+}
+
+class gponHexItem {
+    #value;
+    constructor(value) {
+        value = stripHexPrefix(value);
+    }
+    get hex() {
+        return this.#value;
+    }
+    get ascii() {
+        return asciiHex.hexToAscii(this.#value, '', '');
+    }
 }
 
 class gponPloam {
     #ploam;
     constructor(ploam) {
+        ploam = ploam.replace(/\0/g, '');
         if (ploam.length <= 10) {
-            this.#ploam = ([...gpon_password].map((_, n) => Number(gpon_password.charCodeAt(n)).toString(16)).join(''));
-            this.#ploam += '0'.repeat(20 - gpon_password.length);
+            this.#ploam = asciiHex.asciiToHex(ploam,'','');
+            this.#ploam += '0'.repeat(20 - this.#ploam.length);
         }
-        else if (ploam.length === 20) {
-            this.#ploam = ploam;
+        else if (ploam.length >= 20) {
+            this.#ploam = stripHexPrefix(ploam);
         }
         else {
             throw "ploam length unvalid";
@@ -242,6 +304,9 @@ class eeprom {
 
     setPart = function (startIndex, endIndex, value) {
         let calcLength = (endIndex + 1 - startIndex) * 2;
+        if(!value) {
+            return;
+        }
         if (value.length != calcLength) {
             value += '0'.repeat(calcLength - value.length);
         }
@@ -255,35 +320,58 @@ class eeprom {
 
 class eeprom1 extends eeprom {
     get serial() {
-        return this.getPart(233, 240);
+        return new gponSerial(this.getPart(233, 240));
     }
 
     set serial(value) {
-        this.setPart(233, 240, value);
+        if(value instanceof gponSerial) {
+            this.setPart(233, 240, value.serialHex);
+        } else {
+            this.setPart(233, 240, value);
+        }
     }
 
     get ploam() {
-        return this.getPart(191, 214);
+        return this.loidPloamSwitch === "02" ? new gponPloam(this.getPart(191, 214)) : undefined;
     }
 
     set ploam(value) {
-        this.setPart(191, 214, value);
+        if(this.loidPloamSwitch === "02") {
+            if(value instanceof gponPloam) {
+                console.log(this.getPart(191, 214));
+                console.log(value.ploam);
+                console.log(value.ploamHex);
+                this.setPart(191, 214, value.ploamHex);
+            } else {
+                this.setPart(191, 214, value);
+            }
+        }
     }
 
     get loid() {
-        return this.getPart(191, 214);
+        return this.loidPloamSwitch === "01" ? new gponHexItem(this.getPart(191, 214)) : undefined;
     }
 
     set loid(value) {
-        this.setPart(191, 214, value);
+        if(this.loidPloamSwitch === "01") {
+            if(value instanceof gponHexItem) {
+                this.setPart(191, 214, value.hex);
+            } else {
+                this.setPart(191, 214, value);
+            }
+        }
     }
 
-    get lpwd() {
-        return this.getPart(215, 231);
+    get lopw() {
+        return new gponHexItem(this.getPart(215, 231));
     }
 
-    set lpwd(value) {
-        this.setPart(215, 231, value);
+    set lopw(value) {
+        if(value instanceof gponHexItem) {
+            this.setPart(215, 231, value.hex);
+        } else {
+            this.setPart(215, 231, value);
+        }
     }
 
     get loidPloamSwitch() {
@@ -295,27 +383,39 @@ class eeprom1 extends eeprom {
     }
 
     get equipmentID() {
-        return this.getPart(512, 531);
+        return new gponHexItem(this.getPart(512, 531));
     }
 
     set equipmentID(value) {
-        this.setPart(512, 531, value);
+        if(value instanceof gponHexItem) {
+            this.setPart(512, 531, value.hex);
+        } else {
+            this.setPart(512, 531, value);
+        }
     }
 
     get vendorID() {
-        return this.getPart(532, 535);
+        return new gponHexItem(this.getPart(532, 535));
     }
 
     set vendorID(value) {
-        this.setPart(532, 535, value);
+        if(value instanceof gponHexItem) {
+            this.setPart(532, 535, value.hex);
+        } else {
+            this.setPart(532, 535, value);
+        }
     }
 
     get macAddress() {
-        return this.getPart(384, 389);
+        return new mac(this.getPart(384, 389));
     }
 
     set macAddress(value) {
-        this.setPart(384, 389, value);
+        if(value instanceof mac) {
+            this.setPart(384, 389, value.hex);
+        } else {
+            this.setPart(384, 389, value);
+        }
     }
 }
 

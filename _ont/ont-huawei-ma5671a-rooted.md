@@ -54,81 +54,40 @@ layout: default
         <label for="result">sfp_a2_info result</label>
     </div>
 </form>
-<script>
-    var theeeprom;
+<script>    var theeeprom;
+
     var form = document.getElementById('huawei-rooted');
     form.addEventListener('submit',(event) => {
         event.preventDefault();
-        console.log(event.submitter.getAttribute('data-js'));
         var fomrdata = new FormData(form);
         var sfp_a2_info = fomrdata.get('sfp-a2-info');
         var sfp_a2_info_arr = sfp_a2_info.split('@');
         var sfp_a2_info_0 = sfp_a2_info_arr.shift();
-        var sfp_a2_info_last = sfp_a2_info_arr.pop();
+        var sfp_a2_info_last = sfp_a2_info_arr.slice(-2);
         var sfp_a2_decode = sfp_a2_info_arr.map(it => base64ToHex(it)).join('');
         theeeprom = new eeprom1(sfp_a2_decode);
         if(event.submitter.getAttribute('data-js') === "show") {
             object = {
-                'gpon-serial': theeeprom.serial,
-                'gpon-ploam': theeeprom.ploam,
-                'gpon-loid': theeeprom.loid,
-                'gpon-lpwd': theeeprom.lopw,
-                'gpon-loid-ploam-switch': theeeprom.loidPloamSwitch
+                'gpon-serial': theeeprom.serial.serial,
+                'gpon-ploam': theeeprom.ploam?.ploam,
+                'gpon-loid': theeeprom.loid?.hex,
+                'gpon-lpwd': theeeprom.lopw.hex,
+                'gpon-loid-ploam-switch': theeeprom.loidPloamSwitch,
+                'mac': theeeprom.macAddress.prettier()
             };
             populateForm(form, object);
         } else {
-            theeeprom.serial = fomrdata.get('gpon-serial');
-            theeeprom.ploam = fomrdata.get('gpon-ploam');
-            theeeprom.loid = fomrdata.get('gpon-loid');
-            theeeprom.lopw = fomrdata.get('gpon-lopw');
+            theeeprom.serial = new gponSerial(fomrdata.get('gpon-serial'));
             theeeprom.loidPloamSwitch = fomrdata.get('gpon-loid-ploam-switch');
+            theeeprom.ploam = new gponPloam(fomrdata.get('gpon-ploam'));
+            theeeprom.loid = new gponHexItem(fomrdata.get('gpon-loid'));
+            theeeprom.lopw = new gponHexItem(fomrdata.get('gpon-lopw'));
             var sfp_a2_new = (theeeprom.hex.match(/.{1,90}/g) ?? []).map(it => hexToBase64(it));
             sfp_a2_new.unshift(sfp_a2_info_0);
-            sfp_a2_new.push(sfp_a2_info_last);
-            sfp_a2_new.push('');
+            sfp_a2_new.push(...sfp_a2_info_last);
             document.getElementById('result').value =  sfp_a2_new.join('@'); 
         }
-        /*if(sfp_a2_info_arr.length > 10 && sfp_a2_info_arr[0] === 'begin-base64 644 sfp_a2_info ') {
-            var gpon_sn = fomrdata.get('gpon-sn');
-            if(gpon_sn.length == 12) {  
-                var vendor_id = gpon_sn.substring(0, 4);
-                var progressive = gpon_sn.substring(4);
-                var vendor_id_hex = ([...vendor_id].map((elem, n) => Number(vendor_id.charCodeAt(n)).toString(16)).join(''));
-                gpon_sn = vendor_id_hex+progressive;
-            }
-            if(gpon_sn.length == 16) {  
-                var hex = base64ToHex(sfp_a2_info_arr[6]);
-                hex = hex.substring(0,16) + gpon_sn + hex.substring(32);
-                sfp_a2_info_arr[6] = hexToBase64(hex);
-            }
-            var gpon_password = fomrdata.get('gpon-password');
-            if(gpon_password.length > 0) {
-                if(gpon_password.length <= 10) {  
-                    gpon_password = ([...gpon_password].map((elem, n) => Number(gpon_password.charCodeAt(n)).toString(16)).join(''));
-                    gpon_password += '0'.repeat(20-gpon_password.length);
-                }
-                else if(gpon_password.length == 22 && gpon_password.substring(0,2) === '0x') {  
-                    gpon_password = gpon_password.substring(3);
-                }
-                if(gpon_password.length == 20) {  
-                    var hex = base64ToHex(sfp_a2_info_arr[5]);
-                    hex = hex.substring(0,22) + gpon_password + hex.substring(42);
-                    sfp_a2_info_arr[5] = hexToBase64(hex);
-                }
-            }
-            var mac_addr = fomrdata.get('mac-addr');
-            if(mac_addr.length == 17) {
-                mac_addr = mac_addr.replace('-','');
-                mac_addr = mac_addr.replace(':','');
-            }
-            if(mac_addr.length == 12) {
-                var hex = base64ToHex(sfp_a2_info_arr[9]);
-                hex = hex.substring(0,48) + mac_addr + hex.substring(61);
-                sfp_a2_info_arr[9] = hexToBase64(hex);
-            }   
-        } else {
-            document.getElementById('result').value = 'sfp_a2_info variable in wrong format!';
-        }*/
+        
     });
 </script>
 
