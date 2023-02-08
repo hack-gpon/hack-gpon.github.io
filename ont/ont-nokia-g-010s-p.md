@@ -47,6 +47,10 @@ G-010S-P and other models will not expose an ethernet interface unless the fiber
 - Photonics SPS-34-24T-HP-TDFO {.text-red-200}
 The [Nokia G-010S-A](/ont-nokia-g-010s-a) can be flashed with the Nokia G-010S-P firmware, provided the MTD layout has been changed beforehand to match the new one. For the full procedure, see the post on [lafibre.info](https://lafibre.info/remplacer-livebox/guide-de-connexion-fibre-directement-sur-un-routeur-voire-meme-en-2gbps/msg870551/#msg870551)
 
+## List of software versions
+
+- 3FE56853AOPD39
+
 ## Serial
 
 The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the SFP connector.
