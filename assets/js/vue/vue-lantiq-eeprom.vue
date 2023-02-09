@@ -880,7 +880,7 @@ export default {
         },
         ploam_ascii: {
             get() {
-                if(this.ploam) return this.hexToAscii(this.ploam.substring(0,20)).replace(/\0/g, '');
+                if(this.ploam) return this.hexToAscii(this.ploam.substring(0,20));
             },
             set(value) {
                 if(value.length <= 10)
