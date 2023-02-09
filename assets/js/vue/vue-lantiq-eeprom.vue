@@ -37,7 +37,7 @@
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" placeholder="GPON S/N HEX" id="gpon-serial" v-model="serial_hex" style="width: 50%">
                 <input type="text" class="form-control" placeholder="GPON S/N ASCII" id="gpon-serial-ascii" v-model="serial_ascii" style="width: 50%">
-                <label for="gpon-serial">GPON S/N in format GPON12345678 or 0x47504F4E12345678</label>
+                <label for="gpon-serial">GPON S/N in format 0x47504F4E12345678 or GPON12345678</label>
             </div>
             <div class="form-floating mb-3">
                 <select class="form-control" placeholder="GPON Ploam/LoID Switch" id="gpon-loid-ploam-switch" v-model="loidPloamSwitch">
@@ -49,24 +49,24 @@
             <div class="form-floating mb-3" v-if="loidPloamSwitch === '02'">
                 <input type="text" class="form-control" placeholder="GPON Ploam Password HEX" id="gpon-ploam" v-model="ploam_hex" style="width: 50%">
                 <input type="text" class="form-control" placeholder="GPON Ploam Password ASCII" id="gpon-ploam-ascii" v-model="ploam_ascii" style="width: 50%">
-                <label for="gpon-ploam">GPON Ploam in format 1234567890 or 0x31323334353637383930</label>
+                <label for="gpon-ploam">GPON Ploam in format 0x31323334353637383930 or 1234567890</label>
             </div>
             <div class="form-floating mb-3" v-if="loidPloamSwitch === '01'">
                 <input type="text" class="form-control" placeholder="GPON LoID User" id="gpon-loid" v-model="loid_hex" style="width: 50%">
                 <input type="text" class="form-control" placeholder="GPON LoID User" id="gpon-loid-ascii" v-model="loid_ascii" style="width: 50%">
-            <label for="gpon-loid">GPON LoID User in hex format 0123456789ABCDEF</label>
+            <label for="gpon-loid">GPON LoID User in hex format 0x31323334353637383930 or 1234567890</label>
             </div>
             <div class="form-floating mb-3" v-if="loidPloamSwitch === '01'">
                 <input type="text" class="form-control" placeholder="GPON LoPW Password" id="gpon-lopw" v-model="lopw_hex" style="width: 50%">
                 <input type="text" class="form-control" placeholder="GPON LoPW Password" id="gpon-lopw-ascii" v-model="lopw_ascii" style="width: 50%">
-                <label for="gpon-lopw">GPON LoPW Password in hex format 0123456789ABCDEF</label>
+                <label for="gpon-lopw">GPON LoPW Password in hex format 0x31323334353637383930 or 1234567890</label>
             </div>
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" placeholder="MAC address" id="bridge-mac"  v-model="mac_prettier" pattern="[0-9A-Fa-f]{2}[:-]?[0-9A-Fa-f]{2}[:-]?[0-9A-Fa-f]{2}[:-]?[0-9A-Fa-f]{2}[:-]?[0-9A-Fa-f]{2}[:-]?[0-9A-Fa-f]{2}">
                 <label for="bridge-mac">Bridge MAC Address in format 48:57:02:da:be:ef, 48-57-02-da-be-ef or 485702dabeef</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" placeholder="sfp_a2_info output" id="sfp-a2-info" v-model="eeprom">
+                <input type="text" class="form-control" placeholder="sfp_a2_info output" id="sfp-a2-info" v-model="eeprom" readonly>
                 <label for="sfp-a2-info">sfp_a2_info output</label>
             </div>
         </template>
@@ -1029,7 +1029,7 @@ export default {
                 return [...atob(base64Value)].map(c=> c.charCodeAt(0).toString(16).padStart(2,0)).join('');
             } catch { return ''; }
         },
-        parseInt2complement: function(bitstring,bitcount)
+        parseInt2complement: function(bitstring, bitcount)
         {
             var value = parseInt(bitstring, 2);
 
@@ -1124,7 +1124,7 @@ export default {
             return `${parseInt(hex,16)/10}Gbps`;
         },
         asciiToHex: function(str) {
-            return Number(str.charCodeAt(n)).toString(16).join('');
+            return ([...str].map((_, n) => Number(str.charCodeAt(n)).toString(16)).join(''));
         },
         addHexPrefix: function(str, prefix = '0x') {
             if(this.isHexPrefixed(str, prefix)) return str;
