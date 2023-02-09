@@ -965,7 +965,7 @@ export default {
                 this.setPart(532, 535, value);
             }
         },
-        mac: {
+        mac_rooted: {
             get() {
                 return this.getPart(384, 389);
             },
@@ -975,7 +975,7 @@ export default {
         },
         mac_prettier: {
             get() {
-                return this.chunk(this.mac)?.join(':');
+                return this.hexToMac(this.mac_rooted);
             },
             set(value) {
                 if(value.length == 12) {
