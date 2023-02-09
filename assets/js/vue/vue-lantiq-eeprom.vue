@@ -734,7 +734,7 @@ export default {
                         "size": "8",
                         "name": "GPON SN",
                         "description": "GPON Serial Number (ME 256)",
-                        "parse": "hexToSN"
+                        "parse": "hexToSerial"
                     },
                     {
                         "address": "241-247",
@@ -853,7 +853,7 @@ export default {
         },
         serial_ascii: {
             get() {
-                if(this.serial) return this.hexToAscii(this.serial.substring(0,8))+this.serial.substring(8);
+                if(this.serial) return this.hexToSerial(this.serial);
             },
             set(value) {
                 if(value.length == 12)
@@ -907,7 +907,7 @@ export default {
         },
         loid_ascii: {
             get() {
-                if(this.loid) return this.hexToAscii(this.loid.substring(0,20)).replace(/\0/g, '');
+                if(this.loid) return this.hexToAscii(this.loid.substring(0,20));
             },
             set(value) {
                 if(value.length <= 10)
@@ -926,7 +926,7 @@ export default {
         },
         lopw_hex: {
             get() {
-                if(this.lopw) return this.addHexPrefix(this.lopw.substring(0,20));
+                if(this.lopw) return this.hexToAscii(this.lopw.substring(0,20));
             },
             set(value) {
                 this.lopw = this.stripHexPrefix(value);
@@ -934,7 +934,7 @@ export default {
         },
         lopw_ascii: {
             get() {
-                if(this.lopw) return this.hexToAscii(this.lopw.substring(0,20)).replace(/\0/g, '');
+                if(this.lopw) return this.hexToAscii(this.lopw.substring(0,20));
             },
             set(value) {
                 if(value.length <= 10)
@@ -1062,7 +1062,7 @@ export default {
         hexToAscii: function (hex) {
             return this.chunk(hex)?.map(el => String.fromCharCode(parseInt(el, 16)))?.join('')?.replace(/\0/g, '');
         },
-        hexToSN: function (hex) {
+        hexToSerial: function (hex) {
             if(hex) return this.hexToAscii(hex.substring(0,8))+hex.substring(8);
         },
         table_3_2: function (hex) {
