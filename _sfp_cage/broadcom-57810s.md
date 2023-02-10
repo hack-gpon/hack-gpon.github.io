@@ -21,7 +21,7 @@ In order to be able to set 2.5G speed you will have to patch your kernel's bnx2x
 
 - [DKMS for Linux 6.0.y](https://github.com/darkbasic/bnx2x-2_5g-dkms/tree/6.0.y)
 
-It also adds a module option that can be set to disable SFP TX fault detection, otherwise you won't be able to access your SFP mini-ONT if it's not connected to the fiber cable.
+It also adds a module option that can be set to disable SFP TX fault detection, otherwise you won't be able to access your SFP mini-ONT if serial output to SFP is enabled (you can alternatively disable the serial in the SFP module).
 
 Unfortunately, despite the patches, you will still have to use UEFI eDiag to unlock 2.5G capabilities:
 

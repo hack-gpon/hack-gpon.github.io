@@ -48,7 +48,34 @@ fw_setenv target oem-generic
 fw_printenv target=oem-generic
 ```
 
-## Setting HSGMII Mode
+## Getting/Setting Speed LAN Mode
+
+To enable the 2.5 Gbps / HSGMII with auto-neg on:
+
 ```sh
 fw_setenv sgmii_mode 5
 ```
+
+To remove the value (back to default):
+```sh
+fw_setenv sgmii_mode
+```
+
+To get the LAN Mode:
+
+```sh
+onu lanpsg 0
+```
+The `link_status` variable tells the current speed
+
+| Value (for `sgmii_mode` and `link_status`) | Speed                              |
+| ------------------------------------------ | ---------------------------------- |
+| 3                                          | 1 Gbps / SGMII with auto-neg on    |
+| 4                                          | 1 Gbps / SGMII with auto-neg off   |
+| 5                                          | 2.5 Gbps / HSGMII with auto-neg on |
+
+## Querying a particular OMCI ME
+```sh
+omci_pipe.sh meg MIB_IDX ME_IN
+```
+Where `MIB_IDX` is the MIB ID and the `ME_IN` is the ME instance number

@@ -12,7 +12,8 @@ layout: default
 | ---------------- | ---------------------------------------- |
 | Vendor/Brand     | FS.com                                   |
 | Model            | GPON-ONU-34-20BI                         |
-| ODM              | ✅                                       |
+| ODM              | SourcePhotonics                          |
+| ODM Product Code | SPS-34-24T-HP-TDFO                       |
 | Chipset          | Lantiq PEB98035                          |
 | CPU              | MIPS 34Kc interAptiv                     |
 | CPU Clock        | 400MHz                                   |
@@ -62,6 +63,61 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 
 {% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
 
+
+## List of software versions
+- 6BA1896SPLQA13 (Dec 16 2016)
+- 6BA1896SPLQA41
+- 6BA1896SPLQA42 (Sep 18 2021)
+
+## List of partitions
+
+Partition layouts change depending on which image is booted, in particular:
+
+When booting image0:
+```
+mtd2 ---> image0 (linux)
+mtd5 --> image1
+mtd3 --> rootfs
+mtd4 --> rootfs_data
+```
+When booting image0:
+```
+mtd2 ---> image0
+mtd3 --> image1 (linux)
+mtd4 --> rootfs
+mtd5 --> rootfs_data
+```
+
+For more info [XPONos partition layout](https://github.com/XPONos/linux_lantiq-falcon/commit/456f68f69a84c846a542a9f0ea47c37476535dcb).
+
+### When booting from image0
+
+| dev  | size     | erasesize | name          |
+| ---- | -------- | --------- | ------------- |
+| mtd0 | 00040000 | 00010000  | "uboot"       |
+| mtd1 | 00080000 | 00010000  | "uboot_env"   |
+| mtd2 | 00740000 | 00010000  | "linux"       |
+| mtd3 | 0061eedc | 00010000  | "rootfs"      |
+| mtd4 | 00370000 | 00010000  | "rootfs_data" |
+| mtd5 | 00800000 | 00010000  | "image1"      |
+
+### When booting from image1
+
+| dev  | size     | erasesize | name          |
+| ---- | -------- | --------- | ------------- |
+| mtd0 | 00040000 | 00010000  | "uboot"       |
+| mtd1 | 00080000 | 00010000  | "uboot_env"   |
+| mtd2 | 00740000 | 00010000  | "image0"      |
+| mtd3 | 00800000 | 00010000  | "linux"       |
+| mtd4 | 006d8077 | 00010000  | "rootfs"      |
+| mtd5 | 00410000 | 00010000  | "rootfs_data" |
+
+## List of firmwares and files
+- [6BA1896SPLQA13 MTD0/U-Boot](https://mega.nz/file/wptjyYiS#Xj3cijX2bN0FexsZr1Wn7iRG0Wy4Z8vX0NyNBd1kBWo){: .btn } md5hash: 992b31a67c644aa68cf7f9caf956b1f9
+- [6BA1896SPLQA13 MTD2/Image0](https://mega.nz/file/1kUlUbgQ#ANS9qH6wCggYshsQ3STD6gxmR_3TL-5MXfdCl5s50Nk){: .btn } md5hash: 5d46a9acc3c5ba8710887aa32b82aeb4
+- [6BA1896SPLQA42 MTD0/U-Boot](https://mega.nz/file/FkswHbgL#s7-vaH65EPQ2O5vKeD3bU1_RPwzaKPOJdrCWvPQqDvc){: .btn } md5hash: 992b31a67c644aa68cf7f9caf956b1f9
+- [6BA1896SPLQA42 MTD2/Image0](https://mega.nz/file/AgshDICC#md1vLN14JBF3iaNoZBqQH_zwALHmEaOk3_rDm1FfOic){: .btn } md5hash: 04533554bb0c8b997697fbc048159002
+
 # General Settings and Useful Commands
 
 ## Bootloader unlock from shell
@@ -76,7 +132,7 @@ fw_setenv preboot "gpio set 3;gpio input 2;gpio input 105;gpio input 106;gpio in
 
 {% include alert.html content="This is not necessary if you have already unlocked the bootloader from the shell as specified above." alert="Warning"  icon="svg-warning" color="yellow" %}
 
-If for for some reason you are in the situation where you do not have a bootable firmware on your SFP stick you can do an emergency unlock via TTL serial.
+If for some reason you are in the situation where you do not have a bootable firmware on your SFP stick you can do an emergency unlock via TTL serial.
 
 To perform the emergency unlock is necessary to have:
 - TTL-USB adapter
@@ -309,35 +365,46 @@ cp mod_optic.ko mod_optic.ko.original
 
 Now you have to use SCP to copy the modified `mod_optic.ko` kernel module in `/lib/modules/3.10.49/mod_optic.ko`.
 
-## List of software versions
-- 6BA1896SPLQA13 (Dec 16 2016)
-- 6BA1896SPLQA41
-- 6BA1896SPLQA42 (Sep 18 2021)
+## TX Fault / Serial
 
-## List of partitions
-When image0 is committed: 
+The stick stays in a perpetual "TX Fault" state since the same SFP pin is used for both serial and TX Fault signaling, if that causes you issues (normally it shouldn't) you can issue the commands below to disable it. Note that it will disable both the TX Fault signal and Serial on the stick after boot.
 
-| dev  | size     | erasesize | name          |
-| ---- | -------- | --------- | ------------- |
-| mtd0 | 00040000 | 00010000  | "uboot"       |
-| mtd1 | 00080000 | 00010000  | "uboot_env"   |
-| mtd2 | 00740000 | 00010000  | "linux"       |
-| mtd3 | 0061eedc | 00010000  | "rootfs"      |
-| mtd4 | 00370000 | 00010000  | "rootfs_data" |
-| mtd5 | 00800000 | 00010000  | "image1"      |
+```sh
+fw_setenv asc0 1
+fw_setenv preboot "gpio set 3;gpio input 100;gpio input 105;gpio input 106;gpio input 107;gpio input 108"
+```
 
-When image1 is committed: 
+In case you need to re-enable it issue the following commands from the bootloader (FALCON)
 
-| dev  | size     | erasesize | name          |
-| ---- | -------- | --------- | ------------- |
-| mtd0 | 00040000 | 00010000  | "uboot"       |
-| mtd1 | 00080000 | 00010000  | "uboot_env"   |
-| mtd2 | 00740000 | 00010000  | "image0"      |
-| mtd3 | 00800000 | 00010000  | "linux"       |
-| mtd4 | 006d8077 | 00010000  | "rootfs"      |
-| mtd5 | 00410000 | 00010000  | "rootfs_data" |
+```sh
+FALCON => setenv asc0 0
+FALCON => saveenv
+```
 
-## EEPROM (I2C slave simulated EEPROM)
+## Getting/Setting Speed LAN Mode
+
+To get the LAN Mode:
+
+```sh
+onu lanpsg 0
+```
+The `link_status` variable tells the current speed
+
+| Value (for `sgmii_mode` and `link_status`) | Speed                              |
+| ------------------------------------------ | ---------------------------------- |
+| 3                                          | 1 Gbps / SGMII with auto-neg on    |
+| 4                                          | 1 Gbps / SGMII with auto-neg off   |
+| 5                                          | 2.5 Gbps / HSGMII with auto-neg on |
+
+To change the default lan mode value you can use `fw_setenv sgmii_mode`. The firmware already has the value 5 by default and it is generally not necessary to change it.
+
+## Querying a particular OMCI ME
+```sh
+omci_pipe.sh meg MIB_IDX ME_IN
+```
+Where `MIB_IDX` is the MIB ID and the `ME_IN` is the ME instance number
+
+# EEPROM (I2C slave simulated EEPROM)
 The FS GPON-ONU-34-20BI does not have a physical EEPROM, the Falcon SOC emulates an EEPROM by exposing it on the I2C interface as required by the SFF-8472 specification.
 
 On the I2C interface there will be two memories of 256 bytes each at the addresses `1010000X (A0h)` and `1010001X (A2h)`, however in reality the memory available from the emulated EEPROM will be 640 bytes each but only the first 256 bytes will be exposed in the I2C interface.
@@ -347,7 +414,7 @@ The FS GPON-ONU-34-20BI stores the content of the emulated EEPROM in U-Boot env 
 - `EEPROM0 (A0h)` stored in U-Boot env variable `sfp_a0_low_128`
 - `EEPROM1 (A2h)` stored in U-Boot env variable `sfp_a2_info`
 
-### EEPROM0 layout
+## EEPROM0 layout
 
 | address | size | name                              | default value                                                                                           | description                                                         |
 | ------- | ---- | --------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
@@ -390,31 +457,31 @@ The FS GPON-ONU-34-20BI stores the content of the emulated EEPROM in U-Boot env 
 | 256-639 | 384  | Reserved                          | `0x00 0x00 0x00...`                                                                                     | Reserved                                                            |
 
 
-### EEPROM1 layout
+## EEPROM1 layout
 
 | address | size | name                              | default value                                                                               | description                                                       |
 | ------- | ---- | --------------------------------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
 |         |      | **DIAGNOSTIC AND CONTROL FIELDS** |                                                                                             |                                                                   |
-| 0-1     | 2    | Temp High Alarm                   | `0x5F 0x00` (95℃)                                                                           |                                                                   |
-| 2-3     | 2    | Temp Low Alarm                    | `0xCE 0x00` (-50℃)                                                                          |                                                                   |
-| 4-5     | 2    | Temp High Warning                 | `0x5A 0x00` (90℃)                                                                           |                                                                   |
-| 6-7     | 2    | Temp Low Warning                  | `0xD3 0x00` (-45℃)                                                                          |                                                                   |
-| 8-9     | 2    | Voltage High Alarm                | `0x8C 0xA0` (3.6V)                                                                          |                                                                   |
-| 10-11   | 2    | Voltage Low Alarm                 | `0x75 0x30` (3.0V)                                                                          |                                                                   |
-| 12-13   | 2    | Voltage High Warning              | `0x88 0xB8` (3.5V)                                                                          |                                                                   |
-| 14-15   | 2    | Voltage Low Warning               | `0x79 0x18` (3.1V)                                                                          |                                                                   |
-| 16-17   | 2    | Bias High Alarm                   | `0xAF 0xC8` (90mA)                                                                          |                                                                   |
-| 18-19   | 2    | Bias Low Alarm                    | `0x00 0x00` (0mA)                                                                           |                                                                   |
-| 20-21   | 2    | Bias High Warning                 | `0x88 0xB8` (70mA)                                                                          |                                                                   |
-| 22-23   | 2    | Bias Low Warning                  | `0x00 0x00` (0mA)                                                                           |                                                                   |
-| 24-25   | 2    | TX Power High Alarm               | `0xF6 0x77` (8dBm)                                                                          | Value expressed in watts subunits                                 |
-| 26-27   | 2    | TX Power Low Alarm                | `0x15 0xF7` (-2.5dBm)                                                                       | Value expressed in watts subunits                                 |
-| 28-29   | 2    | TX Power High Warning             | `0xC3 0xC6` (7dBm)                                                                          | Value expressed in watts subunits                                 |
-| 30-31   | 2    | TX Power Low Warning              | `0x1B 0xA7` (-1.5dBm)                                                                       | Value expressed in watts subunits                                 |
-| 32-33   | 2    | RX Power High Alarm               | `0x0C 0x5A` (-5dBm)                                                                         | Value expressed in watts subunits                                 |
-| 34-35   | 2    | RX Power Low Alarm                | `0x00 0x08` (-31dBm)                                                                        | Value expressed in watts subunits                                 |
-| 36-37   | 2    | RX Power High Warning             | `0x09 0xCF` (-6dBm)                                                                         | Value expressed in watts subunits                                 |
-| 38-39   | 2    | RX Power Low Warning              | `0x00 0x0A` (-30dBm)                                                                        | Value expressed in watts subunits                                 |
+| 0-1     | 2    | Temp High Alarm                   | `0x5F 0x00` (95℃)                                                                           | Value expressed in two's complement                               |
+| 2-3     | 2    | Temp Low Alarm                    | `0xCE 0x00` (-50℃)                                                                          | Value expressed in two's complement                               |
+| 4-5     | 2    | Temp High Warning                 | `0x5A 0x00` (90℃)                                                                           | Value expressed in two's complement                               |
+| 6-7     | 2    | Temp Low Warning                  | `0xD3 0x00` (-45℃)                                                                          | Value expressed in two's complement                               |
+| 8-9     | 2    | Voltage High Alarm                | `0x8C 0xA0` (3.6V)                                                                          | Value expressed in volt subunits[^subunit]                        |
+| 10-11   | 2    | Voltage Low Alarm                 | `0x75 0x30` (3.0V)                                                                          | Value expressed in volt subunits[^subunit]                        |
+| 12-13   | 2    | Voltage High Warning              | `0x88 0xB8` (3.5V)                                                                          | Value expressed in volt subunits[^subunit]                        |
+| 14-15   | 2    | Voltage Low Warning               | `0x79 0x18` (3.1V)                                                                          | Value expressed in milliampere subunits[^subunit]                 |
+| 16-17   | 2    | Bias High Alarm                   | `0xAF 0xC8` (90mA)                                                                          | Value expressed in milliampere subunits[^subunit]                 |
+| 18-19   | 2    | Bias Low Alarm                    | `0x00 0x00` (0mA)                                                                           | Value expressed in milliampere subunits[^subunit]                 |
+| 20-21   | 2    | Bias High Warning                 | `0x88 0xB8` (70mA)                                                                          | Value expressed in milliampere subunits[^subunit]                 |
+| 22-23   | 2    | Bias Low Warning                  | `0x00 0x00` (0mA)                                                                           | Value expressed in milliampere subunits[^subunit]                 |
+| 24-25   | 2    | TX Power High Alarm               | `0xF6 0x77` (8dBm)                                                                          | Value expressed in watts subunits[^subunit]                       |
+| 26-27   | 2    | TX Power Low Alarm                | `0x15 0xF7` (-2.5dBm)                                                                       | Value expressed in watts subunits[^subunit]                       |
+| 28-29   | 2    | TX Power High Warning             | `0xC3 0xC6` (7dBm)                                                                          | Value expressed in watts subunits[^subunit]                       |
+| 30-31   | 2    | TX Power Low Warning              | `0x1B 0xA7` (-1.5dBm)                                                                       | Value expressed in watts subunits[^subunit]                       |
+| 32-33   | 2    | RX Power High Alarm               | `0x0C 0x5A` (-5dBm)                                                                         | Value expressed in watts subunits[^subunit]                       |
+| 34-35   | 2    | RX Power Low Alarm                | `0x00 0x08` (-31dBm)                                                                        | Value expressed in watts subunits[^subunit]                       |
+| 36-37   | 2    | RX Power High Warning             | `0x09 0xCF` (-6dBm)                                                                         | Value expressed in watts subunits[^subunit]                       |
+| 38-39   | 2    | RX Power Low Warning              | `0x00 0x0A` (-30dBm)                                                                        | Value expressed in watts subunits[^subunit]                       |
 | 40-45   | 6    | MAC address                       | Unique in each SFP                                                                          | Contains the mac address of the SFP, it could also be empty       |
 | 46-55   | 10   | Reserved                          | `0x00 0x00 0x00...`                                                                         | Reserved                                                          |
 | 56-59   | 4    | RX_PWR(4) Calibration             | `0x00 0x00 0x00 0x00`                                                                       | 4th order RSSI calibration coefficient                            |
@@ -445,10 +512,10 @@ The FS GPON-ONU-34-20BI stores the content of the emulated EEPROM in U-Boot env 
 | 106-109 | 4    | Optional Diagnostics              | `0xFF 0xFF 0xFF 0xFF` (No support)                                                          | Monitor Data for Optional Laser temperature and TEC current       |
 | 110     | 1    | Status/Control                    | `0x82` (Soft TX disable, disable laser, digital TX fault, digital RX LOS, power&data ready) | Optional Status and Control Bits                                  |
 | 111     | 1    | Reserved                          | `0x00`                                                                                      | Reserved                                                          |
-| 112-113 | 2    | Alarm Flags                       | `0x01 0x40`                                                                                 | Diagnostic Alarm Flag Status Bits                                 |
+| 112-113 | 2    | Alarm Flags                       | Supported                                                                                   | Diagnostic Alarm Flag Status Bits                                 |
 | 114     | 1    | Tx Input EQ control               | `0xFF` (No support)                                                                         | Tx Input equalization level control                               |
 | 115     | 1    | Rx Out Emphasis control           | `0xFF` (No support)                                                                         | Rx Output emphasis level control                                  |
-| 116-117 | 2    | Warning Flags                     | `0x01 0x40`                                                                                 | Diagnostic Warning Flag Status Bits                               |
+| 116-117 | 2    | Warning Flags                     | Supported                                                                                   | Diagnostic Warning Flag Status Bits                               |
 | 118-119 | 2    | Ext Status/Control                | `0x00 0x00` (No support)                                                                    | Extended module control and status bytes                          |
 |         |      | **GENERAL USE FIELDS**            |                                                                                             |                                                                   |
 | 120-126 | 7    | Vendor Specific                   | `0x70 0x00 0x00 0x00 0x00 0x00 0x00`                                                        | Vendor specific memory addresses                                  |
@@ -469,16 +536,13 @@ The FS GPON-ONU-34-20BI stores the content of the emulated EEPROM in U-Boot env 
 
 {% include alert.html content="For more information, see the SFF-8472 Rev 11.0 specification." alert="Info" icon="svg-info" color="blue" %}
 
-## List of firmwares and files
-- [6BA1896SPLQA13 MTD0/U-Boot](https://mega.nz/file/wptjyYiS#Xj3cijX2bN0FexsZr1Wn7iRG0Wy4Z8vX0NyNBd1kBWo){: .btn } md5hash: 992b31a67c644aa68cf7f9caf956b1f9
-- [6BA1896SPLQA13 MTD2/Image0](https://mega.nz/file/1kUlUbgQ#ANS9qH6wCggYshsQ3STD6gxmR_3TL-5MXfdCl5s50Nk){: .btn } md5hash: 5d46a9acc3c5ba8710887aa32b82aeb4
-- [6BA1896SPLQA42 MTD0/U-Boot](https://mega.nz/file/FkswHbgL#s7-vaH65EPQ2O5vKeD3bU1_RPwzaKPOJdrCWvPQqDvc){: .btn } md5hash: 992b31a67c644aa68cf7f9caf956b1f9
-- [6BA1896SPLQA42 MTD2/Image0](https://mega.nz/file/AgshDICC#md1vLN14JBF3iaNoZBqQH_zwALHmEaOk3_rDm1FfOic){: .btn } md5hash: 04533554bb0c8b997697fbc048159002
-
-# Known Bugs
 # Miscellaneous Links
 
 - [FS.com](https://www.fs.com/it/products/133619.html)
 - [General setting of lantiq](https://forum.fibra.click/d/23881-ma5671a-e-vodafone-25-gbps/64)
 - [Usage GPON module SFP in Spain](https://forum.mikrotik.com/viewtopic.php?t=116364&start=300)
 - [SourcePhotonics SPS-34-24T-HP-TDFO Datasheet](https://www.sourcephotonics.com/wp-content/uploads/2017/08/DS-8085-02_SPS-34-24T-HP-TDFO.pdf)
+
+---
+
+[^subunit]: The subunit are 10000 times smaller than the specified unit
