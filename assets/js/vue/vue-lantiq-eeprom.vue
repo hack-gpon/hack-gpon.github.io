@@ -269,19 +269,22 @@ export default {
                         "address": "92",
                         "size": "1",
                         "name": "Diagnostic Monitoring Type",
-                        "description": "Indicates which type of diagnostic monitoring is implemented"
+                        "description": "Indicates which type of diagnostic monitoring is implemented",
+                        "parse":"table_3_9"
                     },
                     {
                         "address": "93",
                         "size": "1",
                         "name": "Enhanced Options",
-                        "description": "Indicates which optional enhanced features are implemented"
+                        "description": "Indicates which optional enhanced features are implemented",
+                        "parse":"table_3_10"
                     },
                     {
                         "address": "94",
                         "size": "1",
                         "name": "SFF-8472 Compliance",
-                        "description": "Indicates which revision of SFF-8472 the transceiver complies with"
+                        "description": "Indicates which revision of SFF-8472 the transceiver complies with",
+                        "parse":"table_3_12"
                     },
                     {
                         "address": "95",
@@ -641,7 +644,8 @@ export default {
                         "address": "110",
                         "size": "1",
                         "name": "Status/Control",
-                        "description": "Optional Status and Control Bits"
+                        "description": "Optional Status and Control Bits",
+                        "parse": "table_3_17"
                     },
                     {
                         "address": "111",
@@ -653,7 +657,8 @@ export default {
                         "address": "112-113",
                         "size": "2",
                         "name": "Alarm Flags",
-                        "description": "Diagnostic Alarm Flag Status Bits"
+                        "description": "Diagnostic Alarm Flag Status Bits",
+                        "parse": "table_3_18"
                     },
                     {
                         "address": "114",
@@ -671,7 +676,8 @@ export default {
                         "address": "116-117",
                         "size": "2",
                         "name": "Warning Flags",
-                        "description": "Diagnostic Warning Flag Status Bits"
+                        "description": "Diagnostic Warning Flag Status Bits",
+                        "parse": "table_3_18"
                     },
                     {
                         "address": "118-119",
@@ -1065,6 +1071,18 @@ export default {
         hexToSerial: function (hex) {
             if(hex) return this.hexToAscii(hex.substring(0,8))+hex.substring(8);
         },
+        flagDecoder: function(element, table, not_table) {
+            var list = []
+            var flags = parseInt(element, 16)
+            for(const [key, value] of Object.entries(table)) {
+                if(flags & key) {
+                    list.push(value)
+                } else if(not_table && not_table[key]) {
+                    list.push(not_table[key])
+                }
+            }
+            return list;
+        },
         table_3_2: function (hex) {
             var table = {
                 "03":"SFP",
@@ -1102,6 +1120,77 @@ export default {
                 "04":"Manchester",
                 "05":"SONET Scrambled",
                 "06":"64B/66B",
+            }
+            return table[hex] ?? "Unallocated";
+        },
+        table_3_17: function(hex) {
+            var table = {
+                128:"TX Disable State",
+                64:"Soft TX Disable",
+                32:"RS(1) State",
+                16:"Rate Select State",
+                8:"Soft Rate Select",
+                4:"TX Fault",
+                2:"LOS",
+                1:"Data_Ready_Bar"
+            }
+            return this.flagDecoder(hex, table)?.join(', ');
+        },
+        table_3_18: function(hex) {
+            var table = [{
+                128:"Temp High",
+                64:"Temp Low",
+                32:"Vcc High",
+                16:"Vcc Low",
+                8:"TX Bias High",
+                4:"TX Bias Low",
+                2:"TX Power High",
+                1:"TX Power Low"
+            },{
+                128:"RX Power High",
+                64:"RX Power Low",
+            }]
+            return this.chunk(hex)?.flatMap((element, index) => this.flagDecoder(element, table[index]))?.join(', ');          
+        },
+        table_3_9: function(hex) {
+            var table = {
+                64:"Digital diagnostic monitoring implemented",
+                32:"Internally calibrated",
+                16:"Externally calibrated",
+                8:"Received power measurement type: average power",
+                4:"Address change required"
+            }
+            var not_table = {
+                128:"Reserved for legacy diagnostic implementations",
+                8:"Received power measurement type: OMA",
+                4:"Address change required"
+            }
+            return this.flagDecoder(hex, table, not_table)?.join(', ');
+        },
+        table_3_10: function(hex) {
+            var table = {
+                128:"Alarm/warning flags implemented for all monitored quantities",
+                64:"Soft TX_DISABLE control and monitoring implemented",
+                32:"Soft TX_FAULT monitoring implemented",
+                16:"Soft RX_LOS monitoring implemented",
+                8:"Soft RATE_SELECT control and monitoring implemented",
+                4:"Application Select control implemented per SFF-8079",
+                2:"Rate Select control implemented per SFF-8431"
+            }
+            return this.flagDecoder(hex, table)?.join(', ');
+        },
+        table_3_12: function(hex) {
+            var table = {
+                "00":"Digital diagnostic functionality not included or undefined.",
+                "01":"Rev 9.3 of SFF-8472.",
+                "02":"Rev 9.5 of SFF-8472.",
+                "03":"Rev 10.2 of SFF-8472.",
+                "04":"Rev 10.4 of SFF-8472.",
+                "05":"Rev 11.0 of SFF-8472.",
+                "06":"Rev 11.3 of SFF-8472.",
+                "07":"Rev 11.4 of SFF-8472.",
+                "08":"Rev 12.3 of SFF-8472.",
+                "09":"Rev 12.4 of SFF-8472.",
             }
             return table[hex] ?? "Unallocated";
         },
