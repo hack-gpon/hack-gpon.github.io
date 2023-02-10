@@ -412,26 +412,26 @@ The FS GPON-ONU-34-20BI stores the content of the emulated EEPROM in U-Boot env 
 | address | size | name                              | default value                                                                               | description                                                       |
 | ------- | ---- | --------------------------------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
 |         |      | **DIAGNOSTIC AND CONTROL FIELDS** |                                                                                             |                                                                   |
-| 0-1     | 2    | Temp High Alarm                   | `0x5F 0x00` (95℃)                                                                           |                                                                   |
-| 2-3     | 2    | Temp Low Alarm                    | `0xCE 0x00` (-50℃)                                                                          |                                                                   |
-| 4-5     | 2    | Temp High Warning                 | `0x5A 0x00` (90℃)                                                                           |                                                                   |
-| 6-7     | 2    | Temp Low Warning                  | `0xD3 0x00` (-45℃)                                                                          |                                                                   |
-| 8-9     | 2    | Voltage High Alarm                | `0x8C 0xA0` (3.6V)                                                                          |                                                                   |
-| 10-11   | 2    | Voltage Low Alarm                 | `0x75 0x30` (3.0V)                                                                          |                                                                   |
-| 12-13   | 2    | Voltage High Warning              | `0x88 0xB8` (3.5V)                                                                          |                                                                   |
-| 14-15   | 2    | Voltage Low Warning               | `0x79 0x18` (3.1V)                                                                          |                                                                   |
-| 16-17   | 2    | Bias High Alarm                   | `0xAF 0xC8` (90mA)                                                                          |                                                                   |
-| 18-19   | 2    | Bias Low Alarm                    | `0x00 0x00` (0mA)                                                                           |                                                                   |
-| 20-21   | 2    | Bias High Warning                 | `0x88 0xB8` (70mA)                                                                          |                                                                   |
-| 22-23   | 2    | Bias Low Warning                  | `0x00 0x00` (0mA)                                                                           |                                                                   |
-| 24-25   | 2    | TX Power High Alarm               | `0xF6 0x77` (8dBm)                                                                          | Value expressed in watts subunits                                 |
-| 26-27   | 2    | TX Power Low Alarm                | `0x15 0xF7` (-2.5dBm)                                                                       | Value expressed in watts subunits                                 |
-| 28-29   | 2    | TX Power High Warning             | `0xC3 0xC6` (7dBm)                                                                          | Value expressed in watts subunits                                 |
-| 30-31   | 2    | TX Power Low Warning              | `0x1B 0xA7` (-1.5dBm)                                                                       | Value expressed in watts subunits                                 |
-| 32-33   | 2    | RX Power High Alarm               | `0x0C 0x5A` (-5dBm)                                                                         | Value expressed in watts subunits                                 |
-| 34-35   | 2    | RX Power Low Alarm                | `0x00 0x08` (-31dBm)                                                                        | Value expressed in watts subunits                                 |
-| 36-37   | 2    | RX Power High Warning             | `0x09 0xCF` (-6dBm)                                                                         | Value expressed in watts subunits                                 |
-| 38-39   | 2    | RX Power Low Warning              | `0x00 0x0A` (-30dBm)                                                                        | Value expressed in watts subunits                                 |
+| 0-1     | 2    | Temp High Alarm                   | `0x5F 0x00` (95℃)                                                                           | Value expressed in two's complement                               |
+| 2-3     | 2    | Temp Low Alarm                    | `0xCE 0x00` (-50℃)                                                                          | Value expressed in two's complement                               |
+| 4-5     | 2    | Temp High Warning                 | `0x5A 0x00` (90℃)                                                                           | Value expressed in two's complement                               |
+| 6-7     | 2    | Temp Low Warning                  | `0xD3 0x00` (-45℃)                                                                          | Value expressed in two's complement                               |
+| 8-9     | 2    | Voltage High Alarm                | `0x8C 0xA0` (3.6V)                                                                          | Value expressed in volt subunits[^subunit]                        |
+| 10-11   | 2    | Voltage Low Alarm                 | `0x75 0x30` (3.0V)                                                                          | Value expressed in volt subunits[^subunit]                        |
+| 12-13   | 2    | Voltage High Warning              | `0x88 0xB8` (3.5V)                                                                          | Value expressed in volt subunits[^subunit]                        |
+| 14-15   | 2    | Voltage Low Warning               | `0x79 0x18` (3.1V)                                                                          | Value expressed in milliampere subunits[^subunit]                 |
+| 16-17   | 2    | Bias High Alarm                   | `0xAF 0xC8` (90mA)                                                                          | Value expressed in milliampere subunits[^subunit]                 |
+| 18-19   | 2    | Bias Low Alarm                    | `0x00 0x00` (0mA)                                                                           | Value expressed in milliampere subunits[^subunit]                 |
+| 20-21   | 2    | Bias High Warning                 | `0x88 0xB8` (70mA)                                                                          | Value expressed in milliampere subunits[^subunit]                 |
+| 22-23   | 2    | Bias Low Warning                  | `0x00 0x00` (0mA)                                                                           | Value expressed in milliampere subunits[^subunit]                 |
+| 24-25   | 2    | TX Power High Alarm               | `0xF6 0x77` (8dBm)                                                                          | Value expressed in watts subunits[^subunit]                       |
+| 26-27   | 2    | TX Power Low Alarm                | `0x15 0xF7` (-2.5dBm)                                                                       | Value expressed in watts subunits[^subunit]                       |
+| 28-29   | 2    | TX Power High Warning             | `0xC3 0xC6` (7dBm)                                                                          | Value expressed in watts subunits[^subunit]                       |
+| 30-31   | 2    | TX Power Low Warning              | `0x1B 0xA7` (-1.5dBm)                                                                       | Value expressed in watts subunits[^subunit]                       |
+| 32-33   | 2    | RX Power High Alarm               | `0x0C 0x5A` (-5dBm)                                                                         | Value expressed in watts subunits[^subunit]                       |
+| 34-35   | 2    | RX Power Low Alarm                | `0x00 0x08` (-31dBm)                                                                        | Value expressed in watts subunits[^subunit]                       |
+| 36-37   | 2    | RX Power High Warning             | `0x09 0xCF` (-6dBm)                                                                         | Value expressed in watts subunits[^subunit]                       |
+| 38-39   | 2    | RX Power Low Warning              | `0x00 0x0A` (-30dBm)                                                                        | Value expressed in watts subunits[^subunit]                       |
 | 40-45   | 6    | MAC address                       | Unique in each SFP                                                                          | Contains the mac address of the SFP, it could also be empty       |
 | 46-55   | 10   | Reserved                          | `0x00 0x00 0x00...`                                                                         | Reserved                                                          |
 | 56-59   | 4    | RX_PWR(4) Calibration             | `0x00 0x00 0x00 0x00`                                                                       | 4th order RSSI calibration coefficient                            |
@@ -462,10 +462,10 @@ The FS GPON-ONU-34-20BI stores the content of the emulated EEPROM in U-Boot env 
 | 106-109 | 4    | Optional Diagnostics              | `0xFF 0xFF 0xFF 0xFF` (No support)                                                          | Monitor Data for Optional Laser temperature and TEC current       |
 | 110     | 1    | Status/Control                    | `0x82` (Soft TX disable, disable laser, digital TX fault, digital RX LOS, power&data ready) | Optional Status and Control Bits                                  |
 | 111     | 1    | Reserved                          | `0x00`                                                                                      | Reserved                                                          |
-| 112-113 | 2    | Alarm Flags                       | `0x01 0x40`                                                                                 | Diagnostic Alarm Flag Status Bits                                 |
+| 112-113 | 2    | Alarm Flags                       | Supported                                                                                   | Diagnostic Alarm Flag Status Bits                                 |
 | 114     | 1    | Tx Input EQ control               | `0xFF` (No support)                                                                         | Tx Input equalization level control                               |
 | 115     | 1    | Rx Out Emphasis control           | `0xFF` (No support)                                                                         | Rx Output emphasis level control                                  |
-| 116-117 | 2    | Warning Flags                     | `0x01 0x40`                                                                                 | Diagnostic Warning Flag Status Bits                               |
+| 116-117 | 2    | Warning Flags                     | Supported                                                                                   | Diagnostic Warning Flag Status Bits                               |
 | 118-119 | 2    | Ext Status/Control                | `0x00 0x00` (No support)                                                                    | Extended module control and status bytes                          |
 |         |      | **GENERAL USE FIELDS**            |                                                                                             |                                                                   |
 | 120-126 | 7    | Vendor Specific                   | `0x70 0x00 0x00 0x00 0x00 0x00 0x00`                                                        | Vendor specific memory addresses                                  |
@@ -508,10 +508,13 @@ FALCON => saveenv
 - [6BA1896SPLQA42 MTD0/U-Boot](https://mega.nz/file/FkswHbgL#s7-vaH65EPQ2O5vKeD3bU1_RPwzaKPOJdrCWvPQqDvc){: .btn } md5hash: 992b31a67c644aa68cf7f9caf956b1f9
 - [6BA1896SPLQA42 MTD2/Image0](https://mega.nz/file/AgshDICC#md1vLN14JBF3iaNoZBqQH_zwALHmEaOk3_rDm1FfOic){: .btn } md5hash: 04533554bb0c8b997697fbc048159002
 
-# Known Bugs
 # Miscellaneous Links
 
 - [FS.com](https://www.fs.com/it/products/133619.html)
 - [General setting of lantiq](https://forum.fibra.click/d/23881-ma5671a-e-vodafone-25-gbps/64)
 - [Usage GPON module SFP in Spain](https://forum.mikrotik.com/viewtopic.php?t=116364&start=300)
 - [SourcePhotonics SPS-34-24T-HP-TDFO Datasheet](https://www.sourcephotonics.com/wp-content/uploads/2017/08/DS-8085-02_SPS-34-24T-HP-TDFO.pdf)
+
+---
+
+[^subunit]: The subunit are 10000 times smaller than the specified unit
