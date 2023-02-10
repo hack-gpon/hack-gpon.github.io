@@ -150,8 +150,12 @@ sfp_i2c -i7 -s "YOUR_VENDOR_ID"
 
 ## Changing ONU hardware version (ME 256)
 ```sh
-cp /etc/mibs/data_1g_8q.ini /etc/mibs/data_1g_8q.ini.bak
-sed 's/256 0 HWTC 0000000000000/256 0 YOUR_VENDOR_ID YOUR_ONU_VERSION/' -i /etc/mibs/data_1g_8q.ini
+sed 's/256 0 HWTC 0000000000000/256 0 YOUR_VENDOR_ID YOUR_ONU_VERSION/' /rom/etc/mibs/data_1g_8q.ini > /etc/mibs/data_1g_8q.ini
+```
+
+## Restore the default ONU hardware version (ME 256)
+```sh
+cat /rom/etc/mibs/data_1g_8q.ini > /etc/mibs/data_1g_8q.ini
 ```
 
 ## Enabling `data_1g_8q_us1280_ds512.ini` OMCI MIB file for 2500 Mbps profiles
