@@ -174,28 +174,20 @@ fw_setenv nDyingGaspEnable 0
 
 ## Getting/Setting Speed LAN Mode
 
-| Velue | Speed                              |
-| ----- | ---------------------------------- |
-| 4     | 1 Gbps / SGMII                     |
-| 5     | 2.5 Gbps / HSGMII with auto-neg on |
-
-To enable the 2.5 Gbps / HSGMII with auto-neg on:
-
-```sh
-fw_setenv sgmii_mode 5
-```
-
-To remove the value (back to default):
-```sh
-fw_setenv sgmii_mode
-```
-
-To get the (H)SGMII Mode:
+To get the LAN Mode:
 
 ```sh
 onu lanpsg 0
 ```
 The `link_status` variable tells the current speed
+
+| Value (for `sgmii_mode` and `link_status`) | Speed                              |
+| ------------------------------------------ | ---------------------------------- |
+| 3                                          | 1 Gbps / SGMII with auto-neg on    |
+| 4                                          | 1 Gbps / SGMII with auto-neg off   |
+| 5                                          | 2.5 Gbps / HSGMII with auto-neg on |
+
+To change the default lan mode value you can use `fw_setenv sgmii_mode`. The firmware already has the value 5 by default and it is generally not necessary to change it.
 
 ## Querying a particular OMCI ME
 ```sh
