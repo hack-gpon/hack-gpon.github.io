@@ -819,6 +819,12 @@ export default {
             set(val) {
                 var sfp_a2_info_arr = val.split('@');
                 this.sfp_a2_info_0 = sfp_a2_info_arr.shift();
+                if(this.sfp_a2_info_0.includes("sfp_a2_info")) {
+                    this.eeprom_switch = 1;
+                }
+                else if(this.sfp_a2_info_0.includes("sfp_a0_low_128")) {
+                    this.eeprom_switch = 0;
+                }
                 this.sfp_a2_info_last = sfp_a2_info_arr.slice(-2);
                 var sfp_a2_decode = sfp_a2_info_arr.map(it => this.base64ToHex(it)).join('');
                 this.the_eeprom = [...sfp_a2_decode];
