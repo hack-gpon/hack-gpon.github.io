@@ -66,6 +66,13 @@ To remove the value (back to default):
 fw_setenv sgmii_mode
 ```
 
+To get the (H)SGMII Mode:
+
+```sh
+onu lanpsg 0
+```
+The `link_status` variable tells the current speed
+
 ## Querying a particular OMCI ME
 ```sh
 omci_pipe.sh meg MIB_IDX ME_IN
