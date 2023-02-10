@@ -57,12 +57,138 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 
 {% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
 
+## List of partitions
+
+| dev   | size     | erasesize | name          |
+| ----- | -------- | --------- | ------------- |
+| mtd0  | 00040000 | 00010000  | "uboot"       |
+| mtd1  | 00080000 | 00010000  | "uboot_env"   |
+| mtd2  | 00600000 | 00010000  | "linux"       |
+| mtd3  | 004d81b6 | 00010000  | "rootfs"      |
+| mtd4  | 000b0000 | 00010000  | "rootfs_data" |
+| mtd5  | 00600000 | 00010000  | "image1"      |
+| mtd6  | 00100000 | 00010000  | "configfs"    |
+| mtd7  | 00210000 | 00010000  | "logfs"       |
+| mtd8  | 00010000 | 00010000  | "ri"          |
+| mtd9  | 00010000 | 00010000  | "sfp"         |
+| mtd10 | 00010000 | 00010000  | "ribackup"    |
+
+
 # General Settings and Useful Commands
+
+
+## Getting and Setting S/N
+To check the current serial number:
+```sh
+onu gtcsng
+```
+
+To set the current serial number:
+```sh
+ritool set MfrID ABCD
+ritool set G984Serial 012345678
+```
+
+## Getting and Setting PLOAM Password
+To check the current password (the password field contains decimal values of ASCII characters):
+```sh
+onu gtccg
+```
+
+The value can be changed using the web interface.
+
 
 ##  Disabling Dying Gasp
 ```sh
 uci set gpon.gtc.nDyingGaspEnable='0'; uci commit gpon
 ```
+
+## Rebooting the ONU
+```sh
+reboot
+```
+
+## Checking whether the connection with the OLT was successful (O5 state)
+
+```sh
+onu ploamsg
+```
+
+## Transferring files to the stick
+
+{% include alert.html content="If you use a modern OpenSSH version (e.g. >= 8.8) you will have to use the legacy protocol and enable some deprecated algorithms: scp `-oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss [...]`" alert="Info" icon="svg-info" color="blue" %}
+
+```sh
+# scp rootfs.bin root@192.168.1.10:/tmp/
+```
+
+## Backup of all partition
+
+Make a backup of all partitions, an easy way is:
+- On the stick run:
+```sh
+cat /proc/mtd
+```
+- For each mtdX run in the lantiq shell:
+```sh
+cp /dev/mtdX /tmp
+```
+
+{% include alert.html content="If you use a modern OpenSSH version (e.g. >= 8.8) you will have to use the legacy protocol and enable some deprecated algorithms: `scp -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss [...]`" alert="Info" icon="svg-info" color="blue" %}
+
+And in the computer shell:
+```sh
+scp ONTUSER@192.168.1.10:/tmp/mtdX ./
+```
+
+## Checking the currently active image
+
+```sh
+upgradestatus
+```
+
+## Flashing a new rootfs via SSH
+
+{% include alert.html content="Only the inactive image can be flashed" alert="Info" icon="svg-info" color="blue" %}
+
+The following commands are used to flash a new rootfs to image1 and then boot to it
+```sh
+mtd write /tmp/rootfs.bin image1
+update_env_flag 1
+reboot
+```
+
+## Getting/Setting Speed LAN Mode
+
+| Velue | Speed                              |
+| ----- | ---------------------------------- |
+| 4     | 1 Gbps / SGMII                     |
+| 5     | 2.5 Gbps / HSGMII with auto-neg on |
+
+To enable the 2.5 Gbps / HSGMII with auto-neg on:
+
+```sh
+fw_setenv sgmii_mode 5
+```
+
+To remove the value (back to default):
+```sh
+fw_setenv sgmii_mode
+```
+
+To get the (H)SGMII Mode:
+
+```sh
+onu lanpsg 0
+```
+The `link_status` variable tells the current speed
+
+## Querying a particular OMCI ME
+```sh
+omci_pipe.sh meg MIB_IDX ME_IN
+```
+Where `MIB_IDX` is the MIB ID and the `ME_IN` is the ME instance number
+
 
 # HW Modding
 
