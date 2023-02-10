@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" placeholder="eeprom" id="eeprom" v-model="eeprom">
+            <input type="text" class="form-control" placeholder="EEPROM input" id="eeprom" v-model="eeprom">
             <label for="eeprom">EEPROM input</label>
         </div>
         <template v-if="type === 'eeprom-print'">
@@ -10,7 +10,7 @@
                     <option value="0">EEPROM A0</option>
                     <option value="1">EEPROM A2</option>
                 </select>
-                <label for="eeprom-type">GPON Ploam/LoID Switch</label>
+                <label for="eeprom-type">Select EEPROM A0 or A2</label>
             </div>
             <table>
                 <tr>
