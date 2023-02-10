@@ -166,10 +166,15 @@ fw_printenv ethaddr
 onu ploamsg
 ```
 
-# Disabling dying gasp
+## Disabling dying gasp
 
 ```sh
 fw_setenv nDyingGaspEnable 0 
+```
+
+## Querying a particular OMCI ME
+```sh
+omci_pipe.sh meg MIB_IDX 0
 ```
 
 # Miscellaneous Links

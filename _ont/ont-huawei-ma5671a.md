@@ -242,7 +242,6 @@ FALCON => sf probe 0 && sf erase C0000 740000 && sf write 80800000 C0000 740000 
 
 {% include alert.html content="If you need to flash to image 2, you must use the following command `FALCON => sf probe 0 && sf erase 800000 800000 && sf write 80800000 800000 800000 && reset`" alert="Warning" icon="svg-warning" color="red" %}
 
-
 # EEPROM (I2C slave simulated EEPROM)
 The Huawei MA5671A does not have a physical EEPROM, the Falcon SOC emulates an EEPROM by exposing it on the I2C interface as required by the SFF-8472 specification.
 

@@ -377,6 +377,12 @@ FALCON => setenv asc0 0
 FALCON => saveenv
 ```
 
+
+## Querying a particular OMCI ME
+```sh
+omci_pipe.sh meg MIB_IDX 0
+```
+
 # EEPROM (I2C slave simulated EEPROM)
 The FS GPON-ONU-34-20BI does not have a physical EEPROM, the Falcon SOC emulates an EEPROM by exposing it on the I2C interface as required by the SFF-8472 specification.
 

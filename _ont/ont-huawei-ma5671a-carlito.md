@@ -65,3 +65,7 @@ To remove the value (back to default):
 ```sh
 fw_setenv sgmii_mode
 ```
+## Querying a particular OMCI ME
+```sh
+omci_pipe.sh meg MIB_IDX 0
+```
