@@ -50,12 +50,12 @@ fw_printenv target=oem-generic
 
 ## Getting/Setting Speed LAN Mode
 
-| Velue | Speed    |
-| ----- | -------- |
-| 4     | 1 Gbps   |
-| 5     | 2.5 Gbps |
+| Velue | Speed                              |
+| ----- | ---------------------------------- |
+| 4     | 1 Gbps / SGMII                     |
+| 5     | 2.5 Gbps / HSGMII with auto-neg on |
 
-To set the (H)SGMII Mode:
+To enable the 2.5 Gbps / HSGMII with auto-neg on:
 
 ```sh
 fw_setenv sgmii_mode 5
@@ -65,7 +65,9 @@ To remove the value (back to default):
 ```sh
 fw_setenv sgmii_mode
 ```
+
 ## Querying a particular OMCI ME
 ```sh
-omci_pipe.sh meg MIB_IDX 0
+omci_pipe.sh meg MIB_IDX ME_IN
 ```
+Where `MIB_IDX` is the MIB ID and the `ME_IN` is the ME instance number

@@ -377,11 +377,29 @@ FALCON => setenv asc0 0
 FALCON => saveenv
 ```
 
+## Getting/Setting Speed LAN Mode
+
+| Velue | Speed                              |
+| ----- | ---------------------------------- |
+| 4     | 1 Gbps / SGMII                     |
+| 5     | 2.5 Gbps / HSGMII with auto-neg on |
+
+To enable the 2.5 Gbps / HSGMII with auto-neg on:
+
+```sh
+fw_setenv sgmii_mode 5
+```
+
+To remove the value (back to default):
+```sh
+fw_setenv sgmii_mode
+```
 
 ## Querying a particular OMCI ME
 ```sh
-omci_pipe.sh meg MIB_IDX 0
+omci_pipe.sh meg MIB_IDX ME_IN
 ```
+Where `MIB_IDX` is the MIB ID and the `ME_IN` is the ME instance number
 
 # EEPROM (I2C slave simulated EEPROM)
 The FS GPON-ONU-34-20BI does not have a physical EEPROM, the Falcon SOC emulates an EEPROM by exposing it on the I2C interface as required by the SFF-8472 specification.
