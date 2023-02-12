@@ -84,8 +84,7 @@ try:
             ser.write('setenv asc0 0\n'.encode())
             time.sleep(1)
             print('[+] Transfer command sequence 4')
-            ser.write(
-                'gpio set 3;gpio input 2;gpio input 105;gpio input 106;gpio input 107;gpio input 108"\n'.encode())
+            ser.write('setenv preboot "gpio set 3;gpio input 2;gpio input 105;gpio input 106;gpio input 107;gpio input 108"\n'.encode())
             time.sleep(1)
             print('[+] Transfer command sequence 5')
             ser.write('saveenv\n'.encode())
