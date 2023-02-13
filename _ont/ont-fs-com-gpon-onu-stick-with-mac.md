@@ -120,6 +120,9 @@ For more info [XPONos partition layout](https://github.com/XPONos/linux_lantiq-f
 
 # General Settings and Useful Commands
 
+{% include alert.html content=" The following commands concern version 6BA1896SPLQA42, to get the commands for version 6BA1896SPLQA41 please look at page [Carlito Firmware](/ont-huawei-ma5671a-carlito)." alert="Note" icon="svg-info" color="blu" %}
+
+
 ## Bootloader unlock from shell
 {% include alert.html content="It is strongly recommended that you unlock the bootloader before making any major changes to the firmware." alert="Warning"  icon="svg-warning" color="yellow" %}
 ```sh
@@ -171,24 +174,11 @@ sfp_i2c -g
 ```
 
 ## Setting PLOAM Password
-Software 6BA1896SPLQA41 and earlier (See [Carlito Firmware](/ont-huawei-ma5671a-carlito))
-```sh
-fw_setenv nPassword "0x30 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39"
-```
-
-Software 6BA1896SPLQA42 and after:
 ```sh
 sfp_i2c -i11 -s "1234567890"
 ```
 
 ## Setting LOID and Checkcode Password
-Software 6BA1896SPLQA41 and earlier (See [Carlito Firmware](/ont-huawei-ma5671a-carlito))
-```sh
-fw_setenv omci_loid 1234567890
-fw_setenv omci_lpwd password01
-```
-
-Software 6BA1896SPLQA42 and after:
 ```sh
 sfp_i2c -i9 -s "1234567890"
 sfp_i2c -i10 -s "password01"
