@@ -33,7 +33,7 @@ layout: default
 
 
 ```shell
-fw_setenv sfp_a2_info ($cat /tmp/sfp_a2.txt)
+fw_setenv sfp_a2_info $(cat /tmp/sfp_a2.txt)
 ```
 
 ## Temporary file procedure
