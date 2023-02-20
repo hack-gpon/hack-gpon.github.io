@@ -15,8 +15,8 @@ alias: HiSense LTE3415-SCA+
 | ODM              | HiSense                                         |
 | ODM Product Code | LTE3415-SCA+                                    |
 | Chipset          | Realtek RTL9601B                                |
-| Flash            | 32 MB                                           |
-| RAM              |                                                 |
+| Flash            | 32MB                                            |
+| RAM              | 16MB                                            |
 | System           | Linux (Luna SDK 1.9)                            |
 | HSGMII           | No                                              |
 | Optics           | SC/APC                                          |
