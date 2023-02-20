@@ -15,11 +15,11 @@ alias: HiSense LTE3415-SH+
 | ODM              | HiSense                                         |
 | ODM Product Code | LTE3415-SH+                                     |
 | Chipset          | Realtek RTL9601CI                               |
-| Flash            | 256 MB                                          |
-| RAM              |                                                 |
+| Flash            | 128MB                                           |
+| RAM              | 32MB                                            |
 | System           | Linux 2.6 (Luna SDK 1.9)                        |
 | HSGMII           | Yes, but not working with stock firmware        |
-| Optics           |                                                 |
+| Optics           | SC/APC                                          |
 | IP address       | 192.168.2.1                                     |
 | Web Gui          | Can be enabled, user `admin`, password `system` |
 | SSH              | No                                              |
