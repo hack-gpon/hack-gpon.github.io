@@ -18,6 +18,18 @@ layout: default
 | SGMII    | ✅                     |
 | Type     | Router                 |
 
+# Flashing a no-brand firmware or firmware downgrade.
+
+1. access via ssh to the router with admin user (admin password is printed on the back of the router)
+2. Disable firmware version and modelcheck by running the following commands
+```
+zycli fwidcheck off
+zycli modelcheck off
+```
+3. You can close the ssh console, do not reboot the router
+4. Open the router web interface and in the maintenance/firmware upgrade section select the "Restore Default Settings After Firmware Upgrade" option.
+5. Select choose file to select the firmware file you want to upload and click Upload.
+6. The router will automatically reboot and should get back up on 192.168.1.1
 
 # Miscellaneous Links
 
