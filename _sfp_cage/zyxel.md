@@ -32,11 +32,14 @@ zycli modelcheck off
 6. The router will automatically reboot and should get back up on 192.168.1.1
 
 # FW No-Brand Version V5.70(ACDZ.0)C0 compiled from Zyxel provided OpenSource package.
-The following is a firmware compiled starting from Zyxel provided OpenSource package. 
+The following is a firmware compiled starting from Zyxel provided OpenSource package under GPL license.
+
+- [source GPL package V5.70(ACDZ.0)C0](https://mega.nz/file/nVB0wSbK#m-csIaAJ5RTLGhCMy7OnkwNI4EwUS_n72WpXSNl8QU8)
+
 
 --- Use at your own risk!!!! ---
 
-- [FW No-Brand Version V5.70(ACDZ.0)C0](https://mega.nz/file/7FZlWTzQ#F8Q_whoW4h1ETRUAzHe4PXIiK6TVj7uay_OtZxfmR6k)
+- [Firmware image No-Brand Version V5.70(ACDZ.0)C0](https://mega.nz/file/7FZlWTzQ#F8Q_whoW4h1ETRUAzHe4PXIiK6TVj7uay_OtZxfmR6k)
 
 --- Use at your own risk!!!! ---
 
