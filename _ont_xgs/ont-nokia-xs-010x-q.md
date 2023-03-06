@@ -20,9 +20,9 @@ parent: Nokia
 | System           |           |
 | 10GBaseT         | Yes       |
 | Optics           |           |
-| IP address       |           |
-| Web Gui          |           |
-| SSH              |           |
-| Telnet           |           |
+| IP address       | 192.168.100.1 |
+| Web Gui          | Yes       |
+| SSH              | No        |
+| Telnet           | Yes, port 23 |
 | Serial           |           |
 | Form Factor      | ONT       |
