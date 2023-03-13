@@ -40,7 +40,7 @@ parent: ZTE
 
 ## Enable password
 
-{% include alert.html content="The following enable password is used to enter GponCLI, but currently in the models distributed in Italy by TIM and OpenFiber there is no way to enter GponCLI either by SSH, Telnet or Serial. The enable password is not needed to enter the Web Gui." alert="Note" icon="svg-info" color="blue" %}
+{% include alert.html content="The following enable password is used to enter GponCLI, but currently in the models distributed in Italy by TIM and OpenFiber there is no way to enter GponCLI either by SSH, Telnet or Serial. The enable password is not useful for entering the Web Gui." alert="Note" icon="svg-info" color="blue" %}
 
 You can use this tool to generate the enable password:
 
