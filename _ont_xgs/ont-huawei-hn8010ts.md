@@ -7,7 +7,6 @@ parent: Huawei
 
 # Hardware Specifications
 
-|             |          |
 | ----------- | --------------------------------------------------------------- |
 | Vendor      | Huawei                                                          |
 | Model       | HN8010Ts                                                        |
