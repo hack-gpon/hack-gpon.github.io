@@ -8,7 +8,30 @@ parent: Huawei
 # Hardware Specifications
 
 |             |          |
-| ----------- | -------- |
+| ----------- | --------------------------------------------------------------- |
+| Vendor      | Huawei                                                          |
+| Model       | HN8010Ts                                                        |
+| Chipset     |                                                                 |
+| Chipset     | HiSilicon SD5117                                                |
+| Manufacter  |                                                                 |
+| Flash       |                                                                 |
+| RAM         |                                                                 |
+| System      |                                                                 |
+| Flash       | 128MB                                                           |
+| RAM         | 32MB                                                            |
+| System      | Dopra Linux                                                     |
+| 10GBaseT    | Yes                                                             |
+| Optics      |                                                                 |
+| IP address  |                                                                 |
+| Web Gui     |                                                                 |
+| Optics      | SC/APC                                                          |
+| IP address  | 192.168.100.1                                                   |
+| Web Gui     | ✅ user: `telecomadmin`, password: `admintelecom`               |
+| SSH         |                                                                 |
+| Telnet      |                                                                 |
+| Telnet      | After Enabling (via XML file) user: `root`, password: `adminHW` |
+| Serial      |                                                                 |
+| Form Factor | ONT                                                             |
 | Vendor      | Huawei   |
 | Model       | HN8010Ts |
 | Chipset     | HiSilicon SD5117  |
