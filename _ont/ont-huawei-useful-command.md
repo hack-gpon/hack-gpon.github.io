@@ -116,3 +116,6 @@ WAP>omcicmd mib show meid 257 instid 0
 
 success!
 ```
+
+*0x48473830 31304876 36* → *HG8010Hv6*
+
