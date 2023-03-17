@@ -25,10 +25,11 @@ reboot
 Remember that with each flash of this firmware it is always necessary to perform the procedure described above, otherwise the SFP will not work!
 
 # Login info
-|                  |                                                |
-| ---------------- | ---------------------------------------------- |
-| Username         | root                                           |
-| Password         | root                                           |
+
+|                    |                                                |
+| ------------------ | ---------------------------------------------- |
+| Username           | root                                           |
+| Password           | root                                           |
 | IP address	     | 192.168.1.10                                   |
 | Telnet    	     | Always available                               |
 | TTL Serial 	     | Always available                               |
@@ -185,4 +186,4 @@ fw_setenv sfp_vendor_data "YOUR_SFP_VENDOR_DATA"
 ```
 
 # List of firmwares and files
-- [6BA1896SPLQA42_MODDED_ver5.img]([https://mega.nz/file/wptjyYiS#Xj3cijX2bN0FexsZr1Wn7iRG0Wy4Z8vX0NyNBd1kBWo](https://mega.nz/file/g9MTxAzR#qSU-OB6SlAVOE97ajSnEP--UcsvurPkpraJPgds3r6g)){: .btn } md5hash: 63c02951d5c7ce5c83de54636368520f
+- [6BA1896SPLQA42_MODDED_ver5.img](https://mega.nz/file/g9MTxAzR#qSU-OB6SlAVOE97ajSnEP--UcsvurPkpraJPgds3r6g){: .btn } md5hash: 63c02951d5c7ce5c83de54636368520f
