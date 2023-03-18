@@ -5,6 +5,8 @@ parent: Huawei MA5671A
 layout: default
 ---
 
+{% include alert.html content="The following wiki is only compatible with version 5 or later!" alert="Note"  icon="svg-warning" color="red" %}
+
 # Flashing the firmware
 
 Flash the firmware image to image0 and image1 via [SSH](/ont-huawei-ma5671a/#flashing-a-new-rootfs-via-ssh) or via [TTL serial](/ont-huawei-ma5671a-ymodem) as usual.
