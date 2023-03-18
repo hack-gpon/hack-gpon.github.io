@@ -50,7 +50,7 @@ onu ploam_state_get
 otop -g s
 ```
 
-## Get the information of the OLT
+## Get information of the OLT
 ```sh
 omci_pipe.sh meg 131 0
 ```
