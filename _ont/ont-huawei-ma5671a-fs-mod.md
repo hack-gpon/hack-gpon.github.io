@@ -131,7 +131,7 @@ fw_setenv image1_version "YOUR_SW_VERSION_1"
 
 # Advanced settings
 
-{% include alert.html content="Normally they are not necessary and it would be better not to touch them" alert="Note"  icon="svg-warning" color="yellow" %}
+{% include alert.html content="Normally they are not necessary and it would be better not to touch them" alert="Note"  icon="svg-warning" color="red" %}
 
 ## Setting custom mib file
 You have to copy the MIB file to /etc/mibs and then run this command:
@@ -153,7 +153,7 @@ reboot
 
 # SFP EEPROM settings
 
-{% include alert.html content="Normally they are not necessary and it would be better not to touch them" alert="Note"  icon="svg-warning" color="yellow" %}
+{% include alert.html content="Normally they are not necessary and it would be better not to touch them" alert="Note"  icon="svg-warning" color="red" %}
 
 ## Setting SFP vendor name
 ```sh
