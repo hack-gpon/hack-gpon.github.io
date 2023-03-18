@@ -9,7 +9,7 @@ layout: default
 
 # Flashing the firmware
 
-Flash the firmware image to image0 and image1 via [SSH](/ont-huawei-ma5671a/#flashing-a-new-rootfs-via-ssh) or via [TTL serial](/ont-huawei-ma5671a-ymodem) as usual.
+Flash the firmware image to image0 or image1 via [SSH](/ont-huawei-ma5671a/#flashing-a-new-rootfs-via-ssh) or via [TTL serial](/ont-huawei-ma5671a-ymodem) as usual.
 
 After the flash it is absolutely necessary to connect to the SFP via telnet using the IP 192.168.1.10:
 
