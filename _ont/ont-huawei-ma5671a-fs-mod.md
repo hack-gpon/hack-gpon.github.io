@@ -189,3 +189,5 @@ fw_setenv sfp_vendor_data "YOUR_SFP_VENDOR_DATA"
 
 # List of firmwares and files
 - [6BA1896SPLQA42_MODDED_ver5.img](https://mega.nz/file/g9MTxAzR#qSU-OB6SlAVOE97ajSnEP--UcsvurPkpraJPgds3r6g){: .btn } md5hash: 63c02951d5c7ce5c83de54636368520f
+- [6BA1896SPLQA42_MODDED_ver4.img](https://mega.nz/file/MgVWgBJS#L8N7kPZtSJ7FtbtxRcnxNF-W3b9wDbCeJ82YgnK7moQ){: .btn } md5hash: 63b0cc790c0087a5a1197c89b502b002
+- [6BA1896SPLQA42_MODDED_ver3.img](https://mega.nz/file/Np1gmQpI#CVUUHf3yayB9NB-2uI4MX3qCcEwMiLX6e5DqgJz4Kig){: .btn } md5hash: 90348ff0ccaad475cf14d9d0a056cf72
