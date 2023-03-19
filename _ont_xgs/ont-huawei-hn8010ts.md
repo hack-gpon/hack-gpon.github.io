@@ -34,4 +34,4 @@ parent: Huawei
 0x000000100000-0x000008000000 : "ubilayer_v5" (127MiB)  
 
 
-{% include_relative _ont/ont-huawei-useful-command.md %}
+{% include_relative ont-huawei-useful-command.md %}
