@@ -107,7 +107,7 @@ fw_setenv onu_loid "YOUR_LOID"
 
 ## Setting ONU GPON loid password
 ```sh
-fw_setenv onu_loid "YOUR_LOID_PASSWORD"
+fw_setenv onu_loid_password "YOUR_LOID_PASSWORD"
 ```
 
 ## Setting OMCI vendor ID
