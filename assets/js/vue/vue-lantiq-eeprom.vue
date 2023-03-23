@@ -12,26 +12,32 @@
                 </select>
                 <label for="eeprom-type">Select EEPROM A0 or A2</label>
             </div>
-            <table>
-                <tr>
-                    <th>address</th>
-                    <th>size</th>
-                    <th>name</th>
-                    <th>hex value</th>
-                    <th>decoded value</th>
-                    <th>description</th>
-                </tr>
-                <tr v-for="(value, key, index) in eeprom_json" :key="index">
-                    <td>{{ value.address }}</td>
-                    <td>{{ value.size }}</td>
-                    <td v-if="value.name.startsWith('**')"><b>{{ value.name.replaceAll('**', '') }}</b></td>
-                    <td v-else>{{ value.name }}</td>
-                    <td><code v-if="value.value">{{ chunk(value.value)?.map(it => `0x${it}`)?.join(' ') }}</code></td>
-                    <td><span v-if="value.human">{{ value.human }}</span></td>
-                    <td v-if="value.description.startsWith('**')"><b>{{ value.description.replaceAll('**', '') }}</b></td>
-                    <td v-else>{{ value.description }}</td>
-                </tr>
-            </table>
+            <div class="table-wrapper">
+                <table>
+                    <tr>
+                        <th>address</th>
+                        <th>size</th>
+                        <th>name</th>
+                        <th>hex value</th>
+                        <th>decoded value</th>
+                        <th>description</th>
+                    </tr>
+                    <tr v-for="(value, key, index) in eeprom_json" :key="index">
+                        <td>{{ value.address }}</td>
+                        <td>{{ value.size }}</td>
+                        <td v-if="value.name.startsWith('**')"><b>{{ value.name.replaceAll('**', '') }}</b></td>
+                        <td v-else>{{ value.name }}</td>
+                        <td><code v-if="value.value">{{ chunk(value.value)?.map(it => `0x${it}`)?.join(' ') }}</code></td>
+                        <td><span v-if="value.human">{{ value.human }}</span></td>
+                        <td v-if="value.description.startsWith('**')"><b>{{ value.description.replaceAll('**', '') }}</b></td>
+                        <td v-else>{{ value.description }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div markdown="span" class="alert alert-blue" role="alert" v-if="revision">
+                <svg viewBox="0 0 24 24" class="info-icon"><use xlink:href="#svg-info"></use></svg>
+                <span> <b>Info</b> For more information, see the {{ revision }} specification.</span>
+            </div>
         </template>
         <template v-if="type === 'eeprom-rooted-edit'">
             <div class="form-floating mb-3">
@@ -806,6 +812,12 @@ export default {
     },
     props: ['type'],
     computed: {
+        revision: {
+            get() {
+                if(this.eeprom_switch===0) return this.table_3_12(this.getPart(94,94));
+                return "";
+            }
+        },
         eeprom: {
             get() {
                 if(this.the_eeprom){
@@ -1093,7 +1105,7 @@ export default {
             var table = {
                 "03":"SFP",
             }
-            return table[hex] ?? "See SFF-8472 Rev 10.2 Table 3.2";
+            return table[hex] ?? `See ${this.revision} Table 3.2`;
         },
         table_3_3: function (hex) {
             var table = {
@@ -1115,7 +1127,7 @@ export default {
                 "07":"LC",
                 "22":"RJ45",
             }
-            return table[hex] ?? "See SFF-8472 Rev 10.2 Table 3.3";
+            return table[hex] ?? `See ${this.revision} Table 3.3`;
         },
         table_3_6: function (hex) {
             var table = {
