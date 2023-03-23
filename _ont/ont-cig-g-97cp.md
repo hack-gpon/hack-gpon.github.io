@@ -17,7 +17,7 @@ parent: CIG
 | Chipset          | Realtek RTL9601D                                                         |
 | Flash            |                                                                          |
 | RAM              |                                                                          |
-| System           | Linux                                                                    |
+| System           | Linux (Luna SDK 1.9.0)                                                   |
 | 2.5GbaseT        | Yes                                                                      |
 | Optics           | SC/APC                                                                   |
 | IP address       | 192.168.100.1                                                            |
