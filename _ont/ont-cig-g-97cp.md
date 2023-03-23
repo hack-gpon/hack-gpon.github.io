@@ -27,9 +27,8 @@ parent: CIG
 | Serial           | ✅                                                                        |
 | Form Factor      | ONT                                                                      |
 
-{% include image.html file="cig/cig-1.jpg" alt="CIG G-97CP Unidata" caption="CIG G-97CP
-Unidata <a href='https://forum.fibra.click/u/papin'>@papin</a>" %} {% include image.html file="cig/cig-2.jpg" alt="CIG
-G-97CP Unidata" caption="CIG G-97CP Unidata <a href='https://forum.fibra.click/u/papin'>@papin</a>" %}
+{% include image.html file="cig/cig-1.jpg" alt="CIG G-97CP Unidata" caption="CIG G-97CP Unidata <a href='https://forum.fibra.click/u/papin'>@papin</a>" %} 
+{% include image.html file="cig/cig-2.jpg" alt="CIG G-97CP Unidata" caption="CIG G-97CP Unidata <a href='https://forum.fibra.click/u/papin'>@papin</a>" %}
 
 ## Enable password
 
