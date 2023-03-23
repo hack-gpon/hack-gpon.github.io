@@ -20,9 +20,9 @@ parent: CIG
 | Optics           | SC/APC           |
 | IP address       | 192.168.100.1      |
 | Web Gui          |                  |
-| SSH              |✅ user root, password the one generated with [ZTE F6005](/ont-zte-f6005)                 |
+| SSH              |✅ user root, password generated with [ZTE F6005 Generator](/ont-zte-f6005)                 |
 | Telnet           |                  |
-| Serial           |✅                 |
+| Serial           |✅ password generated with [ZTE F6005 Generator](/ont-zte-f6005)                 |
 | Form Factor      | ONT              |
  
 {% include image.html file="cig/cig-1.jpg" alt="CIG G-97CP Unidata" caption="CIG G-97CP Unidata <a href='https://forum.fibra.click/u/papin'>@papin</a>" %}
