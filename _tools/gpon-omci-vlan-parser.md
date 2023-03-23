@@ -51,10 +51,12 @@ layout: default
     
     function makeVlanTables(formToPlaceTable, vlanTable) {
         for (const vlanRule of vlanTable) {
+            var div = document.createElement('div');
+            div.classList = "table-wrapper";
             var table = document.createElement('table');
-            table.style.border = '1px solid black';
+            div.appendChild(table);
             fillVlanTable(table, vlanRule);
-            formToPlaceTable.appendChild(table);
+            formToPlaceTable.appendChild(div);
         }
     }
             
