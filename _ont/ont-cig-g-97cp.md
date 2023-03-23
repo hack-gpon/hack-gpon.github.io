@@ -41,3 +41,5 @@ You can use this tool to generate the enable password:
 # Note
 
 This ONT has the same internal hardware as the [Nokia G-010G-T](/ont-nokia-g-010g-t) and even the same plastic shell of the [ZTE F6005](/ont-zte-f6005).
+
+
