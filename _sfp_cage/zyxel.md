@@ -34,7 +34,7 @@ zycli modelcheck off
 # FW No-Brand Version V5.70(ACDZ.0)C0 compiled from Zyxel provided OpenSource package.
 The following is a firmware compiled starting from Zyxel provided OpenSource package under GPL license.
 
-- [source GPL package V5.70(ACDZ.0)C0](https://mega.nz/file/nVB0wSbK#m-csIaAJ5RTLGhCMy7OnkwNI4EwUS_n72WpXSNl8QU8)
+- [source GPL package V5.70(ACDZ.0)C0](https://github.com/ErnyTech/zyxel-ex5601t0)
 
 
 --- Use at your own risk!!!! ---
