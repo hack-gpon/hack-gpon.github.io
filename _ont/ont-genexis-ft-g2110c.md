@@ -138,23 +138,13 @@ If you want to be future proof, put your PLOAM also on U-Boot env using the foll
 ploampwd=1234567890
 ```
 
-## Spoofing firmware version
+## Changing the reported firmware version
 
-{% include alert.html content="To change this data you need to upload a modified firmware. Do it at your own risk!" alert="Warning" icon="svg-warning" color="red" %}
+The stock firware does not allow changing of the primary and standby software version. 
+Since the ONT uses the Luna SDK, the `/etc/scripts/flash` shell script can be easily modified by creating a custom firmware with
+the same set of patches suggested e.g. for the [Technicolor AFM0002](/ont-technicolor-afm0002) ONT.
 
-- Download the modified firmware from [here](https://mega.nz/file/f0QGwLSb#pyxCUQmlD-KgFU595mHYUsPPUFKJGD2Ug__mCyYIdWs) md5: `2a12b2bbc0971d76fa8201a046544a44`
-- Logon on the OS shell of the ONT and run this command: `iptables -F`
-- Open a web browser and go to `http://192.168.1.1/upgrade.asp` or `http://192.168.100.1/upgrade.asp`, enter the same credentials used for telnet session, select the modified firmware and click on `Upgrade`
-- Once the upgrade is done and you are able to reach the ONT via telnet, log back in and run these commands to change the firmware version on both banks:
-
-```sh
-# /etc/scripts/flash set OMCI_OLT_MODE 3
-OMCI_OLT_MODE=3
-# nv setenv sw_custom_version0=V6.0.10N14
-# nv setenv sw_custom_version1=V6.0.10N14
-```
-
-Reboot the ONT and check if the version was correctly applied with this command (take a look at the `Version` field):
+You can then check if the software version was correctly changed with this command (take a look at the `Version` field):
 
 ```sh
 # omcicli mib get 7
@@ -182,9 +172,8 @@ ImageHash: 0x00000000000000000000000000000000
 ```
 
 # Known Bugs
-- Modified image (based on C-5.7.1-DEV3 and C-5.7.1-EFT1) has the Web UI enabled, but without an attached fiber the daemon will crash
+- Web UI can be enabled by modding the firmware, but without an attached fiber the daemon will crash
 
 # Miscellaneous Links
 - [FiberTwist G2110C-2.5G](https://genexis.eu/content/uploads/2020/07/FiberTwist-G2110C-2.5G-Installation-Guide-v1.0-EN.pdf)
-- [Modded Firmware C-5.7.1-DEV3](https://mega.nz/file/yspFRTJT#JjeDS7NwLZxCzFklQGMJVIuPawo8utQRGbMGEXQv84M)
-- [Modded Firmware C-5.7.1-EFT1](https://mega.nz/file/f0QGwLSb#pyxCUQmlD-KgFU595mHYUsPPUFKJGD2Ug__mCyYIdWs)
+
