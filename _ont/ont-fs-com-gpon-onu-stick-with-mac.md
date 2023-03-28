@@ -118,7 +118,7 @@ For more info [XPONos partition layout](https://github.com/XPONos/linux_lantiq-f
 - [6BA1896SPLQA42 MTD0/U-Boot](https://mega.nz/file/FkswHbgL#s7-vaH65EPQ2O5vKeD3bU1_RPwzaKPOJdrCWvPQqDvc){: .btn } md5hash: 992b31a67c644aa68cf7f9caf956b1f9
 - [6BA1896SPLQA42 MTD2/Image0](https://mega.nz/file/AgshDICC#md1vLN14JBF3iaNoZBqQH_zwALHmEaOk3_rDm1FfOic){: .btn } md5hash: 04533554bb0c8b997697fbc048159002
 
-# General Settings and Useful Commands
+# Unlock the device
 
 {% include alert.html content=" The following commands concern version 6BA1896SPLQA42, to get the commands for version 6BA1896SPLQA41 please look at page [Carlito Firmware](/ont-huawei-ma5671a-carlito)." alert="Note" icon="svg-info" color="blu" %}
 
@@ -154,8 +154,40 @@ When you are ready with everything plugged in you need to press the button below
 {% include alert.html content="Your browser does not support JavaScript!" alert="Note"  icon="svg-warning" color="red" %}
 </noscript>
 
+# GPON ONU status
 
-## Setting S/N
+## Get the operational status of the ONU
+
+```shell
+onu ploamsg
+```
+
+## Querying a particular OMCI ME
+```sh
+omci_pipe.sh meg MIB_IDX ME_IN
+```
+Where `MIB_IDX` is the MIB ID and the `ME_IN` is the ME instance number
+
+## Getting/Setting Speed LAN Mode
+
+To get the LAN Mode:
+
+```sh
+onu lanpsg 0
+```
+The `link_status` variable tells the current speed
+
+| Value (for `sgmii_mode` and `link_status`) | Speed                              |
+| ------------------------------------------ | ---------------------------------- |
+| 3                                          | 1 Gbps / SGMII with auto-neg on    |
+| 4                                          | 1 Gbps / SGMII with auto-neg off   |
+| 5                                          | 2.5 Gbps / HSGMII with auto-neg on |
+
+To change the default lan mode value you can use `fw_setenv sgmii_mode`. The firmware already has the value 5 by default and it is generally not necessary to change it.
+
+# GPON/OMCI settings
+
+## Setting ONU GPON Serial Number
 ```sh
 set_serial_number ABCD12345678
 ```
@@ -164,7 +196,7 @@ Or:
 sfp_i2c -i8 -s "ABCD12345678"
 ```
 
-## Checking whether the S/N has been correctly set
+## Checking ONU GPON Serial Number
 ```sh
 fw_printenv | grep nSerial
 ```
@@ -173,28 +205,28 @@ Or:
 sfp_i2c -g
 ```
 
-## Setting PLOAM Password
+## Setting ONU GPON PLOAM password
 ```sh
 sfp_i2c -i11 -s "1234567890"
 ```
 
-## Setting LOID and Checkcode Password
+## Setting ONU GPON LOID and LOID password
 ```sh
 sfp_i2c -i9 -s "1234567890"
 sfp_i2c -i10 -s "password01"
 ```
 
-## Setting Eqipment ID (ME 257)
+## Setting OMCI equipment ID (ME 257)
 ```sh
 sfp_i2c -i6 -s "YOUR_EQUIPMENT_ID"
 ```
 
-## Setting Vendor ID (ME 256)
+## Setting OMCI Vendor ID (ME 256)
 ```sh
 sfp_i2c -i7 -s "YOUR_VENDOR_ID"
 ```
 
-## Changing ONU hardware version (ME 256)
+## Setting OMCI hardware version (ME 256)
 ```sh
 sed 's/256 0 HWTC 0000000000000/256 0 HWTC YOUR_ONU_VERSION/' /rom/etc/mibs/data_1g_8q.ini > /etc/mibs/data_1g_8q.ini
 ```
@@ -204,24 +236,7 @@ sed 's/256 0 HWTC 0000000000000/256 0 HWTC YOUR_ONU_VERSION/' /rom/etc/mibs/data
 cat /rom/etc/mibs/data_1g_8q.ini > /etc/mibs/data_1g_8q.ini
 ```
 
-## Enabling `data_1g_8q_us1280_ds512.ini` OMCI MIB file for 2500 Mbps profiles
-{% include alert.html content="The patch below is only compatible with the firmware version `6BA1896SPLQA42`" alert="Info" icon="svg-info" color="blue" %}
-{% include alert.html content="If you need to set the ONU version remember that you will have to do it using the MIB file `/etc/mibs/data_1g_8q_us1280_ds512.ini` instead of `/etc/mibs/data_1g_8q.ini`" alert="Info" icon="svg-info" color="blue" %}
-
-The MIB file `data_1g_8q_us1280_ds512.ini` is very useful to avoid performance problems in situations where 2500 Mbps speed profiles are used, to enable it you need to run this command:
-```sh
-fw_setenv mib_file data_1g_8q_us1280_ds512.ini
-```
-
-## Using custom OMCI MIB file
-{% include alert.html content="If you need to set the ONU version remember that you will have to do it using your custom MIB file instead of `/etc/mibs/data_1g_8q.ini`" alert="Info" icon="svg-info" color="blue" %}
-
-You have to copy the MIB file to /etc/mibs and then run this command:
-```sh
-fw_setenv mib_file YOUR_MIB_FILENAME
-```
-
-## Changing image software version (ME 7)
+## Setting OMCI software version (ME 7)
 {% include alert.html content="The patch below is only compatible with the firmware version `6BA1896SPLQA42`" alert="Info" icon="svg-info" color="blue" %}
 
 The image version normally couldn't be changed because it was hard-coded into the `/opt/lantiq/bin/omcid` binary, 
@@ -276,7 +291,26 @@ fw_setenv image1_version YOUR_IMAGE1_VERSION
 Now you can restart the stick.
 {% include alert.html content="Be aware that sometimes `omcid` can rewrite the two variables when runs in non patched state. After reboot, double check the values you put are still there." alert="Info" icon="svg-info" color="blue" %}
 
-## Setting Lantiq MAC address
+# Advanced settings
+
+## Setting `data_1g_8q_us1280_ds512.ini` OMCI MIB file for 2500 Mbps profiles
+{% include alert.html content="The patch below is only compatible with the firmware version `6BA1896SPLQA42`" alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="If you need to set the ONU version remember that you will have to do it using the MIB file `/etc/mibs/data_1g_8q_us1280_ds512.ini` instead of `/etc/mibs/data_1g_8q.ini`" alert="Info" icon="svg-info" color="blue" %}
+
+The MIB file `data_1g_8q_us1280_ds512.ini` is very useful to avoid performance problems in situations where 2500 Mbps speed profiles are used, to enable it you need to run this command:
+```sh
+fw_setenv mib_file data_1g_8q_us1280_ds512.ini
+```
+
+## Setting custom OMCI MIB file
+{% include alert.html content="If you need to set the ONU version remember that you will have to do it using your custom MIB file instead of `/etc/mibs/data_1g_8q.ini`" alert="Info" icon="svg-info" color="blue" %}
+
+You have to copy the MIB file to /etc/mibs and then run this command:
+```sh
+fw_setenv mib_file YOUR_MIB_FILENAME
+```
+
+## Setting management MAC
 ```sh
 uci set network.lct.macaddr=00:06:B5:07:D6:04
 uci set network.host.macaddr=00:06:B5:07:D8:04
@@ -284,36 +318,15 @@ uci commit network.lct.macaddr=00:06:B5:07:D6:04
 uci commit network.host.macaddr=00:06:B5:07:D8:04
 ```
 
-## Setting Lantiq IP address
+## Setting management IP
 ```sh
 fw_setenv ipaddr 192.168.20.60
 fw_setenv gatewayip 192.168.20.1
 ```
 
-## Reading all EEPROM
-```sh
-sfp_i2c -r
-```
-
-## Getting Firmware version
-```sh
-strings /opt/lantiq/bin/omcid | grep ^software_Version | awk -F[=,] '{print $2}'
-```
-
-## Getting Firmware build time
-```sh
-strings /opt/lantiq/bin/omcid | grep compiled
-```
-
 ## Rebooting the ONU
 ```sh
 reboot
-```
-
-## Checking whether the connection with the OLT was successful (O5 state)
-
-```shell
-onu ploamsg
 ```
 
 ## Disable RX_LOS status
@@ -370,29 +383,22 @@ In case you need to re-enable it issue the following commands from the bootloade
 FALCON => setenv asc0 0
 FALCON => saveenv
 ```
+# SFP EEPROM settings
 
-## Getting/Setting Speed LAN Mode
-
-To get the LAN Mode:
-
+## Reading all EEPROM
 ```sh
-onu lanpsg 0
+sfp_i2c -r
 ```
-The `link_status` variable tells the current speed
 
-| Value (for `sgmii_mode` and `link_status`) | Speed                              |
-| ------------------------------------------ | ---------------------------------- |
-| 3                                          | 1 Gbps / SGMII with auto-neg on    |
-| 4                                          | 1 Gbps / SGMII with auto-neg off   |
-| 5                                          | 2.5 Gbps / HSGMII with auto-neg on |
-
-To change the default lan mode value you can use `fw_setenv sgmii_mode`. The firmware already has the value 5 by default and it is generally not necessary to change it.
-
-## Querying a particular OMCI ME
+## Getting Firmware version
 ```sh
-omci_pipe.sh meg MIB_IDX ME_IN
+strings /opt/lantiq/bin/omcid | grep ^software_Version | awk -F[=,] '{print $2}'
 ```
-Where `MIB_IDX` is the MIB ID and the `ME_IN` is the ME instance number
+
+## Getting Firmware build time
+```sh
+strings /opt/lantiq/bin/omcid | grep compiled
+```
 
 # EEPROM (I2C slave simulated EEPROM)
 The FS GPON-ONU-34-20BI does not have a physical EEPROM, the Falcon SOC emulates an EEPROM by exposing it on the I2C interface as required by the SFF-8472 specification.

@@ -74,7 +74,7 @@ This ONT supports dual boot.
 
 `k0` and `r0` respectively contain the kernel and firmware of the first image, `k1` and `r1` the kernel and the firmware of the second one
 
-# General Settings and Useful Commands
+# GPON/OMCI settings
 
 {% include alert.html content="Some variables are write-protected, you need to unlock them before proceed" alert="Info" icon="svg-info" color="blue" %}
 
@@ -84,7 +84,7 @@ Use the following command to unlock write-protected variables:
 # nv setenv ProtectEnv 0
 ```
 
-## Getting/Setting the ONT's S/N
+## Getting/Setting ONU GPON Serial Number
 
 {% include alert.html content="If your serial number has letters after the Vendor ID (e.g. ZTEGAAA01234), put them in lower case (e.g. ZTEGaaa01234)" alert="Info" icon="svg-info" color="blue" %}
 
@@ -100,28 +100,7 @@ You can check if the serial number was correclty changed using the following com
 ZTEGaaa01234
 ```
 
-## Changing the Hardware Version
-
-```sh
-# nv setenv HV G2110CE2V1D0
-```
-Reboot ONT to apply the change
-
-## Changing the Equipment ID
-
-```sh
-# nv setenv ProdName FT-G2110C-2.5G
-```
-Reboot ONT to apply the change
-
-## Changing the IP address
-```sh
-# /etc/scripts/flash get LAN_IP_ADDR
-LAN_IP_ADDR=192.168.1.1
-# /etc/scripts/flash set LAN_IP_ADDR 192.168.1.1
- ```
-
-## Getting/Setting the ONT's PLOAM password
+## Getting/Setting ONU GPON PLOAM password
 
 {% include alert.html content="The PLOAM password is stored in ASCII format" alert="Info" icon="svg-info" color="blue" %}
 
@@ -137,8 +116,7 @@ If you want to be future proof, put your PLOAM also on U-Boot env using the foll
 # nv setenv ploampwd 1234567890
 ploampwd=1234567890
 ```
-
-## Changing the reported firmware version
+## Setting OMCI software version (ME 7)
 
 The stock firware does not allow changing of the primary and standby software version. 
 Since the ONT uses the Luna SDK, the `/etc/scripts/flash` shell script can be easily modified by creating a custom firmware with
@@ -170,6 +148,29 @@ ProductCode:
 ImageHash: 0x00000000000000000000000000000000
 =================================
 ```
+
+## Setting OMCI hardware version (ME 256)
+
+```sh
+# nv setenv HV G2110CE2V1D0
+```
+Reboot ONT to apply the change
+
+## Setting OMCI equipment ID (ME 257)
+
+```sh
+# nv setenv ProdName FT-G2110C-2.5G
+```
+Reboot ONT to apply the change
+
+# Advanced settings
+
+## Setting management IP
+```sh
+# /etc/scripts/flash get LAN_IP_ADDR
+LAN_IP_ADDR=192.168.1.1
+# /etc/scripts/flash set LAN_IP_ADDR 192.168.1.1
+ ```
 
 # Known Bugs
 - Web UI can be enabled by modding the firmware, but without an attached fiber the daemon will crash

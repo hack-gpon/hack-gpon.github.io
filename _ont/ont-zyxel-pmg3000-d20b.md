@@ -74,71 +74,17 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 This stick supports dual boot, as visible from the presence of `ImageA` and `ImageB`, which contain the rootfs.
 
 
-# List of firmwares and files
+# Userful files and binaries
+
 ## Useful files
 - `/var/config/ont.sys` - Used to customize various settings on the stick. If you don't have it you can copy the stock one from /ont.sys
 
 # General Settings and Useful Commands
 {% include alert.html content="All commands start from the twmanu shell." alert="Note"  icon="svg-info" color="blue" %}
 
-## Changing the ONT's S/N
-{% include alert.html content="The S/N is stored in the ASCII format." alert="Note"  icon="svg-info" color="blue" %}
-```sh
-manufactory
-set sn ALCLf0f0f0f0
-exit
-hal
-set sn ALCLf0f0f0f0
-```
+# GPON ONU status
 
-## Changing the ONT's PLOAM password
-{% include alert.html content="The PLOAM password is stored in the ASCII format." alert="Note"  icon="svg-info" color="blue" %}
-This can be done easily via web ui. If you prefer to do it via the shell use:
-```sh
-hal
-set password PLOAMPASS
-```
-
-## Changing the ONT's equipment ID
-{% include alert.html content="Model number must not be more than 20 characters long in total." alert="Note"  icon="svg-info" color="blue" %}
-```sh
-manufactory
-set equipment id MYEQUIPMENTID
-exit
-omci
-equipment id MYEQUIPMENTID
-```
-
-## Changing the ONT's hardware version
-```sh
-manufactory
-set hardware version 3FE49165BFAA01
-```
-
-## Changing the software version
-Edit the /var/config/ont.sys via vi directly on the stick itself. The file is CRLF terminated, one entry per line.
-The entries for the software version are:
-```
-SW_VER0:0xabcdef
-SW_VER1:0xabcedf
-```
-{% include alert.html content="It's better to enter the software version in hex format, all lowercase precedeed by 0x." alert="Note"  icon="svg-info" color="blue" %}
-
-## See link speed
-This SFP has HSGMII enabled by default: `link_status=5` for HSGMII 2.5Gbit, `link_status=4` for SGMII 1Gbit:
-```
-linuxshell
-onu lanpsg 0
-```
-
-## Set link speed
-{% include alert.html content="This command forces the speed to 2.5 and is instantaneous and permanent, use it only if your hardware supports HSGMII and be compatible (not to be used with Broadcom 57810s NIC)" alert="Note" icon="svg-warning" color="red" %}
-```sh
-hal
-set speed 2.5g mode full
-```
-
-## Checking connection state
+## Get the operational status of the ONU
 To see the connection state use the following command:
 ```
 linuxshell
@@ -146,6 +92,20 @@ onu ploamsg
 ```
 
 `curr_state=5` for O5 state, `curr_state=1` for all other operational states.
+
+## Getting Speed LAN Mode
+This SFP has HSGMII enabled by default: `link_status=5` for HSGMII 2.5Gbit, `link_status=4` for SGMII 1Gbit:
+```
+linuxshell
+onu lanpsg 0
+```
+
+## Setting Speed LAN Mode
+{% include alert.html content="This command forces the speed to 2.5 and is instantaneous and permanent, use it only if your hardware supports HSGMII and be compatible (not to be used with Broadcom 57810s NIC)" alert="Note" icon="svg-warning" color="red" %}
+```sh
+hal
+set speed 2.5g mode full
+```
 
 ## Querying a particular OMCI ME
 Query via OMCI ME Class Name
@@ -160,12 +120,57 @@ omci
 show me classid OmciClassId (e.g 7)
 ```
 
+# GPON/OMCI settings
+
+## Setting ONU GPON Serial Number
+{% include alert.html content="The S/N is stored in the ASCII format." alert="Note"  icon="svg-info" color="blue" %}
+```sh
+manufactory
+set sn ALCLf0f0f0f0
+exit
+hal
+set sn ALCLf0f0f0f0
+```
+
+## Setting ONU GPON PLOAM password
+{% include alert.html content="The PLOAM password is stored in the ASCII format." alert="Note"  icon="svg-info" color="blue" %}
+This can be done easily via web ui. If you prefer to do it via the shell use:
+```sh
+hal
+set password PLOAMPASS
+```
+
+## Setting OMCI software version (ME 7)
+Edit the /var/config/ont.sys via vi directly on the stick itself. The file is CRLF terminated, one entry per line.
+The entries for the software version are:
+```
+SW_VER0:0xabcdef
+SW_VER1:0xabcedf
+```
+{% include alert.html content="It's better to enter the software version in hex format, all lowercase precedeed by 0x." alert="Note"  icon="svg-info" color="blue" %}
+
+## Setting OMCI hardware version (ME 256)
+```sh
+manufactory
+set hardware version 3FE49165BFAA01
+```
+
+## Setting OMCI equipment ID (ME 257)
+{% include alert.html content="Model number must not be more than 20 characters long in total." alert="Note"  icon="svg-info" color="blue" %}
+```sh
+manufactory
+set equipment id MYEQUIPMENTID
+exit
+omci
+equipment id MYEQUIPMENTID
+```
+
+# Advanced settings
+
 ## Reset Web Gui admin credentials
 
 Sometimes, under certain circumstances, the Web Gui admin credentials might get changed from the default `admin`/`1234` combination.
 To restore the default combination you can try following [this method](https://github.com/xvzf/zyxel-gpon-sfp/issues/6#issuecomment-1065864650).
-
-# Low Level Modding
 
 ## Creating a new rootfs
 The stick has a tricky image packing method, fortunately it has been reverse engineered. A script to help you create a custom rootfs can be found here: [https://github.com/nanomad/zyxel-pmg-3000-mod-kit](https://github.com/nanomad/zyxel-pmg-3000-mod-kit)
