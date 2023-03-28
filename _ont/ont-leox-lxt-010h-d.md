@@ -19,9 +19,9 @@ parent: LEOX
 | PHY Ethernet    | RTL8221B                             |
 | Optics          | SC/APC                               |
 | IP address      | 192.168.100.1/24                     |
-| Web Gui         | yes                                  |
+| Web Gui         | yes, same logins as Telnet           |
 | SSH             |                                      |
-| Telnet          | ✅ user `leox`, password `leolabs_7` |
+| Telnet          | ✅ user `leox`, password `leolabs_7` OR user `adsl`, password `realtek` |
 | Serial          | ✅                                   |
 | Serial baud     | 115200                               |
 | Serial encoding | 8-N-1                                |
