@@ -7,25 +7,25 @@ parent: LEOX
 
 # Hardware Specifications
 
-|                 |                                      |
-| --------------- | ------------------------------------ |
-| Vendor/Brand    | LEOX                                 |
-| Model           | LXT-010H-D                           |
-| Chipset         | Realtek RTL9601D                     |
-| Flash           | SPI NOR 16MB                         |
-| RAM             | 32MB                                 |
-| System          | Linux 3.18 (Luna SDK 3.3)            |
-| 2.5GBaseT       | Yes                                  |
-| PHY Ethernet    | RTL8221B                             |
-| Optics          | SC/APC                               |
-| IP address      | 192.168.100.1/24                     |
-| Web Gui         | yes, same logins as Telnet           |
-| SSH             |                                      |
+|                 |                                                                        |
+| --------------- | ---------------------------------------------------------------------- |
+| Vendor/Brand    | LEOX                                                                   |
+| Model           | LXT-010H-D                                                             |
+| Chipset         | Realtek RTL9601D                                                       |
+| Flash           | SPI NOR 16MB                                                           |
+| RAM             | 32MB                                                                   |
+| System          | Linux 3.18 (Luna SDK 3.3)                                              |
+| 2.5GBaseT       | Yes                                                                    |
+| PHY Ethernet    | RTL8221B                                                               |
+| Optics          | SC/APC                                                                 |
+| IP address      | 192.168.100.1/24                                                       |
+| Web Gui         | yes, same logins as Telnet                                             |
+| SSH             |                                                                        |
 | Telnet          | ✅ user `leox`, password `leolabs_7` OR user `adsl`, password `realtek` |
-| Serial          | ✅                                   |
-| Serial baud     | 115200                               |
-| Serial encoding | 8-N-1                                |
-| Form Factor     | ONT                                  |
+| Serial          | ✅                                                                      |
+| Serial baud     | 115200                                                                 |
+| Serial encoding | 8-N-1                                                                  |
+| Form Factor     | ONT                                                                    |
 
 # External Photos
 
