@@ -1,5 +1,36 @@
 # Hardware Specifications
 
+|                  |                                         |
+| ---------------- | --------------------------------------- |
+| Vendor/Brand     |                                         |
+| Model            |                                         |
+| ODM              | ✅ or manufacter                        |
+| ODM Product Code | (only if ODM present)                   |
+| Chipset          |                                         |
+| Flash            |                                         |
+| RAM              |                                         |
+| CPU              |                                         |
+| CPU Clock        | (only if CPU present)                   |
+| Bootloader       |                                         |
+| System           |                                         |
+| Load addr        |                                         |
+| HSGMII           | Yes/No (only if miniONT SFP PHY)        |
+| 2.5GBaseX        | Yes/No (only if miniONT SFP MAC)        |
+| 2.5GBaseT        | Yes/No (only if ONT)                    |
+| XGMII/XSGMII     | Yes (only if miniONT SFP PHY)           |
+| 10GBaseX         | Yes/No (only if miniONT SFP MAC)        |
+| 10GBaseT         | Yes/No (only if ONT)                    |
+| 2.5/5/10GBaseT   | Yes/No (only if ONT multigig)           |
+| Optics           | SC/APC or SC/UPC                        |
+| IP address       |                                         |
+| Web Gui          | ✅ or note                              |
+| SSH              | ✅ user `admin`, password `admin` or No |
+| Telnet           | ✅ user `admin`, password `admin` or No |
+| Serial           | ✅ user `admin`, password `admin` or No |
+| Serial baud      | 115200                                  |
+| Serial encoding  | 8-N-1                                   |
+| Form Factor      | ONT or miniONT SFP                      |
+
 ## Serial
 
 ## Firmware is interchangeable with

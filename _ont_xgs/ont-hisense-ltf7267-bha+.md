@@ -16,7 +16,7 @@ parent: HiSense
 | Flash            | 128MB                                                    |
 | RAM              | 128MB                                                    |
 | System           | Custom Linux by Cortina (Saturn SDK) based on Kernel 4.4 |
-| XSGMII           | Yes                                                      |
+| XGMII/XSGMII     | Yes                                                      |
 | Optics           | SC/APC                                                   |
 | IP address       | 192.168.0.1                                              |
 | Web Gui          | ✅ user `admin`, password `system`                       |
