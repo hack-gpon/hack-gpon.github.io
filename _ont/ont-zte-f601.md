@@ -60,6 +60,16 @@ parent: ZTE
 | mtd6 | 00010000 | 00010000  | "parameter tags" |
 | mtd7 | 00160000 | 00010000  | "usercfg"  |
 
+
+This ONT supports dual boot, as visible from the presence of `kernel0` and `kernel1`, which contain the rootfs.
+The boot image can be swapped with the following command:
+
+```sh
+upgradetest switchver X
+```
+
+Where `X` can be `0/1` based on the image you want to boot.
+
 # General Settings and Useful Commands 
 {% include alert.html content="Commands have been tested on V6/V7 HW rev on TIM and OF firmware" alert="Note"  icon="svg-info" color="blue" %}
 
