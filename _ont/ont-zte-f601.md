@@ -97,11 +97,10 @@ gpontest -gstate
 
 ## Querying a particular OMCI ME
 
-The `sendcmd` commands for OMCI debug will print output only on serial or log file. The log file in this case is `/var/log/OmciLogCache.log`.
-So first thing to do is to enable the logging use this command:
+First enable printf on console usin the following command:
 
 ```sh
-sendcmd 132 omcidebug setprintlevel 3 1 2
+redir printf
 ```
 
 Then query the OMCI ME Class needed with this command:
@@ -110,7 +109,7 @@ Then query the OMCI ME Class needed with this command:
 sendcmd 132 omcidebug showmedata ID_MIB (eg. 131 for OLT type)
 ```
 
-Finally check the log `/var/log/OmciLogCache.log` to see the result that is like the following one:
+This command will print out the result like this one:
 
 ```sh
 ##################################
@@ -128,12 +127,6 @@ MIB INFO:
         TimeofDay:00 00 00 00 00 00 00 00 00 00
                     00 00 00 00
 ---------------------------------------------------------------------
-```
-
-After you have debug the OMCI stuff, turn it off using the following command:
-
-```sh
-sendcmd 132 omcidebug setprintlevel 0 0 0
 ```
 
 # Random notes
