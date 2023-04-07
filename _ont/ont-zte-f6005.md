@@ -35,6 +35,7 @@ parent: ZTE
 - V6.0.10N14 (TIM)
 - V6.0.10N20 (TIM)
 - V6.0.10P2N02 (OpenFiber)
+- V6.0.10P2N18 (OpenFiber)
 
 # Use
 
