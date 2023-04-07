@@ -113,6 +113,9 @@ collections:
   sfp_cage:
     permalink: "/:path/"
     output: true
+  router_pon:
+    permalink: "/:path/"
+    output: true
 
 just_the_docs:
   collections:
@@ -133,6 +136,9 @@ just_the_docs:
       nav_fold: true
     sfp_cage:
       name: SFP cage
+      nav_fold: true
+    router_pon:
+      name: Router PON
       nav_fold: true
 
 defaults:
