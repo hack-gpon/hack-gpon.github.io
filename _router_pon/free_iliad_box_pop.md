@@ -1,3 +1,10 @@
+---
+title: FreeBox Pop/IliadBox
+has_children: false
+layout: default
+parent: Free/Iliad
+---
+
 # Hardware Specifications
 
 |                  |                                         |
