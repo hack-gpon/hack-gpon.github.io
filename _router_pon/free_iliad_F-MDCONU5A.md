@@ -1,5 +1,5 @@
 ---
-title: Free/Iliad F-MDCONU3A
+title: Free/Iliad F-MDCONU5A
 has_children: false
 layout: default
 parent: Free/Iliad
@@ -16,7 +16,7 @@ parent: Free/Iliad
 | Chipset          |                                         |
 | Flash            |                                         |
 | RAM              |                                         |
-| CPU              | BCM55030                                |
+| CPU              |                                         |
 | CPU Clock        | (only if CPU present)                   |
 | Bootloader       |                                         |
 | System           |                                         |
@@ -34,90 +34,17 @@ parent: Free/Iliad
 | SSH              | ✅ user `admin`, password `admin` or No |
 | Telnet           | ✅ user `admin`, password `admin` or No |
 | Serial           | ✅ user `admin`, password `admin` or No |
-| Serial baud      | 57600                                   |
+| Serial baud      | 115200                                  |
 | Serial encoding  | 8-N-1                                   |
 | Form Factor      | ONT or miniONT SFP                      |
 
 ## Serial
-
-The serial port is easily accessible at TP5 and TP6. A prompt is available without authentication, it is structured as a tree of directories. To navigate type the subdirectory name. To go back type `/` and hit enter. To list available commands type `help`.
-
-Available commands:
-
-```
-- mac/
-	- epon
-	- user
-- alm/
-	- info
-	- gpio
-- debug/
-	- mcast
-	- mpcp
-	- nco
-	- rstp
-	- sysd
-- epon/
-	- eponmac
-	- usermac
-	- dom
-	- ponspeed
-- fds/
-	- erase
-- load/
-	- info
-	- commit
-	- setRecoveryPoint
-	- runRecoveryPoint
-	- rx
-- mcast/
-	- domains
-	- groups
-	- sources
-	- reporters
-	- igmpinfo
-	- igmpsources
-- mem/
-	- rf
-- mpcp/
-	- info
-	- failsafe
-	- oltmac
-- pers/
-	- read
-- serdes/
-	- sdextlptest
-- stats/
-	- clear
-	- gather
-	- epon
-	- fifo
-	- lif
-	- uni
-	- xif
-	- statsmode
-- log/
-	- show
-	- level
-- sysd/
-	- frmdmp
-- clionly
-- clr
-- ints
-- reg
-- reset
-- set
-- echo
-- sftver
-```
 
 ## Firmware is interchangeable with
 
 ## List of software versions
 
 ## List of partitions
-
-Encrypted.
 
 # Userful files and binaries
 
