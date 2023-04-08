@@ -13,17 +13,17 @@ parent: Free/Iliad
 | Model            |                                         |
 | ODM              |                                         |
 | ODM Product Code |                                         |
-| Chipset          |                                         |
-| Flash            |                                         |
-| RAM              |                                         |
-| CPU              | BCM63153                                |
+| Chipset          | BCM63153                                |
+| Flash            | KLM4G1FETE-B041 (4GB eMMC 5.1)          |
+| RAM              | 2x NT5CC128M16JR-EK (512MB DDR3L-1866)  |
+| CPU              |                                 |
 | CPU Clock        |                                         |
 | Bootloader       |                                         |
 | System           |                                         |
 | Load addr        |                                         |
 | HSGMII           |                                         |
 | 2.5GBaseX        |                                         |
-| 2.5GBaseT        | Yes                                     |
+| 2.5GBaseT        | Yes (AQR112R PHY)                       |
 | XGMII/XSGMII     |                                         |
 | 10GBaseX         |                                         |
 | 10GBaseT         | No                                      |
@@ -38,9 +38,11 @@ parent: Free/Iliad
 | Serial encoding  | 8-N-1                                   |
 | Form Factor      | ONT                                     |
 
+
+
 ## Serial
 
-The serial port is routed through the USB-C port used for power (which is PD compliant, tested with a notebook power supply). The pins are SBU1 and SBU2, reversal is handled using an open drain buffer (SN74LVC2G07) so a pull-up resistor on RX is needed. On the power daughter board TP7 is TX and TP8 is RX.
+The serial port is routed through the USB-C port used for power (which is PD compliant, tested with a notebook power supply). The pins are SBU1 and SBU2, reversal is handled using an open drain buffer (SN74LVC2G07) so a pull-up resistor on RX is needed. On the power daughter board TP7 is TX and TP8 is RX. There is also a USB differential pair routed through the USB-C connector but there is no use for it yet.
 At the moment nothing more than a boot log is available. [^bcm61650hack] [^freeboxhack]
 
 ## Firmware is interchangeable with
