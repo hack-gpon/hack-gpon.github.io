@@ -9,34 +9,38 @@ parent: Free/Iliad
 
 |                  |                                         |
 | ---------------- | --------------------------------------- |
-| Vendor/Brand     |                                         |
-| Model            |                                         |
-| ODM              | ✅ or manufacter                        |
-| ODM Product Code | (only if ODM present)                   |
-| Chipset          |                                         |
-| Flash            |                                         |
-| RAM              |                                         |
-| CPU              | BCM55030                                |
-| CPU Clock        | (only if CPU present)                   |
-| Bootloader       |                                         |
-| System           |                                         |
-| Load addr        |                                         |
-| HSGMII           | Yes/No (only if miniONT SFP PHY)        |
-| 2.5GBaseX        | Yes/No (only if miniONT SFP MAC)        |
-| 2.5GBaseT        | Yes/No (only if ONT)                    |
-| XGMII/XSGMII     | Yes (only if miniONT SFP PHY)           |
-| 10GBaseX         | Yes/No (only if miniONT SFP MAC)        |
-| 10GBaseT         | Yes/No (only if ONT)                    |
-| 2.5/5/10GBaseT   | Yes/No (only if ONT multigig)           |
-| Optics           | SC/APC or SC/UPC                        |
-| IP address       |                                         |
-| Web Gui          | ✅ or note                              |
-| SSH              | ✅ user `admin`, password `admin` or No |
-| Telnet           | ✅ user `admin`, password `admin` or No |
-| Serial           | ✅ user `admin`, password `admin` or No |
+| Vendor/Brand     | Free/Iliad                              |
+| Model            | F-MDCONU3A                              |
+| ODM              |           			             |
+| ODM Product Code |                                         |
+| Chipset          | BCM55030                                |
+| Flash            | W25Q32J (4MB SPI)                       |
+| RAM              | embedded                                |
+| CPU              | ?                                	     |
+| CPU Clock        | ?                   			|
+| Bootloader       | ?                                        	|
+| System           | ?                                        	|
+| Load addr        | ?                                        	|
+| HSGMII           | Yes?        				|
+| 2.5GBaseX        | No         				|
+| 2.5GBaseT        | No			                     	|
+| XGMII/XSGMII     | No           				|
+| 10GBaseX         | No        					|
+| 10GBaseT         | No                    			|
+| 2.5/5/10GBaseT   | No?           				|
+| Optics           | SFP	                             |
+| IP address       | ?                                       |
+| Web Gui          | ?                              	     |
+| SSH              | ?					     |
+| Telnet           | ?					     |
+| Serial           | ✅                                       |
 | Serial baud      | 57600                                   |
 | Serial encoding  | 8-N-1                                   |
-| Form Factor      | ONT or miniONT SFP                      |
+| Form Factor      | ONT		                     |
+
+The BCM55030 is a 10G-EPON ONU/ONT.
+The BCM55030's UNI (User Network Interface) side should be capable of 4xSGMII (1 GbE) or 1xXAUI (10 GbE) or 1xXFI (10 GbE SFP) or 1xRGMII, but only one SGMII lane is actually routed.
+UNI link won't go up when connected to a media converter or directly to a NIC.
 
 ## Serial
 
@@ -167,12 +171,30 @@ Encrypted.
 
 ## Reading all EEPROM
 
-# EEPROM (I2C slave simulated EEPROM)
+# EEPROM
 
-## EEPROM0 layout
+There is an SFP plug on the UNI side with an embedded EEPROM.
 
-## EEPROM1 layout
+## EEPROM layout
+
+```
+00000000  03 04 00 00 00 00 00 00  00 00 00 00 0a 00 00 00  |................|
+00000010  00 00 00 00 46 52 45 45  42 4f 58 00 00 00 00 00  |....FREEBOX.....|
+00000020  00 00 00 00 00 8c 97 ea  46 2d 4d 44 43 4f 4e 55  |........F-MDCONU|
+00000030  33 41 00 00 00 00 00 00  30 32 00 00 00 00 00 38  |3A......02.....8|
+00000040  00 00 00 00 38 36 38 38  30 32 4a 32 30 32 33 34  |....868802J20234|
+00000050  36 32 39 35 32 30 30 36  30 39 30 30 00 00 00 ec  |629520060900....|
+00000060  38 36 38 38 30 32 4a 32  30 32 33 34 36 32 39 35  |868802J202346295|
+00000070  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+00000080  ff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff  |................|
+*
+00000100  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+*
+00000200
+```
 
 # Known Bugs
 
 # Miscellaneous Links
+
+{% include image.html file="iliad\onu1\BCM55030_features.jpg" alt="BCM55030 features" caption="BCM55030 features" %} 
