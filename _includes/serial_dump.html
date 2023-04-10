@@ -1,0 +1,8 @@
+
+{% if {{include.url}} %}
+    <a class="no_icon" target="_blank" rel="noopener" href="{{include.url}}">
+{% endif %}
+
+```
+{% include_relative {{include.file | replace: "\", "/" | prepend: 'serial_dump/' | relative_url}} %}
+```
