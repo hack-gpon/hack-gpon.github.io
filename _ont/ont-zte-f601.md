@@ -16,7 +16,7 @@ parent: ZTE
 | CPU Clock    | 266 MHz                                                           | 600 MHz                                                           |             |                           |
 | Chipset      | ZTE FA626TE                                                       | ZTE ZX279125@A9                                                   |             |                           |
 | Flash        | 16 MB (SPI Flash w25q128)                                         | 16 MB (SPI Flash mx25l12805d)                                     |             | ZX279127S                 |
-| RAM          | 32 MB                                                             | 32 MB                                                             |             | 128 MB (ESMT M15T1G1664A) |
+| RAM          | 64 MB                                                             | 32 MB                                                             |             | 128 MB (ESMT M15T1G1664A) |
 | System       |                                                                   |                                                                   |             |                           |
 | 2.5GBaseT    | No                                                                | No                                                                | No          | No                        |
 | Optics       | SC/APC or SC/UPC                                                  | SC/APC                                                            | SC/APC      | SC/APC                    |
