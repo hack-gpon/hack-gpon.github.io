@@ -54,11 +54,10 @@ parent: ZTE
 | mtd0 | 01000000 | 00010000  | "whole flash"  |
 | mtd1 | 00080000 | 00010000  | "uboot"        |
 | mtd2 | 00700000 | 00010000  | "kernel0"      |
-| mtd3 | 00390000 | 00010000  | "kernel1"      |
-| mtd4 | 00700000 | 00010000  | "others"       |
-| mtd5 | 00010000 | 00010000  | "SECTION_EGIS" |
-| mtd6 | 00010000 | 00010000  | "parameter tags" |
-| mtd7 | 00160000 | 00010000  | "usercfg"  |
+| mtd3 | 00700000 | 00010000  | "kernel1"      |
+| mtd4 | 00010000 | 00010000  | "others"       |
+| mtd5 | 00010000 | 00010000  | "parameter tags" |
+| mtd6 | 00160000 | 00010000  | "usercfg"  |
 
 
 This ONT supports dual boot, as visible from the presence of `kernel0` and `kernel1`, which contain the rootfs.
