@@ -16,7 +16,7 @@ parent: Free/Iliad
 | Chipset          | BCM55030                                |
 | Flash            | W25Q32J (4MB SPI)                       |
 | RAM              | embedded                                |
-| CPU              | ?                                	     |
+| CPU              | ARCompact[^arc-isa], big endian             	     |
 | CPU Clock        | ?                   			|
 | Bootloader       | ?                                        	|
 | System           | ?                                        	|
@@ -115,13 +115,75 @@ Available commands:
 - sftver
 ```
 
+`load/info` output:
+```
+TK2000 APP 3.27 May 13 2016 02:48:05  Chip: 4701 B2110816
+Mode: App Normal
+EPON MAC: 0x8C97EA6C17AC
+
+Executing: NA
+2000 0001 v3.2.7 (Rel)
+Size: 319044 CRC: 0x2FAF887F
+Type: 02 Subtype 0C Flags 04
+Stream: 112 Revision: 131152
+Time: 2016-05-18 01:28:44Z
+
+Boot: pass
+2000 0000 v3.2.7 (NA)
+Size: 42896 CRC: 0xC87371F8
+Type: 01 Subtype 0C Flags 04
+Stream: 114 Revision: 127457
+Time: 2016-01-20 05:45:49Z
+
+App 0: fail
+FFFF 0000 vFF.FF.FFFF (NA)
+Size: 4294967258 CRC: 0xFFFFFFFF
+Type: FF Subtype FF Flags FF
+Stream: 4294967295 Revision: 4294967295
+Time: 65535-255-255 255:255:255Z
+
+App 1: pass
+2000 0001 v3.2.7 (Rel)
+Size: 319044 CRC: 0x2FAF887F
+Type: 02 Subtype 0C Flags 04
+Stream: 112 Revision: 131152
+Time: 2016-05-18 01:28:44Z
+
+App 2: pass
+2000 0001 v3.2.9 (Rel)
+Size: 319240 CRC: 0x3FBE2A30
+Type: 02 Subtype 0C Flags 04
+Stream: 116 Revision: 167733
+Time: 2019-03-13 01:47:37Z
+
+Diag: pass
+2000 0001 v3.2.7 (Rel)
+Size: 319044 CRC: 0x2FAF887F
+Type: 02 Subtype 0C Flags 04
+Stream: 112 Revision: 131152
+Time: 2016-05-18 01:28:44Z
+```
+
+`mem/rf [start address] [lenght]` reads bytes from the flash memory, wraps every 512 kB.
+
 ## Firmware is interchangeable with
 
 ## List of software versions
 
 ## List of partitions
 
-Encrypted.
+The flash memory is not actually partitioned, upon reset the CPU loads from address 0 (reset vector) and jumps to another address ([page 74](http://me.bios.io/images/d/dd/ARCompactISA_ProgrammersReference.pdf#%5B%7B%22num%22%3A177%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C72%2C157%2C0%5D)). Each section ends with its CRC.
+
+| Section               | Start address    | End address      | Size           |
+|-----------------------|------------------|------------------|----------------|
+| Bootloader            | 0                | 42896/0xA790     | 42896/0xA790   |
+| App 0                 | ?                | ?                | ?              |
+| App 1                 | 1179687/0x120027 | 1498731/0x16DE6B | 319044/0x4DE44 |
+| App 2                 | 1703975/0x1A0027 | 2023215/0x1EDF2F | 319240/0x4DF08 |
+| Diag (copy of App 1?) | 2555943/0x270027 | 2874987/0x2BDE6B | 319044/0x4DE44 |
+
+(End address is non-inclusive)
+App 1 and App 2 sections are located at a distance of 512 kB (0x80000) from each other. This probably means that the CPU is capable of addressing only 512 kB of flash. It can be verified also by running the `mem/rf` command, which wraps every 512 kB.
 
 # Userful files and binaries
 
@@ -197,4 +259,6 @@ There is an SFP plug on the UNI side with an embedded EEPROM.
 
 # Miscellaneous Links
 
-{% include image.html file="iliad\onu1\BCM55030_features.jpg" alt="BCM55030 features" caption="BCM55030 features" %} 
+{% include image.html file="iliad\onu1\BCM55030_features.jpg" alt="BCM55030 features" caption="BCM55030 features" %}
+
+[^arc-isa]: *ARCompact Instruction Set Architecture Programmer's Reference* http://me.bios.io/images/d/dd/ARCompactISA_ProgrammersReference.pdf
