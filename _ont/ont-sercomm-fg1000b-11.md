@@ -13,7 +13,7 @@ parent: Sercomm
 | Model           | FG1000B.11             |
 | Chipset         | BCM68360_B1            |
 | Flash           | NAND 128 MB            |
-| RAM             | 128 MB                 |
+| RAM             | 256 MB                 |
 | CPU             | Broadcom B53 Dual Core |
 | CPU Clock       | 1500MHz                |
 | Bootloader      | CFE                    |
