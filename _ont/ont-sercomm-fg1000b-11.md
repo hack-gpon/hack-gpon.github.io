@@ -16,13 +16,13 @@ parent: Sercomm
 | RAM             | 128 MB                 |
 | CPU             | Broadcom B53 Dual Core |
 | CPU Clock       | 1500MHz                |
-| Bootloader      |  CFE                   |
+| Bootloader      | CFE                    |
 | Load addr       | 0x0000000000080000     |
 | 2.5GBaseT       | Yes                    |
 | PHY Ethernet    | RTL8221B               |
 | Optics          | SC/APC                 |
 | IP address      | 192.168.100.1/24       |
-| Web Gui         | ✅, no login needed     |
+| Web Gui         | ✅, no login needed    |
 | SSH             | No                     |
 | Telnet          | No                     |
 | Serial          | No                     |
