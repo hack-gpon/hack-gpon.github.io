@@ -39,11 +39,11 @@ Once you access the stick via ssh you will be presented with a second tier login
 - [Ziza OP151s](/ont-ziza-op151s)
 - [T&W TW2362H-CDEL](/ont-t-w-tw2362h-cdel)
 
-# General Settings and Useful Commands
+# GPON/OMCI settings
 
 {% include alert.html content="all commands start from the twmanu shell." alert="Note"  icon="svg-info" color="blue" %}
 
-## Changing the ONT's S/N
+## Setting ONU GPON Serial Number
 {% include alert.html content="the S/N is stored in the ASCII format." alert="Note"  icon="svg-info" color="blue" %}
 
 ```sh
@@ -54,7 +54,7 @@ hal
 set sn ALCLf0f0f0f0
 ```
 
-## Changing the ONT's PLOAM password
+## Setting ONU GPON PLOAM password
 
 {% include alert.html content="the PLOAM is stored in the ASCII format." alert="Note"  icon="svg-info" color="blue" %}
 
@@ -70,7 +70,7 @@ manufactory
 set password hex 31323334353637383939
 ```
 
-## Show ONT info
+## Show ONU GPON info
 ```sh
 show info
 ```

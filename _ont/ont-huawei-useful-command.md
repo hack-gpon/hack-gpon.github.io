@@ -8,12 +8,11 @@ It is possible that this won't work/has been fixed in more recent versions.
 
 Now that this is done, the modified configuration file can be uploaded via the web interface, the ONT will restart and telnet should be accessible on port 23.
 
-
-# General Settings and Useful Commands
-
 {% include alert.html content="All results need to be converted from HEX to ASCII. You can use our [Converter](/ascii-hex), taking care to add 0x in front and remove the spaces every 8 hex digits." alert="Warning" icon="svg-info" color="blue" %}
 
-## Getting the OLT vendor
+# GPON ONU status
+
+## Get information of the OLT vendor
 
 ```
 WAP>omcicmd mib show meid 131 instid 0
@@ -31,7 +30,9 @@ success!
 ```
 *0x48575443* → *HWTC* (Huawei)
 
-## Getting the ONT SW Version 0 and 1
+# GPON/OMCI settings
+
+## Getting OMCI software version (ME 7)
 
 ```
 WAP>omcicmd mib show meid 7 instid 0
@@ -61,7 +62,7 @@ success!
 ```
 *0x56355230 32304331 30533131 3500* → *V5R020C10S115*
 
-## Getting the ONT Vendor ID and HW Version:
+## Getting OMCI hardware version and vendor ID (ME 256)
 
 ```
 WAP>omcicmd mib show meid 256 instid 0
@@ -90,7 +91,7 @@ success!
 *0x48575443* → *HWTC*
 *0x32343046 2e41* → *240F.A*
 
-## Getting the ONT Equipment ID
+## Getting OMCI equipment ID (ME 257)
 
 ```
 WAP>omcicmd mib show meid 257 instid 0

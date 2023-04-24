@@ -124,8 +124,6 @@ The following commands are used to flash a new rootfs to image1 and then boot to
 # reboot
 ```
 
-# Low Level Modding
-
 {% include alert.html content="This section is based on the `V1_7_8_210412` version of the stick's firmware " alert="Info" icon="svg-info" color="blue" %}
 
 ## Adding support to configurable SW and HW versions, Vendor ID and much more

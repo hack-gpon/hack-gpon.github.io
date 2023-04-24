@@ -50,7 +50,7 @@ onu ploam_state_get
 otop -g s
 ```
 
-## Get information of the OLT
+## Get information of the OLT vendor
 ```sh
 omci_pipe.sh meg 131 0
 ```
@@ -90,42 +90,42 @@ To change the default lan mode value you can use `fw_setenv sgmii_mode`. The fir
 
 # GPON/OMCI settings
 
-## Setting ONU GPON serial number
+## Setting ONU GPON Serial Number
 ```sh
 fw_setenv onu_serial "YOUR_SERIAL_ASCII"
 ```
 
-## Setting ONU GPON ploam
+## Setting ONU GPON PLOAM password
 ```sh
 fw_setenv onu_ploam "YOUR_PLOAM_ASCII"
 ```
 
-## Setting ONU GPON loid
+## Setting ONU GPON LOID
 ```sh
 fw_setenv onu_loid "YOUR_LOID"
 ```
 
-## Setting ONU GPON loid password
+## Setting ONU GPON LOID password
 ```sh
 fw_setenv onu_loid_password "YOUR_LOID_PASSWORD"
 ```
 
-## Setting OMCI vendor ID
+## Setting OMCI vendor ID (ME 256)
 ```sh
 fw_setenv omci_vendor_id "YOUR_VENDOR_ID"
 ```
 
-## Setting OMCI equipment ID
+## Setting OMCI equipment ID (ME 257)
 ```sh
 fw_setenv omci_equip_id "YOUR_EQUIP_ID"
 ```
 
-## Setting OMCI hardware ID
+## Setting OMCI hardware version (ME 256)
 ```sh
 fw_setenv omci_hw_ver "YOUR_HW_VER"
 ```
 
-## Setting OMCI software version
+## Setting OMCI software version (ME 7)
 ```sh
 fw_setenv image0_version "YOUR_SW_VERSION_0"
 fw_setenv image1_version "YOUR_SW_VERSION_1"
@@ -135,7 +135,7 @@ fw_setenv image1_version "YOUR_SW_VERSION_1"
 
 {% include alert.html content="Normally they are not necessary and it would be better not to touch them" alert="Note"  icon="svg-warning" color="red" %}
 
-## Setting custom mib file
+## Setting custom OMCI MIB file
 You have to copy the MIB file to /etc/mibs and then run this command:
 
 ```sh
