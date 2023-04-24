@@ -45,19 +45,19 @@ parent: ZTE
 - V7.0.10P6T4 (Generic)
 
 ### HW V9.0
-- V9.0.10P2N1
+- V9.0.10P2N1 (OpenFiber)
 
 ## List of partitions (V6.0/V7.0)
- 
-| dev  | size     | erasesize | name           |
-| ---- | -------- | --------- | -------------- |
-| mtd0 | 01000000 | 00010000  | "whole flash"  |
-| mtd1 | 00080000 | 00010000  | "uboot"        |
-| mtd2 | 00700000 | 00010000  | "kernel0"      |
-| mtd3 | 00700000 | 00010000  | "kernel1"      |
-| mtd4 | 00010000 | 00010000  | "others"       |
+
+| dev  | size     | erasesize | name             |
+| ---- | -------- | --------- | ---------------- |
+| mtd0 | 01000000 | 00010000  | "whole flash"    |
+| mtd1 | 00080000 | 00010000  | "uboot"          |
+| mtd2 | 00700000 | 00010000  | "kernel0"        |
+| mtd3 | 00700000 | 00010000  | "kernel1"        |
+| mtd4 | 00010000 | 00010000  | "others"         |
 | mtd5 | 00010000 | 00010000  | "parameter tags" |
-| mtd6 | 00160000 | 00010000  | "usercfg"  |
+| mtd6 | 00160000 | 00010000  | "usercfg"        |
 
 
 This ONT supports dual boot, as visible from the presence of `kernel0` and `kernel1`, which contain the rootfs.
