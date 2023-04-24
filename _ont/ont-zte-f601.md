@@ -24,7 +24,7 @@ parent: ZTE
 | Web Gui      | ✅ user `admin`, password `admin` or user `user`, password `user` | ✅ user `admin`, password `admin` or user `user`, password `user` |             |                           |
 | SSH          |                                                                   |                                                                   |             |                           |
 | Telnet       |                                                                   |                                                                   |             |                           |
-| Serial       | ✅                                                                | ✅                                                                 |             |                           |
+| Serial       | ✅                                                                | ✅                                                                |             |                           |
 | Form Factor  | ONT                                                               | ONT                                                               | ONT         | ONT                       |
 
 {% include image.html file="f601_v6_1.jpg" alt="F601 v6" caption="F601 v6" %}
