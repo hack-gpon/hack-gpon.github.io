@@ -121,13 +121,15 @@ For more info [XPONos partition layout](https://github.com/XPONos/linux_lantiq-f
 - [right.com.cn (China) 29 Aug 2022](https://mega.nz/file/VHFFSBrT#2WhDPcdON5EHR01l6Ut35GC3sl55e4l09Z0NUo_7SWA){: .btn} md5hash: 3d357e2dc7b59c66fe61b4ddf1fb8dc0
 - [ONT FS.com GPON ONU Stick with MAC firmware / SourcePhotonics SPS-34-24T-HP-TDFO firmware](/ont-fs-com-gpon-onu-stick-with-mac)
 
-# General Settings and Useful Commands
+# Use
 
 - [Huawei Rooted Firmware General Setting](/ont-huawei-ma5671a-rooted)
 - [Carlito Firmware General Setting](/ont-huawei-ma5671a-carlito)
 - [SourcePhotonics Firmware General Setting](/ont-huawei-ma5671a-sf)
 - [right.com.cn (China) Firmware General Setting](/ont--huawei-ma5671a-china)
 - [Nokia G-010S-P Firmware General Setting](/ont-nokia-g-010s-p)
+
+# Advanced settings
 
 ## Transferring files to the stick
 
@@ -176,7 +178,6 @@ cat /dev/mtdX | nc 192.168.1.11 1234
 ```
 
 ## Booting to a different image
-
 
 ```sh
 # fw_setenv committed_image 0|1
