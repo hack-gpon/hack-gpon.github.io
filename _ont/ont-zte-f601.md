@@ -47,7 +47,9 @@ parent: ZTE
 ### HW V9.0
 - V9.0.10P2N1 (OpenFiber)
 
-## List of partitions (V6.0/V7.0)
+## List of partitions 
+
+### HW V6.0 and V7.0
 
 | dev  | size     | erasesize | name             |
 | ---- | -------- | --------- | ---------------- |
@@ -76,42 +78,11 @@ You can also clone currently running image into other slot using this command:
 syn_version
 ```
 
-ZTE has create various region code that loads default valuse based on local ISP, this configuration can be changed using this command:
-
-```sh
-upgradetest sfactoryconf X
-```
-
-Where X is the number of supported regioncode into file `/etc/init.d/regioncode`, here is an example from TIM `V6.0.10N40` firmware:
-
-```sh
-# cat /etc/init.d/regioncode
-2:Lithuania
-15:Portugal
-17:TelMex
-19:Turkey
-32:JazzTel
-38:Czechia
-54:Viettel
-59:SeteTec
-63:Ais
-88:GerNetCologne
-97:ItalyTI
-104:IndiaRJIO
-110:IndiaGTPL
-112:BrazilTIM
-115:ItalyOpenFiber
-116:ItalyTescali
-118:PolandINEA
-139:MultiLaser
-198:Manufacture
-```
-
-# General Settings and Useful Commands 
+# Use
 {% include alert.html content="Commands have been tested on V6/V7 HW rev on TIM and OF firmware" alert="Note"  icon="svg-info" color="blue" %}
 
 ## Enable Telnet
-{% include alert.html content="This is an external script, so use at your own risk! Credential doesn't survive at reboot!" alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="This is an external script ([ZTE Telnet enabled](https://github.com/douniwan5788/zte_modem_tools)), so use at your own risk! Credential doesn't survive at reboot!" alert="Note"  icon="svg-info" color="blue" %}
 
 ```sh
 python3 zte_factroymode.py --user admin --pass admin --ip 192.168.1.1 --port 80 telnet open
@@ -144,27 +115,49 @@ Username: 2W3iqFVt
 Password: Eqb8X8Qt
 ```
 
-## Changing the ONT's S/N
-{% include alert.html content="You have to change S/N and the VID. 2176 is for the VID (first 4 letters of the S/N) and 2177 is for the last 8 digits" alert="Note"  icon="svg-info" color="blue" %}
-```sh
-setmac 1 2176 ZTEG
-setmac 1 2177 AABBCCDD
-```
+# GPON ONU status
 
-## Changing the ONT's PLOAM password
-{% include alert.html content="The PLOAM password is stored in the ASCII format." alert="Note"  icon="svg-info" color="blue" %}
-This can be done easily via web ui. If you prefer to do it via the shell use:
-```sh
-setmac 1 2181 1234567890
-setmac 1 2178 1234567890
-```
+## Get the operational status of the ONU
 
-## Checking connection state
 To see the connection state use the following command:
 ```
 gpontest -gstate
 ```
 `[gpontest] gpon state is [O5]` for O5 state
+
+## Get information of the OLT vendor
+
+First enable printf on console usin the following command:
+
+```sh
+redir printf
+```
+
+Then query the OMCI ME Class needed with this command:
+
+```sh
+sendcmd 132 omcidebug showmedata 131
+```
+
+This command will print out the result like this one:
+
+```sh
+##################################
+MIB INFO:
+         ME CLASS: 131
+         DB NAME: olt_g, DBHandle: 32
+##################################
+
+<-----MeID[ 0x0000,0 ], Addr[ 0x19a2b1]----->
+         Vendorid:48 57 54 43
+      EquipmentID:00 00 00 00 00 00 00 00 00 00
+                    00 00 00 00 00 00 00 00 00 00
+          Version:31 30 00 00 00 00 00 00 00 00
+                    00 00 00 00
+        TimeofDay:00 00 00 00 00 00 00 00 00 00
+                    00 00 00 00
+---------------------------------------------------------------------
+```
 
 ## Querying a particular OMCI ME
 
@@ -198,6 +191,60 @@ MIB INFO:
         TimeofDay:00 00 00 00 00 00 00 00 00 00
                     00 00 00 00
 ---------------------------------------------------------------------
+```
+
+# GPON/OMCI settings
+
+## Setting ONU GPON Serial Number
+
+{% include alert.html content="You have to change S/N and the VID. 2176 is for the VID (first 4 letters of the S/N) and 2177 is for the last 8 digits" alert="Note"  icon="svg-info" color="blue" %}
+```sh
+setmac 1 2176 ZTEG
+setmac 1 2177 AABBCCDD
+```
+
+## Setting ONU GPON PLOAM password
+
+{% include alert.html content="The PLOAM password is stored in the ASCII format." alert="Note"  icon="svg-info" color="blue" %}
+This can be done easily via web ui. If you prefer to do it via the shell use:
+```sh
+setmac 1 2181 1234567890
+setmac 1 2178 1234567890
+```
+
+# Advanced settings
+
+## Change region code
+
+ZTE has create various region code that loads default valuse based on local ISP, this configuration can be changed using this command:
+
+```sh
+upgradetest sfactoryconf X
+```
+
+Where X is the number of supported regioncode into file `/etc/init.d/regioncode`, here is an example from TIM `V6.0.10N40` firmware:
+
+```sh
+# cat /etc/init.d/regioncode
+2:Lithuania
+15:Portugal
+17:TelMex
+19:Turkey
+32:JazzTel
+38:Czechia
+54:Viettel
+59:SeteTec
+63:Ais
+88:GerNetCologne
+97:ItalyTI
+104:IndiaRJIO
+110:IndiaGTPL
+112:BrazilTIM
+115:ItalyOpenFiber
+116:ItalyTescali
+118:PolandINEA
+139:MultiLaser
+198:Manufacture
 ```
 
 # Random notes
