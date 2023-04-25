@@ -7,7 +7,7 @@ layout: default
 
 The OMCI standard is defined in a way that suppliers can offer modular and incremental functionality to meet different levels of customer needs.
 
-The standards [^G_988] and [^G_984_4] define the protocol needed to handle all the features of the PON specifications ([^G_984.1], [^G_987], [^G_9807_1], ...), as well as a number of services and functionalities.
+The standards [^G_988] and [^G_984_4] define the protocol needed to handle all the features of the PON specifications ([^G_984_1], [^G_987], [^G_9807_1], ...), as well as a number of services and functionalities.
 The standard was born with B-PON, then modified with G-PON and separated with XGS-PON. OMCI supports interoperability, yet it allows for optional components and future extensions.
 
 A protocol-independent MIB (Management Information Base) describes the exchange of information across OMCI [^G_988] and [^G_984_4]. This protocol is defined in terms of MEs. MEs are abstract representations of resources and services in an ONU. Only a small subset of the list of MEs is mandatory.
@@ -364,7 +364,7 @@ The new ME introduced in G.988 [^G_988] do not have a description because G.988 
 
 ---
 
-[^G_984.1]: *Gigabit-capable passive optical networks (GPON): General characteristics* https://www.itu.int/rec/T-REC-G.984.1
+[^G_984_1]: *Gigabit-capable passive optical networks (GPON): General characteristics* https://www.itu.int/rec/T-REC-G.984.1
 [^G_988]: *G.988: ONU management and control interface (OMCI) specification* https://www.itu.int/rec/T-REC-G.988
 [^G_984_4]: *G.984.4: Gigabit-capable Passive Optical Networks (G-PON): ONT management and control interface specification* https://www.itu.int/rec/T-REC-G.988
 [^G_987]: *G.987: 10-Gigabit-capable passive optical network (XG-PON) systems: Definitions, abbreviations and acronyms* https://www.itu.int/rec/T-REC-G.987
