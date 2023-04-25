@@ -33,6 +33,8 @@
 
 ## Serial
 
+## Root procedure
+
 ## Firmware is interchangeable with
 
 ## List of software versions
@@ -44,6 +46,10 @@
 ## Useful files
 
 ## Useful binaries
+
+# Usage
+
+## Enable telnet/SSH/serial
 
 # GPON ONU status
 
@@ -73,6 +79,16 @@
 
 # Advanced settings
 
+## Transferring files to the stick
+
+## Backup of all partition
+
+## Checking the currently active image
+
+## Booting to a different image
+
+## Cloning of image 0 into image 1
+
 ## Setting management MAC
 
 ## Setting management IP
@@ -82,6 +98,8 @@
 ## Creating a new rootfs
 
 ## Flashing a new rootfs
+
+## Enabling the Web UI
 
 # SFP EEPROM settings
 
@@ -93,6 +111,10 @@
 
 ## EEPROM1 layout
 
+# Random notes
+
 # Known Bugs
 
 # Miscellaneous Links
+
+# Theardown and other photos
