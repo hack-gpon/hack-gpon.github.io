@@ -47,7 +47,7 @@
 
 ## Useful binaries
 
-# Use
+# Usage
 
 ## Enable telnet/SSH/serial
 

@@ -37,7 +37,7 @@ parent: ZTE
 - V6.0.10P2N02 (OpenFiber)
 - V6.0.10P2N18 (OpenFiber)
 
-# Use
+# Usage
 
 ## Enable password
 
