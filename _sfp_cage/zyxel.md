@@ -44,9 +44,9 @@ The result will be something like the following:
 ```
 console=ttyS0,115200n1 loglevel=8 earlycon=uart8250,mmio32,0x11002000 rootubi=ubi
 ```
-If rootubi=ubi it means that the active partition is mtd6
+If `rootubi=ubi` it means that the active partition is `mtd6`
 
-If rootubi=ubi2 it means that the active partition is mtd7
+If `rootubi=ubi2` it means that the active partition is `mtd7`
 
 {% include alert.html content="When you flash a new firmware via the web interface the router will automatically write the new firmware in the inactive partition, hence if the firmware upgrade is successfull it will automatically swap the boot partition at next reboot. If everything is ok you don't have to manually swap partitions" alert="Info" icon="svg-info" color="blue" %}
 
