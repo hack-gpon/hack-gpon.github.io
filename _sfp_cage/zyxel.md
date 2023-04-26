@@ -20,7 +20,8 @@ layout: default
 | SGMII    | ✅                                                |
 | Type     | Router                                             |
 
-# List of partitions
+# Zyxel EX5601-T0
+## List of partitions
 
 | dev  | size     | erasesize | name          |
 | ---- | -------- | --------- | ------------- |
