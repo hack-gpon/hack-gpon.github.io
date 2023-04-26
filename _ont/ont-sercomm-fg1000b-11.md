@@ -48,7 +48,7 @@ The ONT seems only to display output of the ROM CFE and flash CFE, but don't all
 
 Current only version seen is: 090144.1.0.001
 
-# GPON ONU status
+# GPON/OMCI settings
 ## Getting/Setting ONU GPON PLOAM password
 
 PLOAM can be set directly for Text or Hexa(without 0x) via Web interface if <10 digit otherwise POST call to URL allow > 10 digits for example 20 digit hex can be setup via:
