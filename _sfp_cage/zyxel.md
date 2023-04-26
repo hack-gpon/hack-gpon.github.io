@@ -20,7 +20,7 @@ layout: default
 | SGMII    | ✅                                                |
 | Type     | Router                                             |
 
-# Partition Table
+# List of partitions
 
 | dev  | size     | erasesize | name          |
 | ---- | -------- | --------- | ------------- |
