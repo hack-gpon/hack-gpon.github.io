@@ -73,7 +73,7 @@ https://github.com/pameruoso/zyxel-ex5601t0
 
 1. Added start-up script to reset and enable root access via ssh.
 The script reads the device serial number and resets the root password with that. Do not try to reset the root password because that will last until next reboot.
-2. the /bin path contains sfp_wan.sh_wind and check_sfp_link.sh_wind scripts which are very similar to the standard sfp_wan.sh and check_sfp_link.sh scripts. If everything works with the original ones do not swap them. If you want to allow 2.5gbit hsgmii with afm0003 sfp stick you need to swap and enable the "_wind" scripts.
+2. the `/bin` path contains `sfp_wan.sh_wind` and `check_sfp_link.sh_wind` scripts which are very similar to the standard `sfp_wan.sh` and `check_sfp_link.sh` scripts. If everything works with the original ones do not swap them. If you want to allow 2.5gbit HSGMII with AFM0003 sfp stick you need to swap and enable the `_wind` scripts.
 3. Additional packages installed: mtr, htop, openvpn, wireguard.
 
 {% include alert.html content="The openvpn and wireguard functionalities will not be directly usable in the Zyxel web interface, they are not supported. If you want to setup a vpn with openvpn or wireguard you must know how to use the command-line and do your own setup" alert="Info" icon="svg-info" color="blue" %}
