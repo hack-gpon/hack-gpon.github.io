@@ -14,7 +14,7 @@ layout: default
 | Soc      | MT7986a (filogic 830)                              |
 | Ram      | 1G                                                 |
 | SFP      | 1 HSGMII capable sfp port[^xor]                    |
-| Ethernet | 3 1GbE, 1 2.5GbE lan port, 1 2,5Gbe wan port[^xor] |
+| Ethernet | 3 1GbE, 1 2.5GbE LAN port, 1 2.5GbE WAN port[^xor] |
 | XGMII    | No                                                 |
 | HSGMII   | ✅                                                |
 | SGMII    | ✅                                                |
