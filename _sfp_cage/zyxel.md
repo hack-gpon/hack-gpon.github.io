@@ -51,7 +51,7 @@ If `rootubi=ubi2` it means that the active partition is `mtd7`
 
 {% include alert.html content="When you flash a new firmware via the web interface the router will automatically write the new firmware in the inactive partition, hence if the firmware upgrade is successfull it will automatically swap the boot partition at next reboot. If everything is ok you don't have to manually swap partitions" alert="Info" icon="svg-info" color="blue" %}
 
-# Flashing a firmware or firmware downgrade
+## Flashing a firmware or firmware downgrade
 
 {% include alert.html content="The following procedure is provided as-is and if anything goes wrong you will likely need to open the router case and attach a USB serial adapter to the router to recover it.
 This community is not responsible of any damage you cause by following these procedures." alert="Warning" icon="svg-warning" color="red" %}
