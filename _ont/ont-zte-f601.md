@@ -84,6 +84,8 @@ syn_version
 ## Enable Telnet
 {% include alert.html content="This is an external script ([ZTE Telnet enabled](https://github.com/douniwan5788/zte_modem_tools)), so use at your own risk! Credential doesn't survive at reboot!" alert="Note"  icon="svg-info" color="blue" %}
 
+{% include alert.html content="For Italian users, it only works on versions V6.0.10N40 (TIM) and V6.0.10P6N7 (OpenFiber)" alert="Note"  icon="svg-info" color="blue" %}
+
 ```sh
 python3 zte_factroymode.py --user admin --pass admin --ip 192.168.1.1 --port 80 telnet open
 ```
