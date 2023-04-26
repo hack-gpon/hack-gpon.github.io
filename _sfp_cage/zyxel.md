@@ -87,7 +87,7 @@ The script reads the device serial number and resets the root password with that
 
 # Miscellaneous Links
 
-- [Zyxel source GPL package V5.70(ACDZ.0)C0](https://github.com/ErnyTech/zyxel-ex5601t0)
+- [Zyxel EX5601-T0 source GPL package V5.70(ACDZ.0)C0](https://github.com/ErnyTech/zyxel-ex5601t0)
 
 - [Rollback SFP Zyxel con il W3 HUB per risolvere il problema dell'upload cappato](https://forum.fibra.click/d/36541-rollback-sfp-zyxel-con-il-w3-hub-per-risolvere-il-problema-dellupload-cappato)
 
