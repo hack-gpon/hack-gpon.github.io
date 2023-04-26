@@ -67,7 +67,7 @@ zycli modelcheck off
 5. Select choose file to select the firmware file you want to upload and click Upload.
 6. The router will automatically reboot and should get back up on 192.168.1.1
 
-# Firmware Version V5.70(ACDZ.0)C0 no-brand
+## Firmware Version V5.70(ACDZ.0)C0 no-brand
 
 Here is a no-brand firmware compiled starting from Zyxel provided OpenSource package under GPL license (link at the bottom of this page) plus the following modifications that you can track on the following repo:
 https://github.com/pameruoso/zyxel-ex5601t0
