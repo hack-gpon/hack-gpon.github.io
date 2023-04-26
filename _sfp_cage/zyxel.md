@@ -34,7 +34,7 @@ layout: default
 | mtd7 | 04000000 | 00040000  | "ubi2"        |
 | mtd8 | 15a80000 | 00040000  | "zyubi"       |
 
-This router has 2 slots for firmware flashing, ubi and ubi2
+This router supports dual boot, and has two partitions for the firmware, `ubi` and `ubi2`
 
 To check the current active partition you can use the following command:
 ```sh
