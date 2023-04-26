@@ -54,9 +54,7 @@ Current only version seen is: 090144.1.0.001
 PLOAM can be set directly for Text or Hexa(without 0x) via Web interface if <10 digit otherwise POST call to URL allow > 10 digits for example 20 digit hex can be setup via:
 
 ```
-curl -i -s -k -X $'POST' \
-    -H $'Host: 192.168.100.1' -H $'Accept: application/json, text/javascript, */*' -H $'X-Requested-With: XMLHttpRequest' -H $'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.5563.65 Safari/537.36' -H $'Content-Type: application/x-www-form-urlencoded' -H $'Origin: http://192.168.100.1' -H $'Referer: http://192.168.100.1/ONT/client/html/content/config/setup.html?lang=en' -H $'Accept-Encoding: gzip, deflate' -H $'Accept-Language: en-GB,en-US;q=0.9,en;q=0.8' -H $'Connection: close' \
-    -b $'lang=en' \
+curl -i -s -k -X $'POST' -H $'Content-Type: application/x-www-form-urlencoded' \
     -d $'ploam_password=00000XXXXXXXXXXXXXXX' \
     $'http://192.168.100.1/ONT/client/data/Router.json'
 ```
