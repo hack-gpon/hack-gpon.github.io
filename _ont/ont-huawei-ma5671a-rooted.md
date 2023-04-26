@@ -11,7 +11,7 @@ layout: default
 
 This firmware version offers a minishell in addition to the normal sh shell, the commands offered by the minishell are as follows:
 
-{% include serial_dump.html file="ma5671a_minishell.txt" alt="Huawei MA5671A minishell" %}
+{% include serial_dump.html file="ma5671a_minishell.txt" alt="Huawei MA5671A minishell" title="Huawei MA5671A minishell" %}
 
 ## Root
 
