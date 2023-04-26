@@ -1,5 +1,5 @@
 ---
-title: Zyxel EX5601-T0 Router
+title: Zyxel Router
 has_children: false
 alias: EX5601-T0
 layout: default
