@@ -89,7 +89,7 @@ fw_setenv EngDebugFlag 0x1
 ```
 9. Reboot the router
 10. As soon as you read `Hit any key to stop autoboot:` press Enter
-11. If everything went ok you should have the following prompt :
+11. If everything went ok you should have the following prompt:
 ```
 ZHAL>
 ```
