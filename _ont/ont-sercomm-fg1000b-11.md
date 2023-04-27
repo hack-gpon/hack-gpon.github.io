@@ -26,7 +26,7 @@ parent: Sercomm
 | Web Gui         | ✅, no login needed    |
 | SSH             | No                     |
 | Telnet          | No                     |
-| Serial          | No                     |
+| Serial          | ✅, only TX            |
 | Serial baud     | 115200                 |
 | Serial encoding | 8-N-1                  |
 | Form Factor     | ONT                    |
