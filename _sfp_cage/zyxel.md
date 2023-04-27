@@ -102,6 +102,7 @@ You have successfully unlocked zloader access, this procedure must be done only 
 {% include alert.html content="The following procedure is provided as-is, if you damage the device this community is not responsibile of it in any way." alert="Warning" icon="svg-warning" color="red" %}
 
 {% include alert.html content="The supervisor user is the most powerful user that can be used from the web interface. The supervisor password is written in the nand and it's encrypted. To dump the password you must first complete the Unlock zloader procedure" alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content='The supervisor user is the most powerful user that can be used from the web interface. The supervisor password is written in the nand and it's encrypted. To dump the password you must first complete the "Unlock zloader" procedure' alert="Info" icon="svg-info" color="blue" %}
 
 1. Open the router case and connect your usb to serial adapter.
 2. Open putty or any other serial capable software and configure it to use your COMX port with 115200 speed.
@@ -121,7 +122,7 @@ atsr
 
 {% include alert.html content="The following procedure is provided as-is, if you damage the device this community is not responsibile of it in any way." alert="Warning" icon="svg-warning" color="red" %}
 
-{% include alert.html content="To swap the boot partition you first have to complete the Unlock zloader procedure" alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content='To swap the boot partition you first have to complete the "Unlock zloader" procedure' alert="Info" icon="svg-info" color="blue" %}
 
 1. Open the router case and connect your usb to serial adapter.
 2. Open putty or any other serial capable software and configure it to use your COMX port with 115200 speed.
@@ -142,7 +143,7 @@ cat /proc/cmdline
 ## Unlock u-boot access
 {% include alert.html content="The following procedure is provided as-is, if you damage the device this community is not responsibile of it in any way." alert="Warning" icon="svg-warning" color="red" %}
 
-{% include alert.html content="To unlock u-boot access you first have to complete the Unlock zloader procedure" alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content='To unlock u-boot access you first have to complete the "Unlock zloader" procedure' alert="Info" icon="svg-info" color="blue" %}
 
 {% include alert.html content="Having full u-boot access can be very dangerous, with great power comes great responsibility." alert="Warning" icon="svg-warning" color="red" %}
 
