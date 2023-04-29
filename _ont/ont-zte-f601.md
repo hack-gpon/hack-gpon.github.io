@@ -214,9 +214,42 @@ setmac 1 2181 1234567890
 setmac 1 2178 1234567890
 ```
 
+## Change ONU HW\SW Version 
+
+{% include alert.html content="The only way to change HW\SWVer on this ONT is to modify the firmware, so do it at your own risk" alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="This procedure was only tested on TIM V6.0.10N40 and OF V6.0.10P6N7 firmwares" alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="The provided bspatches are related to version V6.0.10N40 or P6N7 and unlock root serial account and permanent telnet" alert="Note"  icon="svg-info" color="blue" %}
+
+Needed tools:
+
+- Linux VM or WSL with Python 3.17
+- [LZMA tools 4.32]([https://github.com/douniwan5788/zte_modem_tools](https://tukaani.org/lzma/))
+- TFTP server
+
+First step is to login over telnet with `zte_factroymode.py`.
+After login, go to:
+
+```sh
+cd /tmp
+```
+
+Dump the active firmware with this command:
+
+```sh
+ cat /dev/mtd2 > kernel0
+```
+
+Copy the dumped firmware via TFTP to you VM or Windows machine with this commnad:
+
+```sh
+tftp -l kernel0 -r kernel0 -p 192.168.1.X (where X is the IP of your PC)
+```
+
 # Advanced settings
 
 ## Change region code
+
+{% include alert.html content="Looks like TIM and OF firmwares work only with their stock factory conf, so 97 or 116, otherwise no PPPoE" alert="Note"  icon="svg-info" color="blue" %}
 
 ZTE has create various region code that loads default valuse based on local ISP, this configuration can be changed using this command:
 
