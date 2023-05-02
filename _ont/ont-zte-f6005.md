@@ -165,7 +165,7 @@ and flash image with the `upgdimage`
 
 So you will have both slot with the same firmware version and avoid the swap from the OLT
 
-After these steps, you can power-cycle ONT and logon on TELNET with `root\root` credentials. From this moment you can simply spoof your ONT with the usual commands.
+After these steps, you can power-cycle ONT and logon on TELNET with `root\admin` credentials. From this moment you can simply spoof your ONT with the usual commands.
 
 
 # Known Bugs
