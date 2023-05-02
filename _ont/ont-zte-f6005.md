@@ -102,7 +102,7 @@ Configure TeraTerm with the correct serial parameters (refer to **Serial** parag
 9601D#
 ```
 
-**_Note that this proceedure needs to be done each time you power-cycle the ONT_**
+{% include alert.html content="Note that this proceedure needs to be done each time you power-cycle the ONT" alert="Note" icon="svg-info" color="blue" %}
 
 Now with the U-Boot prompt a custom firmware that enable TELNET can be flashed. 
 Please note that if you use a **TIM** or **OpenFiber** base firmware, the TTL will be silent after kernel loading because it was disabled at kernel level.
@@ -142,7 +142,8 @@ Writing 6619136 B from 80400000 to 00200000... 100% ~ 0084ffff/6619136 B
         [Done]
 ```
 
-**_Please note that some OLTs (like Alcatel with TIM in Italy) needs to have software image 0 or 1 as active. So in this case you have to do these commands twice to flash image on both slot:_**
+{% include alert.html content="Please note that some OLTs (like Alcatel with TIM in Italy) needs to have software image 0 or 1 as active. So in this case you have to do these commands twice to flash image on both slot:" alert="Note" icon="svg-info" color="blue" %}
+
 
 **ImageA**:
 
