@@ -9,13 +9,13 @@ layout: default
 
 ## Minishell
 
-This firmware version offers a minishell in addition to the normal sh shell, the commands offered by the minishell are as follows:
+This firmware version offers a minishell in addition to the normal sh shell. Commands offered by minishell are as follows:
 
 {% include serial_dump.html file="ma5671a_minishell.txt" alt="Huawei MA5671A minishell" title="Huawei MA5671A minishell" %}
 
 ## Root
 
-For general use, the minishell does not allow any modifications, and [Web root procedure](/ont-huawei-ma5671a-root-web) is required.
+For general use, minishell does not allow any modifications and [Web root procedure](/ont-huawei-ma5671a-root-web) is required.
 
 # GPON ONU status
 
@@ -29,7 +29,7 @@ onu ploamsg
 ```sh
 omci_pipe.sh meg MIB_IDX ME_IN
 ```
-Where `MIB_IDX` is the MIB ID and the `ME_IN` is the ME instance number
+Where `MIB_IDX` is the MIB ID and `ME_IN` is the ME instance number
 
 # GPON/OMCI settings
 
