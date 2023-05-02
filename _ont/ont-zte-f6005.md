@@ -61,7 +61,7 @@ You can use this tool to generate the enable password:
 # Advanced settings
 ## Unlock serial and TELNET
 
-This ONT is the twin brother of **CIG G97-CP**, if you can find its bootloader (named `CIG_bu.en_V3.09.15`), you can easly repack firmware and enable TTL. 
+This ONT is the twin brother of [CIG G97-CP](/ont-cig-g-97cp), if you can find its bootloader (named `CIG_bu.en_V3.09.15`), you can easly repack firmware and enable TTL. 
 You need a SPI programmer (that should be a 3.3V, like modded CH341a) to read and write back the flash.
 
 {% include alert.html content="This was tested only on TIM V6.0.10N20 firmware!" alert="Note" icon="svg-info" color="blue" %}
