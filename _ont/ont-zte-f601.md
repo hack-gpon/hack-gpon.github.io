@@ -330,7 +330,7 @@ Needed tools:
 
 - Linux VM or WSL with Python >3.3
 - [ZTE Telnet enabled](https://github.com/douniwan5788/zte_modem_tools)
-- [ZTE_Firmware_Mod](http://tbd)
+- [ZTE_Firmware_Mod](https://github.com/hack-gpon/ZTE-firmware-mod)
 - TFTP server
 
 First step is to login over telnet with `zte_factroymode.py` then execute ALL this command for a full backup:
@@ -497,6 +497,7 @@ Where X is the number of supported regioncode into file `/etc/init.d/regioncode`
 - [Usource GPON ONU STICK](https://www.usourcetech.com/web/userfiles/download/GPONSTICKSFPCLASSB-2B_Rev01.pdf)
 - [GPON module Dfp-34g-2c2 sfp](https://forum.openwrt.org/t/gpon-module-dfp-34g-2c2-sfp/51641)
 - [ZTE Telnet enabled](https://github.com/douniwan5788/zte_modem_tools)
+- [ZTE Firmware Mod Script](http://github.com/hack-gpon/ZTE-firmware-mod)
 
 # Theardown and other photos
 
