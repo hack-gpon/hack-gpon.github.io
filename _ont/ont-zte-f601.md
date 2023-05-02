@@ -72,7 +72,7 @@ upgradetest switchver X
 Where `X` can be `0/1` based on the image you want to boot.
 
 
-You can also clone currently running image into other slot using this command:
+You can also clone the currently running image into other slot using this command:
 
 ```sh
 syn_version
@@ -82,9 +82,9 @@ syn_version
 {% include alert.html content="Commands have been tested on V6/V7 HW rev on TIM and OF firmware" alert="Note"  icon="svg-info" color="blue" %}
 
 ## Enable Telnet
-{% include alert.html content="This is an external script ([ZTE Telnet enabled](https://github.com/douniwan5788/zte_modem_tools)), so use at your own risk! Credential doesn't survive at reboot!" alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="This is an external script ([ZTE Telnet enabled](https://github.com/douniwan5788/zte_modem_tools)), so use it at your own risk! Credential doesn't survive at reboot!" alert="Note"  icon="svg-info" color="blue" %}
 
-{% include alert.html content="For Italian users, it only works on versions V6.0.10N40 (TIM) and V6.0.10P6N7 (OpenFiber)" alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="For italian users, it only works on versions V6.0.10N40 (TIM) and V6.0.10P6N7 (OpenFiber)" alert="Note"  icon="svg-info" color="blue" %}
 
 ```sh
 python3 zte_factroymode.py --user admin --pass admin --ip 192.168.1.1 --port 80 telnet open
@@ -119,7 +119,7 @@ Password: Eqb8X8Qt
 
 ## Enable console redirection
 
-To see omcidebug messages on Telnet you need to perform this command (just first time of each connection):
+To see omcidebug messages on Telnet you need to execute this command (just the first time of each connection):
 
 ```sh
 redir printf
@@ -167,7 +167,7 @@ MIB INFO:
 sendcmd 132 omcidebug showmedata ID_MIB (eg. 7 for Firmware version)
 ```
 
-This command will print out the result like this one:
+This command will print out a result like this one:
 
 ```sh
 
@@ -195,7 +195,7 @@ MIB INFO:
 
 ## Setting ONU GPON Serial Number
 
-{% include alert.html content="You have to change S/N and the VID. 2176 is for the VID (first 4 letters of the S/N) and 2177 is for the last 8 digits" alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="You have to change S/N and the VID. 2176 is for the VID (first 4 letters of the S/N) and 2177 is for the last 8 digits of the S/N" alert="Note"  icon="svg-info" color="blue" %}
 ```sh
 setmac 1 2176 ZTEG
 setmac 1 2177 AABBCCDD
@@ -226,9 +226,9 @@ Needed tools:
 
 Download the script `ZTE_Firmware_Mod.py` and place in the same folder where you have the `kernel0` or `kernel1` mtd dump taken from step `**Backup ONT Paritions for HW\SW Version Mod**`.
 
-Run the script with the following parameters, you can use `-h` for help. In this example we are just replace firmware version with `V6.0.10N40`. You can put your own version here, maximium 15 characters, this parameter is mandatory:
+Run the script with the following parameters, you can use `-h` for help. In this example we are just replacing the firmware version with `V6.0.10N40`. You can put your own version here, maximium 15 characters. This parameter is mandatory:
 
-If you have create partition dump with different name, please put the correct name instead of `kernel0`
+If you need to create a partition dump with a different name, please put the correct name instead of `kernel0`
 
 ```sh
 python3 ZTE_Firmware_Mod.py kernel0 V6.0.10N40 fw_mod.bin
@@ -283,7 +283,7 @@ Good luck!
 
 **Two last steps!**
 
-If you are swapping from TIM to OpenFiber Firmware, or viceversa, before reboot the ONT you have to run these two command based on the firmware version:
+If you are swapping from TIM to OpenFiber Firmware, or viceversa, you have to run these two command before rebooting the ONT based on the firmware version:
 
 From **OpenFiber V6.0.10P6N7** to **TIM V6.0.10N40**: `upgradetest sfactoryconf 97`
 
@@ -310,7 +310,7 @@ Reboot the ONT and TELNET will be already opened and you can logon with `root\ro
 
 **Just for OpenFiber firmware**
 
-In case you want add new admin instead of using embedded credentials, before rebooting the ONT run these commands:
+In case you want add new a admin user instead of using the embedded credentials, run these commands before rebooting the ONT:
 
 ```sh
 sendcmd 1 DB set DevAuthInfo 5 Enable 1
@@ -455,7 +455,7 @@ Delete dump
 
 {% include alert.html content="Looks like TIM and OF firmwares work only with their stock factory conf, so 97 or 116, otherwise no PPPoE" alert="Note"  icon="svg-info" color="blue" %}
 
-ZTE has create various region code that loads default valuse based on local ISP, this configuration can be changed using this command:
+ZTE has created various region codes that load default valuse based on the local ISP. This configuration can be changed using this command:
 
 ```sh
 upgradetest sfactoryconf X
