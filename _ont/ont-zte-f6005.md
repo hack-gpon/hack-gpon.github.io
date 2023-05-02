@@ -52,7 +52,7 @@ The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be acc
 
 ## Enable password
 
-{% include alert.html content="The following enable password is used to enter GponCLI over Serial, but currently in the models distributed in Italy by TIM and OpenFiber there is no way to enter GponCLI by Serial, only by Telnet after flashing custom firmware. The enable password is not useful for entering the Web Gui." alert="Note" icon="svg-info" color="blue" %}
+{% include alert.html content="The following enable password is used to enter GponCLI over a serial connection. The models currently distributed in Italy by TIM and OpenFiber have no way to enter GponCLI via serial, only via telnet after flashing a custom firmware. The enable password is not useful for accessing the Web Gui." alert="Note" icon="svg-info" color="blue" %}
 
 You can use this tool to generate the enable password:
 
@@ -61,26 +61,26 @@ You can use this tool to generate the enable password:
 # Advanced settings
 ## Unlock serial and TELNET
 
-This ONT is the twin brother of [CIG G97-CP](/ont-cig-g-97cp), if you can find its bootloader (named `CIG_bu.en_V3.09.15`), you can easly repack firmware and enable TTL. 
-You need a SPI programmer (that should be a 3.3V, like modded CH341a) to read and write back the flash.
+This ONT is the twin brother of [CIG G97-CP](/ont-cig-g-97cp), if you can find its bootloader (named `CIG_bu.en_V3.09.15`), you can easly repack the firmware and enable its serial port. 
+You need a 3.3V SPI programmer (like a modded CH341a) to read and write back the flash.
 
-{% include alert.html content="This was tested only on TIM V6.0.10N20 firmware!" alert="Note" icon="svg-info" color="blue" %}
+{% include alert.html content="This was tested only on a TIM V6.0.10N20 firmware!" alert="Note" icon="svg-info" color="blue" %}
 
-After you got a full dump of your ONT here is the procedure to cut&paste new bootloader and have TTL enabled:
+After you got a full dump of your ONT, here is the procedure to replace the original bootloader with the CIG one enable the serial port:
 
 Cut old bootloader:
 ```sh
 dd if=flash_dump.bin of=no_boot_flash_dump.bin bs=1 skip=184064
 ```
 
-Attach new one:
+Attach the new one:
 ```sh
 cat CIG_bu.en_V3.09.15 no_boot_flash_dump.bin > mod-boot_flash_dump.bin
 ```
 
 Now you can flash the file `mod-boot_flash_dump.bin` back to your SPI. 
 
-After power-up the ONT, the TTL will print this message:
+After powering up the ONT, the serial port will print this message:
 
 ```sh
 **************************************
@@ -96,7 +96,7 @@ If you use TeraTerm software, create a simple MACRO file that contains this code
 
 `send $1B $1D $0F $0B`
 
-Configure TeraTerm with the correct serial parameters (refer to **Serial** paragraph), select the created MACRO file **BEFORE** power-up the ONT but **DON'T OPEN IT NOW**, power-up the ONT and when you see the above message, quickly open the macro to reach U-Boot prompt:
+Configure TeraTerm with the correct serial parameters (refer to **Serial** paragraph), select the created MACRO file **BEFORE** powering up the ONT but **DON'T OPEN IT NOW**, power-up the ONT and when you see the above message, quickly open the macro to reach the U-Boot prompt:
 
 ```sh
 9601D#
@@ -107,7 +107,7 @@ Configure TeraTerm with the correct serial parameters (refer to **Serial** parag
 Now with the U-Boot prompt a custom firmware that enable TELNET can be flashed. 
 Please note that if you use a **TIM** or **OpenFiber** base firmware, the TTL will be silent after kernel loading because it was disabled at kernel level.
 
-Here is the procedure to flash a custom firmware on your ONT thru U-Boot console:
+Here is the procedure to flash a custom firmware on your ONT via the U-Boot console:
 
 - Attach your ONT via ethernet cable to your PC and configure it to have IP **192.168.1.2**
 - Launch TFTP server and place custom firmware inside its root folder renamed into `cramfs.img.crc`. Be sure that the file has this name, otherwise the upgrade procedure will stop immediately
