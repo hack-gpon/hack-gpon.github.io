@@ -214,6 +214,8 @@ setmac 1 2178 1234567890
 
 {% include alert.html content="The only way to change HW\SWVer on this ONT is to modify the firmware, so do it at your own risk" alert="Note"  icon="svg-info" color="blue" %}
 {% include alert.html content="This procedure was only tested on TIM V6.0.10N40 and OF V6.0.10P6N7 firmwares" alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="This procedure work with `ZTE_Firmware_Mod.py` v1.0.0" alert="Note"  icon="svg-info" color="blue" %}
+
 
 Needed tools:
 
@@ -222,14 +224,14 @@ Needed tools:
 - [ZTE Firmware Mod Script](http://github.com/hack-gpon/ZTE-firmware-mod)
 - TFTP server
 
-Download the script `ZTE_Firmware_Mod_v1.py` and place in the same folder where you have the `kernel0` or `kernel1` mtd dump taken from step `**Backup ONT Paritions for HW\SW Version Mod**`.
+Download the script `ZTE_Firmware_Mod.py` and place in the same folder where you have the `kernel0` or `kernel1` mtd dump taken from step `**Backup ONT Paritions for HW\SW Version Mod**`.
 
 Run the script with the following parameters, you can use `-h` for help. In this example we are just replace firmware version with `V6.0.10N40`. You can put your own version here, maximium 15 characters, this parameter is mandatory:
 
 If you have create partition dump with different name, please put the correct name instead of `kernel0`
 
 ```sh
-python3 ZTE_Firmware_Mod_v1.py kernel0 V6.0.10N40 fw_mod.bin
+python3 ZTE_Firmware_Mod.py kernel0 V6.0.10N40 fw_mod.bin
 ```
 
 The script will output the following messages, ending with instruction on how to install the created patched firmware:
