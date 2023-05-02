@@ -79,7 +79,7 @@ syn_version
 ```
 
 # Use
-{% include alert.html content="Commands have been tested on V6/V7 HW rev on TIM and OF firmware" alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="Commands have been tested on V6/V7 HW rev. on TIM and OpenFiber firmwares" alert="Note"  icon="svg-info" color="blue" %}
 
 ## Enable Telnet
 {% include alert.html content="This is an external script ([ZTE Telnet enabled](https://github.com/douniwan5788/zte_modem_tools)), so use it at your own risk! Credential doesn't survive at reboot!" alert="Note"  icon="svg-info" color="blue" %}
