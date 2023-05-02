@@ -119,6 +119,14 @@ Password: Eqb8X8Qt
 
 (1) If you flash a modified firmware (only HWVer V6.0 at the moment), you can permanent enable TELNET to avoid run each time the `zte_factory.py` script.
 
+## Enable console redirection
+
+To see omcidebug messages on TELNET you need to perform this command (just first time of each connection):
+
+```sh
+redir printf
+```
+
 # GPON ONU status
 
 ## Get the operational status of the ONU
@@ -130,14 +138,6 @@ gpontest -gstate
 `[gpontest] gpon state is [O5]` for O5 state
 
 ## Get information of the OLT vendor
-
-First enable printf on console usin the following command:
-
-```sh
-redir printf
-```
-
-Then query the OMCI ME Class needed with this command:
 
 ```sh
 sendcmd 132 omcidebug showmedata 131
@@ -165,35 +165,31 @@ MIB INFO:
 
 ## Querying a particular OMCI ME
 
-First enable printf on console usin the following command:
-
 ```sh
-redir printf
-```
-
-Then query the OMCI ME Class needed with this command:
-
-```sh
-sendcmd 132 omcidebug showmedata ID_MIB (eg. 131 for OLT type)
+sendcmd 132 omcidebug showmedata ID_MIB (eg. 7 for Firmware version)
 ```
 
 This command will print out the result like this one:
 
 ```sh
+
 ##################################
 MIB INFO:
-         ME CLASS: 131
-         DB NAME: olt_g, DBHandle: 32
+         ME CLASS: 7
+         DB NAME: soft_image, DBHandle: 14
 ##################################
 
-<-----MeID[ 0x0000,0 ], Addr[ 0x19a2b1]----->
-         Vendorid:48 57 54 43
-      EquipmentID:00 00 00 00 00 00 00 00 00 00
-                    00 00 00 00 00 00 00 00 00 00
-          Version:31 30 00 00 00 00 00 00 00 00
-                    00 00 00 00
-        TimeofDay:00 00 00 00 00 00 00 00 00 00
-                    00 00 00 00
+<-----MeID[ 0x0000,0 ], Addr[ 0x19a011]----->
+          Version:V6.0.10N41
+     Is committed:01
+        Is active:01
+         Is valid:01
+
+<-----MeID[ 0x0001,1 ], Addr[ 0x19a031]----->
+          Version:V6.0.10N39
+     Is committed:00
+        Is active:00
+         Is valid:01
 ---------------------------------------------------------------------
 ```
 
@@ -215,6 +211,118 @@ This can be done easily via web ui. If you prefer to do it via the shell use:
 setmac 1 2181 1234567890
 setmac 1 2178 1234567890
 ```
+
+## Change ONU HW\SW Version and Permanent TELNET 
+
+{% include alert.html content="The only way to change HW\SWVer on this ONT is to modify the firmware, so do it at your own risk" alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="This procedure was only tested on TIM V6.0.10N40 and OF V6.0.10P6N7 firmwares" alert="Note"  icon="svg-info" color="blue" %}
+
+Needed tools:
+
+- Linux VM or WSL with Python >3.3
+- [ZTE Telnet enabled](https://github.com/douniwan5788/zte_modem_tools)
+- [ZTE Firmware Mod Script](http://tbd)
+- TFTP server
+
+Download the script `ZTE_Firmware_Mod_v1.py` and place in the same folder where you have the `kernel0` or `kernel1` mtd dump taken from step `**Backup ONT Paritions for HW\SW Version Mod**`.
+
+Run the script with the following parameters, you can use `-h` for help. In this example we are just replace firmware version with `V6.0.10N40`. You can put your own version here, maximium 15 characters, this parameter is mandatory:
+
+If you have create partition dump with different name, please put the correct name instead of `kernel0`
+
+```sh
+python3 ZTE_Firmware_Mod_v1.py kernel0 V6.0.10N40 fw_mod.bin
+```
+
+The script will output the following messages, ending with instruction on how to install the created patched firmware:
+
+```sh
+---------------------------------------
+This script is currently working only for ZTE F601v6 shipped with TIM (V6.0.10N40) or OpenFiber (V6.0.10P6N7) firmware
+All other versions were not tested, USE IT AT YOUR OWN RISK!
+Before proceed make sure to have a GOOD BACKUP of all your ONT partitions.
+Please refer to Hack-GPON Wiki for how-to: https://hack-gpon.github.io/ont-zte-f601/
+---------------------------------------
+To proceed please enter 'y', otherwise 'n' to exit: y
+
+---------------------------------------
+Step 1: Patching zImage and fix uImage Header..
+------: Done in 4.846 secs
+Step 2: Add back ZTE Header and Firmware Version..
+------: Old FW version V6.0.10N39
+------: New FW version V6.0.10N40
+------: Done in 0.008 secs
+Step 3: Write firmware file..
+------: Done in 0.003 secs
+
+---------------------------------------
+How to flash:
+
+Copy firmware file fw_mod.bin into your TFTP server and flash is using this procedure on the ONT over telnet:
+
+cd /var/tmp
+tftp -l fw.bin -r fw_mod.bin 192.168.1.100 -g
+fw_flashing -d 0 -r 0 -c 1 -f fw.bin
+
+After you get prompt back, erase old configurations:
+
+rm /userconfig/cfg/*.xml
+
+Create dummy files for HW\SWVer spoofing:
+!!! CHANGE IT BASED ON YOUR ORIGINAL ONT !!!
+echo V6.0 > /userconfig/cfg/hwver
+echo V6.0.10N40 > /userconfig/cfg/swver
+
+Then run these commands to switch software bank and reboot the ONT:
+
+upgradetest switchver
+reboot
+---------------------------------------
+Good luck!
+```
+
+**Two last steps!**
+
+If you are swapping from TIM to OpenFiber Firmware, or viceversa, before reboot the ONT you have to run these two command based on the firmware version:
+
+From **OpenFiber V6.0.10P6N7** to **TIM V6.0.10N40**: `upgradetest sfactoryconf 97`
+
+From **TIM V6.0.10N40** to **OpenFiber V6.0.10P6N7**: `upgradetest sfactoryconf 116`
+
+After the ONT is reboot and you can access again, you can enable TELNET on each reboot, to do this, run again `zte_factroymode.py` to open new session to it. When you are in, execute these commands:
+
+```sh
+sendcmd 1 DB set TelnetCfg 0 TS_Enable 1
+sendcmd 1 DB set TelnetCfg 0 Lan_Enable 1
+sendcmd 1 DB set TelnetCfg 0 TS_UName root
+sendcmd 1 DB set TelnetCfg 0 TS_UPwd root
+sendcmd 1 DB addr FWSC 0
+sendcmd 1 DB set FWSC 0 ViewName IGD.FWSc.FWSC1
+sendcmd 1 DB set FWSC 0 Enable 1
+sendcmd 1 DB set FWSC 0 INCName LAN
+sendcmd 1 DB set FWSC 0 INCViewName IGD.LD1
+sendcmd 1 DB set FWSC 0 Servise 8
+sendcmd 1 DB set FWSC 0 FilterTarget 1
+sendcmd 1 DB saveasy
+```
+
+Reboot the ONT and TELNET will be already opened and you can logon with `root\root` credentials.
+
+**Just for OpenFiber firmware**
+
+In case you want add new admin instead of using embedded credentials, before rebooting the ONT run these commands:
+
+```sh
+sendcmd 1 DB set DevAuthInfo 5 Enable 1
+sendcmd 1 DB set DevAuthInfo 5 User superadmin
+sendcmd 1 DB set DevAuthInfo 5 Pass superadmin
+sendcmd 1 DB set DevAuthInfo 5 Level 0
+sendcmd 1 DB set DevAuthInfo 5 AppID 1
+sendcmd 1 DB saveasy
+```
+Reboot the ONT and you can logon on the WebUI using `superadmin\superadmin` credentials with full unlocked menus.
+
+# Advanced settings
 
 ## Backup ONT Paritions for HW\SW Version Mod
 
@@ -342,119 +450,6 @@ Delete dump
 ```sh
  rm usercfg
 ```
-
-
-## Change ONU HW\SW Version and Permanent TELNET 
-
-{% include alert.html content="The only way to change HW\SWVer on this ONT is to modify the firmware, so do it at your own risk" alert="Note"  icon="svg-info" color="blue" %}
-{% include alert.html content="This procedure was only tested on TIM V6.0.10N40 and OF V6.0.10P6N7 firmwares" alert="Note"  icon="svg-info" color="blue" %}
-
-Needed tools:
-
-- Linux VM or WSL with Python >3.3
-- [ZTE Telnet enabled](https://github.com/douniwan5788/zte_modem_tools)
-- [ZTE Firmware Mod Script](http://tbd)
-- TFTP server
-
-Download the script `ZTE_Firmware_Mod_v1.py` and place in the same folder where you have the `kernel0` or `kernel1` mtd dump taken from step `**Backup ONT Paritions for HW\SW Version Mod**`.
-
-Run the script with the following parameters, you can use `-h` for help. In this example we are just replace firmware version with `V6.0.10N40`. You can put your own version here, maximium 15 characters, this parameter is mandatory:
-
-If you have create partition dump with different name, please put the correct name instead of `kernel0`
-
-```sh
-python3 ZTE_Firmware_Mod_v1.py kernel0 V6.0.10N40 fw_mod.bin
-```
-
-The script will output the following messages, ending with instruction on how to install the created patched firmware:
-
-```sh
----------------------------------------
-This script is currently working only for ZTE F601v6 shipped with TIM (V6.0.10N40) or OpenFiber (V6.0.10P6N7) firmware
-All other versions were not tested, USE IT AT YOUR OWN RISK!
-Before proceed make sure to have a GOOD BACKUP of all your ONT partitions.
-Please refer to Hack-GPON Wiki for how-to: https://hack-gpon.github.io/ont-zte-f601/
----------------------------------------
-To proceed please enter 'y', otherwise 'n' to exit: y
-
----------------------------------------
-Step 1: Patching zImage and fix uImage Header..
-------: Done in 4.846 secs
-Step 2: Add back ZTE Header and Firmware Version..
-------: Old FW version V6.0.10N39
-------: New FW version V6.0.10N40
-------: Done in 0.008 secs
-Step 3: Write firmware file..
-------: Done in 0.003 secs
-
----------------------------------------
-How to flash:
-
-Copy firmware file fw_mod.bin into your TFTP server and flash is using this procedure on the ONT over telnet:
-
-cd /var/tmp
-tftp -l fw.bin -r fw_mod.bin 192.168.1.100 -g
-fw_flashing -d 0 -r 0 -c 1 -f fw.bin
-
-After you get prompt back, erase old configurations:
-
-rm /userconfig/cfg/*.xml
-
-Create dummy files for HW\SWVer spoofing:
-!!! CHANGE IT BASED ON YOUR ORIGINAL ONT !!!
-echo V6.0 > /userconfig/cfg/hwver
-echo V6.0.10N40 > /userconfig/cfg/swver
-
-Then run these commands to switch software bank and reboot the ONT:
-
-upgradetest switchver
-reboot
----------------------------------------
-Good luck!
-```
-
-**Two last steps!**
-
-If you are swapping from TIM to OpenFiber Firmware, or viceversa, before reboot the ONT you have to run these two command based on the firmware version:
-
-From **OpenFiber V6.0.10P6N7** to **TIM V6.0.10N40**: `upgradetest sfactoryconf 97`
-
-From **TIM V6.0.10N40** to **OpenFiber V6.0.10P6N7**: `upgradetest sfactoryconf 116`
-
-After the ONT is reboot and you can access again, you can enable TELNET on each reboot, to do this, run again `zte_factroymode.py` to open new session to it. When you are in, execute these commands:
-
-```sh
-sendcmd 1 DB set TelnetCfg 0 TS_Enable 1
-sendcmd 1 DB set TelnetCfg 0 Lan_Enable 1
-sendcmd 1 DB set TelnetCfg 0 TS_UName root
-sendcmd 1 DB set TelnetCfg 0 TS_UPwd root
-sendcmd 1 DB addr FWSC 0
-sendcmd 1 DB set FWSC 0 ViewName IGD.FWSc.FWSC1
-sendcmd 1 DB set FWSC 0 Enable 1
-sendcmd 1 DB set FWSC 0 INCName LAN
-sendcmd 1 DB set FWSC 0 INCViewName IGD.LD1
-sendcmd 1 DB set FWSC 0 Servise 8
-sendcmd 1 DB set FWSC 0 FilterTarget 1
-sendcmd 1 DB saveasy
-```
-
-Reboot the ONT and TELNET will be already opened and you can logon with `root\root` credentials.
-
-**Just for OpenFiber firmware**
-
-In case you want add new admin instead of using embedded credentials, before rebooting the ONT run these commands:
-
-```sh
-sendcmd 1 DB set DevAuthInfo 5 Enable 1
-sendcmd 1 DB set DevAuthInfo 5 User superadmin
-sendcmd 1 DB set DevAuthInfo 5 Pass superadmin
-sendcmd 1 DB set DevAuthInfo 5 Level 0
-sendcmd 1 DB set DevAuthInfo 5 AppID 1
-sendcmd 1 DB saveasy
-```
-Reboot the ONT and you can logon on the WebUI using `superadmin\superadmin` credentials with full unlocked menus.
-
-# Advanced settings
 
 ## Change region code
 
