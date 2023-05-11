@@ -11,10 +11,10 @@ parent: TP-Link
 | ------------ | ------------------------------------- |
 | Vendor/Brand | TP-Link                               |
 | Model        | XZ000-G3                              |
-| Chipset      |                                       |
-| CPU          | MIPS32                                |
-| Flash        |                                       |
-| RAM          |                                       |
+| Chipset      | EcoNet EN751221                       |
+| CPU          | MIPS32 34Kc                           |
+| Flash        | 4 MB                                  |
+| RAM          | 60792 kB                              |
 | System       | TCLinux                               |
 | HSGMII       | No                                    |
 | Optics       | SC/APC                                |
