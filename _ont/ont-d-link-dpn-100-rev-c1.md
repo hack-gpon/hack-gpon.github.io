@@ -27,7 +27,8 @@ parent: D-LINK
 {% include image.html file="dpn-100-rev-c1.png"  alt="DPN-100 Rev C1" caption="DPN-100 Rev C1" %}
 
 ## List of software versions
-- R4.2.104.033e (Wind) 2019/10
+- R4.2.104.033e (Wind)
+- R4.2.104.039 (Wind)
 
 ## List of partitions
 
