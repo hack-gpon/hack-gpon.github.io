@@ -12,19 +12,34 @@ parent: D-LINK
 | Vendor/Brand | D-LINK            |
 | Model        | DPN-100 Rev C1    |
 | Chipset      | Realtek RTL9601CI |
-| Flash        |                   |
-| RAM          |                   |
-| System       |                   |
-| HSGMII       |                   |
+| Flash        | 16MB              |
+| RAM          | 32MB              |
+| System       | Linux (Luna SDK 1.9.0) |
+| HSGMII       | ✅                |
 | Optics       | SC/APC            |
 | IP address   | 192.168.100.1     |
 | Web Gui      |                   |
 | SSH          |                   |
-| Telnet       | ✅                |
+| Telnet       | ✅ user `root`, password `admin` |
 | Serial       |                   |
 | Form Factor  | miniONT SFP       |
 
 {% include image.html file="dpn-100-rev-c1.png"  alt="DPN-100 Rev C1" caption="DPN-100 Rev C1" %}
+
+## List of software versions
+- R4.2.104.033e (Wind) 2019/10
+
+## List of partitions
+
+| dev  | size     | erasesize | name     |
+| ---- | -------- | --------- | -------- |
+| mtd0 | 00080000 | 00010000  | "Boot"   |
+| mtd1 | 00180000 | 00010000  | "Config" |
+| mtd2 | 00700000 | 00010000  | "ImageA" |
+| mtd3 | 00700000 | 00010000  | "ImageB" |
+
+
+{% include_relative ont-nokia-useful-command.md %}
 
 # Miscellaneous Links
 
