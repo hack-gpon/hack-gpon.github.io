@@ -11,6 +11,8 @@ parent: D-LINK
 | ------------ | ----------------- |
 | Vendor/Brand | D-LINK            |
 | Model        | DPN-100 Rev C1    |
+| ODM          | CIG               |
+| ODM Product Code | [G-97S](/ont-cig-g-97s) |
 | Chipset      | Realtek RTL9601CI |
 | Flash        | 16MB              |
 | RAM          | 32MB              |
