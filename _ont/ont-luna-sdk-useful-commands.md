@@ -152,6 +152,7 @@ OMCI_OLT_MODE=1
 | 1     | Huawei OLT Mode | Huawei MA5671a                                 |
 | 2     | ZTE OLT Mode    | ZTE                                            |
 | 3     | Customized Mode | Custom Software/Hardware Version, OMCC, etc... |
+| 21    | Owerflow Mode   | Custom Software/Hardware Version, OMCC, etc... without replace firmware (ONLY FOR ODI STICKS!!) |
 
 Some Fiber Vendor/Wholesale/ISP have explicit LAN Port Number provisioning or proprietary OMCI that ONT Stick cant not understand, this will make ONT Stick reply OK whatever OMCI OLT throw at. 
 
