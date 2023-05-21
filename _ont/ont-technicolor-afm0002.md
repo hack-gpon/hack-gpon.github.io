@@ -15,11 +15,11 @@ alias: HiSense LTE3415-SCA+
 | ODM              | HiSense                                         |
 | ODM Product Code | LTE3415-SCA+                                    |
 | Chipset          | Realtek RTL9601B                                |
-| Flash            | 32 MB                                           |
-| RAM              |                                                 |
+| Flash            | 32MB                                            |
+| RAM              | 16MB                                            |
 | System           | Linux (Luna SDK 1.9)                            |
 | HSGMII           | No                                              |
-| Optics           |                                                 |
+| Optics           | SC/APC                                          |
 | IP address       | 192.168.2.1 / 169.0.0.1                         |
 | Web Gui          | Can be enabled, user `admin`, password `system` |
 | SSH              | ✅ user `admin`, password `system`              |
@@ -123,8 +123,6 @@ The following commands are used to flash a new rootfs to image1 and then boot to
 # nv setenv sw_commit 1
 # reboot
 ```
-
-# Low Level Modding
 
 {% include alert.html content="This section is based on the `V1_7_8_210412` version of the stick's firmware " alert="Info" icon="svg-info" color="blue" %}
 

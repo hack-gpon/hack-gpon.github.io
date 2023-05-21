@@ -16,7 +16,7 @@ parent: HiSense
 | Flash            | 128MB                                                    |
 | RAM              | 128MB                                                    |
 | System           | Custom Linux by Cortina (Saturn SDK) based on Kernel 4.4 |
-| XSGMII           | Yes                                                      |
+| XGMII/XSGMII     | Yes                                                      |
 | Optics           | SC/APC                                                   |
 | IP address       | 192.168.0.1                                              |
 | Web Gui          | ✅ user `admin`, password `system`                       |
@@ -63,7 +63,7 @@ This ONT supports dual boot.
 
 `kernel0` and `rootfs0` respectively contain the kernel and firmware of the first image, `kernel1` and `rootfs1` the kernel and the firmware of the second one
 
-# General Settings and Useful Commands
+# XGS-PON ONU status
 
 To access Cortina Shell (needed to check OMCI stuff and XGSPON status) you can use the following command:
 
@@ -163,7 +163,7 @@ XGe Port idx 0 map to Port 6
 ```
 Please note that some of the above fields are decoded incorrectly, such as `sn` and `versionId`
 
-## Check OLT Vendor (from app-cli session)
+## Get information of the OLT vendor (from app-cli session)
 
 ```sh
 Cortina> enable
@@ -290,35 +290,9 @@ Link to PPTP eth: ------->instance 0x301
     |-----|------|-----|------|---------|---|-----|------|-----|------|
 ```
 
-## Changing the Hardware Version
+# GPON/OMCI settings
 
-```sh
-# vi /config/scfg.txt
-```
-
-Append line below to the file and save it to change HWVER
-
-```
-CHAR-ARRAY      CFG_ID_GPON_VERSION = {0x46,0x35,0x36,0x38, 0x34,0x53,0x5f,0x76, 0x31,0x00,0x00,0x00, 0x00,0x00}; ##GPON version string, default value is V1.0
-```
-
-Reboot ONT to apply the change
-
-## Changing the Equipment ID
-
-```sh
-# vi /config/scfg.txt
-```
-
-Append the line below to the file and save it to change EQID
-
-```
-CHAR-ARRAY      CFG_ID_GPON_EQID = {0x46,0x49,0x42,0x45, 0x52,0x20,0x42,0x6f, 0x78,0x00,0x00,0x00, 0x00,0x00,0x00,0x00, 0x00,0x00,0x00,0x00}; ##GPON ME ONU2G equiment id value, default is saturn
-```
-
-Reboot ONT to apply the change
-
-## Changing Serial Number
+## Setting ONU GPON Serial Number
 
 ```sh
 # vi /config/scfg.txt
@@ -332,6 +306,64 @@ INT CFG_ID_PON_VSSN = 0xAABBCCDD;
 ```
 
 Reboot ONT to apply the change
+
+
+## Setting ONU GPON LOID and LOID password
+
+{% include alert.html content="The value 0x0 is null, take note of your LoID and password from the original ONT" color="red" %}
+
+
+```sh
+# vi /config/scfg.txt
+```
+
+Append lines below to the file and save it to change LoID and LoID password
+
+```
+CHAR-ARRAY      CFG_ID_LOID                                                         = {0x30,0x30,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0};
+CHAR-ARRAY      CFG_ID_PASSWD                                                       = {0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0};
+```
+
+Reboot ONT to apply the change
+
+## Setting OMCI software version (ME 7)
+
+```sh
+# fw_setenv img_version0 20220527052622
+# fw_setenv img_version0 20220527052622
+```
+
+Reboot ONT to apply the change
+
+## Setting OMCI hardware version (ME 256)
+
+```sh
+# vi /config/scfg.txt
+```
+
+Append line below to the file and save it to change HWVER
+
+```
+CHAR-ARRAY      CFG_ID_GPON_VERSION = {0x46,0x35,0x36,0x38, 0x34,0x53,0x5f,0x76, 0x31,0x00,0x00,0x00, 0x00,0x00}; ##GPON version string, default value is V1.0
+```
+
+Reboot ONT to apply the change
+
+## Setting OMCI equipment ID (ME 257)
+
+```sh
+# vi /config/scfg.txt
+```
+
+Append the line below to the file and save it to change EQID
+
+```
+CHAR-ARRAY      CFG_ID_GPON_EQID = {0x46,0x49,0x42,0x45, 0x52,0x20,0x42,0x6f, 0x78,0x00,0x00,0x00, 0x00,0x00,0x00,0x00, 0x00,0x00,0x00,0x00}; ##GPON ME ONU2G equiment id value, default is saturn
+```
+
+Reboot ONT to apply the change
+
+# Advanced settings
 
 ## Changing OLT Emulation Type
 
@@ -364,32 +396,6 @@ CHAR            CFG_ID_OMCC_VERSION                             = 0xB2;
 
 Reboot ONT to apply the change
 
-## Changing LOID Username/Password
-
-{% include alert.html content="The value 0x0 is null, take note of your LoID and password from the original ONT" color="red" %}
-
-
-```sh
-# vi /config/scfg.txt
-```
-
-Append lines below to the file and save it to change LoID and LoID password
-
-```
-CHAR-ARRAY      CFG_ID_LOID                                                         = {0x30,0x30,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0};
-CHAR-ARRAY      CFG_ID_PASSWD                                                       = {0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0};
-```
-
-Reboot ONT to apply the change
-
-## Spoofing firmware version
-
-```sh
-# fw_setenv img_version0 20220527052622
-# fw_setenv img_version0 20220527052622
-```
-
-Reboot ONT to apply the change
 
 # Known Bugs
 - `ALCL` OLT mode uses some static configurations on MIBs, so if your OLT has strict configuration checks it might not work properly

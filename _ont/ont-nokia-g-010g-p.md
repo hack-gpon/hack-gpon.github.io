@@ -36,7 +36,7 @@ alias: CIG G-97C1/CIG G-97CU
 - 3FE45655AOCK94
 - 3FE45655AOCK88
 
-# Use of GponSLID
+# Usage of GponSLID
 
 ## Access Full Shell
 

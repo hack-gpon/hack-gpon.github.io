@@ -37,3 +37,5 @@ parent: Huawei
 ## List of software versions
 
 - V5R020C10S035
+
+{% include_relative ont-huawei-useful-command.md %}

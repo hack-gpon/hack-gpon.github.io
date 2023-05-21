@@ -84,8 +84,7 @@ try:
             ser.write('setenv asc0 0\n'.encode())
             time.sleep(1)
             print('[+] Transfer command sequence 4')
-            ser.write(
-                'gpio set 3;gpio input 2;gpio input 105;gpio input 106;gpio input 107;gpio input 108"\n'.encode())
+            ser.write('setenv preboot "gpio set 3;gpio input 2;gpio input 105;gpio input 106;gpio input 107;gpio input 108"\n'.encode())
             time.sleep(1)
             print('[+] Transfer command sequence 5')
             ser.write('saveenv\n'.encode())
@@ -139,7 +138,7 @@ sed -i  "s|/opt/lantiq/bin/minishell|/bin/ash|g" /etc/passwd
 
 {% include alert.html content="If your subnet is 192.168.1.0/24 make sure you have no ip conflicts." alert="Note" icon="svg-warning" color="yellow" %}
 
-{% include alert.html content="Make sure to disable SFP TX fault detection, otherwise the RX loss will prevent you from connecting to the mini SFP ONT at this point. Don't simply attach the fiber cable to work around this issue as the OLT may ban you." alert="Note" icon="svg-warning" color="yellow" %}
+{% include alert.html content="On some SFP host devices you might not be able to connect to the stick if there's no optical signal (RX loss), in that case you need to connect the fiber to make changes on the stick" alert="Note" icon="svg-warning" color="yellow" %}
 
 {:style="counter-reset:none"}
 1. Run the terminal and login to the stick with ssh

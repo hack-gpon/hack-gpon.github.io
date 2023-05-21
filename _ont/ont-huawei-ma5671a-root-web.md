@@ -11,7 +11,7 @@ Connect the SFP adapter to the TTL adapter according to the following diagram:
 
 | USB TTL (UART) Adapter | wire colour in picture | SFP 20pins Molex connector |
 | ---------------------- | ---------------------- | -------------------------- |
-| 3.3V                   | red                    | 3.3 (pin #15 and #16)       |
+| 3.3V                   | red                    | 3.3 (pin #15 and #16)      |
 | TX                     | green                  | RX (pin #2)                |
 | RX                     | blue                   | TX (pin #7)                |
 | GND                    | black                  | GND (pin #14)              |
