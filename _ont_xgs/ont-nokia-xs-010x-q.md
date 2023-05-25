@@ -40,13 +40,11 @@ parent: Nokia
 
 {% include image.html file="ont-nokia_xs-010x-q_internal_2.jpg" alt="Nokia XS-010X-Q Internal 2" caption="Nokia XS-010X-Q Internal 2" %}
 
-{% include image.html file="ont-nokia_xs-010x-q_ttl.jpg" alt="Nokia XS-010X-Q TTL Pads" caption="Nokia XS-010X-Q TTL Pads" %}
-
 ## Serial
 
 The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. It's on the top left (with Ethernet\Power\Optical port faced down) of the board. TX, RX and ground pads need to be connected to a USB2TTL adapter supporting a logic level of 3.3V.
 
-{% include image.html file="ont-hisense-ltf7267-bha+_inside.jpg" alt="HiSense LTF7267-BHA+ Internals" caption="HiSense LTF7267-BHA+ Internals" %}
+{% include image.html file="ont-nokia_xs-010x-q_ttl.jpg" alt="Nokia XS-010X-Q TTL Pads" caption="Nokia XS-010X-Q TTL Pads" %}
 
 {% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
 
