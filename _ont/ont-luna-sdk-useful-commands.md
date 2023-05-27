@@ -1,4 +1,4 @@
-# Userful files and binaries
+# Useful files and binaries
 
 ## Useful files
 - `/var/config/lastgood.xml` - Contains the user portion of the configuration
