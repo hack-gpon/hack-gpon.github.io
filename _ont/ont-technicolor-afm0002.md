@@ -82,7 +82,12 @@ This stick supports dual boot.
 
 `k0` and `r0` respectively contain the kernel and firmware of the first image, `k1` and `r1` the kernel and firmware of the second one
 
-{% include_relative ont-luna-sdk-useful-commands.md flash='/etc/scripts/flash' ploam='ascii' lastgoodHs=true %}
+{% include_relative ont-luna-sdk-useful-commands.md flash='/etc/scripts/flash' ploam='ascii' lastgoodHs=true flashSwVersion=true 
+customSwVersionAlert="This needs the `OMCI_OLT_MODE` value to be set to 3 and `/etc/scripts/flash` modded"
+customHwVersionAlert="This needs the `OMCI_OLT_MODE` value to be set to 3 and `/etc/scripts/flash` modded"
+customVendorAlert="This needs the `OMCI_OLT_MODE` value to be set to 3 and `/etc/scripts/flash` modded"
+customEquipAlert="This needs the `OMCI_OLT_MODE` value to be set to 3 and `/etc/scripts/flash` modded"
+%}
 
 ## Enabling the Web UI
 ```sh
@@ -126,7 +131,7 @@ The following commands are used to flash a new rootfs to image1 and then boot to
 
 {% include alert.html content="This section is based on the `V1_7_8_210412` version of the stick's firmware " alert="Info" icon="svg-info" color="blue" %}
 
-## Adding support to configurable SW and HW versions, Vendor ID and much more
+## Adding support to configurable SW and HW versions, Vendor ID and equipment ID
 `/etc/scripts/flash` can be flashed in order to add support for some variables implemented in `omci_app` but removed from `xmlconfig`. The patch is below (change the values to suit your needs)
 ```patch
 --- squashfs-root/etc/scripts/flash     2021-09-28 10:38:52.000000000 +0200
