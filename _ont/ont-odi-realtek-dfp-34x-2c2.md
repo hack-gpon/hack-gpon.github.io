@@ -79,7 +79,7 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 
 {% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
 
-{% include_relative ont-luna-sdk-useful-commands.md flash='flash' ploam='hex' customSwVersionAlert='This needs the `OMCI_OLT_MODE` value to be set to 3 and firmware 220530 or 220923 modded by @stich86' speedLan='1234567' %}
+{% include_relative ont-luna-sdk-useful-commands.md flash='flash' ploam='hex' customSwVersionAlert='This needs the `OMCI_OLT_MODE` value to be set to 3 and firmware 220530 or 220923 modded by @stich86 or if you don't want to replace firmware to change software version, set `OMCI_OLT_MODE` value to `21`. This will force to use your own settings from the XML file, but this is a hack and causes sigsegv of `/bin/checkomci`' speedLan='1234567' omciOLT21='true' %}
 {% include alert.html content="If you don't want to replace firmware to change software version, set `OMCI_OLT_MODE` value to `21`. This will force to use your own settings from the XML file" alert="Note"  icon="svg-warning" color="yellow" %}
 
 # Known Bugs

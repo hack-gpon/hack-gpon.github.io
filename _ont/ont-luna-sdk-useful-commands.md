@@ -152,7 +152,13 @@ OMCI_OLT_MODE=1
 | 1     | Huawei OLT Mode | Huawei MA5671a                                 |
 | 2     | ZTE OLT Mode    | ZTE                                            |
 | 3     | Customized Mode | Custom Software/Hardware Version, OMCC, etc... |
-| 21    | Owerflow Mode   | Custom Software/Hardware Version, OMCC, etc... without replace firmware (ONLY FOR ODI STICKS!!) |
+| Value | Note            | OMCI Information                                                                                       |
+| ----- | --------------- | ------------------------------------------------------------------------------------------------------ |
+| 0     | Default Mode    | Stock, some value are cannot be change                                                                 |
+| 1     | Huawei OLT Mode | Huawei MA5671a                                                                                         |
+| 2     | ZTE OLT Mode    | ZTE                                                                                                    |
+| 3     | Customized Mode | Custom Software/Hardware Version, OMCC, etc...                                                         |{% if include.omciOLT21 %}
+| 21    | Owerflow Mode   | Custom Software/Hardware Version, OMCC, etc... (this is a hack and causes sigsegv of `/bin/checkomci`) |{% endif %}
 
 Some Fiber Vendor/Wholesale/ISP have explicit LAN Port Number provisioning or proprietary OMCI that ONT Stick cant not understand, this will make ONT Stick reply OK whatever OMCI OLT throw at. 
 
