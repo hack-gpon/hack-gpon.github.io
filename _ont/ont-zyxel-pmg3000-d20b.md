@@ -174,7 +174,7 @@ omci
 equipment id MYEQUIPMENTID
 ```
 
-If any of the above command is missing you can edit `/var/config/ont.sys` via vi directly on the stick itself. The file is CRLF terminated, one entry per line.
+If any of the above commands is missing you can edit `/var/config/ont.sys` via vi directly on the stick itself. The file is CRLF terminated, one entry per line.
 The entry for the equipment id is:
 ```
 ONTG_EQID:0x463630303556362E30000000000000000000000
