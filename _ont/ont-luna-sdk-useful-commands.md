@@ -108,6 +108,9 @@ GPON_PLOAM_PASSWD=AAAAAAAAAA
 # {{ include.flash }} get OMCI_SW_VER1
 OMCI_SW_VER1=AAAAAAAAAA
 # {{ include.flash }} set OMCI_SW_VER1 AAAAAAAAAA
+# {{ include.flash }} get OMCI_SW_VER2
+OMCI_SW_VER1=AAAAAAAAAB
+# {{ include.flash }} set OMCI_SW_VER2 AAAAAAAAAB
 ```
 {% else %}
 ```sh
