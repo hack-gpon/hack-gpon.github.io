@@ -146,12 +146,6 @@ OMCI_OLT_MODE=1
 # {{ include.flash }} set OMCI_OLT_MODE 2
 ```
 
-| Value | Note            | OMCI Information                               |
-| ----- | --------------- | ---------------------------------------------- |
-| 0     | Default Mode    | Stock, some value are cannot be change         |
-| 1     | Huawei OLT Mode | Huawei MA5671a                                 |
-| 2     | ZTE OLT Mode    | ZTE                                            |
-| 3     | Customized Mode | Custom Software/Hardware Version, OMCC, etc... |
 | Value | Note            | OMCI Information                                                                                       |
 | ----- | --------------- | ------------------------------------------------------------------------------------------------------ |
 | 0     | Default Mode    | Stock, some value are cannot be change                                                                 |
