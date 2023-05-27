@@ -131,6 +131,7 @@ exit
 hal
 set sn ALCLf0f0f0f0
 ```
+Do not worry if you're missing one of the two commands, the change is still applied with just one of them.
 
 ## Setting ONU GPON PLOAM password
 {% include alert.html content="The PLOAM password is stored in the ASCII format." alert="Note"  icon="svg-info" color="blue" %}
@@ -141,7 +142,7 @@ set password PLOAMPASS
 ```
 
 ## Setting OMCI software version (ME 7)
-Edit the /var/config/ont.sys via vi directly on the stick itself. The file is CRLF terminated, one entry per line.
+Edit `/var/config/ont.sys` via vi directly on the stick itself. The file is CRLF terminated, one entry per line.
 The entries for the software version are:
 ```
 SW_VER0:0xabcdef
@@ -155,6 +156,14 @@ manufactory
 set hardware version 3FE49165BFAA01
 ```
 
+If the above command is missing you can edit `/var/config/ont.sys` via vi directly on the stick itself. The file is CRLF terminated, one entry per line.
+The entry for the hardware version is:
+```
+ONTG_VER:0x463630303556362e300000000000
+```
+
+The hardware version must be encoded in hex format and right padded to 28 characters with 0 (excluding the starting 0x) to avoid any spurious values. 
+
 ## Setting OMCI equipment ID (ME 257)
 {% include alert.html content="Model number must not be more than 20 characters long in total." alert="Note"  icon="svg-info" color="blue" %}
 ```sh
@@ -164,6 +173,15 @@ exit
 omci
 equipment id MYEQUIPMENTID
 ```
+
+If any of the above commands is missing you can edit `/var/config/ont.sys` via vi directly on the stick itself. The file is CRLF terminated, one entry per line.
+The entry for the equipment id is:
+```
+ONTG_EQID:0x463630303556362E30000000000000000000000
+```
+
+The equipment id must be encoded in hex format and right padded to 39 characters with 0 (excluding the starting 0x) to avoid any spurious values. 
+
 
 # Advanced settings
 
