@@ -122,9 +122,9 @@ HW_HWVER=V2.0
 {% include alert.html content="This may need the OMCI_OLT_MODE value to be set to 3 to work" alert="Note" icon="svg-info" color="blue" %}
 
 ```sh
-# flash get PON_VENDOR_ID  
+# {{ include.flash }} get PON_VENDOR_ID  
 PON_VENDOR_ID=ZTEG
-# flash set PON_VENDOR_ID HWTC
+# {{ include.flash }} set PON_VENDOR_ID HWTC
 ```
 
 ## Getting/Setting OMCI equipment ID (ME 257)
@@ -168,9 +168,9 @@ OMCI_FAKE_OK=0
 ## Setting management IP
 
 ```sh
-# {{ flash }} get LAN_IP_ADDR
+# {{ include.flash }} get LAN_IP_ADDR
 LAN_IP_ADDR=192.168.2.1
-# {{ flash }} set LAN_IP_ADDR 192.168.1.1
+# {{ include.flash }} set LAN_IP_ADDR 192.168.1.1
 ```
 
 ## Getting/Setting the L2 Bridge MTU
