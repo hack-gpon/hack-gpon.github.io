@@ -1,4 +1,4 @@
-# Userful files and binaries
+# Useful files and binaries
 
 ## Useful files
 - `/var/config/lastgood.xml` - Contains the user portion of the configuration
@@ -100,16 +100,29 @@ GPON_PLOAM_PASSWD=AAAAAAAAAA
 
 ## Getting/Setting OMCI software version (ME 7)
 
-{% assign customSwVersionAlert = include.customSwVersionAlert | default: "This needs the OMCI_OLT_MODE value to be set to 3" %}
+{% assign customSwVersionAlert = include.customSwVersionAlert | default: "This needs the `OMCI_OLT_MODE` value to be set to 3" %}
 {% include alert.html content=customSwVersionAlert alert="Note" icon="svg-info" color="blue" %}
 
+{% if include.flashSwVersion %}
+```sh
+# {{ include.flash }} get OMCI_SW_VER1
+OMCI_SW_VER1=YOURFIRSTSWVER
+# {{ include.flash }} set OMCI_SW_VER1 YOURFIRSTSWVER
+# {{ include.flash }} get OMCI_SW_VER2
+OMCI_SW_VER1=YOURSECONDSWVER
+# {{ include.flash }} set OMCI_SW_VER2 YOURSECONDSWVER
+```
+{% else %}
 ```sh
 # nv setenv sw_custom_version0 YOURFIRSTSWVER
 # nv setenv sw_custom_version1 YOURSECONDSWVER
 ```
+{% endif %}
 
 ## Getting/Setting OMCI hardware version (ME 256)
-{% include alert.html content="This may need the OMCI_OLT_MODE value to be set to 3 to work" alert="Note" icon="svg-info" color="blue" %}
+
+{% assign customHwVersionAlert = include.customHwVersionAlert | default: "This needs the `OMCI_OLT_MODE` value to be set to 3" %}
+{% include alert.html content=customHwVersionAlert alert="Note" icon="svg-info" color="blue" %}
 
 ```sh
 # {{ include.flash }} get HW_HWVER
@@ -119,16 +132,19 @@ HW_HWVER=V2.0
 
 ## Getting/Setting OMCI vendor ID (ME 256)
 
-{% include alert.html content="This may need the OMCI_OLT_MODE value to be set to 3 to work" alert="Note" icon="svg-info" color="blue" %}
+{% assign customVendorAlert = include.customVendorAlert | default: "This needs the `OMCI_OLT_MODE` value to be set to 3" %}
+{% include alert.html content=customVendorAlert alert="Note" icon="svg-info" color="blue" %}
 
 ```sh
-# flash get PON_VENDOR_ID  
+# {{ include.flash }} get PON_VENDOR_ID  
 PON_VENDOR_ID=ZTEG
-# flash set PON_VENDOR_ID HWTC
+# {{ include.flash }} set PON_VENDOR_ID HWTC
 ```
 
 ## Getting/Setting OMCI equipment ID (ME 257)
-{% include alert.html content="This may need the OMCI_OLT_MODE value to be set to 3 to work" alert="Note" icon="svg-info" color="blue" %}
+
+{% assign customEquipAlert = include.customEquipAlert | default: "This needs the `OMCI_OLT_MODE` value to be set to 3" %}
+{% include alert.html content=customEquipAlert alert="Note" icon="svg-info" color="blue" %}
 
 ```sh
 # {{ include.flash }} get GPON_ONU_MODEL
@@ -169,9 +185,9 @@ OMCI_FAKE_OK=0
 ## Setting management IP
 
 ```sh
-# {{ flash }} get LAN_IP_ADDR
+# {{ include.flash }} get LAN_IP_ADDR
 LAN_IP_ADDR=192.168.2.1
-# {{ flash }} set LAN_IP_ADDR 192.168.1.1
+# {{ include.flash }} set LAN_IP_ADDR 192.168.1.1
 ```
 
 ## Getting/Setting the L2 Bridge MTU
