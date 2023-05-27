@@ -74,7 +74,7 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 This stick supports dual boot, as visible from the presence of `ImageA` and `ImageB`, which contain the rootfs.
 
 
-# Userful files and binaries
+# Useful files and binaries
 
 ## Useful files
 - `/var/config/ont.sys` - Used to customize various settings on the stick. If you don't have it you can copy the stock one from /ont.sys
