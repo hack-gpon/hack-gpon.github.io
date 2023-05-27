@@ -83,10 +83,10 @@ This stick supports dual boot.
 `k0` and `r0` respectively contain the kernel and firmware of the first image, `k1` and `r1` the kernel and firmware of the second one
 
 {% include_relative ont-luna-sdk-useful-commands.md flash='/etc/scripts/flash' ploam='ascii' lastgoodHs=true flashSwVersion=true 
-customSwVersionAlert="This needs the `OMCI_OLT_MODE` value to be set to 3 and `/etc/scripts/flash` modded"
-customHwVersionAlert="This needs the `OMCI_OLT_MODE` value to be set to 3 and `/etc/scripts/flash` modded"
-customVendorAlert="This needs the `OMCI_OLT_MODE` value to be set to 3 and `/etc/scripts/flash` modded"
-customEquipAlert="This needs the `OMCI_OLT_MODE` value to be set to 3 and `/etc/scripts/flash` modded"
+customSwVersionAlert="This needs the `/etc/scripts/flash` modded"
+customHwVersionAlert="This needs the `/etc/scripts/flash` modded"
+customVendorAlert="This needs the `/etc/scripts/flash` modded"
+customEquipAlert="This needs the `/etc/scripts/flash` modded"
 %}
 
 ## Enabling the Web UI
@@ -132,38 +132,7 @@ The following commands are used to flash a new rootfs to image1 and then boot to
 {% include alert.html content="This section is based on the `V1_7_8_210412` version of the stick's firmware " alert="Info" icon="svg-info" color="blue" %}
 
 ## Adding support to configurable SW and HW versions, Vendor ID and equipment ID
-`/etc/scripts/flash` can be flashed in order to add support for some variables implemented in `omci_app` but removed from `xmlconfig`. The patch is below (change the values to suit your needs)
-```patch
---- squashfs-root/etc/scripts/flash     2021-09-28 10:38:52.000000000 +0200
-+++ squashfs-root.new/etc/scripts/flash 2022-08-04 00:00:29.769605000 +0200
-@@ -62,7 +62,26 @@
-                if [ `echo $para | egrep $specific_mib_patten` ]; then
-                        /bin/xmlconfig -g $para | sed -r "s/$rename_mib_name+/$2/g" | sed -r "s/,+//g"
-                else
--                       /bin/xmlconfig -g $para | sed -r "s/$rename_mib_name+/$2/g"
-+                       case "$para" in
-+                               "OMCI_EQID")
-+                                       echo "$para=MY_EQID"
-+                                       ;;
-+                               "OMCI_VENDOR_ID")
-+                                       echo "$para=MY_VENDOR"
-+                                       ;;
-+                               "OMCI_SW_VER1")
-+                                       echo "$para=MY_SW_VER1"
-+                                       ;;
-+                               "OMCI_SW_VER2")
-+                                       echo "$para=MY_SW_VER2"
-+                                       ;;
-+                               "OMCI_ONT_VER")
-+                                       echo "$para=MY_HW_VER"
-+                                       ;;
-+                               *)
-+                                       /bin/xmlconfig -g $para | sed -r "s/$rename_mib_name+/$2/g"
-+                                       ;;
-+                       esac
-                fi
-                if [ "$?" = "0" ]; then
-                        exit 0
+`/etc/scripts/flash` can be modified in order to add support for some variables implemented in `omci_app` but removed from `xmlconfig`. The modified file is below.
 
 `flash set` will still print an error but the change wil be persisted. You can check that by running the relative `flash get` command
 
@@ -315,6 +284,7 @@ case "$1" in
 		exit 1
 	;;
 esac
+
 ```                        
 ## Increasing the length of the software version from 13 to 14 characters
 `omci_app` has an hard-coded limit of 13 characters for the software version, which is too low. We can binary patch it to increase it to 14 (or more, if you dare/need)
