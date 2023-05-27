@@ -86,6 +86,16 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 
 See more info on: [Firmwares G-010S-A](https://github.com/hwti/G-010S-A#firmwares)
 
+# Usage
+
+## Enable serial
+
+```sh
+fw_setenv bootdelay 5
+fw_setenv asc0 0
+fw_setenv preboot
+```
+
 # GPON ONU status
 
 ## Get the operational status of the ONU
@@ -134,6 +144,12 @@ The `link_status` variable tells the current speed
 
 # GPON/OMCI settings
 
+## Enable parameters modification
+This setting must be inserted in order to performs the others parameters modification
+```sh
+ritool set OperatorID 0000
+```
+
 ## Getting/Setting ONU GPON Serial Number
 To check the current serial number:
 ```sh
@@ -144,6 +160,7 @@ To set the current serial number:
 ```sh
 ritool set MfrID ABCD
 ritool set G984Serial 012345678
+ritool set YPSerialNum 012345678
 ```
 
 ## Getting/Setting ONU GPON PLOAM password
@@ -153,6 +170,38 @@ onu gtccg
 ```
 
 The value can be changed using the web interface.
+
+## Getting/Setting OMCI software version (ME 7)
+
+Software verion must be changed by directly modifing firmware by using the patches which can be found in GitHub page of [Nokia G-010-A](https://github.com/hwti/G-010S-A) and adding a folder `0001_swversion` that contins a file `patch.sh`:
+```
+#!/bin/sh
+
+set -e
+
+ROOTFS=$1
+
+echo "Changing to software version desidered"
+sed -i s/3FE46398BGCB22/3FE45655BOCK99/g "$ROOTFS/usr/etc/buildinfo"
+```
+Where `3FE46398BGCB22` is the current software version and `3FE45655BOCK99` the software version desidered
+
+## Getting/Setting OMCI hardware version (ME 256)
+
+```
+ritool set HardwareVersion 3FE47211EGAA
+ritool set ICS 01
+```
+
+## Getting/Setting OMCI equipment ID (ME 257)
+
+This ONT is designed to save nokia equipment ID, specifically to put the equipment ID of a Nokia G-010G-Q we need:
+
+```sh
+ritool set CleiCode __________
+ritool set Mnemonic G-010G-Q__
+```
+Where `CleiCode` is the prefix and `Mnemonic` the postfix.
 
 # Advanced settings
 
@@ -189,9 +238,23 @@ scp ONTUSER@192.168.1.10:/tmp/mtdX ./
 upgradestatus
 ```
 
+## Setting management MAC
+
+```
+ritool set MACAddress 12:34:56:78:9A:BC
+```
+
+## Setting management IP
+
+```
+ifconfig eth0:1 192.168.1.10 netmask 255.255.255.0
+```
+
 ## Flashing a new rootfs via SSH
 
 {% include alert.html content="Only the inactive image can be flashed" alert="Info" icon="svg-info" color="blue" %}
+
+{% include alert.html content="It is recommended to enable serial access via TTL" alert="Info" icon="svg-info" color="blue" %}
 
 The following commands are used to flash a new rootfs to image1 and then boot to it
 ```sh
@@ -208,6 +271,15 @@ uci set gpon.gtc.nDyingGaspEnable='0'; uci commit gpon
 ## Rebooting the ONU
 ```sh
 reboot
+```
+
+## Miscellaneous commands
+
+```sh
+cat /configs/image_version
+cat /usr/etc/buildinfo
+ritool dump
+omciMgr
 ```
 
 # Miscellaneous Links
