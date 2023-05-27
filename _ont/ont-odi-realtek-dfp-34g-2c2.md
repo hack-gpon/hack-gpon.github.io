@@ -33,14 +33,6 @@ ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc admin@192.16
 
 {% include image.html file="realtek-dfp-34g-2c2.jpg" alt="ODI Realtek DFP-34X-C2C" caption="ODI Realtek DFP-34X-C2C" %}
 
-## List of software versions
-- V1.0-220923 (hybrid by @lanseyujie and @stick86)
-- V1.0-220817
-- V1.0-220530 (hybrid by @stick86)
-- V1.0-220414 (vlan working)
-- V1.0-220304
-- V1.0-210702
-
 ## List of firmwares and files
 - [Firmware repository by Anime4000](https://github.com/Anime4000/RTL960x/tree/main/Firmware/DFP-34X-2C2)
 
