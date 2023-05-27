@@ -103,10 +103,18 @@ GPON_PLOAM_PASSWD=AAAAAAAAAA
 {% assign customSwVersionAlert = include.customSwVersionAlert | default: "This needs the OMCI_OLT_MODE value to be set to 3" %}
 {% include alert.html content=customSwVersionAlert alert="Note" icon="svg-info" color="blue" %}
 
+{% if include.flashSwVersion %}
+```sh
+# {{ include.flash }} get OMCI_SW_VER1
+OMCI_SW_VER1=AAAAAAAAAA
+# {{ include.flash }} set OMCI_SW_VER1 AAAAAAAAAA
+```
+{% else %}
 ```sh
 # nv setenv sw_custom_version0 YOURFIRSTSWVER
 # nv setenv sw_custom_version1 YOURSECONDSWVER
 ```
+{% endif %}
 
 ## Getting/Setting OMCI hardware version (ME 256)
 {% include alert.html content="This may need the OMCI_OLT_MODE value to be set to 3 to work" alert="Note" icon="svg-info" color="blue" %}
