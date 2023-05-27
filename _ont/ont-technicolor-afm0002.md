@@ -82,7 +82,12 @@ This stick supports dual boot.
 
 `k0` and `r0` respectively contain the kernel and firmware of the first image, `k1` and `r1` the kernel and firmware of the second one
 
-{% include_relative ont-luna-sdk-useful-commands.md flash='/etc/scripts/flash' ploam='ascii' lastgoodHs=true %}
+{% include_relative ont-luna-sdk-useful-commands.md flash='/etc/scripts/flash' ploam='ascii' lastgoodHs=true flashSwVersion=true 
+customSwVersionAlert="This needs the `/etc/scripts/flash` modded"
+customHwVersionAlert="This needs the `/etc/scripts/flash` modded"
+customVendorAlert="This needs the `/etc/scripts/flash` modded"
+customEquipAlert="This needs the `/etc/scripts/flash` modded"
+%}
 
 ## Enabling the Web UI
 ```sh
@@ -126,7 +131,7 @@ The following commands are used to flash a new rootfs to image1 and then boot to
 
 {% include alert.html content="This section is based on the `V1_7_8_210412` version of the stick's firmware " alert="Info" icon="svg-info" color="blue" %}
 
-## Adding support to configurable SW and HW versions, Vendor ID and much more
+## Adding support to configurable SW and HW versions, Vendor ID and equipment ID
 `/etc/scripts/flash` can be modified in order to add support for some variables implemented in `omci_app` but removed from `xmlconfig`. The modified file is below.
 
 `flash set` will still print an error but the change wil be persisted. You can check that by running the relative `flash get` command
