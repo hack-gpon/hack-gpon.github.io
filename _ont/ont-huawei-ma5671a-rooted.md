@@ -5,7 +5,33 @@ parent: Huawei MA5671A
 layout: default
 ---
 
-# General Settings and Useful Commands
+# Usage
+
+## Minishell
+
+This firmware version offers a minishell in addition to the normal sh shell. Commands offered by minishell are as follows:
+
+{% include serial_dump.html file="ma5671a_minishell.txt" alt="Huawei MA5671A minishell" title="Huawei MA5671A minishell" %}
+
+## Root
+
+For general use, minishell does not allow any modifications and [Web root procedure](/ont-huawei-ma5671a-root-web) is required.
+
+# GPON ONU status
+
+## Get the operational status of the ONU
+
+```sh
+onu ploamsg
+```
+
+## Querying a particular OMCI ME
+```sh
+omci_pipe.sh meg MIB_IDX ME_IN
+```
+Where `MIB_IDX` is the MIB ID and `ME_IN` is the ME instance number
+
+# GPON/OMCI settings
 
 {% include alert.html content="In this firmware, unlike the other ones, the data must be modified in a base64-encoded file. To simplify this, you can use the following web application." alert="Info" icon="svg-info" color="blue" %}
 
@@ -91,19 +117,6 @@ fw_printenv nPassword
 fw_printenv gSerial
 fw_printenv ethaddr
 ```
-
-## Checking whether the connection with the OLT was successful (O5 state)
-
-```sh
-onu ploamsg
-```
-
-## Disabling dying gasp
-
-```sh
-fw_setenv nDyingGaspEnable 0 
-```
-
 ## Getting/Setting Speed LAN Mode
 
 To get the LAN Mode:
@@ -121,11 +134,13 @@ The `link_status` variable tells the current speed
 
 To change the default lan mode value you can use `fw_setenv sgmii_mode`. The firmware already has the value 5 by default and it is generally not necessary to change it.
 
-## Querying a particular OMCI ME
+# Advanced settings
+
+## Disabling dying gasp
+
 ```sh
-omci_pipe.sh meg MIB_IDX ME_IN
+fw_setenv nDyingGaspEnable 0 
 ```
-Where `MIB_IDX` is the MIB ID and the `ME_IN` is the ME instance number
 
 # Miscellaneous Links
 

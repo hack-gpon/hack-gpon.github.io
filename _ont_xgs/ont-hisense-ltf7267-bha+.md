@@ -12,7 +12,7 @@ parent: HiSense
 | Vendor/Brand     | HiSense                                                  |
 | Model            | LTF7267-BHA+                                             |
 | ODM              | ✅                                                       |
-| Chipset          | Cortina                                                  |
+| Chipset          | Cortina CA8271A                                          |
 | Flash            | 128MB                                                    |
 | RAM              | 128MB                                                    |
 | System           | Custom Linux by Cortina (Saturn SDK) based on Kernel 4.4 |
