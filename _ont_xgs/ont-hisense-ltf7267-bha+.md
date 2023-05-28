@@ -330,7 +330,7 @@ Reboot ONT to apply the change
 
 ```sh
 # fw_setenv img_version0 20220527052622
-# fw_setenv img_version0 20220527052622
+# fw_setenv img_version1 20220527052622
 ```
 
 Reboot ONT to apply the change
