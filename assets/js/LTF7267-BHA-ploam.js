@@ -21,7 +21,7 @@ function hisensePloam(ascii_ploam) {
             new_ploam_segment = new_ploam_segment + ploam_segment.slice((j-1)*2, j*2);
         }
         if(new_ploam_segment !== "00000000")
-            array.push("INT             CFG_ID_PON_REGISTRATION_ID"+i+"                                        = 0x"+new_ploam_segment);
+            array.push("INT             CFG_ID_PON_REGISTRATION_ID"+i+"                                        = 0x"+new_ploam_segment+";");
     }
     return array.join("\n");
 }
