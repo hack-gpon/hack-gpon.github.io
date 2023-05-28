@@ -333,7 +333,7 @@ BLOCK 1: 0x43334434
 BLOCK 2: 0x45350000
 ```
 
-Each block is then byte swapped (i.e. with read each block of two digits from right to left)
+Each block is then byte swapped (i.e. read each sequence of two digits from right to left)
 
 ```
 BLOCK 0: 0x32423141
