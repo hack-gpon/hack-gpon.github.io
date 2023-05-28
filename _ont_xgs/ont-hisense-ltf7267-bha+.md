@@ -431,8 +431,6 @@ Reboot ONT to apply the change
 
 ## Changing OMCC Version
 
-{% include alert.html content="In Italy, if you are under some Huawei OLT it's mandatory to use 0xA3, while on Alcatel 0xB4, otherwise you will get O5 status but no MIBs - Note that this can be quirk of TIM Italy" alert="Warning" icon="svg-warning" color="red" %}
-
 
 ```sh
 # vi /config/scfg.txt
