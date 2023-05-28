@@ -308,7 +308,6 @@ INT CFG_ID_PON_VSSN = 0xAABBCCDD;
 Reboot ONT to apply the change
 
 ## Setting ONU GPON PLOAM password
-{% include alert.html content="The value 0x0 is null, take note of your LoID and password from the original ONT" color="red" %}
 
 This ONT supports a PLOAM password of up to 256bit in lenghth (32 ACII characters, 64 Hex digits)
 
