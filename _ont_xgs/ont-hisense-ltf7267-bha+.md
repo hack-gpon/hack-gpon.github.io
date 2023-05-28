@@ -309,6 +309,45 @@ Reboot ONT to apply the change
 
 ## Setting ONU GPON PLOAM password
 
+### Web procedure
+
+<form id="hisense-ploam" novalidate>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" placeholder="PLOAM in ASCII" name="ploam" id="ploam" required>
+        <label for="ploam">PLOAM in ASCII</label>
+        <div class="invalid-feedback">
+            Please provide a valid PLOAM password.
+        </div>
+    </div>
+    <div class="mb-3">
+        <input type="submit" class="btn btn-primary" value="Encode!">
+    </div>
+    <div class="language-plaintext highlighter-rouge">
+        <div class="highlight">
+            <pre class="highlight" id="ploam-encoded">
+            </pre>
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript" src="/assets/js/LTF7267-BHA-ploam.js"></script>
+<script type="text/javascript">
+    var hisensePloamForm = document.getElementById('hisense-ploam');
+    var hisenseResult = document.getElementById('ploam-encoded');
+    hisensePloamForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (!hisensePloamForm.checkValidity()) {
+            event.preventDefault();
+        } else {
+            const data = new URLSearchParams(new FormData(hisensePloamForm));
+            hisenseResult.innerHTML = hisensePloam(data.get('ploam'));
+        }
+    });
+</script>
+
+
+### Normal procedure
+
 This ONT seems to be supporting a PLOAM password up to 288 bits in lenghth (36 ASCII characters, 72 Hex digits).
 
 The PLOAM password is stored into 32 bit chunks (4 ASCII characters / 8 Hex digits), each byte swapped. 
