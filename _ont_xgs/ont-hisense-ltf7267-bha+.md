@@ -341,7 +341,7 @@ BLOCK 1: 0x34443343
 BLOCK 2: 0x00003545
 ```
 
-And then you can finally save it by chaning the configuration file
+And then you can finally persist it by changing the configuration file
 
 ```sh
 # vi /config/scfg.txt
@@ -355,7 +355,7 @@ INT             CFG_ID_PON_REGISTRATION_ID1                                     
 INT             CFG_ID_PON_REGISTRATION_ID2                                         = 0x00003545;
 ```
 
-Reboot ONT to apply the change.
+Reboot the ONT to apply the change.
 
 
 ## Setting ONU GPON LOID and LOID password
