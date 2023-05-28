@@ -6,26 +6,25 @@ parent: ZTE
 ---
 
 # Hardware Specifications
-
-|              |                                                                  |
-| ------------ | -----------------------------------------------------------------|
-| Vendor/Brand | ZTE                                                              |
-| Model        | F2801S                                                           |
-| ODM          | ✅                                                               |
-| CPU          |                                                       |
-| CPU Clock    |                                                           |
-| Chipset      |                                                       |
-| Flash        |                                   |
-| RAM          |                                                           |
-| System       |                                                                  |
-| 10GBaseT     | Yes                                                               |
-| Optics       | SC/APC                                              |
-| IP address   | 192.168.1.1                                                      |
+|              |                                  |
+|--------------|----------------------------------|
+| Vendor/Brand | ZTE                              |
+| Model        | F2801Sv2                         |
+| ODM          | ✅                                |
+| CPU          |                                  |
+| CPU Clock    |                                  |
+| Chipset      |                                  |
+| Flash        |                                  |
+| RAM          |                                  |
+| System       |                                  |
+| 10GBaseT     | Yes                              |
+| Optics       | SC/APC                           |
+| IP address   | 192.168.1.1                      |
 | Web Gui      | ✅ user `admin`, password `admin` |
-| SSH          |                                                                  |
-| Telnet       | ✅ [^1]                                                          |
-| Serial       | ✅                                                               |
-| Form Factor  | ONT                                                              |
+| SSH          |                                  |
+| Telnet       | ✅ [^1]                           |
+| Serial       | ✅                                |
+| Form Factor  | ONT                              |
 
 {% include image.html file="f2801s/front.jpg" alt="F2801S front plate" caption="F2801S front plate" %}
 {% include image.html file="f2801s/internal.jpg" alt="F2801S internal" caption="F2801S internal layout" %}
