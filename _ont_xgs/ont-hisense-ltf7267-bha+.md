@@ -309,7 +309,7 @@ Reboot ONT to apply the change
 
 ## Setting ONU GPON PLOAM password
 
-This ONT supports a PLOAM password of up to 256bit in lenghth (32 ACII characters, 64 Hex digits)
+This ONT seems to be supporting a PLOAM password up to 288 bits in lenghth (36 ASCII characters, 72 Hex digits).
 
 The PLOAM password is stored into 32 bit chunks (4 ASCII characters / 8 Hex digits), each byte swapped. 
 
