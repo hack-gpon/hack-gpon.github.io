@@ -307,6 +307,57 @@ INT CFG_ID_PON_VSSN = 0xAABBCCDD;
 
 Reboot ONT to apply the change
 
+## Setting ONU GPON PLOAM password
+{% include alert.html content="The value 0x0 is null, take note of your LoID and password from the original ONT" color="red" %}
+
+This ONT supports a PLOAM password of up to 256bit in lenghth (32 ACII characters, 64 Hex digits)
+
+The PLOAM password is stored into 32 bit chunks (4 ASCII characters / 8 Hex digits), each byte swapped. 
+
+So, starting from the following PLOAM in ASCII format
+
+```
+A1B2C3D4E5
+```
+
+It gets translated into the following HEX value:
+
+```
+0x41314232433344344535
+```
+
+Which is then split into the following blocks (the last block gets padded with 0 to reach 8 digits)
+
+```
+BLOCK 0: 0x41314232
+BLOCK 1: 0x43334434
+BLOCK 2: 0x45350000
+```
+
+Each block is then byte swapped (i.e. with read each block of two digits from right to left)
+
+```
+BLOCK 0: 0x32423141
+BLOCK 1: 0x34443343
+BLOCK 2: 0x00003545
+```
+
+And then you can finally save it by chaning the configuration file
+
+```sh
+# vi /config/scfg.txt
+```
+
+Append lines below to the file and save it to change the PLOAM password
+
+```
+INT             CFG_ID_PON_REGISTRATION_ID0                                         = 0x32423141;
+INT             CFG_ID_PON_REGISTRATION_ID1                                         = 0x34443343;
+INT             CFG_ID_PON_REGISTRATION_ID2                                         = 0x00003545;
+```
+
+Reboot ONT to apply the change.
+
 
 ## Setting ONU GPON LOID and LOID password
 
