@@ -2,42 +2,38 @@ const LOAD_ADDR = "80800000"
 const IMAGE0_ADDR = "C0000 740000";
 const IMAGE1_ADDR = "800000 800000";
 
-async function detectUboot(reader) {
-    while (true) {
-        const { value, done } = await reader.read();
-
-        if (value.startsWith('U-Boot')) {
-            return;
+async function detectUboot(serial) {
+    await serial.readLine((line) => {
+        if (line.startsWith('U-Boot')) {
+            return true;
         }
-    }
+    });
 }
 
-async function waitUbootStop(writer, reader, sfpModel, outputMsgCallback) {
+async function waitUbootStop(serial, sfpModel, outputMsgCallback) {
+    const interruptChar = String.fromCharCode(3);
+
     const interval = setInterval(function() {
-        writer.write(String.fromCharCode(3));
+        serial.writeString(interruptChar);
     }, 10);
 
-    await detectUboot(reader);
+    await detectUboot(serial);
     outputMsgCallback(`Root in progress: Trigger characters received. DO NOT TOUCH THE ${sfpModel} UNTIL THE PROCEDURE IS COMPLETED!`);
     await delay(5000);
     clearInterval(interval);
 }
 
-async function checkUbootUnlocked(reader) {
-    while (true) {
-        try {
-            const { value, done } = await Promise.race([
-                reader.read(),
-                new Promise((_, reject) => setTimeout(reject, 2000, new Error("timeout")))
-            ]);
+async function checkUbootUnlocked(serial) {
+    let unlocked = false;
 
-            if (value.startsWith('Press SPACE to delay and Ctrl-C to abort autoboot')) {
-                return true;
-            }
-        } catch (err) {
-            return false;
+    await serial.readLine((line) => {
+        if (line.startsWith('Press SPACE to delay and Ctrl-C to abort autoboot')) {
+            unlocked = true;
+            return true
         }
-    }
+    }, 2000);
+
+    return unlocked;
 }
 
 async function waitFailbackShell(writer, reader, outputMsgCallback) {
@@ -72,46 +68,44 @@ async function waitFailbackShell(writer, reader, outputMsgCallback) {
 }
 
 async function lantiqRootUboot(port, sfpModel, outputMsgCallback, outputErrorCallback, baudRate = 115200) {
-    let reader,writer, readableStreamClosed, writerStreamClosed;
+    const serial = new SerialReadWrite(port, baudRate);
 
     try {
         outputMsgCallback(`Please disconnect the ${sfpModel} from the SFP adapter if it is currently plugged in!`);
-        ({ reader, writer, readableStreamClosed, writerStreamClosed } = await openPortLineBreak(port, baudRate));
-
         await delay(10000);
         outputMsgCallback(`Now you need to insert the ${sfpModel} into the SFP adapter, if the procedure does not go ahead, check the connections and then remove and reconnect the ${sfpModel} again`);
 
         while(true) {
-            await waitUbootStop(writer, reader, sfpModel, outputMsgCallback);
-            const ubootUnlocked = await checkUbootUnlocked(reader);
+            await waitUbootStop(serial, sfpModel, outputMsgCallback);
+            const ubootUnlocked = await checkUbootUnlocked(serial);
 
             if (ubootUnlocked == true) {
                 break;
             }
 
             outputMsgCallback("Root in progress: Set U-Boot bootdelay to 5...");
-            writer.write('setenv bootdelay 5\n');
+            await serial.writeString('setenv bootdelay 5\n');
             await delay(1000);
             outputMsgCallback("Root in progress: Enable ASC serial...");
-            writer.write('setenv asc0 0\n');
+            await serial.writeString('setenv asc0 0\n');
             await delay(1000);
             outputMsgCallback("Root in progress: Set GPIO to unlock serial...");
-            writer.write('setenv preboot "gpio set 3;gpio input 2;gpio input 105;gpio input 106;gpio input 107;gpio input 108"\n');
+            await serial.writeString('setenv preboot "gpio set 3;gpio input 2;gpio input 105;gpio input 106;gpio input 107;gpio input 108"\n');
             await delay(1000);
             outputMsgCallback("Root in progress: Save changes...");
-            writer.write('saveenv\n');
+            await serial.writeString('saveenv\n');
             await delay(1000);
             outputMsgCallback("Root in progress: Rebooting...");
-            writer.write('reset\n');
+            await serial.writeString('reset\n');
             await delay(1000);
         }
 
-        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
         return true;
     } catch (err) {
         outputErrorCallback(`Error: ${err.message}`);
-        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
         return false;
+    } finally {
+        await serial.closePort();
     }
 }
 
