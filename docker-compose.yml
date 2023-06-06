@@ -12,7 +12,9 @@ services:
       - ./assets:/mnt/assets
   site:
     image: jekyll/jekyll:latest 
-    command: jekyll serve --verbose --incremental --force_polling
+    command: jekyll serve --verbose --incremental --force_polling --config  _config.yml,_config.docker.yml
+    environment:
+      - JEKYLL_ENV=docker
     volumes:
       - .:/srv/jekyll
     ports:
