@@ -213,7 +213,7 @@ async function waitEndImageLoad(port, baudRate, outputErrorCallback) {
             }
         }
 
-        await(1000);
+        await delay(1000);
         await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
         return true;
     } catch (err) {
@@ -233,16 +233,23 @@ async function flashImageMtd(port, image, baudRate, outputErrorCallback) {
         } else {
             await writer.write(`sf probe 0 && sf erase ${IMAGE1_ADDR} && sf write ${LOAD_ADDR} ${IMAGE1_ADDR} && setenv committed_image 1 && setenv image1_is_valid 1 && saveenv && reset\n`);
         }
-
-        await delay(1000);
-
-        /* Wait to avoid the user from disconnecting the SFP while the image is being flashed */
-        await detectUboot(reader);
+    } catch (err) {
+        outputErrorCallback(`Error: ${err.message}`);
+        return false;
+    } finally {
         await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
+    }
+
+    const serial = new SerialReadWrite(port, baudRate);
+    try {
+        /* Wait to avoid the user from disconnecting the SFP while the image is being flashed */
+        await delay(1000);
+        await detectUboot(serial);
         return true;
     } catch (err) {
         outputErrorCallback(`Error: ${err.message}`);
-        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
         return false;
+    } finally {
+        await serial.closePort();
     }
 }

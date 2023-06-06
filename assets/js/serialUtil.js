@@ -103,7 +103,7 @@ class SerialReadWrite {
                 writer = this.port.writable.getWriter();
             }
 
-            writer.write(textEncoder.encode(str));
+            writer.write(this.textEncoder.encode(str));
         } finally {
             if (writer) {
                 writer.releaseLock();
