@@ -36,35 +36,34 @@ async function checkUbootUnlocked(serial) {
     return unlocked;
 }
 
-async function waitFailbackShell(writer, reader, outputMsgCallback) {
-    while (true) {
-        const { value, done } = await reader.read();
-
-        if (value.startsWith('Press the [f] key and hit [enter] to enter failsafe mode')) {
-            const interval = setInterval(function() {
-                writer.write('f\n');
-            }, 10);
-
-            outputMsgCallback("Root in progress: Trigger characters received. Waiting for boot to end...");
-            await delay(3000);
-            clearInterval(interval);
-            break;
+async function waitFailbackShell(serial, outputMsgCallback) {
+    await serial.readLine((line) => {
+        console.log(line);
+        if (line.startsWith('Press the [f] key and hit [enter] to enter failsafe mode')) {
+            return true;
         }
-    }
+    });
 
-    const interval = setInterval(function() {
-        writer.write(String.fromCharCode(10));
+    let interval = setInterval(function() {
+        serial.writeString('f\n');
     }, 10);
 
-    while (true) {
-        const { value, done } = await reader.read();
+    outputMsgCallback("Root in progress: Trigger characters received. Waiting for boot to end...");
+    await delay(3000);
+    clearInterval(interval);
 
-        if (value.includes('root@(none)')) {
-            await delay(1000);
-            clearInterval(interval);
-            break;
+    interval = setInterval(function() {
+        serial.writeString(String.fromCharCode(10));
+    }, 10);
+
+    await serial.readLine((line) => {
+        if (line.includes('root@(none)')) {
+            return true;
         }
-    }
+    });
+
+    await delay(1000);
+    clearInterval(interval);
 }
 
 async function lantiqRootUboot(port, sfpModel, outputMsgCallback, outputErrorCallback, baudRate = 115200) {
@@ -110,27 +109,26 @@ async function lantiqRootUboot(port, sfpModel, outputMsgCallback, outputErrorCal
 }
 
 async function unlockHuaweiShell(port, outputMsgCallback, outputErrorCallback, baudRate = 115200) {
-    let reader,writer, readableStreamClosed, writerStreamClosed;
+    const serial = new SerialReadWrite(port, baudRate);
 
     try {
-        ({ reader, writer, readableStreamClosed, writerStreamClosed } = await openPortLineBreak(port, baudRate));
         outputMsgCallback("Root in progress: Rebooting...");
-        writer.write('reset\n');
+        await serial.writeString('reset\n');
         await delay(1000);
         outputMsgCallback("Waiting for reboot");
-        await waitFailbackShell(writer, reader, outputMsgCallback);
+        await waitFailbackShell(serial, outputMsgCallback);
         outputMsgCallback("Root in progress: Enable full Linux shell...");
-        writer.write('mount_root && mkdir -p /overlay/etc && sed "s|/opt/lantiq/bin/minishell|/bin/ash|g" /rom/etc/passwd > /overlay/etc/passwd\n');
+        await serial.writeString('mount_root && mkdir -p /overlay/etc && sed "s|/opt/lantiq/bin/minishell|/bin/ash|g" /rom/etc/passwd > /overlay/etc/passwd\n');
         await delay(1000);
         outputMsgCallback("Root in progress: Umount rootfs partitions...");
-        writer.write('umount /overlay && umount -a\n');
+        await serial.writeString('umount /overlay && umount -a\n');
         await delay(1000);
-        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
         return true;
     } catch (err) {
         outputErrorCallback(`Error: ${err.message}`);
-        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
         return false;
+    } finally {
+        await serial.closePort();
     }
 }
 
