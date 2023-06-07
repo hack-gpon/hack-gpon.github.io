@@ -132,34 +132,31 @@ async function unlockHuaweiShell(port, outputMsgCallback, outputErrorCallback, b
 }
 
 async function changeBaudrate(port, newBaudrate, currBaudrate, outputErrorCallback) {
-    let reader,writer, readableStreamClosed, writerStreamClosed;
+    let serial = new SerialReadWrite(port, currBaudrate);
 
     try {
-        ({ reader, writer, readableStreamClosed, writerStreamClosed } = await openPortLineBreak(port, currBaudrate));
-        await writer.write(`setenv baudrate ${newBaudrate}\n`);
+        await serial.writeString(`setenv baudrate ${newBaudrate}\n`);
         await delay(1000);
-        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
-        ({ reader, writer, readableStreamClosed, writerStreamClosed } = await openPortLineBreak(port, newBaudrate));
+        await serial.closePort();
+        serial = new SerialReadWrite(port, newBaudrate);
 
         const interval = setInterval(function() {
-            writer.write(String.fromCharCode(13));
+            serial.writeString(String.fromCharCode(13));
         }, 10);
 
-        while (true) {
-            const { value, done } = await reader.read();
-
-            if (value.startsWith('FALCON')) {
+        await serial.readLine((line) => {
+            if (line.startsWith('FALCON')) {
                 clearInterval(interval);
-                break;
+                return true;
             }
-        }
+        });
 
-        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
         return true;
     } catch (err) {
         outputErrorCallback(`Error: ${err.message}`);
-        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
         return false;
+    } finally {
+        await serial.closePort();
     }
 }
 
@@ -197,48 +194,35 @@ async function sendImageMtd(port, data, baudRate, outputErrorCallback, progressC
 }
 
 async function waitEndImageLoad(port, baudRate, outputErrorCallback) {
-    let reader, writer, readableStreamClosed, writerStreamClosed;
+    const serial = new SerialReadWrite(port, baudRate);
 
     try {
-        ({ reader, writer, readableStreamClosed, writerStreamClosed } = await openPortLineBreak(port, baudRate));
-
-        while (true) {
-            const { value, done } = await reader.read();
-
-            if (value.includes('Total Size')) {
-                break;
+        await serial.readLine((line) => {
+            if (line.includes('Total Size')) {
+                return true;
             }
-        }
+        });
 
         await delay(1000);
-        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
         return true;
-    } catch (err) {
-        outputErrorCallback(`Error: ${err.message}`);
-        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
-        return false;
-    }
-}
-
-async function flashImageMtd(port, image, baudRate, outputErrorCallback) {
-    let reader, writer, readableStreamClosed, writerStreamClosed;
-
-    try {
-        ({ reader, writer, readableStreamClosed, writerStreamClosed } = await openPortLineBreak(port, baudRate));
-        if (image == "image0") {
-            await writer.write(`sf probe 0 && sf erase ${IMAGE0_ADDR} && sf write ${LOAD_ADDR} ${IMAGE0_ADDR} && setenv committed_image 0 && setenv image0_is_valid 1 && saveenv && reset\n`);
-        } else {
-            await writer.write(`sf probe 0 && sf erase ${IMAGE1_ADDR} && sf write ${LOAD_ADDR} ${IMAGE1_ADDR} && setenv committed_image 1 && setenv image1_is_valid 1 && saveenv && reset\n`);
-        }
     } catch (err) {
         outputErrorCallback(`Error: ${err.message}`);
         return false;
     } finally {
-        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
+        await serial.closePort();
     }
+}
 
+async function flashImageMtd(port, image, baudRate, outputErrorCallback) {
     const serial = new SerialReadWrite(port, baudRate);
+
     try {
+        if (image == "image0") {
+            await serial.writeString(`sf probe 0 && sf erase ${IMAGE0_ADDR} && sf write ${LOAD_ADDR} ${IMAGE0_ADDR} && setenv committed_image 0 && setenv image0_is_valid 1 && saveenv && reset\n`);
+        } else {
+            await serial.writeString(`sf probe 0 && sf erase ${IMAGE1_ADDR} && sf write ${LOAD_ADDR} ${IMAGE1_ADDR} && setenv committed_image 1 && setenv image1_is_valid 1 && saveenv && reset\n`);
+        }
+
         /* Wait to avoid the user from disconnecting the SFP while the image is being flashed */
         await delay(1000);
         await detectUboot(serial);
