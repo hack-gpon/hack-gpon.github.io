@@ -1,0 +1,35 @@
+name: preview-pr
+
+on:
+  pull_request_target:
+    types: [opened, reopened]
+    
+permissions:
+  pull-requests: write 
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+          bundler-cache: true
+      - run: bundle exec jekyll build --baseurl ""
+      - name: Publish to Cloudflare Pages
+        id: preview-pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT }}
+          projectName: hack-gpon-preview
+          directory: _site
+          branch: preview
+      - uses: thollander/actions-comment-pull-request@v2
+        with:
+          message: |
+            Preview of the website obtained from the PR: ${{ steps.preview-pages.outputs.url }}
+
