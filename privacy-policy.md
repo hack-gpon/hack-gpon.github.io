@@ -20,7 +20,7 @@ By using our website, you hereby consent to our Privacy Policy and agree to its 
 
 # Information we collect
 
-No personal information is stored in hack-gpon.org, hack-gpon.org exclusively uses the information, personal or otherwise, in the GitHub repository [github.com/hack-gpon/hack-gpon.org](https://github.com/hack-gpon/hack-gpon.org)
+No personal information is stored in hack-gpon.org, hack-gpon.org exclusively uses the information, personal or otherwise, in the GitHub repository [github.com/hack-gpon/hack-gpon.github.io](https://github.com/hack-gpon/hack-gpon.github.io)
 
 If you make changes, PRs, commits to the git repository your personal information may be displayed on hack-gpon.org.
 
