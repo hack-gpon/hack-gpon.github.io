@@ -241,7 +241,7 @@ The script will output the following messages, ending with instruction on how to
 This script is currently working only for ZTE F601v6 shipped with TIM (V6.0.10N40) or OpenFiber (V6.0.10P6N7) firmware
 All other versions were not tested, USE IT AT YOUR OWN RISK!
 Before proceed make sure to have a GOOD BACKUP of all your ONT partitions.
-Please refer to Hack-GPON Wiki for how-to: https://hack-gpon.github.io/ont-zte-f601/
+Please refer to Hack-GPON Wiki for how-to: https://hack-gpon.org/ont-zte-f601/
 ---------------------------------------
 To proceed please enter 'y', otherwise 'n' to exit: y
 
