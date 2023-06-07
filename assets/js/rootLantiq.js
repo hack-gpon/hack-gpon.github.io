@@ -154,7 +154,6 @@ async function changeBaudrate(port, newBaudrate, currBaudrate, outputErrorCallba
         return true;
     } catch (err) {
         outputErrorCallback(`Error: ${err.message}`);
-        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
         return false;
     } finally {
         await serial.closePort();
