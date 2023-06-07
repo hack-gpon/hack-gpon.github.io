@@ -330,7 +330,7 @@ Reboot ONT to apply the change
     </div>
 </form>
 
-<script type="text/javascript" src="/assets/js/LTF7267-BHA-ploam.js"></script>
+<script type="text/javascript" src="/assets/js/generated/LTF7267-BHA-ploam.js"></script>
 <script type="text/javascript">
     var hisensePloamForm = document.getElementById('hisense-ploam');
     var hisenseResult = document.getElementById('ploam-encoded');

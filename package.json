@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "build": "tsup",
+    "watch": "tsup --watch",
+    "clean": "rimraf assets/js/generated"
+  },
+  "devDependencies": {
+    "rimraf": "^5.0.1",
+    "tsup": "^6.7.0"
+  }
+}
