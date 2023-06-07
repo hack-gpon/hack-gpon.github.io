@@ -37,8 +37,6 @@ plugins:
 color_scheme: "auto"
 enable_switch_color_scheme: true 
 enable_localstorage_color_scheme: true
-
-url: "https://hack-gpon.github.io"
 nav_sort: case_sensitive
 
 aux_buttons:
