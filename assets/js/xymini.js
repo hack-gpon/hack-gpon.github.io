@@ -49,11 +49,11 @@ function crc16(data) {
     return crc;
 }
 
-async function detectXYMini(reader) {
+async function detectXYMini(serial) {
     const textDecoder = new TextDecoder();
 
     while (true) {
-        const { value, done } = await reader.read();
+        const value = await serial.readBytes();
 
         if (value[0] == XYMINI_1K_MAGIC) {
             console.log("XYMini: detected");
@@ -91,14 +91,14 @@ function generateXYMiniBlock(blockId, payload) {
     return buf;
 }
 
-async function sendXYMini(portReader, portWriter, data, baudRate = 115200, progressCallback) {
+async function sendXYMini(serial, data, progressCallback) {
     let blockId = 1;
     let size = data.length;
     let i = 0;
     let nakN = 0;
     let wrongCharN = 0;
 
-    await detectXYMini(portReader);
+    await detectXYMini(serial);
 
     while(true) {
         const payloadSize = Math.min(PAYLOAD_LEN, size);
@@ -107,12 +107,12 @@ async function sendXYMini(portReader, portWriter, data, baudRate = 115200, progr
             const payload = data.slice(i, payloadSize + i);
 
             const block = generateXYMiniBlock(blockId, payload);
-            await portWriter.write(block);
+            await serial.writeBytes(block);
         } else {
-            portWriter.write(new Uint8Array([EOF]));
+            serial.writeBytes(new Uint8Array([EOF]));
         }
 
-        const { value, done } = await portReader.read();
+        const value = await serial.readBytes();
 
         if (value[0] == ACK) {
             if (!size) {

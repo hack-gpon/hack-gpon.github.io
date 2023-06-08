@@ -2,23 +2,6 @@ function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-class LineBreakTransformer {
-    constructor() {
-        this.chunks = "";
-    }
-
-    transform(chunk, controller) {
-        this.chunks += chunk;
-        const lines = this.chunks.split("\n");
-        this.chunks = lines.pop();
-        lines.forEach((line) => controller.enqueue(line));
-    }
-
-    flush(controller) {
-        controller.enqueue(this.chunks);
-    }
-}
-
 class SerialReadWrite {
     constructor(port, baudrate) {
         this.port = port;
@@ -34,6 +17,47 @@ class SerialReadWrite {
 
     async closePort() {
         await this.port.close();
+    }
+
+    async readBytes(retryError = 5, errorNum = 0) {
+        let reader = undefined;
+
+        if (this.isPortOpen === false) {
+            await this.openPort();
+            this.isPortOpen = true;
+        }
+
+        try {
+            if (reader === undefined) {
+                reader = this.port.readable.getReader();
+            }
+
+            const promiseResult = await reader.read();
+
+            if (promiseResult === undefined) {
+                return undefined;
+            }
+
+            return promiseResult.value;
+        } catch (e) {
+            if (e instanceof DOMException &&
+                (e.name === "BreakError" || e.name === "FramingError" || e.name === "ParityError")) {
+                console.log(e);
+
+                if (errorNum > retryError) {
+                    throw e;
+                }
+
+                return await this.readBytes(retryError, errorNum++);
+            } else {
+                throw e;
+            }
+        } finally {
+            if (reader) {
+                reader.releaseLock();
+                reader = undefined;
+            }
+        }
     }
 
     async readLine(readCallback, timeout = undefined) {
@@ -90,7 +114,7 @@ class SerialReadWrite {
         }
     }
 
-    async writeString(str) {
+    async writeBytes(bytes) {
         let writer = undefined;
 
         if (this.isPortOpen === false) {
@@ -103,7 +127,7 @@ class SerialReadWrite {
                 writer = this.port.writable.getWriter();
             }
 
-            writer.write(this.textEncoder.encode(str));
+            writer.write(bytes);
         } finally {
             if (writer) {
                 writer.releaseLock();
@@ -111,38 +135,8 @@ class SerialReadWrite {
             }
         }
     }
-}
 
-async function openPortLineBreak(port, baudRate) {
-    await port.open({ baudRate: baudRate });
-    const textDecoder = new TextDecoderStream();
-    const readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
-    const reader = await textDecoder.readable.pipeThrough(new TransformStream(new LineBreakTransformer())).getReader();
-    const textEncoderStream = new TextEncoderStream();
-    const writerStreamClosed = textEncoderStream.readable.pipeTo(port.writable);
-    const writer = await textEncoderStream.writable.getWriter();
-
-    return { reader, writer, readableStreamClosed, writerStreamClosed };
-}
-
-async function closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed) {
-    if (reader) {
-        reader.cancel();
-    }
-
-    if (readableStreamClosed) {
-        await readableStreamClosed.catch(() => { /* Ignore the error */ });
-    }
-
-    if (writer) {
-        writer.close();
-    }
-
-    if (writerStreamClosed) {
-        await writerStreamClosed;
-    }
-
-    if (port) {
-        await port.close();
+    async writeString(str) {
+        await this.writeBytes(this.textEncoder.encode(str));
     }
 }

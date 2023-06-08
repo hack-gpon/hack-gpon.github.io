@@ -161,35 +161,18 @@ async function changeBaudrate(port, newBaudrate, currBaudrate, outputErrorCallba
 }
 
 async function sendImageMtd(port, data, baudRate, outputErrorCallback, progressCallback) {
-    let reader,writer, readableStreamClosed, writerStreamClosed;
+    const serial = new SerialReadWrite(port, baudRate);
 
     try {
-        ({ reader, writer, readableStreamClosed, writerStreamClosed } = await openPortLineBreak(port, baudRate));
-        await writer.write(`loady 0x${LOAD_ADDR}\n`);
+        await serial.writeString(`loady 0x${LOAD_ADDR}\n`);
         await delay(1000);
-        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);   /* XYMini needs reopen the port */
-    } catch (err) {
-        outputErrorCallback(`Error: ${err.message}`);
-        await closePortLineBreak(port, reader, writer, readableStreamClosed, writerStreamClosed);
-        return false;
-    }
-
-    try {
-        await port.open({ baudRate: baudRate });
-        reader = port.readable.getReader();
-        writer = port.writable.getWriter();
-
-        await sendXYMini(reader, writer, data, baudRate, progressCallback);
-        await reader.cancel();
-        await writer.close();
-        await port.close();
+        await sendXYMini(serial, data, progressCallback);
         return true;
     } catch (err) {
-        await reader.cancel();
-        await writer.close();
-        await port.close();
         outputErrorCallback(`Error: ${err.message}`);
         return false;
+    } finally {
+        await serial.closePort();
     }
 }
 
