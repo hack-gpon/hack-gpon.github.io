@@ -55,6 +55,7 @@ PLOAM can be set directly for Text or Hexa(without 0x) via Web interface if <10 
 
 ```
 curl -i -s -k -X $'POST' -H $'Content-Type: application/x-www-form-urlencoded' \
+    -H $'Accept-Language: en-GB,en-US;q=0.9,en;q=0.8' \
     -d $'ploam_password=00000XXXXXXXXXXXXXXX' \
     $'http://192.168.100.1/ONT/client/data/Router.json'
 ```
