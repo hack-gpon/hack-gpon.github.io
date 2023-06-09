@@ -61,14 +61,14 @@ layout: table_wrappers
   <div class="side-bar">
     <div class="site-header">
       <a href="{{ '/' | relative_url }}" class="site-title lh-tight">{% include title.html %}</a>
-      <a href="#" id="menu-button" class="site-button">
-        <svg viewBox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg>
-      </a>
       {% if site.enable_rainbow == true %}
       <a class="site-button rainbow-button">
         🏳️‍🌈
       </a>
       {% endif %}
+      <a href="#" id="menu-button" class="site-button">
+        <svg viewBox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg>
+      </a>
     </div>
     <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav">
       {% include nav/main.html %}
@@ -131,18 +131,18 @@ layout: table_wrappers
                 </a>
               </li>
             {% endfor %}
-            {% if site.enable_switch_color_scheme == true %}
-            <li class="aux-nav-list-item">
-              <button class="site-button color-scheme-switch-theme-button">
-                <svg aria-hidden="true" class="site-button-icon"><use href="#svg-{{ site.color_scheme | default: 'light' }}"></use></svg>
-              </button>
-            </li>
-            {% endif %}
             {% if site.enable_rainbow == true %}
             <li class="aux-nav-list-item">
               <a class="site-button rainbow-button">
                 🏳️‍🌈
               </a>
+            </li>
+            {% endif %}
+            {% if site.enable_switch_color_scheme == true %}
+            <li class="aux-nav-list-item">
+              <button class="site-button color-scheme-switch-theme-button">
+                <svg aria-hidden="true" class="site-button-icon"><use href="#svg-{{ site.color_scheme | default: 'light' }}"></use></svg>
+              </button>
             </li>
             {% endif %}
           </ul>
