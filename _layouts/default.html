@@ -7,12 +7,14 @@ layout: table_wrappers
 <html lang="{{ site.lang | default: 'en-US' }}">
 {% include head.html %}
 <body>
+  {% if site.enable_rainbow == true %}
   <style>
     .main-header, .site-header {
       border-bottom: 2px solid #eeebee;
       border-image: linear-gradient(90deg, white 8.33%, #ffa6b9 0 16.66%, #00d2ff 0 25%, #753000 0 33.33%, black 0 41.66%, #0000 0 50%, red 0 58.33%, orange 0 66.66%, yellow 0 75%, green 0 83.333%, blue 0 91.66%, indigo 0 100%) 10;
    }
   </style>
+  {% endif %}
   <a class="skip-to-main" href="#main-content">Skip to main content</a>
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="svg-link" viewBox="0 0 24 24">
@@ -126,6 +128,13 @@ layout: table_wrappers
             <li class="aux-nav-list-item">
               <button class="site-button color-scheme-switch-theme-button">
                 <svg aria-hidden="true" class="site-button-icon"><use href="#svg-{{ site.color_scheme | default: 'light' }}"></use></svg>
+              </button>
+            </li>
+            {% endif %}
+            {% if site.enable_rainbow == true %}
+            <li class="aux-nav-list-item">
+              <button class="site-button color-scheme-switch-theme-button">
+                🏳️‍🌈
               </button>
             </li>
             {% endif %}
