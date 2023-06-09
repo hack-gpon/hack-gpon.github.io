@@ -7,6 +7,16 @@ layout: table_wrappers
 <html lang="{{ site.lang | default: 'en-US' }}">
 {% include head.html %}
 <body>
+  {% if site.enable_rainbow == true %}
+  <style>
+    .rainbow-button {
+      font-size: 150%;
+    }
+    .rainbow-button:hover {
+      background-image: none;
+    }
+  </style>
+  {% endif %}
   <a class="skip-to-main" href="#main-content">Skip to main content</a>
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="svg-link" viewBox="0 0 24 24">
@@ -46,17 +56,16 @@ layout: table_wrappers
       {% include icons/switch_color_scheme.html %}
     {% endif %}
     {% include icons/custom.html %}
-    <style>
-      .main-header, .site-header {
-        border-bottom: 1px solid #eeebee;
-        border-image: linear-gradient(90deg, white 0 7.69%, #ffa6b9 0 15.38%, #00d2ff 0 23.07%, #753000 0 30.76%, black 0 38.45%, #0000 0 46.14%, red 0 53.83%, orange 0 61.52%, yellow 0 76.9%, green 0 84.59%, blue 0 92.28%, indigo 0 100%) 10;
-     }
-    </style>
   </svg>
 
   <div class="side-bar">
     <div class="site-header">
       <a href="{{ '/' | relative_url }}" class="site-title lh-tight">{% include title.html %}</a>
+      {% if site.enable_rainbow == true %}
+      <a class="site-button rainbow-button" href="#">
+        🏳️‍🌈
+      </a>
+      {% endif %}
       <a href="#" id="menu-button" class="site-button">
         <svg viewBox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg>
       </a>
@@ -122,6 +131,13 @@ layout: table_wrappers
                 </a>
               </li>
             {% endfor %}
+            {% if site.enable_rainbow == true %}
+            <li class="aux-nav-list-item">
+              <a class="site-button rainbow-button" href="#">
+                🏳️‍🌈
+              </a>
+            </li>
+            {% endif %}
             {% if site.enable_switch_color_scheme == true %}
             <li class="aux-nav-list-item">
               <button class="site-button color-scheme-switch-theme-button">
