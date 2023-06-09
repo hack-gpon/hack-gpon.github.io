@@ -12,7 +12,10 @@ layout: table_wrappers
     .main-header, .site-header {
       border-bottom: 2px solid #eeebee;
       border-image: linear-gradient(90deg, white 8.33%, #ffa6b9 0 16.66%, #00d2ff 0 25%, #753000 0 33.33%, black 0 41.66%, #0000 0 50%, red 0 58.33%, orange 0 66.66%, yellow 0 75%, green 0 83.333%, blue 0 91.66%, indigo 0 100%) 10;
-   }
+    }
+    .rainbow-button {
+      font-size: 150%;
+    }
   </style>
   {% endif %}
   <a class="skip-to-main" href="#main-content">Skip to main content</a>
@@ -63,7 +66,7 @@ layout: table_wrappers
         <svg viewBox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg>
       </a>
       {% if site.enable_rainbow == true %}
-      <a class="site-button">
+      <a class="site-button rainbow-button">
         🏳️‍🌈
       </a>
       {% endif %}
@@ -138,7 +141,7 @@ layout: table_wrappers
             {% endif %}
             {% if site.enable_rainbow == true %}
             <li class="aux-nav-list-item">
-              <a class="site-button">
+              <a class="site-button rainbow-button">
                 🏳️‍🌈
               </a>
             </li>
