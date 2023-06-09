@@ -49,7 +49,9 @@ aux_buttons:
     icon: 'telegram'
     link: '//t.me/HackGPON'
 
-
+aux_links:
+  "🏳️‍🌈":
+    - "#" 
 #aux_links:
 #  "Hack GPON on GitHub":
 #    - "//github.com/hack-gpon/hack-gpon.github.io"
