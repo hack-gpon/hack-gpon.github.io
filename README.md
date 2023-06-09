@@ -1,4 +1,4 @@
-# hack-gpon.github.io
+# hack-gpon.org
 
 
 Based on just-the-docs theme:
@@ -14,3 +14,13 @@ if you want to contribute there is something to be done:
 - absent stick information
 - quick start
 - absent and new ont
+
+##  How to build
+This website uses typescript, so remember to:
+
+- Install node (20)
+- Run npm ci to install all relevant typescript packages
+- Run npm run build to transpile ts to js
+
+Alternatively, you can just run:
+`docker-compose up -d typescript` which will build all the required typescript files for you

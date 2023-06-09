@@ -41,7 +41,7 @@
 
 ## List of partitions
 
-# Userful files and binaries
+# Useful files and binaries
 
 ## Useful files
 

@@ -82,7 +82,12 @@ This stick supports dual boot.
 
 `k0` and `r0` respectively contain the kernel and firmware of the first image, `k1` and `r1` the kernel and firmware of the second one
 
-{% include_relative ont-luna-sdk-useful-commands.md flash='/etc/scripts/flash' ploam='ascii' lastgoodHs=true %}
+{% include_relative ont-luna-sdk-useful-commands.md flash='/etc/scripts/flash' ploam='ascii' lastgoodHs=true flashSwVersion=true 
+customSwVersionAlert="This needs the `/etc/scripts/flash` modded"
+customHwVersionAlert="This needs the `/etc/scripts/flash` modded"
+customVendorAlert="This needs the `/etc/scripts/flash` modded"
+customEquipAlert="This needs the `/etc/scripts/flash` modded"
+%}
 
 ## Enabling the Web UI
 ```sh
@@ -126,39 +131,160 @@ The following commands are used to flash a new rootfs to image1 and then boot to
 
 {% include alert.html content="This section is based on the `V1_7_8_210412` version of the stick's firmware " alert="Info" icon="svg-info" color="blue" %}
 
-## Adding support to configurable SW and HW versions, Vendor ID and much more
-`/etc/scripts/flash` can be flashed in order to add support for some variables implemented in `omci_app` but removed from `xmlconfig`. The patch is below (change the values to suit your needs)
-```patch
---- squashfs-root/etc/scripts/flash     2021-09-28 10:38:52.000000000 +0200
-+++ squashfs-root.new/etc/scripts/flash 2022-08-04 00:00:29.769605000 +0200
-@@ -62,7 +62,26 @@
-                if [ `echo $para | egrep $specific_mib_patten` ]; then
-                        /bin/xmlconfig -g $para | sed -r "s/$rename_mib_name+/$2/g" | sed -r "s/,+//g"
-                else
--                       /bin/xmlconfig -g $para | sed -r "s/$rename_mib_name+/$2/g"
-+                       case "$para" in
-+                               "OMCI_EQID")
-+                                       echo "$para=MY_EQID"
-+                                       ;;
-+                               "OMCI_VENDOR_ID")
-+                                       echo "$para=MY_VENDOR"
-+                                       ;;
-+                               "OMCI_SW_VER1")
-+                                       echo "$para=MY_SW_VER1"
-+                                       ;;
-+                               "OMCI_SW_VER2")
-+                                       echo "$para=MY_SW_VER2"
-+                                       ;;
-+                               "OMCI_ONT_VER")
-+                                       echo "$para=MY_HW_VER"
-+                                       ;;
-+                               *)
-+                                       /bin/xmlconfig -g $para | sed -r "s/$rename_mib_name+/$2/g"
-+                                       ;;
-+                       esac
-                fi
-                if [ "$?" = "0" ]; then
-                        exit 0
+## Adding support to configurable SW and HW versions, Vendor ID and equipment ID
+`/etc/scripts/flash` can be modified in order to add support for some variables implemented in `omci_app` but removed from `xmlconfig`. The modified file is below.
+
+`flash set` will still print an error but the change wil be persisted. You can check that by running the relative `flash get` command
+
+```sh
+#!/bin/ash
+#
+# usage: flash.sh [cmd] ...
+#
+
+DEFAULT_FILE="/etc/config_default.xml"
+DEFAULT_HS_FILE="/etc/config_default_hs.xml"
+LASTGOOD_FILE="/var/config/lastgood.xml"
+LASTGOOD_HS_FILE="/var/config/lastgood_hs.xml"
+
+# for array type in hw_setting
+specific_mib_patten="(^HW(_|_WLAN0_|_WLAN1_)TX_POWER*)|(^HW_FON_KEYWORD$)"
+
+rename_mib_patten="^HW_(NIC[0-1]|WLAN[0-1]_WLAN)_ADDR"
+rename_mib_name="ELAN_MAC_ADDR"
+
+hw_mib="^HW_|^SUPER_NAME$|^SUPER_PASSWORD$|^BOOT_MODE$|^ELAN_MAC_ADDR#|^WLAN_MAC_ADD$|^WAN_PHY_PORT$|^WIFI_SUPPORT$|^BYTE$|^WORD$|^DWORD$|^INT1$|^INT2$"
+var=""
+
+
+case "$1" in
+  "all")
+#  	echo "------ [$1] Display all settings ------"
+  	if [ $# -eq 1 ] || [ "$2" = "hs" ]; then
+  		/bin/xmlconfig -os -hs
+	fi
+	if [ $# -eq 1 ] || [ "$2" = "cs" ]; then
+	        /bin/xmlconfig -os
+	fi
+	exit 0
+  	;;
+  "default")
+#  	echo "------ [$1] Restore to default configurationg ------"
+  	if [ "$2" = "cs" ]; then
+		/bin/xmlconfig -def_mib
+		/bin/xmlconfig -if $DEFAULT_FILE -nodef && /bin/xmlconfig -of $LASTGOOD_FILE
+		echo "Reset CS to default configuration success."
+	elif [ "$2" = "hs" ]; then
+		/bin/xmlconfig -def_mib -hs
+		/bin/xmlconfig -if $DEFAULT_HS_FILE -nodef && /bin/xmlconfig -of $LASTGOOD_HS_FILE
+		echo "Reset HS to default configuration success."
+	elif [ "$2" = "voip" ]; then
+		/bin/xmlconfig -def_voip_mib
+		/bin/xmlconfig -of $LASTGOOD_FILE
+		echo "Reset VoIP to default configuration success."
+	else
+		echo "Restore to default configurationg fail."	
+		/bin/sh $0 -h
+		exit 1
+	fi
+	echo "Please reboot system."
+	exit 0
+	;;
+  "get" | "gethw")
+# 	echo "------ [$1] Get a specific mib parameter from flash memory. ------"
+	if [ "$2" != "" ]; then
+		para=$2
+		if [ `echo $para | egrep $rename_mib_patten` ]; then
+			para=$rename_mib_name
+		fi
+		#echo "/bin/xmlconfig -g $para"
+		if [ `echo $para | egrep $specific_mib_patten` ]; then
+			/bin/xmlconfig -g $para | sed -r "s/$rename_mib_name+/$2/g" | sed -r "s/,+//g"
+		else
+			local_nv_getenv=`nv getenv $para`
+			if [ -z "${local_nv_getenv}" ]; then
+				/bin/xmlconfig -g $para | sed -r "s/$rename_mib_name+/$2/g"
+			else
+				echo "${local_nv_getenv}" | sed -r "s/$rename_mib_name+/$2/g"
+			fi
+		fi
+		if [ "$?" = "0" ]; then
+			exit 0
+		fi
+	else
+		/bin/sh $0 -h
+		exit 1
+	fi
+	;;
+  "set" | "sethw")
+ # 	echo "------ [$1] Set a specific mib parameter into flash memory. ------"
+  	if [ "$2" != "" ] && [ "$3" != "" ]; then
+		para=$2
+		if [ `echo $para | egrep $rename_mib_patten` ]; then
+			$para=$rename_mib_name
+		fi
+
+		if [ $# -eq 3 ]; then
+			var=$3
+		else
+			while [ $# -ge 3 ]
+			do
+				# for multiple decimal values: dec2hex and concatenate all setting value
+				if [ "$3" = "08" ] || [ "$3" = "09" ]; then
+					# 08 & 09 are not invalid octal number
+					var=$var$3
+				else
+					var=$var`printf "%02x" $3`
+				fi
+
+				shift
+				if [ $# -ge 3 ]; then var=$var","; fi
+			done
+		fi
+		#echo "/bin/xmlconfig -s $para $var"
+
+		/bin/xmlconfig -s $para $var | egrep "[ERR]"
+		if [ $? == 0 ]; then
+			nv setenv $para $var
+		else
+			# Clear the ovveride from nv if it is there since we wrote it to xmlconfig
+			nv setenv $para
+		fi
+		if [ "`echo $2 | egrep $hw_mib`" = "" ]; then
+			/bin/xmlconfig -of $LASTGOOD_FILE
+		fi
+  		/bin/xmlconfig -of -hs $LASTGOOD_HS_FILE && exit 0
+	else
+		/bin/sh $0 -h
+		exit 1
+	fi
+	;;
+  "-h")
+		echo 'Usage: flash.sh [cmd]'
+		echo 'cmd:'
+		echo '  all <cs/hs>               : Show all settings.'
+		echo '  default <cs/hs>           : Restore to default configuration.'
+		echo '  get MIB-NAME              : get a specific mib parameter from flash memory.'
+		echo '  set MIB-NAME MIB-VALUE    : set a specific mib parameter into flash memory.'
+		echo 
+		echo '  Note: When set the MIB_ARRAY or MIB_VALUE overflowed,'
+		echo '        xmlconfig will truncate the redundant part.'
+		echo '        Take signed integer for example:'
+		echo '        1. Set value=-6442450944(0xfffffffe80000000),'
+		echo '           and get value=-2147483648(0x80000000)'
+		echo '        2. Set value=-2147483649(0xffffffff7fffffff),'
+		echo '           and get value=2147483647(0x7fffffff)'
+		echo '        3. Set value=2147483648(0x80000000),'
+		echo '           and get value=-2147483648(0x80000000)'
+		echo '        4. Set value=4294967296(0x100000000), and get value=0(0x0)'
+		echo 
+	;;
+  *)
+  	/bin/sh $0 -h
+		exit 1
+	;;
+esac
+
 ```                        
 ## Increasing the length of the software version from 13 to 14 characters
 `omci_app` has an hard-coded limit of 13 characters for the software version, which is too low. We can binary patch it to increase it to 14 (or more, if you dare/need)

@@ -30,6 +30,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: Install Node deps
+        run: npm ci
+      - name: Compile typescript
+        run: npm run build
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:

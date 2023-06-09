@@ -5,3 +5,5 @@ _site/
 .jekyll-metadata
 Gemfile.lock
 assets/js/zzzz-search-data.json
+node_modules/
+assets/js/generated

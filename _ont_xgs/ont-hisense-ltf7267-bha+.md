@@ -12,7 +12,7 @@ parent: HiSense
 | Vendor/Brand     | HiSense                                                  |
 | Model            | LTF7267-BHA+                                             |
 | ODM              | ✅                                                       |
-| Chipset          | Cortina                                                  |
+| Chipset          | Cortina CA8271A                                          |
 | Flash            | 128MB                                                    |
 | RAM              | 128MB                                                    |
 | System           | Custom Linux by Cortina (Saturn SDK) based on Kernel 4.4 |
@@ -307,6 +307,95 @@ INT CFG_ID_PON_VSSN = 0xAABBCCDD;
 
 Reboot ONT to apply the change
 
+## Setting ONU GPON PLOAM password
+
+### Web procedure
+
+<form id="hisense-ploam" novalidate>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" placeholder="PLOAM in ASCII" name="ploam" id="ploam" required>
+        <label for="ploam">PLOAM in ASCII</label>
+        <div class="invalid-feedback">
+            Please provide a valid PLOAM password.
+        </div>
+    </div>
+    <div class="mb-3">
+        <input type="submit" class="btn btn-primary" value="Encode!">
+    </div>
+    <div class="language-plaintext highlighter-rouge">
+        <div class="highlight">
+            <pre class="highlight" id="ploam-encoded">
+            </pre>
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript" src="/assets/js/generated/LTF7267-BHA-ploam.js"></script>
+<script type="text/javascript">
+    var hisensePloamForm = document.getElementById('hisense-ploam');
+    var hisenseResult = document.getElementById('ploam-encoded');
+    hisensePloamForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (!hisensePloamForm.checkValidity()) {
+            event.preventDefault();
+        } else {
+            const data = new URLSearchParams(new FormData(hisensePloamForm));
+            hisenseResult.innerHTML = hisensePloam(data.get('ploam'));
+        }
+    });
+</script>
+
+
+### Normal procedure
+
+This ONT seems to be supporting a PLOAM password up to 288 bits in lenghth (36 ASCII characters, 72 Hex digits).
+
+The PLOAM password is stored into 32 bit chunks (4 ASCII characters / 8 Hex digits), each byte swapped. 
+
+So, starting from the following PLOAM in ASCII format
+
+```
+A1B2C3D4E5
+```
+
+It gets translated into the following HEX value:
+
+```
+0x41314232433344344535
+```
+
+Which is then split into the following blocks (the last block gets padded with 0 to reach 8 digits)
+
+```
+BLOCK 0: 0x41314232
+BLOCK 1: 0x43334434
+BLOCK 2: 0x45350000
+```
+
+Each block is then byte swapped (i.e. read each sequence of two digits from right to left)
+
+```
+BLOCK 0: 0x32423141
+BLOCK 1: 0x34443343
+BLOCK 2: 0x00003545
+```
+
+And then you can finally persist it by changing the configuration file
+
+```sh
+# vi /config/scfg.txt
+```
+
+Append lines below to the file and save it to change the PLOAM password
+
+```
+INT             CFG_ID_PON_REGISTRATION_ID0                                         = 0x32423141;
+INT             CFG_ID_PON_REGISTRATION_ID1                                         = 0x34443343;
+INT             CFG_ID_PON_REGISTRATION_ID2                                         = 0x00003545;
+```
+
+Reboot the ONT to apply the change.
+
 
 ## Setting ONU GPON LOID and LOID password
 
@@ -330,7 +419,7 @@ Reboot ONT to apply the change
 
 ```sh
 # fw_setenv img_version0 20220527052622
-# fw_setenv img_version0 20220527052622
+# fw_setenv img_version1 20220527052622
 ```
 
 Reboot ONT to apply the change
@@ -380,8 +469,6 @@ STRING          CFG_ID_PON_OLT_TYPE                             = ALCL; ##GPON O
 Reboot ONT to apply the change
 
 ## Changing OMCC Version
-
-{% include alert.html content="In Italy, if you are under some Huawei OLT it's mandatory to use 0xA3, while on Alcatel 0xB4, otherwise you will get O5 status but no MIBs - Note that this can be quirk of TIM Italy" alert="Warning" icon="svg-warning" color="red" %}
 
 
 ```sh

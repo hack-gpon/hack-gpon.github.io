@@ -6,13 +6,13 @@ nav_exclude: true
 search_exclude: true
 ---
 
-# Privacy Policy for hack-gpon.github.io
+# Privacy Policy for hack-gpon.org
 
-At hack-gpon.github.io, accessible from hack-gpon.github.io, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by hack-gpon.github.io and how we use it.
+At hack-gpon.org, accessible from hack-gpon.org, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by hack-gpon.org and how we use it.
 
 If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.
 
-This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in hack-gpon.github.io. This policy is not applicable to any information collected offline or via channels other than this website.
+This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in hack-gpon.org. This policy is not applicable to any information collected offline or via channels other than this website.
 
 # Consent
 
@@ -20,9 +20,9 @@ By using our website, you hereby consent to our Privacy Policy and agree to its 
 
 # Information we collect
 
-No personal information is stored in hack-gpon.github.io, hack-gpon.github.io exclusively uses the information, personal or otherwise, in the GitHub repository [github.com/hack-gpon/hack-gpon.github.io](https://github.com/hack-gpon/hack-gpon.github.io)
+No personal information is stored in hack-gpon.org, hack-gpon.org exclusively uses the information, personal or otherwise, in the GitHub repository [github.com/hack-gpon/hack-gpon.github.io](https://github.com/hack-gpon/hack-gpon.github.io)
 
-If you make changes, PRs, commits to the git repository your personal information may be displayed on hack-gpon.github.io.
+If you make changes, PRs, commits to the git repository your personal information may be displayed on hack-gpon.org.
 
 # How we use your information
 
@@ -38,7 +38,7 @@ We use the information we collect in various ways, including to:
 
 # Log Files
 
-hack-gpon.github.io follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services’ analytics. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users’ movement on the website, and gathering demographic information.
+hack-gpon.org follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services’ analytics. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users’ movement on the website, and gathering demographic information.
 
 
 # Advertising Partners Privacy Policies
@@ -47,7 +47,7 @@ There no exists Advertising Partners
 
 # Third Party Privacy Policies
 
-hack-gpon.github.io’s Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options.
+hack-gpon.org’s Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options.
 
 You can choose to disable cookies through your individual browser options. To know more detailed information about cookie management with specific web browsers, it can be found at the browsers’ respective websites.
 
@@ -63,7 +63,7 @@ We would like to make sure you are fully aware of all of your data protection ri
 # Children’s Information
 Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.
 
-hack-gpon.github.io does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.
+hack-gpon.org does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.
 
 
 
