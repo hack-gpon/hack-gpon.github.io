@@ -62,6 +62,11 @@ layout: table_wrappers
       <a href="#" id="menu-button" class="site-button">
         <svg viewBox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg>
       </a>
+      {% if site.enable_rainbow == true %}
+      <a class="site-button">
+        🏳️‍🌈
+      </a>
+      {% endif %}
     </div>
     <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav">
       {% include nav/main.html %}
@@ -133,9 +138,9 @@ layout: table_wrappers
             {% endif %}
             {% if site.enable_rainbow == true %}
             <li class="aux-nav-list-item">
-              <button class="site-button color-scheme-switch-theme-button">
+              <a class="site-button">
                 🏳️‍🌈
-              </button>
+              </a>
             </li>
             {% endif %}
           </ul>
