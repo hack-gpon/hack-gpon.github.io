@@ -80,12 +80,7 @@ hex_eqvid: 0x3346453435343538414241413036
 #ONT/system/misc>vendor get
 vendor: ALCL
 ---ATECMDRESULT--- OK
-#ONT/system/misc>eqsnvend get
-vendor: ALCL
----ATECMDRESULT--- OK
 #ONT/system/misc>vendor set "ALCL"
----ATECMDRESULT--- OK
-#ONT/system/misc>eqsnvend set "ALCL"
 ---ATECMDRESULT--- OK
 ```
 
