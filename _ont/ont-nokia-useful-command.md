@@ -56,6 +56,22 @@ eqsn: ALCL00000001
 ---ATECMDRESULT--- OK
 ```
 
+## Getting/Setting PLOAM
+```sh
+#ONT>system
+#ONT/system>misc
+#ONT/system/misc>pon_passwd set "123456789"
+---ATECMDRESULT--- OK
+#ONT/system/misc>pon_passwd get
+pon_passwd: 31323334353637383900
+---ATECMDRESULT--- OK
+#ONT/system/misc>register_id set "123456789"
+---ATECMDRESULT--- OK
+#ONT/system/misc>register_id get
+pon_passwd: 31323334353637383900
+---ATECMDRESULT--- OK
+```
+
 ## Setting OMCI software version (ME 7)
 The following must be typed from the standard linux shell:
 ```sh
