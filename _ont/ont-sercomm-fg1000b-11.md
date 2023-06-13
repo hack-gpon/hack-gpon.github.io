@@ -14,7 +14,7 @@ parent: Sercomm
 | ODM             | ✅                     |
 | Chipset         | BCM68360_B1            |
 | Flash           | NAND 128 MB            |
-| RAM             | 256 MB                 |
+| RAM             | 256 MB (197 MB usable) |
 | CPU             | Broadcom B53 Dual Core |
 | CPU Clock       | 1500MHz                |
 | Bootloader      | CFE                    |
@@ -98,7 +98,7 @@ mtd22: 003bd000 0001f000 "lib_squashfs"
 
 ## Enable telnet/SSH/serial
 
-Below code can be pasted in the browser console after loading the http://192.168.100.1 (default ONT page). This will enable telnet as root with no password on the device ( same can be done with '/usr/sbin/sshd' binary). The below hack uses an injection exploit on the 'eventlog_applog_download.json' page, command can be injected in the request body 'applog_select' parameter and are executed as superadmin(root).
+Below code can be pasted in the browser console after loading the http://192.168.100.1 (default ONT page). This will enable telnet as root with no password on the device (same can be done with '/usr/sbin/sshd' binary). The below hack uses an injection exploit on the 'eventlog_applog_download.json' page, command can be injected in the request body 'applog_select' parameter and are executed as superadmin(root).
 ```
 // Fetch a non csrf protected page to get a csrf token
 await fetch("http://192.168.100.1/setup.cgi?next_file=statusandsupport/status.html").then(function (response) {
@@ -133,15 +133,23 @@ fetch('http://192.168.100.1/data/statussupporteventlog_applog_download.json?_=16
 # GPON ONU status
 
 ## Get the operational status of the ONU
-```gponctl getState``` 
+```
+gponctl getState
+``` 
 
 ## Get information of the OLT vendor
-```umci_ctl stack get olt_type```
+```
+umci_ctl stack get olt_type
+```
 or
-```umci_ctl rg help```
+```
+umci_ctl rg help
+```
 
 ## Querying a particular OMCI ME
-```umci_ctl mib```
+```
+umci_ctl mib
+```
 
 ## Getting/Setting Speed LAN Mode
 
