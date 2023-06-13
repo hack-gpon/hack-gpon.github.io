@@ -86,6 +86,7 @@ mtd22: 003bd000 0001f000 "lib_squashfs"
 {% include alert.html content="nand MTD 5 mounted as  '/tmp/var_link_dir/ft' contains all serials and mac address of the ONT, please consider backup before any hack' files: 'customer_sn,gpon_sn,hw_version,mac_addr,pcba_sn' " alert="Warning" icon="svg-warning" color="red" %}
 
 ## Useful files
+'/etc/framework_init.sh' - is the main entry for sercomm framework launch by /etc/rcS
 
 ## Useful binaries
 `pb_ap` - monitor de reset button, push > 10s reset to factory default, otherwise reset the device - run at startup - no args
@@ -93,6 +94,14 @@ mtd22: 003bd000 0001f000 "lib_squashfs"
 `fw_image_ctl` - allow firmware info, upgrade, switch between fw0 & fw1, repliacte fw_x to fw_1, desactivate image etc... - options listes when called woth no args
 
 `cmld_client`- manipulate the configuration 'DB' stored in a /dev/mtd15, output is XML format. The root element is "InternetGatewayDevice" you need to use a final '.' dot to list all sub-element. example to get the full device XML config 'cmld_client get_node InternetGatewayDevice.'. Element with writable="1" can be changed with 'set' and the node path. Element marked dynamic="1" have their value evaluated at the time you specifically call get on the node, `cmld_client get  InternetGatewayDevice.WANDevice.1.X_SC_GponInterfaceConfig.Status` - the daemon is run at startup - option list whe called with no args
+
+'cmd_agent' - is a strange daemon launch at startup during /etc/rcS that open a /tmp/cmd_client sock file that listen to command and execute them. - no args
+
+'statd' - is a daemon launch at boot which collect monitoring data from the ONT.
+
+'ubus' - ubus is used to send message between processes, current ubus services are 'cml,network-manager,smd'
+
+'smd' - is the daemon in charge of launching /opt/ plugin for each of the ONT service like: init, gpon, iptv, temperature, account, http, lan, network, syslog, system. All is done in code which is not helping hacking the device.
 
 # Usage
 
