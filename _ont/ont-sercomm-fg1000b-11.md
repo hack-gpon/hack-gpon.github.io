@@ -86,7 +86,7 @@ mtd22: 003bd000 0001f000 "lib_squashfs"
 {% include alert.html content="nand MTD 5 mounted as  '/tmp/var_link_dir/ft' contains all serials and mac address of the ONT, please consider backup before any hack' files: 'customer_sn,gpon_sn,hw_version,mac_addr,pcba_sn' " alert="Warning" icon="svg-warning" color="red" %}
 
 ## Useful files
-'/etc/framework_init.sh' - is the main entry for sercomm framework launch by /etc/rcS
+`/etc/framework_init.sh` - is the main entry for sercomm framework launch by /etc/rcS
 
 ## Useful binaries
 `pb_ap` - monitor de reset button, push > 10s reset to factory default, otherwise reset the device - run at startup - no args
@@ -107,7 +107,7 @@ mtd22: 003bd000 0001f000 "lib_squashfs"
 
 ## Enable telnet/SSH/serial
 
-Below code can be pasted in the browser console after loading the http://192.168.100.1 (default ONT page). This will enable telnet as root with no password on the device (same can be done with '/usr/sbin/sshd' binary). The below hack uses an injection exploit on the 'eventlog_applog_download.json' page, command can be injected in the request body 'applog_select' parameter and are executed as superadmin(root).
+Below code can be pasted in the browser console after loading the http://192.168.100.1 (default ONT page). This will enable telnet as root with no password on the device (same can be done with '/usr/sbin/sshd' binary). The below hack uses an injection on the 'eventlog_applog_download.json' page, command can be injected in the request body 'applog_select' parameter and are executed as superadmin(root).
 ```
 // Fetch a non csrf protected page to get a csrf token
 await fetch("http://192.168.100.1/setup.cgi?next_file=statusandsupport/status.html").then(function (response) {
@@ -150,56 +150,56 @@ cmld_client save
 ```
 
 ## Log configuration
-syslogd is configure via Config DB config 'cmld_client get_node InternetGatewayDevice.X_SC_Management.Syslog.' this config is read from the libsl_syslog.so plugin of smd daemon, which generate the file '/tmp/lxxd/logd.conf' and start the daemon with it as parameter.
+'syslogd' is configure via Config DB config 'cmld_client get_node InternetGatewayDevice.X_SC_Management.Syslog.' this config is read from the libsl_syslog.so plugin of smd daemon, which generate the file '/tmp/lxxd/logd.conf' and start the daemon with it as parameter.
 
 # GPON ONU status
 
 ## Get the operational status of the ONU
 ```
-gponctl getState
+/bin/gponctl getState
 ``` 
 
 ## Get information of the OLT vendor
 ```
-umci_ctl stack get olt_type
+/usr/sbin/umci_ctl stack get olt_type
 ```
 or
 ```
-umci_ctl rg help
+/usr/sbin/umci_ctl rg help
 ```
 
 ## Querying a particular OMCI ME
 ```
-umci_ctl mib
+/usr/sbin/umci_ctl mib
 ```
 
 ## Getting/Setting Speed LAN Mode
 
 # GPON/OMCI settings
 
-part of GPON config is done via the misc configuration loaded as first lib by the smd binary, config can be seens here:
+Part of GPON config is done via the misc configuration loaded as first lib by the smd binary, config can be seens here:
 ```
-cmld_client get_node InternetGatewayDevice.X_SC_MiscCfg.GPON.
+/usr/bin/cmld_client get_node InternetGatewayDevice.X_SC_MiscCfg.GPON.
 ```
 beware the field 'OmciManageUniMask', 'PretendFwVersion' are initiated in the binary with respective value '01000000', '0'
 
 ## Getting/Setting ONU GPON Serial Number
-default value is a 16 hexa on the back of the ONT, starts with '53434F4DA'
+Default value is a 16 hexa on the back of the ONT, starts with '53434F4DA'
 You can test serial and/or ploam combinaison using with below command. Pwd is Hexe only and can be up to 36.
 ```
 /bin/gponctl stop
 /bin/gponctl setSnPwd --pwd 00-00-0X-XX-XX-XX-XX-XX-XX-XX --sn YY-YY-YY-YY-YY-YY-YY-YY
 /bin/gponctl start
 
-#you can monitor status by running:
-gponctl getstate
+# You can monitor status by running:
+/bin/gponctl getstate
 ```
-to save the serial number you need to re-mount R/W the '/tmp/var_link_dir/ft' and change the "gpon_sn" file (consider backup of the folder before ANY action)
+To save the serial number you need to re-mount R/W the '/tmp/var_link_dir/ft' and change the "gpon_sn" file (consider backup of the folder before ANY action)
 ```
 /bin/mount -o remount,rw /dev/mtdblock5 /tmp/var_link_dir/ft
 echo "XXXXXXXXXXXXX" > /tmp/var_link_dir/ft/gpon_sn
 /bin/mount -o remount,ro /dev/mtdblock5 /tmp/var_link_dir/ft
-reboot
+/sbin/reboot
 ```
 
 ## Getting/Setting ONU GPON PLOAM password
@@ -216,16 +216,16 @@ curl -i -s -k -X $'POST' -H $'Content-Type: application/x-www-form-urlencoded' \
 ## Getting/Setting ONU GPON LOID and LOID password
 not tested but seems used by the misc config at smd init:
 ```
-cmld_client set InternetGatewayDevice.X_SC_MiscCfg.GPON.LoIdPassword=
+/usr/bin/cmld_client set InternetGatewayDevice.X_SC_MiscCfg.GPON.LoIdPassword=
 ```
 ```
-cmld_client set InternetGatewayDevice.X_SC_MiscCfg.GPON.LoId=
+/usr/bin/cmld_client set InternetGatewayDevice.X_SC_MiscCfg.GPON.LoId=
 ```
 
 ## Getting/Setting OMCI software version (ME 7)
-get works, 'set' not tested but seems used by the misc config at smd init:
+'get' works, 'set' is not tested but seems used by the misc config at smd init:
 ```
-cmld_client get InternetGatewayDevice.X_SC_MiscCfg.GPON.OmciVersion
+/usr/bin/cmld_client get InternetGatewayDevice.X_SC_MiscCfg.GPON.OmciVersion
 ```
 
 ## Getting/Setting OMCI hardware version (ME 256)
@@ -240,6 +240,54 @@ reboot
 TODO
 ## Getting/Setting OMCI equipment ID (ME 257)
 TODO
+
+# Advanced settings
+
+## Transferring files to the stick
+Since neither netcat/nc nor ftp/Sftp/Ftps are available the best option is to use curl to download file from a webserver on your network over HTTP only.
+Additionaly you can add a arm full version of busybox in the /data partition and then use nc to pipe data in and out of the device.
+
+## Backup of all partition
+You can use dd which is available on the device/default busybox to backup the efull nand via /dev/mtd
+
+## Checking the currently active image
+```
+/usr/sbin/fw_ctl -s
+```
+Output information about the firmware includin a 'current running fw' line
+
+## Booting to a different image
+```
+/usr/sbin/fw_ctl -c <0|1|3>          set commit image, 3: commit current fw
+```
+
+## Cloning of image 0 into image 1
+```
+/usr/sbin/fw_ctl -r, --replicate <fw|lib>        copy type <fw|lib> from current fw to backup fw
+```
+## Setting management MAC
+```
+/bin/mount -o remount,rw /dev/mtdblock5 /tmp/var_link_dir/ft
+echo "A095XXXXXXXX" > /tmp/var_link_dir/ft/mac_addr
+/bin/mount -o remount,ro /dev/mtdblock5 /tmp/var_link_dir/ft
+/sbin/reboot
+```
+The format is 12 hex digit without '0x' not ':'
+
+## Setting management IP
+```
+/usr/bin/cmld_client set InternetGatewayDevice.LANDevice.1.LANHostConfigManagement.IPInterface.1.IPInterfaceIPAddress=192.168.100.1
+/usr/bin/cmld_client save
+```
+
+## Rebooting the ONU
+Either in via the public WebUi http://192.168.100.1/ONT/client/html/content/config/problem_handling.html?lang=en 'Reboot' boutton
+or
+```
+/sbin/reboot
+```
+# Known Bugs
+It seems the `cmld_client get` can't return String value > 12 characters event for fields. You can use the get_node on the parent element to get proper value ouput.
 
 # Miscellaneous Links
 
