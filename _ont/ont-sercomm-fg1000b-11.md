@@ -227,6 +227,10 @@ not tested but seems used by the misc config at smd init:
 ```
 /usr/bin/cmld_client get InternetGatewayDevice.X_SC_MiscCfg.GPON.OmciVersion
 ```
+or via umci_ctl get/set tool (not tested if config overwrite umci or the other way around)
+```
+/usr/sbin/umci_ctl mib get 7
+```
 
 ## Getting/Setting OMCI hardware version (ME 256)
 Default value si 'Glasfaser.DTV1'
@@ -237,9 +241,17 @@ echo "XXXXXXXXXXXXX" > /tmp/var_link_dir/ft/hw_version
 reboot
 ```
 ## Getting/Setting OMCI vendor ID (ME 256)
-TODO
+Default value : '53434F4D'
+```
+/usr/sbin/umci_ctl mib get 256
+```
+'set' option is available with Class_id, Entity_id, Index and Value parameters, not tested.
+
 ## Getting/Setting OMCI equipment ID (ME 257)
-TODO
+```
+/usr/sbin/umci_ctl mib get 256
+```
+'set' option is available with Class_id, Entity_id, Index and Value parameters, not tested.
 
 # Advanced settings
 
@@ -287,7 +299,7 @@ or
 /sbin/reboot
 ```
 # Known Bugs
-It seems the `cmld_client get` can't return String value > 12 characters event for fields. You can use the get_node on the parent element to get proper value ouput.
+It seems the `cmld_client get` can't return String value > 12 characters even for fields type mentioning STring length >12. walkaround is to use the 'get_node' on the parent element to get proper value ouput.
 
 # Miscellaneous Links
 
