@@ -180,7 +180,7 @@ Part of GPON config is done via the misc configuration loaded as first lib by th
 ```
 /usr/bin/cmld_client get_node InternetGatewayDevice.X_SC_MiscCfg.GPON.
 ```
-beware the field 'OmciManageUniMask', 'PretendFwVersion' are initiated in the binary with respective value '01000000', '0'
+Beware the field 'OmciManageUniMask', 'PretendFwVersion' are initiated in the binary with respective value '01000000', '0'
 
 ## Getting/Setting ONU GPON Serial Number
 Default value is a 16 hexa on the back of the ONT, starts with '53434F4DA'
@@ -203,7 +203,7 @@ echo "XXXXXXXXXXXXX" > /tmp/var_link_dir/ft/gpon_sn
 
 ## Getting/Setting ONU GPON PLOAM password
 
-as of now there was not found a config/command other than the http call below to save the PLOAM password permanently after reboot.
+As of now there was not found a config/command other than the http call below to save the PLOAM password permanently after reboot.
 PLOAM can be set directly for Text or Hexa(without 0x) via Web interface if <10 digit otherwise POST call to URL allow > 10 digits for example 20 digit hex can be setup via (max is 36 digit):
 
 ```
@@ -213,7 +213,7 @@ curl -i -s -k -X $'POST' -H $'Content-Type: application/x-www-form-urlencoded' \
 ```
 
 ## Getting/Setting ONU GPON LOID and LOID password
-not tested but seems used by the misc config at smd init:
+Not tested but seems used by the misc config at smd init:
 ```
 /usr/bin/cmld_client set InternetGatewayDevice.X_SC_MiscCfg.GPON.LoIdPassword=
 ```
