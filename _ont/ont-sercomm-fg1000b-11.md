@@ -144,7 +144,7 @@ In the example below you would first creat a /data/up shell script and ensure it
 #first we need to add the missing entry
 cmld_client add InternetGatewayDevice.Services.StorageService. 1
 #then inject within the 12 character limit the hostname and a call to our script
-cmld_client set InternetGatewayDevice.Services.StorageService.1.X_SC_NetbiosName='a&/data/up'
+cmld_client set InternetGatewayDevice.Services.StorageService.1.X_SC_NetbiosName='a;/data/up&'
 cmld_client save
 ```
 
