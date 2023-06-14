@@ -292,7 +292,7 @@ The format is 12 hex digit without '0x' not ':'
 ```
 
 ## Rebooting the ONU
-Either in via the public WebUi http://192.168.100.1/ONT/client/html/content/config/problem_handling.html?lang=en 'Reboot' boutton
+Either via the public WebUi http://192.168.100.1/ONT/client/html/content/config/problem_handling.html?lang=en 'Reboot' boutton
 or
 ```
 /sbin/reboot
