@@ -138,13 +138,12 @@ fetch('http://192.168.100.1/data/statussupporteventlog_applog_download.json?_=16
 .then(console.log)
 ```
 
-There is a way to make a script call at boot if you want to have telnet or other service started at boot:
+There is a way to make a script call at boot if you want to have telnet or other service started at boot. It uses a hack from libsl_system.so where there is a system(...) call using a String from config, string must be <=12 char, the system call is supposed to set set hostname of the device for storage sharing.
+In the example below you would first creat a /data/up shell script and ensure it has execute rights (ex chmod 755)
 ```
-#(hack from libsl_system.so where there is a system(...) call using a String from config, string must be <=12 char, the system call is supposed to set set hostname of the device for storage sharing)
 #first we need to add the missing entry
 cmld_client add InternetGatewayDevice.Services.StorageService. 1
 #then inject within the 12 character limit the hostname and a call to our script
-#in the example below you would first creat a /data/up shell script and ensure it has execute rights (ex chmod 755)
 cmld_client set InternetGatewayDevice.Services.StorageService.1.X_SC_NetbiosName='a&/data/up'
 cmld_client save
 ```
