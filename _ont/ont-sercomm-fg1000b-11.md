@@ -137,6 +137,18 @@ fetch('http://192.168.100.1/data/statussupporteventlog_applog_download.json?_=16
 .then(res => res.json())
 .then(console.log)
 ```
+
+There is a way to make a script call at boot if you want to have telnet or other service started at boot:
+```
+#(hack from libsl_system.so where there is a system(...) call using a String from config, string must be <=12 char, the system call is supposed to set set hostname of the device for storage sharing)
+#first we need to add the missing entry
+cmld_client add InternetGatewayDevice.Services.StorageService. 1
+#then inject within the 12 character limit the hostname and a call to our script
+#in the example below you would first creat a /data/up shell script and ensure it has execute rights (ex chmod 755)
+cmld_client set InternetGatewayDevice.Services.StorageService.1.X_SC_NetbiosName='a&/data/up'
+cmld_client save
+```
+
 ## Log configuration
 syslogd is configure via Config DB config 'cmld_client get_node InternetGatewayDevice.X_SC_Management.Syslog.' this config is read from the libsl_syslog.so plugin of smd daemon, which generate the file '/tmp/lxxd/logd.conf' and start the daemon with it as parameter.
 
@@ -164,8 +176,35 @@ umci_ctl mib
 ## Getting/Setting Speed LAN Mode
 
 # GPON/OMCI settings
+
+part of GPON config is done via the misc configuration loaded as first lib by the smd binary, config can be seens here:
+```
+cmld_client get_node InternetGatewayDevice.X_SC_MiscCfg.GPON.
+```
+beware the field 'OmciManageUniMask', 'PretendFwVersion' are initiated in the binary with respective value '01000000', '0'
+
+## Getting/Setting ONU GPON Serial Number
+default value is a 16 hexa on the back of the ONT, starts with '53434F4DA'
+You can test serial and/or ploam combinaison using with below command. Pwd is Hexe only and can be up to 36.
+```
+/bin/gponctl stop
+/bin/gponctl setSnPwd --pwd 00-00-0X-XX-XX-XX-XX-XX-XX-XX --sn YY-YY-YY-YY-YY-YY-YY-YY
+/bin/gponctl start
+
+#you can monitor status by running:
+gponctl getstate
+```
+to save the serial number you need to re-mount R/W the '/tmp/var_link_dir/ft' and change the "gpon_sn" file (consider backup of the folder before ANY action)
+```
+/bin/mount -o remount,rw /dev/mtdblock5 /tmp/var_link_dir/ft
+echo "XXXXXXXXXXXXX" > /tmp/var_link_dir/ft/gpon_sn
+/bin/mount -o remount,ro /dev/mtdblock5 /tmp/var_link_dir/ft
+reboot
+```
+
 ## Getting/Setting ONU GPON PLOAM password
 
+as of now there was not found a config/command other than the http call below to save the PLOAM password permanently after reboot.
 PLOAM can be set directly for Text or Hexa(without 0x) via Web interface if <10 digit otherwise POST call to URL allow > 10 digits for example 20 digit hex can be setup via (max is 36 digit):
 
 ```
@@ -173,6 +212,34 @@ curl -i -s -k -X $'POST' -H $'Content-Type: application/x-www-form-urlencoded' \
     -d $'ploam_password=00000XXXXXXXXXXXXXXX' \
     $'http://192.168.100.1/ONT/client/data/Router.json'
 ```
+
+## Getting/Setting ONU GPON LOID and LOID password
+not tested but seems used by the misc config at smd init:
+```
+cmld_client set InternetGatewayDevice.X_SC_MiscCfg.GPON.LoIdPassword=
+```
+```
+cmld_client set InternetGatewayDevice.X_SC_MiscCfg.GPON.LoId=
+```
+
+## Getting/Setting OMCI software version (ME 7)
+get works, 'set' not tested but seems used by the misc config at smd init:
+```
+cmld_client get InternetGatewayDevice.X_SC_MiscCfg.GPON.OmciVersion
+```
+
+## Getting/Setting OMCI hardware version (ME 256)
+Default value si 'Glasfaser.DTV1'
+```
+/bin/mount -o remount,rw /dev/mtdblock5 /tmp/var_link_dir/ft
+echo "XXXXXXXXXXXXX" > /tmp/var_link_dir/ft/hw_version
+/bin/mount -o remount,ro /dev/mtdblock5 /tmp/var_link_dir/ft
+reboot
+```
+## Getting/Setting OMCI vendor ID (ME 256)
+TODO
+## Getting/Setting OMCI equipment ID (ME 257)
+TODO
 
 # Miscellaneous Links
 
