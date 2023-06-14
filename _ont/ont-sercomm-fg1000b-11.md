@@ -137,7 +137,8 @@ fetch('http://192.168.100.1/data/statussupporteventlog_applog_download.json?_=16
 .then(res => res.json())
 .then(console.log)
 ```
-
+## Log configuration
+syslogd is configure via Config DB config 'cmld_client get_node InternetGatewayDevice.X_SC_Management.Syslog.' this config is read from the libsl_syslog.so plugin of smd daemon, which generate the file '/tmp/lxxd/logd.conf' and start the daemon with it as parameter.
 
 # GPON ONU status
 
