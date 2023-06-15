@@ -47,7 +47,7 @@ The ONT seems only to display output of the ROM CFE and flash CFE, but don't all
 {% include serial_dump.html file="fg1000b-11_boot_cfe.txt" alt="Sercomm FG1000B.11 CFE boot dump" title="Sercomm FG1000B.11 CFE boot dump" %}
 
 ## Root procedure
-[See how the enable telnet/ssh section](/ont-sercomm-fg1000b-11/#Enable telnet/SSH/serial)
+[See how the enable telnet/ssh section](/ont-sercomm-fg1000b-11/#enable-telnetsshserial)
 
 ## List of software versions
 
