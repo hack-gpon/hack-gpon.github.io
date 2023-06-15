@@ -31,8 +31,6 @@ parent: Sercomm
 | Serial encoding | 8-N-1                  |
 | Form Factor     | ONT                    |
 
-## Credits
-This whole documentation here was made possible by reverse engineering, and time investment from [hwti](https://github.com/hwti) and the rest of the folks from the forum mention in the links section of the page. Thanks a lot !
 
 {% include image.html file="fg1000b-11_rear.jpg" alt="Sercomm FG1000B.11" caption="Sercomm FG1000B.11 rear" %}
 {% include image.html file="fg1000b-11_bottom.jpg" alt="Sercomm FG1000B.11 bottom" caption="Sercomm FG1000B.11 bottom" %}
@@ -321,4 +319,6 @@ It seems the `cmld_client get` can't return String value longr than 12 character
  - 1&1 Glasfaser Modem
  - Telekom Glasfaser Modem 2
 
+## Credits
+This whole documentation here was made possible by reverse engineering, and time investment from @hwti and the rest of the folks from the forum mention in the links section of the page. Thanks a lot !
 
