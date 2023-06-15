@@ -14,7 +14,7 @@ parent: Sercomm
 | ODM             | ✅                     |
 | Chipset         | BCM68360_B1            |
 | Flash           | NAND 128 MB            |
-| RAM             | 256 MB (197 MB usable) |
+| RAM             | 256 MB                 |
 | CPU             | Broadcom B53 Dual Core |
 | CPU Clock       | 1500MHz                |
 | Bootloader      | CFE                    |
@@ -97,7 +97,7 @@ Please backup those before any hacking !. Recovery is possible if you hardware r
 
 * `fw_image_ctl` - allow firmware info, upgrade, switch between `fw0` & `fw1`, replicate between fw, desactivate image etc... - Options listes when called woth no args
 
-* `cmld_client`- manipulate the configuration 'DB' stored in a /dev/mtd15, output is XML format. The root element is "InternetGatewayDevice" you need to use a final '.' dot to list all sub-element. example to get the full device XML config ```cmld_client get_node InternetGatewayDevice.```. Element with writable="1" can be changed with 'set' and the node path. Element marked dynamic="1" have their value evaluated at the time you specifically call get on the node, `cmld_client get  InternetGatewayDevice.WANDevice.1.X_SC_GponInterfaceConfig.Status` - The daemon is run at startup - option list whe called with no args
+* `cmld_client`- manipulate the configuration 'DB' stored in a /dev/mtd15, output is XML format. The root element is "InternetGatewayDevice" you need to use a final '.' dot to list all sub-element. example to get the full device XML config ```cmld_client get_node InternetGatewayDevice.```. Element with `writable="1"` can be changed with `set` and the node path. Element marked `dynamic="1"` have their value evaluated at the time you specifically call get on the node, `cmld_client get  InternetGatewayDevice.WANDevice.1.X_SC_GponInterfaceConfig.Status` - The daemon is run at startup - option list whe called with no args
 
 * `cmd_agent` - is a strange daemon launch at startup during /etc/rcS that open a /tmp/cmd_client sock file that listen to command and execute them. - No args
 
@@ -111,7 +111,7 @@ Please backup those before any hacking !. Recovery is possible if you hardware r
 
 ## Enable telnet/SSH/serial
 
-Below code can be pasted in the browser console after loading the `http://192.168.100.1` (default ONT page). This will enable telnet as root with no password on the device (same can be done with '/usr/sbin/sshd' binary). The below hack uses an injection on the 'eventlog_applog_download.json' page, command can be injected in the request body 'applog_select' parameter and are executed as superadmin(root).
+Below code can be pasted in the browser console after loading the `http://192.168.100.1` (default ONT page). This will enable telnet as root with no password on the device (same can be done with `/usr/sbin/sshd` binary). The below hack uses an injection on the `eventlog_applog_download.json` page, command can be injected in the request body `applog_select` parameter and are executed as superadmin(root).
 ```
 // Fetch a non csrf protected page to get a csrf token
 await fetch("http://192.168.100.1/setup.cgi?next_file=statusandsupport/status.html").then(function (response) {
@@ -153,7 +153,7 @@ cmld_client save
 ```
 
 ## Log configuration
-'syslogd' is configure via Config DB config 'cmld_client get_node InternetGatewayDevice.X_SC_Management.Syslog.' this config is read from the libsl_syslog.so plugin of smd daemon, which generate the file '/tmp/lxxd/logd.conf' and start the daemon with it as parameter.
+`syslogd` is configure via Config DB config `cmld_client get_node InternetGatewayDevice.X_SC_Management.Syslog.` this config is read from the libsl_syslog.so plugin of smd daemon, which generate the file `/tmp/lxxd/logd.conf` and start the daemon with it as parameter.
 
 # GPON ONU status
 
@@ -184,10 +184,10 @@ Part of GPON config is done via the misc configuration loaded as first lib by th
 ```
 /usr/bin/cmld_client get_node InternetGatewayDevice.X_SC_MiscCfg.GPON.
 ```
-Beware the field 'OmciManageUniMask', 'PretendFwVersion' are initiated in the binary with respective value '01000000', '0'
+Beware the field `OmciManageUniMask`, `PretendFwVersion` are initiated in the binary with respective value `01000000`, `0`
 
 ## Getting/Setting ONU GPON Serial Number
-Default value: 16 hexa on the back of the ONT, starts with '53434F4DA'
+`Default value: 16` hexa on the back of the ONT, starts with `53434F4DA`
 You can test serial and/or ploam combinaison using with below command. Pwd is Hexe only and can be up to 36.
 ```
 /bin/gponctl stop
@@ -197,7 +197,7 @@ You can test serial and/or ploam combinaison using with below command. Pwd is He
 # You can monitor status by running:
 /bin/gponctl getstate
 ```
-To save the serial number you need to re-mount R/W the '/tmp/var_link_dir/ft' and change the "gpon_sn" file (consider backup of the folder before ANY action)
+To save the serial number you need to re-mount R/W the `/tmp/var_link_dir/ft` and change the `gpon_sn` file (consider backup of the folder before ANY action)
 ```
 /bin/mount -o remount,rw /dev/mtdblock5 /tmp/var_link_dir/ft
 echo "XXXXXXXXXXXXX" > /tmp/var_link_dir/ft/gpon_sn
@@ -208,7 +208,7 @@ echo "XXXXXXXXXXXXX" > /tmp/var_link_dir/ft/gpon_sn
 ## Getting/Setting ONU GPON PLOAM password
 
 As of now there was not found a config/command other than the http call below to save the PLOAM password permanently after reboot.
-PLOAM can be set directly for Text or Hexa(without 0x) via Web interface if <10 digit otherwise POST call to URL allow > 10 digits for example 20 digit hex can be setup via (max is 36 digit):
+PLOAM can be set directly for Text or Hexa (without `0x`) via Web interface if <10 digit otherwise POST call to URL allow > 10 digits for example 20 digit hex can be setup via (max is 36 digit):
 
 ```
 curl -i -s -k -X $'POST' -H $'Content-Type: application/x-www-form-urlencoded' \
@@ -218,7 +218,8 @@ curl -i -s -k -X $'POST' -H $'Content-Type: application/x-www-form-urlencoded' \
 ```
 
 ## Getting/Setting ONU GPON LOID and LOID password
-Not tested but seems used by the misc config at smd init:
+{% include alert.html content="Not tested but seems used by the misc config at smd init" alert="Warning" icon="svg-warning" color="red" %}
+
 ```
 /usr/bin/cmld_client set InternetGatewayDevice.X_SC_MiscCfg.GPON.LoIdPassword=
 ```
@@ -227,7 +228,8 @@ Not tested but seems used by the misc config at smd init:
 ```
 
 ## Getting/Setting OMCI software version (ME 7)
-'get' works, 'set' is not tested but seems used by the misc config at smd init:
+{% include alert.html content="`get` works, `set` is not tested but seems used by the misc config at smd init" alert="Warning" icon="svg-warning" color="red" %}
+
 ```
 /usr/bin/cmld_client get InternetGatewayDevice.X_SC_MiscCfg.GPON.OmciVersion
 ```
@@ -237,7 +239,7 @@ or via umci_ctl get/set tool (not tested if config overwrite umci or the other w
 ```
 
 ## Getting/Setting OMCI hardware version (ME 256)
-Default value: 'Glasfaser.DTV1'
+Default value: `Glasfaser.DTV1`
 ```
 /bin/mount -o remount,rw /dev/mtdblock5 /tmp/var_link_dir/ft
 echo "XXXXXXXXXXXXX" > /tmp/var_link_dir/ft/hw_version
@@ -245,44 +247,46 @@ echo "XXXXXXXXXXXXX" > /tmp/var_link_dir/ft/hw_version
 reboot
 ```
 ## Getting/Setting OMCI vendor ID (ME 256)
-Default value: '53434F4D'
+Default value: `53434F4D`
+{% include alert.html content="`set` option is available with `Class_id`, `Entity_id`, `Index` and `Value` parameters, not tested." alert="Warning" icon="svg-warning" color="red" %}
+
 ```
 /usr/sbin/umci_ctl mib get 256
 ```
-'set' option is available with Class_id, Entity_id, Index and Value parameters, not tested.
 
 ## Getting/Setting OMCI equipment ID (ME 257)
+{% include alert.html content="`set` option is available with Class_id, Entity_id, Index and Value parameters, not tested." alert="Warning" icon="svg-warning" color="red" %}
+
 ```
 /usr/sbin/umci_ctl mib get 256
 ```
-'set' option is available with Class_id, Entity_id, Index and Value parameters, not tested.
 
 # Advanced settings
 
 ## Transferring files to the stick
-Since neither netcat/nc nor ftp/Sftp/Ftps are available the best option is to use curl to download file from a webserver on your network over HTTP only.
-Additionaly you can add a arm full version of busybox in the /data partition and then use nc to pipe data in and out of the device.
+Since neither `netcat`/`nc` nor `ftp`/`Sftp`/`Ftps` are available the best option is to use `curl` to download file from a webserver on your network over HTTP only.
+Additionaly you can add a arm full version of `busybox` in the /data partition and then use `nc` to pipe data in and out of the device.
 
 ## Backup of all partition
-You can use dd which is available on the device/default busybox to backup the efull nand via /dev/mtd
+You can use `dd` which is available on the device/default busybox to backup the efull nand via `/dev/mtd`
 
 ## Checking the currently active image
 ```
 /usr/sbin/fw_ctl -s
 ```
-Output information about the firmware includin a 'current running fw' line
+Output information about the firmware including a `current running fw` line
 
 ## Booting to a different image
 ```
 /usr/sbin/fw_ctl -c X
 ```
-X - <0|1|3>          set commit image, 3: commit current fw
+Where `X` is <0|1|3> set commit image, 3: commit current fw
 
 ## Cloning of image 0 into image 1
 ```
 /usr/sbin/fw_ctl -r XXXX
 ```
-XXX - <fw|lib>        copy type <fw|lib> from current fw to backup fw
+Where `XXX` is <fw|lib> copy type <fw|lib> from current fw to backup fw
 
 ## Setting management MAC
 ```
@@ -291,7 +295,7 @@ echo "A095XXXXXXXX" > /tmp/var_link_dir/ft/mac_addr
 /bin/mount -o remount,ro /dev/mtdblock5 /tmp/var_link_dir/ft
 /sbin/reboot
 ```
-The format is 12 hex digit without '0x' not ':'
+The format is 12 hex digit without `0x` nor `:`
 
 ## Setting management IP
 ```
