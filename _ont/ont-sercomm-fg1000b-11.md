@@ -55,6 +55,7 @@ Current only version seen is: 090144.1.0.001
 
 ## List of partitions
 `cat /proc/mtd`
+
 | dev:   | size     | erasesize | name                 |
 | ------ | -------- | --------- | -------------------- |
 | mtd0:  | 00200000 | 00020000  | "CfeROM              |
