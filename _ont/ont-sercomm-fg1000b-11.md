@@ -32,9 +32,7 @@ parent: Sercomm
 | Form Factor     | ONT                    |
 
 ## Credits
-This whole documentation here was made possible by reverse engineering, and time investment from https://github.com/hwti and the rest of the folks from the forum mention in the links section of the page. Thanks a lot !
-
-##
+This whole documentation here was made possible by reverse engineering, and time investment from [hwti](https://github.com/hwti) and the rest of the folks from the forum mention in the links section of the page. Thanks a lot !
 
 {% include image.html file="fg1000b-11_rear.jpg" alt="Sercomm FG1000B.11" caption="Sercomm FG1000B.11 rear" %}
 {% include image.html file="fg1000b-11_bottom.jpg" alt="Sercomm FG1000B.11 bottom" caption="Sercomm FG1000B.11 bottom" %}
@@ -85,7 +83,8 @@ mtd22: 003bd000 0001f000 "lib_squashfs"
 ```
 # Useful files and binaries
 
-{% include alert.html content="warning calling the `board_init` binary directly or inderactly (via init script) when the board is already booted will cause NanD mtd 5, 15, 16 & 17 to be erased ! please backup those before any hacking !. Recovery is possible if you hardware reset the device, enable the telnet and recreate the 'customer_sn,gpon_sn,hw_version,mac_addr,pcba_sn' file on the '/tmp/var_link_dir/ft' volume which can be remount R/W 'mount -o remount,rw /dev/mtdblock5 /tmp/var_link_dir/ft'. Beware of the 'flash_eraseall' binary which may be erasing all the nand (not tested)" alert="Warning" icon="svg-warning" color="red" %}
+{% include alert.html content="warning calling the `board_init` binary directly or inderactly (via init script) when the board is already booted will cause NanD mtd 5, 15, 16 & 17 to be erased ! 
+Please backup those before any hacking !. Recovery is possible if you hardware reset the device, enable the telnet and recreate the 'customer_sn,gpon_sn,hw_version,mac_addr,pcba_sn' file on the '/tmp/var_link_dir/ft' volume which can be remount R/W 'mount -o remount,rw /dev/mtdblock5 /tmp/var_link_dir/ft'. Beware of the 'flash_eraseall' binary which may be erasing all the nand (not tested)" alert="Warning" icon="svg-warning" color="red" %}
 
 {% include alert.html content="nand MTD 5 mounted as  '/tmp/var_link_dir/ft' contains all serials and mac address of the ONT, please consider backup before any hack' files: 'customer_sn,gpon_sn,hw_version,mac_addr,pcba_sn' " alert="Warning" icon="svg-warning" color="red" %}
 
@@ -97,13 +96,13 @@ mtd22: 003bd000 0001f000 "lib_squashfs"
 
 `fw_image_ctl` - allow firmware info, upgrade, switch between fw0 & fw1, repliacte fw_x to fw_1, desactivate image etc... - options listes when called woth no args
 
-`cmld_client`- manipulate the configuration 'DB' stored in a /dev/mtd15, output is XML format. The root element is "InternetGatewayDevice" you need to use a final '.' dot to list all sub-element. example to get the full device XML config 'cmld_client get_node InternetGatewayDevice.'. Element with writable="1" can be changed with 'set' and the node path. Element marked dynamic="1" have their value evaluated at the time you specifically call get on the node, `cmld_client get  InternetGatewayDevice.WANDevice.1.X_SC_GponInterfaceConfig.Status` - the daemon is run at startup - option list whe called with no args
+`cmld_client`- manipulate the configuration 'DB' stored in a /dev/mtd15, output is XML format. The root element is "InternetGatewayDevice" you need to use a final '.' dot to list all sub-element. example to get the full device XML config ```cmld_client get_node InternetGatewayDevice.```. Element with writable="1" can be changed with 'set' and the node path. Element marked dynamic="1" have their value evaluated at the time you specifically call get on the node, `cmld_client get  InternetGatewayDevice.WANDevice.1.X_SC_GponInterfaceConfig.Status` - the daemon is run at startup - option list whe called with no args
 
 `cmd_agent` - is a strange daemon launch at startup during /etc/rcS that open a /tmp/cmd_client sock file that listen to command and execute them. - no args
 
 `statd` - is a daemon launch at boot which collect monitoring data from the ONT.
 
-`ubus` - ubus is used to send message between processes, current ubus services are 'cml,network-manager,smd'
+`ubus` - ubus is used to send message between processes, current ubus services are `cml,network-manager,smd`
 
 `smd` - is the daemon in charge of launching /opt/ plugin for each of the ONT service like: init, gpon, iptv, temperature, account, http, lan, network, syslog, system. All is done in code which is not helping hacking the device.
 
@@ -187,7 +186,7 @@ Part of GPON config is done via the misc configuration loaded as first lib by th
 Beware the field 'OmciManageUniMask', 'PretendFwVersion' are initiated in the binary with respective value '01000000', '0'
 
 ## Getting/Setting ONU GPON Serial Number
-Default value is a 16 hexa on the back of the ONT, starts with '53434F4DA'
+Default value: 16 hexa on the back of the ONT, starts with '53434F4DA'
 You can test serial and/or ploam combinaison using with below command. Pwd is Hexe only and can be up to 36.
 ```
 /bin/gponctl stop
@@ -237,7 +236,7 @@ or via umci_ctl get/set tool (not tested if config overwrite umci or the other w
 ```
 
 ## Getting/Setting OMCI hardware version (ME 256)
-Default value si 'Glasfaser.DTV1'
+Default value: 'Glasfaser.DTV1'
 ```
 /bin/mount -o remount,rw /dev/mtdblock5 /tmp/var_link_dir/ft
 echo "XXXXXXXXXXXXX" > /tmp/var_link_dir/ft/hw_version
@@ -245,7 +244,7 @@ echo "XXXXXXXXXXXXX" > /tmp/var_link_dir/ft/hw_version
 reboot
 ```
 ## Getting/Setting OMCI vendor ID (ME 256)
-Default value : '53434F4D'
+Default value: '53434F4D'
 ```
 /usr/sbin/umci_ctl mib get 256
 ```
@@ -274,13 +273,16 @@ Output information about the firmware includin a 'current running fw' line
 
 ## Booting to a different image
 ```
-/usr/sbin/fw_ctl -c <0|1|3>          set commit image, 3: commit current fw
+/usr/sbin/fw_ctl -c X
 ```
+X - <0|1|3>          set commit image, 3: commit current fw
 
 ## Cloning of image 0 into image 1
 ```
-/usr/sbin/fw_ctl -r, --replicate <fw|lib>        copy type <fw|lib> from current fw to backup fw
+/usr/sbin/fw_ctl -r XXXX
 ```
+XXX - <fw|lib>        copy type <fw|lib> from current fw to backup fw
+
 ## Setting management MAC
 ```
 /bin/mount -o remount,rw /dev/mtdblock5 /tmp/var_link_dir/ft
