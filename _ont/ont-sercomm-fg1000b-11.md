@@ -146,10 +146,10 @@ There is a way to make a script call at boot if you want to have telnet or other
 In the example below you would first creat a /data/up shell script and ensure it has execute rights (ex chmod 755)
 ```
 #first we need to add the missing entry
-cmld_client add InternetGatewayDevice.Services.StorageService. 1
+/usr/bin/cmld_client add InternetGatewayDevice.Services.StorageService. 1
 #then inject within the 12 character limit the hostname and a call to our script
-cmld_client set InternetGatewayDevice.Services.StorageService.1.X_SC_NetbiosName='a;/data/up&'
-cmld_client save
+/usr/bin/cmld_client set InternetGatewayDevice.Services.StorageService.1.X_SC_NetbiosName='a;/data/up&'
+/usr/bin/cmld_client save
 ```
 
 ## Log configuration
@@ -207,7 +207,6 @@ echo "XXXXXXXXXXXXX" > /tmp/var_link_dir/ft/gpon_sn
 
 ## Getting/Setting ONU GPON PLOAM password
 
-As of now there was not found a config/command other than the http call below to save the PLOAM password permanently after reboot.
 PLOAM can be set directly for Text or Hexa (without `0x`) via Web interface if <10 digit otherwise POST call to URL allow > 10 digits for example 20 digit hex can be setup via (max is 36 digit):
 
 ```
@@ -215,6 +214,12 @@ curl -i -s -k -X $'POST' -H $'Content-Type: application/x-www-form-urlencoded' \
     -H $'Accept-Language: en-GB,en-US;q=0.9,en;q=0.8' \
     -d $'ploam_password=00000XXXXXXXXXXXXXXX' \
     $'http://192.168.100.1/ONT/client/data/Router.json'
+```
+
+Or via command line with:
+```
+/usr/bin/cmld_client set InternetGatewayDevice.WANDevice.1.X_SC_GponInterfaceConfig.X_SC_Password=00000XXXXXXXXXXXXXXX
+/usr/bin/cmld_client save
 ```
 
 ## Getting/Setting ONU GPON LOID and LOID password
@@ -321,6 +326,6 @@ It seems the `cmld_client get` can't return String value longr than 12 character
  - 1&1 Glasfaser Modem
  - Telekom Glasfaser Modem 2
 
-## Credits
+# Credits
 This whole documentation here was made possible by reverse engineering, and time investment from @hwti and the rest of the folks from the forum mention in the links section of the page. Thanks a lot !
 
