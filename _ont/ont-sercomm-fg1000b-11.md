@@ -90,7 +90,7 @@ Please backup those before any hacking !. Recovery is possible if you hardware r
 {% include alert.html content="The `flash_eraseall` binary which may be erasing all the nand (not tested)" alert="Warning" icon="svg-warning" color="red" %}
 
 ## Useful files
-* `/etc/framework_init.sh` - is the main entry for sercomm framework launch by /etc/rcS
+* `/etc/framework_init.sh` - is the main entry for sercomm framework launch by `/etc/rcS`
 
 ## Useful binaries
 * `pb_ap` - monitoring the `reset button`, if pushed more than 10s it reset to factory default, otherwise it reboot the device - Run at startup - no args
@@ -99,7 +99,7 @@ Please backup those before any hacking !. Recovery is possible if you hardware r
 
 * `cmld_client`- manipulate the configuration 'DB' stored in a /dev/mtd15, output is XML format. The root element is "InternetGatewayDevice" you need to use a final '.' dot to list all sub-element. example to get the full device XML config ```cmld_client get_node InternetGatewayDevice.```. Element with `writable="1"` can be changed with `set` and the node path. Element marked `dynamic="1"` have their value evaluated at the time you specifically call get on the node, `cmld_client get  InternetGatewayDevice.WANDevice.1.X_SC_GponInterfaceConfig.Status` - The daemon is run at startup - option list whe called with no args
 
-* `cmd_agent` - is a strange daemon launch at startup during /etc/rcS that open a /tmp/cmd_client sock file that listen to command and execute them. - No args
+* `cmd_agent` - is a strange daemon launch at startup during `/etc/rcS` that open a `/tmp/cmd_client` sock file that listen to command and execute them. - No args
 
 * `statd` - is a daemon launch at boot which collect monitoring data from the ONT. - No args
 
@@ -111,7 +111,7 @@ Please backup those before any hacking !. Recovery is possible if you hardware r
 
 ## Enable telnet/SSH/serial
 
-Below code can be pasted in the browser console after loading the `http://192.168.100.1` (default ONT page). This will enable telnet as root with no password on the device (same can be done with `/usr/sbin/sshd` binary). The below hack uses an injection on the `eventlog_applog_download.json` page, command can be injected in the request body `applog_select` parameter and are executed as superadmin(root).
+Below code can be pasted in the browser console after loading the `http://192.168.100.1` (default ONT page). This will enable telnet as root with no password on the device (same can be done with `/usr/sbin/sshd` binary). The below hack uses an injection on the `eventlog_applog_download.json` page, command can be injected in the request body `applog_select` parameter and are executed as superadmin (root).
 ```
 // Fetch a non csrf protected page to get a csrf token
 await fetch("http://192.168.100.1/setup.cgi?next_file=statusandsupport/status.html").then(function (response) {
@@ -142,8 +142,8 @@ fetch('http://192.168.100.1/data/statussupporteventlog_applog_download.json?_=16
 .then(console.log)
 ```
 
-There is a way to make a script call at boot if you want to have telnet or other service started at boot. It uses a hack from libsl_system.so where there is a system(...) call using a String from config, string must be <=12 char, the system call is supposed to set set hostname of the device for storage sharing.
-In the example below you would first creat a /data/up shell script and ensure it has execute rights (ex chmod 755)
+There is a way to make a script call at boot if you want to have telnet or other service started at boot. It uses a hack from libsl_system.so where there is a `system(...)` call using a String from config, string must be <=12 char, the system call is supposed to set set hostname of the device for storage sharing.
+In the example below you would first creat a `/data/up` shell script and ensure it has execute rights (ex: `chmod 755`)
 ```
 #first we need to add the missing entry
 /usr/bin/cmld_client add InternetGatewayDevice.Services.StorageService. 1
@@ -193,10 +193,13 @@ You can test serial and/or ploam combinaison using with below command. Pwd is He
 /bin/gponctl stop
 /bin/gponctl setSnPwd --pwd 00-00-0X-XX-XX-XX-XX-XX-XX-XX --sn YY-YY-YY-YY-YY-YY-YY-YY
 /bin/gponctl start
+```
 
-# You can monitor status by running:
+You can monitor status by running:
+```
 /bin/gponctl getstate
 ```
+
 To save the serial number you need to re-mount R/W the `/tmp/var_link_dir/ft` and change the `gpon_sn` file (consider backup of the folder before ANY action)
 ```
 /bin/mount -o remount,rw /dev/mtdblock5 /tmp/var_link_dir/ft
@@ -207,7 +210,7 @@ echo "XXXXXXXXXXXXX" > /tmp/var_link_dir/ft/gpon_sn
 
 ## Getting/Setting ONU GPON PLOAM password
 
-PLOAM can be set directly for Text or Hexa (without `0x`) via Web interface if <10 digit otherwise POST call to URL allow > 10 digits for example 20 digit hex can be setup via (max is 36 digit):
+PLOAM can be set directly for Text or Hexa (without `0x`) via Web interface if < 10 digit otherwise POST call to URL allow > 10 digits for example 20 digit hex can be setup via (max is 36 digit):
 
 ```
 curl -i -s -k -X $'POST' -H $'Content-Type: application/x-www-form-urlencoded' \
