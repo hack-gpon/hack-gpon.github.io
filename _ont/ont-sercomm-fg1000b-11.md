@@ -82,10 +82,11 @@ Current only version seen is: 090144.1.0.001
 
 # Useful files and binaries
 
-{% include alert.html content="warning calling the `board_init` binary directly or inderactly (via init script) when the board is already booted will cause NanD mtd 5, 15, 16 & 17 to be erased ! 
-Please backup those before any hacking !. Recovery is possible if you hardware reset the device, enable the telnet and recreate the `customer_sn,gpon_sn,hw_version,mac_addr,pcba_sn` file on the `/tmp/var_link_dir/ft` volume which can be remount R/W `mount -o remount,rw /dev/mtdblock5 /tmp/var_link_dir/ft`. Beware of the `flash_eraseall` binary which may be erasing all the nand (not tested)" alert="Warning" icon="svg-warning" color="red" %}
-
 {% include alert.html content="NanD MTD 5 mounted as  `/tmp/var_link_dir/ft` contains all serials and mac address of the ONT, please consider backup before any hack, files are: `customer_sn,gpon_sn,hw_version,mac_addr,pcba_sn`" alert="Warning" icon="svg-warning" color="red" %}
+
+{% include alert.html content="* Calling the `board_init` binary directly or inderactly (via init script) when the board is already booted will cause NanD mtd 5, 15, 16 & 17 to be erased ! 
+Please backup those before any hacking !. Recovery is possible if you hardware reset the device, enable the telnet and recreate the `customer_sn,gpon_sn,hw_version,mac_addr,pcba_sn` file on the `/tmp/var_link_dir/ft` volume which can be remount R/W `mount -o remount,rw /dev/mtdblock5 /tmp/var_link_dir/ft`. 
+* The `flash_eraseall` binary which may be erasing all the nand (not tested)" alert="Warning" icon="svg-warning" color="red" %}
 
 ## Useful files
 * `/etc/framework_init.sh` - is the main entry for sercomm framework launch by /etc/rcS
@@ -253,7 +254,7 @@ Default value: `53434F4D`
 ```
 
 ## Getting/Setting OMCI equipment ID (ME 257)
-{% include alert.html content="`set` option is available with Class_id, Entity_id, Index and Value parameters, not tested." alert="Warning" icon="svg-warning" color="red" %}
+{% include alert.html content="`set` option is available with `Class_id`, `Entity_id`, `Index` and `Value` parameters, not tested." alert="Warning" icon="svg-warning" color="red" %}
 
 ```
 /usr/sbin/umci_ctl mib get 256
