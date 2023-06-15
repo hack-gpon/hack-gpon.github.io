@@ -47,70 +47,70 @@ The ONT seems only to display output of the ROM CFE and flash CFE, but don't all
 {% include serial_dump.html file="fg1000b-11_boot_cfe.txt" alt="Sercomm FG1000B.11 CFE boot dump" title="Sercomm FG1000B.11 CFE boot dump" %}
 
 ## Root procedure
-See how the enable telnet/ssh section.
+[See how the enable telnet/ssh section](/ont-sercomm-fg1000b-11/#Enable telnet/SSH/serial)
 
 ## List of software versions
 
 Current only version seen is: 090144.1.0.001
 
 ## List of partitions
-```
-cat /proc/mtd 
-dev:    size   erasesize  name
-mtd0: 00200000 00020000 "CfeROM"
-mtd1: 00400000 00020000 "CfeRAM1"
-mtd2: 00400000 00020000 "CfeRAM2"
-mtd3: 000a0000 00020000 "FlashMAP"
-mtd4: 000a0000 00020000 "SN"
-mtd5: 00140000 00020000 "Protect"
-mtd6: 01b80000 00020000 "Rootfs1"
-mtd7: 00c80000 00020000 "Lib1"
-mtd8: 01b80000 00020000 "Rootfs2"
-mtd9: 00c80000 00020000 "Lib2"
-mtd10: 000a0000 00020000 "Bootflg"
-mtd11: 000a0000 00020000 "Rootfs1_Info"
-mtd12: 000a0000 00020000 "Lib1_Info"
-mtd13: 000a0000 00020000 "Rootfs2_Info"
-mtd14: 000a0000 00020000 "Lib2_Info"
-mtd15: 00280000 00020000 "XMLConfig"
-mtd16: 00280000 00020000 "Erasable_XML_CFG"
-mtd17: 00960000 00020000 "AppData"
-mtd18: 00140000 00020000 "Yaffs"
-mtd19: 010c0000 00020000 "Reserve"
-mtd20: 00930000 0001f000 "rootfs_ubifs"
-mtd21: 0029bf98 0001f000 "filestruct_full.bin"
-mtd22: 003bd000 0001f000 "lib_squashfs"
-```
+`cat /proc/mtd`
+| dev:   | size     | erasesize | name                 |
+| ------ | -------- | --------- | -------------------- |
+| mtd0:  | 00200000 | 00020000  | "CfeROM              |
+| mtd1:  | 00400000 | 00020000  | "CfeRAM1             |
+| mtd2:  | 00400000 | 00020000  | "CfeRAM2             |
+| mtd3:  | 000a0000 | 00020000  | "FlashMAP            |
+| mtd4:  | 000a0000 | 00020000  | "SN                  |
+| mtd5:  | 00140000 | 00020000  | "Protect             |
+| mtd6:  | 01b80000 | 00020000  | "Rootfs1             |
+| mtd7:  | 00c80000 | 00020000  | "Lib1                |
+| mtd8:  | 01b80000 | 00020000  | "Rootfs2             |
+| mtd9:  | 00c80000 | 00020000  | "Lib2                |
+| mtd10: | 000a0000 | 00020000  | "Bootflg             |
+| mtd11: | 000a0000 | 00020000  | "Rootfs1_Info        |
+| mtd12: | 000a0000 | 00020000  | "Lib1_Info           |
+| mtd13: | 000a0000 | 00020000  | "Rootfs2_Info        |
+| mtd14: | 000a0000 | 00020000  | "Lib2_Info           |
+| mtd15: | 00280000 | 00020000  | "XMLConfig           |
+| mtd16: | 00280000 | 00020000  | "Erasable_XML_CFG    |
+| mtd17: | 00960000 | 00020000  | "AppData             |
+| mtd18: | 00140000 | 00020000  | "Yaffs               |
+| mtd19: | 010c0000 | 00020000  | "Reserve             |
+| mtd20: | 00930000 | 0001f000  | "rootfs_ubifs        |
+| mtd21: | 0029bf98 | 0001f000  | "filestruct_full.bin |
+| mtd22: | 003bd000 | 0001f000  | "lib_squashfs        |
+
 # Useful files and binaries
 
 {% include alert.html content="warning calling the `board_init` binary directly or inderactly (via init script) when the board is already booted will cause NanD mtd 5, 15, 16 & 17 to be erased ! 
-Please backup those before any hacking !. Recovery is possible if you hardware reset the device, enable the telnet and recreate the 'customer_sn,gpon_sn,hw_version,mac_addr,pcba_sn' file on the '/tmp/var_link_dir/ft' volume which can be remount R/W 'mount -o remount,rw /dev/mtdblock5 /tmp/var_link_dir/ft'. Beware of the 'flash_eraseall' binary which may be erasing all the nand (not tested)" alert="Warning" icon="svg-warning" color="red" %}
+Please backup those before any hacking !. Recovery is possible if you hardware reset the device, enable the telnet and recreate the `customer_sn,gpon_sn,hw_version,mac_addr,pcba_sn` file on the `/tmp/var_link_dir/ft` volume which can be remount R/W `mount -o remount,rw /dev/mtdblock5 /tmp/var_link_dir/ft`. Beware of the `flash_eraseall` binary which may be erasing all the nand (not tested)" alert="Warning" icon="svg-warning" color="red" %}
 
-{% include alert.html content="nand MTD 5 mounted as  '/tmp/var_link_dir/ft' contains all serials and mac address of the ONT, please consider backup before any hack' files: 'customer_sn,gpon_sn,hw_version,mac_addr,pcba_sn' " alert="Warning" icon="svg-warning" color="red" %}
+{% include alert.html content="NanD MTD 5 mounted as  `/tmp/var_link_dir/ft` contains all serials and mac address of the ONT, please consider backup before any hack, files are: `customer_sn,gpon_sn,hw_version,mac_addr,pcba_sn`" alert="Warning" icon="svg-warning" color="red" %}
 
 ## Useful files
-`/etc/framework_init.sh` - is the main entry for sercomm framework launch by /etc/rcS
+* `/etc/framework_init.sh` - is the main entry for sercomm framework launch by /etc/rcS
 
 ## Useful binaries
-`pb_ap` - monitor de reset button, push > 10s reset to factory default, otherwise reset the device - run at startup - no args
+* `pb_ap` - monitoring the `reset button`, if pushed more than 10s it reset to factory default, otherwise it reboot the device - Run at startup - no args
 
-`fw_image_ctl` - allow firmware info, upgrade, switch between fw0 & fw1, repliacte fw_x to fw_1, desactivate image etc... - options listes when called woth no args
+* `fw_image_ctl` - allow firmware info, upgrade, switch between `fw0` & `fw1`, replicate between fw, desactivate image etc... - Options listes when called woth no args
 
-`cmld_client`- manipulate the configuration 'DB' stored in a /dev/mtd15, output is XML format. The root element is "InternetGatewayDevice" you need to use a final '.' dot to list all sub-element. example to get the full device XML config ```cmld_client get_node InternetGatewayDevice.```. Element with writable="1" can be changed with 'set' and the node path. Element marked dynamic="1" have their value evaluated at the time you specifically call get on the node, `cmld_client get  InternetGatewayDevice.WANDevice.1.X_SC_GponInterfaceConfig.Status` - the daemon is run at startup - option list whe called with no args
+* `cmld_client`- manipulate the configuration 'DB' stored in a /dev/mtd15, output is XML format. The root element is "InternetGatewayDevice" you need to use a final '.' dot to list all sub-element. example to get the full device XML config ```cmld_client get_node InternetGatewayDevice.```. Element with writable="1" can be changed with 'set' and the node path. Element marked dynamic="1" have their value evaluated at the time you specifically call get on the node, `cmld_client get  InternetGatewayDevice.WANDevice.1.X_SC_GponInterfaceConfig.Status` - The daemon is run at startup - option list whe called with no args
 
-`cmd_agent` - is a strange daemon launch at startup during /etc/rcS that open a /tmp/cmd_client sock file that listen to command and execute them. - no args
+* `cmd_agent` - is a strange daemon launch at startup during /etc/rcS that open a /tmp/cmd_client sock file that listen to command and execute them. - No args
 
-`statd` - is a daemon launch at boot which collect monitoring data from the ONT.
+* `statd` - is a daemon launch at boot which collect monitoring data from the ONT. - No args
 
-`ubus` - ubus is used to send message between processes, current ubus services are `cml,network-manager,smd`
+* `ubusd` - ubusd is used to send message between processes, current ubus services are `cml,network-manager,smd`
 
-`smd` - is the daemon in charge of launching /opt/ plugin for each of the ONT service like: init, gpon, iptv, temperature, account, http, lan, network, syslog, system. All is done in code which is not helping hacking the device.
+* `smd` - is the daemon in charge of launching `/opt/` plugin for each of the ONT service like: `init, gpon, iptv, temperature, account, http, lan, network, syslog, system`. All is done in code which is not helping hacking the device.
 
 # Usage
 
 ## Enable telnet/SSH/serial
 
-Below code can be pasted in the browser console after loading the http://192.168.100.1 (default ONT page). This will enable telnet as root with no password on the device (same can be done with '/usr/sbin/sshd' binary). The below hack uses an injection on the 'eventlog_applog_download.json' page, command can be injected in the request body 'applog_select' parameter and are executed as superadmin(root).
+Below code can be pasted in the browser console after loading the `http://192.168.100.1` (default ONT page). This will enable telnet as root with no password on the device (same can be done with '/usr/sbin/sshd' binary). The below hack uses an injection on the 'eventlog_applog_download.json' page, command can be injected in the request body 'applog_select' parameter and are executed as superadmin(root).
 ```
 // Fetch a non csrf protected page to get a csrf token
 await fetch("http://192.168.100.1/setup.cgi?next_file=statusandsupport/status.html").then(function (response) {
@@ -299,13 +299,13 @@ The format is 12 hex digit without '0x' not ':'
 ```
 
 ## Rebooting the ONU
-Either via the public WebUi http://192.168.100.1/ONT/client/html/content/config/problem_handling.html?lang=en 'Reboot' boutton
+Either via the public WebUi `http://192.168.100.1/ONT/client/html/content/config/problem_handling.html?lang=en`,  `Reboot` boutton
 or
 ```
 /sbin/reboot
 ```
 # Known Bugs
-It seems the `cmld_client get` can't return String value > 12 characters even for fields type mentioning STring length >12. walkaround is to use the 'get_node' on the parent element to get proper value ouput.
+It seems the `cmld_client get` can't return String value longr than 12 characters even for fields type mentioning String length. Walkaround is to use the `get_node` on the parent element to get proper value ouput.
 
 # Miscellaneous Links
 
