@@ -230,8 +230,7 @@ Or via command line with:
 
 ```
 /usr/bin/cmld_client set InternetGatewayDevice.X_SC_MiscCfg.GPON.LoIdPassword=
-```
-```
+
 /usr/bin/cmld_client set InternetGatewayDevice.X_SC_MiscCfg.GPON.LoId=
 ```
 
