@@ -200,8 +200,7 @@ The script reads the device serial number and resets the root password with that
 - [Firmware Version V5.70(ACDZ.0)C0_no-brand_pa_0.1](https://mega.nz/file/OJxBCKqR#z31OiJwY6_iaDtj_yrOTrx1oKnFEdnm4Rh0pi3wRtoE)
 
 ## Openwrt firmware
-This router has native Openwrt support starting from the following git commit:
-- [mediatek: add support for Zyxel EX5601-T0 router](https://github.com/openwrt/openwrt/pull/12580/commits/1c05388ab04c934ec240e8362321908f91381a90)
+This router has native Openwrt support starting from the following [git commit](https://github.com/openwrt/openwrt/pull/12580/commits/1c05388ab04c934ec240e8362321908f91381a90)
 
 You are free to clone the git code and build your own openwrt firmware or use the openwrt firmware builder.
 
