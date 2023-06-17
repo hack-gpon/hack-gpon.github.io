@@ -84,10 +84,8 @@ Current only version seen is: 090144.1.0.001
 
 {% include alert.html content="NanD MTD 5 mounted as  `/tmp/var_link_dir/ft` contains all serials and mac address of the ONT, please consider backup before any hack, files are: `customer_sn,gpon_sn,hw_version,mac_addr,pcba_sn`" alert="Warning" icon="svg-warning" color="red" %}
 
-{% include alert.html content="Calling the `board_init` binary directly or inderactly (via init script) when the board is already booted will cause NanD mtd 5, 15, 16 & 17 to be erased ! 
-Please backup those before any hacking !. Recovery is possible if you hardware reset the device, enable the telnet and recreate the `customer_sn,gpon_sn,hw_version,mac_addr,pcba_sn` file on the `/tmp/var_link_dir/ft` volume which can be remount R/W `mount -o remount,rw /dev/mtdblock5 /tmp/var_link_dir/ft`." alert="Warning" icon="svg-warning" color="red" %}
-
-{% include alert.html content="The `flash_eraseall` binary which may be erasing all the nand (not tested)" alert="Warning" icon="svg-warning" color="red" %}
+{% include alert.html content="Calling the `board_init` binary directly or indirectly (via init script) when the board is already booted will cause NAND mtd 5, 15, 16 & 17 to be erased! 
+Please backup those before any hacking! Recovery is possible if you hardware reset the device, enable the telnet and recreate the `customer_sn, gpon_sn, hw_version, mac_addr, pcba_sn` file on the `/tmp/var_link_dir/ft` volume which can be remount R/W `mount -o remount,rw /dev/mtdblock5 /tmp/var_link_dir/ft`." alert="Warning" icon="svg-warning" color="red" %}
 
 ## Useful files
 * `/etc/framework_init.sh` - is the main entry for sercomm framework launch by `/etc/rcS`
@@ -187,7 +185,7 @@ Part of GPON config is done via the misc configuration loaded as first lib by th
 Beware the field `OmciManageUniMask`, `PretendFwVersion` are initiated in the binary with respective value `01000000`, `0`
 
 ## Getting/Setting ONU GPON Serial Number
-`Default value: 16` hexa on the back of the ONT, starts with `53434F4DA`
+Default value: 16 hex chars on the back of the ONT, starts with `53434F4DA`. The default S/N is the Modem-ID on the sticker.
 You can test serial and/or ploam combinaison using with below command. Pwd is Hexe only and can be up to 36.
 ```
 /bin/gponctl stop
@@ -271,7 +269,7 @@ Default value: `53434F4D`
 # Advanced settings
 
 ## Transferring files to the stick
-Since neither `netcat`/`nc` nor `ftp`/`Sftp`/`Ftps` are available the best option is to use `curl` to download file from a webserver on your network over HTTP only.
+Since neither `netcat`/`nc` nor `ftp`/`sftp`/`ftps` are available the best option is to use `curl` to download file from a webserver on your network over HTTP only.
 Additionaly you can add a arm full version of `busybox` in the /data partition and then use `nc` to pipe data in and out of the device.
 
 ## Backup of all partition
@@ -317,7 +315,7 @@ or
 /sbin/reboot
 ```
 # Known Bugs
-It seems the `cmld_client get` can't return String value longr than 12 characters even for fields type mentioning String length. Walkaround is to use the `get_node` on the parent element to get proper value ouput.
+It seems the `cmld_client get` can't return string values longer than 12 characters even for fields type mentioning string length. A walkaround is to use the `get_node` on the parent element to get proper value ouput.
 
 # Miscellaneous Links
 
@@ -329,5 +327,5 @@ It seems the `cmld_client get` can't return String value longr than 12 character
  - Telekom Glasfaser Modem 2
 
 # Credits
-This whole documentation here was made possible by reverse engineering, and time investment from @hwti and the rest of the folks from the forum mention in the links section of the page. Thanks a lot !
+This whole documentation here was made possible by reverse engineering, and time investment from @hwti and the rest of the folks from the forum mention in the links section of the page. Thanks a lot!
 
