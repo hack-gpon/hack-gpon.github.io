@@ -110,7 +110,7 @@ Please backup those before any hacking! Recovery is possible if you hardware res
 ## Enable telnet/SSH/serial
 
 Below code can be pasted in the browser console after loading the `http://192.168.100.1` (default ONT page). This will enable telnet as root with no password on the device (same can be done with `/usr/sbin/sshd` binary). The below hack uses an injection on the `eventlog_applog_download.json` page, command can be injected in the request body `applog_select` parameter and are executed as superadmin (root).
-```
+```javascript
 // Fetch a non csrf protected page to get a csrf token
 await fetch("http://192.168.100.1/setup.cgi?next_file=statusandsupport/status.html").then(function (response) {
 	return response.text();
