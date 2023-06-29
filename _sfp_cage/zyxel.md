@@ -199,7 +199,34 @@ The script reads the device serial number and resets the root password with that
 
 - [Firmware Version V5.70(ACDZ.0)C0_no-brand_pa_0.1](https://mega.nz/file/OJxBCKqR#z31OiJwY6_iaDtj_yrOTrx1oKnFEdnm4Rh0pi3wRtoE)
 
+## OpenWrt firmware
+This router has native OpenWrt support starting from the following [git commit](https://github.com/openwrt/openwrt/pull/12580/commits/1c05388ab04c934ec240e8362321908f91381a90)
 
+You are free to clone the git code and build your own OpenWrt firmware or use the OpenWrt firmware builder.
+
+{% include alert.html content="Carefully read the installation instructions from the git commit link above!" alert="Warning" icon="svg-warning" color="red" %}
+
+The OpenWrt firmware has the following working features out of the box:
+- 3 Gbit LAN ports
+- Wi-Fi AX6000: 5Ghz 4x4ax + 2.4GHz 4x4ax
+- Zyxel partitioning for coexistance with Zloader and dual boot
+- Leds
+- Reset button
+- Serial interface
+- USB port
+- LAN RJ45 2.5 Gbit port
+- WAN RJ45 2.5 Gbit port
+- WAN SFP port only works after exporting pins 57 and 10 (`gpiobase411`). Too there must be a cable with a link active on the WAN 2.5 Gbe port to make the SFP work. This is due to missing support into the phy-link code of the mediatek ethernet soc.
+
+To workaround the missing phy-link support some modifications to the DTS are needed. Setting the `gmac1` node to fixed link 2500Base-X gives the possibility to hot-swap the SFP/RJ45 port.
+
+The following is a repo that contains a proper example: [EX5601-T0 fixed SFP link git repo](https://github.com/pameruoso/openwrt-ex5601t0-porting/tree/ex5601-t0-fixedlink) you can apply the  [patch](https://github.com/openwrt/openwrt/compare/main...pameruoso:openwrt-ex5601t0-porting:ex5601-t0-fixedlink.patch) to the official OpenWrt repo.
+
+{% include alert.html content="It is highly recommended to use the OpenWrt official builds instead of this fork because the latter is not updated that often, still if you want to use the SFP you can insert it into a media converter and use the 2.5Gbe RJ45 port with the official build." alert="Info" icon="svg-info" color="blue" %}
+
+Here is a flashable bin file based on OpenWrt 5.15.114 with the mod to swap SFP/RJ45. This `sysupgrade.bin` already contains the zyfwinfo file for flashing with zloader.
+
+[EX5601-T0_Openwrt5.15.114_fixedlink.zip](https://mega.nz/file/HIpUkISQ#uc-2-OQxQWW34o7zcaKmhmEpaq6yPZtsA1cdG9tIB8c)
 
 # Miscellaneous Links
 
