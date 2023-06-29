@@ -7,22 +7,22 @@ parent: Sercomm
 
 # Hardware Specifications
 
-|              |                 |
-| ------------ | --------------- |
-| Vendor/Brand | Sercomm         |
-| Model        | FGS202          |
-| Chipset      | Lantiq PEB98036 |
-| Flash        | 8 MB            |
-| RAM          | 32 MB           |
-| System       | eCos            |
-| HSGMII       | Yes             |
-| Optics       | SC/APC          |
-| IP address   | 169.254.199.139 |
-| Web Gui      | No              |
-| SSH          | No              |
+|              |                                   |
+| ------------ | --------------------------------- |
+| Vendor/Brand | Sercomm                           |
+| Model        | FGS202                            |
+| Chipset      | Lantiq PEB98036                   |
+| Flash        | 8 MB                              |
+| RAM          | 32 MB                             |
+| System       | eCos                              |
+| HSGMII       | Yes                               |
+| Optics       | SC/APC                            |
+| IP address   | 169.254.199.139                   |
+| Web Gui      | No                                |
+| SSH          | No                                |
 | Telnet       | ✅ user `admin`, password `admin` |
-| Serial       | No              |
-| Form Factor  | miniONT SFP     |
+| Serial       | No                                |
+| Form Factor  | miniONT SFP                       |
 
 
 {% include image.html file="fgs202.jpg" alt="Sercomm FGS202" caption="Sercomm FGS202" %}
@@ -101,12 +101,16 @@ Alarms      = -
 -------------------------------------------------------------------------------
 ```
 
+# GPON/OMCI settings
+
 ## Setting ONU GPON PLOAM password
 
 ```sh
 # set gpon_password PASSWORD
 Set command exectue successfully.
 ```
+
+# Advanced settings
 
 ## Show live OMCI messages
 
