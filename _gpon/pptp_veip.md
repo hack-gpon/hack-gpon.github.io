@@ -38,7 +38,7 @@ The SFU type ONT device is configured and controlled completely remotely from th
 
 For OMCI data flow, there is a mutually unambiguous mapping between the GEM port on the OLT side with the UNI Ethernet port on the terminal side of the ONT. All data packets can pass through without learning or forwarding the MAC address. The SFU ONT supports multiple VLAN function through bridge mode.
 
-```
+```mermaid
 flowchart LR
     subgraph BRIDGE
         VLAN0[VLAN untagged] --> eth0
@@ -78,7 +78,7 @@ flowchart LR
     end
 ExtVlan --> PPTP
 ```
-[^cablefax_future]
+Source [^cablefax_future], [^G_988]
 
 # Virtual Ethernet interface point (VEIP - MIB 329)
 
@@ -132,7 +132,7 @@ flowchart LR
     end
 ExtVlan --> VEIP
 ```
-[^hsgp_hg_sfu]
+Source [^hsgp_hg_sfu]
 
 ---
 
