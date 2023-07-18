@@ -138,7 +138,6 @@ Source [^hsgp_hg_sfu]
 
 [^G_988]: *G.988: ONU management and control interface (OMCI) specification* https://www.itu.int/rec/T-REC-G.988
 [^G_984_4]: *G.984.4: Gigabit-capable Passive Optical Networks (G-PON): ONT management and control interface specification* https://www.itu.int/rec/T-REC-G.988
-[^bbf_247_certification]: *BBF.247 Certification*  https://www.broadband-forum.org/wp-content/uploads/2020/12/BBF.247-GPON-ONU-Products-2020-12-21.pdf
 [^hsgp_hg_sfu]: *Differences between HGU ONU and SFU ONU*  https://hsgq.com/optical-module/296.html
 [^anime_rtl960x]: *Hacking RTL960x*  https://github.com/Anime4000/RTL960x
 [^nanomad_fc]: *XGS-PON - ONT SFP+ su router proprietario*  https://forum.fibra.click/d/39131-xgs-pon-ont-sfp-su-router-proprietario/12
