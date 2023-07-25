@@ -25,6 +25,7 @@ Here is a list of the most popular Vendor IDs:
 | `HALN` | `48414c4e` | HALNy                |
 | `HBMT` | `48424d54` | HiSense              |
 | `HWTC` | `48575443` | Huawei               |
+| `ICTR` | `49435452` | Icotera              |
 | `ISKT` | `49534b54` | Iskratel             |
 | `LEOX` | `4c454f58` | LEOX                 |
 | `LQDE` | `4c514445` | Lantiq               |
