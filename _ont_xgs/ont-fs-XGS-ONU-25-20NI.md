@@ -1,5 +1,5 @@
 ---
-title: ONT FS.com
+title: ONT FS.com Generic Compatible XGSPON Stick ONU with MAC SFP+ (XGS-ONU-25-20NI)
 has_children: false
 layout: default
 parent: ONT FS.com
