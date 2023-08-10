@@ -1,9 +1,9 @@
-* * *
-
-## title: ONT FS.com
+---
+title: ONT FS.com
 has_children: false
 layout: default
 parent: ONT FS.com
+---
 
 # Hardware Specifications
 
