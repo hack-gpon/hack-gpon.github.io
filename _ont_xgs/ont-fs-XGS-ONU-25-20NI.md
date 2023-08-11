@@ -46,7 +46,7 @@ The UART can be accessed by any of the following methods.
 - Touch the needle to a specific point
 - Shorting a specific pad to access from SFP
 
-### Touch the needle
+### Access from PCB
 The UART can be accessed by connecting a wire or touching a needle to the following points.
 
 {% include image.html file="XGS-ONU-25-20NI/UART_needle.png" alt="XGS-ONU-25-20NI UART Touch point" caption="XGS-ONU-25-20NI UART Touch point" %}
