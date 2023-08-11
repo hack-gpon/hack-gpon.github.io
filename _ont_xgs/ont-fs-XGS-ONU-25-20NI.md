@@ -7,30 +7,30 @@ parent: ONT FS.com
 
 # Hardware Specifications
 
-|                  |                                         |
-| ---------------- | --------------------------------------- |
-| Vendor/Brand     | FS                                      |
-| Model            | XGS-ONU-25-20NI                         |
-| ODM              | CIG                                     |
-| ODM Product Code | XG-99S                                  |
-| Chipset          | Cortina CA8271A                         |
-| Flash            | MX35LF1GE4AB 128MB                      |
-| RAM              | 128MB                                   |
-| CPU              | Taroko V0.2 (MIPS)                      |
-| CPU Clock        | 500MHz                                  |
-| Bootloader       | SATURN uboot                            |
-| System           | Custom Linux by Cortina (Saturn SDK) based on Kernel 4.4 Saturn-sfpplus-r1                                                   |
-| 2.5GBaseX        | Yes                                     |
-| XGMII/XSGMII     | Yes                                     |
-| Optics           | SC/APC                                  |
-| IP address       | 192.168.100.1                           |
-| Web Gui          |                                         |
-| SSH              | No                                      |
-| Telnet           | ✅ user `PON S/N`, password `8digit HMAC-MD5 (PON S/N uppercase)` |
-| Serial           | ✅                                     |
-| Serial baud      | 115200                                  |
-| Serial encoding  | 8-N-1                                   |
-| Form Factor      | miniONT SFP                             |
+|                  |                                                                            |
+| ---------------- | -------------------------------------------------------------------------- |
+| Vendor/Brand     | FS                                                                         |
+| Model            | XGS-ONU-25-20NI                                                            |
+| ODM              | CIG                                                                        |
+| ODM Product Code | XG-99S                                                                     |
+| Chipset          | Cortina CA8271A                                                            |
+| Flash            | MX35LF1GE4AB 128MB                                                         |
+| RAM              | 128MB                                                                      |
+| CPU              | Taroko V0.2 (MIPS)                                                         |
+| CPU Clock        | 500MHz                                                                     |
+| Bootloader       | SATURN uboot                                                               |
+| System           | Custom Linux by Cortina (Saturn SDK) based on Kernel 4.4 Saturn-sfpplus-r1 |
+| 2.5GBaseX        | Yes                                                                        |
+| XGMII/XSGMII     | Yes                                                                        |
+| Optics           | SC/APC                                                                     |
+| IP address       | 192.168.100.1                                                              |
+| Web Gui          |                                                                            |
+| SSH              | No                                                                         |
+| Telnet           | ✅ user `PON S/N`, password `8digit HMAC-MD5 (PON S/N uppercase)`         |
+| Serial           | ✅                                                                        |
+| Serial baud      | 115200                                                                     |
+| Serial encoding  | 8-N-1                                                                      |
+| Form Factor      | miniONT SFP                                                                |
 
 {% include image.html file="XGS-ONU-25-20NI/front.jpg" alt="XGS-ONU-25-20NI front plate" caption="XGS-ONU-25-20NI front plate" %}
 {% include image.html file="XGS-ONU-25-20NI/internal.jpg" alt="XGS-ONU-25-20NI internal" caption="XGS-ONU-25-20NI internal layout" %}
@@ -38,9 +38,7 @@ parent: ONT FS.com
 
 ## Serial
 
-This stick has UART pulled out to SFP connectors 2 and 7, but no components are mounted.<br>
-Signal level is `3.3V TTL`<br>
-Baud rate is `115200 bps`<br>
+The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the SFP connector, but no components are mounted.
 
 The UART can be accessed by any of the following methods.
 - Touch the needle to a specific point
@@ -52,10 +50,16 @@ The UART can be accessed by connecting a wire or touching a needle to the follow
 {% include image.html file="XGS-ONU-25-20NI/UART_needle.png" alt="XGS-ONU-25-20NI UART Touch point" caption="XGS-ONU-25-20NI UART Touch point" %}
 
 ### Access from SFP
-By shorting these two points with solder, you can access the UART from SFP pins 2 and 7.<br>
+By shorting these two points with solder, you can access the UART from SFP pins 2 and 7.
 
-TX : `2 pin`<br>
-RX : `7 pin`<br>
+| USB - TTL Adapter     | SFP Connector (Molex, etc) |
+| --------------------- | -------------------------- |
+| VDD (3.3V)            | pin #15 , #16              |
+| TX                    | pin #7                     |
+| RX                    | pin #2                     |
+| GND                   | pin #10                    |
+
+{% include alert.html content="USB TTL adapter may not work due to insufficient power supply. If possible, obtain 3.3V from the power supply device instead of the USB TTL adapter." alert="Note"  icon="svg-info" color="blue" %}
 
 {% include image.html file="XGS-ONU-25-20NI/UART_SFP.png" alt="XGS-ONU-25-20NI UART Short point" caption="XGS-ONU-25-20NI UART Short point" %}
 
@@ -100,7 +104,7 @@ This ONT supports dual boot.
 
 # Usage
 
-## Login Password
+## Login and Enable
 {% include alert.html content="This is an external file ([emulate ONT in QEMU](https://github.com/YuukiJapanTech/CA8271x)), so use it at your own risk!" alert="Note"  icon="svg-info" color="blue" %}
 
 This stick does not have a web console.
@@ -133,12 +137,7 @@ MD5 Value: UzwugGYT
 
 UART does not ask for a login, it is possible to get a root shell without know the password.<br>
 
-### ATTENTION
-
-fscom Stick (`XGS-ONU-25-20NI`) does not have `PON S/N` on the label.<br>
-(The S/N field stamped on the label is `fscom internal S/N`. **it is not** `PON S/N`)<br>
-The only way to get the `PON S/N` on fscom Stick is to check the boot Log from the `UART` !<br>
-
+{% include alert.html content="FS.com Stick XGS-ONU-25-20NI does not have PON S/N on the label. (The S/N field stamped on the label is FS.com internal S/N. it is not PON S/N), The only way to get the PON S/N on FS.com Stick is to check the boot Log from the UART!" alert="Note"  icon="svg-info" color="blue" %}
 
 ## Root procedure
 After logging in via `telnet` or `UART`, you will first get the CLI with user privileges.
@@ -226,8 +225,7 @@ Can check the MIB info with the following command.
 
 ```
 
-### show
-Displays a list of MIBs supported by ONT.
+### Show a list of MIBs supported by ONT
 
 ```
 #ONT/system/mib> show
@@ -241,8 +239,7 @@ ClassID  Name            Desc
 etc...
 ```
 
-### show XXX
-Displays the value of a specific MIB.
+### Show a specific MIB
 For example, When displaying MIB256 (ont-g).
 
 ```
@@ -267,7 +264,7 @@ OntState                  = 1
 #ONT/system/mib>
 ```
 
-### dump
+### Dump of a MIB
 Output a dump of mib to `/tmp/mibdump.txt`
 
 ```
