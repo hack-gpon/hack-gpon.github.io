@@ -1,6 +1,6 @@
 ---
 title: ONT FS.com Generic Compatible XGSPON Stick ONU with MAC SFP+ (XGS-ONU-25-20NI)
-has_children: false
+has_children: true
 layout: default
 parent: ONT FS.com
 ---
@@ -31,7 +31,10 @@ parent: ONT FS.com
 {% include image.html file="XGS-ONU-25-20NI/internal.jpg" alt="XGS-ONU-25-20NI internal" caption="XGS-ONU-25-20NI internal layout" %}
 
 ## List of software versions
-- R4.4.20.018 - 20230426061821 (from #ONT>System/ontver - /etc/version)
+Available from `#ONT/system>ontver build` and `#ONT/system/shell>cat /etc/version`.
+- R4.4.20.016 (from FS.com docs)
+- R4.4.20.018 - 20230426061821
+- R4.4.20.022 - 20230612033149
 
 ## List of partitions
 | dev | name | Start Addr | End Addr | size |
