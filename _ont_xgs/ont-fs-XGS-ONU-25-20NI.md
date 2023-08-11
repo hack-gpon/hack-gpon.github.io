@@ -7,56 +7,36 @@ parent: ONT FS.com
 
 # Hardware Specifications
 
-|     |     |
-| --- | --- |
-| Vendor/Brand | FS  |
-| Model | XGS-ONU-25-20NI |
-| ODM |     |
-| Chipset | Cortina CA8271A |
-| Flash | 128MB |
-| RAM | 128MB |
-| System | Custom Linux by Cortina (Saturn SDK) based on Kernel 4.4.198 Saturn-sfpplus-r1 |
-| XGMII/XSGMII | Yes |
-| Optics | SC/APC |
-| IP address | 192.168.100.1 |
-| Web Gui |None     |
-| SSH |Default Disable     |
-| Telnet | ✅ user `PON S/N`, password `8digit HMAC-MD5 (PON S/N uppercase)` |
-| Serial | ✅   |
-| Serial baud | 115200 |
-| Serial encoding | 8-N-1 |
-| Form Factor | miniONT SFP+ |
+|                  |                                         |
+| ---------------- | --------------------------------------- |
+| Vendor/Brand     | FS                                      |
+| Model            | XGS-ONU-25-20NI                         |
+| ODM              | CIG                                     |
+| ODM Product Code | XG-99S                                  |
+| Chipset          | Cortina CA8271A                         |
+| Flash            | MX35LF1GE4AB 128MB                      |
+| RAM              | 128MB                                   |
+| CPU              | Taroko V0.2 (MIPS)                      |
+| CPU Clock        | 500MHz                                  |
+| Bootloader       | SATURN uboot                            |
+| System           | Custom Linux by Cortina (Saturn SDK) based on Kernel 4.4 Saturn-sfpplus-r1                                                   |
+| 2.5GBaseX        | Yes                                     |
+| XGMII/XSGMII     | Yes                                     |
+| Optics           | SC/APC                                  |
+| IP address       | 192.168.100.1                           |
+| Web Gui          |                                         |
+| SSH              | No                                      |
+| Telnet           | ✅ user `PON S/N`, password `8digit HMAC-MD5 (PON S/N uppercase)` |
+| Serial           | ✅                                     |
+| Serial baud      | 115200                                  |
+| Serial encoding  | 8-N-1                                   |
+| Form Factor      | ONT or miniONT SFP                      |
 
 {% include image.html file="XGS-ONU-25-20NI/front.jpg" alt="XGS-ONU-25-20NI front plate" caption="XGS-ONU-25-20NI front plate" %}
 {% include image.html file="XGS-ONU-25-20NI/internal.jpg" alt="XGS-ONU-25-20NI internal" caption="XGS-ONU-25-20NI internal layout" %}
 
-## List of software versions
-Available from `#ONT/system>ontver build` and `#ONT/system/shell>cat /etc/version`.
-- R4.4.20.016 (from FS.com docs)
-- R4.4.20.018 - 20230426061821
-- R4.4.20.022 - 20230612033149
 
-## List of partitions
-| dev | name | Start Addr | End Addr | size |
-| --- | --- | --- | --- | --- |
-| mtd0 | ssb | 0x000000000000 | 0x000000400000 | 0x400000 |
-| mtd1 | uboot-env | 0x000000400000 | 0x000000500000 | 0x100000 |
-| mtd2 | dtb0 | 0x000000500000 | 0x000000600000 | 0x100000 |
-| mtd3 | kernel0 | 0x000000600000 | 0x000000c00000 | 0x600000 |
-| mtd4 | rootfs0 | 0x000000c00000 | 0x000003400000 | 0x2800000 |
-| mtd5 | dtb1 | 0x000003400000 | 0x000003500000 | 0x100000 |
-| mtd6 | kernel1 | 0x000003500000 | 0x000003b00000 | 0x600000 |
-| mtd7 | rootfs1 | 0x000003b00000 | 0x000006300000 | 0x2800000 |
-| mtd8 | userdata | 0x000006300000 | 0x000007700000 | 0x1400000 |
-| mtd9 | mfginfo1 | 0x000007700000 | 0x000007800000 | 0x100000 |
-| mtd10 | mfginfo2 | 0x000007800000 | 0x000007900000 | 0x100000 |
-| mtd11 | uboot-env2 | 0x000007900000 | 0x000007a00000 | 0x100000 |
-
-This ONT supports dual boot. 
-
-`kernel0` and `rootfs0` respectively contain the kernel and firmware of the first image, `kernel1` and `rootfs1` the kernel and the firmware of the second one.
-
-# Serial
+## Serial
 
 This stick has UART pulled out to SFP connectors 2 and 7, but no components are mounted.<br>
 Signal level is `3.3V TTL`<br>
@@ -82,7 +62,45 @@ RX : `7 pin`<br>
 {% include image.html file="XGS-ONU-25-20NI/UART_bridge.png" alt="XGS-ONU-25-20NI UART solder bridge" caption="XGS-ONU-25-20NI UART solder bridge" %}
 
 
-# Login Password
+## Firmware is interchangeable with
+The firmware is compatible with the following.
+- CIG XG-99S
+- CIG XE-99S (10G-EPON mode)
+- ECIN EN-XGSFPP-OMAC v1
+
+
+## List of software versions
+Available from `#ONT/system>ontver build` and `#ONT/system/shell>cat /etc/version`.
+- R4.4.20.016 (from FS.com docs)
+- R4.4.20.018 - 20230426061821
+- R4.4.20.022 - 20230612033149
+
+
+## List of partitions
+
+| dev    | size     | erasesize | name              |
+| ------ | -------- | --------- | ----------------- |
+| mtd0   | 00040000 | 00020000  | "ssb"             |
+| mtd1   | 00002000 | 00020000  | "uboot-env"       |
+| mtd2   | 00002000 | 00020000  | "dtb0"            |
+| mtd3   | 0003c000 | 00020000  | "kernel0"         |
+| mtd4   | 00300000 | 00020000  | "rootfs0"         |
+| mtd5   | 004c0000 | 00020000  | "dtb1"            |
+| mtd6   | 00300000 | 00020000  | "kernel1"         |
+| mtd7   | 004c0000 | 00020000  | "rootfs1"         |
+| mtd8   | 00001000 | 00020000  | "userdata"        |
+| mtd9   | 00001000 | 00020000  | "mfginfo1"        |
+| mtd10  | 00001000 | 00020000  | "mfginfo2"        |
+| mtd11  | 00001000 | 00020000  | "uboot-env2"      |
+
+This ONT supports dual boot. 
+
+`kernel0` and `rootfs0` respectively contain the kernel and firmware of the first image, `kernel1` and `rootfs1` the kernel and the firmware of the second one.
+
+
+# Usage
+
+## Login Password
 {% include alert.html content="This is an external file ([emulate ONT in QEMU](https://github.com/YuukiJapanTech/CA8271x)), so use it at your own risk!" alert="Note"  icon="svg-info" color="blue" %}
 
 This stick does not have a web console.
@@ -121,7 +139,8 @@ fscom Stick (`XGS-ONU-25-20NI`) does not have `PON S/N` on the label.<br>
 (The S/N field stamped on the label is `fscom internal S/N`. **it is not** `PON S/N`)<br>
 The only way to get the `PON S/N` on fscom Stick is to check the boot Log from the `UART` !<br>
 
-# How to get Linux Shell
+
+## Root procedure
 After logging in via `telnet` or `UART`, you will first get the CLI with user privileges.
 
 ```
@@ -143,9 +162,170 @@ can switch to the Linux root shell by executing the following command.
 #
 ```
 
-# Configuration
+
+# GPON ONU status
+
+## Get the operational status of the ONU
+Can check the ONT Registration State with the following command.
+
+```
+#ONT> traffic/pon/show onu
+
+------------------------- ONU INFO --------------------------
+
+Onu id 65535
+sdThreshold:   0
+sfThreshold:   0
+TO1:   80000
+TO2:   1
+eqd:   0
+Serial Number(vendor code): GPON
+Serial Number(sn):          2350004b
+Password:                   41 42 43 44 45 46 47 48 49 4a
+Registration ID:           0x44454641554c540000000000000000000000000000000000000000000000000000000000
+------------------------- INFO END --------------------------
+
+#ONT> 
+```
+
+Can check the ONT operational status with the following command.
+
+```
+#ONT>traffic/pon/show link
+
+ ----------------- LINK STATE -----------------
+ Operation State Machine: INIT (O1)
+ ----------------- STATE  END -----------------
+
+#ONT>
+```
+
+
+## Get information of the OLT vendor
+OLT vendors are referenced from the MIB with the following command.
+
+```
+#ONT>system/mib/show 131
+Table Oltg, Olt-g, total 1 instances
+
+EntityID                  = 0x0000
+VendorId                  = ""
+EquipmentId               = ""
+Version                   = 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+TimeOfDay                 = 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+#ONT>
+```
+
+## Querying a particular OMCI ME
+Can check the MIB info with the following command.
+
+```
+#ONT> system/mib
+#ONT/system/mib> 
+
+```
+
+### show
+Displays a list of MIBs supported by ONT.
+
+```
+#ONT/system/mib> show
+This command prints out the content of a mib table.
+Usage: show CLASSID
+CLASSID:
+      the class ID of the ME, defined in 983.2/984.4, currently
+the following MEs are supported:
+ClassID  Name            Desc
+256      Ontg            Ont-g
+etc...
+```
+
+### show XXX
+Displays the value of a specific MIB.
+For example, When displaying MIB256 (ont-g).
+
+```
+#ONT/system/mib>show 256
+Table Ontg, Ont-g, total 1 instances
+
+EntityID                  = 0x0000
+VID                       = "GPON"
+Version                   = 58 47 2d 39 39 53 00 00 00 00 00 00 00 00
+SerialNum                 = 47 50 4f 4e 23 50 00 4b
+TraffMgtOpt               = 2
+AtmCCOpt                  = 0
+BatteryBack               = 1
+AdminState                = 0
+OpState                   = 0
+OnuSurvivalTime           = 0
+Loid                      = ""
+Password                  = ""
+AuthState                 = 0
+OntState                  = 1
+
+#ONT/system/mib>
+```
+
+### dump
+Output a dump of mib to `/tmp/mibdump.txt`
+
+```
+#ONT/system/mib> dump
+MIB is saved to the file /tmp/mibdump.txt.
+#ONT/system/mib>
+```
+
+
+## Getting Speed LAN Mode
+Speed LAN Mode can check it from the `Status` column displayed by the following command.
+```
+#ONT>traffic/eth/show pack
+
+build time Apr 26 2023: 06:23:15
+
+-------------------- Line Pack -- PWR 0X0      --
+Line Slot 10, NumOfPorts 1, type 49, subtype 75, state 2
+-------------------- Configuration -------------------
+port | enable | loop | Mode | RL Type | RL Us Rate| RL Ds Rate|
+1       Yes     No      Auto            0       0       0
+
+-------------------- Status -------------------
+1) link state: Up, link mode: 2.5G Full
+
+-------------------- Bridge Pack -------------------
+Type:       75
+State:      2
+MAC Table:  0
+MAC Aging:  0
+MTU:        0
+-------------------- Chip Data -------------------
+eth Fd:         7
+port Mask:      0x0018
+type            28
+
+********** DEBUG INFO **********
+                 EmrLogId  : 5
+               EmrAdminEn  : 0
+              EmrbeInited  : 1
+              EmrDumpConn  : 0
+             EmrPwrShedEn  : 0x0
+           EmrConnItemNum  : 0
+         EmrUsDsReverseEn  : 1
+       EmrConnAllVidCheck  : 0
+      EmrMcastGemVlanOpEn  : 1
+       gEmrSaveConnItemEn  : 1
+      gEmrMcastCrossVlanEn : 1
+    EmrUniExtractPriMatch  : 1
+ EMR_DRV_PACK_DUMP_ITEM_EN : 0
+********************************
+#ONT>
+```
+
+
+# GPON/OMCI settings
 XGS-ONU-25-20NI ONT uses scfg.txt file and misc command for configuration.
-## scfg.txt
+### scfg.txt
 In the XGS-ONU-25-20NI ONT, the settings are loaded by four scfg.txt files.
 For rewriting settings, `/userdata/scfg.txt` and `/tmp/scfg.txt` are used.
 
@@ -168,7 +348,7 @@ The settings are overwritten and loaded at startup with the following priority.
 
 ***(High)*** `/tmp/scfg.txt` > `/userdata/scfg.txt` > `/config/scfg.txt` > `/config/default_scfg.txt` ***(Low)***
 
-## Misc Command
+### Misc Command
 To configure settings using the MISC command, execute the following command.
 ```
 #ONT> system/misc
@@ -176,6 +356,8 @@ To configure settings using the MISC command, execute the following command.
 ```
 
 
+## Getting/Setting ONU GPON Serial Number
+This setting must be set with the **Misc command**.
 ### eqsn set "XXXXxxxxxxxx"
  Write PON S/N.
  For example, if the SN like `ZTEG21100005` (`5a54454721100005`) ,
@@ -190,43 +372,8 @@ eqsn: ZTEG21100005
 ```
 
 
-### Vendor set "XXXX"
- Write MIB OntG (256) Vendor Code.
- For example, if the Vendor like `ZTEG`,
-```
-#ONT/system/misc> vendor set "ZTEG"
-```
-
-The get command can also be used to retrieve the set PON S/N Vendor field.
-```
-#ONT/system/misc> vendor get
-vendor: ZTEG
-```
-
-In this ONT, the MIB OntG Vendor can be set to a value different from the S/N Vendor value.
-example,
-```
-#ONT/system/misc> eqsn get
-eqsn: GPON21100005
-#ONT/system/misc> vendor get
-vendor: ZTEG
-```
-
-
-### pon_passwd set "xxxxxxxxxx"
- Write Loid Password. (Max 20 bytes)
- For example, if the Loid password like `0123456789` ,
-```
-#ONT/system/misc> pon_passwd set 0123456789
-```
-
-The get command can also be used to retrieve the set Loid password.
-```
-#ONT/system/misc> pon_passwd get
-eqsn: 01234567890000000000
-```
-
-
+## Getting/Setting ONU GPON PLOAM password
+This setting must be set with the **Misc command**.
 ### exeep_w8 "xxxxxxxxxx"
  Write PLOAM Password (Registration ID).
  For example, if the Loid password like `G01234567` ,
@@ -255,85 +402,130 @@ The `exeep_r8` command can also be used to retrieve the set PLOAM password.
 [f0, 240] ff ff ff ff ff ff ff ff - ff ff ff ff 15 91 f3 9f     |  ............k
 ```
 
-# Show ONT Registration State
-Can check the ONT Registration State with the following command.
 
+## Getting/Setting ONU GPON LOID
+This setting must be set with the **scfg.txt**.
+### CHAR-ARRAY CFG_ID_PASSWD"
+Define LOID.
+Add the following line to `/userdata/scfg.txt`
 ```
-#ONT> traffic/pon/show onu
-
-------------------------- ONU INFO --------------------------
-
-Onu id 65535
-sdThreshold:   0
-sfThreshold:   0
-TO1:   80000
-TO2:   1
-eqd:   0
-Serial Number(vendor code): GPON
-Serial Number(sn):          2350004b
-Password:                   41 42 43 44 45 46 47 48 49 4a
-Registration ID:           0x44454641554c540000000000000000000000000000000000000000000000000000000000
-------------------------- INFO END --------------------------
-
-#ONT> 
+CHAR-ARRAY CFG_ID_PASSWD = { 0xXX,0xXX,0xXX,0xXX, 0xXX,0xXX,0xXX,0xXX, 0xXX,0xXX,0xXX,0xXX, 0xXX,0xXX,0xXX,0xXX, 0xXX,0xXX,0xXX,0xXX, 0xXX,0xXX,0xXX,0xXX };
 ```
 
-# Show MIB info
-Can check the ONT MIB info with the following command.
+ For example, if the Loid like `0123456` ,
 ```
-#ONT> system/mib
-#ONT/system/mib> 
-
+CHAR-ARRAY CFG_ID_PASSWD = { 0x30,0x31,0x32,0x33, 0x34,0x35,0x36,0x00, 0x00,0x00,0x00,0x00, 0x00,0x00,0x00,0x00, 0x00,0x00,0x00,0x00, 0x00,0x00,0x00,0x00 };
 ```
 
-### show
-Displays a list of MIBs supported by ONT.
+
+## Getting/Setting ONU GPON LOID password
+This setting must be set with the **Misc command**.
+### pon_passwd set "xxxxxxxxxx"
+ Write Loid Password. (Max 20 bytes)
+ For example, if the Loid password like `0123456789` ,
 ```
-#ONT/system/mib> show
-This command prints out the content of a mib table.
-Usage: show CLASSID
-CLASSID:
-      the class ID of the ME, defined in 983.2/984.4, currently
-the following MEs are supported:
-ClassID  Name            Desc
-256      Ontg            Ont-g
-etc...
+#ONT/system/misc> pon_passwd set 0123456789
 ```
 
-### show XXX
-Displays the value of a specific MIB.
-For example, When displaying MIB256 (ont-g).
+The get command can also be used to retrieve the set Loid password.
 ```
-#ONT/system/mib>show 256
-Table Ontg, Ont-g, total 1 instances
-
-EntityID                  = 0x0000
-VID                       = "GPON"
-Version                   = 58 47 2d 39 39 53 00 00 00 00 00 00 00 00
-SerialNum                 = 47 50 4f 4e 23 50 00 4b
-TraffMgtOpt               = 2
-AtmCCOpt                  = 0
-BatteryBack               = 1
-AdminState                = 0
-OpState                   = 0
-OnuSurvivalTime           = 0
-Loid                      = ""
-Password                  = ""
-AuthState                 = 0
-OntState                  = 1
-
-#ONT/system/mib>
+#ONT/system/misc> pon_passwd get
+eqsn: 01234567890000000000
 ```
 
-### dump
-Output a dump of mib to `/tmp/mibdump.txt`
+
+## Getting/Setting OMCI hardware version (ME 256)
+This setting must be set with the **Misc command**.
+### eqvid set "xxxxxxxxxx"
+ Write hardware version. (Max 14 bytes)
+ 
+ For example, if the  hardware version like `TESTHW` ,
 ```
-#ONT/system/mib> dump
-MIB is saved to the file /tmp/mibdump.txt.
-#ONT/system/mib>
+#ONT/system/misc> eqvid set "TESTHW"
 ```
 
-# Bricked Stick Repair
+The get command can also be used to retrieve the set  hardware version.
+```
+#ONT/system/misc> eqvid get
+eqvid: TESTHW
+```
+
+
+## Getting/Setting OMCI vendor ID (ME 256)
+This setting must be set with the **Misc command**.
+### Vendor set "XXXX"
+ Write MIB OntG (256) Vendor Code.
+ For example, if the Vendor like `ZTEG`,
+```
+#ONT/system/misc> vendor set "ZTEG"
+```
+
+The get command can also be used to retrieve the set PON S/N Vendor field.
+```
+#ONT/system/misc> vendor get
+vendor: ZTEG
+```
+
+In this ONT, the MIB OntG Vendor can be set to a value different from the S/N Vendor value.
+example,
+```
+#ONT/system/misc> eqsn get
+eqsn: GPON21100005
+#ONT/system/misc> vendor get
+vendor: ZTEG
+```
+
+
+# Advanced settings
+
+## Transferring files to the stick
+stick's busybox (Linux shell) supports netcast and tftp, which allow  to send and receive files.
+```
+# tar cf - localfile | nc remotehost-ip 10000
+```
+
+```
+# tftp -r remotefile.bin -g remotehost-ip
+```
+
+## Backup of all partition
+To obtain a backup, use the `dd` command to save it on /tmp,
+or use the cat command to transfer it via netcast.
+```
+# dd if=/dev/mtdX of=/tmp/mtdX.bin
+# tftp -l /tmp/mtdX.bin -r remotehost-ip
+```
+
+```
+# cat /dev/mtdX | nc remotehost-ip 10000
+```
+
+When partition writing to the stick, use the flash command set.
+(Do not write with the `dd` command because ecc is enabled)
+```
+# flash_eraseall /dev/mtdX
+# flashcp -v targetfile /dev/mtdX
+```
+
+## Setting management IP
+If want to change the management IP, use the `Misc command` to configure it.
+### admin_ip set XXX.XXX.XXX.XXX
+ Write management IP.
+ For example, if the management IP like `192.168.100.2`,
+```
+#ONT/system/misc> admin_ip set 192.168.100.2
+```
+
+### admin_mask set XXX.XXX.XXX.XXX
+ Write management IP netmask.
+ For example, if the management IP like `255.255.0.0`,
+```
+#ONT/system/misc> admin_mask set 255.255.0.0
+```
+
+
+# Random notes
+## Bricked Stick Repair
 {% include alert.html content="This is an external file ([mtd dump](https://github.com/YuukiJapanTech/CA8271x)), so use it at your own risk!" alert="Note"  icon="svg-info" color="blue" %}
 
 If the stick is bricked, it can be repaired by accessing uboot from the UART.
