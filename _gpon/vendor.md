@@ -38,6 +38,7 @@ Here is a list of the most popular Vendor IDs:
 | `TMBB` | `544d4242` | Technicolor          |
 | `TPLG` | `54504c47` | TP-Link              |
 | `UBNT` | `55424e54` | Ubiquiti             |
+| `YHTC` | `59485443` | Youhua               |
 | `ZTEG` | `5a544547` | ZTE                  |
 | `ZYWN` | `5a59574e` | Zyxel                |
 
