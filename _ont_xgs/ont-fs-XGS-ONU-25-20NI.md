@@ -38,7 +38,7 @@ parent: ONT FS.com
 
 ## Serial
 
-The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the SFP connector, but no components are mounted.
+The stick has a TTL 3.3V UART console (configured as 115200 8-N-1) that can be accessed from the SFP connector, but no components are mounted.
 
 The UART can be accessed by any of the following methods.
 - Touch the needle to a specific point
@@ -139,14 +139,14 @@ To configure settings using the MISC command, execute the following command:
 
 ## Login and Enable
 
-This stick does not have a web console.
+This stick does not have a web GUI.
 To configure it, you must log in via `UART` or `Telnet`.
 
 {% include alert.html content="FS.com Stick XGS-ONU-25-20NI does not have PON S/N on the label. (The S/N field stamped on the label is FS.com internal S/N. it is not PON S/N), The only way to get the PON S/N on FS.com Stick is to check the boot Log from the UART!" alert="Note"  icon="svg-info" color="blue" %}
 
 | User      | Password (Enable Password)            |
 | --------- | ------------------------------------- |
-| `PON S/N` | `8digit HMAC-MD5 (PON S/N uppercase)` |
+| PON S/N   | 8digit HMAC-MD5 (PON S/N uppercase)   |
 
 You can use the following form to generate login credentials.
 
