@@ -129,7 +129,7 @@ The settings are overwritten and loaded at startup with the following priority.
 ***(High)*** `/tmp/scfg.txt` > `/userdata/scfg.txt` > `/config/scfg.txt` > `/config/default_scfg.txt` ***(Low)***
 
 ### Misc Command
-To configure settings using the MISC command, execute the following command.
+To configure settings using the MISC command, execute the following command:
 ```
 #ONT> system/misc
 #ONT/system/misc>
@@ -152,9 +152,9 @@ You can use the following form to generate login credentials.
 
 {% include cig_password_xgspon.html password_len="8" %}
 
-Or following this externa file that [emulate ONT in QEMU](https://github.com/YuukiJapanTech/CA8271x), so use it at your own risk.
+Or you can follow this external documentation on how to [emulate the ONT in QEMU](https://github.com/YuukiJapanTech/CA8271x), so use it at your own risk.
 
-UART does not ask for a login, it is possible to get a root shell without know the password.<br>
+UART does not ask for a login, it is possible to get a root shell without knowing the password.<br>
 
 ## Root procedure
 After logging in via `telnet` or `UART`, you will first get the MiniShell with user privileges.
@@ -170,7 +170,7 @@ ONT> enable
 #ONT>
 ```
 
-can switch to the Linux root shell by executing the following command.
+You can then switch to the Linux root shell by executing the following command:
 
 ```
 #ONT> system/shell
@@ -182,7 +182,7 @@ can switch to the Linux root shell by executing the following command.
 # GPON ONU status
 
 ## Get the operational status of the ONU
-Can check the ONT Registration State with the following command.
+Check the ONU Registration State with the following command:
 
 ```
 #ONT> traffic/pon/show onu
@@ -204,7 +204,7 @@ Registration ID:           0x44454641554c540000000000000000000000000000000000000
 #ONT> 
 ```
 
-Can check the ONT operational status with the following command.
+Check the ONU Operational State with the following command:
 
 ```
 #ONT>traffic/pon/show link
@@ -218,7 +218,7 @@ Can check the ONT operational status with the following command.
 
 
 ## Get information of the OLT vendor
-OLT vendors are referenced from the MIB with the following command.
+OLT information can be extracted from the MIB with the following command:
 
 ```
 #ONT>system/mib/show 131
@@ -234,7 +234,7 @@ TimeOfDay                 = 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 ```
 
 ## Querying a particular OMCI ME
-Can check the MIB info with the following command.
+You can browse the MIB with the following command:
 
 ```
 #ONT> system/mib
@@ -257,7 +257,7 @@ etc...
 ```
 
 ### Show a specific MIB
-For example, When displaying MIB256 (ont-g).
+For example, to display MIB 256 (Ont-g):
 
 ```
 #ONT/system/mib>show 256
@@ -292,7 +292,7 @@ MIB is saved to the file /tmp/mibdump.txt.
 
 
 ## Getting Speed LAN Mode
-Speed LAN Mode can check it from the `Status` column displayed by the following command.
+LAN Speed Mode can be verified from the `Status` column displayed by the following command:
 ```
 #ONT>traffic/eth/show pack
 
@@ -341,13 +341,13 @@ type            28
 XGS-ONU-25-20NI ONT uses scfg.txt file and misc command for configuration.
 
 ## Getting/Setting ONU GPON Serial Number
-This setting must be set with the `misc` binary and the `eqsn set "GPONabcd1234"` command.
-For example, if the SN like `GPONabcd1234` (`47504f4eabcd1234`) ,
+This setting must be changed with the `misc` binary and the `eqsn set "GPONabcd1234"` command.
+For example, if the SN is like `GPONabcd1234` (`47504f4eabcd1234`):
 ```
 #ONT/system/misc> eqsn set "GPONabcd1234"
 ```
 
-The get command can also be used to retrieve the set PON S/N.
+The get command can also be used to retrieve the configured PON S/N.
 ```
 #ONT/system/misc> eqsn get
 eqsn: GPONabcd1234
@@ -355,13 +355,13 @@ eqsn: GPONabcd1234
 
 
 ## Getting/Setting ONU GPON PLOAM password
-This setting must be set with the `misc` binary and the `exeep_w8 "0123456789"` command.
-For example, if the PLOAM password like `0123456789` ,
+This setting must be changed with the `misc` binary and the `exeep_w8 "0123456789"` command.
+For example, if the PLOAM password is like `0123456789`:
 ```
 #ONT/system/misc> exeep_w8 "0123456789"
 ```
 
-The `exeep_r8` command can also be used to retrieve the set PLOAM password.
+The `exeep_r8` command can also be used to retrieve the configured PLOAM password.
 ```
 #ONT/system/misc> exeep_r8
 [00, 000] 44 45 46 41 55 4c 54 00 - 00 00 00 00 00 00 00 00     |  DEFAULT......
@@ -384,27 +384,27 @@ The `exeep_r8` command can also be used to retrieve the set PLOAM password.
 
 
 ## Getting/Setting ONU GPON LOID
-This setting must be set with the **scfg.txt**, in the key `CHAR-ARRAY CFG_ID_LOID`. 
+This setting must be changed with the **scfg.txt**, in the key `CHAR-ARRAY CFG_ID_LOID`. 
 For add Loid username we add the following line to `/userdata/scfg.txt`
 
 ```
 CHAR-ARRAY CFG_ID_LOID = { 0xXX,0xXX,0xXX,0xXX, 0xXX,0xXX,0xXX,0xXX, 0xXX,0xXX,0xXX,0xXX, 0xXX,0xXX,0xXX,0xXX, 0xXX,0xXX,0xXX,0xXX, 0xXX,0xXX,0xXX,0xXX };
 ```
 
-For example, if the Loid like `0123456` ,
+For example, if the Loid is like `0123456`:
 ```
 CHAR-ARRAY CFG_ID_LOID = { 0x30,0x31,0x32,0x33, 0x34,0x35,0x36,0x00, 0x00,0x00,0x00,0x00, 0x00,0x00,0x00,0x00, 0x00,0x00,0x00,0x00, 0x00,0x00,0x00,0x00 };
 ```
 
 
 ## Getting/Setting ONU GPON LOID password
-This setting must be set with the `misc` binary and the `pon_passwd set 0123456789"` command.
-For example, if the Loid password like `0123456789` ,
+This setting must be changed with the `misc` binary and the `pon_passwd set 0123456789"` command.
+For example, if the Loid password is like `0123456789`:
 ```
 #ONT/system/misc> pon_passwd set 0123456789
 ```
 
-The get command can also be used to retrieve the set Loid password.
+The get command can also be used to retrieve the configured Loid password.
 ```
 #ONT/system/misc> pon_passwd get
 eqsn: 01234567890000000000
@@ -412,13 +412,13 @@ eqsn: 01234567890000000000
 
 
 ## Getting/Setting OMCI hardware version (ME 256)
-This setting must be set with the `misc` binary and the `eqvid set abc123"` command.
-For example, if the  hardware version like `abc123` ,
+This setting must be changed with the `misc` binary and the `eqvid set abc123"` command.
+For example, if the hardware version is like `abc123`:
 ```
 #ONT/system/misc> eqvid set "abc123"
 ```
 
-The get command can also be used to retrieve the set  hardware version.
+The get command can also be used to retrieve the configured hardware version.
 ```
 #ONT/system/misc> eqvid get
 eqvid: abc123
@@ -426,13 +426,13 @@ eqvid: abc123
 
 
 ## Getting/Setting OMCI vendor ID (ME 256)
-This setting must be set with the `misc` binary and the `vendor set GPON"` command.
-For example, if the Vendor like `GPON`,
+This setting must be changed with the `misc` binary and the `vendor set GPON"` command.
+For example, if the Vendor is like `GPON`:
 ```
 #ONT/system/misc> vendor set "GPON"
 ```
 
-The get command can also be used to retrieve the set PON S/N Vendor field.
+The get command can also be used to retrieve the configured PON S/N Vendor field.
 ```
 #ONT/system/misc> vendor get
 vendor: GPON
@@ -450,7 +450,7 @@ vendor: ZTEG
 
 # Advanced settings
 See the link below for other MiniShell commands.
-- [MiniShell command tree](/ont-fs-XGS-ONU-25-20NI-cli)
+- [MiniShell command tree](/xgs/ont-fs-XGS-ONU-25-20NI-cli)
 
 
 ## Transferring files to the stick
@@ -484,13 +484,13 @@ When partition writing to the stick, use the flash command set.
 
 ## Setting management IP
 If want to change the management IP, set with the `misc` binary and the `admin_ip set 192.168.1.1"` command.
-For example, if the management IP like `192.168.1.1`,
+For example, if the management IP is like `192.168.1.1`:
 ```
 #ONT/system/misc> admin_ip set 192.168.1.1
 ```
 
 If want to change the management IP NetMask, set with the `misc` binary and the `admin_mask set 255.255.255.0"` command.
-For example, if the management IP like `255.255.255.0`,
+For example, if the management IP Mask is like `255.255.255.0`:
 ```
 #ONT/system/misc> admin_mask set 255.255.255.0
 ```
@@ -510,7 +510,7 @@ SATURN#
 
 Download Stick's mtd dump from [mtd dump.](https://github.com/YuukiJapanTech/CA8271x/tree/main/mtd)
 
-Enable nand with the following command.
+Enable nand with the following command:
 ```
 SATURN# spi_nand probe 0
 SPI_NAND ID: 0x12c200
