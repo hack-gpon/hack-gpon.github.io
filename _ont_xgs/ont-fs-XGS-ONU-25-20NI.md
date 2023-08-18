@@ -26,7 +26,7 @@ parent: ONT FS.com
 | IP address       | 192.168.100.1                                                              |
 | Web Gui          |                                                                            |
 | SSH              | No                                                                         |
-| Telnet           | ✅ user `PON S/N`, password `8digit HMAC-MD5 (PON S/N uppercase)`         |
+| Telnet           | ✅                                                                        |
 | Serial           | ✅                                                                        |
 | Serial baud      | 115200                                                                     |
 | Serial encoding  | 8-N-1                                                                      |
@@ -54,7 +54,7 @@ By shorting these two points with solder, you can access the UART from SFP pins 
 
 | USB - TTL Adapter     | SFP Connector (Molex, etc) |
 | --------------------- | -------------------------- |
-| VDD (3.3V)            | pin #15 , #16              |
+| Vcc (3.3V)            | pin #15 , #16              |
 | TX                    | pin #7                     |
 | RX                    | pin #2                     |
 | GND                   | pin #10                    |
@@ -101,52 +101,69 @@ This ONT supports dual boot.
 
 `kernel0` and `rootfs0` respectively contain the kernel and firmware of the first image, `kernel1` and `rootfs1` the kernel and the firmware of the second one.
 
+# Useful files and binaries
+
+## Useful files and binaries
+
+### scfg.txt
+In the XGS-ONU-25-20NI ONT, the settings are loaded by four scfg.txt files.
+For rewriting settings, `/userdata/scfg.txt` and `/tmp/scfg.txt` are used.
+
+- `/config/default_scfg.txt`  (ReadOnly) <br>
+Contains the manufacturer's default settings,<br>
+which are read first at ONT startup and are the lowest priority settings.<br>
+- `/config/scfg.txt` (ReadOnly)<br>
+Contains settings set by the firmware creator,<br>
+which have higher priority than default_scfg.txt and will overwrite the settings if there is a conflict.<br>
+- `/userdata/scfg.txt` (RW)<br>
+Contains settings set by the user or ISP.<br>
+It has a higher priority than /config/scfg.txt and will overwritte the settings if there is a conflict.<br>
+Can be edited and saved.<br>
+- `/tmp/scfg.txt` (Can't Save)<br>
+It contains dynamically generated settings based on values stored on its custom ROM (mtd9, mtd10)<br>
+Since they are generated on tmpfs and cannot be saved directly,<br>
+they are rewritten via the `#ONT> system/misc` command on the ONT.<br>
+
+The settings are overwritten and loaded at startup with the following priority.
+
+***(High)*** `/tmp/scfg.txt` > `/userdata/scfg.txt` > `/config/scfg.txt` > `/config/default_scfg.txt` ***(Low)***
+
+### Misc Command
+To configure settings using the MISC command, execute the following command.
+```
+#ONT> system/misc
+#ONT/system/misc>
+```
 
 # Usage
 
 ## Login and Enable
-{% include alert.html content="This is an external file ([emulate ONT in QEMU](https://github.com/YuukiJapanTech/CA8271x)), so use it at your own risk!" alert="Note"  icon="svg-info" color="blue" %}
 
 This stick does not have a web console.
 To configure it, you must log in via `UART` or `Telnet`.
 
-| User | Password |
-| --- | --- |
+{% include alert.html content="FS.com Stick XGS-ONU-25-20NI does not have PON S/N on the label. (The S/N field stamped on the label is FS.com internal S/N. it is not PON S/N), The only way to get the PON S/N on FS.com Stick is to check the boot Log from the UART!" alert="Note"  icon="svg-info" color="blue" %}
+
+| User      | Password (Enable Password)            |
+| --------- | ------------------------------------- |
 | `PON S/N` | `8digit HMAC-MD5 (PON S/N uppercase)` |
 
-To generate a password, emulate CIG ONT in Linux QEMU and run GponCLI and execute the following command.
-```
-sudo apt-get install qemu-user
-wget https://github.com/YuukiJapanTech/CA8271x/raw/main/emulate_CIG/GponCLI.tar.gz
-sudo tar -xvcf GponCLI.tar.gz -C /emulate_CIG
-ROOT=/emulate_CIG/root
-sudo chroot $ROOT /bin/GponCLI
-ONT> enable
-#ONT> system/debug/md5 "your PON-S/N uppercase" 8
-```
+You can use the following form to generate login credentials.
 
-For example, if the SN is `GPON2350004b`, the user name and password would be
+{% include cig_password_xgspon.html password_len="8" %}
 
-```
-#ONT> system/debug/md5 GPON2350004B 8
-MD5 Value: UzwugGYT
-```
-
-- User : `GPON2350004b`
-- Password : `UzwugGYT`
+Or following this externa file that [emulate ONT in QEMU](https://github.com/YuukiJapanTech/CA8271x), so use it at your own risk.
 
 UART does not ask for a login, it is possible to get a root shell without know the password.<br>
 
-{% include alert.html content="FS.com Stick XGS-ONU-25-20NI does not have PON S/N on the label. (The S/N field stamped on the label is FS.com internal S/N. it is not PON S/N), The only way to get the PON S/N on FS.com Stick is to check the boot Log from the UART!" alert="Note"  icon="svg-info" color="blue" %}
-
 ## Root procedure
-After logging in via `telnet` or `UART`, you will first get the CLI with user privileges.
+After logging in via `telnet` or `UART`, you will first get the MiniShell with user privileges.
 
 ```
 ONT>
 ```
 
-The root CLI can be obtained by executing the `enable` command on this CLI.
+The root MiniShell can be obtained by executing the `enable` command on this MiniShell.
 
 ```
 ONT> enable
@@ -179,8 +196,8 @@ TO1:   80000
 TO2:   1
 eqd:   0
 Serial Number(vendor code): GPON
-Serial Number(sn):          2350004b
-Password:                   41 42 43 44 45 46 47 48 49 4a
+Serial Number(sn):          abcd1234
+Password:                   30 31 32 33 34 353 36 37 38 39
 Registration ID:           0x44454641554c540000000000000000000000000000000000000000000000000000000000
 ------------------------- INFO END --------------------------
 
@@ -249,7 +266,7 @@ Table Ontg, Ont-g, total 1 instances
 EntityID                  = 0x0000
 VID                       = "GPON"
 Version                   = 58 47 2d 39 39 53 00 00 00 00 00 00 00 00
-SerialNum                 = 47 50 4f 4e 23 50 00 4b
+SerialNum                 = 47 50 4f 4e ab cd 12 34
 TraffMgtOpt               = 2
 AtmCCOpt                  = 0
 BatteryBack               = 1
@@ -322,60 +339,26 @@ type            28
 
 # GPON/OMCI settings
 XGS-ONU-25-20NI ONT uses scfg.txt file and misc command for configuration.
-### scfg.txt
-In the XGS-ONU-25-20NI ONT, the settings are loaded by four scfg.txt files.
-For rewriting settings, `/userdata/scfg.txt` and `/tmp/scfg.txt` are used.
-
-- `/config/default_scfg.txt`  (ReadOnly) <br>
-Contains the manufacturer's default settings,<br>
-which are read first at ONT startup and are the lowest priority settings.<br>
-- `/config/scfg.txt` (ReadOnly)<br>
-Contains settings set by the firmware creator,<br>
-which have higher priority than default_scfg.txt and will overwrite the settings if there is a conflict.<br>
-- `/userdata/scfg.txt` (RW)<br>
-Contains settings set by the user or ISP.<br>
-It has a higher priority than /config/scfg.txt and will overwritte the settings if there is a conflict.<br>
-Can be edited and saved.<br>
-- `/tmp/scfg.txt` (Can't Save)<br>
-It contains dynamically generated settings based on values stored on its custom ROM (mtd9, mtd10)<br>
-Since they are generated on tmpfs and cannot be saved directly,<br>
-they are rewritten via the `#ONT> system/misc` command on the ONT.<br>
-
-The settings are overwritten and loaded at startup with the following priority.
-
-***(High)*** `/tmp/scfg.txt` > `/userdata/scfg.txt` > `/config/scfg.txt` > `/config/default_scfg.txt` ***(Low)***
-
-### Misc Command
-To configure settings using the MISC command, execute the following command.
-```
-#ONT> system/misc
-#ONT/system/misc>
-```
-
 
 ## Getting/Setting ONU GPON Serial Number
-This setting must be set with the **Misc command**.
-### eqsn set "XXXXxxxxxxxx"
- Write PON S/N.
- For example, if the SN like `ZTEG21100005` (`5a54454721100005`) ,
+This setting must be set with the `misc` binary and the `eqsn set "GPONabcd1234"` command.
+For example, if the SN like `GPONabcd1234` (`47504f4eabcd1234`) ,
 ```
-#ONT/system/misc> eqsn set "ZTEG21100005"
+#ONT/system/misc> eqsn set "GPONabcd1234"
 ```
 
 The get command can also be used to retrieve the set PON S/N.
 ```
 #ONT/system/misc> eqsn get
-eqsn: ZTEG21100005
+eqsn: GPONabcd1234
 ```
 
 
 ## Getting/Setting ONU GPON PLOAM password
-This setting must be set with the **Misc command**.
-### exeep_w8 "xxxxxxxxxx"
- Write PLOAM Password (Registration ID).
- For example, if the Loid password like `G01234567` ,
+This setting must be set with the `misc` binary and the `exeep_w8 "0123456789"` command.
+For example, if the PLOAM password like `0123456789` ,
 ```
-#ONT/system/misc> exeep_w8 "G01234567"
+#ONT/system/misc> exeep_w8 "0123456789"
 ```
 
 The `exeep_r8` command can also be used to retrieve the set PLOAM password.
@@ -401,25 +384,22 @@ The `exeep_r8` command can also be used to retrieve the set PLOAM password.
 
 
 ## Getting/Setting ONU GPON LOID
-This setting must be set with the **scfg.txt**.
-### CHAR-ARRAY CFG_ID_LOID"
-Define LOID.
-Add the following line to `/userdata/scfg.txt`
+This setting must be set with the **scfg.txt**, in the key `CHAR-ARRAY CFG_ID_LOID`. 
+For add Loid username we add the following line to `/userdata/scfg.txt`
+
 ```
 CHAR-ARRAY CFG_ID_LOID = { 0xXX,0xXX,0xXX,0xXX, 0xXX,0xXX,0xXX,0xXX, 0xXX,0xXX,0xXX,0xXX, 0xXX,0xXX,0xXX,0xXX, 0xXX,0xXX,0xXX,0xXX, 0xXX,0xXX,0xXX,0xXX };
 ```
 
- For example, if the Loid like `0123456` ,
+For example, if the Loid like `0123456` ,
 ```
 CHAR-ARRAY CFG_ID_LOID = { 0x30,0x31,0x32,0x33, 0x34,0x35,0x36,0x00, 0x00,0x00,0x00,0x00, 0x00,0x00,0x00,0x00, 0x00,0x00,0x00,0x00, 0x00,0x00,0x00,0x00 };
 ```
 
 
 ## Getting/Setting ONU GPON LOID password
-This setting must be set with the **Misc command**.
-### pon_passwd set "xxxxxxxxxx"
- Write Loid Password. (Max 20 bytes)
- For example, if the Loid password like `0123456789` ,
+This setting must be set with the `misc` binary and the `pon_passwd set 0123456789"` command.
+For example, if the Loid password like `0123456789` ,
 ```
 #ONT/system/misc> pon_passwd set 0123456789
 ```
@@ -432,48 +412,46 @@ eqsn: 01234567890000000000
 
 
 ## Getting/Setting OMCI hardware version (ME 256)
-This setting must be set with the **Misc command**.
-### eqvid set "xxxxxxxxxx"
- Write hardware version. (Max 14 bytes)
- 
- For example, if the  hardware version like `TESTHW` ,
+This setting must be set with the `misc` binary and the `eqvid set abc123"` command.
+For example, if the  hardware version like `abc123` ,
 ```
-#ONT/system/misc> eqvid set "TESTHW"
+#ONT/system/misc> eqvid set "abc123"
 ```
 
 The get command can also be used to retrieve the set  hardware version.
 ```
 #ONT/system/misc> eqvid get
-eqvid: TESTHW
+eqvid: abc123
 ```
 
 
 ## Getting/Setting OMCI vendor ID (ME 256)
-This setting must be set with the **Misc command**.
-### Vendor set "XXXX"
- Write MIB OntG (256) Vendor Code.
- For example, if the Vendor like `ZTEG`,
+This setting must be set with the `misc` binary and the `vendor set GPON"` command.
+For example, if the Vendor like `GPON`,
 ```
-#ONT/system/misc> vendor set "ZTEG"
+#ONT/system/misc> vendor set "GPON"
 ```
 
 The get command can also be used to retrieve the set PON S/N Vendor field.
 ```
 #ONT/system/misc> vendor get
-vendor: ZTEG
+vendor: GPON
 ```
 
 In this ONT, the MIB OntG Vendor can be set to a value different from the S/N Vendor value.
 example,
 ```
 #ONT/system/misc> eqsn get
-eqsn: GPON21100005
+eqsn: GPONabcd1234
 #ONT/system/misc> vendor get
 vendor: ZTEG
 ```
 
 
 # Advanced settings
+See the link below for other MiniShell commands.
+- [MiniShell command tree](/ont-fs-XGS-ONU-25-20NI-cli)
+
 
 ## Transferring files to the stick
 stick's busybox (Linux shell) supports netcast and tftp, which allow  to send and receive files.
@@ -505,19 +483,16 @@ When partition writing to the stick, use the flash command set.
 ```
 
 ## Setting management IP
-If want to change the management IP, use the `Misc command` to configure it.
-### admin_ip set XXX.XXX.XXX.XXX
- Write management IP.
- For example, if the management IP like `192.168.100.2`,
+If want to change the management IP, set with the `misc` binary and the `admin_ip set 192.168.1.1"` command.
+For example, if the management IP like `192.168.1.1`,
 ```
-#ONT/system/misc> admin_ip set 192.168.100.2
+#ONT/system/misc> admin_ip set 192.168.1.1
 ```
 
-### admin_mask set XXX.XXX.XXX.XXX
- Write management IP netmask.
- For example, if the management IP like `255.255.0.0`,
+If want to change the management IP NetMask, set with the `misc` binary and the `admin_mask set 255.255.255.0"` command.
+For example, if the management IP like `255.255.255.0`,
 ```
-#ONT/system/misc> admin_mask set 255.255.0.0
+#ONT/system/misc> admin_mask set 255.255.255.0
 ```
 
 
@@ -582,5 +557,10 @@ SATURN# spi_nand write 0x81000000 0x000003b00000 0x2800000
 
 When the Stick is turned back on, it will boot with the transferred kernel and rootfs.
 
+# Known Bugs
+- There is a bug in the `register_id` command in the `misc` binary that changes the value of `pon_passwd`(LOID Password) instead of `register_id`(PLOAM).
+
+
 # Miscellaneous Links
 - [GitHub - CA8271x](https://github.com/YuukiJapanTech/CA8271x)
+
