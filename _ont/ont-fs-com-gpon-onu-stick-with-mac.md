@@ -1,8 +1,8 @@
 ---
-title: ONT FS.com GPON ONU Stick with MAC (GPON-ONU-34-20BI)
+title: FS.com GPON ONU Stick with MAC (GPON-ONU-34-20BI)
 has_children: true
 alias: SourcePhotonics SPS-34-24T-HP-TDFO
-parent: ONT FS.com
+parent: FS.com
 layout: default
 ---
 
@@ -33,8 +33,8 @@ layout: default
 | Serial encoding  | 8-N-1                                    |
 | Form Factor      | miniONT SFP                              |
 
-{% include image.html file="ont-fs.jpg" alt="ONT FS.com GPON ONU" caption="ONT FS.com GPON ONU" %}
-{% include image.html file="ont-fs-box.jpg" alt="ONT FS.com GPON ONU in the box" caption="ONT FS.com GPON ONU in the box" %}
+{% include image.html file="ont-fs.jpg" alt="FS.com GPON ONU" caption="FS.com GPON ONU" %}
+{% include image.html file="ont-fs-box.jpg" alt="FS.com GPON ONU in the box" caption="FS.com GPON ONU in the box" %}
 
 ## Possible clones
 
