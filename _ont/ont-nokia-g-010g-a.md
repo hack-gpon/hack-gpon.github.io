@@ -11,6 +11,7 @@ parent: Nokia
 | -------------- | ---------------- |
 | Vendor/Brand   | Nokia            |
 | Model          | G-010G-A         |
+| ODM            | ✅[^oem]        |
 | Chipset        | Broadcom BCM6838 |
 | Flash          |                  |
 | RAM            |                  |
@@ -39,3 +40,4 @@ This is one of the few ONTs that has a variant that works with this wavelength.
 [^att_alt_optics_1]: Alt optic box. https://forums.att.com/conversations/att-internet-equipment/alt-optic-box/5defe95abad5f2f606973d3f
 [^att_alt_optics_2]: Alt Optic Network Modem Question. https://forums.att.com/conversations/att-fiber-installation/alt-optic-network-modem-question/61134eaa7f0d0c5065624aea
 [^att_alt_optics_3]: [AT&T Fiber] Bye bye 802.1x, you will not be missed. https://www.dslreports.com/forum/r33456904-, https://www.dslreports.com/forum/r33458733-
+[^oem]: The last model letter in a Nokia/Alcatel ONT indicates the variant: A-M ALu ONT Manufacturer, P-Z external Manufacturer https://hack-gpon.org/assets/img/ont-nokia-naming.jpg

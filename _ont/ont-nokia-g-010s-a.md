@@ -11,8 +11,7 @@ parent: Nokia
 | ---------------- | ---------------------------------------- |
 | Vendor/Brand     | Nokia                                    |
 | Model            | G-010S-A                                 |
-| ODM              | SourcePhotonics                          |
-| ODM Product Code |                                          |
+| ODM              | ✅[^oem]                                 |
 | Chipset          | Lantiq PEB98035                          |
 | Flash            | 16 MB                                    |
 | RAM              | 64 MB                                    |
@@ -289,4 +288,7 @@ omciMgr
 - [Bypassing the HH3K up to 2.5Gbps using a BCM57810S NIC](https://www.dslreports.com/forum/r32230041-Internet-Bypassing-the-HH3K-up-to-2-5Gbps-using-a-BCM57810S-NIC)
 - [Nokia G-010S-A Pin 6 Iusse - Rsaxvc.net](https://rsaxvc.net/blog/2020/8/15/Nokia_G-010S-A_Pin_6_Issue.html)
 
+<hr>
+
+[^oem]: The last model letter in a Nokia/Alcatel ONT indicates the variant: A-M ALu ONT Manufacturer, P-Z external Manufacturer https://hack-gpon.org/assets/img/ont-nokia-naming.jpg
 
