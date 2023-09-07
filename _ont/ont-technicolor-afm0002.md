@@ -82,11 +82,15 @@ This stick supports dual boot.
 
 `k0` and `r0` respectively contain the kernel and firmware of the first image, `k1` and `r1` the kernel and firmware of the second one
 
-{% include_relative ont-luna-sdk-useful-commands.md flash='/etc/scripts/flash' ploam='ascii' lastgoodHs=true flashSwVersion=true 
-customSwVersionAlert="This needs the `/etc/scripts/flash` modded"
-customHwVersionAlert="This needs the `/etc/scripts/flash` modded"
-customVendorAlert="This needs the `/etc/scripts/flash` modded"
-customEquipAlert="This needs the `/etc/scripts/flash` modded"
+{% include_relative ont-luna-sdk-useful-commands.md 
+	flash='/etc/scripts/flash'
+	ploam='ascii'
+	lastgoodHs=true
+	flashSwVersion=true 
+	customSwVersionAlert="This needs the `/etc/scripts/flash` modded"
+	customHwVersionAlert="This needs the `/etc/scripts/flash` modded"
+	customVendorAlert="This needs the `/etc/scripts/flash` modded"
+	customEquipAlert="This needs the `/etc/scripts/flash` modded"
 %}
 
 ## Enabling the Web UI
