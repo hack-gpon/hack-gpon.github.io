@@ -66,8 +66,9 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 
 - V3.3.4L3
 - V3.3.4L4rc1 (Fix 2.5GbE HiSGMII)
+- V3.3.4L4rc5
 
-{% include_relative ont-luna-sdk-useful-commands.md ploam='ascii' speedLan='178' customSpeedLanAlert='You need firmware `V3.3.4L4rc1` or higher. Before editing the speed make sure your hardware supports it. If you try to use any mode not listed here, stick will default to mode 1.' flash='/etc/scripts/flash' %}
+{% include_relative ont-luna-sdk-useful-commands.md ploam='ascii' speedLan='178' customSpeedLanAlert='You need firmware `V3.3.4L4rc1` or higher. Before editing the speed make sure your hardware supports it. If you try to use any mode not listed here, stick will default to mode 1.' flash='/etc/scripts/flash' customSwVersionAlert='This needs the OMCI_OLT_MODE value to be set to 21' omciOLT21='true' %}
 
 # Known Bugs
 

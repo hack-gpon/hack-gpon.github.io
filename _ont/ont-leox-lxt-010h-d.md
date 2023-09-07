@@ -70,6 +70,6 @@ This ONT supports dual boot.
 
 {% include alert.html content="Before proceed on any modification, make a backup of files rtl8290b.data and europa.data from /var/config folder. These files include optical calibration of your ONT's laser, if you accidentally delete or ruin them, your ONT will be unusable" alert="Note" icon="svg-warning" color="yellow" %}
 
-{% include_relative ont-luna-sdk-useful-commands.md ploam='ascii' flash='/etc/scripts/flash' %}
+{% include_relative ont-luna-sdk-useful-commands.md ploam='ascii' flash='/etc/scripts/flash' customSwVersionAlert='This needs the OMCI_OLT_MODE value to be set to 21' omciOLT21='true' %}
 
 
