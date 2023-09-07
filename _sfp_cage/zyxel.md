@@ -7,33 +7,33 @@ layout: default
 
 # Hardware Specifications
 
-|          | EX5601-T0                                          |
-| -------- | ---------------------------------------------------|
-| Vendor   | Zyxel                                              |
-| Model    | EX5601-T0                                          |
-| Soc      | MT7986a (filogic 830)                              |
-| Ram      | 1G                                                 |
-| SFP      | 1 HSGMII capable sfp port[^xor]                    |
-| Ethernet | 3 1GbE, 1 2.5GbE LAN port, 1 2.5GbE WAN port[^xor] |
-| XGMII    | No                                                 |
-| HSGMII   | ✅                                                |
-| SGMII    | ✅                                                |
-| Type     | Router                                             |
+|          | EX5601-T0                                |
+| -------- | ---------------------------------------- |
+| Vendor   | Zyxel                                    |
+| Model    | EX5601-T0                                |
+| SoC      | MT7986a (filogic 830)                    |
+| Ram      | 1G                                       |
+| SFP      | 1 2.5 GbE [^xor]                         |
+| Ethernet | 3 1GbE, 1 2.5GbE LAN, 1 2.5GbE WAN[^xor] |
+| XGMII    | No                                       |
+| HSGMII   | ✅                                       |
+| SGMII    | ✅                                       |
+| Type     | Router                                   |
 
 # Zyxel EX5601-T0
 ## List of partitions
 
-| dev  | size     | erasesize | name          |
-| ---- | -------- | --------- | ------------- |
-| mtd0 | 20000000 | 00040000  | "spi0.1"      |
-| mtd1 | 00100000 | 00040000  | "BL2"         |
-| mtd2 | 00080000 | 00040000  | "u-boot-env"  |
-| mtd3 | 00200000 | 00040000  | "Factory"     |
-| mtd4 | 001c0000 | 00040000  | "FIP"         |
-| mtd5 | 00040000 | 00040000  | "zloader"     |
-| mtd6 | 04000000 | 00040000  | "ubi"         |
-| mtd7 | 04000000 | 00040000  | "ubi2"        |
-| mtd8 | 15a80000 | 00040000  | "zyubi"       |
+| dev  | size     | erasesize | name         |
+| ---- | -------- | --------- | ------------ |
+| mtd0 | 20000000 | 00040000  | "spi0.1"     |
+| mtd1 | 00100000 | 00040000  | "BL2"        |
+| mtd2 | 00080000 | 00040000  | "u-boot-env" |
+| mtd3 | 00200000 | 00040000  | "Factory"    |
+| mtd4 | 001c0000 | 00040000  | "FIP"        |
+| mtd5 | 00040000 | 00040000  | "zloader"    |
+| mtd6 | 04000000 | 00040000  | "ubi"        |
+| mtd7 | 04000000 | 00040000  | "ubi2"       |
+| mtd8 | 15a80000 | 00040000  | "zyubi"      |
 
 This router supports dual boot, and has two partitions for the firmware, `ubi` and `ubi2`
 
@@ -235,6 +235,6 @@ Here is a flashable bin file based on OpenWrt 5.15.114 with the mod to swap SFP/
 - [Rollback SFP Zyxel con il W3 HUB per risolvere il problema dell'upload cappato](https://forum.fibra.click/d/36541-rollback-sfp-zyxel-con-il-w3-hub-per-risolvere-il-problema-dellupload-cappato)
 
 
----
+<hr>
 
 [^xor]: the WAN Eth and WAN SFP ports are in XOR, i.e. either one or the other.

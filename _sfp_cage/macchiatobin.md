@@ -11,6 +11,7 @@ layout: default
 | -------- | ---------------------------------------------- |
 | Vendor   | MACCHIATObin                                   |
 | Model    | Single Slot, Dual Shot                         |
+| SoC      | Marvell ARMADA 8040                            |
 | SFP      | 2 SFP+, 1 SFP 2.5                              |
 | Ethernet | 2 10GbE Multigig, 1 2.5GbE (only on Dual Shot) |
 | XGMII    | ✅                                             |
