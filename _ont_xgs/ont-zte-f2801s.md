@@ -6,25 +6,25 @@ parent: ZTE
 ---
 
 # Hardware Specifications
-|              |                                  |
-|--------------|----------------------------------|
-| Vendor/Brand | ZTE                              |
-| Model        | F2801Sv2                         |
+|              |                                   |
+| ------------ | --------------------------------- |
+| Vendor/Brand | ZTE                               |
+| Model        | F2801Sv2                          |
 | ODM          | ✅                                |
-| CPU          |                                  |
-| CPU Clock    |                                  |
-| Chipset      |                                  |
-| Flash        |                                  |
-| RAM          |                                  |
-| System       |                                  |
-| 10GBaseT     | Yes                              |
-| Optics       | SC/APC                           |
-| IP address   | 192.168.1.1                      |
+| CPU          |                                   |
+| CPU Clock    |                                   |
+| Chipset      |                                   |
+| Flash        |                                   |
+| RAM          |                                   |
+| System       |                                   |
+| 10GBaseT     | Yes                               |
+| Optics       | SC/APC                            |
+| IP address   | 192.168.1.1                       |
 | Web Gui      | ✅ user `admin`, password `admin` |
-| SSH          |                                  |
+| SSH          |                                   |
 | Telnet       | ✅ [^1]                           |
 | Serial       | ✅                                |
-| Form Factor  | ONT                              |
+| Form Factor  | ONT                               |
 
 {% include image.html file="f2801s/front.jpg" alt="F2801S front plate" caption="F2801S front plate" %}
 {% include image.html file="f2801s/internal.jpg" alt="F2801S internal" caption="F2801S internal layout" %}
@@ -42,9 +42,9 @@ parent: ZTE
 | dev  | size     | erasesize | name             |
 | ---- | -------- | --------- | ---------------- |
 | mtd0 | 08000000 | 00020000  | "whole flash"    |
-| mtd1 | 00200000 | 00020000  | "u-boot"         | 
+| mtd1 | 00200000 | 00020000  | "u-boot"         |
 | mtd2 | 00400000 | 00020000  | "others"         |
-| mtd3 | 00400000 | 00020000  | "parameter tags" |   
+| mtd3 | 00400000 | 00020000  | "parameter tags" |
 | mtd4 | 00400000 | 00020000  | "wlan"           |
 | mtd5 | 00800000 | 00020000  | "usercfg"        |
 | mtd6 | 00400000 | 00020000  | "middle"         |
