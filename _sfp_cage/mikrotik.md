@@ -1,5 +1,5 @@
 ---
-title: MikroTik	Router & Switch
+title: MikroTik
 has_children: false
 layout: default
 ---

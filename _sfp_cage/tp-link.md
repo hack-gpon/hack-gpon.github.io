@@ -1,5 +1,5 @@
 ---
-title: TP-Link Router 
+title: TP-Link 
 has_children: false
 layout: default
 ---
