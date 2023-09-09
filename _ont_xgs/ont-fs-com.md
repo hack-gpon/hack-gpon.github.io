@@ -1,5 +1,5 @@
 ---
-title: ONT FS.com
+title: FS.com
 has_children: true
 layout: default
 ---

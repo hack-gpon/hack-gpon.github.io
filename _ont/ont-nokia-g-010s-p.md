@@ -39,7 +39,7 @@ parent: Nokia
 ## Firmware is interchangeable with:
 
 - [Huawei MA5671A](/ont-huawei-ma5671a)
-- [ONT FS.com GPON ONU Stick with MAC / SourcePhotonics SPS-34-24T-HP-TDFO](/ont-fs-com-gpon-onu-stick-with-mac)
+- [FS.com GPON ONU Stick with MAC / SourcePhotonics SPS-34-24T-HP-TDFO](/ont-fs-com-gpon-onu-stick-with-mac)
 - [Hilink HL23446](/ont-hilink-hl23446)
 - {:.text-red-200 } Dasan H650SFP 
 - {:.text-red-200 } DpOptics D23446    
