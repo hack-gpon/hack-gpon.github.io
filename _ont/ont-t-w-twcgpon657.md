@@ -36,7 +36,12 @@ parent: T&W
 
 The reccomended version are `C00R657V2801F_V1.9.0-220404.tar` because it is the V2801F firmware for T&W TWC GPON657.
 
-{% include_relative ont-luna-sdk-useful-commands.md flash='flash' ploam='ascii' speedLan='12345' customSpeedLanAlert='Please use recommended version `C00R657V2801F_V1.9.0-220404.tar`. Before editing the speed make sure your hardware supports it.' %}
+{% include_relative ont-luna-sdk-useful-commands.md 
+    flash='flash'
+    ploam='ascii'
+    speedLan='123456'
+    customSpeedLanAlert='Please use recommended version `C00R657V2801F_V1.9.0-220404.tar`. With other firmware it is not guaranteed that `LAN_SDS_MODE` other than `1` will work. Before editing the speed make sure your hardware supports it.'
+%}
 
 # Known Bugs
 

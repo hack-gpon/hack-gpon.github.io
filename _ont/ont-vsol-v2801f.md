@@ -35,7 +35,12 @@ parent: VSOL
 
 The reccomended version are `V2801F_V1.9.0-220425.tar` because it has Modern WebGUI, 2.5GbE, patched `runlansds.sh`, `tftpd`, ...
 
-{% include_relative ont-luna-sdk-useful-commands.md flash='flash' ploam='ascii' speedLan='12345' customSpeedLanAlert='Please use recommended version `V2801F_V1.9.0-220425.tar`. Before editing the speed make sure your hardware supports it.' %}
+{% include_relative ont-luna-sdk-useful-commands.md
+    flash='flash'
+    ploam='ascii'
+    speedLan='123456'
+    customSpeedLanAlert='Please use recommended version `V2801F_V1.9.0-220425.tar`. With other firmware it is not guaranteed that `LAN_SDS_MODE` other than `1` will work. Before editing the speed make sure your hardware supports it.'
+%}
 
 # Known Bugs
 
