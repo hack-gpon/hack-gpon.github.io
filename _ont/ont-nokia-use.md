@@ -15,7 +15,7 @@ The enable password can be generated using the following form:
 
 {% include cig_password.html username="ONTUSER" %}
 
-# Access Full Shell
+# Accessing Full Shell
 
 To access a complete linux shell just type:
 ```sh

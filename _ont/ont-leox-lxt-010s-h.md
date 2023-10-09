@@ -50,7 +50,7 @@ parent: LEOX
 
 This stick supports dual boot. 
 
-`k0` and `r0` respectively contain the kernel and firmware of the first image, while `k1` and `r1` respectively contain the kernel and the firmware of the second one.
+`k0` and `r0` respectively contain kernel and firmware of the first image, while `k1` and `r1` contain kernel and firmware of the second one.
 
 ## Serial
 
@@ -62,7 +62,7 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 
 ## List firmware version
 
-{% include alert.html content="There is a new firmware avaliable from LeoLabs that fixes the 2.5GbE" alert="Note" icon="svg-info" color="blue" %}
+{% include alert.html content="There is a new firmware provided by LeoLabs that fixes issues with the stick operating at 2.5GbE speeds" alert="Note" icon="svg-info" color="blue" %}
 
 - V3.3.4L3
 - V3.3.4L4rc1 (Fix 2.5GbE HiSGMII)
@@ -71,11 +71,11 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 {% include_relative ont-luna-sdk-useful-commands.md 
     ploam='ascii'
     speedLan='18'
-    customSpeedLanAlert='You need firmware `V3.3.4L4rc1` or higher. Before editing the speed make sure your hardware supports it. If you try to use any mode not listed here, stick will default to mode 1.'
+    customSpeedLanAlert='Firmware version `V3.3.4L4rc1` or higher is required. Before editing the speed make sure your hardware supports it. If you try to use any mode not listed here, the stick will default to mode 1.'
     flash='/etc/scripts/flash'
-    customSwVersionAlert='This needs the `OMCI_OLT_MODE` value to be set to `21`. This will force to use your own settings from the XML file, but this is a hack and causes sigsegv of `/bin/checkomci`.'
+    customSwVersionAlert='This needs the `OMCI_OLT_MODE` value to be set to `21`. This will force the stick to use your own settings from the XML file, but this is a hack and causes sigsegv of `/bin/checkomci`.'
     omciOLT21='true' %}
 
 # Known Bugs
 
-The stock firmware doesn't work @ 2.5GbE. There is a new firmware avaliable from LeoLabs that fixes this issue.
+The stock firmware doesn't work at 2.5GbE. There is a new firmware provided by LeoLabs that fixes this issue.

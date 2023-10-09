@@ -66,7 +66,7 @@ You need a 3.3V SPI programmer (like a modded CH341a) to read and write back the
 
 {% include alert.html content="This was tested only on a TIM V6.0.10N20 firmware!" alert="Note" icon="svg-info" color="blue" %}
 
-After you got a full dump of your ONT, here is the procedure to replace the original bootloader with the CIG one enable the serial port:
+After getting a full dump of your ONT, here is the procedure to replace the original bootloader with CIG's to enable the serial port:
 
 Cut old bootloader:
 ```sh
@@ -92,11 +92,11 @@ After powering up the ONT, the serial port will print this message:
 
 To access full U-Boot a special escape sequence is needed. 
 
-If you use TeraTerm software, create a simple MACRO file that contains this code:
+If Tera Term is used, create a simple MACRO file that contains this code:
 
 `send $1B $1D $0F $0B`
 
-Configure TeraTerm with the correct serial parameters (refer to **Serial** paragraph), select the created MACRO file **BEFORE** powering up the ONT but **DON'T OPEN IT NOW**, power-up the ONT and when you see the above message, quickly open the macro to reach the U-Boot prompt:
+Configure Tera Term with the correct serial parameters (refer to **Serial** paragraph), select the created MACRO file **BEFORE** powering up the ONT but **DON'T OPEN IT NOW**, power-up the ONT and when you see the above message, quickly open the macro to reach the U-Boot prompt:
 
 ```sh
 9601D#
@@ -104,12 +104,12 @@ Configure TeraTerm with the correct serial parameters (refer to **Serial** parag
 
 {% include alert.html content="Note that this proceedure needs to be done each time you power-cycle the ONT" alert="Note" icon="svg-info" color="blue" %}
 
-Now with the U-Boot prompt a custom firmware that enable TELNET can be flashed. 
-Please note that if you use a **TIM** or **OpenFiber** base firmware, the TTL will be silent after kernel loading because it was disabled at kernel level.
+Now with the U-Boot prompt a custom firmware that enables TELNET can be flashed. 
+Please note that if a **TIM** or **OpenFiber** base firmware is used, the TTL will be silent after kernel loading because it is disabled at kernel level.
 
-Here is the procedure to flash a custom firmware on your ONT via the U-Boot console:
+Here is the procedure to flash a custom firmware on the ONT via the U-Boot console:
 
-- Attach your ONT via ethernet cable to your PC and configure it to have IP **192.168.1.2**
+- Attach the ONT via ethernet cable to your PC and configure it to have IP **192.168.1.2**
 - Launch TFTP server and place custom firmware inside its root folder renamed into `cramfs.img.crc`. Be sure that the file has this name, otherwise the upgrade procedure will stop immediately
 - Run this command on U-Boot prompt:
 
@@ -142,7 +142,7 @@ Writing 6619136 B from 80400000 to 00200000... 100% ~ 0084ffff/6619136 B
         [Done]
 ```
 
-{% include alert.html content="Please note that some OLTs (like Alcatel with TIM in Italy) needs to have software image 0 or 1 as active. So in this case you have to do these commands twice to flash image on both slot:" alert="Note" icon="svg-info" color="blue" %}
+{% include alert.html content="Please note that some OLTs (like TIM's Alcatel OLTs in Italy) need to have software image 0 or 1 set as active. So in this case, these commands will have to be executed twice to flash the image on both slots:" alert="Note" icon="svg-info" color="blue" %}
 
 
 **ImageA**:
@@ -152,7 +152,7 @@ set activeimage imagea
 saveenv
 ``` 
 
-and flash image with the `upgdimage`
+And flash image with the `upgdimage`.
 
 **ImageB**:
 
@@ -161,13 +161,13 @@ set activeimage imageb
 saveenv
 ``` 
 
-and flash image with the `upgdimage`
+And flash image with the `upgdimage`.
 
-So you will have both slot with the same firmware version and avoid the swap from the OLT
+This way both slots will have the same firmware version and will avoid any swap by the OLT.
 
-After these steps, you can power-cycle ONT and logon on TELNET with `root\admin` credentials. From this moment you can simply spoof your ONT with the usual commands.
+After these steps, power-cycle ONT and login via TELNET with `root\admin` credentials. From this moment you can simply spoof your ONT with the usual commands.
 
 
 # Known Bugs
 
-In versions V6.0.10N14 and V6.0.10P2N02 buffer size is suboptimal: because of this the ONT is unable to work at full speed during uploads if the server is geographically, and/or latency-wise, far. There are no known problems if there is only one person in the GPON tree.
+In versions V6.0.10N14 and V6.0.10P2N02 buffer size is suboptimal: because of this the ONT is unable to work at full speed during uploads if the server is geographically, and/or latency-wise, far. There are no known problems if there is only one person on the GPON tree.

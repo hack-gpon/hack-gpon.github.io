@@ -27,7 +27,7 @@ parent: TP-Link
 
 # Known Bugs
 
-The ONT randomly crashes when PPPoE connection by a connected router is established.
+The ONT randomly crashes when a PPPoE connection by a connected router is established.
 
 The GPON serial sometimes temporarily disappears after a crash, preventing the ONT from reaching the O5 operational status.
 

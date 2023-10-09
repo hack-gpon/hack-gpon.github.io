@@ -15,7 +15,7 @@ Currently, there are only a few main GPON chipset vendors:
         - RTL9601B  
         - RTL9601CI (HSGMII)
         - RTL9601D (HSGMII)
-    * RTL9602/RTL9603 series (for router with integrated PON)
+    * RTL9602/RTL9603 series (for routers with integrated PON)
     * Cortina QWCS8032E
 - Lantiq:
     * PEB98035 (HSGMII)

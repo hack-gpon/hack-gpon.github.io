@@ -39,13 +39,13 @@ Connect the TTL adapter to the computer, once done press the following button. A
 
 # Connect to the stick via SSH
 
-After this is done, reboot the stick, after connecting it to the router via an ethernet mediaconverter or directly plug it in an SFP port, with the port's IP set to whatever IP of the `192.168.1.0/24` subnet (the stick has the IP `192.168.1.10`)
+After this is done, reboot the stick, after connecting it to a router via an ethernet mediaconverter or directly plugging it in an SFP port, with the port's IP set to any IP of the `192.168.1.0/24` subnet (the stick has the IP `192.168.1.10`)
 
-{% include alert.html content="If your subnet is `192.168.1.0/24` make sure you have no ip conflicts." alert="Note" icon="svg-warning" color="yellow" %}
+{% include alert.html content="If your LAN subnet is `192.168.1.0/24` make sure you have no ip conflicts." alert="Note" icon="svg-warning" color="yellow" %}
 
 {% include alert.html content="On some SFP host devices you might not be able to connect to the stick if there's no optical signal (RX loss), in that case you need to connect the fiber to make changes on the stick" alert="Note" icon="svg-warning" color="yellow" %}
 
-Run the terminal and login to the stick with ssh
+Run the terminal and login to the stick using ssh:
 
 ```shell
 ssh root@192.168.1.10
@@ -57,14 +57,14 @@ The password is `admin123`.
 
 # TX Fault / Serial
 
-The stick stays in a perpetual "TX Fault" state since the same SFP pin is used for both serial and TX Fault signaling, if that causes you issues (normally it shouldn't) you can issue the commands below to disable it. Note that it will disable both the TX Fault signal and Serial on the stick after boot.
+The stick stays in a perpetual "TX Fault" state since the same SFP pin is used for both serial and TX Fault signaling. If that causes you issues (normally it shouldn't), you can issue the commands below to disable it. Note that it will disable both the TX Fault signal and Serial on the stick after boot.
 
 ```sh
 fw_setenv asc0 1
 fw_setenv preboot "gpio set 3;gpio input 100;gpio input 105;gpio input 106;gpio input 107;gpio input 108"
 ```
 
-In case you need to re-enable it issue the following commands from the bootloader (FALCON)
+In case you need to re-enable it, issue the following commands from the bootloader (FALCON)
 
 ```sh
 FALCON => setenv asc0 0

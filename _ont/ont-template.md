@@ -53,9 +53,9 @@
 
 # GPON ONU status
 
-## Get the operational status of the ONU
+## Getting the operational status of the ONU
 
-## Get information of the OLT vendor
+## Getting OLT vendor information
 
 ## Querying a particular OMCI ME
 
@@ -81,7 +81,7 @@
 
 ## Transferring files to the stick
 
-## Backup of all partition
+## Backing up all partitions
 
 ## Checking the currently active image
 

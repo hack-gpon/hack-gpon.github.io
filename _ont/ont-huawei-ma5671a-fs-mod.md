@@ -11,20 +11,20 @@ layout: default
 
 Flash the firmware image to image0 or image1 via [SSH](/ont-huawei-ma5671a/#flashing-a-new-rootfs-via-ssh) or via [TTL serial](/ont-huawei-ma5671a-ymodem) as usual.
 
-After the flash it is absolutely necessary to connect to the SFP via telnet using the IP 192.168.1.10:
+After flashing, it is absolutely necessary to connect to the SFP via telnet using the IP 192.168.1.10:
 
 ```sh
 telnet 192.168.1.10
 ```
 
-Once connected via telnet to the SFP, execute the following commands, it will be necessary to wait a few minutes until the end of the automatic procedure:
+Once connected via telnet to the SFP, execute the following commands. Then wait a few minutes until the end of the automatic procedure:
 
 ```sh
 firstboot
 reboot
 ```
 
-Remember that with each flash of this firmware it is always necessary to perform the procedure described above, otherwise the SFP will not work!
+Performing the procedure described above is necessary after each flash of this firmware, otherwise the SFP will not work!
 
 # Login info
 
@@ -40,17 +40,17 @@ Remember that with each flash of this firmware it is always necessary to perform
 
 # GPON ONU status
 
-## Get the operational status of the ONU
+## Getting the operational status of the ONU
 ```sh
 onu ploam_state_get
 ```
 
-## Get optical laser status
+## Getting optical laser status
 ```sh
 otop -g s
 ```
 
-## Get information of the OLT vendor
+## Getting information of the OLT vendor
 ```sh
 omci_pipe.sh meg 131 0
 ```
@@ -59,14 +59,14 @@ omci_pipe.sh meg 131 0
 ```sh
 omci_pipe.sh meg MIB_IDX ME_IN
 ```
-Where `MIB_IDX` is the MIB ID and the `ME_IN` is the ME instance number
+Where `MIB_IDX` is the MIB ID and `ME_IN` is the ME instance number.
 
-## Get VLAN table rule
+## Getting VLAN table rule
 ```sh
 gtop -g "GPE VLAN rule"
 ```
 
-## Get GEM port status table
+## Getting GEM port status table
 ```sh
 gtop -g e
 ```
@@ -78,7 +78,7 @@ To get the LAN Mode:
 ```sh
 onu lan_port_status_get 0
 ```
-The `link_status` variable tells the current speed
+The `link_status` variable tells the current speed:
 
 | Value (for `sgmii_mode` and `link_status`) | Speed                              |
 | ------------------------------------------ | ---------------------------------- |
@@ -133,10 +133,11 @@ fw_setenv image1_version "YOUR_SW_VERSION_1"
 
 # Advanced settings
 
-{% include alert.html content="Normally they are not necessary and it would be better not to touch them" alert="Note"  icon="svg-warning" color="red" %}
+{% include alert.html content="Changing these is normally not necessary and not changing them is a good idea" alert="Note"  icon="svg-warning" color="red" %}
 
 ## Setting custom OMCI MIB file
-You have to copy the MIB file to /etc/mibs and then run this command:
+
+Copy the MIB file to /etc/mibs, then run this command:
 
 ```sh
 fw_setenv mib_file_custom "YOUR_MIB_FILENAME"
@@ -155,7 +156,7 @@ reboot
 
 # SFP EEPROM settings
 
-{% include alert.html content="Normally they are not necessary and it would be better not to touch them" alert="Note"  icon="svg-warning" color="red" %}
+{% include alert.html content="Changing these is normally not necessary and not changing them is a good idea" alert="Note"  icon="svg-warning" color="red" %}
 
 ## Setting SFP vendor name
 ```sh

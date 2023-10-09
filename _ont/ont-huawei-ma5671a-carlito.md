@@ -5,7 +5,7 @@ parent: Huawei MA5671A
 layout: default
 ---
 
-{% include alert.html content="Be careful, back up the goi_config from uboot before changing firmware." alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="Be careful, backup goi_config from uboot before changing the firmware." alert="Info" icon="svg-info" color="blue" %}
 
 # GPON ONU status
 
@@ -13,27 +13,27 @@ layout: default
 ```sh
 omci_pipe.sh meg MIB_IDX ME_IN
 ```
-Where `MIB_IDX` is the MIB ID and the `ME_IN` is the ME instance number
+Where `MIB_IDX` is the MIB ID and `ME_IN` is the ME instance number
 
 ## Getting/Setting Speed LAN Mode
 
-To enable the 2.5 Gbps / HSGMII with auto-neg on:
+To enable the interface to sync at 2.5 Gbps / using HSGMII with auto-neg on:
 
 ```sh
 fw_setenv sgmii_mode 5
 ```
 
-To remove the value (back to default):
+To revert the afore-mentioned command:
 ```sh
 fw_setenv sgmii_mode
 ```
 
-To get the LAN Mode:
+To check the set value fo the LAN Mode:
 
 ```sh
 onu lanpsg 0
 ```
-The `link_status` variable tells the current speed
+The `link_status` variable tells the current speed:
 
 | Value (for `sgmii_mode` and `link_status`) | Speed                              |
 | ------------------------------------------ | ---------------------------------- |
