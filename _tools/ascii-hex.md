@@ -2,7 +2,7 @@
 title: ASCII and Hex converter
 has_children: false
 nav_order: 1
-description: Tool for converter ASCII and Hex
+description: Tool for converting between ASCII and Hex
 layout: default
 ---
 
@@ -12,7 +12,7 @@ layout: default
         <input type="text" class="form-control" placeholder="ASCII" name="ascii-to-hex" id="ascii-to-hex" required>
         <label for="ascii-to-hex">ASCII</label>
         <div class="invalid-feedback">
-            Please provide a valid input text.
+            Please provide a valid text input.
         </div>
     </div>
     <div class="form-floating mb-3">
@@ -33,7 +33,7 @@ layout: default
         <input type="text" class="form-control" placeholder="HEX" name="hex-to-ascii" id="hex-to-ascii" required>
         <label for="hex-to-ascii">HEX</label>
         <div class="invalid-feedback">
-            Please provide a valid input text.
+            Please provide a valid text input.
         </div>
     </div>
     <div class="form-floating mb-3">

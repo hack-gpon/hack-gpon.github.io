@@ -17,17 +17,17 @@ layout: default
 | SGMII  | ✅                   |
 | Type   | PCI express SFP card |
 
-In order to be able to set 2.5G speed you will have to patch your kernel's bnx2x module. The easiest way to do so is via DKMS which rebuilds only that module:
+In order for the card to be able to sync at 2.5G speeds, the kernel's bnx2x module has to be patched. The easiest way to do so is via DKMS which rebuilds that module only:
 
 - [DKMS for Linux 6.0.y](https://github.com/darkbasic/bnx2x-2_5g-dkms/tree/6.0.y)
 
-It also adds a module option that can be set to disable SFP TX fault detection, otherwise you won't be able to access your SFP mini-ONT if serial output to SFP is enabled (you can alternatively disable the serial in the SFP module).
+It also adds a module option that can be set to disable SFP TX fault detection, otherwise the SFP mini-ONT will not be accessible if serial output to SFP is enabled. Alternatively the serial interface can be disabled on the SFP module.
 
-Unfortunately, despite the patches, you will still have to use UEFI eDiag to unlock 2.5G capabilities:
+Unfortunately, despite the patches, UEFI eDiag still has to be used to unlock 2.5G capabilities:
 
 - [How-to enable 2.5G capability via UEFI eDiag](https://www.dslreports.com/forum/r32230041-Internet-Bypassing-the-HH3K-up-to-2-5Gbps-using-a-BCM57810S-NIC)
 
-At this point you will be able to use the following command to set the speed to 2.5G:
+At this point, use the following command to set the speed to 2.5G:
 ```
 sudo ethtool -s your_network_interface autoneg off speed 2500 duplex full
 ```

@@ -42,7 +42,7 @@ parent: Nokia
 
 ## Serial
 
-The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. It's on the top left (with Ethernet\Power\Optical port faced down) of the board. TX, RX and ground pads need to be connected to a USB2TTL adapter supporting a logic level of 3.3V.
+The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface: it's on the top left of the board, when the Ethernet\Power\Optical ports are facing down. TX, RX and ground pads need to be connected to a USB2TTL adapter supporting 3V3 logic.
 
 {% include image.html file="ont-nokia_xs-010x-q_ttl.jpg" alt="Nokia XS-010X-Q TTL Pads" caption="Nokia XS-010X-Q TTL Pads" %}
 
@@ -73,7 +73,7 @@ The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be acc
 
 This ONT supports dual boot. 
 
-`kernel0` and `rootfs0` respectively contain the kernel and firmware of the first image, `kernel1` and `rootfs1` the kernel and the firmware of the second one
+`kernel0` and `rootfs0` respectively contain the kernel and firmware of the first image, `kernel1` and `rootfs1` the kernel and firmware of the second one.
 
 {% include_relative ont-nokia-use.md %}
 
@@ -81,11 +81,9 @@ This ONT supports dual boot.
 
 ## Enable SSH (not persistent)
 
-Port 22 is filtered by default and the SSH daemon can be only enabled in runtime. Here is the procedure but it's not persisten accross reboot:
+Port 22 is filtered by default and the SSH daemon can be only enabled in runtime. Here is the procedure but it's not persistent and will need to be done again after each reboot:
 
-Access UART with `ONTUSER`
-
-Enter `system\misc`
+Access UART with `ONTUSER`, then enter `system\misc`.
 
 Set `ssh_en` to `1` with the command:
 ```sh
@@ -103,14 +101,12 @@ Go back to `system`, then `shell` and run this command:
 ```
 ## Enable Telnet Full Shell
 
-When you're using default credentials to access telnet (`admin`\\`1234`), the prompt is limited to `GponSLID` shell that permits only to modify or display the `PLOAM`
-If you change the `admin_mask` to `255.255.255.255`, default credentials stop to work but you can logon with `ONTUSER` and generated password to have full shell like UART
+When using the default credentials to access telnet (`admin`\\`1234`), the prompt is limited to the `GponSLID` shell that only permits modifying or displaying the `PLOAM` password.
+If you change the `admin_mask` to `255.255.255.255`, default credentials stop working but you can login as `ONTUSER` using the generated password to have full shell like when using UART.
 
 Here is the procedure to change `admin_mask`:
 
-Access UART with `ONTUSER`
-
-Enter `system\misc`
+Access UART with `ONTUSER`, then enter `system\misc`.
 
 Set `admin_mask` to `255.255.255.255` with the command:
 ```sh

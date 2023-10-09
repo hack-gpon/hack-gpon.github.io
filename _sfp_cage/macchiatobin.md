@@ -25,4 +25,4 @@ layout: default
 
 <hr>
 
-[^xor]: In the Dual Shot model the RJ45 and the SFP are in XOR, i.e. either one or the other.
+[^xor]: In the Dual Shot model the RJ45 and the SFP are in XOR, i.e. either one or the other is usable, not both at the same time.

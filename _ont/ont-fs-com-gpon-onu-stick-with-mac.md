@@ -403,7 +403,7 @@ strings /opt/lantiq/bin/omcid | grep compiled
 # EEPROM (I2C slave simulated EEPROM)
 The FS GPON-ONU-34-20BI stick does not have a physical EEPROM, the Falcon SOC emulates an EEPROM by exposing it on the I2C interface as required by the SFF-8472 specification.
 
-On the I2C interface, there will be two memories of 256 bytes each at the addresses `1010000X (A0h)` and `1010001X (A2h)`, however the actual available memory from the emulated EEPROM will be 640 bytes each, but only the first 256 bytes will be exposed in the I2C interface.
+On the I2C interface, two memories of 256 bytes each will be available at the addresses `1010000X (A0h)` and `1010001X (A2h)`, however the actual available memory from the emulated EEPROM will be 640 bytes each, but only the first 256 bytes will be exposed in the I2C interface.
 
 The FS stick stores the content of the emulated EEPROM in U-Boot env variables to restore it after a reboot:
 

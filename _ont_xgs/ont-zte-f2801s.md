@@ -54,16 +54,16 @@ parent: ZTE
 
 
 This ONT supports dual boot, as visible from the presence of `kernel1` and `kernel2`, which contain the rootfs.
-The boot image can be swapped with the following command:
+The boot images can be swapped with the following command:
 
 ```sh
 upgradetest switchver X
 ```
 
-Where `X` can be `0/1` based on the image you want to boot.
+Where `X` can be `0/1`, based on the image you want to boot from.
 
 
-You can also clone the currently running image into other slot using this command:
+You can also clone the currently running image into the other slot using this command:
 
 ```sh
 syn_version
@@ -73,7 +73,7 @@ syn_version
 {% include alert.html content="Commands have been tested on V2 HW rev. on OpenFiber firmwares" alert="Note"  icon="svg-info" color="blue" %}
 
 ## Enable Telnet
-{% include alert.html content="This is an external script ([ZTE Telnet enabled](https://github.com/douniwan5788/zte_modem_tools)), so use it at your own risk! Credential doesn't survive at reboot!" alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="This is an external script ([ZTE Telnet enabler](https://github.com/douniwan5788/zte_modem_tools)), use at your own risk! Credentials don't survive at reboot!" alert="Note"  icon="svg-info" color="blue" %}
 
 ```sh
 python3 zte_factroymode.py --user admin --pass admin --ip 192.168.1.1 --port 80 telnet open
@@ -108,7 +108,7 @@ Password: Eqb8X8Qt
 
 ## Enable console redirection
 
-To see omcidebug messages on Telnet you need to execute this command (just the first time of each connection):
+To see omcidebug messages on telnet, execute this command (just the first time of each connection):
 
 ```sh
 redir printf
@@ -116,21 +116,21 @@ redir printf
 
 # GPON ONU status
 
-## Get the operational status of the ONU
+## Getting the operational status of the ONU
 
-To see the connection state use the following command:
+To check the connection status use the following command:
 ```
 gpontest -gstate
 ```
 `[gpontest] gpon state is [O5]` for O5 state
 
-## Get information of the OLT vendor
+## Getting  OLT vendor information
 
 ```sh
 sendcmd 132 omcidebug showmedata 131
 ```
 
-This command will print out the result like this one:
+This command will print the following output:
 
 ```sh
 ##################################
@@ -156,7 +156,7 @@ MIB INFO:
 sendcmd 132 omcidebug showmedata ID_MIB (eg. 7 for Firmware version)
 ```
 
-This command will print out a result like this one:
+This command will print the following output:
 
 ```sh
 
@@ -184,7 +184,7 @@ MIB INFO:
 
 ## Setting ONU GPON Serial Number
 
-{% include alert.html content="You have to change S/N and the VID. 2176 is for the VID (first 4 letters of the S/N) and 2177 is for the last 8 digits of the S/N" alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="Both S/N and VID have to be changed. 2176 is for the VID (first 4 letters of the S/N) and 2177 is for the last 8 digits of the S/N" alert="Note"  icon="svg-info" color="blue" %}
 ```sh
 setmac 1 2176 ZTEG
 setmac 1 2177 AABBCCDD
@@ -193,7 +193,7 @@ setmac 1 2177 AABBCCDD
 ## Setting ONU GPON PLOAM password
 
 {% include alert.html content="The PLOAM password is stored in the ASCII format." alert="Note"  icon="svg-info" color="blue" %}
-This can be done easily via web ui. If you prefer to do it via the shell use:
+This can be done easily via the web UI. To do it via the shell use:
 ```sh
 setmac 1 2181 1234567890
 setmac 1 2178 1234567890
@@ -201,17 +201,17 @@ setmac 1 2178 1234567890
 
 # Advanced settings
 
-## Backup ONT Paritions for HW\SW Version Mod
+## Backing up ONT Paritions for HW/SW Version Mod
 
 This step is suggested if you want to replace firmware on your ONT to spoof HW and SW version:
 
 Needed tools:
 
 - Linux VM or WSL with Python >3.3
-- [ZTE Telnet enabled](https://github.com/douniwan5788/zte_modem_tools)
+- [ZTE Telnet enabler](https://github.com/douniwan5788/zte_modem_tools)
 - TFTP server
 
-First step is to login over telnet with `zte_factroymode.py` then execute ALL this command for a full backup:
+The first step is to login over telnet with `zte_factroymode.py`, then execute ALL these commands for a full backup:
 
 **Go to `/tmp` folder to create tmp files**
 
@@ -221,7 +221,7 @@ cd /tmp
 
 **Dump and transfer all mtd **
 
-Here 192.168.1.2 is the IP of the machine running the TFTP server, change it as needed
+In the following commands, 192.168.1.2 is the IP of the machine running the TFTP server, change it as needed.
 
 ```sh
 cat /dev/mtd1 > u-boot.bin && tftp -l u-boot.bin -r u-boot.bin -p 192.168.1.2 && rm u-boot.bin
@@ -236,7 +236,7 @@ cat /dev/mtd9 > rootfs.bin && tftp -l rootfs.bin -r rootfs.bin -p 192.168.1.2 &&
 
 ```
 
-## Change region code
+## Changing region code
 
 {% include alert.html content="Be aware that changing the region code may break features such as PPPoE depending on your ISP" alert="Note"  icon="svg-info" color="blue" %}
 
@@ -260,7 +260,7 @@ Where X is the number of supported regioncode into file `/etc/init.d/regioncode`
 ```
 
 # Random notes
-- F2801S reads the software version exposed thru gpon_omci deamon from each kernel partition's header, so only way to spoof this parameter is to change the version in the header and recalculate CRC, otherwise bootloader refuse to load image
+- The F2801S reads the software version exposed through the gpon_omci deamon from each kernel partition header, so the only way to spoof this parameter is to change the version in the header and recalculate CRC, otherwise the bootloader will refuse to load the image
 
 # Miscellaneous Links
 

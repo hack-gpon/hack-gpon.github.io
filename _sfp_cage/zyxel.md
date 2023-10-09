@@ -35,7 +35,7 @@ layout: default
 | mtd7 | 04000000 | 00040000  | "ubi2"       |
 | mtd8 | 15a80000 | 00040000  | "zyubi"      |
 
-This router supports dual boot, and has two partitions for the firmware, `ubi` and `ubi2`
+This router supports dual boot, and has two partitions for the firmware, `ubi` and `ubi2`.
 
 To check the current active partition you can use the following command:
 ```sh
@@ -45,9 +45,9 @@ The result will be something like the following:
 ```
 console=ttyS0,115200n1 loglevel=8 earlycon=uart8250,mmio32,0x11002000 rootubi=ubi
 ```
-If `rootubi=ubi` it means that the active partition is `mtd6`
+If `rootubi=ubi`, the active partition is `mtd6`.
 
-If `rootubi=ubi2` it means that the active partition is `mtd7`
+If `rootubi=ubi2`, the active partition is `mtd7`.
 
 {% include alert.html content="When you flash a new firmware via the web interface the router will automatically write the new firmware in the inactive partition, hence if the firmware upgrade is successfull it will automatically swap the boot partition at next reboot. If everything is ok you don't have to manually swap partitions" alert="Info" icon="svg-info" color="blue" %}
 
@@ -57,21 +57,21 @@ This router has the serial interface pins directly accessible on the board:
 
 {% include image.html file="zyxel-ex5601t0\zyxel_ex5601t0_serial.jpg" alt="EX5601T0 Serial interface" caption="EX5601T0 Serial interface" %}
 
-The serial console speed is 115200.
+The serial console speed is 115200 bauds.
 
 ## ZHAL (Zloader) access
 
 The boot process of this router has multiple stages, long story short we have both u-boot and zloader (ZHAL).
 
-When the router is powered-up u-boot is loaded, u-boot will load zloader which is the zyxel proprietary boot manager.
+When the router is powered-up u-boot is loaded and it will load zloader, the Zyxel proprietary boot manager.
 
 Zloader allows to manually swap boot partitions (`ubi` and `ubi2`), recover the supervisor password and many additional useful (and dangerous) things.
 
 By default zloader access is blocked.
 
-### Unlock zloader 
+### Unlocking zloader 
 
-{% include alert.html content="The following procedure is provided as-is, if you damage the device this community is not responsibile of it in any way." alert="Warning" icon="svg-warning" color="red" %}
+{% include alert.html content="The following procedure is provided as-is, if you damage the device this community is not responsibile for any damage in any way." alert="Warning" icon="svg-warning" color="red" %}
 
 1. Open the router case and connect your usb-ttl adapter to the router as show in the picture.
 2. Open putty or any other serial capable software and configure it to use your COMX port with 115200 speed.
@@ -95,13 +95,13 @@ ZHAL>
 ```
 You have successfully unlocked zloader access, this procedure must be done only once.
 
-{% include alert.html content="There is an alternative procedure to achieve the same, you flash the firmware which gives you root access via ssh and you give the same fw_setenv command from point 8. Still you need the usb to serial adapter to access ZHAL" alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="There is an alternative procedure to achieve the same end result. Flashing the firmware which gives you root access via ssh and you give the same fw_setenv command from point 8. The USB to serial adapter is still needed to access ZHAL" alert="Info" icon="svg-info" color="blue" %}
 
 
-### Dump supervisor password
-{% include alert.html content="The following procedure is provided as-is, if you damage the device this community is not responsibile of it in any way." alert="Warning" icon="svg-warning" color="red" %}
+### Dumping supervisor password
+{% include alert.html content="The following procedure is provided as-is, if you damage the device this community is not responsibile for any damage in any way." alert="Warning" icon="svg-warning" color="red" %}
 
-{% include alert.html content="The supervisor user is the most powerful user that can be used from the web interface. The supervisor password is written in the nand and it's encrypted. To dump the password you must first complete the Unlock zloader procedure" alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="The supervisor user is the most powerful user that can be used from the web interface. The supervisor password is written in the nand and it's encrypted. To dump the password you must first complete the **Unlocking zloader** procedure" alert="Info" icon="svg-info" color="blue" %}
 
 1. Open the router case and connect your usb to serial adapter.
 2. Open putty or any other serial capable software and configure it to use your COMX port with 115200 speed.
@@ -117,11 +117,11 @@ atck
 atsr
 ```
 
-### Manually swap the boot partition
+### Manually swapping the boot partition
 
-{% include alert.html content="The following procedure is provided as-is, if you damage the device this community is not responsibile of it in any way." alert="Warning" icon="svg-warning" color="red" %}
+{% include alert.html content="The following procedure is provided as-is, if you damage the device this community is not responsibile for any damage in any way." alert="Warning" icon="svg-warning" color="red" %}
 
-{% include alert.html content="To swap the boot partition you first have to complete the Unlock zloader procedure" alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="To swap the boot partition you first have to complete the **Unlocking zloader** procedure" alert="Info" icon="svg-info" color="blue" %}
 
 1. Open the router case and connect your usb to serial adapter.
 2. Open putty or any other serial capable software and configure it to use your COMX port with 115200 speed.
@@ -139,14 +139,14 @@ atsr    # reboot the router
 cat /proc/cmdline
 ```
 
-## Unlock u-boot access
-{% include alert.html content="The following procedure is provided as-is, if you damage the device this community is not responsibile of it in any way." alert="Warning" icon="svg-warning" color="red" %}
+## Unlocking u-boot access
+{% include alert.html content="The following procedure is provided as-is, if you damage the device this community is not responsibile for any damage in any way." alert="Warning" icon="svg-warning" color="red" %}
 
-{% include alert.html content="To unlock u-boot access you first have to complete the Unlock zloader procedure" alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="To unlock u-boot access you first have to complete the **Unlocking zloader** procedure" alert="Info" icon="svg-info" color="blue" %}
 
 {% include alert.html content="Having full u-boot access can be very dangerous, with great power comes great responsibility." alert="Warning" icon="svg-warning" color="red" %}
 
-Up to today a strange combination of actions must be completed in a special sequence to access the u-boot command line interface.
+Up to today a strange combination of actions must be completed in a special sequence to access the u-boot CLI:
 
 1. Open the router case and connect your usb to serial adapter.
 2. Open putty or any other serial capable software and configure it to use your COMX port with 115200 speed.
@@ -158,7 +158,7 @@ atgu
 ```
 6. Apparently that command doesn't do anything and the router will reboot itself.
 7. Again for the second time you will read `Hit any key to stop autoboot:`, press Enter again to access ZHAL again.
-8. Type again the following command and press enter:
+8. Type the following command again and press enter:
 ```
 atgu
 ```
@@ -167,12 +167,12 @@ atgu
 MT7986>
 ```
 
-## Flashing a firmware or firmware downgrade
+## Flashing a firmware or downgrading firmware
 
 {% include alert.html content="The following procedure is provided as-is and if anything goes wrong you will likely need to open the router case and attach a USB serial adapter to the router to recover it.
 This community is not responsible of any damage you cause by following these procedures." alert="Warning" icon="svg-warning" color="red" %}
 
-1. access via ssh or telnet to the router with admin user (admin password is printed on the back of the router).
+1. Access the router via ssh or telnet with admin user (admin password is printed on the back of the router).
 2. Disable firmware version check and model check by running the following commands.
 ```
 zycli fwidcheck off
@@ -180,7 +180,7 @@ zycli modelcheck off
 ```
 3. You can close the ssh console, do not reboot the router.
 4. Open the router web interface and in the maintenance/firmware upgrade section select the "Restore Default Settings After Firmware Upgrade" option.
-5. Select choose file to select the firmware file you want to upload and click Upload.
+5. Select "Choose file" to select the firmware file you want to upload and click Upload.
 6. The router will automatically reboot and should get back up on 192.168.1.1
 
 ## Firmware Version V5.70(ACDZ.0)C0 no-brand
@@ -190,12 +190,12 @@ https://github.com/pameruoso/zyxel-ex5601t0
 
 1. Added start-up script to reset and enable root access via ssh.
 The script reads the device serial number and resets the root password with that. Do not try to reset the root password because that will last until next reboot.
-2. the `/bin` path contains `sfp_wan.sh_wind` and `check_sfp_link.sh_wind` scripts which are very similar to the standard `sfp_wan.sh` and `check_sfp_link.sh` scripts. If everything works with the original ones do not swap them. If you want to allow 2.5gbit HSGMII with AFM0003 sfp stick you need to swap and enable the `_wind` scripts.
+2. the `/bin` path contains `sfp_wan.sh_wind` and `check_sfp_link.sh_wind` scripts which are very similar to the standard `sfp_wan.sh` and `check_sfp_link.sh` scripts. If everything works with the original ones do not swap them. If you want to allow 2.5gbit HSGMII with the Technicolor AFM0003 SFP stick you need to swap and enable the `_wind` scripts.
 3. Additional packages installed: `mtr`, `htop`, `openvpn`, `wireguard`.
 
-{% include alert.html content="The openvpn and wireguard functionalities will not be directly usable in the Zyxel web interface, they are not supported. If you want to setup a vpn with openvpn or wireguard you must know how to use the command-line and do your own setup" alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="The OpenVPN and Wireguard functionalities will not be directly usable in the Zyxel web interface, they are not supported. If you want to setup a VPN with either protocol you must know how to use the command-line and do your own setup" alert="Info" icon="svg-info" color="blue" %}
 
-{% include alert.html content="Do not try to install packages directly from the internet with opkg update/install, the default repositories are not working and most likely if you edit them you'll end up breaking the partition overlay" alert="Warning" icon="svg-warning" color="red" %}
+{% include alert.html content="Do not try to install packages directly from the internet with opkg update/install, the default repositories are not working and, if you edit them, you'll most likely end up breaking the partition overlay" alert="Warning" icon="svg-warning" color="red" %}
 
 - [Firmware Version V5.70(ACDZ.0)C0_no-brand_pa_0.1](https://mega.nz/file/OJxBCKqR#z31OiJwY6_iaDtj_yrOTrx1oKnFEdnm4Rh0pi3wRtoE)
 
@@ -208,7 +208,7 @@ You are free to clone the git code and build your own OpenWrt firmware or use th
 
 The OpenWrt firmware has the following working features out of the box:
 - 3 Gbit LAN ports
-- Wi-Fi AX6000: 5Ghz 4x4ax + 2.4GHz 4x4ax
+- Wi-Fi AX6000: 5Ghz 4x4 ax + 2.4GHz 4x4 ax
 - Zyxel partitioning for coexistance with Zloader and dual boot
 - Leds
 - Reset button
@@ -216,11 +216,11 @@ The OpenWrt firmware has the following working features out of the box:
 - USB port
 - LAN RJ45 2.5 Gbit port
 - WAN RJ45 2.5 Gbit port
-- WAN SFP port only works after exporting pins 57 and 10 (`gpiobase411`). Too there must be a cable with a link active on the WAN 2.5 Gbe port to make the SFP work. This is due to missing support into the phy-link code of the mediatek ethernet soc.
+- WAN SFP port only works after exporting pins 57 and 10 (`gpiobase411`). There must also be a cable with a link active on the WAN 2.5 Gbe port to make the SFP work. This is due to missing support into the phy-link code of the Mediatek ethernet SoC.
 
-To workaround the missing phy-link support some modifications to the DTS are needed. Setting the `gmac1` node to fixed link 2500Base-X gives the possibility to hot-swap the SFP/RJ45 port.
+To workaround the missing phy-link support, some modifications to the DTS are needed. Setting the `gmac1` node to fixed link 2500Base-X gives the possibility to hot-swap the SFP/RJ45 port.
 
-The following is a repo that contains a proper example: [EX5601-T0 fixed SFP link git repo](https://github.com/pameruoso/openwrt-ex5601t0-porting/tree/ex5601-t0-fixedlink) you can apply the  [patch](https://github.com/openwrt/openwrt/compare/main...pameruoso:openwrt-ex5601t0-porting:ex5601-t0-fixedlink.patch) to the official OpenWrt repo.
+The following repo contains a proper example: [EX5601-T0 fixed SFP link git repo](https://github.com/pameruoso/openwrt-ex5601t0-porting/tree/ex5601-t0-fixedlink) you can apply the [patch](https://github.com/openwrt/openwrt/compare/main...pameruoso:openwrt-ex5601t0-porting:ex5601-t0-fixedlink.patch) to the official OpenWrt repo.
 
 {% include alert.html content="It is highly recommended to use the OpenWrt official builds instead of this fork because the latter is not updated that often, still if you want to use the SFP you can insert it into a media converter and use the 2.5Gbe RJ45 port with the official build." alert="Info" icon="svg-info" color="blue" %}
 
@@ -237,4 +237,4 @@ Here is a flashable bin file based on OpenWrt 5.15.114 with the mod to swap SFP/
 
 <hr>
 
-[^xor]: the WAN Eth and WAN SFP ports are in XOR, i.e. either one or the other.
+[^xor]: the Ethernet and SFP WAN ports are in XOR, i.e. either one or the other is usable, not both at the same time.
