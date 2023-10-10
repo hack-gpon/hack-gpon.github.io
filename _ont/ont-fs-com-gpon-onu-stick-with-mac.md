@@ -156,7 +156,7 @@ When you are ready with everything plugged in you need to press the button below
 
 # GPON ONU status
 
-## Querying the operational status of the ONU
+## Getting the operational status of the ONU
 
 ```shell
 onu ploamsg
