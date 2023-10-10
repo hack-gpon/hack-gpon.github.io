@@ -30,7 +30,7 @@ parent: Sercomm
 
 ## Telnet Access
 
-The stick has telned opened only on WAN side, only way to access it is thru an OLT
+The stick has telnet available only on the PON side, the only way to access it is by using an OLT.
 
 ## List of software versions
 - SCOMFGS202305 (TIM Italy)
@@ -38,7 +38,7 @@ The stick has telned opened only on WAN side, only way to access it is thru an O
 
 # GPON ONU status
 
-## Get the operational status of the ONU
+## Getting the operational status of the ONU
 
 ```sh
 # show gpon
@@ -112,7 +112,7 @@ Set command exectue successfully.
 
 # Advanced settings
 
-## Show live OMCI messages
+## Showing live OMCI messages
 
 ```sh
 # show omci

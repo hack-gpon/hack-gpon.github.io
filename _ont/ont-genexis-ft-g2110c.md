@@ -43,7 +43,7 @@ The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be acc
 
 {% include image.html file="ft-g2110c-internal.jpg"  alt="FiberTwist G2110C-2.5G Internal" caption="FiberTwist G2110C-2.5G Internal" %}
 
-{% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
+{% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try swapping them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
 
 ## List of software versions
 - C-5.6.1-R
@@ -76,7 +76,7 @@ This ONT supports dual boot.
 
 # GPON/OMCI settings
 
-{% include alert.html content="Some variables are write-protected, you need to unlock them before proceed" alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="Some variables are write-protected, you need to unlock them before proceeding" alert="Info" icon="svg-info" color="blue" %}
 
 Use the following command to unlock write-protected variables:
 
@@ -93,7 +93,7 @@ Use the following command to unlock write-protected variables:
 ```
 Reboot the ONT to apply any changes
 
-You can check if the serial number was correclty changed using the following command:
+You can check if the serial number was correctly changed using the following command:
 
 ```sh
 # diag gpon get serialnumber
@@ -109,8 +109,8 @@ ZTEGaaa01234
 GPON_PLOAM_PASSWD=AAAAAAAAAA
 # /etc/scripts/flash set GPON_PLOAM_PASSWD AAAAAAAAAA
 ```
-Looks like Genexis has also included an U-Boot variable to store the PLOAM. On currently known firmwares (5.6.1 and 5.7.0) it is not read by the `omci_app` daemon.
-If you want to be future proof, put your PLOAM also on U-Boot env using the following command in the OS shell:
+It seems Genexis has also included a U-Boot variable to store the PLOAM. On currently known firmwares (5.6.1 and 5.7.0) it is not read by the `omci_app` daemon.
+For future-proofing reasons, set your PLOAM also on the before-mentioned U-Boot env using the following command in the OS shell:
 
 ```sh
 # nv setenv ploampwd 1234567890
@@ -119,10 +119,9 @@ ploampwd=1234567890
 ## Setting OMCI software version (ME 7)
 
 The stock firware does not allow changing of the primary and standby software version. 
-Since the ONT uses the Luna SDK, the `/etc/scripts/flash` shell script can be easily modified by creating a custom firmware with
-the same set of patches suggested e.g. for the [Technicolor AFM0002](/ont-technicolor-afm0002) ONT.
+As the ONT uses the Luna SDK, the `/etc/scripts/flash` shell script can be easily modified by creating a custom firmware with the same set of patches suggested e.g. for the [Technicolor AFM0002](/ont-technicolor-afm0002) ONT.
 
-You can then check if the software version was correctly changed with this command (take a look at the `Version` field):
+You can then check if the software version was changed correctly with this command (take a look at the `Version` field):
 
 ```sh
 # omcicli mib get 7
@@ -154,14 +153,14 @@ ImageHash: 0x00000000000000000000000000000000
 ```sh
 # nv setenv HV G2110CE2V1D0
 ```
-Reboot ONT to apply the change
+Reboot the ONT to apply the change
 
 ## Setting OMCI equipment ID (ME 257)
 
 ```sh
 # nv setenv ProdName FT-G2110C-2.5G
 ```
-Reboot ONT to apply the change
+Reboot the ONT to apply the change
 
 # Advanced settings
 
@@ -173,7 +172,7 @@ LAN_IP_ADDR=192.168.1.1
  ```
 
 # Known Bugs
-- Web UI can be enabled by modding the firmware, but without an attached fiber the daemon will crash
+- The web UI can be enabled by modding the firmware, but the daemon will crash if no optical signal is received
 
 # Miscellaneous Links
 - [FiberTwist G2110C-2.5G](https://genexis.eu/content/uploads/2020/07/FiberTwist-G2110C-2.5G-Installation-Guide-v1.0-EN.pdf)

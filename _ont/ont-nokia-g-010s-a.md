@@ -35,7 +35,7 @@ parent: Nokia
 
 ## Modifying firmware
 
-The Nokia G-010S-A can be flashed with the [Nokia G-010S-P](/ont-nokia-g-010s-p) firmware, provided the MTD layout has been changed beforehand to match the new one. For the full procedure, see the post on [lafibre.info](https://lafibre.info/remplacer-livebox/guide-de-connexion-fibre-directement-sur-un-routeur-voire-meme-en-2gbps/msg870551/#msg870551)
+The Nokia G-010S-A can be flashed with the [Nokia G-010S-P](/ont-nokia-g-010s-p) firmware, provided the MTD layout has been changed beforehand to match the new one. For the full procedure, see this post on [lafibre.info](https://lafibre.info/remplacer-livebox/guide-de-connexion-fibre-directement-sur-un-routeur-voire-meme-en-2gbps/msg870551/#msg870551)
 
 ## List of software versions
 
@@ -87,7 +87,7 @@ See more info on: [Firmwares G-010S-A](https://github.com/hwti/G-010S-A#firmware
 
 # Usage
 
-## Enable serial
+## Enabling serial
 
 ```sh
 fw_setenv bootdelay 5
@@ -97,13 +97,13 @@ fw_setenv preboot
 
 # GPON ONU status
 
-## Get the operational status of the ONU
+## Getting the operational status of the ONU
 
 ```sh
 onu ploamsg
 ```
 
-## Get information of the OLT vendor
+## Getting information on the OLT vendor
 
 ```sh
 omci_pipe.sh meg 131 0
@@ -114,7 +114,7 @@ omci_pipe.sh meg 131 0
 ```sh
 omci_pipe.sh meg MIB_IDX ME_IN
 ```
-Where `MIB_IDX` is the MIB ID and the `ME_IN` is the ME instance number
+Where `MIB_IDX` is the MIB ID and `ME_IN` is the ME instance number
 
 ## Getting/Setting Speed LAN Mode
 
@@ -123,13 +123,13 @@ Where `MIB_IDX` is the MIB ID and the `ME_IN` is the ME instance number
 | 4     | 1 Gbps / SGMII                     |
 | 5     | 2.5 Gbps / HSGMII with auto-neg on |
 
-To enable the 2.5 Gbps / HSGMII with auto-neg on:
+To enable the interface to sync at 2.5 Gbps speeds / using HSGMII with auto-neg on:
 
 ```sh
 fw_setenv sgmii_mode 5
 ```
 
-To remove the value (back to default):
+To revert the change back to default:
 ```sh
 fw_setenv sgmii_mode
 ```
@@ -143,8 +143,8 @@ The `link_status` variable tells the current speed
 
 # GPON/OMCI settings
 
-## Enable parameters modification
-This setting must be inserted in order to performs the others parameters modification
+## Enabling parameter modification
+This setting must be set in order to perform other parameter modifications
 ```sh
 ritool set OperatorID 0000
 ```
@@ -168,11 +168,11 @@ To check the current password (the password field contains decimal values of ASC
 onu gtccg
 ```
 
-The value can be changed using the web interface.
+This value can be changed using the web interface.
 
 ## Getting/Setting OMCI software version (ME 7)
 
-Software verion must be changed by directly modifing firmware by using the patches which can be found in GitHub page of [Nokia G-010-A](https://github.com/hwti/G-010S-A) and adding a folder `0001_swversion` that contins a file `patch.sh`:
+The software version must be changed by directly modifying firmware by using the patches found in the wiki's page about the [Nokia G-010-A](https://github.com/hwti/G-010S-A) ONT and then adding a folder `0001_swversion` that contins a file `patch.sh` with the following content:
 ```
 #!/bin/sh
 
@@ -183,7 +183,7 @@ ROOTFS=$1
 echo "Changing to software version desidered"
 sed -i s/3FE46398BGCB22/3FE45655BOCK99/g "$ROOTFS/usr/etc/buildinfo"
 ```
-Where `3FE46398BGCB22` is the current software version and `3FE45655BOCK99` the software version desidered
+Where `3FE46398BGCB22` is the current software version and `3FE45655BOCK99` the desired software version
 
 ## Getting/Setting OMCI hardware version (ME 256)
 
@@ -194,7 +194,7 @@ ritool set ICS 01
 
 ## Getting/Setting OMCI equipment ID (ME 257)
 
-This ONT is designed to save nokia equipment ID, specifically to put the equipment ID of a Nokia G-010G-Q we need:
+This ONT is designed to save Nokia's equipment ID, specifically to set the equipment ID of a Nokia G-010G-Q the following commands are to be used:
 
 ```sh
 ritool set CleiCode __________
@@ -214,12 +214,12 @@ Where `CleiCode` is the prefix and `Mnemonic` the postfix.
 
 ## Backup of all partition
 
-Make a backup of all partitions, an easy way is:
+Make a backup of all partitions, an easy way is to run these commands:
 - On the stick run:
 ```sh
 cat /proc/mtd
 ```
-- For each mtdX run in the lantiq shell:
+- For each mtdX run this command in the lantiq shell:
 ```sh
 cp /dev/mtdX /tmp
 ```
@@ -255,7 +255,7 @@ ifconfig eth0:1 192.168.1.10 netmask 255.255.255.0
 
 {% include alert.html content="It is recommended to enable serial access via TTL" alert="Info" icon="svg-info" color="blue" %}
 
-The following commands are used to flash a new rootfs to image1 and then boot to it
+The following commands are used to flash a new rootfs to image1 and then boot to it:
 ```sh
 mtd write /tmp/rootfs.bin image1
 update_env_flag 1

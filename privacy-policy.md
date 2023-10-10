@@ -43,7 +43,7 @@ hack-gpon.org follows a standard procedure of using log files. These files log v
 
 # Advertising Partners Privacy Policies
 
-There no exists Advertising Partners
+There are no Advertising Partners
 
 # Third Party Privacy Policies
 

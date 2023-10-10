@@ -68,13 +68,13 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 
 This stick supports dual boot. 
 
-`k0` and `r0` respectively contain the kernel and firmware of the first image, `k1` and `r1` the kernel and firmware of the second one
+`k0` and `r0` respectively contain kernel and firmware of the first image, while `k1` and `r1` contain kernel and firmware of the second one.
 
 {% include_relative ont-luna-sdk-useful-commands.md
     flash='/etc/scripts/flash'
     ploam='ascii'
     speedLan='123456'
-    customSpeedLanAlert='The defualt firmware does not allow modification of the `LAN_SDS_MODE` parameter. Is it necessary to use the modded firmware. Before editing the speed make sure your hardware supports it.'
+    customSpeedLanAlert='The default firmware does not allow modification of the `LAN_SDS_MODE` parameter. Using modded firmware is needed. Before editing the sync speed make sure your hardware supports it.'
     lastgoodHs=true
     flashSwVersion=true
 %}
@@ -110,7 +110,7 @@ tftp> q
 
 {% include alert.html content="Only the inactive image can be flashed, change sw_versionX and sw_commit X based on the bank you have flashed" alert="Info" icon="svg-info" color="blue" %}
 
-So mtd4/5 if you are on image1, mtd6/7 if you are on image0.
+Flash mtd4/5 if you are on image1, mtd6/7 if you are on image0.
 
 The following commands are used to flash a new rootfs to image1 and then boot to it
 ```sh

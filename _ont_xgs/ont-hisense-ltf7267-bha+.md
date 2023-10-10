@@ -33,7 +33,7 @@ parent: HiSense
 
 ## Serial
 
-The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. It's near the SFP header. TX, RX and ground pads need to be connected to a USB2TTL adapter supporting a logic level of 3.3V.
+The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. It's near the SFP header. TX, RX and ground pads need to be connected to a USB2TTL adapter supporting 3V3 logic.
 
 {% include image.html file="ont-hisense-ltf7267-bha+_inside.jpg" alt="HiSense LTF7267-BHA+ Internals" caption="HiSense LTF7267-BHA+ Internals" %}
 
@@ -61,11 +61,11 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 
 This ONT supports dual boot. 
 
-`kernel0` and `rootfs0` respectively contain the kernel and firmware of the first image, `kernel1` and `rootfs1` the kernel and the firmware of the second one
+`kernel0` and `rootfs0` respectively contain the kernel and firmware of the first image, `kernel1` and `rootfs1` the kernel and firmware of the second one.
 
 # XGS-PON ONU status
 
-To access Cortina Shell (needed to check OMCI stuff and XGSPON status) you can use the following command:
+To access Cortina Shell, needed to check OMCI settings and XGSPON status, use the following command:
 
 ```sh
 # app-cli
@@ -73,7 +73,7 @@ To access Cortina Shell (needed to check OMCI stuff and XGSPON status) you can u
 This console can also be reached by opening a telnet connection to `192.168.0.1:2233`
 
 
-## Check Activation Status (from app-cli and telnet\ssh session)
+## Checking Activation Status (from app-cli and telnet\ssh session)
 
 Open two telnet sessions, one to `192.168.0.1` and one to `192.168.0.1:2233`
 
@@ -111,7 +111,7 @@ You will see the following output on the first shell:
 [260436.544953] ^M
 ```
 
-## Show ONT configuration (from app-cli session)
+## Showing ONT configuration (from app-cli session)
 
 ```sh
 Cortina> enable
@@ -163,7 +163,7 @@ XGe Port idx 0 map to Port 6
 ```
 Please note that some of the above fields are decoded incorrectly, such as `sn` and `versionId`
 
-## Get information of the OLT vendor (from app-cli session)
+## Getting OLT vendor information (from app-cli session)
 
 ```sh
 Cortina> enable
@@ -234,7 +234,7 @@ Me: oltG
     No linked ME
 ```
 
-## Check current connection type and configuration (GEM Port+Mac Brige)
+## Checking current connection type and configuration (GEM Port+Mac Brige)
 
 ```sh
 Cortina> enable
@@ -261,7 +261,7 @@ GEM: 1025  | (BI, TCONT:0x101, allocId:1281)
              |--Eth   :0x0301
 ```
 
-## Check VLAN filter 
+## Checking VLAN filter 
 
 ```sh
 Cortina> enable
@@ -298,7 +298,7 @@ Link to PPTP eth: ------->instance 0x301
 # vi /config/scfg.txt
 ```
 
-Append lines below to the file and save it to change Serial Number
+Append the lines provided below to the file and save it to change the PON S/N:
 
 ```
 STRING CFG_ID_PON_VENDOR_ID = SMBS;
@@ -348,9 +348,9 @@ Reboot ONT to apply the change
 
 ### Normal procedure
 
-This ONT seems to be supporting a PLOAM password up to 288 bits in lenghth (36 ASCII characters, 72 Hex digits).
+This ONT seems to support PLOAM passwords up to 288 bits in lenghth (36 ASCII characters, 72 Hex digits).
 
-The PLOAM password is stored into 32 bit chunks (4 ASCII characters / 8 Hex digits), each byte swapped. 
+The PLOAM password is stored into 32 bit chunks (4 ASCII characters / 8 Hex digits), with each chunk being byte-swapped. 
 
 So, starting from the following PLOAM in ASCII format
 
@@ -364,7 +364,7 @@ It gets translated into the following HEX value:
 0x41314232433344344535
 ```
 
-Which is then split into the following blocks (the last block gets padded with 0 to reach 8 digits)
+Which is then split into the following blocks (the last block gets padded with 0 to reach 8 digits):
 
 ```
 BLOCK 0: 0x41314232
@@ -372,7 +372,7 @@ BLOCK 1: 0x43334434
 BLOCK 2: 0x45350000
 ```
 
-Each block is then byte swapped (i.e. read each sequence of two digits from right to left)
+Each block is then byte-swapped (i.e. read each sequence of two digits from right to left):
 
 ```
 BLOCK 0: 0x32423141
@@ -380,13 +380,13 @@ BLOCK 1: 0x34443343
 BLOCK 2: 0x00003545
 ```
 
-And then you can finally persist it by changing the configuration file
+And then you can finally make the change persistent by modifying the configuration file:
 
 ```sh
 # vi /config/scfg.txt
 ```
 
-Append lines below to the file and save it to change the PLOAM password
+Append the lines provided below to the file and save it to change the PLOAM password:
 
 ```
 INT             CFG_ID_PON_REGISTRATION_ID0                                         = 0x32423141;
@@ -413,7 +413,7 @@ CHAR-ARRAY      CFG_ID_LOID                                                     
 CHAR-ARRAY      CFG_ID_PASSWD                                                       = {0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0};
 ```
 
-Reboot ONT to apply the change
+Reboot ONT to apply the change.
 
 ## Setting OMCI software version (ME 7)
 
@@ -422,7 +422,7 @@ Reboot ONT to apply the change
 # fw_setenv img_version1 20220527052622
 ```
 
-Reboot ONT to apply the change
+Reboot ONT to apply the change.
 
 ## Setting OMCI hardware version (ME 256)
 
@@ -430,13 +430,13 @@ Reboot ONT to apply the change
 # vi /config/scfg.txt
 ```
 
-Append line below to the file and save it to change HWVER
+Append the line provided below to the file and save it to change HWVER:
 
 ```
 CHAR-ARRAY      CFG_ID_GPON_VERSION = {0x46,0x35,0x36,0x38, 0x34,0x53,0x5f,0x76, 0x31,0x00,0x00,0x00, 0x00,0x00}; ##GPON version string, default value is V1.0
 ```
 
-Reboot ONT to apply the change
+Reboot ONT to apply the change.
 
 ## Setting OMCI equipment ID (ME 257)
 
@@ -444,13 +444,13 @@ Reboot ONT to apply the change
 # vi /config/scfg.txt
 ```
 
-Append the line below to the file and save it to change EQID
+Append the line providede below to the file and save it to change the EQID:
 
 ```
 CHAR-ARRAY      CFG_ID_GPON_EQID = {0x46,0x49,0x42,0x45, 0x52,0x20,0x42,0x6f, 0x78,0x00,0x00,0x00, 0x00,0x00,0x00,0x00, 0x00,0x00,0x00,0x00}; ##GPON ME ONU2G equiment id value, default is saturn
 ```
 
-Reboot ONT to apply the change
+Reboot ONT to apply the change.
 
 # Advanced settings
 
@@ -460,13 +460,13 @@ Reboot ONT to apply the change
 # vi /config/scfg.txt
 ```
 
-Append lines below to the file and save it to change Serial Number
+Append the lines provided below to the file and save it to change Emulation Type:
 
 ```
 STRING          CFG_ID_PON_OLT_TYPE                             = ALCL; ##GPON OLT Vendor name, support ZTE,ADTRAN,ALCL,CALIX,SUMITOMO,CORTINA,HUAWEI
 ```
 
-Reboot ONT to apply the change
+Reboot ONT to apply the change.
 
 ## Changing OMCC Version
 
@@ -475,16 +475,16 @@ Reboot ONT to apply the change
 # vi /config/scfg.txt
 ```
 
-Append the line below to the file and save it to change Serial Number
+Append the line provided below to the file and save it to change OMCC Version:
 
 ```
 CHAR            CFG_ID_OMCC_VERSION                             = 0xB2;
 ```
 
-Reboot ONT to apply the change
+Reboot ONT to apply the change.
 
 
 # Known Bugs
-- `ALCL` OLT mode uses some static configurations on MIBs, so if your OLT has strict configuration checks it might not work properly
-- During initial tests the only currently working mode of the stick is `PPTP EthUni`
-- Stick can be configured also emulate `VEIP` mode(adding it to the scfg.txt file), but current firmware doesn't link correctly the XGBE interface, so no traffic is passing between LAN and PON interfaces
+- `ALCL` OLT mode uses some static configurations on MIBs, so if your OLT has strict configuration checks it might not work properly.
+- During initial tests the only currently working mode of the stick is `PPTP EthUni`.
+- Stick can be configured to also emulate `VEIP` mode (adding it to the scfg.txt file), but the current firmware doesn't link correctly the XGBE interface, so no traffic is passing between LAN and PON interfaces.

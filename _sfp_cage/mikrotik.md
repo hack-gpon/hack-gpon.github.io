@@ -21,7 +21,7 @@ layout: default
 
 ## Bridge Mode
 
-Bridge mode allows full HSGMII speed without any major issues and seems to work in a mixed mode too.
+Bridge mode allows full HSGMII speed without any major issues and seems to work in mixed mode too.
 
 Positive results in mixed mode with the following hardware:
 
@@ -36,7 +36,7 @@ In any case, the use of a DAC or MikroTik S+RJ10 is always recommended.
 
 Unfortunately the CPU will have a major impact on end performance with resulting downlink speed topping at ~700Mbps.
 
-Note that when using **Huawei MA5671A with right.com.cn firmware** on a Fastweb Italy IPoE connection you may run into some issues since no VLANs are used. The ONT responds to DHCP requests with **a 802.1Q tag for VLAN 0**, which should be properly handled by bridging properly the WAN as well. Other providers that do rely on VLANs such as 835 won't probably need to resort to the this workaround.
+Note that when using **Huawei MA5671A with right.com.cn firmware** on a Fastweb Italy IPoE connection you may run into some issues since no VLANs are used. The ONT responds to DHCP requests with **a 802.1Q tag for VLAN 0**, which should be handled by properly bridging the WAN as well. Other providers that do rely on VLANs such as 835 won't probably need to resort to the this workaround.
 
 - [2.5Gb Compatibility](https://github.com/Anime4000/RTL960x/blob/main/Docs/2.5Gb.md)
 - [CRS305 Fastweb Italy SFP Router Mode](https://pastebin.com/zRaidTx4)

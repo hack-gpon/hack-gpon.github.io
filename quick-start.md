@@ -11,11 +11,11 @@ The information on this page is taken from the GPON/EPON standard and informatio
 
 # Fiber Optic Connectors
 
-Numerous connectors, both standard and proprietary, are used in the field of telecommunication equipment, data lines, television and cable, and other industrial fields. 
+Numerous connectors, both standard and proprietary, are used in the field of telecommunications equipment, data lines, television and cable, and other industrial fields. 
 
-{% include image.html file="quick-start/optic-fiber-connectors.jpg"  alt="Some of the common connector" caption="Some of the common connector" %}
+{% include image.html file="quick-start/optic-fiber-connectors.jpg"  alt="Some of the most common connectors" caption="Some of the most common connectors" %}
 
-The main connector are:
+The main connectors are:
 - Bionic Connector
 - Standard Connector (SC)
 - Ferrule Core Connector (FC)
@@ -34,17 +34,17 @@ The main connector are:
 
 ## Polishing of Fiber Optic Connectors
 
-APC and UPC are different polishing of fiber optic ferrules, and are types of fiber patch cable connectors. Which determine the quality of the fiber optic lightwave transmission, mostly performed in optical return loss and insertion loss[^wolon].
+APC and UPC use different polishing methodologies of fiber optic ferrules, and they define types of fiber patch cable connectors. These determine the quality of the fiber optic lightwave transmission, mostly calculated in optical return loss and insertion loss[^wolon].
 
-{% include image.html file="quick-start/apc-upc.jpg" alt="Picture of APC and UPC" caption="Picture of APC and UPC" %}
+{% include image.html file="quick-start/apc-upc.jpg" alt="Picture of APC and UPC connections" caption="Picture of APC and UPC" %}
 
-Angled physical connectors are used in the ONT side to reduce back reflections. In case RF signal (1550nm) is introduced there will be two signals traveling in the downstream direction (1490nm + 1550nm), since RF systems are highly sensitive to reflections then the APC connectors reduce the return loss value[^zyxel].
+Angled physical connectors are used on the ONT's side to reduce back-reflections. In case RF signals (1550nm) are introduced, there will be two signals traveling in the downstream direction (1490nm + 1550nm); as RF systems are highly sensitive to reflections the APC connectors reduce the return loss value[^zyxel] and are preferred over UPC.
 
-Next generation systems are planned to operate in over 1500 nm wavelengths, converting APC connectors on the ONT side into planning to the future[^zyxel].
+Next generation systems are planned to operate in wavelengths over 1500nm, making APC connectors on the ONT's side something that will be more commonplace in the future[^zyxel].
 
 # PON Networks[^huawei]
 
-- PON is a kind of passive optical network featuring one-to-multiple-point architecture;
+- PON is a kind of passive optical network featuring point-to-multiple-point architecture;
 - PON is short for Passive Optical Network;
 - PON consists of Optical Line Terminal (OLT), Optical Network Unit (ONU) and Passive Optical Splitter.
 
@@ -53,20 +53,20 @@ Next generation systems are planned to operate in over 1500 nm wavelengths, conv
 - GPON: Gigabit-capable Passive Optical Networks;
 - XG(S)-GPON: 10 Gigabit-capable Passive Optical Networks[^standardxgpon];
 
-EPON and GPON are complementary and compete against each other in some aspects. So in the following contents, we'd like to make clear the EPON and GPON comparison [^fs].
+EPON and GPON are complementary and compete against each other under some aspects. So in the following contents, we'd like to render the EPON and GPON comparison more clear[^fs].
 
 ## Why GPON?
 
 - GPON is defined by ITU, International Telecomunication Union[^standardgpon].
-- GPON supports Triple - play service, providing competitive all-service solution[^huawei].
+- GPON supports Triple-play services, providing a competitive full-service solution[^huawei].
 - GPON supports high-bandwidth transmission to break down the bandwidth bottleneck of the access over twisted pair cables, so as to satisfy the requirements of high-bandwidth services, such as IPTV and live TV broadcasts[^huawei].
-- GPON supports the long-reach (up to 20 km) service coverage to overcome the obstacle of the access technology over twisted pair cables and reduce the network nodes[^huawei].
+- GPON supports long-reach (up to 20 km) service coverage to overcome the obstacle of the access technology over twisted pair cables and reduce the network nodes[^huawei].
 - With complete standards and high technical requirements, GPON supports integrated services in a good way[^huawei].
 - GPON is the choice of large carriers in the international market[^huawei].
-- GPON is high broadband efficiency, like 92%[^huawei].
-- GPON has integrated QoS handling that makes it better than EPON, because EPON QoS is high cost relative to GPON[^fs].
+- GPON is high broadband efficiency, around 92%[^huawei].
+- GPON has integrated QoS handling that makes it better than EPON, because QoS on EPON is higher cost relative to GPON[^fs].
 - GPON supports splitting up to 1:128, XG(S)-PON up to 1:256[^fs],[^standardxgpon].
-- Security: the data transmitted down to ONUs/ONTs are encrypted based on the AES mechanism[^telecom].
+- Security: the data transmitted to ONUs/ONTs is encrypted using the AES mechanism[^telecom].
 
 
 ## Why EPON?
@@ -75,20 +75,20 @@ EPON and GPON are complementary and compete against each other in some aspects. 
 - In EPON, both downstream and upstream line rates are 1.25 Gbps, but due to the 8B/10B line encoding, the bit rate for data transmission is 1 Gbps[^medium].
 - The use of EPON allows carriers to eliminate complex and expensive ATM and Sonet elements and to simplify their networks, thereby lowering costs to subscribers. Currently, GPON equipment costs are approximately 1.5 to 2 times higher than an EPON[^medium],[^fs].
 
-## Layer 
+## Layering model 
 
 Layering model and the associated management services are all mapped over Ethernet (directly or via IP). 
 
-- GPON support the encapsulation of other protocols besides Ethernet, such as ATM[^cisco],[^huawei],[^fs].
-- XG(S)-PON remove the support of ATM encapsulation[^telecom].
-- GPON use two layers of encapsulation are required. First, TDM and Ethernet frames are wrapped into GTC Encapsulation Method (GEM) frames, which have a GFP-like format (derived from Generic Frame Procedure ITU G.7401). Secondly, ATM and GEM frames are both encapsulated into GTC frames that are finally transported over the PON[^medium],[^fs].
-- The main purpose of the GEM frame is to provide a frame-oriented service, as an alternative to ATM, in order to efficiently accommodate Ethernet and TDM frames. With GEM, all traffic is mapped across the GPON network using a variant of SONET/SDH GFP. GEM supports a native transport of voice, video, and data without an added ATM or IP encapsulation layer. That's why GPON supports downstream rates as high as 2.5 Gbps and upstream rates from 155 Mbps to 2.5 Gbps. It is much faster than EPON[^medium]. 
+- GPON supports the encapsulation of other protocols besides Ethernet, such as ATM[^cisco],[^huawei],[^fs].
+- XG(S)-PON removes the support of ATM encapsulation[^telecom].
+- GPON uses two layers of encapsulation. First, TDM and Ethernet frames are wrapped into GTC Encapsulation Method (GEM) frames, which have a GFP-like format (derived from Generic Frame Procedure ITU G.7401). Secondly, ATM and GEM frames are both encapsulated into GTC frames that are finally transported over the PON[^medium],[^fs].
+- The main purpose of GEM frames is to provide a frame-oriented service, as an alternative to ATM, in order to efficiently accommodate Ethernet and TDM frames. With GEM, all traffic is mapped across the GPON network using a variant of SONET/SDH GFP. GEM supports a native transport of voice, video, and data without an added ATM or IP encapsulation layer. That's why GPON supports downstream rates as high as 2.5 Gbps and upstream rates from 155 Mbps to 2.5 Gbps. It is much faster than EPON[^medium]. 
 - However, EPON clearly offers a much simpler and more straightforward solution than GPON. The support of ATM and the double encapsulation of GPON serve no real benefit over a pure Ethernet transport scheme[^medium].
-- In EPON, Ethernet frames are carried in their native format on the PON, which greatly simplifies the layering model and the associated management. EPON employs a single layer that uses IP (Internet Protocol) to carry data, voice, and video[^medium],[^fs].
+- In EPON, Ethernet frames are carried in their native format over the PON, which greatly simplifies the layering model and the associated management. EPON employs a single layer that uses IP (Internet Protocol) to carry data, voice, and video[^medium],[^fs].
 
-{% include image.html file="epon_gpon.jpg"  alt="EPON vs GPON Layer" caption="EPON vs GPON Layer" %}
+{% include image.html file="epon_gpon.jpg"  alt="EPON vs GPON Layers" caption="EPON vs GPON Layer" %}
 
-## Comunication between ONT and OLT[^fs]
+## Comunication between ONTs and OLT[^fs]
 
 - EPON utilizes IEEE 802.3ah OAM messages for provisioning, fault isolation and performance monitoring in conjunction with SNMP (Simple Network Management Protocol) sets and gets through IETF (Internet Engineering Task Force) and MIBs (Management Information Bases). Additional control messages are MPCP GATEs/REPORTs for bandwidth granting.
 - In GPON there are three different types of control messages: OMCI (ONT Management and Control Interface), OAM, and PLOAM (Physical Layer OAM). Their roles are shown in the table below.
@@ -102,11 +102,11 @@ Layering model and the associated management services are all mapped over Ethern
 
 ## Wavelength[^huaweimultiplexing]
 
-PON adopts Wavelength Division Multiplexing (WDM) technology, facilitating bi-direction communication over a single fiber.
+PON adopts Wavelength Division Multiplexing (WDM) technology, facilitating bidirectional communication over a single fiber.
 
-To separate upstream/downstream signals of multiple users over a single fibre, PON adopts two multiplexing mechanism:
+To separate upstream/downstream signals of multiple users over a single fiber, PON adopts two multiplexing mechanism:
 - In downstream direction, data packets are transmitted in a broadcast manner;
-- In upstream direction, data packets are transmitted in a TDMA manner.
+- In upstream direction, data packets are transmitted usisng TDMA.
 
 {% include image.html file="quick-start/optical-fiber-transmission-windows.svg"  alt="Fiber Optic Operation Wavelength and Window" caption="Fiber Optic Operation Wavelength and Window" %}
 

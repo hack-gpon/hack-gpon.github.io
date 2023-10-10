@@ -30,8 +30,8 @@ parent: Nokia
 
 # Curiosity
 
-In the USA the ex BellSouth network deploys some ONTs labelled 'ALT Optics' that use a different wave length, 1310 nm for upstream and 1550 nm for downstream (instead of 1490 nm).
-This was done to make a quick conversion of a network with low fibre capacity, allowing the same fibre to be reused for multiple services: FTTH and FTTC/IFITL[^att_alt_optics_1],[^att_alt_optics_2],[^att_alt_optics_3].
+In the USA, the ex-BellSouth network deploys some ONTs with a 'ALT Optics' label that use a different wave length, 1310 nm for upstream and 1550 nm for downstream (instead of 1490 nm).
+This was done to be able to quickly convert a network with low fibre capacity while allowing the same fibre to be reused for multiple services contemporarily: both FTTH and FTTC/IFITL[^att_alt_optics_1],[^att_alt_optics_2],[^att_alt_optics_3].
 
 This is one of the few ONTs that has a variant that works with this wavelength. 
 

@@ -5,9 +5,9 @@ nav_order: 2
 layout: default
 ---
 
-A TTL UART adapter makes it possible to connect the stick's serial to a computer via a USB interface, which makes it easy to send commands on modern computers through serial emulation, just like the serial ports of the 1990s.
+A TTL UART adapter makes it possible to connect the stick's serial interface to a computer via a USB interface. This makes it easy to send commands on modern computers through serial emulation, just like the serial ports of the 1990s.
 
-Is widely used in the modding of SFPs, and in general of most embedded devices, since a serial port is always present in all of them and is also used to de-brick devices.
+These adapters are widely used in the modding of SFPs, and in general of most embedded devices, since a serial port is always present in all of them and is also used to de-brick such devices.
 
 TTL adapters can be easily found on Amazon, the most recommended one being:
 

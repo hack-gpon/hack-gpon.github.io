@@ -1,8 +1,8 @@
 ## Enabling telnet
 
-We need access to a specific shell and in order to get it we have to enable telnet. On the unit, the telnet server accepts connections but doesn't read any input, nor does it send anything.
+We need access to a specific shell and in order to get it enabling telnet is required. On the ONT, the telnet server accepts connections but doesn't read any input, nor does it send anything.
 
-To enable telnet we’ll use one of the web interface’s features: the configuration backup and restore page. The configuration can be downloaded as an XML, which contains a lot more options than the web interface and a couple of them can be modified to enable telnet access: under the `X_HW_CLITelnetAccess` node, set the `Access` attribute to `1` and in `AclServices`, `TELNETLanEnable` should also be set to `1`. I had to set both but your mileage may vary.
+To enable telnet the configuration backup/restore web UI page will be used. The configuration can be downloaded as an XML, which contains a lot more options than the web interface and a couple of them can be modified to enable telnet access: under the `X_HW_CLITelnetAccess` node, set the `Access` attribute to `1` and, in `AclServices`, `TELNETLanEnable` should also be set to `1`. Both might have to be set but your mileage may vary.
 
 It is possible that this won't work/has been fixed in more recent versions.
 
@@ -12,7 +12,7 @@ Now that this is done, the modified configuration file can be uploaded via the w
 
 # GPON ONU status
 
-## Get information of the OLT vendor
+## Getting information on the OLT vendor
 
 ```
 WAP>omcicmd mib show meid 131 instid 0

@@ -19,7 +19,7 @@ For general use, minishell does not allow any modifications and [Web root proced
 
 # GPON ONU status
 
-## Get the operational status of the ONU
+## Getting the operational status of the ONU
 
 ```sh
 onu ploamsg
@@ -33,12 +33,12 @@ Where `MIB_IDX` is the MIB ID and `ME_IN` is the ME instance number
 
 # GPON/OMCI settings
 
-{% include alert.html content="In this firmware, unlike the other ones, the data must be modified in a base64-encoded file. To simplify this, you can use the following web application." alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="In this firmware, unlike the other ones, all data must be modified in a base64-encoded file. To simplify this, you can use the following web application." alert="Info" icon="svg-info" color="blue" %}
 
 ## Web procedure
 
 
-1. Get `fw_printenv sfp_a2_info` and paste into the form
+1. Get `fw_printenv sfp_a2_info` and paste into the form:
 
 <div id="app">
     <vue-lantiq-eeprom type='eeprom-rooted-edit'></vue-lantiq-eeprom>
@@ -47,7 +47,7 @@ Where `MIB_IDX` is the MIB ID and `ME_IN` is the ME instance number
 <script src="https://cdn.jsdelivr.net/npm/vue3-sfc-loader"></script>
 <script src="/assets/js/vue-eeprom.js"></script>
 
-{% include alert.html content="Executing these commands requires a minimum of familiarity with `vim`. If you do not know `vim`, follow the commands precisely." alert="Danger" icon="svg-warning" color="red" %}
+{% include alert.html content="Executing these commands requires familiarity with `vim`. If you are not in any way familiar with `vim`, follow these commands precisely." alert="Danger" icon="svg-warning" color="red" %}
 
 {:style="counter-reset:none"}
 1. Copy the script's output to the clipboard 
@@ -82,7 +82,7 @@ AAAAAAAAAAJIV1RDESIzRP///////////////////wAAAAAAAAAAAAAAAAAA
 00000000000000024857544311223344ffffffffffffffffffffffffffffff0000000000000000000000000000
 ```
 
-The entire S/N, including the PON ID, is encoded first in hexadecimal and then in base64
+The entire S/N, including the PON ID, is first encoded in hexadecimal and then in base64
 
 3. Setting PLOAM Password
 
@@ -92,7 +92,7 @@ ffffffffffffffff00021437d77db7df7e37e77eb7ef7f37f77d0000000000000000000000000000
 //////////8AAhQ31323334353637383930AAAAAAAAAAAAAAAAAAAAAAAAA
 ```
 
-The entire PLOAM, is encoded first in hexadecimal and then in base64
+The entire PLOAM, is first encoded in hexadecimal and then in base64
 
 4. Setting MAC Address
 
@@ -132,7 +132,7 @@ The `link_status` variable tells the current speed
 | 4                                          | 1 Gbps / SGMII with auto-neg off   |
 | 5                                          | 2.5 Gbps / HSGMII with auto-neg on |
 
-To change the default lan mode value you can use `fw_setenv sgmii_mode`. The firmware already has the value 5 by default and it is generally not necessary to change it.
+To change the default lan mode value you can use `fw_setenv sgmii_mode`. The firmware is already set to 2.5G auto-negotiation, you shouldn't touch it.
 
 # Advanced settings
 

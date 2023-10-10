@@ -50,21 +50,21 @@ This ONT seems to support dual boot (notice partitions "ImageA" and "ImageB"), h
 ## Serial
 
 {% include image.html file="g-010g-q-serial-pinout.jpg"  alt="G-010G-Q " caption="G-010G-Q: serial pinout" %}
-You can easily communicate with the ONT using a TTL converter (for example the CH341A programmer in TTL mode) by connecting the converters' pins to the ONT following the pinout shown in the image above
+You can easily communicate with the ONT using a TTL converter (for example the CH341A programmer in TTL mode) by connecting the converters' pins to the ONT following the pinout shown in the image above.
 
 *You don't actually need the two VCC pins, just use TX/RX and GND*
 
 {% include alert.html content="The ONT's serial logic is 3V3." alert="Warning"  icon="svg-warning" color="red" %}
 
-Make sure the logic of your TTL converter is 3V3 too otherwise you might damage the ONT, in my case I wasn't sure whether the CH341A programmer used 3V3 logic for the TTL part so I set up a voltage divider made of 2 resistors between the TX pin and ground as shown in the image below.
+Make sure the logic of your TTL converter is 3V3 too, otherwise you might damage the ONT. To be sure 3V3 is being used, a voltage divider made of 2 resistors between the TX pin and ground as shown in the image below can be used.
 
 *Also make sure that your TTL converter RX pin voltage threshold is less than (or equal to) 3V3*
 
 {% include image.html file="g-010g-q-serial-voltage-divider.png"  alt="G-010G-Q " caption="G-010G-Q: simple serial level converter" %}
 
-Once you've done all that, you can use the TTY client you wish, such as PuTTY, set its baud rate to 115200 and open the connection, then you can start the ONT
+Once everything is ok, any TTY client, such as PuTTY, can be used to open the connection with its baud rate set to 115200. At this point, the ONT can be turned on.
 
-You'll see a shell-like prompt:
+A shell-like prompt will be visible:
 ```
 ONT>
 ```
