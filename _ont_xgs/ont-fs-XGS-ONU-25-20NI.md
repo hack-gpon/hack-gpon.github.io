@@ -58,7 +58,7 @@ By shorting these two points with solder, you can access the UART from SFP pins 
 | RX                    | pin #2                     |
 | GND                   | pin #10                    |
 
-{% include alert.html content="USB TTL adapter may not work due to insufficient power supply. If possible, obtain 3.3V from the power supply device instead of the USB TTL adapter." alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="USB TTL adapter may not work due to insufficient power supply. If possible, obtain 3.3V from a dedicated power supply instead of the USB TTL adapter." alert="Note"  icon="svg-info" color="blue" %}
 
 {% include image.html file="XGS-ONU-25-20NI/UART_SFP.png" alt="XGS-ONU-25-20NI UART Short point" caption="XGS-ONU-25-20NI UART Short point" %}
 
@@ -95,18 +95,18 @@ Available from `#ONT/system>ontver build` and `#ONT/system/shell>cat /etc/versio
 
 This ONT supports dual boot. 
 
-`kernel0` and `rootfs0` respectively contain the kernel and firmware of the first image, `kernel1` and `rootfs1` the kernel and the firmware of the second one.
+`kernel0` and `rootfs0` respectively contain the kernel and firmware of the first image, `kernel1` and `rootfs1` the kernel and firmware of the second one.
 
 # Useful files and binaries
 
 ## scfg.txt
 In the XGS-ONU-25-20NI ONT, the settings are loaded by four `scfg.txt` files.
-For rewriting settings, `/userdata/scfg.txt` and `/tmp/scfg.txt` are used.
+For overwriting settings, `/userdata/scfg.txt` and `/tmp/scfg.txt` are used.
 
 - `/config/default_scfg.txt`  (read only): Contains the manufacturer's default settings, which are read first at ONT startup and are the lowest priority settings.
 - `/config/scfg.txt`  (read only): Contains settings set by the firmware creator, which have higher priority than `default_scfg.txt` and will overwrite the settings if there is a conflict.
 - `/userdata/scfg.txt` (read/write): Contains settings set by the user or ISP. It has a higher priority than `/config/scfg.txt` and will overwrite the settings if there is a conflict. Can be edited and saved.
-- `/tmp/scfg.txt` (temp): It contains dynamically generated settings based on values stored on its custom ROM (mtd9, mtd10). Since they are generated on tmpfs and cannot be saved directly, they are rewritten via the `#ONT> system/misc` command on the ONT.
+- `/tmp/scfg.txt` (temp): It contains dynamically generated settings based on values stored on its custom ROM (mtd9, mtd10). Because they are generated on tmpfs and cannot be saved directly, they are rewritten via the `#ONT> system/misc` command on the ONT.
 
 The settings are overwritten and loaded at startup with the following priority:
 
@@ -124,36 +124,36 @@ To configure settings using the MISC command, execute the following command:
 
 ## Login and Enable
 
-This stick does not have a web GUI.
-To configure it, you must log in via `UART` or `Telnet`.
+This stick does not have a web UI.
+To configure it, you must log in via `UART` or `telnet`.
 
-{% include alert.html content="FS.com Stick XGS-ONU-25-20NI does not have PON S/N on the label. (The S/N field stamped on the label is FS.com internal S/N, not PON S/N). In order to get it, you can either ask an FS.com sales representative or check the boot log from the UART!" alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="FS.com Stick XGS-ONU-25-20NI does not have its PON S/N on the label: the S/N field stamped on the label is FS.com's internal S/N, not the PON S/N. In order to obtain the actual PON S/N, either ask an FS.com sales representative or check the boot log from the UART!" alert="Note"  icon="svg-info" color="blue" %}
 
 | User                     | Password (Enable Password)                                  |
 | ------------------------ | ----------------------------------------------------------- |
 | ONU GPON Serial Number   | 8 digit HMAC-MD5 based on Uppercase ONU GPON Serial Number  |
 
-You can use the following form to generate login credentials:
+Use the following form to generate login credentials:
 
 {% include cig_password_xgspon.html password_len="8" %}
 
-Or you can follow this external documentation on how to [emulate the ONT in QEMU](https://github.com/YuukiJapanTech/CA8271x), so use it at your own risk.
+Or follow this external documentation on how to [emulate the ONT in QEMU](https://github.com/YuukiJapanTech/CA8271x), use at your own risk.
 
 UART does not ask for a login, it is possible to get a root shell without knowing the password.
 
 ## Root procedure
-After logging in via `telnet` or `UART`, you will first get the MiniShell with user privileges.
+After logging in via `telnet` or `UART`, you will first access the MiniShell with user privileges:
 ```
 ONT>
 ```
 
-The root MiniShell can be obtained by executing the `enable` command on this MiniShell.
+The root MiniShell can be accessed by executing the `enable` command on this MiniShell:
 ```
 ONT> enable
 #ONT>
 ```
 
-You can then switch to the Linux root shell by executing the following command:
+Switching to the Linux root shell is possible by executing the following command:
 
 ```
 #ONT> system/shell
@@ -164,7 +164,7 @@ You can then switch to the Linux root shell by executing the following command:
 
 # GPON ONU status
 
-## Get the operational status of the ONU
+## Getting the operational status of the ONU
 Check the ONU Registration State with the following command:
 
 ```
@@ -199,8 +199,8 @@ Check the ONU operation state with the following command:
 #ONT>
 ```
 
-## Get information of the OLT vendor
-OLT information can be extracted from the MIB with the following command:
+## Getting OLT vendor information
+OLT information can be extracted from MIB 131 with the following command:
 
 ```
 #ONT>system/mib/show 131
@@ -222,11 +222,11 @@ You can browse the MIB with the following command:
 #ONT/system/mib> 
 ```
 
-### Show a list of MIBs supported by ONT
+### Showing a list of supported MIBs
 
 ```
 #ONT/system/mib> show
-This command prints out the content of a mib table.
+This command prints out the content of a MIB table.
 Usage: show CLASSID
 CLASSID:
       the class ID of the ME, defined in 983.2/984.4, currently
@@ -236,7 +236,7 @@ ClassID  Name            Desc
 etc...
 ```
 
-### Show a specific MIB
+### Showing a specific MIB
 For example, to display MIB 256 (Ont-g):
 
 ```
@@ -261,8 +261,8 @@ OntState                  = 1
 #ONT/system/mib>
 ```
 
-### Dump of a MIB
-Output a dump of mib to `/tmp/mibdump.txt`
+### Dumping a MIB
+Output a dump of MIB to `/tmp/mibdump.txt`
 ```
 #ONT/system/mib> dump
 MIB is saved to the file /tmp/mibdump.txt.
@@ -317,11 +317,11 @@ type            28
 
 
 # GPON/OMCI settings
-XGS-ONU-25-20NI ONT uses `scfg.txt` file and misc command for configuration.
+XGS-ONU-25-20NI ONT uses the `scfg.txt` file and misc command for configuration.
 
 ## Getting/Setting ONU GPON Serial Number
 This setting must be changed with the `misc` CLI option and the `eqsn set "<serialnumber>"` command.
-For example, if the SN is like `GPONabcd1234` (`47504f4eabcd1234`):
+For example, if the desired S/N is `GPONabcd1234` (`47504f4eabcd1234`):
 ```
 #ONT/system/misc> eqsn set "GPONabcd1234"
 ```
@@ -334,7 +334,7 @@ eqsn: GPONabcd1234
 
 ## Getting/Setting ONU GPON PLOAM password
 This setting must be changed with the `misc` CLI option and the `exeep_w8 "<password>"` command.
-For example, if the PLOAM password is like `0123456789`:
+For example, if the desired PLOAM password is `0123456789`:
 ```
 #ONT/system/misc> exeep_w8 "0123456789"
 ```
@@ -363,19 +363,19 @@ The `exeep_r8` command can also be used to retrieve the configured PLOAM passwor
 
 ## Getting/Setting ONU GPON LOID
 This setting must be changed in `scfg.txt`, using the key `CHAR-ARRAY CFG_ID_LOID`. 
-To modify LOID username we add the following line to `/userdata/scfg.txt`:
+To modify the LOID username, add the following line to `/userdata/scfg.txt`:
 ```
 CHAR-ARRAY CFG_ID_LOID = { 0xXX,0xXX,0xXX,0xXX, 0xXX,0xXX,0xXX,0xXX, 0xXX,0xXX,0xXX,0xXX, 0xXX,0xXX,0xXX,0xXX, 0xXX,0xXX,0xXX,0xXX, 0xXX,0xXX,0xXX,0xXX };
 ```
 
-For example, if the LOID is like `0123456`:
+For example, if the desired LOID is `0123456`:
 ```
 CHAR-ARRAY CFG_ID_LOID = { 0x30,0x31,0x32,0x33, 0x34,0x35,0x36,0x00, 0x00,0x00,0x00,0x00, 0x00,0x00,0x00,0x00, 0x00,0x00,0x00,0x00, 0x00,0x00,0x00,0x00 };
 ```
 
 ## Getting/Setting ONU GPON LOID password
 This setting must be changed with the `misc` CLI option and the `pon_passwd set <password>` command.
-For example, if the LOID password is like `0123456789`:
+For example, if the desired LOID password is `0123456789`:
 ```
 #ONT/system/misc> pon_passwd set 0123456789
 ```
@@ -388,7 +388,7 @@ eqsn: 01234567890000000000
 
 ## Getting/Setting OMCI hardware version (ME 256)
 This setting must be changed with the `misc` CLI option and the `eqvid set "<hwver>"` command.
-For example, if the hardware version is like `abc123`:
+For example, if the desired hardware version is `abc123`:
 ```
 #ONT/system/misc> eqvid set "abc123"
 ```
@@ -401,7 +401,7 @@ eqvid: abc123
 
 ## Getting/Setting OMCI vendor ID (ME 256)
 This setting must be changed with the `misc` CLI option and the `vendor set "<vendor>"` command.
-For example, if the vendor is like `GPON`:
+For example, if the desired vendor is `GPON`:
 ```
 #ONT/system/misc> vendor set "GPON"
 ```
@@ -435,13 +435,14 @@ Stick's busybox (Linux shell) supports netcat and TFTP, which allow to send and 
 # tftp -r remotefile.bin -g remotehost-ip
 ```
 
-## Backup of all partition
-To obtain a backup, use the `dd` command to save it on `/tmp`,
-or use the `cat` command to transfer it via netcat.
+## Backing up all partitions
+To obtain a backup, use the `dd` command to save it on `/tmp`: 
 ```
 # dd if=/dev/mtdX of=/tmp/mtdX.bin
 # tftp -l /tmp/mtdX.bin -r remotehost-ip
 ```
+
+Or use the `cat` command to transfer it via netcat:
 
 ```
 # cat /dev/mtdX | nc remotehost-ip 10000
@@ -456,13 +457,13 @@ When partition writing to the stick, use the flash command set.
 
 ## Setting management IP
 To change the management IP, set it with the `misc` CLI option and the `admin_ip set <ip>` command.
-For example, if the management IP is like `192.168.1.1`:
+For example, if the desired management IP is `192.168.1.1`:
 ```
 #ONT/system/misc> admin_ip set 192.168.1.1
 ```
 
 To change the management IP netmask, set it with the `misc` CLI option and the `admin_mask set <netmask>` command.
-For example, if the management IP mask is like `255.255.255.0`:
+For example, if the desired management IP mask is `255.255.255.0`:
 ```
 #ONT/system/misc> admin_mask set 255.255.255.0
 ```
@@ -481,7 +482,7 @@ ERROR: can't get kernel image!
 SATURN#
 ```
 
-Download stick's mtd dump from [mtd dump.](https://github.com/YuukiJapanTech/CA8271x/tree/main/mtd)
+Download the stick's mtd dump from [GitHub.](https://github.com/YuukiJapanTech/CA8271x/tree/main/mtd)
 
 Enable NAND with the following command:
 ```
@@ -505,7 +506,7 @@ SATURN# loadb 0x80000000
 Using Tera Term, send the Kernel image (mtd3 or mtd6) by kermit transfer.
 {% include image.html file="XGS-ONU-25-20NI/Stick_Rep.png" alt="XGS-ONU-25-20NI Repair" caption="XGS-ONU-25-20NI Repair" %}
 
-Erase NAND and write the transferred kernel.
+Erase the NAND and write the transferred kernel.
 ```
 SATURN# spi_nand erase 0x000000600000 0x600000
 SATURN# spi_nand erase 0x000003500000 0x600000
@@ -514,13 +515,13 @@ SATURN# spi_nand write 0x80000000 0x000003500000 0x600000
 ```
 
 Receive the file with the `loadb` command.
-and Using Tera Term, send the rootfs image (mtd4 or mtd7) by kermit transfer.
+Using Tera Term, send the rootfs image (mtd4 or mtd7) by kermit transfer.
 ```
 SATURN# loadb 0x81000000
 ## Ready for binary (kermit) download to 0x81000000 at 115200 bps...
 ```
 
-Erase NAND and write the transferred rootfs.
+Erase the NAND and write the transferred rootfs.
 ```
 SATURN# spi_nand erase 0x000000c00000 0x2800000
 SATURN# spi_nand erase 0x000003b00000 0x2800000
@@ -528,7 +529,7 @@ SATURN# spi_nand write 0x81000000 0x000000c00000 0x2800000
 SATURN# spi_nand write 0x81000000 0x000003b00000 0x2800000
 ```
 
-When the stick is turned back on, it will boot with the transferred kernel and rootfs.
+When the stick turns back on, it will boot with the transferred kernel and rootfs.
 
 
 # Known Bugs

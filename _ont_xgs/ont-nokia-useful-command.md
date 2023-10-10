@@ -1,6 +1,6 @@
 # GPON ONU status
 
-## Get the operational status of the ONU
+## Getting the operational status of the ONU
 ```sh
 #ONT>traffic
 #ONT/system>pon
@@ -73,7 +73,6 @@ pon_passwd: 31323334353637383900
 ```
 
 ## Setting OMCI software version (ME 7)
-The following must be typed from the standard linux shell:
 ```sh
 # echo SWVER=3FE49337AOCK80 > /mnt/rwdir/sys.cfg
 ```

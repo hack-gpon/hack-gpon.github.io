@@ -5,20 +5,20 @@ nav_order: 3
 layout: default
 ---
 
-The OMCI standard is defined in a way that suppliers can offer modular and incremental functionality to meet different levels of customer needs.
+The OMCI standard is defined in a way such that suppliers can offer modular and incremental functionality to meet different levels of customer needs.
 
-The standards [^G_988] and [^G_984_4] define the protocol needed to handle all the features of the PON specifications ([^G_984_1], [^G_987], [^G_9807_1], ...), as well as a number of services and functionalities.
+The [^G_988] and [^G_984_4] standards define the protocol needed to handle all the features of the PON specifications ([^G_984_1], [^G_987], [^G_9807_1], ...), as well as a number of services and functionalities.
 The standard was born with B-PON, then modified with G-PON and separated with XGS-PON. OMCI supports interoperability, yet it allows for optional components and future extensions.
 
 A protocol-independent MIB (Management Information Base) describes the exchange of information across OMCI [^G_988] and [^G_984_4]. This protocol is defined in terms of MEs. MEs are abstract representations of resources and services in an ONU. Only a small subset of the list of MEs is mandatory.
 
-The existence of other MEs depends on the architecture and feature set supported by the vendor [^G_988] and [^G_984_4]. Major ISPs and vendors have created their own extensions for MIBs [^att_open_omci], [^verizon_open_omci].
+The existence of other MEs depends on the architecture and feature set supported by the vendor's [^G_988] and [^G_984_4]. Major ISPs and vendors have created their own extensions for MIBs [^att_open_omci], [^verizon_open_omci].
 
-Each MEs consists of an entry ID and zero, one or more instances. Each instance has its own ID, usually starting at 0, but this is not always the case. Every instance has one or more attributes, each characterised by and ID, size and content.
+Each ME consists of an entry ID and zero, one or more instances. Each instance has its own ID, usually starting at 0, but this is not always the case. Every instance has one or more attributes, each characterised by ID, size and content.
 
-The various MEs are often interrelated. Clause 8.2 of [^G_988] and [^G_984_4] shows the relationship graphs between the various MEs.
+Various MEs are often interrelated. Clause 8.2 of [^G_988] and [^G_984_4] shows the relationship graphs between the various MEs.
 Clause 9 of [^G_988] and [^G_984_4] describes how the various MEs are created. There are formally 2 modes: a managed entity which is auto-instantiated by the ONT or a managed entity which is instantiated on explicit request by the OLT.
-In each of the 2 cases the various MEs can be: (R), (W). Only for ME auto-instantiated by the ONT there is also (R, W) while only for ME auto-instantiated by the OLT there are also (R, Set-by-create), (W, Set-by-create), or (R, W, Set-by-create).
+In each of the 2 cases the various MEs can be: (R), (W). Only for MEs auto-instantiated by the ONT there is also (R, W) while only for MEs auto-instantiated by the OLT there are also (R, Set-by-create), (W, Set-by-create), or (R, W, Set-by-create).
 
 | Mode                  | Description [^G_984_4]                                                                                                                                                                                                                                                                                                                                                    |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

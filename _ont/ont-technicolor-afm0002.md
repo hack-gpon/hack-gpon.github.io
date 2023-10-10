@@ -80,7 +80,7 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 
 This stick supports dual boot. 
 
-`k0` and `r0` respectively contain the kernel and firmware of the first image, `k1` and `r1` the kernel and firmware of the second one
+`k0` and `r0` respectively contain kernel and firmware of the first image, while `k1` and `r1` contain kernel and firmware of the second one.
 
 {% include_relative ont-luna-sdk-useful-commands.md 
 	flash='/etc/scripts/flash'
@@ -122,7 +122,7 @@ From the PC to the stick:
 
 {% include alert.html content="Only the inactive image can be flashed, change sw_versionX and sw_commit X based on the bank you have flashed" alert="Info" icon="svg-info" color="blue" %}
 
-So mtd4/5 if you are on image1, mtd6/7 if you are on image0.
+Flash mtd4/5 if you are on image1, mtd6/7 if you are on image0.
 
 The following commands are used to flash a new rootfs to image1 and then boot to it
 ```sh
@@ -291,7 +291,7 @@ esac
 
 ```                        
 ## Increasing the length of the software version from 13 to 14 characters
-`omci_app` has an hard-coded limit of 13 characters for the software version, which is too low. We can binary patch it to increase it to 14 (or more, if you dare/need)
+`omci_app` has a hard-coded limit of 13 characters for the software version, which is too low. We can binary patch it to increase it to 14 (or more, if you dare/need)
 ```
 JVhEWjAwNCUAAAAIAAgACAAAAAAAAAAAAAAAAAAAAABvbWNpX2FwcG9tY2lfYXBwH4sIAAAAAAAA
 AwMAAAAAAAAAAAAfiwgAAAAAAAADY2BoYGZgYFjh9Uq/aNcZQdXsOh3R5ktr/fd0sTEwcuTnJmfG
@@ -325,7 +325,7 @@ reboot
 ```
 1. The binary log will be placed inside: `/tmp/omcilog`
 2. You can convert it into a .pcap file using [omcilog2pcap](https://github.com/hack-gpon/omcilog2pcap)
-3. You can then open it with Wireshark by installing the OMCI plugin from [GitHub](https://github.com/hack-gpon/omci-wireshark-dissector)
+3. You can then open it with Wireshark by installing this OMCI plugin from [GitHub](https://github.com/hack-gpon/omci-wireshark-dissector)
    
 If you want to log everything since the stick boots, you can create a custom rootfs. Place the last command inside `etc/runomci.sh` as the last line of the file
 

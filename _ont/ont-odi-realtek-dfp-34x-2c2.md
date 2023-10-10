@@ -45,7 +45,7 @@ ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc admin@192.16
 ## List of firmwares and files
 - [Firmware repository by Anime4000](https://github.com/Anime4000/RTL960x/tree/main/Firmware/DFP-34X-2C2)
 
-The reccomended version are `M114_sfp_ODI_hybrid_220527.tar` or `M114_sfp_ODI_hybrid_220916.tar` because it has working VLAN translation.  
+The recommended versions are `M114_sfp_ODI_hybrid_220527.tar` or `M114_sfp_ODI_hybrid_220916.tar`, as these have working VLAN translation.  
 
 ## List of partitions
  
@@ -68,11 +68,11 @@ The reccomended version are `M114_sfp_ODI_hybrid_220527.tar` or `M114_sfp_ODI_hy
 
 This stick supports dual boot. 
 
-`k0` and `r0` respectively contain the kernel and firmware of the first image, while `k1` and `r1` respectively contain the kernel and the firmware of the second one
+`k0` and `r0` respectively contain kernel and firmware of the first image, while `k1` and `r1` contain kernel and firmware of the second one.
 
 ## Serial
 
-The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. It's near the SFP header. TX, RX and ground pads need to be connected to a USB2TTL adapter supporting a logic level of 3.3V.
+The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface: it's near the SFP header. TX, RX and ground pads need to be connected to a USB2TTL adapter supporting 3V3 logic.
 
 {% include image.html file="ont-odi-realtek-dfp-34x-2c2/ttl.jpg"  alt="DFP-34X-2C2 TTL Connection" caption="DFP-34X-2C2 TTL Connection" %}
 {% include image.html file="ont-odi-realtek-dfp-34x-2c2/ttl-2.jpg"  alt="DFP-34X-2C2 TTL Pin" caption="DFP-34X-2C2 TTL Pin" %}
@@ -82,7 +82,7 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 {% include_relative ont-luna-sdk-useful-commands.md 
     flash='flash'
     ploam='hex'
-    customSwVersionAlert="This needs the `OMCI_OLT_MODE` value to be set to 3 and firmware 220530 or 220923 modded by @stich86 or if you don't want to replace firmware to change software version, set `OMCI_OLT_MODE` value to `21`. This will force to use your own settings from the XML file, but this is a hack and causes sigsegv of `/bin/checkomci`."
+    customSwVersionAlert="This needs either `OMCI_OLT_MODE` to be set to 3 and firmware version 220530 or 220923 as modded by @stich86 or, if you don't want to replace the installed firmware, set `OMCI_OLT_MODE` value to `21`. This will force the stick to use your own settings from the XML file, but this is a hack and causes sigsegv of `/bin/checkomci`."
     speedLan='1234567'
     omciOLT21='true'
 %}

@@ -18,7 +18,7 @@ layout: default
 | Type     | Router        | Router                              |
 
 
-We know form the (Turris Forum)[https://forum.turris.cz/t/ma5671a-sfp-issues-on-turris-os-5-0-3/13443] that work:
+As the (Turris Forum)[https://forum.turris.cz/t/ma5671a-sfp-issues-on-turris-os-5-0-3/13443] reports, the following SFPs are known to work:
 - Huawei MA5671A (Original Firmware)
 - Nokia Alcatel G-010S-A (2.5 Gbps)
 - ODI ZTE DFP-34G-2C2 (1 Gbps)
@@ -29,7 +29,7 @@ We know form the (Turris Forum)[https://forum.turris.cz/t/ma5671a-sfp-issues-on-
 - Zisa OP151S[^2min]
 - Zyxel PMG3000-D20B[^2min]
 
-In ONT that expose the serial port on SFP it must be activated, otherwise the Turris sees a TX Fault.
+In ONTs that expose the serial port on SFP it must be activated, otherwise the Turris sees a TX Fault.
 
 
 <hr>

@@ -39,7 +39,7 @@ From the Zyxel shell you can move to a standard Linux shell using the `linuxshel
 
 ## Serial
 
-The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. It's near the SFP header. TX, RX and ground pads need to be connected to a USB2TTL adapter supporting a logic level of 3.3V.
+The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. It's near the SFP header. TX, RX and ground pads need to be connected to a USB2TTL adapter supporting 3V3 logic.
 
 {% include image.html file="tw236h-cdel-serial.jpg" alt="PMG3000-D20B Serial Pinout" caption="PMG3000-D20B Serial Pinout" %}
 
@@ -85,8 +85,8 @@ This stick supports dual boot, as visible from the presence of `ImageA` and `Ima
 
 # GPON ONU status
 
-## Get the operational status of the ONU
-To see the connection state use the following command:
+## Getting the operational status of the ONU
+To check the connection status, use the following command:
 ```
 linuxshell
 onu ploamsg
@@ -102,20 +102,20 @@ onu lanpsg 0
 ```
 
 ## Setting Speed LAN Mode
-{% include alert.html content="This command forces the speed to 2.5 and is instantaneous and permanent, use it only if your hardware supports HSGMII and be compatible (not to be used with Broadcom 57810s NIC)" alert="Note" icon="svg-warning" color="red" %}
+{% include alert.html content="This command forces the speed to 2.5 and is instantaneous and permanent, use it only if your hardware supports HSGMII and is compatible (not to be used with Broadcom 57810s NIC)" alert="Note" icon="svg-warning" color="red" %}
 ```sh
 hal
 set speed 2.5g mode full
 ```
 
 ## Querying a particular OMCI ME
-Query via OMCI ME Class Name
+Query via OMCI ME Class Name:
 ```sh
 omci
 show me classname OmciClassName (e.g Ont2g)
 ```
 
-Query via OMCI ME ID
+Query via OMCI ME ID:
 ```sh
 omci
 show me classid OmciClassId (e.g 7)
@@ -132,11 +132,11 @@ exit
 hal
 set sn ALCLf0f0f0f0
 ```
-Do not worry if you're missing one of the two commands, the change is still applied with just one of them.
+Do not worry if one of the two commands results missing, the change is still applied with just one of them.
 
 ## Setting ONU GPON PLOAM password
 {% include alert.html content="The PLOAM password is stored in the ASCII format." alert="Note"  icon="svg-info" color="blue" %}
-This can be done easily via web ui. If you prefer to do it via the shell use:
+This can be done easily via the web UI. To do it via the shell use:
 ```sh
 hal
 set password PLOAMPASS
@@ -166,7 +166,7 @@ ONTG_VER:0x463630303556362e300000000000
 The hardware version must be encoded in hex format and right padded to 28 characters with 0 (excluding the starting 0x) to avoid any spurious values. 
 
 ## Setting OMCI equipment ID (ME 257)
-{% include alert.html content="Model number must not be more than 20 characters long in total." alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="Model number must not be longer than 20 characters in total." alert="Note"  icon="svg-info" color="blue" %}
 ```sh
 manufactory
 set equipment id MYEQUIPMENTID
@@ -186,10 +186,10 @@ The equipment id must be encoded in hex format and right padded to 39 characters
 
 # Advanced settings
 
-## Reset Web Gui admin credentials
+## Resetting Web GUI admin credentials
 
-Sometimes, under certain circumstances, the Web Gui admin credentials might get changed from the default `admin`/`1234` combination.
-To restore the default combination you can try following [this method](https://github.com/xvzf/zyxel-gpon-sfp/issues/6#issuecomment-1065864650).
+Under certain circumstances, the Web GUI admin credentials might get changed from the default `admin`/`1234` combination.
+To restore the default combination try following [this method](https://github.com/xvzf/zyxel-gpon-sfp/issues/6#issuecomment-1065864650).
 
 ## Creating a new rootfs
 The stick has a tricky image packing method, fortunately it has been reverse engineered. A script to help you create a custom rootfs can be found here: [https://github.com/nanomad/zyxel-pmg-3000-mod-kit](https://github.com/nanomad/zyxel-pmg-3000-mod-kit)
@@ -197,25 +197,25 @@ The stick has a tricky image packing method, fortunately it has been reverse eng
 ## Flashing a new rootfs
 {% include alert.html content="All commands start from the twmanu shell." alert="Note"  icon="svg-info" color="blue" %}
 
-- Transfer the new mtd on the stick via tftp
+- Transfer the new mtd on the stick via tftp:
 ```
 linuxshell
 tftp -gr mtd2.mod.bin TFTP_SERVER_IP
 ```
 - Flash it on the standby partition. 
 You can use `system` and then `show actimage` to get the current active image. Check `/proc/mtd` for the right mtds. Usually:
-- if the currect active image is A the mtd in use is mtd2
-- If the current active image is B the mtd in use is mtd3
+- if the currect active image is A, mtd2 is in use
+- If the current active image is B, mtd3 is in use
 ```
 linuxshell
 mtd -e /dev/mtd2 write /tmp/mtd2.mod.bin /dev/mtd2
 ```
-- Switch to the new image
+- Switch to the new image:
 ```
 system
 set actimage a
 ```
-- Reboot the ONT
+- Reboot the ONT:
 ```
 system
 reboot
@@ -224,11 +224,11 @@ reboot
 # EEPROM (I2C slave simulated EEPROM)
 The Zyxel PMG3000-D20B does not have a physical EEPROM, the Falcon SOC emulates an EEPROM by exposing it on the I2C interface as required by the SFF-8472 specification.
 
-On the I2C interface there will be two memories of 256 bytes each at the addresses `1010000X (A0h)` and `1010001X (A2h)`.
+On the I2C interface, two memories of 256 bytes each will be available at the addresses `1010000X (A0h)` and `1010001X (A2h)`.
 
 The Zyxel PMG3000-D20B stores the content of the emulated EEPROM1 (A2h) in `/tmp/config/sfp_eeprom1` to restore it after a reboot.
 
-{% include alert.html content="The contents of EEPROM0 (A0h) are not stored anywhere and is regenerated at each boot" alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="The contents of EEPROM0 (A0h) are not stored anywhere and they're regenerated at each boot" alert="Info" icon="svg-info" color="blue" %}
 
 ## EEPROM0 layout
 
@@ -342,9 +342,9 @@ The Zyxel PMG3000-D20B stores the content of the emulated EEPROM1 (A2h) in `/tmp
 
 # Known Bugs
 - [Not working with Broadcom BCM57810S](https://github.com/xvzf/zyxel-gpon-sfp/issues/10)
-- Issue on IPv6 discovery. But we are not sure if is a edge case of a particular ISP or not
+- Issue on IPv6 discovery. Not certain whether it is a edge case of a particular ISP or not
 - [Some sticks have a custom password](https://github.com/xvzf/zyxel-gpon-sfp/issues/6)
-- On V2.5 the Lantiq SDK has been updated from 6.4.2 to 7.5.1, but breaking upload performance
+- On V2.5 the Lantiq SDK has been updated from 6.4.2 to 7.5.1, breaking upload performance
 
 # Miscellaneous Links
 

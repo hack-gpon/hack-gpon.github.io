@@ -33,6 +33,6 @@ The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be acc
 {% include_relative ont-luna-sdk-useful-commands.md 
     ploam='ascii'
     flash='/etc/scripts/flash'
-    customSwVersionAlert='This needs the `OMCI_OLT_MODE` value to be set to `21`. This will force to use your own settings from the XML file, but this is a hack and causes sigsegv of `/bin/checkomci`.'
+    customSwVersionAlert='This needs the `OMCI_OLT_MODE` value to be set to `21`. This will force the stick to use your own settings from the XML file, but this is a hack and causes sigsegv of `/bin/checkomci`.'
     omciOLT21='true'
 %}

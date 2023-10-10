@@ -33,13 +33,13 @@ parent: VSOL
 
 - [Firmware repository by Anime4000](https://github.com/Anime4000/RTL960x/tree/main/Firmware/V2801F)
 
-The reccomended version are `V2801F_V1.9.0-220425.tar` because it has Modern WebGUI, 2.5GbE, patched `runlansds.sh`, `tftpd`, ...
+The recommended version is `V2801F_V1.9.0-220425.tar` because it has a modern WebGUI, 2.5GbE support, patched `runlansds.sh`, `tftpd` and more.
 
 {% include_relative ont-luna-sdk-useful-commands.md
     flash='flash'
     ploam='ascii'
     speedLan='123456'
-    customSpeedLanAlert='Please use recommended version `V2801F_V1.9.0-220425.tar`. With other firmware it is not guaranteed that `LAN_SDS_MODE` other than `1` will work. Before editing the speed make sure your hardware supports it.'
+    customSpeedLanAlert='Please use recommended version `V2801F_V1.9.0-220425.tar`. It is not guaranteed that any value for `LAN_SDS_MODE` other than `1` will work with other firmware versions. Before editing the sync speed make sure your hardware supports it.'
 %}
 
 # Known Bugs

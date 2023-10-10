@@ -120,7 +120,7 @@ For more info [XPONos partition layout](https://github.com/XPONos/linux_lantiq-f
 
 # Unlock the device
 
-{% include alert.html content=" The following commands concern version 6BA1896SPLQA42, to get the commands for version 6BA1896SPLQA41 please look at page [Carlito Firmware](/ont-huawei-ma5671a-carlito)." alert="Note" icon="svg-info" color="blu" %}
+{% include alert.html content="The following commands are to be used on version 6BA1896SPLQA42, to get the commands for version 6BA1896SPLQA41 please check the following page: [Carlito Firmware](/ont-huawei-ma5671a-carlito)." alert="Note" icon="svg-info" color="blu" %}
 
 
 ## Bootloader unlock from shell
@@ -137,13 +137,13 @@ fw_setenv preboot "gpio set 3;gpio input 2;gpio input 105;gpio input 106;gpio in
 
 If for some reason you are in the situation where you do not have a bootable firmware on your SFP stick you can do an emergency unlock via TTL serial.
 
-To perform the emergency unlock is necessary to have:
-- TTL-USB adapter
-- SFP adapter to connect the TTL-USB cables to the SFP stick
+To perform the emergency unlock, the following hardware is required:
+- TTL-USB adapter,
+- SFP adapter to connect the TTL-USB cables to the SFP stick.
 
-The electrical connections are the same as those of the Huawei MA5671A, see the [Huawei root guide](/ont-huawei-ma5671a-root-web) for accurate details on how to connect the TTL-USB to the SFP adapter.
+The electrical connections are the same as those of the Huawei MA5671A; see the [Huawei root guide](/ont-huawei-ma5671a-root-web) for accurate details on how to connect the TTL-USB to the SFP adapter.
 
-When you are ready with everything plugged in you need to press the button below. A window will open that will execute the emergency unlock.
+When you are ready with everything plugged in you need to press the button below. A window will open to execute the emergency unlock.
 
 {: .text-center .fs-6 }
 <button id="start-button" class="btn btn-blue" data-jtd-toggle="modal" data-jtd-target="#root-modal" disabled>Start emergency unlock!</button>
@@ -156,7 +156,7 @@ When you are ready with everything plugged in you need to press the button below
 
 # GPON ONU status
 
-## Get the operational status of the ONU
+## Getting the operational status of the ONU
 
 ```shell
 onu ploamsg
@@ -183,7 +183,7 @@ The `link_status` variable tells the current speed
 | 4                                          | 1 Gbps / SGMII with auto-neg off   |
 | 5                                          | 2.5 Gbps / HSGMII with auto-neg on |
 
-To change the default lan mode value you can use `fw_setenv sgmii_mode`. The firmware already has the value 5 by default and it is generally not necessary to change it.
+To change the default lan mode value you can use `fw_setenv sgmii_mode`. The firmware already has the value set to 5 by default and there should not be any need to change it.
 
 # GPON/OMCI settings
 
@@ -196,7 +196,7 @@ Or:
 sfp_i2c -i8 -s "ABCD12345678"
 ```
 
-## Checking ONU GPON Serial Number
+## Getting ONU GPON Serial Number
 ```sh
 fw_printenv | grep nSerial
 ```
@@ -231,7 +231,7 @@ sfp_i2c -i7 -s "YOUR_VENDOR_ID"
 sed 's/256 0 HWTC 0000000000000/256 0 HWTC YOUR_ONU_VERSION/' /rom/etc/mibs/data_1g_8q.ini > /etc/mibs/data_1g_8q.ini
 ```
 
-## Restore the default ONU hardware version (ME 256)
+## Restoring the default ONU hardware version (ME 256)
 ```sh
 cat /rom/etc/mibs/data_1g_8q.ini > /etc/mibs/data_1g_8q.ini
 ```
@@ -239,8 +239,8 @@ cat /rom/etc/mibs/data_1g_8q.ini > /etc/mibs/data_1g_8q.ini
 ## Setting OMCI software version (ME 7)
 {% include alert.html content="The patch below is only compatible with the firmware version `6BA1896SPLQA42`" alert="Info" icon="svg-info" color="blue" %}
 
-The image version normally couldn't be changed because it was hard-coded into the `/opt/lantiq/bin/omcid` binary, 
-so you need to then modify the binary with the following hex patch which removes the hardcoded version.
+The image version normally can't be changed because it is hard-coded into the `/opt/lantiq/bin/omcid` binary, 
+so the binary has to be modified with the following hex patch which removes the hardcoded version.
 
 ```
 < 000084c0: 9a43 931f f760 d840 9b64 f760 d864 1a00  .C...`.@.d.`.d..
@@ -264,17 +264,17 @@ Save it on your computer (not on the stick) as `omcid_patch.base64`, then run:
 base64 -d omcid_patch.base64 > omcid.bspatch
 bspatch <your_original_omcid> omcid omcid.bspatch
 ```
-{% include alert.html content="if you don't have bspatch installed, most distributions includes it in bsdiff package" alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="If you don't have bspatch installed, most distributions include it in the bsdiff package" alert="Info" icon="svg-info" color="blue" %}
 
 After patching the resulting patched `omcid` should have an md5 checksum of `525139425009c4138e92766645dad7d0`.
-If that also checks, go on making a backup copy of your original `omcid` on the stick.
+If that is also correct, continue by making a backup copy of your original `omcid` on the stick.
 
 ```sh
 cd /opt/lantiq/bin
 cp omcid omcid.original
 ```
 
-Now you have to use SCP to copy the modified `omcid` binary in `/opt/lantiq/bin/omcid`.
+Now, SCP has to be used to copy the modified `omcid` binary in `/opt/lantiq/bin/omcid`.
 Before restarting the stick and applying changes, make sure `omcid` has its execution bit set, then reboot the stick and change the image version with the following command:
 
 ```sh
@@ -282,30 +282,30 @@ chmod ugo+x /opt/lantiq/bin/omcid
 ```
 
 
-Is also a good time to set the image0/image1_version. Crash has reported if they are not set correctly before reboot.
+Is also a good time to set the image0/image1_version: crashes have been reported if they are not set correctly before reboot.
 ```sh
 fw_setenv image0_version YOUR_IMAGE0_VERSION
 fw_setenv image1_version YOUR_IMAGE1_VERSION
 ```
 
-Now you can restart the stick.
-{% include alert.html content="Be aware that sometimes `omcid` can rewrite the two variables when runs in non patched state. After reboot, double check the values you put are still there." alert="Info" icon="svg-info" color="blue" %}
+Now the stick can be rebooted.
+{% include alert.html content="Be aware that sometimes `omcid` can rewrite the two variables when run in its non-patched state. After reboot, double check the set values are still correct." alert="Info" icon="svg-info" color="blue" %}
 
 # Advanced settings
 
 ## Setting `data_1g_8q_us1280_ds512.ini` OMCI MIB file for 2500 Mbps profiles
-{% include alert.html content="The patch below is only compatible with the firmware version `6BA1896SPLQA42`" alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="The patch provided below is only compatible with the firmware version `6BA1896SPLQA42`" alert="Info" icon="svg-info" color="blue" %}
 {% include alert.html content="If you need to set the ONU version remember that you will have to do it using the MIB file `/etc/mibs/data_1g_8q_us1280_ds512.ini` instead of `/etc/mibs/data_1g_8q.ini`" alert="Info" icon="svg-info" color="blue" %}
 
-The MIB file `data_1g_8q_us1280_ds512.ini` is very useful to avoid performance problems in situations where 2500 Mbps speed profiles are used, to enable it you need to run this command:
+The MIB file `data_1g_8q_us1280_ds512.ini` is very useful to avoid performance problems in situations where 2500 Mbps speed profiles are used. To enable it, run this command:
 ```sh
 fw_setenv mib_file data_1g_8q_us1280_ds512.ini
 ```
 
 ## Setting custom OMCI MIB file
-{% include alert.html content="If you need to set the ONU version remember that you will have to do it using your custom MIB file instead of `/etc/mibs/data_1g_8q.ini`" alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="If you need to set the ONU version, remember that you will have to do it using your custom MIB file instead of `/etc/mibs/data_1g_8q.ini`" alert="Info" icon="svg-info" color="blue" %}
 
-You have to copy the MIB file to /etc/mibs and then run this command:
+Copy the MIB file to /etc/mibs, then run this command:
 ```sh
 fw_setenv mib_file YOUR_MIB_FILENAME
 ```
@@ -330,11 +330,11 @@ reboot
 ```
 
 ## Disable RX_LOS status
-{% include alert.html content="The patch below is only compatible with the firmware version `6BA1896SPLQA42`" alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="The patch provided below is only compatible with the firmware version `6BA1896SPLQA42`" alert="Info" icon="svg-info" color="blue" %}
 
-Some switches/routers (e.g. Mikrotik) do not allow access to the magament interface without the fiber connected because the SFP reports RX_LOS status, it's possible to modify the `mod_optic.ko` driver to spoof non RX_LOS status by setting PIN 8 (RX_LOS) to be always low.
+Some switches/routers (e.g. Mikrotik) do not allow access to the magament interface without the fiber being connected because the SFP reports RX_LOS status It is possible to fix this by modifying the `mod_optic.ko` driver to spoof non RX_LOS status by setting PIN 8 (RX_LOS) to be always low.
 
-This is the change to be made in hex format:
+This is the change to be made, in hex format:
 
 ```
 < 00013740: 2404 0003 2405 0001 0c00 0000 ac43 0980  $...$........C..
@@ -356,28 +356,28 @@ Save it on your computer (not on the stick) as `mod_optic.base64`, then run:
 base64 -d mod_optic.base64 > mod_optic.bspatch
 bspatch <your_original_mod_optic.ko> mod_optic.ko mod_optic.bspatch
 ```
-{% include alert.html content="if you don't have bspatch installed, most distributions includes it in bsdiff package" alert="Info" icon="svg-info" color="blue" %}
+{% include alert.html content="If you don't have bspatch installed, most distributions include it in the bsdiff package" alert="Info" icon="svg-info" color="blue" %}
 
-After patching the resulting patched `mod_optic.ko` should have an md5 checksum of `e14a5a70b023873853afe920870f076e`.
-If that also checks, go on making a backup copy of your original `mod_optic.ko` on the stick.
+After patching the resulting `mod_optic.ko` should have an md5 checksum of `e14a5a70b023873853afe920870f076e`.
+If that is also correct, continue by making a backup copy of your original `mod_optic.ko` on the stick.
 
 ```sh
 cd /lib/modules/3.10.49/
 cp mod_optic.ko mod_optic.ko.original
 ```
 
-Now you have to use SCP to copy the modified `mod_optic.ko` kernel module in `/lib/modules/3.10.49/mod_optic.ko`.
+Now use SCP to copy the modified `mod_optic.ko` kernel module in `/lib/modules/3.10.49/mod_optic.ko`.
 
 ## TX Fault / Serial
 
-The stick stays in a perpetual "TX Fault" state since the same SFP pin is used for both serial and TX Fault signaling, if that causes you issues (normally it shouldn't) you can issue the commands below to disable it. Note that it will disable both the TX Fault signal and Serial on the stick after boot.
+The stick will remain in a perpetual "TX Fault" state as the same SFP pin is used for both serial and TX Fault signaling. If this causes you issues (normally it shouldn't), you can issue the commands below to disable it. Note that this will disable both the TX Fault signal and Serial on the stick after boot.
 
 ```sh
 fw_setenv asc0 1
 fw_setenv preboot "gpio set 3;gpio input 100;gpio input 105;gpio input 106;gpio input 107;gpio input 108"
 ```
 
-In case you need to re-enable it issue the following commands from the bootloader (FALCON)
+In case you need to re-enable it, issue the following commands from the bootloader (FALCON)
 
 ```sh
 FALCON => setenv asc0 0
@@ -401,11 +401,11 @@ strings /opt/lantiq/bin/omcid | grep compiled
 ```
 
 # EEPROM (I2C slave simulated EEPROM)
-The FS GPON-ONU-34-20BI does not have a physical EEPROM, the Falcon SOC emulates an EEPROM by exposing it on the I2C interface as required by the SFF-8472 specification.
+The FS GPON-ONU-34-20BI stick does not have a physical EEPROM, the Falcon SOC emulates an EEPROM by exposing it on the I2C interface as required by the SFF-8472 specification.
 
-On the I2C interface there will be two memories of 256 bytes each at the addresses `1010000X (A0h)` and `1010001X (A2h)`, however in reality the memory available from the emulated EEPROM will be 640 bytes each but only the first 256 bytes will be exposed in the I2C interface.
+On the I2C interface, two memories of 256 bytes each will be available at the addresses `1010000X (A0h)` and `1010001X (A2h)`, however the actual available memory from the emulated EEPROM will be 640 bytes each, but only the first 256 bytes will be exposed in the I2C interface.
 
-The FS GPON-ONU-34-20BI stores the content of the emulated EEPROM in U-Boot env variables to restore it after a reboot:
+The FS stick stores the content of the emulated EEPROM in U-Boot env variables to restore it after a reboot:
 
 - `EEPROM0 (A0h)` stored in U-Boot env variable `sfp_a0_low_128`
 - `EEPROM1 (A2h)` stored in U-Boot env variable `sfp_a2_info`

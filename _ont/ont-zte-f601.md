@@ -63,16 +63,16 @@ parent: ZTE
 
 
 This ONT supports dual boot, as visible from the presence of `kernel0` and `kernel1`, which contain the rootfs.
-The boot image can be swapped with the following command:
+The boot images can be swapped with the following command:
 
 ```sh
 upgradetest switchver X
 ```
 
-Where `X` can be `0/1` based on the image you want to boot.
+Where `X` can be `0/1`, based on the image you want to boot from.
 
 
-You can also clone the currently running image into other slot using this command:
+You can also clone the currently running image into the other slot using this command:
 
 ```sh
 syn_version
@@ -82,9 +82,9 @@ syn_version
 {% include alert.html content="Commands have been tested on V6/V7 HW rev. on TIM and OpenFiber firmwares" alert="Note"  icon="svg-info" color="blue" %}
 
 ## Enable Telnet
-{% include alert.html content="This is an external script ([ZTE Telnet enabled](https://github.com/douniwan5788/zte_modem_tools)), so use it at your own risk! Credential doesn't survive at reboot!" alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="This is an external script ([ZTE Telnet enabler](https://github.com/douniwan5788/zte_modem_tools)), use at your own risk! Credentials don't survive at reboot!" alert="Note"  icon="svg-info" color="blue" %}
 
-{% include alert.html content="For italian users, it only works on versions V6.0.10N40 (TIM) and V6.0.10P6N7 (OpenFiber)" alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="For italian users, the script above only works on versions V6.0.10N40 (TIM) and V6.0.10P6N7 (OpenFiber)" alert="Note"  icon="svg-info" color="blue" %}
 
 ```sh
 python3 zte_factroymode.py --user admin --pass admin --ip 192.168.1.1 --port 80 telnet open
@@ -119,7 +119,7 @@ Password: Eqb8X8Qt
 
 ## Enable console redirection
 
-To see omcidebug messages on Telnet you need to execute this command (just the first time of each connection):
+To see omcidebug messages on telnet, execute this command (just the first time of each connection):
 
 ```sh
 redir printf
@@ -127,21 +127,21 @@ redir printf
 
 # GPON ONU status
 
-## Get the operational status of the ONU
+## Getting the operational status of the ONU
 
-To see the connection state use the following command:
+To check the connection status, use the following command:
 ```
 gpontest -gstate
 ```
 `[gpontest] gpon state is [O5]` for O5 state
 
-## Get information of the OLT vendor
+## Getting  OLT vendor information
 
 ```sh
 sendcmd 132 omcidebug showmedata 131
 ```
 
-This command will print out the result like this one:
+This command will print the following output:
 
 ```sh
 ##################################
@@ -167,7 +167,7 @@ MIB INFO:
 sendcmd 132 omcidebug showmedata ID_MIB (eg. 7 for Firmware version)
 ```
 
-This command will print out a result like this one:
+This command will print the following output:
 
 ```sh
 
@@ -195,7 +195,7 @@ MIB INFO:
 
 ## Setting ONU GPON Serial Number
 
-{% include alert.html content="You have to change S/N and the VID. 2176 is for the VID (first 4 letters of the S/N) and 2177 is for the last 8 digits of the S/N" alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="Both S/N and VID have to be changed. 2176 is for the VID (first 4 letters of the S/N) and 2177 is for the last 8 digits of the S/N" alert="Note"  icon="svg-info" color="blue" %}
 ```sh
 setmac 1 2176 ZTEG
 setmac 1 2177 AABBCCDD
@@ -204,29 +204,29 @@ setmac 1 2177 AABBCCDD
 ## Setting ONU GPON PLOAM password
 
 {% include alert.html content="The PLOAM password is stored in the ASCII format." alert="Note"  icon="svg-info" color="blue" %}
-This can be done easily via web ui. If you prefer to do it via the shell use:
+This can be done easily via the web UI. To do it via the shell use:
 ```sh
 setmac 1 2181 1234567890
 setmac 1 2178 1234567890
 ```
 
-## Change ONU HW\SW Version and Permanent TELNET 
+## Changing ONU HW/SW Version and gaining persistent telnet access 
 
-{% include alert.html content="The only way to change HW\SWVer on this ONT is to modify the firmware, so do it at your own risk" alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="The only way to change HW/SWVer on this ONT is to modify the firmware, so do it at your own risk" alert="Note"  icon="svg-info" color="blue" %}
 {% include alert.html content="This procedure was only tested on TIM V6.0.10N40 and OF V6.0.10P6N7 firmwares" alert="Note"  icon="svg-info" color="blue" %}
-{% include alert.html content="This procedure work with `ZTE_Firmware_Mod.py` v1.0.0" alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="This procedure works with `ZTE_Firmware_Mod.py` v1.0.0" alert="Note"  icon="svg-info" color="blue" %}
 
 
 Needed tools:
 
 - Linux VM or WSL with Python >3.3
-- [ZTE Telnet enabled](https://github.com/douniwan5788/zte_modem_tools)
+- [ZTE Telnet enabler](https://github.com/douniwan5788/zte_modem_tools)
 - [ZTE Firmware Mod Script](http://github.com/hack-gpon/ZTE-firmware-mod)
 - TFTP server
 
-Download the script `ZTE_Firmware_Mod.py` and place in the same folder where you have the `kernel0` or `kernel1` mtd dump taken from step `**Backup ONT Paritions for HW\SW Version Mod**`.
+Download the script `ZTE_Firmware_Mod.py` and place in the same folder where you have the `kernel0` or `kernel1` mtd dump taken from step `**Backing up ONT partitions for HW/SW version mod**`.
 
-Run the script with the following parameters, you can use `-h` for help. In this example we are just replacing the firmware version with `V6.0.10N40`. You can put your own version here, maximium 15 characters. This parameter is mandatory:
+Run the script with the following parameters, use `-h` for help. In this example we are just replacing the firmware version with `V6.0.10N40`. Put your own version here, it has to be a maximum of 15 characters long. This parameter is mandatory:
 
 If you need to create a partition dump with a different name, please put the correct name instead of `kernel0`
 
@@ -234,7 +234,7 @@ If you need to create a partition dump with a different name, please put the cor
 python3 ZTE_Firmware_Mod.py kernel0 V6.0.10N40 fw_mod.bin
 ```
 
-The script will output the following messages, ending with instruction on how to install the created patched firmware:
+The script will output the following messages, ending with instruction on how to install the patched firmware that has been created:
 
 ```sh
 ---------------------------------------
@@ -283,13 +283,13 @@ Good luck!
 
 **Two last steps!**
 
-If you are swapping from TIM to OpenFiber Firmware, or viceversa, you have to run these two command before rebooting the ONT based on the firmware version:
+If you are swapping from TIM to OpenFiber firmware, or viceversa, run these two command before rebooting the ONT based on the firmware version:
 
 From **OpenFiber V6.0.10P6N7** to **TIM V6.0.10N40**: `upgradetest sfactoryconf 97`
 
 From **TIM V6.0.10N40** to **OpenFiber V6.0.10P6N7**: `upgradetest sfactoryconf 116`
 
-After the ONT is reboot and you can access again, you can enable TELNET on each reboot, to do this, run again `zte_factroymode.py` to open new session to it. When you are in, execute these commands:
+After the ONT has rebooted and you can access again, telnet can be enabled on each reboot. To do this, run again `zte_factroymode.py` to open new session to it. When you are in, execute these commands:
 
 ```sh
 sendcmd 1 DB set TelnetCfg 0 TS_Enable 1
@@ -306,7 +306,7 @@ sendcmd 1 DB set FWSC 0 FilterTarget 1
 sendcmd 1 DB saveasy
 ```
 
-Reboot the ONT and TELNET will be already opened and you can logon with `root\root` credentials.
+Reboot the ONT and a telnet interface will be available. You can login using `root\root` as credentials.
 
 **Just for OpenFiber firmware**
 
@@ -320,22 +320,22 @@ sendcmd 1 DB set DevAuthInfo 5 Level 0
 sendcmd 1 DB set DevAuthInfo 5 AppID 1
 sendcmd 1 DB saveasy
 ```
-Reboot the ONT and you can logon on the WebUI using `superadmin\superadmin` credentials with full unlocked menus.
+Reboot the ONT and you can login to the WebUI using `superadmin\superadmin` as credentials with full unlocked menus.
 
 # Advanced settings
 
-## Backup ONT Paritions for HW\SW Version Mod
+## Backing up ONT partitions for HW/SW version mod
 
-This step is suggested if you want to replace firmware on your ONT to spoof HW and SW version:
+This step is suggested if you want to replace firmware on the ONT to spoof HW and SW versions:
 
 Needed tools:
 
 - Linux VM or WSL with Python >3.3
-- [ZTE Telnet enabled](https://github.com/douniwan5788/zte_modem_tools)
+- [ZTE Telnet enabler](https://github.com/douniwan5788/zte_modem_tools)
 - [ZTE_Firmware_Mod](https://github.com/hack-gpon/ZTE-firmware-mod)
 - TFTP server
 
-First step is to login over telnet with `zte_factroymode.py` then execute ALL this command for a full backup:
+First step is to login over telnet with `zte_factroymode.py`, then execute ALL these commands for a full backup:
 
 **Go to `/tmp` folder to create tmp files**
 
@@ -349,13 +349,13 @@ cd /tmp
  cat /dev/mtd1 > uboot_config
 ```
 
-Copy the dumped firmware via TFTP to you VM or Windows machine with this commnad:
+Copy the dumped firmware via TFTP to you VM or Windows machine with this command:
 
 ```sh
 tftp -l uboot_config -r uboot_config -p 192.168.1.X (where X is the IP of your PC)
 ```
 
-Delete dump
+Delete dump:
 
 ```sh
  rm uboot_config
@@ -367,13 +367,13 @@ Delete dump
  cat /dev/mtd2 > kernel0
 ```
 
-Copy the dumped firmware via TFTP to you VM or Windows machine with this commnad:
+Copy the dumped firmware via TFTP to you VM or Windows machine with this command:
 
 ```sh
 tftp -l kernel0 -r kernel0 -p 192.168.1.X (where X is the IP of your PC)
 ```
 
-Delete dump
+Delete dump:
 
 ```sh
  rm kernel0
@@ -385,13 +385,13 @@ Delete dump
  cat /dev/mtd3 > kernel1
 ```
 
-Copy the dumped firmware via TFTP to you VM or Windows machine with this commnad:
+Copy the dumped firmware via TFTP to you VM or Windows machine with this command:
 
 ```sh
 tftp -l kernel1 -r kernel1 -p 192.168.1.X (where X is the IP of your PC)
 ```
 
-Delete dump
+Delete dump:
 
 ```sh
  rm kernel1
@@ -403,13 +403,13 @@ Delete dump
  cat /dev/mtd4 > others
 ```
 
-Copy the dumped firmware via TFTP to you VM or Windows machine with this commnad:
+Copy the dumped firmware via TFTP to you VM or Windows machine with this command:
 
 ```sh
 tftp -l others -r others -p 192.168.1.X (where X is the IP of your PC)
 ```
 
-Delete dump
+Delete dump:
 
 ```sh
  rm others
@@ -421,13 +421,13 @@ Delete dump
  cat /dev/mtd5 > param_tags
 ```
 
-Copy the dumped firmware via TFTP to you VM or Windows machine with this commnad:
+Copy the dumped firmware via TFTP to you VM or Windows machine with this command:
 
 ```sh
 tftp -l param_tags -r param_tags -p 192.168.1.X (where X is the IP of your PC)
 ```
 
-Delete dump
+Delete dump:
 
 ```sh
  rm param_tags
@@ -439,23 +439,23 @@ Delete dump
  cat /dev/mtd6 > usercfg
 ```
 
-Copy the dumped firmware via TFTP to you VM or Windows machine with this commnad:
+Copy the dumped firmware via TFTP to you VM or Windows machine with this command:
 
 ```sh
 tftp -l usercfg -r usercfg -p 192.168.1.X (where X is the IP of your PC)
 ```
 
-Delete dump
+Delete dump:
 
 ```sh
  rm usercfg
 ```
 
-## Change region code
+## Changing region code
 
-{% include alert.html content="Looks like TIM and OF firmwares work only with their stock factory conf, so 97 or 116, otherwise no PPPoE" alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="Be aware that changing the region code may break features such as PPPoE depending on your ISP" alert="Note"  icon="svg-info" color="blue" %}
 
-ZTE has created various region codes that load default valuse based on the local ISP. This configuration can be changed using this command:
+ZTE has created various region codes that load default values based on the local ISP. This configuration can be changed using this command:
 
 ```sh
 upgradetest sfactoryconf X
@@ -487,11 +487,11 @@ Where X is the number of supported regioncode into file `/etc/init.d/regioncode`
 ```
 
 # Random notes
-- F601v6/v7 read the software version exposed thru gpon_omci deamon from each kernel partition's header, so only way to spoof this parameter is to change the version in the header and recalculate CRC, otherwise bootloader refuse to load image
-- F601v6 from TIM line use HWVer `VDF`, this can be changed back to `V6.0` issuing this command on telnet session: `setmac 1 32770 3`
+- Both F601v6 and F601v7 read the software version exposed through the gpon_omci deamon from each kernel partition header, so the only way to spoof this parameter is to change the version in the header and recalculate CRC, otherwise the bootloader will refuse to load the image.
+- TIM's F601v6s use HWVer `VDF`, this can be changed back to `V6.0` issuing this command via telnet: `setmac 1 32770 3`
 - The F601v7 is mounted 'upside down' to save on waveguides, the LEDs would be on the bottom of the PCB, so it would have to be turned upside down to make it cooler...
-- The F601v6 turns on and runs even with 9V input
-- The F601v7 turns on and runs even with 5V input
+- The F601v6 turns on and runs even with 9V input.
+- The F601v7 turns on and runs even with 5V input.
 
 # Miscellaneous Links
 
@@ -501,7 +501,7 @@ Where X is the number of supported regioncode into file `/etc/init.d/regioncode`
 - [ZTE Telnet enabled](https://github.com/douniwan5788/zte_modem_tools)
 - [ZTE Firmware Mod Script](http://github.com/hack-gpon/ZTE-firmware-mod)
 
-# Theardown and other photos
+# Teardown and other photos
 
 ## HW V6.0
 
@@ -529,5 +529,5 @@ Where X is the number of supported regioncode into file `/etc/init.d/regioncode`
 
 ---
 
-[^1]: If you flash a modified firmware (only HWVer V6.0 at the moment), you can permanent enable TELNET to avoid run each time the `zte_factory.py` script.
-[^2]: Credentials are random generated by zte_factroymode.py, don't survive at reboot
+[^1]: If you flash a modified firmware (only HWVer V6.0 at the moment), you can permanently enable telnet to avoid running the `zte_factory.py` script each time.
+[^2]: Credentials are randomly generated by zte_factroymode.py, they are not persistent and will change at reboot.

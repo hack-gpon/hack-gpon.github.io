@@ -5,8 +5,8 @@ nav_order: 3
 layout: default
 ---
 
-In optical-electrical conversion, special components called TOSA (Transmitter Optical Sub Assembly) and ROSA (Receiver Optical Sub Assembly) are used to convert the signal.
-They are responsible for translating the optical signal into a corresponding electrical signal or vice versa, which inputs or outputs symbols corresponding to the optical values. These values, which we refer to as unprocessed or RAW values for simplicity, are not standard signals and must be converted into standard signals[^huawei].
+In optical-electrical conversions, special components called TOSA (Transmitter Optical Sub Assembly) and ROSA (Receiver Optical Sub Assembly) are used to convert the signal.
+They are responsible for translating the optical signal into a corresponding electrical signal and viceversa, which inputs or outputs symbols corresponding to the optical values. These values, which we refer to as unprocessed or RAW values for simplicity, are not standard signals and must be converted into standard signals[^huawei].
 
 TOSA and ROSA are essential components in the uni-directional transceivers which transmit on one fiber optic strand and receive on the other fiber optic strand. 
 

@@ -41,10 +41,10 @@ Once you access the stick via ssh you will be presented with a second tier login
 
 # GPON/OMCI settings
 
-{% include alert.html content="all commands start from the twmanu shell." alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="All commands start from the twmanu shell." alert="Note"  icon="svg-info" color="blue" %}
 
 ## Setting ONU GPON Serial Number
-{% include alert.html content="the S/N is stored in the ASCII format." alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="The S/N is stored in the ASCII format." alert="Note"  icon="svg-info" color="blue" %}
 
 ```sh
 manufactory
@@ -56,9 +56,9 @@ set sn ALCLf0f0f0f0
 
 ## Setting ONU GPON PLOAM password
 
-{% include alert.html content="the PLOAM is stored in the ASCII format." alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="The PLOAM password is stored in the ASCII format." alert="Note"  icon="svg-info" color="blue" %}
 
-This can be done easily via web ui. If you prefer to do it via the shell use:
+This can be done easily via the web UI. If you prefer to do it via the shell use:
 ```sh
 manufactory
 set password 1234567899

@@ -17,7 +17,7 @@
 
 # GPON ONU status
 
-## Get the operational status of the ONU
+## Getting the operational status of the ONU
 
 ```sh
 diag gpon get onu-state
@@ -69,7 +69,7 @@ GPON_SN=TMBB00000000
 ## Getting/Setting ONU GPON PLOAM password
 {% if include.ploam == 'asciiAndHex' %}
 
-{% include alert.html content="The ploam can be saved in either ASCII or HEX format, without any 0x or separators" alert="Note" icon="svg-info" color="blue" %}
+{% include alert.html content="The PLOAM password can be saved in either ASCII or HEX format, without any 0x or separators" alert="Note" icon="svg-info" color="blue" %}
 
 ```sh
 # {{ include.flash }} get GPON_PLOAM_PASSWD
@@ -180,13 +180,13 @@ OMCI_OLT_MODE=1
 
 | Value | Note            | OMCI Information                                                                                       |
 | ----- | --------------- | ------------------------------------------------------------------------------------------------------ |
-| 0     | Default Mode    | Stock, some value are cannot be change                                                                 |
+| 0     | Default Mode    | Stock setting, some values cannot be changed                                                           |
 | 1     | Huawei OLT Mode | Huawei MA5671a                                                                                         |
 | 2     | ZTE OLT Mode    | ZTE                                                                                                    |
 | 3     | Customized Mode | Custom Software/Hardware Version, OMCC, etc...                                                         |{% if include.omciOLT21 %}
 | 21    | Owerflow Mode   | Custom Software/Hardware Version, OMCC, etc... (this is a hack and causes sigsegv of `/bin/checkomci`) |{% endif %}
 
-Some Fiber Vendor/Wholesale/ISP have explicit LAN Port Number provisioning or proprietary OMCI that ONT Stick cant not understand, this will make ONT Stick reply OK whatever OMCI OLT throw at. 
+Some vendors/wholesale providers/ISPs have explicit LAN Port Number provisioning or proprietary OMCI that the stick cannot understand, this will make the stick reply OK to whatever the OLT sends it via OMCI. 
 
 `0` = Disable, `1` = Enable, Default is 0
 

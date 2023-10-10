@@ -1,7 +1,7 @@
 ---
 title: GPON OMCI VLAN Table parser
 has_children: false
-description: Tool for parse the GPON OMCI VLAN Table (ME 171)
+description: Tool for parsing the GPON OMCI VLAN Table (ME 171)
 layout: default
 ---
 
@@ -11,7 +11,7 @@ layout: default
         <input type="text" class="form-control" placeholder="VLAN TABLE in HEX" name="vlan-table-hex" id="vlan-table-hex" required>
         <label for="vlan-table-hex">VLAN TABLE in HEX</label>
         <div class="invalid-feedback">
-            Please provide a valid input text.
+            Please provide a valid text input.
         </div>
     </div>
     <div class="mb-3">

@@ -22,7 +22,7 @@ parent: Huawei
 | IP address   | 192.168.100.1                                                                        |
 | Web Gui      | ✅ user `root`, password `admin` or `adminHW` and user `Epadmin`, password `adminEp` |
 | SSH          |                                                                                      |
-| Telnet       | After Enabling user `root`, password `admin` or `adminHW`                            |
+| Telnet       | After enabling, user `root`, password `admin` or `adminHW`                            |
 | Serial       |                                                                                      |
 | Form Factor  | ONT                                                                                  |
 
