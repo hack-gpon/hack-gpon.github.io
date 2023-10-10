@@ -196,7 +196,7 @@ Or:
 sfp_i2c -i8 -s "ABCD12345678"
 ```
 
-## Querying ONU GPON Serial Number
+## Getting ONU GPON Serial Number
 ```sh
 fw_printenv | grep nSerial
 ```
