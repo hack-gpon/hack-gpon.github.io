@@ -40,9 +40,11 @@ parent: Nokia
 | mtd2 | 00002000 | 00001000  | "ImageA" |
 | mtd3 | 0003c000 | 00001000  | "ImageB" |
 
+
 ## Serial
 
-The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface.
+The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. To accept TX line commands, the GND of the TTL adapter should be attached to the ONT’s shield like the below photo:
+{% include image.html file="g-010g-r_serial_pinouts.jpg"  alt="Nokia G-010G-R Ports" caption="Nokia G-010G-R Ports" %}
 
 {% include_relative ont-nokia-use.md %}
 
