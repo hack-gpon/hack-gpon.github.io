@@ -43,8 +43,8 @@ parent: Nokia
 
 ## Serial
 
-The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. To accept TX line commands, the GND of the TTL adapter should be attached to the ONT’s shield:
-![g-010g-r_ttl](https://github.com/hack-gpon/hack-gpon.github.io/assets/11067300/5d069f60-d84b-4691-a352-0cf3f95b6b95)
+The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. To accept TX line commands, the GND of the TTL adapter should be attached to the ONT’s shield like the below photo:
+{% include image.html file="g-010g-r_serial_pinouts.jpg"  alt="Nokia G-010G-R Ports" caption="Nokia G-010G-R Ports" %}
 
 {% include_relative ont-nokia-use.md %}
 
