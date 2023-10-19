@@ -224,9 +224,9 @@ The following repo contains a proper example: [EX5601-T0 fixed SFP link git repo
 
 {% include alert.html content="It is highly recommended to use the OpenWrt official builds instead of this fork because the latter is not updated that often, still if you want to use the SFP you can insert it into a media converter and use the 2.5Gbe RJ45 port with the official build." alert="Info" icon="svg-info" color="blue" %}
 
-Here is a flashable bin file based on OpenWrt 5.15.114 with the mod to swap SFP/RJ45. This `sysupgrade.bin` already contains the zyfwinfo file for flashing with zloader.
+Here is a flashable bin file based on OpenWrt v23.05.0 Stable with the mod to swap SFP/RJ45. This `sysupgrade.bin` already contains the zyfwinfo file for flashing with zloader.
 
-[EX5601-T0_Openwrt5.15.114_fixedlink.zip](https://mega.nz/file/HIpUkISQ#uc-2-OQxQWW34o7zcaKmhmEpaq6yPZtsA1cdG9tIB8c)
+[EX5601-T0_Openwrt-v23.05.0-stable_fixedlink](https://mega.nz/file/acgy1I7b#oZ4twW1lN7ujGh0lp4bk68I8zczCscJq0vSSVcv5cXQ)
 
 # Miscellaneous Links
 
