@@ -1,5 +1,5 @@
 ---
-title: Turris Router
+title: Turris
 has_children: false
 layout: default
 ---
