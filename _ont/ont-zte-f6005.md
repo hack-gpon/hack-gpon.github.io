@@ -171,7 +171,7 @@ After these steps, power-cycle ONT and login via TELNET with `root\admin` creden
 
 # Known Bugs
 
-The buffer size of the hardware is suboptimal is suboptimal: because of this the ONT is unable to work at full speed during uploads if the server is geographically, and/or latency-wise, far. There are no known problems if there is only one person on the GPON tree. 
+The buffer size of the hardware is suboptimal: because of this the ONT is unable to work at full speed during uploads if the server is geographically and/or latency-wise far. There are no known problems if there is only one subscriber on the GPON tree. 
 In versions V6.0.10N14 and V6.0.10P2N02 this problem is felt more with newer firmware as in the new versions (V6.0.10N20, V6.0.10P2N18, V6.0.10P2N19), an attempt is made to avoid buffer filling by means of pause frames. Not all routers support pause frames and some may still suffer from problems with the latest updates.
 
 In version V6.0.10P2N18, problems were found in download speeds with 1 Gbps links.
