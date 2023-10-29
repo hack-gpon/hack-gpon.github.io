@@ -106,7 +106,7 @@ PON adopts Wavelength Division Multiplexing (WDM) technology, facilitating bidir
 
 To separate upstream/downstream signals of multiple users over a single fiber, PON adopts two multiplexing mechanism:
 - In downstream direction, data packets are transmitted in a broadcast manner;
-- In upstream direction, data packets are transmitted usisng TDMA.
+- In upstream direction, data packets are transmitted using TDMA.
 
 {% include image.html file="quick-start/optical-fiber-transmission-windows.svg"  alt="Fiber Optic Operation Wavelength and Window" caption="Fiber Optic Operation Wavelength and Window" %}
 
