@@ -6,6 +6,7 @@ parent: ZTE
 ---
 
 # Hardware Specifications
+
 |              |                                   |
 | ------------ | --------------------------------- |
 | Vendor/Brand | ZTE                               |
