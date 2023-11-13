@@ -45,7 +45,7 @@ The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be acc
 - V6.0.10P2N18 (OpenFiber)
 - V6.0.10P2N19 (OpenFiber)
 
-{% include_relative ont-nokia-use.md disableEnablePassword %}
+{% include_relative ont-nokia-use.md disableEnablePassword=true %}
 
 {% include_relative ont-nokia-useful-command.md %}
 
