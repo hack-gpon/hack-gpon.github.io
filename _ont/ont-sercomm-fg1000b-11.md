@@ -21,7 +21,7 @@ parent: Sercomm
 | Load addr       | 0x80000                |
 | 2.5GBaseT       | Yes                    |
 | PHY Ethernet    | RTL8221B               |
-| Optics          | SC/APC                 |
+| Optics          | LC/APC                 |
 | IP address      | 192.168.100.1/24       |
 | Web Gui         | ✅, no login needed    |
 | SSH             | No                     |
