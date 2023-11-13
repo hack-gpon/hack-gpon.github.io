@@ -28,13 +28,9 @@ parent: CIG
 {% include image.html file="cig/cig-1.jpg" alt="CIG G-97CP Unidata" caption="CIG G-97CP Unidata <a href='https://forum.fibra.click/u/papin'>@papin</a>" %} 
 {% include image.html file="cig/cig-2.jpg" alt="CIG G-97CP Unidata" caption="CIG G-97CP Unidata <a href='https://forum.fibra.click/u/papin'>@papin</a>" %}
 
-## Enable password
+{% include_relative ont-nokia-use.md username="ont" alertEnablePassword="The following enable password is used to enter GponCLI via serial connection in in firmware where it is not disabled." %}
 
-{% include alert.html content="The following enable password is used to enter GponCLI via Serial and SSH in Unidata's models." alert="Note" icon="svg-info" color="blue" %}
-
-You can use this tool to generate the enable password:
-
-{% include cig_password.html username="ont" %}
+{% include_relative ont-nokia-useful-command.md %}
 
 # Note
 
