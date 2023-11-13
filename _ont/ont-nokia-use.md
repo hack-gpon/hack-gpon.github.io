@@ -1,4 +1,8 @@
 # Usage
+
+{% include alert.html content=include.alertUsage alert="Note" icon="svg-info" color="blue" %}
+
+
 {% unless include.disableEnablePassword==true %}
 ## Login and enable
 
