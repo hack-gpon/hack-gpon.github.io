@@ -1,5 +1,5 @@
 # Usage
-{% if !include.disableEnablePassword %}
+{% unless include.disableEnablePassword==true %}
 ## Login and enable
 
 {% if include.alertEnablePassword  %}
@@ -19,7 +19,7 @@ The enable password can be generated using the following form:
 
 {% include cig_password.html username=include.username %}
 
-{% endif %}
+{% endunless  %}
 
 # Accessing Full Shell
 
