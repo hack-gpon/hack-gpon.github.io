@@ -55,7 +55,7 @@ The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be acc
 
 {% include alert.html content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note"  icon="svg-warning" color="yellow" %}
 
-{% include_relative ont-nokia-use.md %}
+{% include_relative ont-nokia-use.md username="ONTUSER" %}
 
 {% include_relative ont-nokia-useful-command.md %}
 

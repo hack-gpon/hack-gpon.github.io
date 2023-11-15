@@ -45,24 +45,14 @@ The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be acc
 - V6.0.10P2N18 (OpenFiber)
 - V6.0.10P2N19 (OpenFiber)
 
-# Usage
-
-{% include_relative ont-nokia-use.md %}
+{% include_relative ont-nokia-use.md disableEnablePassword=true alertUsage="The following commands need to be executed on GponCLI via a terminal (serial, telnet or SSH). The models currently distributed in Italy by TIM and OpenFiber have no way to enter GponCLI via serial, only via telnet after flashing a custom firmware."  %}
 
 {% include_relative ont-nokia-useful-command.md %}
 
-## Enable password
-
-{% include alert.html content="The following enable password is used to enter GponCLI over a serial connection. The models currently distributed in Italy by TIM and OpenFiber have no way to enter GponCLI via serial, only via telnet after flashing a custom firmware. The enable password is not useful for accessing the Web Gui." alert="Note" icon="svg-info" color="blue" %}
-
-You can use this tool to generate the enable password:
-
-{% include cig_password.html username="ont" %}
-
 # Advanced settings
-## Unlock serial and TELNET
+## Unlock serial to flash another firmware
 
-This ONT is the twin brother of [CIG G97-CP](/ont-cig-g-97cp), if you can find its bootloader (named `CIG_bu.en_V3.09.15`), you can easly repack the firmware and enable its serial port. 
+This ONT is the twin brother of [CIG G97-CP](/ont-cig-g-97cp), if you can find its bootloader (named `CIG_bu.en_V3.09.15`), you can easly repack the firmware and enable its serial port limited to bootloader. 
 You need a 3.3V SPI programmer (like a modded CH341a) to read and write back the flash.
 
 {% include alert.html content="This was tested only on a TIM V6.0.10N20 firmware!" alert="Note" icon="svg-info" color="blue" %}
@@ -166,7 +156,7 @@ And flash image with the `upgdimage`.
 
 This way both slots will have the same firmware version and will avoid any swap by the OLT.
 
-After these steps, power-cycle ONT and login via TELNET with `root\admin` credentials. From this moment you can simply spoof your ONT with the usual commands.
+After these steps, power-cycle ONT and login via Telnet with `root\admin` credentials. From this moment you can simply spoof your ONT with the usual commands.
 
 
 # Known Bugs
