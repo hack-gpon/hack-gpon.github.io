@@ -102,7 +102,7 @@ onu lanpsg 0
 ```
 
 ## Setting Speed LAN Mode
-{% include alert.html content="This command forces the speed to 2.5 and is instantaneous and permanent, use it only if your hardware supports HSGMII and is compatible (not to be used with Broadcom 57810s NIC)" alert="Note" icon="svg-warning" color="red" %}
+{% include alert.html content="This command forces the speed to 2.5 and is instantaneous and permanent, use it only if your hardware supports HSGMII and is compatible (e.g. modified Broadcom 57810s NIC)" alert="Note" icon="svg-warning" color="red" %}
 ```sh
 hal
 set speed 2.5g mode full
@@ -341,7 +341,7 @@ The Zyxel PMG3000-D20B stores the content of the emulated EEPROM1 (A2h) in `/tmp
 {% include alert.html content="For more information, see the SFF-8472 Rev 11.0 specification." alert="Info" icon="svg-info" color="blue" %}
 
 # Known Bugs
-- [Not working with Broadcom BCM57810S](https://github.com/xvzf/zyxel-gpon-sfp/issues/10)
+- [Works with Broadcom BCM57810S only after solder mod](https://github.com/xvzf/zyxel-gpon-sfp/issues/10)
 - Issue on IPv6 discovery. Not certain whether it is a edge case of a particular ISP or not
 - [Some sticks have a custom password](https://github.com/xvzf/zyxel-gpon-sfp/issues/6)
 - On V2.5 the Lantiq SDK has been updated from 6.4.2 to 7.5.1, breaking upload performance
