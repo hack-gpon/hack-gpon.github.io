@@ -19,8 +19,9 @@ parent: LEOX
 | POTS ports      | 2xRJ11                                                                 |
 | Optics          | SC/APC                                                                 |
 | IP address      | 192.168.1.1/24                                                         |
-| Web Gui         | ✅ user `admin`, password `letmein` OR user `user`, password `user`   |
-| Telnet          | ✅ user `leox`, password `leolabs_7`                                  |
+| Web Gui         | ✅ user `admin`, password `letmein` OR user `user`, password `user`    |
+| Telnet          | ✅ user `leox`, password `leolabs_7`                                   |
+| SSH             | NO                                                                     |
 | Form Factor     | ONT                                                                    |
 
 # External Photos
@@ -47,7 +48,7 @@ parent: LEOX
 | mtd11 | 0081d000 | 0001f000  | "ubi_framework2" |
 | mtd12 | 02416000 | 0001f000  | "ubi_apps"       |
 
-Only the first 4 partitions with erasesize 0x20000 should be manipulated using mtd devices, the fifth partition "ubi_device" contains the rest of the NAND and is to be manipulated using ubi volumes
+Only the first 4 partitions with erasesize 0x20000 should be manipulated using mtd devices, the fifth partition `ubi_device` contains the rest of the NAND and is to be manipulated using ubi volumes
 
 ## List of volumes (UBI)
 
@@ -62,15 +63,90 @@ Only the first 4 partitions with erasesize 0x20000 should be manipulated using m
 | ubi0_6 |  8507392B | dynamic | "ubi_framework2" |
 | ubi0_7 | 37838848B | dynamic | "ubi_apps"       |
 
-To back up a volume, cat or dd the appropriate /dev/ubi0_X device to a file or pipe, to restore a volume, use the ubiupdatevol utility (or just do it safely via the WebGUI)
+To back up a volume, `cat` or `dd` the appropriate `/dev/ubi0_X` device to a file or pipe, to restore a volume, use the `ubiupdatevol` utility (or just do it safely via the WebGUI)
 
 This ONT supports dual boot.
 
 Volumes `ubi_k0` and `ubi_r0` respectively contain kernel and rootfs of the first image, while `ubi_k1` and `ubi_r1` contain kernel and rootfs of the second one.
 
-## List of firmware versions
+## List of official firmwares
 
-- V4.1.1L5rc2
-- V4.1.1L5 (same as rc2 just marked final)
+- [V4.1.1L5rc2](https://mega.nz/file/YJkEGCIC#FNdE6Xt6lsFJdOnx3GGGCNi4fpMoN0QFOf5_1VjcGHo){: .btn } md5hash: 53b80abbda413e3ebc87d1730292d2fd
+- [V4.1.1L5](https://mega.nz/file/VMtTkLDI#5tZ74mAAqn0PhGa4MtbEliSo4B0VwIo28K_8iV2AzQ0){: .btn } md5hash: 5426cac6eb204ec1b3a8f39bc22d9488
 
+# Commands to change settings
 
+## Change Management IP
+```
+mib set LAN_IP_ADDR 192.168.102.1
+```
+
+# Commands to clone existing ONT
+
+## Set OMCI mode to customized so versions don't reset to defaults on boot
+```
+mib set OMCI_OLT_MODE 3
+```
+
+## Change SwVer
+```
+mib set OMCI_SW_VER1 YOURSWVER
+mib set OMCI_SW_VER2 YOURSWVER
+```
+
+## Change Vendor ID
+```
+flash set PON_VENDOR_ID VEND
+```
+
+## Change G984 Serial
+```
+flash set GPON_SN VEND1234ABCD
+```
+
+## Change HwVer
+```
+flash set HW_HWVER YOURHWVER
+```
+
+## Change OMCC version
+```
+mib set OMCC_VER 0x86
+```
+
+## Change Equipment ID
+```
+flash set GPON_ONU_MODEL YOUREQUIPMENTID
+```
+
+## Change Product Code next to Equipment ID
+```
+mib set OMCI_VENDOR_PRODUCT_CODE 0x3032
+```
+
+## Change VEIP slot ID (example for 0xe01)
+```
+mib set OMCI_VEIP_SLOT_ID 0xe
+```
+
+# Verification commands for settings changed above (all settings take a reboot to apply)
+
+## Verify SwVer
+```
+omcicli mib get 7
+```
+
+## Verify Vendor ID, HwVer, and G984 Serial
+```
+omcicli mib get 256
+```
+
+## Verify OMCC version, Equipment ID and Product Code
+```
+omcicli mib get 257
+```
+
+## Verify VEIP customized slot ID
+```
+omcicli mib get 329
+```
