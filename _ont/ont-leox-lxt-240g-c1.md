@@ -14,6 +14,8 @@ parent: LEOX
 | Chipset         | Realtek RTL9607C                                                       |
 | Flash           | SPI NAND 256MB                                                         |
 | RAM             | 196MB visible in top (256MB total?)                                    |
+| CPU             | Formosa MIPS interAptiv (multi) V2.0                                   |
+| CPU Clock       | 300MHz (597.60 BogoMIPS)                                               |
 | System          | Linux 4.4.140 (GCC Realtek MSDK-4.8.5p1 Build 3068)                    |
 | Ethernet ports  | 4x1G                                                                   |
 | POTS ports      | 2xRJ11                                                                 |
@@ -69,84 +71,84 @@ This ONT supports dual boot.
 
 Volumes `ubi_k0` and `ubi_r0` respectively contain kernel and rootfs of the first image, while `ubi_k1` and `ubi_r1` contain kernel and rootfs of the second one.
 
-## List of official firmwares
+## List of software versions
 
 - [V4.1.1L5rc2](https://mega.nz/file/YJkEGCIC#FNdE6Xt6lsFJdOnx3GGGCNi4fpMoN0QFOf5_1VjcGHo){: .btn } md5hash: 53b80abbda413e3ebc87d1730292d2fd
-- [V4.1.1L5](https://mega.nz/file/VMtTkLDI#5tZ74mAAqn0PhGa4MtbEliSo4B0VwIo28K_8iV2AzQ0){: .btn } md5hash: 5426cac6eb204ec1b3a8f39bc22d9488
+- [V4.1.1L5](https://mega.nz/file/VMtTkLDI#5tZ74mAAqn0PhGa4MtbEliSo4B0VwIo28K_8iV2AzQ0){: .btn } md5hash: 5426cac6eb204ec1b3a8f39bc22d9488, same as rc2 just marked final
 
-# Commands to change settings
+# GPON/OMCI settings
 
-## Change Management IP
-```
-mib set LAN_IP_ADDR 192.168.102.1
-```
-
-# Commands to clone existing ONT
-
-## Set OMCI mode to customized so versions don't reset to defaults on boot
+## Set OMCI mode to customized so versions don't reset
 ```
 mib set OMCI_OLT_MODE 3
 ```
 
-## Change SwVer
+## Setting OMCI software version (ME 7)
 ```
 mib set OMCI_SW_VER1 YOURSWVER
 mib set OMCI_SW_VER2 YOURSWVER
 ```
 
-## Change Vendor ID
+## Setting OMCI vendor ID (ME 256)
 ```
 flash set PON_VENDOR_ID VEND
 ```
 
-## Change G984 Serial
+## Setting ONU GPON Serial Number
 ```
 flash set GPON_SN VEND1234ABCD
 ```
 
-## Change HwVer
+## Setting OMCI hardware version (ME 256)
 ```
 flash set HW_HWVER YOURHWVER
 ```
 
-## Change OMCC version
+## Setting OMCC version (ME 257)
 ```
 mib set OMCC_VER 0x86
 ```
 
-## Change Equipment ID
+## Setting OMCI equipment ID (ME 257)
 ```
 flash set GPON_ONU_MODEL YOUREQUIPMENTID
 ```
 
-## Change Product Code next to Equipment ID
+## Setting Product Code (ME 257)
 ```
 mib set OMCI_VENDOR_PRODUCT_CODE 0x3032
 ```
 
-## Change VEIP slot ID (example for 0xe01)
+## Setting VEIP slot ID (example for 0xe01)
 ```
 mib set OMCI_VEIP_SLOT_ID 0xe
 ```
 
 # Verification commands for settings changed above (all settings take a reboot to apply)
 
-## Verify SwVer
+## Verify SwVer (ME 7)
 ```
 omcicli mib get 7
 ```
 
-## Verify Vendor ID, HwVer, and G984 Serial
+## Verify Vendor ID, HwVer, and G984 Serial (ME 256)
 ```
 omcicli mib get 256
 ```
 
-## Verify OMCC version, Equipment ID and Product Code
+## Verify OMCC version, Equipment ID and Product Code (ME 257)
 ```
 omcicli mib get 257
 ```
 
-## Verify VEIP customized slot ID
+## Verify VEIP customized slot ID (ME 329)
 ```
 omcicli mib get 329
+```
+
+# Advanced settings
+
+## Setting management IP
+```
+mib set LAN_IP_ADDR 192.168.102.1
 ```
