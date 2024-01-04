@@ -30,6 +30,7 @@ Here is a list of the most popular Vendor IDs:
 | `ISKT` | `49534b54` | Iskratel             |
 | `LEOX` | `4c454f58` | LEOX                 |
 | `LQDE` | `4c514445` | Lantiq               |
+| `MSTC` | `4d535443` | Mitrastar            |
 | `PTIN` | `5054494e` | Altice/PT Inovação   |
 | `RTKG` | `52544b47` | Realtek              |
 | `SCOM` | `53434f4d` | Sercomm              |
