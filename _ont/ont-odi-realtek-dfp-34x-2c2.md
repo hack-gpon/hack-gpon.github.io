@@ -95,6 +95,6 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 
 - [Hacking RTL960x](https://github.com/Anime4000/RTL960x)
 - [Ditch ONU, use GPON SFP on Business Grade Router, Mikrotik/Ubiquiti/pfSense (Home Networking)](https://forum.lowyat.net/topic/4925452)
-- [For the new model ODI ZTE DFP-34X-C2C](/ont-odi-zte-dfp-34x-2c2)
+- [For the old model ODI ZTE DFP-34G-C2C](/ont-odi-zte-dfp-34g-2c2)
 
 
