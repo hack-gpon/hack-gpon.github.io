@@ -55,6 +55,7 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 ## List of software versions
 - V1.00(ABVJ.0)b3s (2020)
 - V1.00(ABVJ.0)b3i (2020)
+- V1.00(ABVJ.0)b3v
 - V2.50(ABVJ.0)b1b (2022)
 - V2.50(ABVJ.1)b1d (2023)
 
