@@ -24,6 +24,12 @@ parent: Huawei
 | Serial       |                                                                 |
 | Form Factor  | ONT                                                             |
 
+{% include image.html file="huawei-hn8010ts-20/top_board_view2.jpg" alt="Huawei HN8010Ts teardown top" caption="Huawei HN8010Ts teardown top" %}
+{% include image.html file="huawei-hn8010ts-20/bottom_board_view.jpg" alt="Huawei HN8010Ts teardown bottom" caption="Huawei HN8010Ts teardown bottom" %}
+{% include image.html file="huawei-hn8010ts-20/broadcom_bcm84891.jpg" alt="Huawei HN8010Ts Broadcom chipset" caption="Huawei HN8010Ts Broadcom chipset" %}
+{% include image.html file="huawei-hn8010ts-20/chip_sd5.82s_rfiv100__9657_cn_05.jpg" alt="Huawei HN8010Ts HiSilicon PON chipset" caption="Huawei HN8010Ts HiSilicon PON chipset" %}
+{% include image.html file="huawei-hn8010ts-20/nand_ds35q1ga.jpg" alt="Huawei HN8010Ts NAND" caption="Huawei HN8010Ts NAND" %}
+
 ## Software Version
 
 - V5R02C0C10S165
