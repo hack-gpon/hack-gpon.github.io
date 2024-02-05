@@ -69,7 +69,7 @@ A shell-like prompt will be visible:
 ONT>
 ```
 
-{% include_relative ont-nokia-use.md %}
+{% include_relative ont-nokia-use.md username="ONTUSER" %}
 
 {% include_relative ont-nokia-useful-command.md %}
 

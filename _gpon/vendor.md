@@ -36,6 +36,7 @@ Here is a list of the most popular Vendor IDs:
 | `LQDE` | `4c514445` | Lantiq               |
 | `NOKG` | `4e4f4b47` | Nokia (GemTek ODM)   |
 | `NOKW` | `4e4f4b57` | Nokia (GemTek ODM)   |
+| `MSTC` | `4d535443` | Mitrastar            |
 | `PTIN` | `5054494e` | Altice/PT Inovação   |
 | `RTKG` | `52544b47` | Realtek              |
 | `SCOM` | `53434f4d` | Sercomm              |
