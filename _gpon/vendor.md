@@ -16,13 +16,17 @@ Here is a list of the most popular Vendor IDs:
 | ------ | ---------- | -------------------- |
 | `ALCL` | `414c434c` | Nokia/Alcatel-Lucent |
 | `AVMG` | `41564d47` | AVM (FRITZ!Box)      |
+| `ASKY` | `41534b59` | Askey                |
 | `CDKT` | `43444B54` | KingType             |
 | `CIGG` | `43494747` | Cig                  |
 | `DLNK` | `444c4e4b` | Dlink                |
+| `DSNW` | `44534e57` | DASAN                |
 | `ELTX` | `454c5458` | Eltex                |
 | `FHTT` | `46485454` | Fiber Home           |
+| `GMTK` | `474d544b` | GemTek               |
 | `GNXS` | `474e5853` | Genexis              |
 | `GPON` | `47504f4e` | Generic vendor name  |
+| `GTHG` | `47544847` | Alcatel-Lucent (ODM) |
 | `HALN` | `48414c4e` | HALNy                |
 | `HBMT` | `48424d54` | HiSense              |
 | `HWTC` | `48575443` | Huawei               |
@@ -30,6 +34,8 @@ Here is a list of the most popular Vendor IDs:
 | `ISKT` | `49534b54` | Iskratel             |
 | `LEOX` | `4c454f58` | LEOX                 |
 | `LQDE` | `4c514445` | Lantiq               |
+| `NOKG` | `4e4f4b47` | Nokia (GemTek ODM)   |
+| `NOKW` | `4e4f4b57` | Nokia (GemTek ODM)   |
 | `MSTC` | `4d535443` | Mitrastar            |
 | `PTIN` | `5054494e` | Altice/PT Inovação   |
 | `RTKG` | `52544b47` | Realtek              |
@@ -39,8 +45,10 @@ Here is a list of the most popular Vendor IDs:
 | `TMBB` | `544d4242` | Technicolor          |
 | `TPLG` | `54504c47` | TP-Link              |
 | `UBNT` | `55424e54` | Ubiquiti             |
+| `UGRD` | `55475244` | UGrid                |
 | `YHTC` | `59485443` | Youhua               |
 | `ZTEG` | `5a544547` | ZTE                  |
 | `ZYWN` | `5a59574e` | Zyxel                |
+| `ZYXE` | `5a595845` | Zyxel                |
 
 {% include alert.html content="You can also help us with adding content to this site, you can find a button to edit on GitHub on each page." alert="Tip"  icon="svg-info" color="green" %}
