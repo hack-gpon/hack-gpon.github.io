@@ -193,7 +193,7 @@ Under certain circumstances, the Web GUI admin credentials might get changed fro
 To restore the default combination try following [this method](https://github.com/xvzf/zyxel-gpon-sfp/issues/6#issuecomment-1065864650).
 
 ## Creating a new rootfs
-The stick has a tricky image packing method, fortunately it has been reverse engineered. A script to help you create a custom rootfs can be found here: [https://github.com/nanomad/zyxel-pmg-3000-mod-kit](https://github.com/nanomad/zyxel-pmg-3000-mod-kit)
+The stick has a tricky image packing method, fortunately it has been reverse engineered. A script to help you create a custom rootfs can be found here: [https://github.com/hack-gpon/zyxel-pmg-3000-mod-kit](https://github.com/hack-gpon/zyxel-pmg-3000-mod-kit)
 
 ## Flashing a new rootfs
 {% include alert.html content="All commands start from the twmanu shell." alert="Note"  icon="svg-info" color="blue" %}
@@ -350,5 +350,5 @@ The Zyxel PMG3000-D20B stores the content of the emulated EEPROM1 (A2h) in `/tmp
 # Miscellaneous Links
 
 - [Zyxel gpon-sfp](https://github.com/xvzf/zyxel-gpon-sfp)
-- [Zyxel PMG-3000 mod kit](https://github.com/nanomad/zyxel-pmg-3000-mod-kit)
+- [Zyxel PMG-3000 mod kit](https://github.com/hack-gpon/zyxel-pmg-3000-mod-kit)
 - [Rollback SFP Zyxel con il W3 HUB per risolvere il problema dell'upload cappato](https://forum.fibra.click/d/36541-rollback-sfp-zyxel-con-il-w3-hub-per-risolvere-il-problema-dellupload-cappato)
