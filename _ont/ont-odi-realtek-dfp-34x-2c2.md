@@ -17,7 +17,7 @@ parent: ODI
 | RAM          | 64 MB                             |
 | System       | Linux (Luna SDK 1.9)              |
 | HSGMII       | Yes                               |
-| Optics       | SC/UPC                            |
+| Optics       | SC/UPC or SC/APC                  |
 | IP address   | 192.168.1.1                       |
 | Web Gui      | ✅ user `admin`, password `admin` |
 | SSH          | ✅ user `admin`, password `admin` |

@@ -18,7 +18,7 @@ parent: LEOX
 | RAM              | 32MB                                    |
 | System           | Linux 3.18 (Luna SDK 3.3)               |
 | HSGMII           | Yes                                     |
-| Optics           | SC/UPC                                  |
+| Optics           | SC/UPC or SC/APC                        |
 | IP address       | 192.168.100.1/24                        |
 | Web Gui          | ✅                                      |
 | SSH              |                                         |
