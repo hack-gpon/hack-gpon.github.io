@@ -30,7 +30,7 @@ parent: D-LINK
 
 ## List of software versions
 - R4.2.104.033e (Wind - has telnet enabled)
-- R4.2.104.039 (Wind - Telnet was closed)
+- R4.2.104.039 (Wind - no telnet access)
 
 ## List of partitions
 
