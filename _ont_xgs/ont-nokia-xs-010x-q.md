@@ -50,6 +50,7 @@ The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be acc
 
 ## List of software versions
 - 3FE49337AOCK80 - (R4.4.17.063 CIG 25/06/2021)
+- 3FE49337BOCK28
 
 ## List of partitions
 
