@@ -1,5 +1,5 @@
 ---
-title: Hack Gpon
+title: Hack GPON
 has_children: false
 nav_order: 1
 description: Worldwide wiki on how to access, change and edit ONTs
