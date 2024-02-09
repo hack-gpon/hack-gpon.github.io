@@ -1,5 +1,5 @@
 ---
-title: Free/Iliad F-MDCONU3A
+title: Free/Iliad F-MDCONU3A (v1)
 has_children: false
 layout: default
 parent: Free/Iliad
@@ -7,36 +7,30 @@ parent: Free/Iliad
 
 # Hardware Specifications
 
-|                  |                                         |
-| ---------------- | --------------------------------------- |
-| Vendor/Brand     | Free/Iliad                              |
-| Model            | F-MDCONU3A                              |
-| ODM              |           			             |
-| ODM Product Code |                                         |
-| Chipset          | BCM55030                                |
-| Flash            | W25Q32J (4MB SPI)                       |
-| RAM              | embedded                                |
-| CPU              | ARCompact[^arc-isa], big endian             	     |
-| CPU Clock        | ?                   			|
-| Bootloader       | ?                                        	|
-| System           | ?                                        	|
-| Load addr        | ?                                        	|
-| HSGMII           | Yes?        				|
-| 2.5GBaseX        | No         				|
-| 2.5GBaseT        | No			                     	|
-| XGMII/XSGMII     | No           				|
-| 10GBaseX         | No        					|
-| 10GBaseT         | No                    			|
-| 2.5/5/10GBaseT   | No?           				|
-| Optics           | SFP	                             |
-| IP address       | ?                                       |
-| Web Gui          | ?                              	     |
-| SSH              | ?					     |
-| Telnet           | ?					     |
-| Serial           | ✅                                       |
-| Serial baud      | 57600                                   |
-| Serial encoding  | 8-N-1                                   |
-| Form Factor      | ONT		                     |
+|                  |                                 |
+| ---------------- | ------------------------------- |
+| Vendor/Brand     | Free/Iliad                      |
+| Model            | F-MDCONU3A                      |
+| ODM              | ✅                              |
+| ODM Product Code |                                 |
+| Chipset          | BCM55030                        |
+| Flash            | W25Q32J (4MB SPI)               |
+| RAM              | embedded                        |
+| CPU              | ARCompact[^arc-isa], big endian |
+| CPU Clock        |                                 |
+| Bootloader       |                                 |
+| System           |                                 |
+| Load addr        |                                 |
+| HSGMII           | No                              |
+| Optics           | SFP w/o MAC                     |
+| IP address       |                                 |
+| Web Gui          |                                 |
+| SSH              |                                 |
+| Telnet           |                                 |
+| Serial           | ✅                              |
+| Serial baud      | 57600                           |
+| Serial encoding  | 8-N-1                           |
+| Form Factor      | ONT                             |
 
 The BCM55030 is a 10G-EPON ONU/ONT.
 The BCM55030's UNI (User Network Interface) side should be capable of 4xSGMII (1 GbE) or 1xXAUI (10 GbE) or 1xXFI (10 GbE SFP) or 1xRGMII, but only one SGMII lane is actually routed.
@@ -166,16 +160,12 @@ Time: 2016-05-18 01:28:44Z
 
 `mem/rf [start address] [lenght]` reads bytes from the flash memory, wraps every 512 kB.
 
-## Firmware is interchangeable with
-
-## List of software versions
-
 ## List of partitions
 
 The flash memory is not actually partitioned, upon reset the CPU loads from address 0 (reset vector) and jumps to another address ([page 74](http://me.bios.io/images/d/dd/ARCompactISA_ProgrammersReference.pdf#%5B%7B%22num%22%3A177%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C72%2C157%2C0%5D)). Each section ends with its CRC.
 
 | Section               | Start address    | End address      | Size           |
-|-----------------------|------------------|------------------|----------------|
+| --------------------- | ---------------- | ---------------- | -------------- |
 | Bootloader            | 0                | 42896/0xA790     | 42896/0xA790   |
 | App 0                 | ?                | ?                | ?              |
 | App 1                 | 1179687/0x120027 | 1498731/0x16DE6B | 319044/0x4DE44 |
@@ -186,52 +176,6 @@ The flash memory is not actually partitioned, upon reset the CPU loads from addr
 App 1 and App 2 sections are located at a distance of 512 kB (0x80000) from each other. This probably means that the CPU is capable of addressing only 512 kB of flash. It can be verified also by running the `mem/rf` command, which wraps every 512 kB.
 
 # Userful files and binaries
-
-## Useful files
-
-## Useful binaries
-
-# GPON ONU status
-
-## Get the operational status of the ONU
-
-## Get information of the OLT vendor
-
-## Querying a particular OMCI ME
-
-## Getting/Setting Speed LAN Mode
-
-# GPON/OMCI settings
-
-## Getting/Setting ONU GPON Serial Number
-
-## Getting/Setting ONU GPON PLOAM password
-
-## Getting/Setting ONU GPON LOID and LOID password
-
-## Getting/Setting OMCI software version (ME 7)
-
-## Getting/Setting OMCI hardware version (ME 256)
-
-## Getting/Setting OMCI vendor ID (ME 256)
-
-## Getting/Setting OMCI equipment ID (ME 257)
-
-# Advanced settings
-
-## Setting management MAC
-
-## Setting management IP
-
-## Rebooting the ONU
-
-## Creating a new rootfs
-
-## Flashing a new rootfs
-
-# SFP EEPROM settings
-
-## Reading all EEPROM
 
 # EEPROM
 
@@ -255,10 +199,8 @@ There is an SFP plug on the UNI side with an embedded EEPROM.
 00000200
 ```
 
-# Known Bugs
-
 # Miscellaneous Links
 
-{% include image.html file="iliad\onu1\BCM55030_features.jpg" alt="BCM55030 features" caption="BCM55030 features" %}
+![](https://web.archive.org/web/20230609184811/https://xtech.nikkei.com/dm/article/NEWS/20110121/188932/Broadcom_4.jpg)
 
 [^arc-isa]: *ARCompact Instruction Set Architecture Programmer's Reference* http://me.bios.io/images/d/dd/ARCompactISA_ProgrammersReference.pdf

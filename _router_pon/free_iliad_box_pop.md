@@ -7,36 +7,32 @@ parent: Free/Iliad
 
 # Hardware Specifications
 
-|                  |                                         |
-| ---------------- | --------------------------------------- |
-| Vendor/Brand     | Free/Iliad                              |
-| Model            |                                         |
-| ODM              |                                         |
-| ODM Product Code |                                         |
-| Chipset          | BCM63153                                |
-| Flash            | KLM4G1FETE-B041 (4GB eMMC 5.1)          |
-| RAM              | 2x NT5CC128M16JR-EK (512MB DDR3L-1866)  |
-| CPU              |                                 |
-| CPU Clock        |                                         |
-| Bootloader       |                                         |
-| System           |                                         |
-| Load addr        |                                         |
-| HSGMII           |                                         |
-| 2.5GBaseX        |                                         |
-| 2.5GBaseT        | Yes (AQR112R PHY)                       |
-| XGMII/XSGMII     |                                         |
-| 10GBaseX         |                                         |
-| 10GBaseT         | No                                      |
-| 2.5/5/10GBaseT   |                                         |
-| Optics           | SC/UPC                                  |
-| IP address       | 192.168.1.254                           |
-| Web Gui          | ✅                                      |
-| SSH              | ?                                       |
-| Telnet           | ?                                       |
-| Serial           | ?                                       |
-| Serial baud      | 115200                                  |
-| Serial encoding  | 8-N-1                                   |
-| Form Factor      | ONT                                     |
+|                  |                                      |
+| ---------------- | ------------------------------------ |
+| Vendor/Brand     | Free/Iliad                           |
+| Model            |                                      |
+| ODM              |                                      |
+| ODM Product Code |                                      |
+| Chipset          | BCM63153                             |
+| Flash            | 4GB eMMC 5.1 KLM4G1FETE-B041         |
+| RAM              | 2x 512MB DDR3L-1866 NT5CC128M16JR-EK |
+| CPU              |                                      |
+| CPU Clock        |                                      |
+| Bootloader       |                                      |
+| System           |                                      |
+| Load addr        |                                      |
+| HSGMII           | ✅ (Only AFM0003ILD)                 |
+| XGMII/XSGMII     | Yes                                  |
+| 10GBaseX         | Yes                                  |
+| Optics           | SC/UPC                               |
+| IP address       | 192.168.1.254                        |
+| Web Gui          | ✅                                   |
+| SSH              |                                      |
+| Telnet           |                                      |
+| Serial           |                                      |
+| Serial baud      | 115200                               |
+| Serial encoding  | 8-N-1                                |
+| Form Factor      | CPE with SFP w/o MAC support         |
 
 
 

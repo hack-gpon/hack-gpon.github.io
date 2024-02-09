@@ -101,6 +101,12 @@ collections:
   ont_xgs:
     permalink: "/xgs/:path/"
     output: true
+  ont_epon:
+    permalink: "/epon/:path/"
+    output: true
+  router:
+    permalink: "/router/:path/"
+    output: true
   tools:
     permalink: "/:path/"
     output: true
@@ -113,9 +119,6 @@ collections:
   sfp_cage:
     permalink: "/:path/"
     output: true
-  router_pon:
-    permalink: "/:path/"
-    output: true
 
 just_the_docs:
   collections:
@@ -124,6 +127,12 @@ just_the_docs:
       nav_fold: true
     ont_xgs:
       name: ONT XGS-PON
+      nav_fold: true
+    ont_epon:
+      name: ONT EPON
+      nav_fold: true
+    router:
+      name: Router PON
       nav_fold: true
     tools:
       name: Tools
@@ -136,9 +145,6 @@ just_the_docs:
       nav_fold: true
     sfp_cage:
       name: SFP cage
-      nav_fold: true
-    router_pon:
-      name: Router PON
       nav_fold: true
 
 defaults:
