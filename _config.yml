@@ -104,7 +104,7 @@ collections:
   ont_epon:
     permalink: "/epon/:path/"
     output: true
-  router:
+  router_pon:
     permalink: "/router/:path/"
     output: true
   tools:
@@ -131,7 +131,7 @@ just_the_docs:
     ont_epon:
       name: ONT EPON
       nav_fold: true
-    router:
+    router_pon:
       name: Router PON
       nav_fold: true
     tools:
