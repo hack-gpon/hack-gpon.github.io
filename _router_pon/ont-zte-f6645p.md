@@ -7,37 +7,41 @@ parent: ZTE
 
 # Hardware Specifications
 
-|              |                                                                   |
-| ------------ | ----------------------------------------------------------------- |
-| Vendor/Brand | ZTE                                                               |
-| Model        | F6645P                                                            |
-| ODM          | ✅                                                                |
-| CPU          | ZTE                                                               |
-| CPU Clock    | 266 MHz                                                           |
-| Chipset      | ZTE                                                               |
-| Flash        |                                                                   |
-| RAM          |                                                                   |
-| System       |                                                                   |
-| 2.5GBaseT    | Yes                                                               |
-| Optics       | SC/APC or SC/UPC                                                  |
-| IP address   | 192.168.1.1                                                       |
-| Web Gui      | ✅ user `admin`, password `admin` or user `user`, password `user` |
-| SSH          |                                                                   |
-| Telnet       | ✅ [^1]                                                           |
-| Serial       | ✅                                                                |
-| Form Factor  | ONT                                                               |
+|              |                               |
+| ------------ | ----------------------------- |
+| Vendor/Brand | ZTE                           |
+| Model        | F6645P                        |
+| ODM          | ✅                            |
+| CPU          | ZTE                           |
+| CPU Clock    | 266 MHz                       |
+| Chipset      | ZTE                           |
+| Flash        | 130 MB Kioxia TC58BVG0S3HTAI0 |
+| RAM          | 315 MB                        |
+| System       |                               |
+| 2.5GBaseT    | Yes                           |
+| Optics       | SC/APC or SC/UPC              |
+| IP address   | 192.168.1.1                   |
+| Web Gui      | Random password               |
+| SSH          |                               |
+| Telnet       | ✅ [^1]                       |
+| Serial       | Only RX                       |
+| Form Factor  | ONT                           |
 
 ## List of partitions 
 
 | dev  | size     | erasesize | name             |
 | ---- | -------- | --------- | ---------------- |
-| mtd0 | 01000000 | 00010000  | "whole flash"    |
-| mtd1 | 00080000 | 00010000  | "uboot"          |
-| mtd2 | 00700000 | 00010000  | "kernel0"        |
-| mtd3 | 00700000 | 00010000  | "kernel1"        |
-| mtd4 | 00010000 | 00010000  | "others"         |
-| mtd5 | 00010000 | 00010000  | "parameter tags" |
-| mtd6 | 00160000 | 00010000  | "usercfg"        |
+| mtd0 | 08000000 | 00020000  | "whole flash"    |
+| mtd1 | 00200000 | 00020000  | "u-boot"         |
+| mtd2 | 00400000 | 00020000  | "others"         |
+| mtd3 | 00400000 | 00020000  | "parameter tags" |
+| mtd4 | 00400000 | 00020000  | "wlan"           |
+| mtd5 | 00800000 | 00020000  | "usercfg"        |
+| mtd6 | 00400000 | 00020000  | "Plugin"         |
+| mtd7 | 02a00000 | 00020000  | "kernel1"        |
+| mtd8 | 02a00000 | 00020000  | "kernel2"        |
+| mtd9 | 029e0000 | 00020000  | "rootfs"         |
+
 
 
 This ONT supports dual boot, as visible from the presence of `kernel0` and `kernel1`, which contain the rootfs.
