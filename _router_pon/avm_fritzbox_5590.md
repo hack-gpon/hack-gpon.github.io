@@ -1,5 +1,5 @@
 ---
-title: AVM FRITZ!Box 5530
+title: AVM FRITZ!Box 5590
 has_children: false
 layout: default
 parent: AVM
@@ -9,8 +9,8 @@ parent: AVM
 
 |                 |                              |
 | --------------- | ---------------------------- |
-| Vendor/Brand    | AVM FRITZ!Box 5530           |
-| Model           | FRITZ!Box 5530               |
+| Vendor/Brand    | AVM FRITZ!Box 5590           |
+| Model           | FRITZ!Box 5590               |
 | ODM             | ✅                           |
 | Chipset         | BCM63153                     |
 | Flash           | 128 MB                       |
