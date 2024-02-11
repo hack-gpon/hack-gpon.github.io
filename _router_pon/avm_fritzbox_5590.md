@@ -12,10 +12,10 @@ parent: AVM
 | Vendor/Brand    | AVM FRITZ!Box 5590           |
 | Model           | FRITZ!Box 5590               |
 | ODM             | ✅                           |
-| Chipset         | BCM63153                     |
-| Flash           | 128 MB                       |
-| RAM             | 1024 MB                      |
-| CPU             | MIPS32  Falcon               |
+| Chipset         | Falcon PRX321B1BI-S-LNEV     |
+| Flash           | 4 GB                         |
+| RAM             | 512 MB                       |
+| CPU             | MaxLinear MIPS32 Falcon      |
 | CPU Clock       | 800 MHz                      |
 | Bootloader      |                              |
 | System          |                              |
