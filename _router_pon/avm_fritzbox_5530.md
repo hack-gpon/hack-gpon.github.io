@@ -12,10 +12,10 @@ parent: AVM
 | Vendor/Brand    | AVM FRITZ!Box 5530           |
 | Model           | FRITZ!Box 5530               |
 | ODM             | ✅                           |
-| Chipset         | BCM63153                     |
+| Chipset         | Falcon PRX321B1BI-S-LNEV     |
 | Flash           | 128 MB                       |
 | RAM             | 1024 MB                      |
-| CPU             | MIPS32  Falcon               |
+| CPU             | MIPS32 MaxLinear Falcon      |
 | CPU Clock       | 800 MHz                      |
 | Bootloader      |                              |
 | System          |                              |
