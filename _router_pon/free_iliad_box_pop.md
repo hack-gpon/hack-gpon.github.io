@@ -7,32 +7,31 @@ parent: Free/Iliad
 
 # Hardware Specifications
 
-|                  |                                      |
-| ---------------- | ------------------------------------ |
-| Vendor/Brand     | Free/Iliad                           |
-| Model            |                                      |
-| ODM              |                                      |
-| ODM Product Code |                                      |
-| Chipset          | BCM63153                             |
-| Flash            | 4GB eMMC 5.1 KLM4G1FETE-B041         |
-| RAM              | 2x 512MB DDR3L-1866 NT5CC128M16JR-EK |
-| CPU              |                                      |
-| CPU Clock        |                                      |
-| Bootloader       |                                      |
-| System           |                                      |
-| Load addr        |                                      |
-| HSGMII           | ✅ (Only AFM0003ILD)                 |
-| XGMII/XSGMII     | Yes                                  |
-| 10GBaseX         | Yes                                  |
-| Optics           | SC/UPC                               |
-| IP address       | 192.168.1.254                        |
-| Web Gui          | ✅                                   |
-| SSH              |                                      |
-| Telnet           |                                      |
-| Serial           |                                      |
-| Serial baud      | 115200                               |
-| Serial encoding  | 8-N-1                                |
-| Form Factor      | CPE with SFP w/o MAC support         |
+|                  |                                                                                    |
+| ---------------- | ---------------------------------------------------------------------------------- |
+| Vendor/Brand     | Free/Iliad                                                                         |
+| Model            |                                                                                    |
+| ODM              |                                                                                    |
+| ODM Product Code |                                                                                    |
+| Chipset          | BCM63153                                                                           |
+| Flash            | 4GB eMMC 5.1 KLM4G1FETE-B041                                                       |
+| RAM              | 2x 512MB DDR3L-1866 NT5CC128M16JR-EK                                               |
+| CPU              |                                                                                    |
+| CPU Clock        |                                                                                    |
+| Bootloader       |                                                                                    |
+| System           |                                                                                    |
+| Load addr        |                                                                                    |
+| SFP              | 1G-BASEX, 10G-BASESR-LR, HSGMII (only AFM0003ILD), PON equivalent symbol EPON 10/1 |
+| Ethernet         | 2 1GbE, 1 2.5GbE LAN/WAN                                                           |
+| Optics           | SC/UPC                                                                             |
+| IP address       | 192.168.1.254                                                                      |
+| Web Gui          | ✅                                                                                 |
+| SSH              |                                                                                    |
+| Telnet           |                                                                                    |
+| Serial           |                                                                                    |
+| Serial baud      | 115200                                                                             |
+| Serial encoding  | 8-N-1                                                                              |
+| Form Factor      | CPE with SFP w/o MAC support                                                       |
 
 
 
