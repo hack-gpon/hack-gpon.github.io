@@ -1,15 +1,15 @@
 ---
-title: VSOL V2801F
+title: V-SOL V2801F
 has_children: false
 layout: default
-parent: VSOL
+parent: V-SOL
 ---
 
 # Hardware Specifications
 
 |              |                                       |
 | ------------ | ------------------------------------- |
-| Vendor/Brand | VSOL                                  |
+| Vendor/Brand | V-SOL                                 |
 | Model        | V2801F                                |
 | Chipset      | Realtek RTL9601CI                     |
 | Flash        | 8 MB                                  |
