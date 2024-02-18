@@ -19,7 +19,7 @@ It is possible to change the serial numebr by editing it in the http://fritz.box
 
 It is possible to change the GPON PLOAM passowrd by editing it in the logon data, in the ASCII format (PLOAM)
 
-{% include image.html file="avm/avm_ploam.jpg"  alt="PLOAM Password form" caption="PLOAM Password form" %}
+{% include image.html file="avm/avm_ploam.png"  alt="PLOAM Password form" caption="PLOAM Password form" %}
 
 --
 [^aon] [EWE AON Anschluss SFP Transceiver](https://www.glasfaserforum.de/forum/thread/984-ewe-aon-anschluss-sfp-transceiver/)
