@@ -14,7 +14,7 @@ layout: default
 | SFP      | 1 2.5 GbE [^xor]                                   |
 | Ethernet | 3 1GbE, 1 2.5GbE LAN port, 1 2.5GbE WAN port[^xor] |
 | XGMII    | No                                                 |
-| HSGMII   | ✅                                                 |
+| HSGMII   |                                                    |
 | SGMII    | ✅                                                 |
 | Type     | Router                                             |
 
