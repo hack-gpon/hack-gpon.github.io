@@ -73,6 +73,8 @@ In particular, the SFP ONU of the AVM Fritz!Box 5530/5590 belongs in this catego
 
 In general, these devices do not have enough customisation to allow the required parameters to be changed other than the GPON Serial Number and GPON Ploam Password. This means that in most scenarios these devices with ONT w/o MAC are not flexible enough to be used as a replacement for an ISP-provided ONT.
 
+Nevertheless, on Hack-GPON routers supporting SFP w/o MAC will arrive, with at least the modification of GPON Serial Number and GPON Ploam Password.
+
 ---
 
 [^sfpstandard]: *Specification for SFP (Small Formfactor Pluggable) Transceiver* INF-8074

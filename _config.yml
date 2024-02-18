@@ -101,6 +101,12 @@ collections:
   ont_xgs:
     permalink: "/xgs/:path/"
     output: true
+  ont_epon:
+    permalink: "/epon/:path/"
+    output: true
+  router_pon:
+    permalink: "/router/:path/"
+    output: true
   tools:
     permalink: "/:path/"
     output: true
@@ -121,6 +127,12 @@ just_the_docs:
       nav_fold: true
     ont_xgs:
       name: ONT XGS-PON
+      nav_fold: true
+    ont_epon:
+      name: ONT EPON
+      nav_fold: true
+    router_pon:
+      name: Router PON
       nav_fold: true
     tools:
       name: Tools
