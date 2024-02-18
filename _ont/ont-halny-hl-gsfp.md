@@ -40,4 +40,14 @@ parent: HALNy
 - [Ziza OP151s](/ont-ziza-op151s)
 - [T&W TW2362H-CDEL](/ont-t-w-tw2362h-cdel)
 
+## List of partitions
+| dev  | size     | erasesize | name          |
+| ---- | -------- | --------- | ------------- |
+| mtd0 | 00040000 | 00010000  | "uboot"       |
+| mtd1 | 00020000 | 00010000  | "uboot_env"   |
+| mtd2 | 003d0000 | 00010000  | "image0"      |
+| mtd3 | 003d0000 | 00010000  | "linux"       |
+| mtd4 | 002a87aa | 00010000  | "rootfs"      |
+| mtd5 | 000a0000 | 00010000  | "rootfs_data" |
+
 
