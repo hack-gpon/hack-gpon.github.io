@@ -41,6 +41,7 @@ parent: HALNy
 - [T&W TW2362H-CDEL](/ont-t-w-tw2362h-cdel)
 
 ## List of partitions
+
 | dev  | size     | erasesize | name          |
 | ---- | -------- | --------- | ------------- |
 | mtd0 | 00040000 | 00010000  | "uboot"       |
