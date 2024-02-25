@@ -1,10 +1,46 @@
 <template>
     <div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" placeholder="EEPROM input" id="eeprom" v-model="eeprom">
+            <textarea v-if="type === 'eeprom-ethtool'" type="text" class="form-control" placeholder="EEPROM input" id="eeprom" v-model="eeprom"></textarea>
+            <input v-else type="text" class="form-control" placeholder="EEPROM input" id="eeprom" v-model="eeprom">
             <label for="eeprom">EEPROM input</label>
         </div>
-        <template v-if="type === 'eeprom-print'">
+        <template v-if="type === 'eeprom-lantiq'">
+            <div class="form-floating mb-3">
+                <select class="form-control" placeholder="Select EEPROM" id="eeprom-type" v-model="eeprom_switch">
+                    <option value="0">EEPROM A0</option>
+                    <option value="1">EEPROM A2</option>
+                </select>
+                <label for="eeprom-type">Select EEPROM A0 or A2</label>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <tr>
+                        <th>address</th>
+                        <th>size</th>
+                        <th>name</th>
+                        <th>hex value</th>
+                        <th>decoded value</th>
+                        <th>description</th>
+                    </tr>
+                    <tr v-for="(value, key, index) in eeprom_json" :key="index">
+                        <td>{{ value.address }}</td>
+                        <td>{{ value.size }}</td>
+                        <td v-if="value.name.startsWith('**')"><b>{{ value.name.replaceAll('**', '') }}</b></td>
+                        <td v-else>{{ value.name }}</td>
+                        <td><code v-if="value.value">{{ chunk(value.value)?.map(it => `0x${it}`)?.join(' ') }}</code></td>
+                        <td><span v-if="value.human">{{ value.human }}</span></td>
+                        <td v-if="value.description.startsWith('**')"><b>{{ value.description.replaceAll('**', '') }}</b></td>
+                        <td v-else>{{ value.description }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div markdown="span" class="alert alert-blue" role="alert" v-if="revision">
+                <svg viewBox="0 0 24 24" class="info-icon"><use xlink:href="#svg-info"></use></svg>
+                <span> <b>Info</b> For more information, see the {{ revision }} specification.</span>
+            </div>
+        </template>
+        <template v-if="type === 'eeprom-ethtool'">
             <div class="form-floating mb-3">
                 <select class="form-control" placeholder="Select EEPROM" id="eeprom-type" v-model="eeprom_switch">
                     <option value="0">EEPROM A0</option>
@@ -82,6 +118,7 @@
 export default {
     data() {
         return {
+            the_eeprom_back: null,
             the_eeprom: null,
             sfp_a2_info_0: null,
             sfp_a2_info_last: null,
@@ -820,26 +857,59 @@ export default {
         },
         eeprom: {
             get() {
-                if(this.the_eeprom){
-                    var sfp_a2_new = (this.the_eeprom.join('').match(/.{1,90}/g) ?? []).map(it => this.hexToBase64(it));
-                    sfp_a2_new.unshift(this.sfp_a2_info_0);
-                    sfp_a2_new.push(...this.sfp_a2_info_last);
-                    return sfp_a2_new.join('@'); 
+                if(this.type === 'eeprom-lantiq' || this.type === 'eeprom-rooted-edit') {
+                    if(this.the_eeprom){
+                        var sfp_a2_new = (this.the_eeprom.join('').match(/.{1,90}/g) ?? []).map(it => this.hexToBase64(it));
+                        sfp_a2_new.unshift(this.sfp_a2_info_0);
+                        sfp_a2_new.push(...this.sfp_a2_info_last);
+                        return sfp_a2_new.join('@'); 
+                    }
+                    return '';
+                } else {
+                    return this.the_eeprom_back;
                 }
-                return '';
             },
             set(val) {
-                var sfp_a2_info_arr = val.split('@');
-                this.sfp_a2_info_0 = sfp_a2_info_arr.shift();
-                if(this.sfp_a2_info_0.includes("sfp_a2_info")) {
-                    this.eeprom_switch = 1;
+                this.the_eeprom_back = val;
+                if(this.type === 'eeprom-lantiq' || this.type === 'eeprom-rooted-edit') {
+                    var sfp_a2_info_arr = val.split('@');
+                    this.sfp_a2_info_0 = sfp_a2_info_arr.shift();
+                    if(this.sfp_a2_info_0.includes("sfp_a2_info")) {
+                        this.eeprom_switch = 1;
+                    }
+                    else if(this.sfp_a2_info_0.includes("sfp_a0_low_128")) {
+                        this.eeprom_switch = 0;
+                    }
+                    this.sfp_a2_info_last = sfp_a2_info_arr.slice(-2);
+                    var sfp_a2_decode = sfp_a2_info_arr.map(it => this.base64ToHex(it)).join('');
+                    this.the_eeprom = [...sfp_a2_decode];
                 }
-                else if(this.sfp_a2_info_0.includes("sfp_a0_low_128")) {
-                    this.eeprom_switch = 0;
+                else if(this.type === 'eeprom-ethtool') {
+                    console.log(val);
+                    var hex_map = Object.fromEntries(val.split('\n').filter(it => it.startsWith("0x")).map(it => { var [key, value] = it.split(/[: ]+(.*)/s);
+                                                                                                            key = parseInt(key, 16);
+                                                                                                            value = value.replace(/\s+/g, '');
+                                                                                                            value = [...value];
+                                                                                                            return [key,value] }));
+                    console.log(hex_map);
+                    var the_eeprom = [];
+                    var max = Math.max(...Object.keys(hex_map).map(it => parseInt(it)));
+                    console.log(max);  
+                    for(var i = 0; i < max; i+=16) {
+                        the_eeprom.push(...(hex_map[i] ?? Array.from({length: 32}, () => 0)));
+                    };
+                    this.the_eeprom = [...the_eeprom];
+                    console.log(the_eeprom);
+                    var first_line = val.split('\n')[0];
+                    var conditions0 = ['-m','--dump-module-eeprom','--module-info'];
+                    var conditions1 = ['-e','--eeprom-dump'];
+                    if(conditions0.some(el => first_line.includes(el))) {
+                        this.eeprom_switch = 0;
+                    }
+                    else if(conditions1.some(el => first_line.includes(el))) {
+                        this.eeprom_switch = 1;
+                    }
                 }
-                this.sfp_a2_info_last = sfp_a2_info_arr.slice(-2);
-                var sfp_a2_decode = sfp_a2_info_arr.map(it => this.base64ToHex(it)).join('');
-                this.the_eeprom = [...sfp_a2_decode];
             },
         },
         eeprom_json: {
