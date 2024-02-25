@@ -118,10 +118,10 @@
 export default {
     data() {
         return {
-            the_eeprom_back: null,
-            the_eeprom: null,
-            sfp_a2_info_0: null,
-            sfp_a2_info_last: null,
+            raw: null,
+            eeprom_decode: null,
+            lantiq_0: null,
+            lantiq_last: null,
             eeprom_table: [
                 [
                     {
@@ -851,62 +851,61 @@ export default {
     computed: {
         revision: {
             get() {
-                if(this.eeprom_switch===0) return this.table_3_12(this.getPart(94,94));
-                return "";
+                if (this.eeprom_switch === 0) {
+                    var rev = this.getPart(94, 94);
+                    return rev !== "00" ? this.table_3_12(rev).slice(0, -1) ?? "SFF-8472" : "SFF-8472";
+                }
+                return "SFF-8472";
             }
         },
         eeprom: {
             get() {
                 if(this.type === 'eeprom-lantiq' || this.type === 'eeprom-rooted-edit') {
-                    if(this.the_eeprom){
-                        var sfp_a2_new = (this.the_eeprom.join('').match(/.{1,90}/g) ?? []).map(it => this.hexToBase64(it));
-                        sfp_a2_new.unshift(this.sfp_a2_info_0);
-                        sfp_a2_new.push(...this.sfp_a2_info_last);
-                        return sfp_a2_new.join('@'); 
+                    if(this.eeprom_decode){
+                        var lantiq_new = (this.eeprom_decode.join('').match(/.{1,90}/g) ?? []).map(it => this.hexToBase64(it));
+                        lantiq_new.unshift(this.lantiq_0);
+                        lantiq_new.push(...this.lantiq_last);
+                        return lantiq_new.join('@'); 
                     }
                     return '';
                 } else {
-                    return this.the_eeprom_back;
+                    return this.raw;
                 }
             },
             set(val) {
-                this.the_eeprom_back = val;
+                this.raw = val;
                 if(this.type === 'eeprom-lantiq' || this.type === 'eeprom-rooted-edit') {
-                    var sfp_a2_info_arr = val.split('@');
-                    this.sfp_a2_info_0 = sfp_a2_info_arr.shift();
-                    if(this.sfp_a2_info_0.includes("sfp_a2_info")) {
+                    var lantiq_array = val.split('@');
+                    this.lantiq_0 = lantiq_array.shift();
+                    if(this.lantiq_0.includes("sfp_a2_info")) {
                         this.eeprom_switch = 1;
                     }
-                    else if(this.sfp_a2_info_0.includes("sfp_a0_low_128")) {
+                    else if(this.lantiq_0.includes("sfp_a0_low_128")) {
                         this.eeprom_switch = 0;
                     }
-                    this.sfp_a2_info_last = sfp_a2_info_arr.slice(-2);
-                    var sfp_a2_decode = sfp_a2_info_arr.map(it => this.base64ToHex(it)).join('');
-                    this.the_eeprom = [...sfp_a2_decode];
+                    this.lantiq_last = lantiq_array.slice(-2);
+                    var lantiq_decode = lantiq_array.map(it => this.base64ToHex(it)).join('');
+                    this.eeprom_decode = [...lantiq_decode];
                 }
                 else if(this.type === 'eeprom-ethtool') {
-                    console.log(val);
-                    var hex_map = Object.fromEntries(val.split('\n').filter(it => it.startsWith("0x")).map(it => { var [key, value] = it.split(/[: ]+(.*)/s);
-                                                                                                            key = parseInt(key, 16);
-                                                                                                            value = value.replace(/\s+/g, '');
-                                                                                                            value = [...value];
-                                                                                                            return [key,value] }));
-                    console.log(hex_map);
-                    var the_eeprom = [];
-                    var max = Math.max(...Object.keys(hex_map).map(it => parseInt(it)));
-                    console.log(max);  
+                    var ethtool_map = Object.fromEntries(val.split('\n').filter(it => it.startsWith("0x")).map(it => {  var [key, value] = it.split(/[: ]+(.*)/s);
+                                                                                                                        key = parseInt(key, 16);
+                                                                                                                        value = value.replace(/\s+/g, '');
+                                                                                                                        value = [...value];
+                                                                                                                        return [key,value] }));
+                    var eeprom_decode = [];
+                    var max = Math.max(...Object.keys(ethtool_map).map(it => parseInt(it)));
                     for(var i = 0; i < max; i+=16) {
-                        the_eeprom.push(...(hex_map[i] ?? Array.from({length: 32}, () => 0)));
+                        eeprom_decode.push(...(ethtool_map[i] ?? Array.from({length: 32}, () => 0)));
                     };
-                    this.the_eeprom = [...the_eeprom];
-                    console.log(the_eeprom);
-                    var first_line = val.split('\n')[0];
+                    this.eeprom_decode = [...eeprom_decode];
+                    var ethtool_0 = val.split('\n')[0];
                     var conditions0 = ['-m','--dump-module-eeprom','--module-info'];
                     var conditions1 = ['-e','--eeprom-dump'];
-                    if(conditions0.some(el => first_line.includes(el))) {
+                    if(conditions0.some(el => ethtool_0.includes(el))) {
                         this.eeprom_switch = 0;
                     }
-                    else if(conditions1.some(el => first_line.includes(el))) {
+                    else if(conditions1.some(el => ethtool_0.includes(el))) {
                         this.eeprom_switch = 1;
                     }
                 }
@@ -1086,7 +1085,7 @@ export default {
     },
     methods: {
         getPart: function (startIndex, endIndex) {
-            return this.the_eeprom?.slice(startIndex * 2, (endIndex + 1) * 2)?.join('');
+            return this.eeprom_decode?.slice(startIndex * 2, (endIndex + 1) * 2)?.join('');
         },
         setPart: function (startIndex, endIndex, value) {
             let calcLength = (endIndex + 1 - startIndex) * 2;
@@ -1098,7 +1097,7 @@ export default {
             } else if(value.length > calcLength) {
                 value = value.substring(0, calcLength);
             }
-            this.the_eeprom.splice(startIndex * 2, calcLength, ...[...value]);
+            this.eeprom_decode.splice(startIndex * 2, calcLength, ...[...value]);
         },
         isHexPrefixed: function(str, prefix = '0x') {
             if (typeof str !== 'string') {
@@ -1133,31 +1132,49 @@ export default {
             return value;
         },
         reverseEndian: function(hex) {
-            if(hex) return this.chunk(hex).reverse().join('');
+            return hex ? this.chunk(hex).reverse().join('') : "";
         },
         hexToTemp: function(hex) {
-            if(hex) return `${this.parseInt2complement((parseInt(this.reverseEndian(hex), 16)).toString(2),8)}℃`;
+            return hex ? `${this.parseInt2complement((parseInt(this.reverseEndian(hex), 16)).toString(2), 8)}℃` : "";
         },
         hexToVolt: function(hex) {
-            if(hex) return `${parseInt(hex,16)/10000}V`;
+            return hex ? `${parseInt(hex, 16) / 10000}V` : "";
         },
         hexToMilliAmpere: function(hex) {
-            if(hex) return `${parseInt(hex,16)/10000}mA`;
+            return hex ? `${parseInt(hex, 16) / 10000}mA` : "";
         },
         hexToMac: function(hex) {
-            if(hex) return this.chunk(hex).join(':');
+            return hex ? this.chunk(hex).join(':') : "";
         },
-        hex_suWTo_dBm: function (hex){
-            if(hex) return `${(10*Math.log10(parseInt(hex,16)/10000)).toFixed(2)}dBm`
+        hex_suWTo_dBm: function(hex) {
+            return hex ? `${(10 * Math.log10(parseInt(hex, 16) / 10000)).toFixed(2)}dBm` : "";
         },
-        hex_dBmTo_mw: function (hex) {
-            if(hex) return Math.pow(10,parseInt(hex,16)/10);
+        hex_dBmTo_mw: function(hex) {
+            return hex ? Math.pow(10, parseInt(hex, 16) / 10) : "";
         },
         hexToAscii: function (hex) {
-            return this.chunk(hex)?.map(el => String.fromCharCode(parseInt(el, 16)))?.join('')?.replace(/\0/g, '');
+            return hex ? this.chunk(hex)?.map(el => String.fromCharCode(parseInt(el, 16)))?.join('')?.replace(/\0/g, '') : "";
         },
         hexToSerial: function (hex) {
-            if(hex) return this.hexToAscii(hex.substring(0,8))+hex.substring(8);
+            return hex ? this.hexToAscii(hex.substring(0,8))+hex.substring(8) : "";
+        },
+        hexTo_km: function(hex) {
+            return hex ? `${parseInt(hex, 16)}km` : "";
+        },
+        hexTo100m: function(hex) {
+            return hex ? `${parseInt(hex, 16) / 10}km` : "";
+        },
+        hexTo10m: function(hex) {
+            return hex ? `${parseInt(hex, 16) * 10}m` : "";
+        },
+        hexTo_m: function(hex) {
+            return hex ? `${parseInt(hex, 16)}m` : "";
+        },
+        hexTo_nm: function(hex) {
+            return hex ? `${parseInt(hex, 16)}nm` : "";
+        },
+        hexToRate: function(hex) {
+            return hex ? `${parseInt(hex, 16) / 10}Gbps` : "";
         },
         flagDecoder: function(element, table, not_table) {
             var list = []
@@ -1175,7 +1192,7 @@ export default {
             var table = {
                 "03":"SFP",
             }
-            return table[hex] ?? `See ${this.revision} Table 3.2`;
+            return hex ?  table[hex] ?? `See ${this.revision} Table 3.2` : "";
         },
         table_3_3: function (hex) {
             var table = {
@@ -1188,7 +1205,7 @@ export default {
                 "06":"GBIC is compliant with MOD_DEF 6",
                 "07":"GBIC is compliant with MOD_DEF 7",
             }
-            return table[hex] ?? "Unallocated";
+            return hex ?  table[hex] ?? `See ${this.revision} Table 3.3` : "";
         },
         table_3_4: function (hex) {
             var table = {
@@ -1197,7 +1214,7 @@ export default {
                 "07":"LC",
                 "22":"RJ45",
             }
-            return table[hex] ?? `See ${this.revision} Table 3.3`;
+            return hex ?  table[hex] ?? `See ${this.revision} Table 3.4` : "";
         },
         table_3_6: function (hex) {
             var table = {
@@ -1209,7 +1226,7 @@ export default {
                 "05":"SONET Scrambled",
                 "06":"64B/66B",
             }
-            return table[hex] ?? "Unallocated";
+            return hex ?  table[hex] ?? `See ${this.revision} Table 3.6` : "";
         },
         table_3_17: function(hex) {
             var table = {
@@ -1222,7 +1239,7 @@ export default {
                 2:"LOS",
                 1:"Data_Ready_Bar"
             }
-            return this.flagDecoder(hex, table)?.join(', ');
+            return hex ?  this.flagDecoder(hex, table)?.join(', ') : "";
         },
         table_3_18: function(hex) {
             var table = [{
@@ -1238,7 +1255,7 @@ export default {
                 128:"RX Power High",
                 64:"RX Power Low",
             }]
-            return this.chunk(hex)?.flatMap((element, index) => this.flagDecoder(element, table[index]))?.join(', ');          
+            return hex ?  this.chunk(hex)?.flatMap((element, index) => this.flagDecoder(element, table[index]))?.join(', ') : "";          
         },
         table_3_9: function(hex) {
             var table = {
@@ -1253,7 +1270,7 @@ export default {
                 8:"Received power measurement type: OMA",
                 4:"Address change required"
             }
-            return this.flagDecoder(hex, table, not_table)?.join(', ');
+            return hex ?  this.flagDecoder(hex, table, not_table)?.join(', ') : "";
         },
         table_3_10: function(hex) {
             var table = {
@@ -1265,7 +1282,7 @@ export default {
                 4:"Application Select control implemented per SFF-8079",
                 2:"Rate Select control implemented per SFF-8431"
             }
-            return this.flagDecoder(hex, table)?.join(', ');
+            return hex ?  this.flagDecoder(hex, table)?.join(', ') : "";
         },
         table_3_12: function(hex) {
             var table = {
@@ -1280,25 +1297,7 @@ export default {
                 "08":"Rev 12.3 of SFF-8472.",
                 "09":"Rev 12.4 of SFF-8472.",
             }
-            return table[hex] ?? "Unallocated";
-        },
-        hexTo_km: function(hex) {
-            return `${parseInt(hex,16)}km`;
-        },
-        hexTo100m: function(hex) {
-            return `${parseInt(hex,16)/10}km`;
-        },
-        hexTo10m: function(hex) {
-            return `${parseInt(hex,16)*10}m`;
-        },
-        hexTo_m: function(hex) {
-            return `${parseInt(hex,16)}m`;
-        },
-        hexTo_nm: function(hex) {
-            return `${parseInt(hex,16)}nm`;
-        },
-        hexToRate: function(hex) {
-            return `${parseInt(hex,16)/10}Gbps`;
+            return hex ?  table[hex] ?? "" : "";
         },
         asciiToHex: function(str) {
             return ([...str].map((_, n) => Number(str.charCodeAt(n)).toString(16)).join(''));
