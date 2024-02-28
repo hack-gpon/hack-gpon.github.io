@@ -37,15 +37,32 @@ alias: CIG G-97CP/G-97CU
 
 ## List of software versions
 - 3FE49717AOCK12 
+- 3FE49717AOCK49 
 
 ## List of partitions
 
-| dev  | size     | erasesize | name     |
-| ---- | -------- | --------- | -------- |
-| mtd0 | 00040000 | 00001000  | "Boot"   |
-| mtd1 | 00002000 | 00001000  | "Config" |
-| mtd2 | 00002000 | 00001000  | "ImageA" |
-| mtd3 | 0003c000 | 00001000  | "ImageB" |
+| dev  | size     | erasesize | name     | format                                          |
+| ---- | -------- | --------- | -------- | ----------------------------------------------- |
+| mtd0 | 00040000 | 00001000  | "Boot"   | Binary                                          |
+| mtd1 | 00002000 | 00001000  | "Config" | [jffs2](https://en.wikipedia.org/wiki/JFFS2)    |
+| mtd2 | 00002000 | 00001000  | "ImageA" | [cramfs](https://en.wikipedia.org/wiki/Cramfs)  |
+| mtd3 | 0003c000 | 00001000  | "ImageB" | [cramfs](https://en.wikipedia.org/wiki/Cramfs)  |
+
+## Kernel command line arguments
+```
+console=ttyS0,115200  
+root=/dev/mtdblock3 
+mtdparts=sflash:512K@0x0(Boot),0x180000@0x80000(Config),7M@0x200000(ImageA),7M@0x900000(ImageB) 
+rootfstype=cramfs 
+hasEeprom=0 
+5srst=0 
+eqvid=3FE49715ADAA01 
+uboot_version=V3.9.08 
+major=f4 
+minor=1
+```
+
+Note: When **Reset** button is held for over 5 seconds then parameter `5srst=0` is changed to `1`.
 
 ## Serial
 
