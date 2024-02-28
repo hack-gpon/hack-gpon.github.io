@@ -34,18 +34,39 @@ alias: CIG G-97CP/G-97CU
 {% include image.html file="q-010g-t_ports.jpg"  alt="Nokia G-010G-T Ports" caption="Nokia G-010G-T Ports" %}
 {% include image.html file="q-010g-t_internal_up.jpg"  alt="Nokia G-010G-T Internal Up" caption="Nokia G-010G-T Internal Up" %}
 {% include image.html file="q-010g-t_internal_down.jpg"  alt="Nokia G-010G-T Internal Down" caption="Nokia G-010G-T Internal Down" %}
+{% include image.html file="q-010g-t_flash.jpg"         alt="Nokia G-010G-T Winbond 25Q128 Flash memory"  caption="Nokia G-010G-T Winbond 25Q128 Flash memory"  %}
+{% include image.html file="q-010g-t_laser_driver.jpg"  alt="Nokia G-010G-T Semtech GN25L95 Laser Driver" caption="Nokia G-010G-T Semtech GN25L95 Laser Driver" %}
+{% include image.html file="q-010g-t_rtl8221b.jpg"      alt="Nokia G-010G-T Realtek RTL8221B"             caption="Nokia G-010G-T Realtek RTL8221B"             %}
+{% include image.html file="q-010g-t_rtl9601d.jpg"      alt="Nokia G-010G-T Realtek RTL9601D"             caption="Nokia G-010G-T Realtek RTL9601D"             %}
 
 ## List of software versions
 - 3FE49717AOCK12 
+- 3FE49717AOCK49 
 
 ## List of partitions
 
-| dev  | size     | erasesize | name     |
-| ---- | -------- | --------- | -------- |
-| mtd0 | 00040000 | 00001000  | "Boot"   |
-| mtd1 | 00002000 | 00001000  | "Config" |
-| mtd2 | 00002000 | 00001000  | "ImageA" |
-| mtd3 | 0003c000 | 00001000  | "ImageB" |
+| dev  | size     | erasesize | name     | format                                          |
+| ---- | -------- | --------- | -------- | ----------------------------------------------- |
+| mtd0 | 00040000 | 00001000  | "Boot"   | Binary                                          |
+| mtd1 | 00002000 | 00001000  | "Config" | [jffs2](https://en.wikipedia.org/wiki/JFFS2)    |
+| mtd2 | 00002000 | 00001000  | "ImageA" | [cramfs](https://en.wikipedia.org/wiki/Cramfs)  |
+| mtd3 | 0003c000 | 00001000  | "ImageB" | [cramfs](https://en.wikipedia.org/wiki/Cramfs)  |
+
+## Kernel command line arguments
+```
+console=ttyS0,115200  
+root=/dev/mtdblock3 
+mtdparts=sflash:512K@0x0(Boot),0x180000@0x80000(Config),7M@0x200000(ImageA),7M@0x900000(ImageB) 
+rootfstype=cramfs 
+hasEeprom=0 
+5srst=0 
+eqvid=3FE49715ADAA01 
+uboot_version=V3.9.08 
+major=f4 
+minor=1
+```
+
+Note: When **Reset** button is held for over 5 seconds then parameter `5srst=0` is changed to `1`.
 
 ## Serial
 

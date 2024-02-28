@@ -112,6 +112,25 @@ hex_eqid: 0x594F55525F435553544F4D5F4551554944000000000000
 ---ATECMDRESULT--- OK
 ```
 
+## Getting/Setting MAC address
+`mac1` = Lower MAC ID (printed on label)
+
+`mac2` = Upper MAC ID (usually = `mac1`+`3`)
+```sh
+#ONT>system
+#ONT/system>misc
+#ONT/system/misc>mac1 get
+mac1: aa.bb.12.34.56.78
+---ATECMDRESULT--- OK
+#ONT/system/misc>mac2 get
+mac2: aa.bb.12.34.56.7b
+---ATECMDRESULT--- OK
+#ONT/system/misc>mac1 set 12:34:56:11:22:33
+---ATECMDRESULT--- OK
+#ONT/system/misc>mac2 set 12:34:56:11:22:44
+---ATECMDRESULT--- OK
+```
+
 # Advanced settings
 
 ## Setting management IP
