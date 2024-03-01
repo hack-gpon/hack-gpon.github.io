@@ -22,7 +22,7 @@ Here is a list of the most popular Vendor IDs:
 | `DLNK` | `444c4e4b` | Dlink                |
 | `DSNW` | `44534e57` | DASAN                |
 | `ELTX` | `454c5458` | Eltex                |
-| `FHTT` | `46485454` | FiberHome           |
+| `FHTT` | `46485454` | FiberHome            |
 | `GMTK` | `474d544b` | GemTek               |
 | `GNXS` | `474e5853` | Genexis              |
 | `GPON` | `47504f4e` | Generic vendor name  |
