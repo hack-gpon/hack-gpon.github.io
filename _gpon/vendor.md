@@ -22,16 +22,18 @@ Here is a list of the most popular Vendor IDs:
 | `DLNK` | `444c4e4b` | Dlink                |
 | `DSNW` | `44534e57` | DASAN                |
 | `ELTX` | `454c5458` | Eltex                |
-| `FHTT` | `46485454` | Fiber Home           |
+| `FHTT` | `46485454` | FiberHome            |
 | `GMTK` | `474d544b` | GemTek               |
 | `GNXS` | `474e5853` | Genexis              |
 | `GPON` | `47504f4e` | Generic vendor name  |
 | `GTHG` | `47544847` | Alcatel-Lucent (ODM) |
 | `HALN` | `48414c4e` | HALNy                |
 | `HBMT` | `48424d54` | HiSense              |
+| `HUMA` | `48554d41` | Humax                |
 | `HWTC` | `48575443` | Huawei               |
 | `ICTR` | `49435452` | Icotera              |
 | `ISKT` | `49534b54` | Iskratel             |
+| `KAON` | `4b414f4e` | KAONMEDIA            |
 | `LEOX` | `4c454f58` | LEOX                 |
 | `LQDE` | `4c514445` | Lantiq               |
 | `NOKG` | `4e4f4b47` | Nokia (GemTek ODM)   |
