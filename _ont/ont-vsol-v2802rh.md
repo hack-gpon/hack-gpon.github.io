@@ -25,16 +25,7 @@ parent: V-SOL
 
 ## List of firmwares and files
 
-- [Firmware repository by Anime4000](https://github.com/Anime4000/RTL960x/tree/main/Firmware/V2801F)
-
-The recommended version is `V2801F_V1.9.0-220425.tar` because it has a modern WebGUI, 2.5GbE support, patched `runlansds.sh`, `tftpd` and more.
-
-{% include_relative ont-luna-sdk-useful-commands.md
-    flash='flash'
-    ploam='ascii'
-%}
-
-
+- [V-SOL V2802RH | O3 Labs](https://www.tripleoxygen.net/wiki/ont/vsol/v2802rh)
 
 # Miscellaneous Links
 
