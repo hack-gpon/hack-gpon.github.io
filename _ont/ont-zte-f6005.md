@@ -165,6 +165,8 @@ On some software versions, Password and Update Password fields are disabled and 
 - CSS display property to show (from none)
 - HTML `disabled=true` attribute to `enabled=true`
 
+{% include image.html file="f6005/f6005_of_change_ploam.png" alt="F6005 procedure for changing the PLOAM password" caption="F6005 procedure for changing the PLOAM password" %}
+
 This has been tested on the following firmware versions:
 - V6.0.10P2N19 (OpenFiber)
 
