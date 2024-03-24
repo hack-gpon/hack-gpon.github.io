@@ -34,7 +34,9 @@ On some software versions, Password and Update Password fields are disabled and 
 
 - CSS display property to show (from none)
 - HTML `disabled=true` attribute to `enabled=true`
-Tested and fully working  with V6.0.10P2N19 (OpenFiber) firmware 
+
+This has been tested on the following firmware versions:
+- V6.0.10P2N19 (OpenFiber)
 ## Serial
 
 The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. To accept TX line commands, the GND of the TTL adapter should be attached to the ONT's shield:
