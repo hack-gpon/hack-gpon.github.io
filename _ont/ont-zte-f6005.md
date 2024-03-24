@@ -30,7 +30,10 @@ parent: ZTE
 {% include image.html file="f6005_tim.jpg" alt="F6005 TIM" caption="F6005 with ZTE branding, like the ones used by TIM" %}
 {% include image.html file="f6005_teardown.jpg" alt="F6005 teardown" caption="F6005 teardown" %}
 ## Change PLOAM password from the web UI
-The Password and Update Password  fields are disabled and hidden, but can be re-enabled via the browser's developer console by editing the HTML code
+On some software versions, Password and Update Password fields are disabled and hidden even when using the admin account. They sometimes can be re-enabled via the browser's developer console by editing the HTML code and setting:
+
+- CSS display property to show (from none)
+- HTML `disabled=true` attribute to `enabled=true`
 Tested and fully working  with V6.0.10P2N19 (OpenFiber) firmware 
 ## Serial
 
