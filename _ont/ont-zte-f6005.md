@@ -158,6 +158,18 @@ This way both slots will have the same firmware version and will avoid any swap 
 
 After these steps, power-cycle ONT and login via Telnet with `root\admin` credentials. From this moment you can simply spoof your ONT with the usual commands.
 
+## Change PLOAM password from the web UI
+
+On some software versions, Password and Update Password fields are disabled and hidden even when using the admin account. They sometimes can be re-enabled via the browser's developer console by editing the HTML code and setting:
+
+- CSS display property to show (from none)
+- HTML `disabled=true` attribute to `enabled=true`
+
+{% include image.html file="f6005/f6005_of_change_ploam.png" alt="F6005 procedure for changing the PLOAM password" caption="F6005 procedure for changing the PLOAM password" %}
+
+This has been tested on the following firmware versions:
+- V6.0.10P2N19 (OpenFiber)
+
 
 # Known Bugs
 
