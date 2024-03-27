@@ -1,14 +1,13 @@
 ---
-title: Lantiq Print EEPROM
+title: Ethtool Print EEPROM
 has_children: false
 layout: default
 ---
 
-1. Get `sfp_a0_low_128` or `sfp_a2_info` and paste into the form
-
+1. Get `ethtool -m` or `ethtool -e` and paste into the form
 
 <div id="app">
-    <vue-lantiq-eeprom type='eeprom-lantiq'></vue-lantiq-eeprom>
+    <vue-lantiq-eeprom type='eeprom-ethtool'></vue-lantiq-eeprom>
 </div>
 <script src="https://unpkg.com/vue@latest"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue3-sfc-loader"></script>

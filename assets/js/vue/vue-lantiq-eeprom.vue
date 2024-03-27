@@ -1,14 +1,50 @@
 <template>
     <div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" placeholder="EEPROM input" id="eeprom" v-model="eeprom">
+            <textarea v-if="type === 'eeprom-ethtool'" type="text" class="form-control" placeholder="EEPROM input" id="eeprom" v-model="eeprom"></textarea>
+            <input v-else type="text" class="form-control" placeholder="EEPROM input" id="eeprom" v-model="eeprom">
             <label for="eeprom">EEPROM input</label>
         </div>
-        <template v-if="type === 'eeprom-print'">
+        <template v-if="type === 'eeprom-lantiq'">
             <div class="form-floating mb-3">
                 <select class="form-control" placeholder="Select EEPROM" id="eeprom-type" v-model="eeprom_switch">
-                    <option value="0">EEPROM A0</option>
-                    <option value="1">EEPROM A2</option>
+                    <option value="A0">EEPROM A0</option>
+                    <option value="A2">EEPROM A2</option>
+                </select>
+                <label for="eeprom-type">Select EEPROM A0 or A2</label>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <tr>
+                        <th>address</th>
+                        <th>size</th>
+                        <th>name</th>
+                        <th>hex value</th>
+                        <th>decoded value</th>
+                        <th>description</th>
+                    </tr>
+                    <tr v-for="(value, key, index) in eeprom_json" :key="index">
+                        <td>{{ value.address }}</td>
+                        <td>{{ value.size }}</td>
+                        <td v-if="value.name.startsWith('**')"><b>{{ value.name.replaceAll('**', '') }}</b></td>
+                        <td v-else>{{ value.name }}</td>
+                        <td><code v-if="value.value">{{ chunk(value.value)?.map(it => `0x${it}`)?.join(' ') }}</code></td>
+                        <td><span v-if="value.human">{{ value.human }}</span></td>
+                        <td v-if="value.description.startsWith('**')"><b>{{ value.description.replaceAll('**', '') }}</b></td>
+                        <td v-else>{{ value.description }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div markdown="span" class="alert alert-blue" role="alert" v-if="revision">
+                <svg viewBox="0 0 24 24" class="info-icon"><use xlink:href="#svg-info"></use></svg>
+                <span> <b>Info</b> For more information, see the {{ revision }} specification.</span>
+            </div>
+        </template>
+        <template v-if="type === 'eeprom-ethtool'">
+            <div class="form-floating mb-3">
+                <select class="form-control" placeholder="Select EEPROM" id="eeprom-type" v-model="eeprom_switch">
+                    <option value="A0">EEPROM A0</option>
+                    <option value="A2">EEPROM A2</option>
                 </select>
                 <label for="eeprom-type">Select EEPROM A0 or A2</label>
             </div>
@@ -82,11 +118,12 @@
 export default {
     data() {
         return {
-            the_eeprom: null,
-            sfp_a2_info_0: null,
-            sfp_a2_info_last: null,
-            eeprom_table: [
-                [
+            raw: null,
+            eeprom_decode: null,
+            lantiq_0: null,
+            lantiq_last: null,
+            eeprom_table: {
+                "A0":[
                     {
                         "address": "",
                         "size": "",
@@ -98,21 +135,21 @@ export default {
                         "size": "1",
                         "name": "Identifier",
                         "description": "Type of transceiver",
-                        "parse": "table_3_2"
+                        "parse": "table_identifier_values"
                     },
                     {
                         "address": "1",
                         "size": "1",
                         "name": "Ext identifier",
                         "description": "Additional information about the transceiver",
-                        "parse": "table_3_3"
+                        "parse": "table_phy_device_identifier_value"
                     },
                     {
                         "address": "2",
                         "size": "1",
                         "name": "Connector",
                         "description": "Type of media connector",
-                        "parse": "table_3_4"
+                        "parse": "table_connector_value"
                     },
                     {
                         "address": "3-10",
@@ -125,7 +162,7 @@ export default {
                         "size": "1",
                         "name": "Encoding",
                         "description": "High speed serial encoding algorithm",
-                        "parse": "table_3_6"
+                        "parse": "table_encoding_value"
                     },
                     {
                         "address": "12",
@@ -193,7 +230,8 @@ export default {
                         "address": "36",
                         "size": "1",
                         "name": "Transceiver",
-                        "description": "Code for optical compatibility"
+                        "description": "Code for optical compatibility",
+                        "parse":"table_extended_specification_compliance_codeds"
                     },
                     {
                         "address": "37-39",
@@ -276,21 +314,21 @@ export default {
                         "size": "1",
                         "name": "Diagnostic Monitoring Type",
                         "description": "Indicates which type of diagnostic monitoring is implemented",
-                        "parse":"table_3_9"
+                        "parse":"table_diagnostic_monitoring_type"
                     },
                     {
                         "address": "93",
                         "size": "1",
                         "name": "Enhanced Options",
                         "description": "Indicates which optional enhanced features are implemented",
-                        "parse":"table_3_10"
+                        "parse":"table_enhanced_options"
                     },
                     {
                         "address": "94",
                         "size": "1",
                         "name": "SFF-8472 Compliance",
                         "description": "Indicates which revision of SFF-8472 the transceiver complies with",
-                        "parse":"table_3_12"
+                        "parse":"table_compliance"
                     },
                     {
                         "address": "95",
@@ -330,7 +368,7 @@ export default {
                         "description": "Reserved"
                     }
                 ], 
-                [
+                "A2":[
                     {
                         "address": "",
                         "size": "",
@@ -651,7 +689,7 @@ export default {
                         "size": "1",
                         "name": "Status/Control",
                         "description": "Optional Status and Control Bits",
-                        "parse": "table_3_17"
+                        "parse": "table_real_time_diagnostic_and_control"
                     },
                     {
                         "address": "111",
@@ -664,26 +702,29 @@ export default {
                         "size": "2",
                         "name": "Alarm Flags",
                         "description": "Diagnostic Alarm Flag Status Bits",
-                        "parse": "table_3_18"
+                        "parse": "table_alarm_and_warning"
                     },
                     {
                         "address": "114",
                         "size": "1",
                         "name": "Tx Input EQ control",
-                        "description": "Tx Input equalization level control"
+                        "description": "Tx Input equalization level control",
+                        "parse": "hex_to_dBm"
+
                     },
                     {
                         "address": "115",
                         "size": "1",
                         "name": "Rx Out Emphasis control",
-                        "description": "Rx Output emphasis level control"
+                        "description": "Rx Output emphasis level control",
+                        "parse": "hex_to_dBm"
                     },
                     {
                         "address": "116-117",
                         "size": "2",
                         "name": "Warning Flags",
                         "description": "Diagnostic Warning Flag Status Bits",
-                        "parse": "table_3_18"
+                        "parse": "table_alarm_and_warning"
                     },
                     {
                         "address": "118-119",
@@ -806,40 +847,74 @@ export default {
                         "description": "Reserved"
                     }
                 ]
-            ],
-            eeprom_switch: 0
+                },
+            eeprom_switch: "A0"
         }
     },
     props: ['type'],
     computed: {
         revision: {
             get() {
-                if(this.eeprom_switch===0) return this.table_3_12(this.getPart(94,94));
-                return "";
+                if (this.eeprom_switch === "A0") {
+                    var rev = this.getPart(94, 94);
+                    return rev !== "00" ? this.table_compliance(rev).slice(0, -1) ?? "SFF-8472" : "SFF-8472";
+                }
+                return "SFF-8472";
             }
         },
         eeprom: {
             get() {
-                if(this.the_eeprom){
-                    var sfp_a2_new = (this.the_eeprom.join('').match(/.{1,90}/g) ?? []).map(it => this.hexToBase64(it));
-                    sfp_a2_new.unshift(this.sfp_a2_info_0);
-                    sfp_a2_new.push(...this.sfp_a2_info_last);
-                    return sfp_a2_new.join('@'); 
+                if(this.type === 'eeprom-lantiq' || this.type === 'eeprom-rooted-edit') {
+                    if(this.eeprom_decode){
+                        var lantiq_new = (this.eeprom_decode.join('').match(/.{1,90}/g) ?? []).map(it => this.hexToBase64(it));
+                        lantiq_new.unshift(this.lantiq_0);
+                        lantiq_new.push(...this.lantiq_last);
+                        return lantiq_new.join('@'); 
+                    }
+                    return '';
+                } else {
+                    return this.raw;
                 }
-                return '';
             },
             set(val) {
-                var sfp_a2_info_arr = val.split('@');
-                this.sfp_a2_info_0 = sfp_a2_info_arr.shift();
-                if(this.sfp_a2_info_0.includes("sfp_a2_info")) {
-                    this.eeprom_switch = 1;
+                this.raw = val;
+                if(this.type === 'eeprom-lantiq' || this.type === 'eeprom-rooted-edit') {
+                    var lantiq_array = val.split('@');
+                    this.lantiq_0 = lantiq_array.shift();
+                    if(this.lantiq_0.includes("sfp_a2_info")) {
+                        this.eeprom_switch = "A2";
+                    }
+                    else if(this.lantiq_0.includes("sfp_a0_low_128")) {
+                        this.eeprom_switch = "A0";
+                    }
+                    this.lantiq_last = lantiq_array.slice(-2);
+                    var lantiq_decode = lantiq_array.map(it => this.base64ToHex(it)).join('');
+                    this.eeprom_decode = [...lantiq_decode];
                 }
-                else if(this.sfp_a2_info_0.includes("sfp_a0_low_128")) {
-                    this.eeprom_switch = 0;
+                else if(this.type === 'eeprom-ethtool') {
+                    var ethtool_map = Object.fromEntries(val.split('\n').filter(it => it.startsWith("0x")).map(it => {  var [key, value] = it.split(/[: ]+(.*)/s);
+                                                                                                                        key = parseInt(key, 16);
+                                                                                                                        value = value.replace(/\s+/g, '');
+                                                                                                                        value = [...value];
+                                                                                                                        return [key,value] }));
+                    var eeprom_decode = [];
+                    var max = Math.max(...Object.keys(ethtool_map).map(it => parseInt(it)));
+                    for(var i = 0; i < max; i+=16) {
+                        eeprom_decode.push(...(ethtool_map[i] ?? Array.from({length: 32}, () => 0)));
+                    };
+                    this.eeprom_decode = [...eeprom_decode];
+                    var ethtool_0 = val.split('\n')[0];
+                    const conditions = {
+                        "A0": ['-m', '--dump-module-eeprom', '--module-info'],
+                        "A2": ['-e', '--eeprom-dump']
+                    };
+                    for (const [key, value] of Object.entries(conditions)) {
+                        if (value.some(el => ethtool_0.includes(el))) {
+                            this.eeprom_switch = key;
+                            break;
+                        }
+                    }
                 }
-                this.sfp_a2_info_last = sfp_a2_info_arr.slice(-2);
-                var sfp_a2_decode = sfp_a2_info_arr.map(it => this.base64ToHex(it)).join('');
-                this.the_eeprom = [...sfp_a2_decode];
             },
         },
         eeprom_json: {
@@ -1016,7 +1091,7 @@ export default {
     },
     methods: {
         getPart: function (startIndex, endIndex) {
-            return this.the_eeprom?.slice(startIndex * 2, (endIndex + 1) * 2)?.join('');
+            return this.eeprom_decode?.slice(startIndex * 2, (endIndex + 1) * 2)?.join('');
         },
         setPart: function (startIndex, endIndex, value) {
             let calcLength = (endIndex + 1 - startIndex) * 2;
@@ -1028,7 +1103,7 @@ export default {
             } else if(value.length > calcLength) {
                 value = value.substring(0, calcLength);
             }
-            this.the_eeprom.splice(startIndex * 2, calcLength, ...[...value]);
+            this.eeprom_decode.splice(startIndex * 2, calcLength, ...[...value]);
         },
         isHexPrefixed: function(str, prefix = '0x') {
             if (typeof str !== 'string') {
@@ -1063,31 +1138,52 @@ export default {
             return value;
         },
         reverseEndian: function(hex) {
-            if(hex) return this.chunk(hex).reverse().join('');
+            return hex ? this.chunk(hex).reverse().join('') : "";
         },
         hexToTemp: function(hex) {
-            if(hex) return `${this.parseInt2complement((parseInt(this.reverseEndian(hex), 16)).toString(2),8)}℃`;
+            return hex ? `${this.parseInt2complement((parseInt(this.reverseEndian(hex), 16)).toString(2), 8)}℃` : "";
         },
         hexToVolt: function(hex) {
-            if(hex) return `${parseInt(hex,16)/10000}V`;
+            return hex ? `${parseInt(hex, 16) / 10000}V` : "";
         },
         hexToMilliAmpere: function(hex) {
-            if(hex) return `${parseInt(hex,16)/10000}mA`;
+            return hex ? `${parseInt(hex, 16) / 10000}mA` : "";
         },
         hexToMac: function(hex) {
-            if(hex) return this.chunk(hex).join(':');
+            return hex ? this.chunk(hex).join(':') : "";
         },
-        hex_suWTo_dBm: function (hex){
-            if(hex) return `${(10*Math.log10(parseInt(hex,16)/10000)).toFixed(2)}dBm`
+        hex_to_dBm: function(hex) {
+            return hex ? `${parseInt(hex, 16)}dBm` : "";
         },
-        hex_dBmTo_mw: function (hex) {
-            if(hex) return Math.pow(10,parseInt(hex,16)/10);
+        hex_suWTo_dBm: function(hex) {
+            return hex ? `${(10 * Math.log10(parseInt(hex, 16) / 10000)).toFixed(2)}dBm` : "";
+        },
+        hex_dBmTo_mw: function(hex) {
+            return hex ? Math.pow(10, parseInt(hex, 16) / 10) : "";
         },
         hexToAscii: function (hex) {
-            return this.chunk(hex)?.map(el => String.fromCharCode(parseInt(el, 16)))?.join('')?.replace(/\0/g, '');
+            return hex ? this.chunk(hex)?.map(el => String.fromCharCode(parseInt(el, 16)))?.join('')?.replace(/\0/g, '') : "";
         },
         hexToSerial: function (hex) {
-            if(hex) return this.hexToAscii(hex.substring(0,8))+hex.substring(8);
+            return hex ? this.hexToAscii(hex.substring(0,8))+hex.substring(8) : "";
+        },
+        hexTo_km: function(hex) {
+            return hex ? `${parseInt(hex, 16)}km` : "";
+        },
+        hexTo100m: function(hex) {
+            return hex ? `${parseInt(hex, 16) / 10}km` : "";
+        },
+        hexTo10m: function(hex) {
+            return hex ? `${parseInt(hex, 16) * 10}m` : "";
+        },
+        hexTo_m: function(hex) {
+            return hex ? `${parseInt(hex, 16)}m` : "";
+        },
+        hexTo_nm: function(hex) {
+            return hex ? `${parseInt(hex, 16)}nm` : "";
+        },
+        hexToRate: function(hex) {
+            return hex ? `${parseInt(hex, 16) / 10}Gbps` : "";
         },
         flagDecoder: function(element, table, not_table) {
             var list = []
@@ -1101,13 +1197,15 @@ export default {
             }
             return list;
         },
-        table_3_2: function (hex) {
+        table_identifier_values: function (hex) {
             var table = {
-                "03":"SFP",
+                "01":"GBIC",
+                "02":"Module soldered to motherboard (ex: SFF)",
+                "03":"SFP/SFP+/SFP28"
             }
-            return table[hex] ?? `See ${this.revision} Table 3.2`;
+            return hex ?  table[hex] ?? `See ${this.revision} Table 3.2` : "";
         },
-        table_3_3: function (hex) {
+        table_phy_device_identifier_value: function (hex) {
             var table = {
                 "00":"GBIC definition is not specified or the GBIC definition is not compliant with a defined MOD_DEF. See product specification for details",
                 "01":"GBIC is compliant with MOD_DEF 1",
@@ -1118,18 +1216,26 @@ export default {
                 "06":"GBIC is compliant with MOD_DEF 6",
                 "07":"GBIC is compliant with MOD_DEF 7",
             }
-            return table[hex] ?? "Unallocated";
+            return hex ?  table[hex] ?? `See ${this.revision} Table 3.3` : "";
         },
-        table_3_4: function (hex) {
+        table_connector_value: function (hex) {
             var table = {
                 "00":"Unknown or unspecified",
-                "01":"SC",
-                "07":"LC",
-                "22":"RJ45",
+                "01":"SC (Subscriber Connector)",
+                "02":"Fibre Channel Style 1 copper connector",
+                "03":"Fibre Channel Style 2 copper connector",
+                "04":"BNC/TNC (Bayonet/Threaded Neill-Concelman)",
+                "05":"Fibre Channel coax headers",
+                "06":"Fiber Jack",
+                "07":"LC (Lucent Connector)",
+                "08":"MT-RJ (Mechanical Transfer - Registered Jack)",
+                "09":"MU (Multiple Optical)",
+                "21":"Copper pigtail",
+                "22":"RJ45 (Registered Jack)"
             }
-            return table[hex] ?? `See ${this.revision} Table 3.3`;
+            return hex ?  table[hex] ?? `See ${this.revision} Table 3.4` : "";
         },
-        table_3_6: function (hex) {
+        table_encoding_value: function (hex) {
             var table = {
                 "00":"Unspecified",
                 "01":"8B/10B",
@@ -1139,9 +1245,9 @@ export default {
                 "05":"SONET Scrambled",
                 "06":"64B/66B",
             }
-            return table[hex] ?? "Unallocated";
+            return hex ?  table[hex] ?? `See ${this.revision} Table 3.6` : "";
         },
-        table_3_17: function(hex) {
+        table_real_time_diagnostic_and_control: function(hex) {
             var table = {
                 128:"TX Disable State",
                 64:"Soft TX Disable",
@@ -1152,9 +1258,9 @@ export default {
                 2:"LOS",
                 1:"Data_Ready_Bar"
             }
-            return this.flagDecoder(hex, table)?.join(', ');
+            return hex ?  this.flagDecoder(hex, table)?.join(', ') : "";
         },
-        table_3_18: function(hex) {
+        table_alarm_and_warning: function(hex) {
             var table = [{
                 128:"Temp High",
                 64:"Temp Low",
@@ -1168,9 +1274,9 @@ export default {
                 128:"RX Power High",
                 64:"RX Power Low",
             }]
-            return this.chunk(hex)?.flatMap((element, index) => this.flagDecoder(element, table[index]))?.join(', ');          
+            return hex ?  this.chunk(hex)?.flatMap((element, index) => this.flagDecoder(element, table[index]))?.join(', ') : "";          
         },
-        table_3_9: function(hex) {
+        table_diagnostic_monitoring_type: function(hex) {
             var table = {
                 64:"Digital diagnostic monitoring implemented",
                 32:"Internally calibrated",
@@ -1183,9 +1289,9 @@ export default {
                 8:"Received power measurement type: OMA",
                 4:"Address change required"
             }
-            return this.flagDecoder(hex, table, not_table)?.join(', ');
+            return hex ?  this.flagDecoder(hex, table, not_table)?.join(', ') : "";
         },
-        table_3_10: function(hex) {
+        table_enhanced_options: function(hex) {
             var table = {
                 128:"Alarm/warning flags implemented for all monitored quantities",
                 64:"Soft TX_DISABLE control and monitoring implemented",
@@ -1195,9 +1301,9 @@ export default {
                 4:"Application Select control implemented per SFF-8079",
                 2:"Rate Select control implemented per SFF-8431"
             }
-            return this.flagDecoder(hex, table)?.join(', ');
+            return hex ?  this.flagDecoder(hex, table)?.join(', ') : "";
         },
-        table_3_12: function(hex) {
+        table_compliance: function(hex) {
             var table = {
                 "00":"Digital diagnostic functionality not included or undefined.",
                 "01":"Rev 9.3 of SFF-8472.",
@@ -1210,25 +1316,87 @@ export default {
                 "08":"Rev 12.3 of SFF-8472.",
                 "09":"Rev 12.4 of SFF-8472.",
             }
-            return table[hex] ?? "Unallocated";
+            return hex ?  table[hex] ?? "" : "";
         },
-        hexTo_km: function(hex) {
-            return `${parseInt(hex,16)}km`;
-        },
-        hexTo100m: function(hex) {
-            return `${parseInt(hex,16)/10}km`;
-        },
-        hexTo10m: function(hex) {
-            return `${parseInt(hex,16)*10}m`;
-        },
-        hexTo_m: function(hex) {
-            return `${parseInt(hex,16)}m`;
-        },
-        hexTo_nm: function(hex) {
-            return `${parseInt(hex,16)}nm`;
-        },
-        hexToRate: function(hex) {
-            return `${parseInt(hex,16)/10}Gbps`;
+        table_extended_specification_compliance_codeds: function(hex) {
+            var table = {
+                "00":"Unspecified.",
+                "01":"100G AOC (Active Optical Cable), retimed or 25GAUI C2M AOC. Providing a worst BER of 5 × 10-5.",
+                "02":"100GBASE-SR4 or 25GBASE-SR.",
+                "03":"100GBASE-LR4 or 25GBASE-LR.",
+                "04":"100GBASE-ER4 or 25GBASE-ER.",
+                "05":"100GBASE-SR10.",
+                "06":"100G CWDM4.",
+                "07":"100G PSM4 Parallel SMF.",
+                "08":"100G ACC (Active Copper Cable), retimed or 25GAUI C2M ACC. Providing a worst BER of 5 × 10-5.",
+                "09":"Obsolete (assigned before 100G CWDM4 MSA required FEC).",
+                "0A":"Reserved.",
+                "0B":"100GBASE-CR4, 25GBASE-CR CA-25G-L or 50GBASE-CR2 with RS (Clause91) FEC.",
+                "0C":"25GBASE-CR CA-25G-S or 50GBASE-CR2 with BASE-R (Clause 74 Fire code) FEC.",
+                "0D":"25GBASE-CR CA-25G-N or 50GBASE-CR2 with no FEC.",
+                "0E":"10 Mb/s Single Pair Ethernet (802.3cg, Clause 146/147, 1000 m copper).",
+                "10":"40GBASE-ER4.",
+                "11":"4 x 10GBASE-SR.",
+                "12":"40G PSM4 Parallel SMF.",
+                "13":"G959.1 profile P1I1-2D1 (10709 MBd, 2km, 1310 nm SM).",
+                "14":"G959.1 profile P1S1-2D2 (10709 MBd, 40km, 1550 nm SM).",
+                "15":"G959.1 profile P1L1-2D2 (10709 MBd, 80km, 1550 nm SM).",
+                "16":"10GBASE-T with SFI electrical interface.",
+                "17":"100G CLR4.",
+                "18":"100G AOC, retimed or 25GAUI C2M AOC. Providing a worst BER of 10-12 or below.",
+                "19":"100G ACC, retimed or 25GAUI C2M ACC. Providing a worst BER of 10-12 or below.",
+                "1A":"100GE-DWDM2 (DWDM transceiver using 2 wavelengths on a 1550 nm DWDM grid with a reach up to 80 km).",
+                "1B":"100G 1550nm WDM (4 wavelengths).",
+                "1C":"10GBASE-T Short Reach (30 meters).",
+                "1D":"5GBASE-T.",
+                "1E":"2.5GBASE-T.",
+                "1F":"40G SWDM4.",
+                "20":"100G SWDM4.",
+                "21":"100G PAM4 BiDi.",
+                "37":"10GBASE-BR (Clause 158).",
+                "38":"25GBASE-BR (Clause 159).",
+                "39":"50GBASE-BR (Clause 160).",
+                "22":"4WDM-10 MSA (10km version of 100G CWDM4 with same RS(528,514) FEC in host system).",
+                "23":"4WDM-20 MSA (20km version of 100GBASE-LR4 with RS(528,514) FEC in host system).",
+                "24":"4WDM-40 MSA (40km reach with APD receiver and RS(528,514) FEC in host system).",
+                "25":"100GBASE-DR (Clause 140), CAUI-4 (no FEC).",
+                "26":"100G-FR or 100GBASE-FR1 (Clause 140), CAUI-4 (no FEC on host interface).",
+                "27":"100G-LR or 100GBASE-LR1 (Clause 140), CAUI-4 (no FEC on host interface).",
+                "28":"100GBASE-SR1 (802.3, Clause 167), CAUI-4 (no FEC on host interface).",
+                "3A":"100GBASE-VR1 (802.3, Clause 167), CAUI-4 (no FEC on host interface).",
+                "29":"100GBASE-SR1, 200GBASE-SR2 or 400GBASE-SR4 (802.3, Clause 167).",
+                "36":"100GBASE-VR1, 200GBASE-VR2 or 400GBASE-VR4 (802.3, Clause 167).",
+                "2A":"100GBASE-FR1 (802.3, Clause 140) or 400GBASE-DR4-2 (P802.3df, Clause 124).",
+                "2B":"100GBASE-LR1 (802.3, Clause 140).",
+                "2C":"100G-LR1-20 MSA, CAUI-4 (no FEC on host interface).",
+                "2D":"100G-ER1-30 MSA, CAUI-4 (no FEC on host interface).",
+                "2E":"100G-ER1-40 MSA, CAUI-4 (no FEC on host interface).",
+                "2F":"100G-LR1-20 MSA.",
+                "34":"100G-ER1-30 MSA.",
+                "35":"100G-ER1-40 MSA.",
+                "30":"Active Copper Cable with 50GAUI, 100GAUI-2 or 200GAUI-4 C2M. Providing a worst BER of 10-6 or below.",
+                "31":"Active Optical Cable with 50GAUI, 100GAUI-2 or 200GAUI-4 C2M. Providing a worst BER of 10-6 or below.",
+                "32":"Active Copper Cable with 50GAUI, 100GAUI-2 or 200GAUI-4 C2M. Providing a worst BER of 2.6x10-4 for ACC, 10-5 for AUI, or below.",
+                "33":"Active Optical Cable with 50GAUI, 100GAUI-2 or 200GAUI-4 C2M. Providing a worst BER of 2.6x10-4 for AOC, 10-5 for AUI, or below.",
+                "3F":"100GBASE-CR1, 200GBASE-CR2 or 400GBASE-CR4 (P802.3ck, Clause 162).",
+                "40":"50GBASE-CR, 100GBASE-CR2, or 200GBASE-CR4.",
+                "41":"50GBASE-SR, 100GBASE-SR2, or 200GBASE-SR4.",
+                "42":"50GBASE-FR or 200GBASE-DR4.",
+                "4A":"50GBASE-ER (IEEE 802.3, Clause 139).",
+                "43":"200GBASE-FR4.",
+                "44":"200G 1550 nm PSM4.",
+                "45":"50GBASE-LR.",
+                "46":"200GBASE-LR4.",
+                "47":"400GBASE-DR4 (802.3, Clause 124), 400GAUI-4 C2M (Annex 120G).",
+                "48":"400GBASE-FR4 (802.3, Clause 151).",
+                "49":"400GBASE-LR4-6 (802.3, Clause 151).",
+                "4B":"400G-LR4-10.",
+                "4C":"400GBASE-ZR (P802.3cw, Clause 156).",
+                "7F":"256GFC-SW4 (FC-PI-7P).",
+                "80":"64GFC (FC-PI-7).",
+                "81":"128GFC (FC-PI-8)."
+            }
+            return hex ?  table[hex] ?? "" : "";
         },
         asciiToHex: function(str) {
             return ([...str].map((_, n) => Number(str.charCodeAt(n)).toString(16)).join(''));
