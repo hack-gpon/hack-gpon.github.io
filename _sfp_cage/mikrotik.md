@@ -17,6 +17,10 @@ layout: default
 | SGMII    | ✅              | ✅              | ✅                 | ✅              |
 | Type     | Router          | Switch          | Router             | Router          |
 
+Note that Mikrotik RouterOS before 7.15beta4 requires the fiber to be plugged before allowing ping/telnet/webGUI to the xPON SFP.
+This will trigger an alarm on the OLT at least on the first config.
+It is suggested upgrade to 7.15 and activate "Interface/SFP/Ignore Rx LOS", or use a media converter for the first config.
+
 # CRS305-1G-4S+IN
 
 ## Bridge Mode
