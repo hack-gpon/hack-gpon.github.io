@@ -28,7 +28,7 @@ parent: ODI
 {% include alert.html content="SSH uses an outdated set of algorithms/ciphers, you can connect using the following command:" alert="Note"  icon="svg-info" color="blue" %}
 
 ```shell
-ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc admin@192.168.1.1
+ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc -oHostKeyAlgorithms=ssh-rsa admin@192.168.1.1
 ```
 
 {% include image.html file="realtek-dfp-34g-2c2.jpg" alt="ODI Realtek DFP-34X-C2C" caption="ODI Realtek DFP-34X-C2C" %}
