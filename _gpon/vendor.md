@@ -43,6 +43,7 @@ Here is a list of the most popular Vendor IDs:
 | `PTIN` | `5054494e` | Altice/PT Inovação   |
 | `RTKG` | `52544b47` | Realtek              |
 | `SCOM` | `53434f4d` | Sercomm              |
+| `SKYW` | `534b5957` | Skyworth             |
 | `SMBS` | `534d4253` | Sagemcom             | 
 | `SPGA` | `53504741` | SourcePhotonics      |
 | `TMBB` | `544d4242` | Technicolor          |
