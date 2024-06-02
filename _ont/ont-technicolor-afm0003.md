@@ -116,6 +116,22 @@ The following commands are used to flash a new rootfs to image1 and then boot to
 ```sh
 # flash_eraseall /dev/mtd7
 # cat /tmp/rootfs.new > /dev/mtd7
+```
+
+If you get this error on `cat` command
+```sh
+# cat /tmp/rootfs.new > /dev/mtd7
+cat: write error: Invalid Argument
+```
+
+Use this proceudre instead to write firmware back to mtd:
+```sh
+# flash_eraseall /dev/mtd7
+# cat /tmp/rootfs.new > /dev/mtdblock7
+```
+
+Then make new firmware bootable
+```sh
 # nv setenv sw_version1 NEW_SOFTWARE_VERSION
 # nv setenv sw_commit 1
 # reboot
