@@ -21,3 +21,5 @@ If you want to make your own board, here are some ideas:
 the components to be soldered are instead:
 - 1x MOLEX SFP (like Molex-744410001 [lcsc](https://www.lcsc.com/product-detail/Card-Edge-Connectors_MOLEX-744410001_C277615.html), [farnell](https://it.farnell.com/en-IT/molex/74441-0001/connector-sfp-rcpt-20pos-smt/dp/2112385))
 - 2x pinout 2x10 (like [MINTRON MTP125-1210S1](https://www.lcsc.com/product-detail/Pin-Header-Female-Header_MINTRON-MTP125-1210S1_C358699.html))
+
+[Example of the final board](https://oshwlab.com/user4091049/sfp-to-ttl-v1) with these components on the EasyEDA platform.
