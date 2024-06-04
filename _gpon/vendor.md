@@ -19,6 +19,7 @@ Here is a list of the most popular Vendor IDs:
 | `ASKY` | `41534b59` | Askey                |
 | `CDKT` | `43444B54` | KingType             |
 | `CIGG` | `43494747` | Cig                  |
+| `CXNK` | `43584e4b` | Calix                |
 | `DDKT` | `44444b54` | DKT                  |
 | `DLNK` | `444c4e4b` | Dlink                |
 | `DSNW` | `44534e57` | DASAN                |
