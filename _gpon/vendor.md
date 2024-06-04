@@ -19,6 +19,7 @@ Here is a list of the most popular Vendor IDs:
 | `ASKY` | `41534b59` | Askey                |
 | `CDKT` | `43444B54` | KingType             |
 | `CIGG` | `43494747` | Cig                  |
+| `CXNK` | `43584e4b` | Calix                |
 | `DDKT` | `44444b54` | DKT                  |
 | `DLNK` | `444c4e4b` | Dlink                |
 | `DSNW` | `44534e57` | DASAN                |
@@ -55,6 +56,5 @@ Here is a list of the most popular Vendor IDs:
 | `ZTEG` | `5a544547` | ZTE                  |
 | `ZYWN` | `5a59574e` | Zyxel                |
 | `ZYXE` | `5a595845` | Zyxel                |
-| `CXNK` | `43584e4b` | Calix                |
 
 {% include alert.html content="You can also help us with adding content to this site, you can find a button to edit on GitHub on each page." alert="Tip"  icon="svg-info" color="green" %}
