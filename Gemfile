@@ -3,6 +3,7 @@ source "https://rubygems.org"
 
 gem "webrick" 
 gem "rake"
+gem "json"
 
 group :jekyll_plugins do
     gem "jekyll-last-modified-at"
