@@ -44,6 +44,8 @@
         document.getElementById('flash-start-button').disabled = false;
     } else {
         document.getElementById('flash-browser-error').style.display = 'block';
+        document.getElementById('flash-start-button').disabled = true;
+        document.getElementById('flash-start-button').innerHTML=document.getElementById('flash-start-button').innerText.strike()
     }
     const acontroller = new AbortController();
     const cs = acontroller.signal;

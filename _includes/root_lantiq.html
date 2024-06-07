@@ -46,6 +46,8 @@
         document.getElementById('start-button').disabled = false;
     } else {
         document.getElementById('browser-error').style.display = 'block';
+        document.getElementById('start-button').disabled = true;
+        document.getElementById('start-button').innerHTML=document.getElementById('start-button').innerText.strike();
     }
     const acontroller = new AbortController();
     const cs = acontroller.signal;
