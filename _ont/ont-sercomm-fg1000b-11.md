@@ -176,6 +176,13 @@ or
 
 ## Getting/Setting Speed LAN Mode
 
+This has been tested on the Telekom Germany Model of the FG1000B.11 and has brought the desired success of increasing 
+the pre-configured ethernet port speed (1G) to auto-negotiated 2.5G. This does not survive a reboot though.
+
+```
+/bin/ethctl eth0 media-type auto
+```
+
 # GPON/OMCI settings
 
 Part of GPON config is done via the misc configuration loaded as first lib by the smd binary, the config can be seen here:
