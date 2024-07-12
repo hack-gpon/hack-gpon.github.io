@@ -1,5 +1,5 @@
 ---
-title: Sercomm F1000R
+title: Sercomm FG1000R
 has_children: false
 layout: default
 parent: Sercomm
@@ -12,23 +12,23 @@ parent: Sercomm
 | Vendor/Brand    | Sercomm                |
 | Model           | FG1000R                |
 | ODM             | ✅                     |
-| Chipset         |             |
-| Flash           |             |
-| RAM             |                  |
-| CPU             |  |
-| CPU Clock       |                 |
-| Bootloader      |                     |
-| Load addr       |                 |
-| 2.5GBaseT       |                     |
-| PHY Ethernet    |               |
+| Chipset         | RTL9602C               |
+| Flash           |                        |
+| RAM             |                        |
+| CPU             |                        |
+| CPU Clock       |                        |
+| Bootloader      |                        |
+| Load addr       |                        |
+| 2.5GBaseT       | ✅                    |
+| PHY Ethernet    |                        |
 | Optics          | LC/APC                 |
-| IP address      |        |
-| Web Gui         | ✅    |
-| SSH             |                      |
-| Telnet          |                     |
-| Serial          | ✅            |
-| Serial baud     |                |
-| Serial encoding |                 |
+| IP address      | 192.168.1.1            |
+| Web Gui         | ✅, User: Tech Password: ftth@! |
+| SSH             |                        |
+| Telnet          |                        |
+| Serial          | ✅                    |
+| Serial baud     |                        |
+| Serial encoding |                        |
 | Form Factor     | ONT                    |
 
 
