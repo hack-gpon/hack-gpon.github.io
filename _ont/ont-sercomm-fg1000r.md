@@ -33,7 +33,7 @@ parent: Sercomm
 
 
 {% include image.html file="fg1000r_rear.jpg" alt="Sercomm FG1000R" caption="Sercomm FG1000R rear" %}
-{% include image.html file="fg1000R_inside.jpg" alt="Sercomm FG1000R inside" caption="Sercomm FG1000R inside" %}
-{% include image.html file="fg1000R_front.jpg" alt="Sercomm FG1000R front" caption="Sercomm FG1000R front" %}
-{% include image.html file="fg1000R_device.jpg" alt="Sercomm FG1000R device" caption="Sercomm FG1000R device" %}
-{% include image.html file="fg1000R_pon.jpg" alt="Sercomm FG1000R PON" caption="Sercomm FG1000R PON" %}
+{% include image.html file="fg1000r_inside.jpg" alt="Sercomm FG1000R inside" caption="Sercomm FG1000R inside" %}
+{% include image.html file="fg1000r_front.jpg" alt="Sercomm FG1000R front" caption="Sercomm FG1000R front" %}
+{% include image.html file="fg1000r_device.jpg" alt="Sercomm FG1000R device" caption="Sercomm FG1000R device" %}
+{% include image.html file="fg1000r_pon.jpg" alt="Sercomm FG1000R PON" caption="Sercomm FG1000R PON" %}
