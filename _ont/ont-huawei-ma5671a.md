@@ -119,6 +119,7 @@ For more info [XPONos partition layout](https://github.com/XPONos/linux_lantiq-f
 - [1224abort.bin](https://ma5671a.s3.nl-ams.scw.cloud/1224ABORT.bin){: .btn }  md5hash: 10e94a4b4acdc82dec20c7904b69e5c0
 - [right.com.cn (China) 19 July 2022](https://mega.nz/file/9fpSkYTb#wNyjAj1kOLWC9HozX-gTQ-TS3VFqRYg--x1rm7RSuDg){: .btn } md5hash: 6b5e7e3c659fe3f0204340fa746ac4fc
 - [right.com.cn (China) 29 Aug 2022](https://mega.nz/file/VHFFSBrT#2WhDPcdON5EHR01l6Ut35GC3sl55e4l09Z0NUo_7SWA){: .btn} md5hash: 3d357e2dc7b59c66fe61b4ddf1fb8dc0
+- [right.com.cn (China) 20 Nov 2023](https://mega.nz/file/8vcwyJRA#yuzjyI9Y9vsA0RegGnNOy_JLv2FNRIMfI5JxHn8t0-s){: .btn} md5hash: 4901ae8e70991ca1202bc80db9c151cc
 - [FS.com GPON ONU Stick with MAC firmware / SourcePhotonics SPS-34-24T-HP-TDFO firmware](/ont-fs-com-gpon-onu-stick-with-mac)
 
 # Usage
