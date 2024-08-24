@@ -21,9 +21,9 @@ parent: HALNy
 | System           | OpenWRT              |
 | HSGMII           | Yes                  |
 | Optics           | SC/APC               |
-| IP address       |                      |
-| Web Gui          |                      |
-| SSH              |                      |
+| IP address       | 192.168.77.154/30    |
+| Web Gui          | none                 |
+| SSH              | port 22666           |
 | Telnet           |                      |
 | Serial           | ✅                   |
 | Serial baud      | 115200               |
