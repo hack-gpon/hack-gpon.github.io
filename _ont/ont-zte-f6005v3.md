@@ -208,6 +208,16 @@ setmac 1 2178 1234567890
 setmac 1 32770 "5::F6005V3.0:"
 ```
 
+## Check Images CRC
+
+```sh
+upgradetest bakver
+
+backup version crc is ok
+success!
+
+```
+
 ## Persistent telnet access 
 
 {% include alert.html content="This procedure was only tested on OF V3.0.10P3N2 firmware and it's persistent after an upgrade from OLT" alert="Note"  icon="svg-info" color="blue" %}
