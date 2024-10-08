@@ -310,11 +310,7 @@ Where X is the number of supported regioncode into file `/etc/init.d/regioncode`
 ```
 
 # Random notes
-- Both F601v6 and F601v7 read the software version exposed through the gpon_omci deamon from each kernel partition header, so the only way to spoof this parameter is to change the version in the header and recalculate CRC, otherwise the bootloader will refuse to load the image.
-- TIM's F601v6s use HWVer `VDF`, this can be changed back to `V6.0` issuing this command via telnet: `setmac 1 32770 3`
-- The F601v7 is mounted 'upside down' to save on waveguides, the LEDs would be on the bottom of the PCB, so it would have to be turned upside down to make it cooler...
-- The F601v6 turns on and runs even with 9V input.
-- The F601v7 turns on and runs even with 5V input.
+- F6005v3 read the software version exposed through the gpon_omci deamon from each kernel partition header, so the only way to spoof this parameter is to change the version in the header and recalculate CRC, otherwise the bootloader will refuse to load the image.
 
 # Miscellaneous Links
 
