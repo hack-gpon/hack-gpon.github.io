@@ -108,6 +108,12 @@ success!
 ./zteOnu -i 192.168.1.1 -u admin -p admin
 ```
 
+If Telnet is not opening, you are probably running a newer firmware, in that case change mac-address of the NIC connected to the ONT to `00:07:29:55:35:57` and use the flag `--new`:
+
+```sh
+./zteOnu -i 192.168.1.1 -u admin -p admin --new
+```
+
 You should get this output and credentials to login over telnet:
 
 ```sh
@@ -244,7 +250,7 @@ Needed tools:
 
 [ZTE ONU Telnet Enabler](https://github.com/stich86/zteOnu)
 
-Just run the enabled with `--telnet` flag to make Telnet persisten across Reboot:
+Just run the enabled with `--telnet` flag to make Telnet persisten across Reboot (use `--new` flags and changed mac-address for newer firmware):
 
 ```sh
 ./zteOnu -i 192.168.1.1 -u admin -p admin --telnet
