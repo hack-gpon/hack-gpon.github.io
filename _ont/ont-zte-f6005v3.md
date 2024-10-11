@@ -336,12 +336,12 @@ Where X is the number of supported regioncode into file `/etc/init.d/regioncode`
 ```
 
 # Random notes
-- F6005v3 read the software version exposed through the gpon_omci deamon from each kernel partition header, so the only way to spoof this parameter is to change the version in the header and recalculate CRC, otherwise the bootloader will refuse to load the image.
+- **ZTE F6005v3** read the software version exposed through the `gpon_omci` deamon from each kernel partition header, so the only way to spoof this parameter is to change the version in the header and recalculate CRC, otherwise the bootloader will refuse to load the image. 
 - If your ONT is updated by the OLT (e.g., an F6005v3 OpenFiber ONT connected to a TIM OLT), the U-Boot partition will also be updated. After this update, it will no longer be possible to switch to the other partition because the signatures will not match.
 
 # Miscellaneous Links
 
-- [ZTE Telnet enabled](https://github.com/douniwan5788/zte_modem_tools)
+- [ZTE ONU Telnet Enabler](https://github.com/stich86/zteOnu)
 
 # Teardown and other photos
 
