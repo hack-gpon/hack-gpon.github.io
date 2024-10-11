@@ -12,22 +12,23 @@ parent: ZTE
 | Vendor/Brand | ZTE                                                               |
 | Model        | F6005v3                                                           |
 | ODM          | ✅                                                                |
-| CPU          | ZTE ZX279133@A53                                                  |
-| CPU Clock    | 2x1200MHz                                                         |
+| CPU          | ZTE ZX279133@Dual-Core A53                                        |
+| CPU Clock    | 1200MHz                                                           |
 | Chipset      | ZTE ZX279133                                                      |
 | Flash        | 128 MB (SPI NAND FM25S01A)                                        |
 | RAM          | 128 MB                                                            |
 | System       | Customized Linux by ZTE                                           |
-| 2.5GBaseT    | No                                                                |
+| 2.5GBaseT    | Yes                                                               |
 | Optics       | SC/APC                                                            |
 | IP address   | 192.168.1.1                                                       |
 | Web Gui      | ✅ user `admin`, password `admin` or defined by ISP               |
-| SSH          |                                                                   |
+| SSH          | N/A                                                               |
 | Telnet       | ✅ [^1]                                                           |
 | Serial       | ✅ [^2]                                                           |
 | Form Factor  | ONT                                                               |
 
 {% include image.html file="f6005v3_tim_1.jpg" alt="F6005v3 TIM" caption="F6005v3 TIM" %}
+
 {% include image.html file="f6005v3_of_1.jpg" alt="F6005v3 OpenFiber" caption="F6005v3 OpenFiber" %}
 
 
@@ -55,8 +56,8 @@ parent: ZTE
 | mtd10 | 029e0000 | 00020000  | "rootfs2"       |
 
 
-This ONT supports dual boot, as visible from the presence of `kernel0` and `kernel1`, which contain the rootfs.
-The boot images can be swapped with the following command but currently not works because if U-Boot is updated, a revert will brick ONT:
+This ONT supports dual boot, as visible from the presence of `kernel0` and `kernel1`, which contain the rootfs (JFFS2 read-only).
+The boot images can be swapped if they are the same or use the same **U-Boot** version. If you have a different **U-Boot** that was paired with the active image, do not attempt this, as it will brick the ONT.
 
 ```sh
 upgradetest switchver X
@@ -71,43 +72,58 @@ You can also clone the currently running image into the other slot using this co
 syn_version
 ```
 
-# Use
-{% include alert.html content="Commands have been tested on V3 HW rev. on OpenFiber firmwares" alert="Note"  icon="svg-info" color="blue" %}
-
-## Enable Telnet
-{% include alert.html content="This is an external script ([ZTE Telnet enabler](https://github.com/douniwan5788/zte_modem_tools)), use at your own risk! Credentials don't survive at reboot!" alert="Note"  icon="svg-info" color="blue" %}
-
-{% include alert.html content="For italian users, the script above only works only on V3.0.10P3N2 (OpenFiber)" alert="Note"  icon="svg-info" color="blue" %}
+You can check currenlty running image using this command:
 
 ```sh
-python3 zte_factroymode.py --user CUSTOM_USER --pass CUSTOM_PASS --ip 192.168.1.1 --port 80 telnet open
+# cat /proc/csp/versionstates
+
+baseaddress    : 0x1b00000
+current        : 0
+version1states : 0x83
+version2states : 0x83
+____________________________________________________
+Index   Running Latest  CRC     Integrality     Type
+----------------------------------------------------
+0        Y       Y       N       Y              Upg
+1        N       Y       N       Y              Upg
+----------------------------------------------------
+```
+
+And check if the backup image has a valid CRC:
+
+```sh
+# upgradetest bakver
+backup version crc is ok
+success!
+```
+
+
+# Use
+{% include alert.html content="Commands have been tested on V3 HW rev. on OpenFiber and TIM firmwares" alert="Note"  icon="svg-info" color="blue" %}
+
+## Enable Telnet
+{% include alert.html content="This is an external script ([ZTE ONU Telnet Enabler](https://github.com/stich86/zteOnu)), use at your own risk! Credentials don't survive at reboot!" alert="Note"  icon="svg-info" color="blue" %}
+
+```sh
+./zteOnu -i 192.168.1.1 -u admin -p admin
 ```
 
 You should get this output and credentials to login over telnet:
 
 ```sh
-trying  user:"CUSTOM_USER" pass:"CUSTOM_PASS"
-reset facTelnetSteps:
-reset OK!
-
-facStep 1:
-OK!
-
-facStep 2:
-OK!
-
-facStep 3:
-OK!
-
-facStep 4:
-OK!
-
-facStep 5:
-OK!
-
-done
-Username: 2W3iqFVt
-Password: Eqb8X8Qt
+ZteONU 0.0.7, built at 09/10/2024
+source: https://github.com/stich86/zteOnu
+-----------------------------------
+step [0] reset factory: ok
+step [1] request factory mode: ok
+step [2] send sq: ok
+step [3] check login auth with user: ok
+step [4] enter factory mode: ok
+-----------------------------------
+Success authenticated with user: admin and password: admin
+Telnet Credentials (!! Temporary !!)
+User: 9qNBo58H
+Pass: OUBToR8J
 ```
 
 ## Enable console redirection
@@ -177,7 +193,7 @@ MIB INFO:
          Is valid:01
 
 <-----MeID[ 0x0001,1 ], Addr[ 0x19a031]----->
-          Version:V3.0.10P3N2
+          Version:V3.0.10P2N6
      Is committed:00
         Is active:00
          Is valid:01
@@ -218,39 +234,40 @@ success!
 
 ```
 
-## Persistent telnet access 
+## Persistent Telnet access 
 
-{% include alert.html content="This procedure was only tested on OF V3.0.10P3N2 firmware and it's persistent after an upgrade from OLT" alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="This procedure was only tested on OF V3.0.10P3N2 and TIM V3.0.10N06 firmware and it's persistent after an upgrade from OLT" alert="Note"  icon="svg-info" color="blue" %}
 
+{% include alert.html content="If you change GPON Serial Number, Telnet will be disabled. You have to run again the tool to enable it" alert="Note"  icon="svg-warning" color="red" %}
 
 Needed tools:
 
-- Linux VM or WSL with Python >3.3
-- [ZTE Telnet enabler](https://github.com/douniwan5788/zte_modem_tools)
+[ZTE ONU Telnet Enabler](https://github.com/stich86/zteOnu)
 
-
-After the ONT has rebooted and you can access again, telnet can be enabled on each reboot. To do this, run again `zte_factroymode.py` to open new session to it. When you are in, execute these commands:
+Just run the enabled with `--telnet` flag to make Telnet persisten across Reboot:
 
 ```sh
-sendcmd 1 DB set TelnetCfg 0 TS_Enable 1
-sendcmd 1 DB set TelnetCfg 0 Lan_Enable 1
-sendcmd 1 DB set TelnetCfg 0 TS_UName root
-sendcmd 1 DB set TelnetCfg 0 TS_UPwd root
-sendcmd 1 DB set TelnetCfg 0 TSLan_UName root
-sendcmd 1 DB set TelnetCfg 0 TSLan_UPwd root
-sendcmd 1 DB set TelnetCfg 0 InitSecLvl 2
-sendcmd 1 DB saveasy
-sendcmd 1 DB addr FWSC 0
-sendcmd 1 DB set FWSC 0 ViewName IGD.FWSc.FWSC1
-sendcmd 1 DB set FWSC 0 Enable 1
-sendcmd 1 DB set FWSC 0 INCName LAN
-sendcmd 1 DB set FWSC 0 INCViewName IGD.LD1
-sendcmd 1 DB set FWSC 0 Servise 8
-sendcmd 1 DB set FWSC 0 FilterTarget 1
-sendcmd 1 DB saveasy
+./zteOnu -i 192.168.1.1 -u admin -p admin --telnet
 ```
 
-Reboot the ONT and a telnet interface will be available. You can login using `root\root` as credentials.
+```sh
+ZteONU 0.0.7, built at 09/10/2024
+source: https://github.com/stich86/zteOnu
+-----------------------------------
+step [0] reset factory: ok
+step [1] request factory mode: ok
+step [2] send sq: ok
+step [3] check login auth with user: ok
+step [4] enter factory mode: ok
+-----------------------------------
+Success authenticated with user: admin and password: admin
+Permanent Telnet succeed
+User: root
+Pass: Zte521
+Wait reboot.. or powercycle it
+```
+
+The ONT will reboot, and you can log in later using `root\Zte521` as the credentials.
 
 **Just for OpenFiber firmware**
 
@@ -260,7 +277,7 @@ In case you want add new a admin user instead of using the embedded credentials,
 sendcmd 1 DB set DevAuthInfo 5 Enable 1
 sendcmd 1 DB set DevAuthInfo 5 User superadmin
 sendcmd 1 DB set DevAuthInfo 5 Pass superadmin
-sendcmd 1 DB set DevAuthInfo 5 Level 0
+sendcmd 1 DB set DevAuthInfo 5 Level 1
 sendcmd 1 DB set DevAuthInfo 5 AppID 1
 sendcmd 1 DB saveasy
 ```
@@ -270,7 +287,6 @@ Reboot the ONT and you can login to the WebUI using `superadmin\superadmin` as c
 
 ## Backing up ONT partitions using hardware flasher
 
-As we currently known, only firmware V3.0.10P3N2 from OpenFiber are able to open telnet (and make it persistent).
 It's possible to swap RAW dump between ONTs and enable access over telnet to modify some ONT parameters.
 
 Needed tools:
@@ -297,7 +313,7 @@ If you want to flash this dump to another ONT, just run these commands:
 
 ## Changing region code
 
-{% include alert.html content="Be aware that changing the region code may break features such as PPPoE depending on your ISP, and remove telnet access!" alert="Note"  icon="svg-info" color="blue" %}
+{% include alert.html content="Be aware that changing the region code may break features such as PPPoE depending on your ISP, and remove Telnet access!" alert="Note"  icon="svg-info" color="blue" %}
 
 ZTE has created various region codes that load default values based on the local ISP. This configuration can be changed using this command:
 
@@ -321,6 +337,7 @@ Where X is the number of supported regioncode into file `/etc/init.d/regioncode`
 
 # Random notes
 - F6005v3 read the software version exposed through the gpon_omci deamon from each kernel partition header, so the only way to spoof this parameter is to change the version in the header and recalculate CRC, otherwise the bootloader will refuse to load the image.
+- If your ONT is updated by the OLT (e.g., an F6005v3 OpenFiber ONT connected to a TIM OLT), the U-Boot partition will also be updated. After this update, it will no longer be possible to switch to the other partition because the signatures will not match.
 
 # Miscellaneous Links
 
@@ -331,11 +348,9 @@ Where X is the number of supported regioncode into file `/etc/init.d/regioncode`
 ## HW V3.0
 
 {% include image.html file="f6005v3_2.jpg"  alt="Top of the F6005v3" caption="Top of the F6005v3" %}
-{% include image.html file="f6005v3_3.jpg"  alt="Bottom of the F601 v6" caption="Bottom of the F6005v3" %}
-
-
+{% include image.html file="f6005v3_3.jpg"  alt="Bottom of the F6005v3" caption="Bottom of the F6005v3" %}
 
 ---
 
-[^1]: Credentials are randomly generated by zte_factroymode.py, they are not persistent and will change at reboot.
+[^1]: Credentials are randomly generated by ZTE ONU Telnet Enabler, they are not persistent and will change at reboot.
 [^2]: Serial console is read-only mode on most of U-Boot, and no output after kernel load. For OF V3.0.10P3N2 is possible after pressing ESC during the boot to access U-Boot Console.
