@@ -226,6 +226,7 @@ setmac 1 2178 1234567890
 ```
 
 ## Setting ONU GPON Equipment ID
+
 ```sh
 setmac 1 32770 "5::F6005V3.0:"
 ```
@@ -287,6 +288,7 @@ sendcmd 1 DB set DevAuthInfo 5 Level 1
 sendcmd 1 DB set DevAuthInfo 5 AppID 1
 sendcmd 1 DB saveasy
 ```
+
 Reboot the ONT and you can login to the WebUI using `superadmin\superadmin` as credentials with full unlocked menus.
 
 # Advanced settings
@@ -342,8 +344,8 @@ Where X is the number of supported regioncode into file `/etc/init.d/regioncode`
 ```
 
 # Random notes
-- **ZTE F6005v3** read the software version exposed through the `gpon_omci` deamon from each kernel partition header, so the only way to spoof this parameter is to change the version in the header and recalculate CRC, otherwise the bootloader will refuse to load the image. 
-- If your ONT is updated by the OLT (e.g., an F6005v3 OpenFiber ONT connected to a TIM OLT), the U-Boot partition will also be updated. After this update, it will no longer be possible to switch to the other partition because the signatures will not match.
+- This new ONT (and probably the XGSPON version as well) has Secure Boot enabled. All headers contain an RSA key that is verified by U-Boot and the CPU (for U-Boot itself), so there’s no way to repack the rootfs to make it fully spoofable (at the moment..).
+- If your ONT is updated by the OLT (e.g., an F6005v3 OpenFiber ONT connected to a TIM OLT), the U-Boot partition will also be updated. After this update, it will no longer be possible to switch to the other partition because the signatures will not match, and TTL console is muted after U-Boot start.
 
 # Miscellaneous Links
 
