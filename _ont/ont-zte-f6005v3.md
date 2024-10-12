@@ -35,7 +35,7 @@ parent: ZTE
 ## List of software versions
 ### HW V3.0 
 - V3.0.10P3N2 (OpenFiber) 
-- V3.0.10N06, internal version is V3.0.10P2N6 (TIM Italy)
+- V3.0.10N06 (TIM Italy) - Internal version is V3.0.10P2N6
 
 ## List of partitions 
 
@@ -57,7 +57,7 @@ parent: ZTE
 
 
 This ONT supports dual boot, as visible from the presence of `kernel0` and `kernel1`, which contain the rootfs (JFFS2 read-only).
-The boot images can be swapped if they are the same or use the same **U-Boot** version. If you have a different **U-Boot** that was paired with the active image, do not attempt this, as it will brick the ONT.
+The boot images can be swapped if they are the same or use the same **U-Boot** version. If you have a different **U-Boot** that was paired with the active image, do not attempt this, as it will brick the ONT, specially if TTL console is disabled.
 
 ```sh
 upgradetest switchver X
@@ -65,6 +65,11 @@ upgradetest switchver X
 
 Where `X` can be `0/1`, based on the image you want to boot from.
 
+Get current installed version for each region:
+
+```sh
+upgradetest getver
+```
 
 You can also clone the currently running image into the other slot using this command:
 
@@ -219,13 +224,14 @@ setmac 1 2177 AABBCCDD
 ## Setting ONU GPON PLOAM password
 
 {% include alert.html content="The PLOAM password is stored in the ASCII format." alert="Note"  icon="svg-info" color="blue" %}
-This can be done easily via the web UI. To do it via the shell use:
+This can be done easily via the Web UI. To do it via the shell use:
 ```sh
 setmac 1 2181 1234567890
 setmac 1 2178 1234567890
 ```
 
 ## Setting ONU GPON Equipment ID
+
 ```sh
 setmac 1 32770 "5::F6005V3.0:"
 ```
@@ -275,7 +281,7 @@ Wait reboot.. or powercycle it
 
 The ONT will reboot, and you can log in later using `root\Zte521` as the credentials.
 
-**Just for OpenFiber firmware**
+**Only for firmware versions with restricted admin access**
 
 In case you want add new a admin user instead of using the embedded credentials, run these commands before rebooting the ONT:
 
@@ -287,13 +293,14 @@ sendcmd 1 DB set DevAuthInfo 5 Level 1
 sendcmd 1 DB set DevAuthInfo 5 AppID 1
 sendcmd 1 DB saveasy
 ```
+
 Reboot the ONT and you can login to the WebUI using `superadmin\superadmin` as credentials with full unlocked menus.
 
 # Advanced settings
 
 ## Backing up ONT partitions using hardware flasher
 
-It's possible to swap RAW dump between ONTs and enable access over telnet to modify some ONT parameters.
+It's possible to swap RAW dump between ONTs and enable access over Telnet to modify some ONT parameters.
 
 Needed tools:
 
@@ -342,8 +349,8 @@ Where X is the number of supported regioncode into file `/etc/init.d/regioncode`
 ```
 
 # Random notes
-- **ZTE F6005v3** read the software version exposed through the `gpon_omci` deamon from each kernel partition header, so the only way to spoof this parameter is to change the version in the header and recalculate CRC, otherwise the bootloader will refuse to load the image. 
-- If your ONT is updated by the OLT (e.g., an F6005v3 OpenFiber ONT connected to a TIM OLT), the U-Boot partition will also be updated. After this update, it will no longer be possible to switch to the other partition because the signatures will not match.
+- This new ONT (and probably the XGSPON version as well) has Secure Boot enabled. All headers contain an RSA key that is verified by U-Boot and the CPU (for U-Boot itself), so there’s no way to repack the rootfs to make it fully spoofable (at the moment..).
+- If your ONT is updated by the OLT (e.g., an F6005v3 OpenFiber ONT connected to a TIM OLT), the U-Boot partition will also be updated. After this update, it will no longer be possible to switch to the other partition because the signatures will not match, and TTL console is muted after U-Boot start.
 
 # Miscellaneous Links
 
