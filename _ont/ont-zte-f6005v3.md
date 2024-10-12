@@ -35,7 +35,7 @@ parent: ZTE
 ## List of software versions
 ### HW V3.0 
 - V3.0.10P3N2 (OpenFiber) 
-- V3.0.10N06, internal version is V3.0.10P2N6 (TIM Italy)
+- V3.0.10N06 (TIM Italy) - Internal version is V3.0.10P2N6
 
 ## List of partitions 
 
@@ -57,7 +57,7 @@ parent: ZTE
 
 
 This ONT supports dual boot, as visible from the presence of `kernel0` and `kernel1`, which contain the rootfs (JFFS2 read-only).
-The boot images can be swapped if they are the same or use the same **U-Boot** version. If you have a different **U-Boot** that was paired with the active image, do not attempt this, as it will brick the ONT.
+The boot images can be swapped if they are the same or use the same **U-Boot** version. If you have a different **U-Boot** that was paired with the active image, do not attempt this, as it will brick the ONT, specially if TTL console is disabled.
 
 ```sh
 upgradetest switchver X
@@ -65,6 +65,11 @@ upgradetest switchver X
 
 Where `X` can be `0/1`, based on the image you want to boot from.
 
+Get current installed version for each region:
+
+```sh
+upgradetest getver
+```
 
 You can also clone the currently running image into the other slot using this command:
 
@@ -219,7 +224,7 @@ setmac 1 2177 AABBCCDD
 ## Setting ONU GPON PLOAM password
 
 {% include alert.html content="The PLOAM password is stored in the ASCII format." alert="Note"  icon="svg-info" color="blue" %}
-This can be done easily via the web UI. To do it via the shell use:
+This can be done easily via the Web UI. To do it via the shell use:
 ```sh
 setmac 1 2181 1234567890
 setmac 1 2178 1234567890
@@ -276,7 +281,7 @@ Wait reboot.. or powercycle it
 
 The ONT will reboot, and you can log in later using `root\Zte521` as the credentials.
 
-**Just for OpenFiber firmware**
+**Only for firmware versions with restricted admin access**
 
 In case you want add new a admin user instead of using the embedded credentials, run these commands before rebooting the ONT:
 
@@ -295,7 +300,7 @@ Reboot the ONT and you can login to the WebUI using `superadmin\superadmin` as c
 
 ## Backing up ONT partitions using hardware flasher
 
-It's possible to swap RAW dump between ONTs and enable access over telnet to modify some ONT parameters.
+It's possible to swap RAW dump between ONTs and enable access over Telnet to modify some ONT parameters.
 
 Needed tools:
 
