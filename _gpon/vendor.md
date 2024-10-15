@@ -51,6 +51,7 @@ Here is a list of the most popular Vendor IDs:
 | `TPLG` | `54504c47` | TP-Link              |
 | `UBNT` | `55424e54` | Ubiquiti             |
 | `UGRD` | `55475244` | UGrid                |
+| `XPON` | `58504f4e` | LuLeey               |
 | `YHTC` | `59485443` | Youhua               |
 | `ZRMT` | `5a524d54` | Zaram                |
 | `ZTEG` | `5a544547` | ZTE                  |
