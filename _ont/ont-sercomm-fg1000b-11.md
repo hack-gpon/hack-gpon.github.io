@@ -333,6 +333,7 @@ It seems `cmld_client get` can't return string values longer than 12 characters,
 
  - 1&1 Glasfaser Modem
  - Telekom Glasfaser Modem 2
+ - Vodafone Glasfaser Modem (FG1000B.VF)
 
 # Credits
 This whole documentation here was made possible thanks to the time invested into reverse engineering by @hwti and the rest of the folks from the forum mentioned in the links section of this page. Thanks a lot!
