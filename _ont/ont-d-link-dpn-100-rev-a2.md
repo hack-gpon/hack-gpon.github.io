@@ -36,7 +36,7 @@ Once you access the stick via ssh you will be presented with a second tier login
 
 - [Zyxel PMG3000-D20B](/ont-zyxel-pmg3000-d20b)
 - [Halny HL-GSFP](/ont-halny-hl-gsfp)
-- [Ziza OP151s](/ont-ziza-op151s)
+- [Zisa OP151s](/ont-zisa-op151s)
 - [T&W TW2362H-CDEL](/ont-t-w-tw2362h-cdel)
 
 # GPON/OMCI settings

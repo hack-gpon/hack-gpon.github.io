@@ -37,7 +37,7 @@ parent: HALNy
 
 - [Zyxel PMG3000-D20B](/ont-zyxel-pmg3000-d20b)
 - [D-LINK DPN-100-Rev-A2](/ont-d-link-dpn-100-rev-a2)
-- [Ziza OP151s](/ont-ziza-op151s)
+- [Zisa OP151s](/ont-zisa-op151s)
 - [T&W TW2362H-CDEL](/ont-t-w-tw2362h-cdel)
 
 ## List of partitions
