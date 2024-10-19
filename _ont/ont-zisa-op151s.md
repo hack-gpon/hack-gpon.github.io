@@ -1,15 +1,15 @@
 ---
-title: Ziza OP151S
+title: Zisa OP151S
 has_children: false
 layout: default
-parent: Ziza
+parent: Zisa
 ---
 
 # Hardware Specifications
 
 |                  |                                                            |
 | ---------------- | ---------------------------------------------------------- |
-| Vendor/Brand     | Ziza                                                       |
+| Vendor/Brand     | Zisa                                                       |
 | Model            | OP151S                                                     |
 | ODM              | T&W                                                        |
 | ODM Product Code | TW2362H-CDEL                                               |
@@ -30,9 +30,7 @@ parent: Ziza
 | Serial encoding  | 8-N-1                                                      |
 | Form Factor      | miniONT SFP                                                |
 
-{% include image.html file="op151s.png" alt="Ziza OP151S" caption="Ziza OP151S" %}
-{% include image.html file="tw236h-cdel-th.jpg" alt="PMG3000-D20B Teardown" caption="PMG3000-D20B Teardown" %}
-{% include image.html file="tw236h-cdel-th-back.jpg" alt="PMG3000-D20B Teardown" caption="PMG3000-D20B Teardown" %}
+{% include image.html file="op151s.png" alt="Zisa OP151S" caption="Zisa OP151S" %}
 
 ## Serial
 
@@ -46,9 +44,10 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 
 - [Halny HL-GSFP](/ont-halny-hl-gsfp)
 - [D-LINK DPN-100-Rev-A2](/ont-d-link-dpn-100-rev-a2)
-- [Ziza OP151s](/ont-ziza-op151s)
+- [Zisa OP151s](/ont-Zisa-op151s)
 - [T&W TW2362H-CDEL](/ont-t-w-tw2362h-cdel)
 
 # Miscellaneous Links
 
 - [Tech Info Depot Wiki](http://en.techinfodepot.shoutwiki.com/wiki/ZISA_OP151S)
+- [Zisa OP151S 1GE GPON SFU SFP module](https://www.zisacom.com/admin/ewebeditor/uploadfile/20181116154842842.pdf)
