@@ -2,7 +2,7 @@
 title: Vantiva AFM0003 (formerly Technicolor AFM0003)
 has_children: false
 layout: default
-parent: Technicolor (formerly Technicolor)
+parent: Vantiva (formerly Technicolor)
 alias: HiSense LTE3415-SH+
 ---
 
