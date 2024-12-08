@@ -1,4 +1,4 @@
-/* Copyright (C) Ernesto Castellotti <mail@ernestocastellotti.it>
+/* Copyright (C) Erny <info@erny.dev>
  * SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 */
 
