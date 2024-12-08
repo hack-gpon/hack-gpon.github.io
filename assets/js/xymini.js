@@ -1,5 +1,5 @@
 /* XYMini Sender - Minimal implementation of file transfer through serial
- * Copyright (C) Ernesto Castellotti <mail@ernestocastellotti.it>
+ * Copyright (C) Erny <info@erny.dev>
  * SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
  *
  * Warning: This does not comply with XMODEM and YMODEM standards
