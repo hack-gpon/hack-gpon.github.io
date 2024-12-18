@@ -10,7 +10,8 @@
 
 ## Setting ONU GPON Serial Number
 
-It was possible to change the serial number ("Modem ID") before firmware version 7.50 by editing it in the http://fritz.box/support.lua, in the ASCII format (ZTEG012345678)
+It is possible to change the serial number ("Modem ID") by editing it in the http://fritz.box/support.lua, in the ASCII format (ZTEG012345678).
+If the Fritz!OS Version is => 7.50 and the device is set up to be in Germany, the field "GPON PLOAM GPON serial number" is missing.
 
 {% include image.html file="avm/avm_serial.jpg"  alt="Serial number form" caption="Serial number form" %}
 
