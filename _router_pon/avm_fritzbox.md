@@ -10,7 +10,7 @@
 
 ## Setting ONU GPON Serial Number
 
-It is possible to change the serial numebr by editing it in the http://fritz.box/support.lua, in the ASCII format (ZTEG012345678)
+It was possible to change the serial number ("Modem ID") before firmware version 7.50 by editing it in the http://fritz.box/support.lua, in the ASCII format (ZTEG012345678)
 
 {% include image.html file="avm/avm_serial.jpg"  alt="Serial number form" caption="Serial number form" %}
 
