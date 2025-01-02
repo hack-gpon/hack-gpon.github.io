@@ -22,8 +22,8 @@ parent: Zyxel
 | HSGMII           | Yes                                                        |
 | Optics           | SC/APC                                                     |
 | IP address       | 10.10.1.1                                                  |
-| Web Gui          | ✅ username `admin` or `guest`, password `1234` or `guest`. Not available in firmware V1.00(ABVJ.1)b1e |
-| SSH              | ✅ username `admin`, password `admin`                      |
+| Web Gui          | ✅ username `admin` or `guest`, password `1234` or `guest` |
+| SSH              | ✅ username `admin`, password `admin`. Not available in firmware V1.00(ABVJ.1)b1e |
 | Telnet           |                                                            |
 | Serial           | ✅                                                         |
 | Serial baud      | 115200                                                     |
