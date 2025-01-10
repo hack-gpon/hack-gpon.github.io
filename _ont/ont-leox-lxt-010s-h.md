@@ -70,6 +70,7 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 - V3.3.4L4 (Added failover from 2.5GbE to 1GbE, other fixes)
 - V3.3.4L4V (Same as V3.3.4L4 but should be used for VEIP profiles)
 - V3.3.4L5rc1 - This version adds "auto-negotiation" capability to the stick. It always prefers 1G (to keep the stick consistently accessible). When you force the link to 2.5G (disabling auto-negotiation), it takes at least 40 seconds to establish the connection.
+- V3.3.4L6 (Build date: 2024-06-27 16:43:48)
 
 {% include_relative ont-luna-sdk-useful-commands.md 
     ploam='ascii'
