@@ -15,6 +15,7 @@ Here is a list of the most popular Vendor IDs:
 | ID     | HEX ID     | Vendor Name          |
 | ------ | ---------- | -------------------- |
 | `ALCL` | `414c434c` | Nokia/Alcatel-Lucent |
+| `ALLG` | `414c4c47` | ALLNET               |
 | `AVMG` | `41564d47` | AVM (FRITZ!Box)      |
 | `ASKY` | `41534b59` | Askey                |
 | `CDKT` | `43444B54` | KingType             |
