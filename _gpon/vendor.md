@@ -53,6 +53,7 @@ Here is a list of the most popular Vendor IDs:
 | `UBNT` | `55424e54` | Ubiquiti             |
 | `UGRD` | `55475244` | UGrid                |
 | `YHTC` | `59485443` | Youhua               |
+| `ZNTS` | `5a4e5453` | DZS                  |
 | `ZRMT` | `5a524d54` | Zaram                |
 | `ZTEG` | `5a544547` | ZTE                  |
 | `ZYWN` | `5a59574e` | Zyxel                |
