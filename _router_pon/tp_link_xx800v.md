@@ -1,5 +1,5 @@
 ---
-title: TP-Link XB432V 
+title: TP-Link XX800V 
 has_children: false
 layout: default
 parent: TP-Link
@@ -10,7 +10,7 @@ parent: TP-Link
 |              |                               |
 | ------------ | ----------------------------- |
 | Vendor/Brand | TP-Link                       |
-| Model        | XB432V                        |
+| Model        | XX800V                        |
 | ODM          |                               |
 | CPU          |                               |
 | CPU Clock    |                               |
@@ -18,7 +18,7 @@ parent: TP-Link
 | Flash        |                               |
 | RAM          |                               |
 | System       |                               |
-| Ethernet     | 2 1GbE, 1 2.5GbE LAN, 1 2.5GbE WAN  |
+| Ethernet     | 3 1GbE LAN, 1 2.5GbE WAN      |
 | Optics       | SC/APC                        |
 | IP address   | 192.168.1.1                   |
 | Web Gui      | ✅                            |
@@ -43,4 +43,4 @@ This can be easily done via the Web UI from the same "Rete -> Impostazioni GPON"
 
 # Miscellaneous Links
 
-- [User manual](https://www.windtre.it/Document/manuali/modem/Manuale_XB432v-ITWIND3-1-0_UG_IT.pdf.docview.pdf)
+- [User manual](https://www.windtre.it/Document/manuali/modem/XX800v-ITWIND3_UG_REV1-0-0_Italian.pdf.docview.pdf)
