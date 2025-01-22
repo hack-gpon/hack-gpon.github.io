@@ -18,7 +18,7 @@ parent: TP-Link
 | Flash        |                               |
 | RAM          |                               |
 | System       |                               |
-| Ethernet     | 2 1GbE, 1 2.5GbE LAN, 1 2.5GbE WAN  |
+| Ethernet     | 2 1GbE LAN, 1 2.5GbE LAN, 1 2.5GbE WAN  |
 | Optics       | SC/APC                        |
 | IP address   | 192.168.1.1                   |
 | Web Gui      | ✅                            |
