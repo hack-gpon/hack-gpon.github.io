@@ -33,8 +33,9 @@ parent: Zyxel
 {% include image.html file="pmg3000-d20b.png" alt="PMG3000-D20B" caption="PMG3000-D20B" %}
 {% include image.html file="tw236h-cdel-th.jpg" alt="PMG3000-D20B Teardown" caption="PMG3000-D20B Teardown" %}
 {% include image.html file="tw236h-cdel-th-back.jpg" alt="PMG3000-D20B Teardown" caption="PMG3000-D20B Teardown" %}
+{% include image.html file="pmg3000-d20b_modulediff.jpg" alt="PMG3000-D20B Module comparison" caption="PMG3000-D20B Module comparison" %}
 
-Once you access the stick via ssh you will be presented with a second tier login. The credentials to access the zyxel shell are: username: `twmanu` , password: `twmanu`.
+Once you access the stick via ssh you will be presented with a second tier login. The credentials to access the zyxel shell are: username: `twmanu` with password: `twmanu` or username: `admin` with password: `1234`.
 From the Zyxel shell you can move to a standard Linux shell using the `linuxshell` command
 
 ## Serial
