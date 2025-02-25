@@ -322,7 +322,6 @@ If you want to flash this dump to another ONT, just run these commands:
 /SNANDer -e
 /SNANDer -w f6005v3_dump_X.bin -v
 ```
-```
 
 ## Changing region code
 
