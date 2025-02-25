@@ -29,6 +29,7 @@ Here is a list of the most popular Vendor IDs:
 | `GMTK` | `474d544b` | GemTek               |
 | `GNXS` | `474e5853` | Genexis              |
 | `GPON` | `47504f4e` | Generic vendor name  |
+| `GPNC` | `47504E43` | NuCom                |
 | `GTHG` | `47544847` | Alcatel-Lucent (ODM) |
 | `HALN` | `48414c4e` | HALNy                |
 | `HBMT` | `48424d54` | HiSense              |
