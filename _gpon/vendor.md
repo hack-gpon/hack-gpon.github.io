@@ -28,6 +28,7 @@ Here is a list of the most popular Vendor IDs:
 | `FHTT` | `46485454` | FiberHome            |
 | `GMTK` | `474d544b` | GemTek               |
 | `GNXS` | `474e5853` | Genexis              |
+| `GPNC` | `47504E43` | NuCom                |
 | `GPON` | `47504f4e` | Generic vendor name  |
 | `GTHG` | `47544847` | Alcatel-Lucent (ODM) |
 | `HALN` | `48414c4e` | HALNy                |
