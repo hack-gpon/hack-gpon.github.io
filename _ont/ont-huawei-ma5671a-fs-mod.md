@@ -100,7 +100,7 @@ fw_setenv onu_serial "YOUR_SERIAL_ASCII"
 fw_setenv onu_ploam "YOUR_PLOAM_ASCII"
 ```
 
-{% include alert.html content="If your ploam is in HEX convert it to ASCII, any non-printable characters write them in HEX with a slash in front, such as `\x7F`. If the PLOAM is less than 10 bytes (one printable character counts as one byte, `\x7F` also counts as one byte) add `\x00` to the end to get to 10 bytes." alert="Note" icon="svg-info" color="blue" %}
+{% include alert.html content="If your ploam is in HEX convert it to ASCII, any non-printable characters write them in HEX with a slash in front, such as `\0x7F`. If the PLOAM is less than 10 bytes (one printable character counts as one byte, `\0x7F` also counts as one byte) add `\0x00` to the end to get to 10 bytes." alert="Note" icon="svg-info" color="blue" %}
 
 ## Setting ONU GPON LOID
 ```sh
