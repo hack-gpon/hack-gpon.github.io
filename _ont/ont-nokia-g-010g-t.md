@@ -80,7 +80,7 @@ The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be acc
 
 {% include_relative ont-nokia-useful-command.md %}
 
-## Notes for Openreach ONT ##
+## Notes for Openreach ONT
 
 Serial speed is 9600 8n1.  Serial is iactive until the reset button is held down for ~30 seconds, then it'll break into the ONT> command line.
 There is no running webserver.  Telnet and Dropbear are running (if you disable the firewall) but no login is configured, so not useful. 
