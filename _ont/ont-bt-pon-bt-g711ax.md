@@ -216,8 +216,6 @@ OMCI_FAKE_OK=0
 
 This router has a capability of sharing files using ftp, tftp and netcat.
 
-## Backing up all partitions
-
 ## Setting management MAC
 ```sh
 # flash get ELAN_MAC_ADDR
@@ -264,13 +262,11 @@ sw_version1=V1_7_8_210412
 # nv setenv sw_commit 0|1
 # reboot
 ```
-# Random notes
-
 
 # Miscellaneous Links
 
 - [Configuration Manual which explains the Web UI of this ONT](https://www.bt-pon.com/download/Configuration_Manual/BT-7xx_and_BT-3xx_series_xPON_ONU_Configuration_Manual.pdf)
-- [Datasheet] (https://www.bt-pon.com/download/Datasheet/BT-PON_BT-G711AX_XPON_ONU_ONT_Datasheet.pdf)
+- [Datasheet](https://www.bt-pon.com/download/Datasheet/BT-PON_BT-G711AX_XPON_ONU_ONT_Datasheet.pdf)
 
 
 # Theardown and other photos
