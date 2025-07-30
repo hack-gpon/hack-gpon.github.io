@@ -18,6 +18,9 @@ ONTs often perform differently depending on the OLT and the settings applied by 
 
 {% include alert.html content="You can also help us with the content of this site, on each page you will find a button to edit on GitHub." alert="Tip"  icon="svg-info" color="green" %}
 
+{% include alert.html content="This project and its documentation relate *exclusively to the Passive Optical Network (PON) layer* of optical network devices. 
+We *do not access, modify, or interact with any radio components, wireless interfaces, or transmitters*. As such, the activities described here are *not intended to fall under the scope* of the EU Radio Equipment Directive (RED) (*Directive 2014/53/EU) or the associated **Delegated Regulation (EU) 2022/30* on cybersecurity for internet-connected radio devices. However, any modification involving radio hardware *may trigger RED applicability*. Users are advised to assess regulatory obligations accordingly."  alert="Warning"  icon="svg-warning" color="yellow" %}
+
 This wiki contains links, codes, tutorials on how to access, edit and modify ONTs.
 Are you ready?
 
