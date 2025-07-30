@@ -213,6 +213,12 @@ MIB INFO:
 
 # GPON/OMCI settings
 
+## Getting ONU GPON Serial Number
+```sh
+setmac 2 2176
+setmac 2 2177
+```
+
 ## Setting ONU GPON Serial Number
 
 {% include alert.html content="Both S/N and VID have to be changed. 2176 is for the VID (first 4 letters of the S/N) and 2177 is for the last 8 digits of the S/N" alert="Note"  icon="svg-info" color="blue" %}
@@ -221,14 +227,27 @@ setmac 1 2176 ZTEG
 setmac 1 2177 AABBCCDD
 ```
 
-## Setting ONU GPON PLOAM password
+## Getting ONU GPON PLOAM password
+
+```sh
+setmac 2 2181
+setmac 2 2178
+```
+
+## Setting ONU GPON PLOAM password 
 
 {% include alert.html content="The PLOAM password is stored in the ASCII format." alert="Note"  icon="svg-info" color="blue" %}
-This can be done easily via the Web UI. To do it via the shell use:
+
+This can be done easily via the Web UI. 
+{% include image.html file="f6005v3/f6005v3_ploam_change.jpg" alt="F6005v3 Ploam Change" caption="F6005v3 Ploam Change" %}
+
+To do it via the shell use:
 ```sh
 setmac 1 2181 1234567890
 setmac 1 2178 1234567890
 ```
+
+
 
 ## Setting ONU GPON Equipment ID
 
