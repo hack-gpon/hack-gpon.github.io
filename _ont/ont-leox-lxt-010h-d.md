@@ -70,6 +70,8 @@ This ONT supports dual boot.
 - V3.3.2L8
 - V3.3.2L8V ([Veip](/pptp_veip/) firmware)
 - V3.3.2L9
+- V3.3.2L10 (Build date: 2025-02-24 15:50:43)
+- V3.3.2L10V (Build date: 2025-02-24 14:54:15 [Veip](/pptp_veip/) firmware)
 
 {% include alert.html content="Before proceeding with any modification, make a backup of files rtl8290b.data and europa.data from /var/config folder. These files include optical calibration of your ONT's laser, if you accidentally delete or ruin them, your ONT will be unusable" alert="Note" icon="svg-warning" color="yellow" %}
 
