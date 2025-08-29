@@ -19,10 +19,11 @@ parent: Huawei
 | System       | Dopra Linux                                                                          |
 | 2.5GBaseT    | No                                                                                   |
 | Optics       | SC/APC and SC/UPC                                                                    |
-| IP address   | 192.168.100.1                                                                        |
+| IP address   | 192.168.100.1 or 192.168.18.1                                                        |
 | Web Gui      | ✅ user `root`, password `admin` or `adminHW` and user `Epadmin`, password `adminEp` |
 | SSH          |                                                                                      |
-| Telnet       | After enabling, user `root`, password `admin` or `adminHW`                            |
+| Telnet       | After enabling, user `root`, password `admin` or `adminHW`                           |
+|              | user `Eproot`, password `adminEp`                                                    |
 | Serial       |                                                                                      |
 | Form Factor  | ONT                                                                                  |
 
