@@ -40,7 +40,7 @@ From the Zyxel shell you can move to a standard Linux shell using the `linuxshel
 
 ## Serial
 
-The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. It's near the SFP header. TX, RX and ground pads need to be connected to a USB2TTL adapter supporting 3V3 logic.
+The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface. It's near the SFP header. TX, RX and ground pads need to be connected to a USB2TTL adapter supporting 3V3 logic. Ground and power can be connected via the regular SFP pins.
 
 {% include image.html file="tw236h-cdel-serial.jpg" alt="PMG3000-D20B Serial Pinout" caption="PMG3000-D20B Serial Pinout" %}
 
