@@ -4,6 +4,10 @@ title: Privacy Policy
 
 
 
+
+
+
+
 # Privacy Policy for hack-gpon.org
 
 At hack-gpon.org, accessible from hack-gpon.org, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by hack-gpon.org and how we use it.

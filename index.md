@@ -5,6 +5,10 @@ description: Worldwide wiki on how to access, change and edit ONTs
 
 
 
+
+
+
+
 Most ONTs run customized firmware which implement vendor and ISP-specific integrations and are locked down in functionality to match service requirements.
 ONTs often perform differently depending on the OLT and the settings applied by the ISP; for convenience it is often desirable to switch from an external ONT to an SFP or vice-versa, but most OLTs perform so many checks on the ONT that a simple replacement is almost impossible.
 
@@ -25,5 +29,5 @@ This wiki contains links, codes, tutorials on how to access, edit and modify ONT
 Are you ready?
 
 <span class="fs-8">
-[Yes](ont){: .btn .btn-green } [Quick start](quick-start){: .btn .btn-blue }
+[Yes](ont) [Quick start](quick-start)
 </span>

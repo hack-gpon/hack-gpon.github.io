@@ -3,9 +3,13 @@ title: Quick Start
 ---
 
 
+
+
+
+
 <Alert content="Playing with ONTs can cause your serial number/PLOAM password to be banned and faults to the optics, ONTs and OLTs. Always pay close attention to the calibration of the laser, under no circumstances should the calibration be changed." alert="Warning" icon="svg-warning" color="red" />
 
-The information on this page is taken from the GPON/EPON standard and information from the major vendors of GPON/EPON equipment, each individual item containing a verifiable citation in the standard. Feel free to cite this page as: `{{ page.title }}, Hack GPON. Available at: https://hack-gpon.org{{ page.url }}`.
+The information on this page is taken from the GPON/EPON standard and information from the major vendors of GPON/EPON equipment, each individual item containing a verifiable citation in the standard. Feel free to cite this page as: `{{ $frontmatter.title }}, Hack GPON. Available at: https://hack-gpon.org{{ $page.filePath }}`.
 
 # Fiber Optic Connectors
 
