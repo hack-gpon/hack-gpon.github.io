@@ -1,1 +1,0 @@
-import{_ as t,c as a,o as s,ai as i}from"./chunks/framework.Bh_scrrl.js";const d=JSON.parse('{"title":"Hack GPON","description":"","frontmatter":{},"headers":[],"relativePath":"README.md","filePath":"README.md"}'),n={name:"README.md"};function l(o,e,_,r,p,c){return s(),a("div",null,[...e[0]||(e[0]=[i("",10)])])}const h=t(n,[["render",l]]);export{d as __pageData,h as default};
