@@ -1,0 +1,167 @@
+/* Custom styles to match the existing site */
+:root {
+  --vp-c-brand: #7253ed;
+  --vp-c-brand-light: #9179f2;
+  --vp-c-brand-lighter: #a497f3;
+  --vp-c-brand-dark: #5b3fbf;
+  --vp-c-brand-darker: #4a32a1;
+}
+
+/* Alert styles */
+.alert-container {
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0.5rem;
+  border-left: 4px solid;
+}
+
+.alert-red {
+  background-color: #fee;
+  border-color: #dc3545;
+  color: #721c24;
+}
+
+.alert-yellow {
+  background-color: #fff3cd;
+  border-color: #ffc107;
+  color: #856404;
+}
+
+.alert-green {
+  background-color: #d4edda;
+  border-color: #28a745;
+  color: #155724;
+}
+
+.alert-blue {
+  background-color: #d1ecf1;
+  border-color: #17a2b8;
+  color: #0c5460;
+}
+
+/* Dark mode alert adjustments */
+.dark .alert-red {
+  background-color: rgba(220, 53, 69, 0.15);
+  color: #f8d7da;
+}
+
+.dark .alert-yellow {
+  background-color: rgba(255, 193, 7, 0.15);
+  color: #fff3cd;
+}
+
+.dark .alert-green {
+  background-color: rgba(40, 167, 69, 0.15);
+  color: #d4edda;
+}
+
+.dark .alert-blue {
+  background-color: rgba(23, 162, 184, 0.15);
+  color: #d1ecf1;
+}
+
+/* Image figure styles */
+.image-figure {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.image-figure img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+.image-figure figcaption {
+  margin-top: 0.5rem;
+  font-style: italic;
+  color: var(--vp-c-text-2);
+}
+
+/* Form styles */
+.form-floating {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 0.375rem;
+  background-color: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  font-size: 1rem;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--vp-c-brand);
+  box-shadow: 0 0 0 0.2rem rgba(114, 83, 237, 0.25);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--vp-c-text-2);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background-color: var(--vp-c-brand);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--vp-c-brand-dark);
+}
+
+.btn-green {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-green:hover {
+  background-color: #218838;
+}
+
+.btn-blue {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.btn-blue:hover {
+  background-color: #138496;
+}
+
+.invalid-feedback {
+  display: none;
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.was-validated .form-control:invalid ~ .invalid-feedback {
+  display: block;
+}
+
+/* Code block styles */
+pre code {
+  font-size: 0.875rem;
+}
+
+/* Mermaid diagram support */
+.mermaid {
+  text-align: center;
+  margin: 1.5rem 0;
+}

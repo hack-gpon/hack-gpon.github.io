@@ -1,11 +1,19 @@
 {
   "scripts": {
-    "build": "tsup",
-    "watch": "tsup --watch",
-    "clean": "rimraf assets/js/generated"
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview",
+    "build": "vitepress build",
+    "clean": "rimraf .vitepress/dist .vitepress/cache"
   },
   "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.2",
     "rimraf": "^5.0.1",
-    "tsup": "^6.7.0"
+    "tsup": "^6.7.0",
+    "vitepress": "^1.6.4",
+    "vue": "^3.5.25"
+  },
+  "dependencies": {
+    "crypto-js": "^4.2.0"
   }
 }

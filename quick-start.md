@@ -1,19 +1,21 @@
 ---
 title: Quick Start
-has_children: false
-nav_order: 2
-description:  
-layout: default
 ---
-{% include alert.html content="Playing with ONTs can cause your serial number/PLOAM password to be banned and faults to the optics, ONTs and OLTs. Always pay close attention to the calibration of the laser, under no circumstances should the calibration be changed." alert="Warning" icon="svg-warning" color="red" %}
 
-The information on this page is taken from the GPON/EPON standard and information from the major vendors of GPON/EPON equipment, each individual item containing a verifiable citation in the standard. Feel free to cite this page as: `{{ page.title }}, Hack GPON. Available at: https://hack-gpon.org{{ page.url }}`.
+
+
+
+
+
+<Alert content="Playing with ONTs can cause your serial number/PLOAM password to be banned and faults to the optics, ONTs and OLTs. Always pay close attention to the calibration of the laser, under no circumstances should the calibration be changed." alert="Warning" icon="svg-warning" color="red" />
+
+The information on this page is taken from the GPON/EPON standard and information from the major vendors of GPON/EPON equipment, each individual item containing a verifiable citation in the standard. Feel free to cite this page as: `{{ $frontmatter.title }}, Hack GPON. Available at: https://hack-gpon.org{{ $page.filePath }}`.
 
 # Fiber Optic Connectors
 
 Numerous connectors, both standard and proprietary, are used in the field of telecommunications equipment, data lines, television and cable, and other industrial fields. 
 
-{% include image.html file="quick-start/optic-fiber-connectors.jpg"  alt="Some of the most common connectors" caption="Some of the most common connectors" %}
+<ImageFigure file="quick-start/optic-fiber-connectors.jpg" alt="Some of the most common connectors" caption="Some of the most common connectors" />
 
 The main connectors are:
 - Bionic Connector
@@ -36,7 +38,7 @@ The main connectors are:
 
 APC and UPC use different polishing methodologies of fiber optic ferrules, and they define types of fiber patch cable connectors. These determine the quality of the fiber optic lightwave transmission, mostly calculated in optical return loss and insertion loss[^wolon].
 
-{% include image.html file="quick-start/apc-upc.jpg" alt="Picture of APC and UPC connections" caption="Picture of APC and UPC" %}
+<ImageFigure file="quick-start/apc-upc.jpg" alt="Picture of APC and UPC connections" caption="Picture of APC and UPC" />
 
 Angled physical connectors are used on the ONT's side to reduce back-reflections. In case RF signals (1550nm) are introduced, there will be two signals traveling in the downstream direction (1490nm + 1550nm); as RF systems are highly sensitive to reflections the APC connectors reduce the return loss value[^zyxel] and are preferred over UPC.
 
@@ -86,7 +88,7 @@ Layering model and the associated management services are all mapped over Ethern
 - However, EPON clearly offers a much simpler and more straightforward solution than GPON. The support of ATM and the double encapsulation of GPON serve no real benefit over a pure Ethernet transport scheme[^medium].
 - In EPON, Ethernet frames are carried in their native format over the PON, which greatly simplifies the layering model and the associated management. EPON employs a single layer that uses IP (Internet Protocol) to carry data, voice, and video[^medium],[^fs].
 
-{% include image.html file="epon_gpon.jpg"  alt="EPON vs GPON Layers" caption="EPON vs GPON Layer" %}
+<ImageFigure file="epon_gpon.jpg" alt="EPON vs GPON Layers" caption="EPON vs GPON Layer" />
 
 ## Comunication between ONTs and OLT[^fs]
 
@@ -108,7 +110,7 @@ To separate upstream/downstream signals of multiple users over a single fiber, P
 - In downstream direction, data packets are transmitted in a broadcast manner;
 - In upstream direction, data packets are transmitted using TDMA.
 
-{% include image.html file="quick-start/optical-fiber-transmission-windows.svg"  alt="Fiber Optic Operation Wavelength and Window" caption="Fiber Optic Operation Wavelength and Window" %}
+<ImageFigure file="quick-start/optical-fiber-transmission-windows.svg" alt="Fiber Optic Operation Wavelength and Window" caption="Fiber Optic Operation Wavelength and Window" />
 
 
 |            | GPON                      | 1/1-EPON                  | XG(S)-GPON                  | 10/1-EPON                   | 10/10-EPON                  |
