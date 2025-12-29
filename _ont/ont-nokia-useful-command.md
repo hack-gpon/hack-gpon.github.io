@@ -146,3 +146,10 @@ admin_mask: 255.255.255.0
 ---ATECMDRESULT--- OK
 #ONT/system/misc>admin_mask set 255.255.255.0
 ```
+
+## (Re-)enable webinterface
+```sh
+#ONT>system
+#ONT/system>manu
+#ONT/system/manu>internal_ip_en
+```
