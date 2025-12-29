@@ -18,7 +18,7 @@ parent: Nokia
 | 2.5GBaseT        | Yes                                                                          |
 | Optics           | SC/APC                                                                       |
 | IP address       | 192.168.1.254                                                                |
-| Web Gui          | ✅ user `adminadmin`, password `ALC#FGU` (⚠️ only available when the PON connection IS NOT estabilished) |
+| Web Gui          | ✅ user `adminadmin`, password `ALC#FGU`                                     |
 | SSH              | ✅ user `adminadmin`, password `ALC#FGU`, but has access to limited shell    |
 | Telnet           |                                                                              |
 | Serial           | ⚠️ (U-boot is password protected, Linux kernel disabled it after boot)       |
