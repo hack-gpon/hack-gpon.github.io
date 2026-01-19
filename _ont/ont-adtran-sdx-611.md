@@ -16,7 +16,7 @@ parent: Adtran
 | RAM          |         |
 | System       |         |
 | 2.5GbaseT    | No      |
-| Optics       |         |
+| Optics       | SC/APC  |
 | IP address   |         |
 | Web Gui      |         |
 | SSH          |         |
