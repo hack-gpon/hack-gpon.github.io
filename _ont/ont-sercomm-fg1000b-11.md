@@ -49,7 +49,11 @@ The ONT seems to only display output of the ROM CFE and flash CFE, but doesn't s
 
 ## List of software versions
 
-Currently the only known version is 090144.1.0.001
+| Firmware version | Firmware date |
+| ---------------- | ------------- |
+| 090144.1.0.001   | ?             |
+| 090144.1.0.009   | 23.05.25      |
+
 
 ## List of partitions
 `cat /proc/mtd`
