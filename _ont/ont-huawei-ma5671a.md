@@ -256,9 +256,7 @@ The Huawei MA5671A stores the content of the emulated EEPROM in U-Boot env varia
 
 ## EEPROM Editing Tool for MA5671A
 
-A simple tool to help edit the EEPROM of the **Huawei MA5671A**, created by **MrFreeZZ**.
-
-🔗 [Download from Google Drive](https://drive.google.com/file/d/1G1oUKC2qrl-1iiojUENN3nriVtH--FMP/view?usp=drive_link)
+A simple tool to help edit the EEPROM of the **Huawei MA5671A**, created by **MrFreeZZ**: https://github.com/hack-gpon/MA5671A-Eeprom/releases
 
 ✅ Automatically calculates the checksum, making the process easier and safer.
 
