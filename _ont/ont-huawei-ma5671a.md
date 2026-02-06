@@ -254,6 +254,13 @@ The Huawei MA5671A stores the content of the emulated EEPROM in U-Boot env varia
 - `EEPROM0 (A0h)` stored in U-Boot env variable `sfp_a0_low_128`
 - `EEPROM1 (A2h)` stored in U-Boot env variable `sfp_a2_info`
 
+## EEPROM Editing Tool for MA5671A
+
+A simple tool to help edit the EEPROM of the **Huawei MA5671A**, created by **MrFreeZZ**: https://github.com/hack-gpon/MA5671A-Eeprom/releases
+
+✅ Automatically calculates the checksum, making the process easier and safer.
+
+
 ## EEPROM0 layout
 
 | address | size | name                              | default value                                                                               | description                                                         |
