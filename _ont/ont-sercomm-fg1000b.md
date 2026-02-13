@@ -1,5 +1,5 @@
 ---
-title: Sercomm FG1000B.11
+title: Sercomm FG1000B
 has_children: false
 layout: default
 parent: Sercomm
@@ -10,7 +10,7 @@ parent: Sercomm
 |                 |                        |
 | --------------- | ---------------------- |
 | Vendor/Brand    | Sercomm                |
-| Model           | FG1000B.11             |
+| Model           | FG1000B                |
 | ODM             | ✅                     |
 | Chipset         | BCM68360_B1            |
 | Flash           | NAND 128 MB            |
@@ -49,10 +49,14 @@ The ONT seems to only display output of the ROM CFE and flash CFE, but doesn't s
 
 ## List of software versions
 
-| Firmware version | Firmware date |
-| ---------------- | ------------- |
-| 090144.1.0.001   | ?             |
-| 090144.1.0.009   | 23.05.25      |
+| Firmware version | Firmware date | used by                       |
+| ---------------- | ------------- | ----------------------------- |
+| 090122.1.0.001   | 03.11.2022    | Vodafone (FG1000B.VF)         |
+| 090133.1.0.003   | 11.09.2023    | o2/Telefonica (FG1000B O2)    |
+| 090144.1.0.001   | ?             | Deutsche Telekom (FG1000B.11) |
+| 090144.1.0.004   | ?             | Deutsche Telekom (FG1000B.11) |
+| 090144.1.0.006   | ?             | Deutsche Telekom (FG1000B.11) |
+| 090144.1.0.009   | 23.05.2025    | Deutsche Telekom (FG1000B.11) |
 
 
 ## List of partitions
@@ -180,7 +184,7 @@ or
 
 ## Getting/Setting Speed LAN Mode
 
-This has been tested on the Telekom Germany Model of the FG1000B.11 and has brought the desired success of increasing 
+This has been tested on the Telekom Germany Model of the FG1000B and has brought the desired success of increasing 
 the pre-configured ethernet port speed (1G) to auto-negotiated 2.5G. This does not survive a reboot though.
 
 ```
@@ -335,8 +339,9 @@ It seems `cmld_client get` can't return string values longer than 12 characters,
 
 # Other brand names
 
- - 1&1 Glasfaser Modem
- - Telekom Glasfaser Modem 2
+ - 1&1 Glasfaser Modem (FG1000B.11)
+ - o2 Glasfaser Modem (FG1000B O2)
+ - Telekom Glasfaser Modem 2 (FG1000B.11)
  - Vodafone Glasfaser Modem (FG1000B.VF)
 
 # Credits
