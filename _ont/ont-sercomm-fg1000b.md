@@ -7,29 +7,29 @@ parent: Sercomm
 
 # Hardware Specifications
 
-|                 |                        |
-| --------------- | ---------------------- |
-| Vendor/Brand    | Sercomm                |
-| Model           | FG1000B                |
-| ODM             | ✅                     |
-| Chipset         | BCM68360_B1            |
-| Flash           | NAND 128 MB            |
-| RAM             | 256 MB                 |
-| CPU             | Broadcom B53 Dual Core |
-| CPU Clock       | 1500MHz                |
-| Bootloader      | CFE                    |
-| Load addr       | 0x80000                |
-| 2.5GBaseT       | Yes                    |
-| PHY Ethernet    | RTL8221B               |
-| Optics          | LC/APC                 |
-| IP address      | 192.168.100.1/24       |
-| Web Gui         | ✅, no login needed    |
-| SSH             | No                     |
-| Telnet          | No                     |
-| Serial          | ✅, only TX            |
-| Serial baud     | 115200                 |
-| Serial encoding | 8-N-1                  |
-| Form Factor     | ONT                    |
+|                 |                                                                     |
+| --------------- | ------------------------------------------------------------------- |
+| Vendor/Brand    | Sercomm                                                             |
+| Model           | FG1000B                                                             |
+| ODM             | ✅                                                                  |
+| Chipset         | BCM68360_B1                                                         |
+| Flash           | NAND 128 MB                                                         |
+| RAM             | 256 MB                                                              |
+| CPU             | Broadcom B53 Dual Core                                              |
+| CPU Clock       | 1500MHz                                                             |
+| Bootloader      | CFE                                                                 |
+| Load addr       | 0x80000                                                             |
+| 2.5GBaseT       | Yes                                                                 |
+| PHY Ethernet    | RTL8221B                                                            |
+| Optics          | LC/APC                                                              |
+| IP address      | 192.168.1.1/24 or 192.168.100.1/24 (depending on the derivate)      |
+| Web Gui         | ✅, login may be needed (depending on the derivate)                 |
+| SSH             | No                                                                  |
+| Telnet          | No                                                                  |
+| Serial          | ✅, only TX                                                         |
+| Serial baud     | 115200                                                              |
+| Serial encoding | 8-N-1                                                               |
+| Form Factor     | ONT                                                                 |
 
 
 {% include image.html file="fg1000b-11_rear.jpg" alt="Sercomm FG1000B.11" caption="Sercomm FG1000B.11 rear" %}
