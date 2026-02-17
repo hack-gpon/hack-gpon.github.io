@@ -52,10 +52,10 @@ The ONT seems to only display output of the ROM CFE and flash CFE, but doesn't s
 | Firmware version | Firmware date | used by                       |
 | ---------------- | ------------- | ----------------------------- |
 | 090122.1.0.001   | 03.11.2022    | Vodafone (FG1000B.VF)         |
-| 090133.1.0.003   | 11.09.2023    | o2/Telefonica (FG1000B O2)    |
-| 090144.1.0.001   | ?             | Deutsche Telekom (FG1000B.11) |
-| 090144.1.0.004   | ?             | Deutsche Telekom (FG1000B.11) |
-| 090144.1.0.006   | ?             | Deutsche Telekom (FG1000B.11) |
+| 090133.1.0.003   | 11.09.2023    | o2/Telefonica (FG1000B.O2)    |
+| 090144.1.0.001   |               | Deutsche Telekom (FG1000B.11) |
+| 090144.1.0.004   |               | Deutsche Telekom (FG1000B.11) |
+| 090144.1.0.006   |               | Deutsche Telekom (FG1000B.11) |
 | 090144.1.0.009   | 23.05.2025    | Deutsche Telekom (FG1000B.11) |
 
 
