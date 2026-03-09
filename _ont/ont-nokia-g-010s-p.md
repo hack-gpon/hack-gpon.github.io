@@ -82,7 +82,7 @@ fw_setenv nDyingGaspEnable 0
 
 ## Enabling the Web UI
 
-To activate the web-ui you can use the following guide on [dslreport](https://www.dslreports.com/forum/r32458588-).
+To activate the web-ui you can use [this guide from dslreport forum](https://web.archive.org/web/20241205080939/https://www.dslreports.com/forum/r32458588-) archived on [archive.org](https://archive.org/).
 
 # Miscellaneous Links
 
