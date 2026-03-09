@@ -19,7 +19,7 @@ parent: YOTC
 | System          | Linux 4.4.140 (GCC Realtek MSDK-4.8.5p1 Build 3068)                    |
 | Ethernet ports  | 2x1G                                                                   |
 | Optics          | SC/APC                                                                 |
-| IP address      | 192.168.1.1                                                            |
+| IP address      | 192.168.1.1 or 192.168.8.1                                             |
 | Web Gui         | ✅ user `super`, password `opticalink` OR user `User`, password `User` |
 | Telnet          | ✅ user `super`, password `opticalink` OR user `User`, password `User` |
 | SSH             | NO                                                                     |
@@ -27,9 +27,9 @@ parent: YOTC
 | UART            | 115200 8N1                                                             |
 # External Media
 
-{% include image.html file="ont-leox-lxt-240g-c1_top.jpg" alt="Leox LXT-240G-C1 Top" caption="Leox LXT-240G-C1 Top" %} 
-{% include image.html file="ont-leox-lxt-240g-c1_bottom.jpg" alt="Leox LXT-240G-C1 Bottom" caption="Leox LXT-240G-C1 Bottom" %}
-{% include image.html file="ont-leox-lxt-240g-c1_pcb.jpg" alt="Leox LXT-240G-C1 PCB" caption="Leox LXT-240G-C1 PCB" %}
+{% include image.html file="yotc-m2-2050-g40-top.jpg" alt="Leox LXT-240G-C1 Top" caption="Leox LXT-240G-C1 Top" %} 
+{% include image.html file="yotc-m2-2050-g40-bottom.jpg" alt="Leox LXT-240G-C1 Bottom" caption="Leox LXT-240G-C1 Bottom" %}
+{% include image.html file="yotc-m2-2050-g40-pcb.jpg" alt="Leox LXT-240G-C1 PCB" caption="Leox LXT-240G-C1 PCB" %}
 
 ## List of partitions (MTD)
 
