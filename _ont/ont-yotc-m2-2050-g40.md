@@ -27,9 +27,9 @@ parent: YOTC
 | UART            | 115200 8N1                                                             |
 # External Media
 
-{% include image.html file="yotc-m2-2050-g40-top.jpg" alt="Leox LXT-240G-C1 Top" caption="Leox LXT-240G-C1 Top" %} 
-{% include image.html file="yotc-m2-2050-g40-bottom.jpg" alt="Leox LXT-240G-C1 Bottom" caption="Leox LXT-240G-C1 Bottom" %}
-{% include image.html file="yotc-m2-2050-g40-pcb.jpg" alt="Leox LXT-240G-C1 PCB" caption="Leox LXT-240G-C1 PCB" %}
+{% include image.html file="yotc-m2-2050-g40-top.jpg" alt="YOTC M2-2050-G40 Top" caption="YOTC M2-2050-G40 Top" %} 
+{% include image.html file="yotc-m2-2050-g40-bottom.jpg" alt="YOTC M2-2050-G40 Bottom" caption="YOTC M2-2050-G40 Bottom" %}
+{% include image.html file="yotc-m2-2050-g40-pcb.jpg" alt="YOTC M2-2050-G40 PCB" caption="YOTC M2-2050-G40 PCB" %}
 
 ## List of partitions (MTD)
 
