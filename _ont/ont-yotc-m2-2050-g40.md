@@ -23,8 +23,10 @@ parent: YOTC
 | Web Gui         | ✅ user `super`, password `opticalink` OR user `User`, password `User` |
 | Telnet          | ✅ user `super`, password `opticalink` OR user `User`, password `User` |
 | SSH             | NO                                                                     |
+| Serial baud     | 115200                                                                 |
+| Serial encoding | 8-N-1                                                                  |
 | Form Factor     | ONT                                                                    |
-| UART            | 115200 8N1                                                             |
+
 
 # External Media
 
@@ -57,7 +59,8 @@ parent: YOTC
 | ubi0_3 | 5332992B   | dynamic | "ubi_k1"     |
 | ubi0_4 | 21078016B  | dynamic | "ubi_r1"     |
 
-To back up a volume, `cat` or `dd` the appropriate `/dev/ubi0_X` device to a file or pipe, to restore a volume, use the `ubiupdatevol` utility (or just do it safely via the WebGUI)
+
+To back up a volume, `cat` or `dd` the appropriate `/dev/ubi0_X` device to a file or pipe, to restore a volume, use the `ubiupdatevol` utility.
 
 This ONT supports dual boot.
 
@@ -140,7 +143,28 @@ omcicli mib get 257
 omcicli mib get 329
 ```
 
-# Other Commands
+
+# Advanced Settings
+
+## Setting management MAC
+```
+mib set ELAN_MAC_ADDR 1A2B3C4D5E6F
+```
+
+## Setting management IP
+```
+mib set LAN_IP_ADDR 192.168.8.1
+```
+
+## Rebooting the ONU
+```
+reboot
+```
+
+## Delete the ISP Default Configuration (it is recommended to back it up first)
+```
+rm /var/config/config_custom_default.xml
+```
 
 ## Enable Ethernet Ports
 ```
@@ -154,3 +178,5 @@ mib set SW_PORT_TBL.3.Enable 1
 ```
 mib set WLAN_MBSSIB_TBL.0.wlanDisabled 0
 ```
+
+
