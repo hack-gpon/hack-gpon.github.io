@@ -25,6 +25,7 @@ parent: YOTC
 | SSH             | NO                                                                     |
 | Form Factor     | ONT                                                                    |
 | UART            | 115200 8N1                                                             |
+
 # External Media
 
 {% include image.html file="yotc-m2-2050-g40-top.jpg" alt="YOTC M2-2050-G40 Top" caption="YOTC M2-2050-G40 Top" %} 
