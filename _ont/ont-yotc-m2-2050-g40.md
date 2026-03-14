@@ -23,13 +23,17 @@ parent: YOTC
 | Web Gui         | ✅ user `super`, password `opticalink` OR user `User`, password `User` |
 | Telnet          | ✅ user `super`, password `opticalink` OR user `User`, password `User` |
 | SSH             | NO                                                                     |
+| Serial baud     | 115200                                                                 |
+| Serial encoding | 8-N-1                                                                  |
 | Form Factor     | ONT                                                                    |
-| UART            | 115200 8N1                                                             |
+
+
 # External Media
 
 {% include image.html file="yotc-m2-2050-g40-top.jpg" alt="YOTC M2-2050-G40 Top" caption="YOTC M2-2050-G40 Top" %} 
 {% include image.html file="yotc-m2-2050-g40-bottom.jpg" alt="YOTC M2-2050-G40 Bottom" caption="YOTC M2-2050-G40 Bottom" %}
-{% include image.html file="yotc-m2-2050-g40-pcb.jpg" alt="YOTC M2-2050-G40 PCB" caption="YOTC M2-2050-G40 PCB" %}
+{% include image.html file="yotc-m2-2050-g40-pcb-top.jpg" alt="YOTC M2-2050-G40 PCB Top" caption="YOTC M2-2050-G40 PCB Top" %}
+{% include image.html file="yotc-m2-2050-g40-pcb.jpg" alt="YOTC M2-2050-G40 PCB Bottom" caption="YOTC M2-2050-G40 PCB Bottom" %}
 
 ## List of partitions (MTD)
 
@@ -56,7 +60,8 @@ parent: YOTC
 | ubi0_3 | 5332992B   | dynamic | "ubi_k1"     |
 | ubi0_4 | 21078016B  | dynamic | "ubi_r1"     |
 
-To back up a volume, `cat` or `dd` the appropriate `/dev/ubi0_X` device to a file or pipe, to restore a volume, use the `ubiupdatevol` utility (or just do it safely via the WebGUI)
+
+To back up a volume, `cat` the appropriate `/dev/ubi0_X` device to a file or pipe, to restore a volume, use the `ubiupdatevol` utility.
 
 This ONT supports dual boot.
 
@@ -139,7 +144,28 @@ omcicli mib get 257
 omcicli mib get 329
 ```
 
-# Other Commands
+
+# Advanced Settings
+
+## Setting management MAC
+```
+mib set ELAN_MAC_ADDR 1A2B3C4D5E6F
+```
+
+## Setting management IP
+```
+mib set LAN_IP_ADDR 192.168.8.1
+```
+
+## Rebooting the ONU
+```
+reboot
+```
+
+## Delete the ISP Default Configuration (it is recommended to back it up first)
+```
+rm /var/config/config_custom_default.xml
+```
 
 ## Enable Ethernet Ports
 ```
