@@ -67,6 +67,24 @@ This ONT supports dual boot.
 
 Volumes `ubi_k0` and `ubi_r0` respectively contain kernel and rootfs of the first image, while `ubi_k1` and `ubi_r1` contain kernel and rootfs of the second one.
 
+# Useful files and binaries
+
+## Useful files
+
+User Configuration:
+```
+/var/config/config.xml
+```
+
+Custom Default Configuration:
+```
+/var/config/config_custom_default.xml
+```
+
+Hardware Configuration:
+```
+/var/config/config_hs.xml
+```
 
 # GPON/OMCI settings
 
@@ -160,11 +178,6 @@ mib set LAN_IP_ADDR 192.168.8.1
 ## Rebooting the ONU
 ```
 reboot
-```
-
-## Delete the ISP Default Configuration (it is recommended to back it up first)
-```
-rm /var/config/config_custom_default.xml
 ```
 
 ## Enable Ethernet Ports
