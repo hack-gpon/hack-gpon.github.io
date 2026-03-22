@@ -13,14 +13,14 @@ parent: Free/Iliad
 | Model            | F-MDCONU3A                      |
 | ODM              | ✅                              |
 | ODM Product Code |                                 |
-| Chipset          | BCM55030                        |
-| Flash            | W25Q32J (4MB SPI)               |
-| RAM              | embedded                        |
+| Chipset          | BCM55030B2FBG rev B2            |
+| Flash            | W25Q32J (4 MB SPI)              |
+| RAM              | embedded SRAM (DCCM)            |
 | CPU              | ARCompact[^arc-isa], big endian |
 | CPU Clock        |                                 |
-| Bootloader       |                                 |
-| System           |                                 |
-| Load addr        |                                 |
+| Bootloader       | TK2000 Boot v3.27               |
+| System           | bare-metal (no OS)              |
+| Load addr        | 0x20000000 (ICCM)              |
 | HSGMII           | No                              |
 | Optics           | SFP w/o MAC                     |
 | IP address       |                                 |
@@ -32,73 +32,93 @@ parent: Free/Iliad
 | Serial encoding  | 8-N-1                           |
 | Form Factor      | ONT                             |
 
-The BCM55030 is a 10G-EPON ONU/ONT.
-The BCM55030's UNI (User Network Interface) side should be capable of 4xSGMII (1 GbE) or 1xXAUI (10 GbE) or 1xXFI (10 GbE SFP) or 1xRGMII, but only one SGMII lane is actually routed.
-UNI link won't go up when connected to a media converter or directly to a NIC.
+The BCM55030 is a 10G-EPON DPoE (DOCSIS Provisioning over EPON) ONU/ONT used by Free/Iliad (France) on their FTTH network. The PON side operates in asymmetric 10G/1G mode: downstream at 1577 nm / 10.3125 Gb/s, upstream at 1310 nm / 1.25 Gb/s burst (IEEE 802.3av).
+
+The BCM55030's UNI (User Network Interface) side should be capable of 4xSGMII (1 GbE) or 1xXAUI (10 GbE) or 1xXFI (10 GbE SFP) or 1xRGMII, but only one SGMII lane is actually routed (1000BASE-X via soldered SFP+ male connector).
+
+UNI link won't go up when connected to a media converter or directly to a NIC. The firmware waits for a valid 1000BASE-X partner before activating the PON side (circular dependency).
+
+The CPU uses a Harvard architecture: ICCM (Instruction Closely-Coupled Memory) for code execution and DCCM/SRAM for data. Code in ICCM is not readable via the data bus — the `mem/rf` command can only read data memory, not firmware code.
 
 ## Serial
 
 The serial port is easily accessible at TP5 and TP6. A prompt is available without authentication, it is structured as a tree of directories. To navigate type the subdirectory name. To go back type `/` and hit enter. To list available commands type `help`.
 
-Available commands:
+### CLI Permission Levels
+
+The CLI has a 3-level permission system. By default, UART connects at level 0 (restricted). The **`pl`** (Print Level) built-in command switches between levels without any authentication:
+
+| Command      | Level | Effect                                    |
+| ------------ | ----- | ----------------------------------------- |
+| `pl reset`   | 0     | Default restricted access                 |
+| `pl alpha`   | 1     | Debug mode — unlocks ~20 additional commands |
+| **`pl omega`** | **2** | **Full manufacturing access — unlocks ALL commands** |
+
+The `pl` command is a framework built-in keyword (like `help` and `..`) that is processed *before* the permission-checked command tree walk. It never passes through the permission gate, so it works from any level — including the default level 0.
+
+The permission byte is stored at a single RAM address and persists for the duration of the session. It resets to 0 on reboot. To persist a higher level across reboots, use `fds/write` (available at level 1+) to write to FDS group 4, record 7.
+
+### Available commands
+
+Level 0 (default — 22 root entries, ~60 total commands):
 
 ```
 - mac/
-	- epon
-	- user
+    - epon
+    - user
 - alm/
-	- info
-	- gpio
+    - info
+    - gpio
 - debug/
-	- mcast
-	- mpcp
-	- nco
-	- rstp
-	- sysd
+    - mcast
+    - mpcp
+    - nco
+    - rstp
+    - sysd
 - epon/
-	- eponmac
-	- usermac
-	- dom
-	- ponspeed
+    - eponmac
+    - usermac
+    - dom
+    - ponspeed
 - fds/
-	- erase
+    - erase
 - load/
-	- info
-	- commit
-	- setRecoveryPoint
-	- runRecoveryPoint
-	- rx
+    - info
+    - commit
+    - setRecoveryPoint
+    - runRecoveryPoint
+    - rx
 - mcast/
-	- domains
-	- groups
-	- sources
-	- reporters
-	- igmpinfo
-	- igmpsources
+    - domains
+    - groups
+    - sources
+    - reporters
+    - igmpinfo
+    - igmpsources
 - mem/
-	- rf
+    - rf
 - mpcp/
-	- info
-	- failsafe
-	- oltmac
+    - info
+    - failsafe
+    - oltmac
 - pers/
-	- read
+    - read
 - serdes/
-	- sdextlptest
+    - sdextlptest
 - stats/
-	- clear
-	- gather
-	- epon
-	- fifo
-	- lif
-	- uni
-	- xif
-	- statsmode
+    - clear
+    - gather
+    - epon
+    - fifo
+    - lif
+    - uni
+    - xif
+    - statsmode
 - log/
-	- show
-	- level
+    - show
+    - level
 - sysd/
-	- frmdmp
+    - frmdmp
 - clionly
 - clr
 - ints
@@ -108,6 +128,89 @@ Available commands:
 - echo
 - sftver
 ```
+
+Level 1 (`pl alpha` — adds these commands):
+
+```
+- access/
+    - read          (hardware peripheral bus read — I2C/SPI)
+    - write         (hardware peripheral bus write)
+- mdio/
+    - read
+    - readlst
+    - write
+- lue/
+    - lin/
+        - inst
+    - bin/
+        - inst
+- cust/
+    - e             (examine custom data)
+    - r             (read custom data)
+    - w             (write custom data)
+- fds/
+    - write         (write FDS record)
+- mem/
+    - wm            (write memory)
+    - wf            (write flash)
+    - ef            (erase flash)
+```
+
+Level 2 (`pl omega` — adds these commands):
+
+```
+- efuse             (read eFuse OTP memory)
+- efusebits         (read eFuse bit-level detail)
+- learn/
+    - inst
+    - tbl
+    - age
+    - limit
+- gmc/
+    - le
+    - ld
+- serdes/
+    - dump
+- debug/
+    - fc
+    - epon
+    - learn
+    - eap
+- fifo/
+    - queue
+- eae/
+    - eap
+    - mka
+    - mtime
+    - klen
+- xau/
+    - xcap
+- fec/
+    - auto
+- reglist
+- regbits
+```
+
+### Useful commands
+
+| Command | Description |
+| ------- | ----------- |
+| `sftver` | Print firmware version and chip ID |
+| `load/info` | Show all firmware slots with versions and CRCs |
+| `epon/eponmac` | Show EPON MAC address |
+| `epon/ponspeed` | Show current PON link speed |
+| `mpcp/info` | Show MPCP registration state |
+| `mpcp/oltmac` | Show OLT MAC address |
+| `pers/read` | Dump personality data (raw hex) |
+| `mem/rf <addr> <len>` | Read `len` bytes of data memory starting at `addr` |
+| `stats/epon` | Show EPON statistics counters |
+| `reg <index>` | Read a software register by index |
+| `set <index> <value>` | Write a software register |
+| `pl omega` | Unlock full manufacturing access |
+| `mem/wm <addr> <value>` | Write to memory (level 1+) |
+| `efuse` | Dump eFuse OTP contents (level 2) |
+| `load/rx` | Receive firmware image over UART |
+| `load/commit` | Commit received firmware to active slot |
 
 `load/info` output:
 ```
@@ -158,24 +261,45 @@ Stream: 112 Revision: 131152
 Time: 2016-05-18 01:28:44Z
 ```
 
-`mem/rf [start address] [lenght]` reads bytes from the flash memory, wraps every 512 kB.
+`mem/rf [start address] [length]` reads bytes from data memory (DCCM/SRAM). Due to the Harvard architecture, this command cannot read firmware code (which resides in ICCM). The address space wraps every 512 kB.
+
+## Firmware Flash Protocol
+
+The `load/rx` command accepts a firmware image over UART using a raw binary transfer (no XMODEM, no handshake):
+
+1. Wait for the `2000/>` prompt
+2. Send `load/rx\r`
+3. ONU responds: `Begin binary transfer...`
+4. Send the TKF image as raw binary at 57600 baud (~55 seconds for 319 KB)
+5. ONU responds: `Transfer complete: N bytes received`
+6. Send `load/commit\r` to activate the new slot
+7. Send `reset\r` to reboot
+
+The firmware image must be wrapped in a TKF (Teknovus) container:
+
+```
+[header 39 bytes] [payload N bytes] [CRC32 4 bytes]
+```
+
+The trailing CRC32 covers the entire header+payload (standard IEEE 802.3 CRC). The ONU writes to App 0 and App 1 slots in rotation.
 
 ## List of partitions
 
-The flash memory is not actually partitioned, upon reset the CPU loads from address 0 (reset vector) and jumps to another address ([page 74](http://me.bios.io/images/d/dd/ARCompactISA_ProgrammersReference.pdf#%5B%7B%22num%22%3A177%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C72%2C157%2C0%5D)). Each section ends with its CRC.
+The flash memory (W25Q32J, 4 MB SPI) has 5 regions. Each application section starts with a 39-byte TKF header and ends with its CRC.
 
-| Section               | Start address    | End address      | Size           |
-| --------------------- | ---------------- | ---------------- | -------------- |
-| Bootloader            | 0                | 42896/0xA790     | 42896/0xA790   |
-| App 0                 | ?                | ?                | ?              |
-| App 1                 | 1179687/0x120027 | 1498731/0x16DE6B | 319044/0x4DE44 |
-| App 2                 | 1703975/0x1A0027 | 2023215/0x1EDF2F | 319240/0x4DF08 |
-| Diag (copy of App 1?) | 2555943/0x270027 | 2874987/0x2BDE6B | 319044/0x4DE44 |
+| Section    | Start address    | End address      | Size           | Version |
+| ---------- | ---------------- | ---------------- | -------------- | ------- |
+| Bootloader | 0x000000         | 0x00A790         | 42 KB          | v3.27   |
+| FDS/Config | 0x00A790         | 0x120000         | ~460 KB        | —       |
+| App 1      | 0x120027         | 0x16DE6B         | 319 KB         | v3.2.7  |
+| App 2      | 0x1A0027         | 0x1EDF2F         | 319 KB         | v3.2.9  |
+| Diag       | 0x270027         | 0x2BDE6B         | 319 KB         | v3.2.7  |
 
 (End address is non-inclusive)
-App 1 and App 2 sections are located at a distance of 512 kB (0x80000) from each other. This probably means that the CPU is capable of addressing only 512 kB of flash. It can be verified also by running the `mem/rf` command, which wraps every 512 kB.
 
-# Userful files and binaries
+App slots are located at 512 KB (0x80000) intervals. The CPU can address only 512 KB of flash at a time (verified by `mem/rf` wrapping behavior). The FDS (Flash Data Storage) region between the bootloader and App 1 contains personality records, MAC addresses, SerDes configuration, and CLI config data (34 known FDS record types).
+
+# Useful files and binaries
 
 # EEPROM
 
