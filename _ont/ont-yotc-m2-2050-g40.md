@@ -28,12 +28,14 @@ parent: YOTC
 | Form Factor     | ONT                                                                    |
 
 
-# External Media
-
 {% include image.html file="yotc-m2-2050-g40-top.jpg" alt="YOTC M2-2050-G40 Top" caption="YOTC M2-2050-G40 Top" %} 
 {% include image.html file="yotc-m2-2050-g40-bottom.jpg" alt="YOTC M2-2050-G40 Bottom" caption="YOTC M2-2050-G40 Bottom" %}
 {% include image.html file="yotc-m2-2050-g40-pcb-top.jpg" alt="YOTC M2-2050-G40 PCB Top" caption="YOTC M2-2050-G40 PCB Top" %}
 {% include image.html file="yotc-m2-2050-g40-pcb.jpg" alt="YOTC M2-2050-G40 PCB Bottom" caption="YOTC M2-2050-G40 PCB Bottom" %}
+
+# Serial
+
+{% include image.html file="yotc-m2-2050-g40-ttl.jpg" alt="Serial Pinout" caption="Serial Pinout" %}
 
 ## List of partitions (MTD)
 
