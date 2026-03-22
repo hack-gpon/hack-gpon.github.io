@@ -35,7 +35,7 @@ parent: YOTC
 
 # Serial
 
-{% include image.html file="yotc-m2-2050-g40-ttl.jpg" alt="Serial Pinout" caption="Serial Pinout" %}
+{% include image.html file="yotc-m2-2050-g40-ttl.jpg" alt="Serial Pinout (dont connect vcc)" caption="Serial Pinout (dont connect vcc)" %}
 
 ## List of partitions (MTD)
 
