@@ -124,7 +124,7 @@ Transmitter: 1310 nm DFB laser, LVPECL input (DC coupled). Receiver: 1490 nm Sup
 | 19  | TD-        | Inverted Transmit Data In (LVPECL, DC coupled)                               |
 | 20  | VeeT       | Transmitter Ground                                                           |
 
-{% include alert.html content="Note the key Pin differences vs the <a href='/ont-fibermall-gpon-onu-stb+'>STB+ (with MAC)</a>: Pin 3 is TX_Burst (burst enable) instead of TX_Disable, Pin 7 is TX_SD (transmitter signal detect) instead of Dying Gasp, and Pin 8 is RX_SD instead of LOS." alert="Note" icon="svg-info" color="blu" %}
+{% include alert.html content="Note the key Pin differences vs the <a href='/ont-fibermall-gpon-onu-stb+'>STB+ (with MAC)</a>: Pin 3 is TX_Burst (burst enable) instead of TX_Disable, Pin 7 is TX_SD (transmitter signal detect) instead of Dying Gasp, and Pin 8 is RX_SD instead of LOS." alert="Note" icon="svg-info" color="blue" %}
 
 ### EEPROM (A0h) Key Fields
 
@@ -165,7 +165,7 @@ Transmitter: 1310 nm DFB laser, LVPECL input (DC coupled). Receiver: 1490 nm Sup
 | Pin 8                | RX_SD (RX signal detect)     | LOS                                  |
 | Price                | $15.00                       | $45.00                               |
 
-{% include alert.html content="This page has been created from the vendor datasheet and product listing. Contributions with hands-on information are welcome." alert="Note" icon="svg-info" color="blu" %}
+{% include alert.html content="This page has been created from the vendor datasheet and product listing. Contributions with hands-on information are welcome." alert="Note" icon="svg-info" color="blue" %}
 
 # Miscellaneous Links
 

@@ -5,7 +5,7 @@ layout: default
 parent: FiberMall
 ---
 
-{% include alert.html content="This is an ONU Stick SFP with integrated GPON MAC. For the raw SFP transceiver without MAC, see [FiberMall GPON-ONU-CLB+](/ont-fibermall-gpon-onu-clb+)." alert="Info" icon="svg-info" color="blu" %}
+{% include alert.html content="This is an ONU Stick SFP with integrated GPON MAC. For the raw SFP transceiver without MAC, see [FiberMall GPON-ONU-CLB+](/ont-fibermall-gpon-onu-clb+)." alert="Info" icon="svg-info" color="blue" %}
 
 # Hardware Specifications
 
@@ -140,7 +140,7 @@ Transmitter: 1310 nm DFB laser. Receiver: 1490 nm APD-TIA, CML output (AC couple
 - Receiver is APD-TIA based, providing higher sensitivity than the [non-MAC CLB+ variant](/ont-fibermall-gpon-onu-clb+) which uses Super-TIA.
 - This is a complete "PON on a Stick" — an entire FTTH ONU in a slightly oversized SFP that can be plugged into networking equipment (switch, router, PBX, etc.).
 
-{% include alert.html content="This page has been created from the vendor datasheet and product listing. Contributions with hands-on information (chipset identification, firmware details, serial/SSH access, IP address, web GUI, etc.) are very welcome." alert="Note" icon="svg-info" color="blu" %}
+{% include alert.html content="This page has been created from the vendor datasheet and product listing. Contributions with hands-on information (chipset identification, firmware details, serial/SSH access, IP address, web GUI, etc.) are very welcome." alert="Note" icon="svg-info" color="blue" %}
 
 # Miscellaneous Links
 
