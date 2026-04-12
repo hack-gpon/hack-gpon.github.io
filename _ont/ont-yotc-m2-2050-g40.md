@@ -194,6 +194,21 @@ mib set ELAN_MAC_ADDR 1A2B3C4D5E6F
 ```
 mib set LAN_IP_ADDR 192.168.8.1
 ```
+## Switch PON Mode
+```
+# GPON mode
+mib set PON_MODE 1
+```
+
+```
+# EPON mode
+mib set PON_MODE 2
+```
+
+```
+# Ethernet mode
+mib set PON_MODE 3
+```
 
 ## Checking the currently active image
 ```
