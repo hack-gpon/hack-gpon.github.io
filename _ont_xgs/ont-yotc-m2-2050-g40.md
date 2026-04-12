@@ -11,11 +11,12 @@ parent: YOTC
 | --------------- | ---------------------------------------------------------------------- |
 | Vendor/Brand    | YOTC                                                                   |
 | Model           | M2-2050-G40                                                            |
-| Chipset         | Realtek RTL9607C                                                       |
+| Chipset         | Realtek RTL9607C / RTL9607Cv2                                          |
 | Flash           | SPI NAND 128MB                                                         |
 | RAM             | 256MB                                                                  |
 | CPU             | Formosa MIPS interAptiv (multi) V2.0                                   |
-| CPU Clock       | 300MHz (597.60 BogoMIPS)                                               |
+| CPU Clock       | 900MHz / 1150MHz                                                       |
+| BogoMIPS        | 597.60MHz / 766.77MHz                                                  |
 | System          | Linux 4.4.140 (GCC Realtek MSDK-4.8.5p1 Build 3068)                    |
 | Ethernet ports  | 2x1G                                                                   |
 | Optics          | SC/APC                                                                 |
@@ -36,6 +37,18 @@ parent: YOTC
 # Serial
 
 {% include image.html file="yotc-m2-2050-g40-ttl.jpg" alt="Serial Pinout (dont connect vcc)" caption="Serial Pinout (dont connect vcc)" %}
+
+{% include serial_dump.html file="yotcm2-2050-g40.txt" alt="M2-2050-G40 boot dump" title="M2-2050-G40 boot dump" %}
+
+{% include serial_dump.html file="yotcm2-2050-g40newrevision.txt" alt="M2-2050-G40 boot dump (newer revision)" title="M2-2050-G40 boot dump (newer revision)" %}
+
+
+## List of Software versions
+- 518_V300R02B15 (doesn't have upg_app, wget, wget_manage)
+- 518_V300R02B21
+- 518_V300R02B22
+- 518_V300R02B25
+- 518_V300R02B31
 
 ## List of partitions (MTD)
 
@@ -81,6 +94,11 @@ User Configuration:
 Custom Default Configuration:
 ```
 /var/config/config_custom_default.xml
+```
+
+Custom Configuration (on reset):
+```
+/var/config/custom_config.sh
 ```
 
 Hardware Configuration:
@@ -177,6 +195,32 @@ mib set ELAN_MAC_ADDR 1A2B3C4D5E6F
 mib set LAN_IP_ADDR 192.168.8.1
 ```
 
+## Checking the currently active image
+```
+nv getenv sw_active
+```
+
+## Booting to a different image
+```
+# Switch to image 0
+nv setenv sw_commit 0
+nv setenv sw_tryactive 0
+```
+
+```
+# Switch to image 1
+nv setenv sw_commit 1
+nv setenv sw_tryactive 1
+```
+
+## Cloning of image 0 into image 1
+```
+cp /dev/ubi0_1 /tmp/
+cp /dev/ubi0_2 /tmp/
+ubiupdatevol /dev/ubi0_3 /tmp/ubi0_1
+ubiupdatevol /dev/ubi0_4 /tmp/ubi0_2
+```
+
 ## Rebooting the ONU
 ```
 reboot
@@ -194,3 +238,7 @@ mib set SW_PORT_TBL.3.Enable 1
 ```
 mib set WLAN_MBSSIB_TBL.0.wlanDisabled 0
 ```
+
+# Teardown and other photos
+{% include image.html file="yotc-m2-2050-g40-pcb-top-b21.jpg" alt="YOTC M2-2050-G40 PCB Top (newer revision with RTL9607Cv2)" caption="YOTC M2-2050-G40 PCB Top (newer revision with RTL9607Cv2)" %}
+{% include image.html file="yotc-m2-2050-g40-pcb-b21.jpg" alt="YOTC M2-2050-G40 PCB Bottom (newer revision with RTL9607Cv2)" caption="YOTC M2-2050-G40 PCB Bottom (newer revision with RTL9607Cv2)" %}
