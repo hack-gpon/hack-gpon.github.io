@@ -38,10 +38,6 @@ parent: YOTC
 
 {% include image.html file="yotc-m2-2050-g40-ttl.jpg" alt="Serial Pinout (dont connect vcc)" caption="Serial Pinout (dont connect vcc)" %}
 
-{% include serial_dump.html file="yotcm2-2050-g40.txt" alt="M2-2050-G40 boot dump" title="M2-2050-G40 boot dump" %}
-
-{% include serial_dump.html file="yotcm2-2050-g40newrevision.txt" alt="M2-2050-G40 boot dump (newer revision)" title="M2-2050-G40 boot dump (newer revision)" %}
-
 
 ## List of Software versions
 - 518_V300R02B15 (doesn't have upg_app, wget, wget_manage)
