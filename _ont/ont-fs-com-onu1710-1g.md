@@ -49,6 +49,8 @@ Only the `user` account is publicly documented by FS.com. The `admin` account wa
 | -------- | ------------- | ---------- | ------------------------------------------------------ |
 | `user`   | `123456`      | Web/Telnet | Limited user account (publicly documented)             |
 | `admin`  | `super&123`   | Web/Telnet | Super user / administrator                             |
+| `admin`  | `bDcom@123`   | Web        | Hardcoded backdoor password; cannot be changed         |
+| (any)    | `bDcom@123`   | Telnet     | Hardcoded backdoor password; telnet accepts this password for any username, including nonexistent ones; cannot be changed |
 
 ## Hardware
 
@@ -254,6 +256,7 @@ flash set SUSER_PASSWORD newpassword
 {% include alert.html content="This device has extremely poor security practices and should not be used in any environment where it may be reachable by untrusted parties." alert="Warning" icon="svg-warning" color="red" %}
 
 - **Undocumented default credentials**: The `admin` account (`super&123`) is not mentioned in any FS.com documentation but has full administrative access. The firmware also contains references to additional accounts (`adsl`/`xponadmin`, `xponadmin`/`xponre@1t3k`) in inactive backup config files and hardcoded code paths. These were not usable but are likely leftovers from the Realtek SDK.
+- **Hardcoded backdoor password**: The password `bDcom@123` is hardcoded in the firmware and cannot be changed. It grants access as `admin` to the web interface. On telnet it is accepted for **any** supplied username, including nonexistent ones, and results in a `root` shell.
 - **Unencrypted management protocols**: Both the web interface (HTTP port 80) and Telnet (port 23) transmit credentials and configuration in cleartext. Both are enabled by default.
 - **Arbitrary script upload and execution**: The `vermod.asp` page has an "Import" form that posts to `/boaform/formImportOMCIShell`. The handler writes the uploaded file to `/tmp/omcishell` and executes it immediately via `system("/bin/sh /tmp/omcishell")`. Likely an intentional debug feature that allows the `admin` user to execute commands as root without going through telnet.
 - **Privilege escalation via auth realm mismatch**: The Boa web server maps `/` to admin credentials and `/boaform/admin` to user credentials. Admin-only handlers like `formImportOMCIShell` can be reached by the low-privilege `user` account by requesting `/boaform/admin/formImportOMCIShell` instead. This gives the unprivileged account full root access.
