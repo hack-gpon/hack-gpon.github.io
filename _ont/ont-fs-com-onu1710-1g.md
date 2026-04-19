@@ -17,18 +17,18 @@ parent: FS.com
 | CPU          | MIPS-I 32-bit (big-endian)                   |
 | CPU Clock    | 300 MHz                                      |
 | RAM          | 32 MB (DDR2, 325 MHz)                        |
-| Flash        | 4 MB (SPI NOR, ZBIT JEDEC 5E4016)           |
+| Flash        | 4 MB (SPI NOR, ZBIT JEDEC 5E4016)            |
 | Bootloader   | U-Boot 2011.12.NA (Realtek-modified)         |
 | System       | Linux 2.6.30.9 (Luna SDK / RSDK-1.5.6p2)     |
 | XPON Mode    | GPON + EPON dual-mode adaptive               |
 | Optics       | 1x PON (SC/UPC)                              |
-| Power        | 12V DC, barrel jack (center positive)        |
+| Power        | 12V DC, 5.5mm barrel jack (center positive)  |
 | Ethernet     | 1x GE (1000BASE-T, RJ45)                     |
 | IP address   | 192.168.123.1                                |
 | Web Gui      | port 80, user `admin`, password `super&123`  |
 | SSH          | no                                           |
 | Telnet       | port 23, user `admin`, password `super&123`  |
-| Serial       | 115200 8-N-1                                 |
+| Serial       | 115200 8-N-1 3.3V                            |
 | Form Factor  | Desktop ONT                                  |
 
 
