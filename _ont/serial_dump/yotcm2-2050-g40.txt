@@ -1,0 +1,1 @@
+TODO: Add serial boot dump for YOTC M2-2050-G40
