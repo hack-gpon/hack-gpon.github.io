@@ -1,7 +1,7 @@
 ---
 title: FS.com GPON ONU Stick with MAC (GPON-ONU-34-20BI)
 has_children: true
-alias: SourcePhotonics SPS-34-24T-HP-TDFO
+alias: FS.com GPON-SFP-ONT-MAC-I (SKU 133619), SourcePhotonics SPS-34-24T-HP-TDFO
 parent: FS.com
 layout: default
 ---
@@ -38,7 +38,10 @@ layout: default
 
 ## Possible clones
 
+- FS.com GPON-SFP-ONT-MAC-I (SKU 133619)
 - SourcePhotonics SPS-34-24T-HP-TDFO
+
+{% include alert.html content="The GPON-SFP-ONT-MAC-I is sold as multiple SKUs; the 133619 SKU is identical to the GPON-ONU-34-20BI, but other SKUs are not the same hardware. The 133619 SKU is now no longer sold." alert="Warning" icon="svg-warning" color="yellow" %}
 
 ## Firmware is interchangeable with:
 
@@ -533,7 +536,7 @@ The FS stick stores the content of the emulated EEPROM in U-Boot env variables t
 
 # Miscellaneous Links
 
-- [FS.com](https://www.fs.com/it/products/133619.html)
+- [FS.com (no longer available)](https://www.fs.com/it/products/133619.html)
 - [General setting of lantiq](https://forum.fibra.click/d/23881-ma5671a-e-vodafone-25-gbps/64)
 - [Usage GPON module SFP in Spain](https://forum.mikrotik.com/viewtopic.php?t=116364&start=300)
 - [SourcePhotonics SPS-34-24T-HP-TDFO Datasheet](https://www.sourcephotonics.com/wp-content/uploads/2017/08/DS-8085-02_SPS-34-24T-HP-TDFO.pdf)
