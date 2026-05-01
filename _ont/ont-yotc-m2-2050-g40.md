@@ -106,6 +106,11 @@ Hardware Configuration:
 /var/config/config_hs.xml
 ```
 
+Startup Script (ran at rc35 in init.d):
+```
+/var/config/run_test.sh
+```
+
 # GPON/OMCI settings
 
 ## Set OMCI mode to customized so versions don't reset
@@ -249,9 +254,12 @@ mib set SW_PORT_TBL.2.Enable 1
 mib set SW_PORT_TBL.3.Enable 1
 ```
 
-## Enable 5GHz WiFi
+## Enable WiFi
 ```
+# 5GHz
 mib set WLAN_MBSSIB_TBL.0.wlanDisabled 0
+# 2.4GHz
+mib set WLAN1_MBSSIB_TBL.0.wlanDisabled 0
 ```
 
 # Teardown and other photos
