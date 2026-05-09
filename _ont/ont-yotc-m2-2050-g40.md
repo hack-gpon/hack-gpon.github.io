@@ -248,10 +248,17 @@ reboot
 
 ## Enable Ethernet Ports
 ```
+# enable lan1
 mib set SW_PORT_TBL.0.Enable 1
+# disable lan1 power down state
+diag port set phy-force-power-down port 0 state disable 
+
+#enable lan 2
 mib set SW_PORT_TBL.1.Enable 1
-mib set SW_PORT_TBL.2.Enable 1
-mib set SW_PORT_TBL.3.Enable 1
+# disable lan 2 power down state
+diag port set phy-force-power-down port 1 state disable
+
+mib commit
 ```
 
 ## Enable WiFi
@@ -260,6 +267,7 @@ mib set SW_PORT_TBL.3.Enable 1
 mib set WLAN_MBSSIB_TBL.0.wlanDisabled 0
 # 2.4GHz
 mib set WLAN1_MBSSIB_TBL.0.wlanDisabled 0
+wlan_apply restart
 ```
 
 # Teardown and other photos
