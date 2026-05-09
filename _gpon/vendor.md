@@ -34,6 +34,7 @@ Here is a list of the most popular Vendor IDs:
 | `GTHG` | `47544847` | Alcatel-Lucent (ODM) |
 | `HALN` | `48414c4e` | HALNy                |
 | `HBMT` | `48424d54` | HiSense              |
+| `HSGQ` | `48534751` | HSGQ                 |
 | `HUMA` | `48554d41` | Humax                |
 | `HWTC` | `48575443` | Huawei               |
 | `ICTR` | `49435452` | Icotera              |
