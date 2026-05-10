@@ -1,12 +1,9 @@
-
 <details>
     <summary>{{include.title}}</summary>
     <div class="language-plaintext highlighter-rouge">
         <div class="highlight">
             <pre class="highlight">
-                <code>
-{% include_relative {{include.file | replace: "\", "/" | prepend: 'serial_dump/' | relative_url}} %}
-                </code>
+                <code>{% capture dump_content %}{% include_relative {{include.file | replace: "\", "/" | prepend: 'serial_dump/' | relative_url}} %}{% endcapture %}{{ dump_content | escape }}</code>
             </pre>
         </div>
     </div>
