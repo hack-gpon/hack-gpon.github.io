@@ -25,6 +25,7 @@ Here is a list of the most popular Vendor IDs:
 | `DDKT` | `44444b54` | DKT                  |
 | `DLNK` | `444c4e4b` | Dlink                |
 | `DSNW` | `44534e57` | DASAN                |
+| `ELTR` | `454c5452` | Electra              |
 | `ELTX` | `454c5458` | Eltex                |
 | `FHTT` | `46485454` | FiberHome            |
 | `GMTK` | `474d544b` | GemTek               |
