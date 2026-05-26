@@ -28,8 +28,5 @@ parent: Zyxel
 {% include image.html file="zyxel-pmg5100\front.jpg" alt="PM5100-T0" caption="PM5100-T0" %}
 {% include image.html file="zyxel-pmg5100\back.jpg" alt="PM5100-T0" caption="PM5100-T0" %}
 {% include image.html file="zyxel-pmg5100\port.jpg" alt="PM5100-T0" caption="PM5100-T0" %}
-{% include image.html file="zyxel-pmg5100\front.jpg" alt="PM5100-T0" caption="PM5100-T0" %}
 {% include image.html file="zyxel-pmg5100\back-board.jpg" alt="PM5100-T0 Teardown" caption="PM5100-T0 Teardown" %}
 {% include image.html file="zyxel-pmg5100\front-board.jpg" alt="PM5100-T0 Teardown" caption="PM5100-T0 Teardown" %}
-
-
