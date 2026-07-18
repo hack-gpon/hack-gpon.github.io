@@ -5,6 +5,8 @@ nav_order: 3
 layout: default
 ---
 
+{% include alert.html content="Independent link — the contributor has no affiliation with the seller and earns no commission. hack-gpon accepts no liability for any transaction." alert="Warning"  icon="svg-warning" color="red" %}
+
 In some sticks, such as those based on Lantiq chipsets, the serial interface is exposed in the upper pins of the ONT, in order to read them there are two possibilities:
 - the use of an SFP molex ([farnell](https://it.farnell.com/en-IT/molex/74441-0001/connector-sfp-rcpt-20pos-smt/dp/2112385)) to which four wires are to be soldered and the other pins removed. This makes the adapter compatible with a single serial combination.
 - the use of a board to which the SFP molex is soldered, exposing the main SFP pins.
@@ -24,6 +26,9 @@ the components to be soldered are instead:
 - 2x pinout 2x10 (like [MINTRON MTP125-1210S1](https://www.lcsc.com/product-detail/Pin-Header-Female-Header_MINTRON-MTP125-1210S1_C358699.html))
 
 ## Prebuilt board (no soldering)
+
+{% include alert.html content="Independent link — the contributor has no affiliation with the seller and earns no commission. hack-gpon accepts no liability for any transaction." alert="Warning"  icon="svg-warning" color="red" %}
+
 
 If you'd rather not solder an SMD Molex connector, a prebuilt and tested board is also available. It exposes all 20 SFP pins on 2.54 mm headers with RX/TX silkscreen, so you slot the module in and connect your USB-TTL adapter — no soldering required.
 
