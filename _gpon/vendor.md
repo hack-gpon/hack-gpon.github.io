@@ -14,7 +14,7 @@ Here is a list of the most popular Vendor IDs:
 
 | ID     | HEX ID     | Vendor Name          |
 | ------ | ---------- | -------------------- |
-| `ADTN` | `4144544e` | Adtran |
+| `ADTN` | `4144544e` | Adtran               |
 | `ALCL` | `414c434c` | Nokia/Alcatel-Lucent |
 | `ALLG` | `414c4c47` | ALLNET               |
 | `AVMG` | `41564d47` | AVM (FRITZ!Box)      |
@@ -43,9 +43,10 @@ Here is a list of the most popular Vendor IDs:
 | `KAON` | `4b414f4e` | KAONMEDIA            |
 | `LEOX` | `4c454f58` | LEOX                 |
 | `LQDE` | `4c514445` | Lantiq               |
+| `MSTC` | `4d535443` | Mitrastar            |
 | `NOKG` | `4e4f4b47` | Nokia (GemTek ODM)   |
 | `NOKW` | `4e4f4b57` | Nokia (GemTek ODM)   |
-| `MSTC` | `4d535443` | Mitrastar            |
+| `PRLN` | `50524c4e` | Prolink              |
 | `PTIN` | `5054494e` | Altice/PT Inovação   |
 | `RTKG` | `52544b47` | Realtek              |
 | `SCOM` | `53434f4d` | Sercomm              |
