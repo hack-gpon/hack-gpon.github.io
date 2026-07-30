@@ -43,6 +43,7 @@ Here is a list of the most popular Vendor IDs:
 | `KAON` | `4b414f4e` | KAONMEDIA            |
 | `LEOX` | `4c454f58` | LEOX                 |
 | `LQDE` | `4c514445` | Lantiq               |
+| `MSTC` | `4d535443` | Mitrastar            |
 | `NOKG` | `4e4f4b47` | Nokia (GemTek ODM)   |
 | `NOKW` | `4e4f4b57` | Nokia (GemTek ODM)   |
 | `PRLN` | `50524c4e` | Prolink              |
