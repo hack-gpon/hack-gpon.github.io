@@ -19,8 +19,10 @@ Here is a list of the most popular Vendor IDs:
 | `ALLG` | `414c4c47` | ALLNET               |
 | `AVMG` | `41564d47` | AVM (FRITZ!Box)      |
 | `ASKY` | `41534b59` | Askey                |
+| `CDAT` | `43444154` | C-Data               |
 | `CDKT` | `43444B54` | KingType             |
 | `CIGG` | `43494747` | Cig                  |
+| `CMDT` | `434d4454` | Comtrend             |
 | `CXNK` | `43584e4b` | Calix                |
 | `DDKT` | `44444b54` | DKT                  |
 | `DLNK` | `444c4e4b` | Dlink                |
