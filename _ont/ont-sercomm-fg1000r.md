@@ -7,29 +7,29 @@ parent: Sercomm
 
 # Hardware Specifications
 
-|                 |                        |
-| --------------- | ---------------------- |
-| Vendor/Brand    | Sercomm                |
-| Model           | FG1000R                |
-| ODM             | ✅                     |
-| Chipset         | RTL9602C               |
-| Flash           |                        |
-| RAM             |                        |
-| CPU             |                        |
-| CPU Clock       |                        |
-| Bootloader      |                        |
-| Load addr       |                        |
-| 2.5GBaseT       | ✅                    |
-| PHY Ethernet    |                        |
-| Optics          | LC/APC                 |
-| IP address      | 192.168.1.1            |
+|                 |                         |
+| --------------- | ----------------------- |
+| Vendor/Brand    | Sercomm                 |
+| Model           | FG1000R                 |
+| ODM             | ✅                      |
+| Chipset         | RTL9602C                |
+| Flash           | 128MB (MXIC MX35LF1GE4AB) |
+| RAM             | 64MB                    |
+| CPU             |                         |
+| CPU Clock       | 625 MHz                 |
+| Bootloader      | U-Boot RSDK 2011.12.NA-svn5  |
+| Load addr       |                         |
+| 2.5GBaseT       | ✅                      |
+| PHY Ethernet    | Realtek RTL8221B        |
+| Optics          | LC/APC                  |
+| IP address      | 192.168.1.1/24          |
 | Web Gui         | ✅, User: Tech Password: ftth@! |
-| SSH             |                        |
-| Telnet          |                        |
-| Serial          | ✅                    |
-| Serial baud     |                        |
-| Serial encoding |                        |
-| Form Factor     | ONT                    |
+| SSH             |                         |
+| Telnet          |                         |
+| Serial          | ✅, only TX             |
+| Serial baud     | 115200                  |
+| Serial encoding | 8-N-1                   |
+| Form Factor     | ONT                     |
 
 
 {% include image.html file="fg1000r_rear.jpg" alt="Sercomm FG1000R" caption="Sercomm FG1000R rear" %}
