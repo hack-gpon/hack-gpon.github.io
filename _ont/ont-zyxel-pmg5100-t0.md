@@ -7,22 +7,22 @@ parent: Zyxel
 
 # Hardware Specifications
 
-|              |                          |
-| ------------ | ------------------------ |
-| Vendor/Brand | Zyxel                    |
-| Model        | PM5100-T0                |
-| Chipset      | MediaTek/EcoNet EN7523OT |
-| Flash        |                          |
-| RAM          |                          |
-| System       |                          |
-| 2.5GBaseT    | Yes                      |
-| Optics       | SC/APC                   |
-| IP address   |                          |
-| Web Gui      | ✅                       |
-| SSH          | ✅                       |
-| Telnet       |                          |
-| Serial       |                          |
-| Form Factor  | ONT                      |
+|              |                            |
+| ------------ | -------------------------- |
+| Vendor/Brand | Zyxel                      |
+| Model        | PM5100-T0                  |
+| Chipset      | MediaTek/EcoNet EN7523OT   |
+| Flash        | 128 MB (Macronix W25N01G)  |
+| RAM          | 256 MB (Winbond W623GU6MB) |
+| System       |                            |
+| 2.5GBaseT    | Yes                        |
+| Optics       | SC/APC                     |
+| IP address   | 192.168.0.1/24             |
+| Web Gui      | ✅                         |
+| SSH          | ✅                         |
+| Telnet       | ✅                         |
+| Serial       | ✅                         |
+| Form Factor  | ONT                        |
 
 
 {% include image.html file="zyxel-pmg5100\front.jpg" alt="PM5100-T0" caption="PM5100-T0" %}
