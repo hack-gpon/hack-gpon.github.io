@@ -166,19 +166,45 @@ mib set LAN_IP_ADDR 192.168.8.1
 ```
 ## Switch PON Mode
 ```
+# RJ45 Ethernet Mode
+mib set PON_MODE 0
+mib set WAN_PHY_PORT 0
+```
+
+```
 # GPON mode
+mib set WAN_PHY_PORT 5
 mib set PON_MODE 1
 ```
 
 ```
 # EPON mode
+mib set WAN_PHY_PORT 5
 mib set PON_MODE 2
 ```
 
 ```
-# Ethernet mode
+# Fiber Ethernet mode
+mib set WAN_PHY_PORT 5
 mib set PON_MODE 3
 ```
+
+
+## RJ45 Ethernet PON_MODE mapping:
+```
+#for the first rj45 port (ge1)
+mib set WAN_PHY_PORT 0
+
+for the 2nd rj45 port (ge2)
+mib set WAN_PHY_PORT 1
+
+#for the third rj45 port (ge1)
+mib set WAN_PHY_PORT 2
+
+#for the last rj45 port (ge4)
+mib set WAN_PHY_PORT 3
+```
+
 
 ## Checking the currently active image
 ```
