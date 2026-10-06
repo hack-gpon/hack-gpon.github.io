@@ -192,16 +192,16 @@ mib set PON_MODE 3
 
 ## RJ45 Ethernet PON_MODE mapping:
 ```
-#for the first rj45 port (ge1)
+# for the first rj45 port (ge1)
 mib set WAN_PHY_PORT 0
 
-for the 2nd rj45 port (ge2)
+# for the 2nd rj45 port (ge2)
 mib set WAN_PHY_PORT 1
 
-#for the third rj45 port (ge1)
+# for the third rj45 port (ge3)
 mib set WAN_PHY_PORT 2
 
-#for the last rj45 port (ge4)
+# for the last rj45 port (ge4)
 mib set WAN_PHY_PORT 3
 ```
 
