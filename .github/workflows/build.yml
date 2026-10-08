@@ -1,0 +1,40 @@
+# Build the VitePress site and upload it as the "github-pages" artifact.
+# Shared by the Pages deploy and the PR preview, which only differ in where
+# the built site is published.
+name: Build site
+
+on:
+  workflow_call:
+    inputs:
+      ref:
+        description: The commit to build (defaults to the triggering one)
+        type: string
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+          fetch-depth: 0 # needed for the last modified date of the pages
+          persist-credentials: false
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install Node deps
+        run: npm ci
+      - name: Build with VitePress
+        run: npm run build
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .vitepress/dist
