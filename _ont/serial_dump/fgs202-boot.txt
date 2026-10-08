@@ -1,0 +1,66 @@
+ROM: V1.1.4                                                                                                             
+ROM: CFG 0x00000006                                                                                                     
+ROM: SFLASH-4                                                                                                           
+hw fuse format 1                                                                                                        
+                                                                                                                        
+                                                                                                                        
+U-Boot 2011.12-lantiq-gpon-1.2.20.1-svn20 (Aug 10 2015 - 13:49:58), Build: falcon_sfp                                   
+                                                                                                                        
+Board: SFP                                                                                                              
+DRAM:  internal: 1 MiB                                                                                                  
+Now running in RAM - U-Boot at: 9f2c4000
+SF: Detected MX25L6405D with page size 64 KiB, total 8 MiB
+Chip:  FALCON-SR (A22)
+Bootmode: 0x06
+Reset cause: Power-On Reset
+CPU Clock: 400 MHz
+Done!
+Net:   SGMII, SERDES [PRIME]
+
+Type run flash_nfs to mount root filesystem over NFS
+
+SF: Detected MX25L6405D with page size 64 KiB, total 8 MiB
+SF: Detected MX25L6405D with page size 64 KiB, total 8 MiB
+SF: Detected MX25L6405D with page size 64 KiB, total 8 MiB
+active_img 0, committed_img 1
+pid_addr 0x2a0ce8
+dbSign Addr: 0x9f200208
+imgNum: 1
+img 0: start addr: 0x100000, length: 0x1a0ce8
+checksum: 0xa39a73eb
+crc32 result: 0xa39a73eb
+check sum OK
+name c_img
+value 1
+name activate_image
+value 0
+Erasing SPI flash...Writing to SPI flash...done
+SF: Detected MX25L6405D with page size 64 KiB, total 8 MiB
+
+***************************************************
+    Sercomm Boot Version 2.0.2.0
+
+***************************************************
+No sc dl flag.
+gpio_id:8 no found
+Entering Firmware : Everything is OK.
+No sc dl flag.
+## Starting application at 0x10000000 ...
+Overall used memory: 150616
+Available packet buffer: 769984 (llt min 6401, llt max 18432)
+Init flash support
+M25PXX : Init device 'Macronix 64 Mbit' with JEDEC ID 0xC22017/0x0000.
+Found flash at 0x00000000-0x007fffff
+Flash bank with 128 sectors, sector size is 65536 bytes
+Find valid uboot environment in env_off and env_end_off
+Machine: Falcon SFP Stick (SFP)
+Set image#0 version: SCOMFGS202112
+Set image#1 version: SCOMFGS202112
+Successfully stored environment to 0x7f0000 
+Successfully stored environment to 0x60000 
+Image start address: 0xb0100000
+Image 0: 0xB0100000 - valid
+Image 1: 0xB0480000 - valid
+ONT Boot up #1 image
+FALC(tm) ON Optic Driver, version 7.4.0.0 (c) Copyright 2015, Lantiq Beteiligungs-GmbH & Co. KG
+FALC(tm) ON Base Driver, Version 7.3.3.0 (c) Copyright 2015, Lantiq Beteiligungs-GmbH & Co. KG

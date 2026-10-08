@@ -1,0 +1,82 @@
+ROM: V1.1.4
+ROM: CFG 0x00000006
+ROM: SFLASH-4
+hw fuse format 1
+
+
+U-Boot 2011.12-lantiq-gpon-1.2.20.1-svn20 (Aug 10 2015 - 13:49:58), Build: falcon_sfp
+
+Board: SFP
+DRAM:  internal: 1 MiB
+Now running in RAM - U-Boot at: 9f2c4000
+SF: Detected MX25L6405D with page size 64 KiB, total 8 MiB
+Chip:  FALCON-SR (A22)
+Bootmode: 0x06
+Reset cause: Power-On Reset
+CPU Clock: 400 MHz
+Done!
+Net:   SGMII, SERDES [PRIME]
+
+Type run flash_nfs to mount root filesystem over NFS
+
+SF: Detected MX25L6405D with page size 64 KiB, total 8 MiB
+SF: Detected MX25L6405D with page size 64 KiB, total 8 MiB
+SF: Detected MX25L6405D with page size 64 KiB, total 8 MiB
+active_img 0, committed_img 1
+pid_addr 0x2a1a48
+dbSign Addr: 0x9f200208
+imgNum: 1
+img 0: start addr: 0x100000, length: 0x1a1a48
+checksum: 0x1124fafc
+crc32 result: 0x1124fafc
+check sum OK
+name c_img
+value 1
+name activate_image
+value 0
+Erasing SPI flash...Writing to SPI flash...done
+SF: Detected MX25L6405D with page size 64 KiB, total 8 MiB
+
+***************************************************
+    Sercomm Boot Version 2.0.2.0
+
+***************************************************
+get sc dl flag.
+DEBUG_INF:===================================================
+DEBUG_INF:Sercomm Upgrade(Module Ver 2.14.02.24) Start!
+DEBUG_INF:===================================================
+
+0x0000: 00  c0  02  12  35  79
+Error: SGMII TBI not in sync!
+Error: SGMII TBI not in sync!
+SERDES: Link Speed is 1000 Mbps - FULL duplex connection
+DEBUG_INF:ecc bytes 0
+PCBASN = R.BNN72O048E
+DEBUG_INF:normal upgrade.
+DEBUG_INF:Erase Done.
+DEBUG_INF:Program Starting.
+DEBUG_INF:Verify Starting.
+DEBUG_INF:===================================================
+DEBUG_INF:=   Stats of this Sercomm Upgrade is as below:    =
+DEBUG_INF:===================================================
+DEBUG_INF:Following Partitions NOT Erased,
+DEBUG_INF: Index Name                Offset    Length
+DEBUG_INF:     0 u-boot              0         40000
+DEBUG_INF:     1 u-boot-env          40000     10000
+DEBUG_INF:     2 factory_data        50000     10000
+DEBUG_INF:     3 fw_config           60000     10000
+DEBUG_INF:     4 sercomm_log         70000     10000
+DEBUG_INF:     5 u-boot-env-second   80000     10000
+DEBUG_INF:    10 image1_reserve      7f0000    10000
+DEBUG_INF:---------------------------------------------------
+DEBUG_INF:Following Partitions Updated,
+DEBUG_INF: Index Name                Bad Cnt   Dropped
+DEBUG_INF:     6, reserved_area       0         0
+DEBUG_INF:     7, image0              0         0
+DEBUG_INF:     8, image0_reserve      0         0
+DEBUG_INF:     9, image1              0         0
+DEBUG_INF:===================================================
+name sc_dl
+value ff
+Erasing SPI flash...Writing to SPI flash...done
+
