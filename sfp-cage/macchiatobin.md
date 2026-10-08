@@ -1,18 +1,8 @@
 ---
 title: MACCHIATObin
+has_children: false
+alias: Single Slot, Dual Shot
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 

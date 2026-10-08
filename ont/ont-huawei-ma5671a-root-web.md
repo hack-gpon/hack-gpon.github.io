@@ -1,18 +1,8 @@
 ---
 title: Root Procedure for Huawei MA5671A (V3)
+has_children: false
+parent: Huawei MA5671A
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Root the stick
 
@@ -29,29 +19,33 @@ Connect the SFP adapter to the TTL adapter according to the following diagram:
 
 <ImageFigure file="web-root-procedure/sfp-sfp.jpg" alt="Example of how the SFP - molex SFP connection should look like" caption="Example of how the SFP - molex SFP connection should look like" />
 
-<Alert content="Try PIN 10 or other GND PINs if the connection doesn't work with PIN 14." alert="Note" icon="svg-warning" color="yellow" />
+::: warning Note
+Try PIN 10 or other GND PINs if the connection doesn't work with PIN 14.
+:::
 
-<Alert content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note" icon="svg-warning" color="yellow" />
+::: warning Note
+Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work.
+:::
 
 Connect the TTL adapter to the computer, once done press the following button. A window will open that will execute the root.
 
-{: .text-center .fs-6 }
-<button id="start-button" class="btn btn-blue" data-jtd-toggle="modal" data-jtd-target="#root-modal" disabled>Start root!</button>
-<div id="browser-error" style="display:none"><Alert content="This browser is not compatible with the web-root procedure. See the <a href='https://developer.mozilla.org/en-US/docs/Web/API/Web_Serial_API#browser_compatibility'>Browser compatibility</a>" alert="Note" icon="svg-warning" color="red" /></div>
-{% include root_lantiq.html modelName="Huawei MA5671A" unlockHuaweiShell=true %}
-<noscript>
-<Alert content="Your browser does not support JavaScript!" alert="Note" icon="svg-warning" color="red" />
-</noscript>
+<RootLantiq model-name="Huawei MA5671A" unlock-huawei-shell />
 
-<Alert content="If this procedure does not work, you can use this [alternative procedure](/ont-huawei-ma5671a-ymodem)" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+If this procedure does not work, you can use this [alternative procedure](/ont-huawei-ma5671a-ymodem)
+:::
 
 # Connect to the stick via SSH
 
 After this is done, reboot the stick, after connecting it to a router via an ethernet mediaconverter or directly plugging it in an SFP port, with the port's IP set to any IP of the `192.168.1.0/24` subnet (the stick has the IP `192.168.1.10`)
 
-<Alert content="If your LAN subnet is `192.168.1.0/24` make sure you have no ip conflicts." alert="Note" icon="svg-warning" color="yellow" />
+::: warning Note
+If your LAN subnet is `192.168.1.0/24` make sure you have no ip conflicts.
+:::
 
-<Alert content="On some SFP host devices you might not be able to connect to the stick if there's no optical signal (RX loss), in that case you need to connect the fiber to make changes on the stick" alert="Note" icon="svg-warning" color="yellow" />
+::: warning Note
+On some SFP host devices you might not be able to connect to the stick if there's no optical signal (RX loss), in that case you need to connect the fiber to make changes on the stick
+:::
 
 Run the terminal and login to the stick using ssh:
 
@@ -61,7 +55,9 @@ ssh root@192.168.1.10
 
 The password is `admin123`.
 
-<Alert content="If you use a modern OpenSSH version (e.g. >= 8.8) you will have to enable some deprecated algorithms: `ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss root@192.168.1.10`" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+If you use a modern OpenSSH version (e.g. >= 8.8) you will have to enable some deprecated algorithms: `ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss root@192.168.1.10`
+:::
 
 # TX Fault / Serial
 

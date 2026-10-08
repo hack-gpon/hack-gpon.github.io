@@ -1,18 +1,7 @@
 ---
 title: Banana Pi
+has_children: false
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 

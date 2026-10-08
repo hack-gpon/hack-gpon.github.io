@@ -1,18 +1,8 @@
 ---
-title: ZTE F2801S
+title: ZTE F2801S 
+has_children: false
+parent: ZTE
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -80,10 +70,14 @@ syn_version
 ```
 
 # Use
-<Alert content="Commands have been tested on V2 HW rev. on OpenFiber firmwares" alert="Note" icon="svg-info" color="blue" />
+::: info Note
+Commands have been tested on V2 HW rev. on OpenFiber firmwares
+:::
 
 ## Enable Telnet
-<Alert content="This is an external script ([ZTE Telnet enabler](https://github.com/douniwan5788/zte_modem_tools)), use at your own risk! Credentials don't survive at reboot!" alert="Note" icon="svg-info" color="blue" />
+::: info Note
+This is an external script ([ZTE Telnet enabler](https://github.com/douniwan5788/zte_modem_tools)), use at your own risk! Credentials don't survive at reboot!
+:::
 
 ```sh
 python3 zte_factroymode.py --user admin --pass admin --ip 192.168.1.1 --port 80 telnet open
@@ -194,7 +188,9 @@ MIB INFO:
 
 ## Setting ONU GPON Serial Number
 
-<Alert content="Both S/N and VID have to be changed. 2176 is for the VID (first 4 letters of the S/N) and 2177 is for the last 8 digits of the S/N" alert="Note" icon="svg-info" color="blue" />
+::: info Note
+Both S/N and VID have to be changed. 2176 is for the VID (first 4 letters of the S/N) and 2177 is for the last 8 digits of the S/N
+:::
 ```sh
 setmac 1 2176 ZTEG
 setmac 1 2177 AABBCCDD
@@ -202,7 +198,9 @@ setmac 1 2177 AABBCCDD
 
 ## Setting ONU GPON PLOAM password
 
-<Alert content="The PLOAM password is stored in the ASCII format." alert="Note" icon="svg-info" color="blue" />
+::: info Note
+The PLOAM password is stored in the ASCII format.
+:::
 This can be done easily via the web UI. To do it via the shell use:
 ```sh
 setmac 1 2181 1234567890
@@ -248,7 +246,9 @@ cat /dev/mtd9 > rootfs.bin && tftp -l rootfs.bin -r rootfs.bin -p 192.168.1.2 &&
 
 ## Changing region code
 
-<Alert content="Be aware that changing the region code may break features such as PPPoE depending on your ISP" alert="Note" icon="svg-info" color="blue" />
+::: info Note
+Be aware that changing the region code may break features such as PPPoE depending on your ISP
+:::
 
 ZTE has created various region codes that load default values based on the local ISP. This configuration can be changed using this command:
 

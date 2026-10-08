@@ -1,18 +1,8 @@
 ---
 title: Nokia XS-010S-Q
+has_children: false
+parent: Nokia
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 

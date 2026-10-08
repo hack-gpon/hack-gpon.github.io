@@ -1,18 +1,8 @@
 ---
 title: TTL UART Adapter
+has_children: false
+nav_order: 2
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 A TTL UART adapter makes it possible to connect the stick's serial interface to a computer via a USB interface. This makes it easy to send commands on modern computers through serial emulation, just like the serial ports of the 1990s.
 

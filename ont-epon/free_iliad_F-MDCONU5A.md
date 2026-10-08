@@ -1,18 +1,8 @@
 ---
 title: Free/Iliad F-MDCONU5A (v2)
+has_children: false
+parent: Free/Iliad
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 

@@ -1,18 +1,8 @@
 ---
 title: Nokia XS-010X-Q
+has_children: false
+parent: Nokia
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -55,7 +45,9 @@ The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be acc
 
 <ImageFigure file="ont-nokia_xs-010x-q_ttl.jpg" alt="Nokia XS-010X-Q TTL Pads" caption="Nokia XS-010X-Q TTL Pads" />
 
-<Alert content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note" icon="svg-warning" color="yellow" />
+::: warning Note
+Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work.
+:::
 
 ## List of software versions
 - 3FE49337AOCK80 - (R4.4.17.063 CIG 25/06/2021)
@@ -85,9 +77,9 @@ This ONT supports dual boot.
 
 `kernel0` and `rootfs0` respectively contain the kernel and firmware of the first image, `kernel1` and `rootfs1` the kernel and firmware of the second one.
 
-<!-- TODO: Include relative file: ont-nokia-use.md -->
+<!--@partial: ./_partials/ont-nokia-use.md-->
 
-<!-- TODO: Include relative file: ont-nokia-useful-command.md -->
+<!--@partial: ./_partials/ont-nokia-useful-command.md-->
 
 ## Enable SSH (not persistent)
 

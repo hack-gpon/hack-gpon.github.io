@@ -1,7 +1,6 @@
 ---
 title: BT-PON BT-G711AX
 has_children: false
-layout: default
 parent: BT-PON
 ---
 
@@ -98,7 +97,9 @@ Volumes `ubi_k0` and `ubi_r0` respectively contain kernel and rootfs of the firs
 ## Enable telnet
 Telnet should be enabled by default but if that is not the case, you can enable it by editing configuration file you get in the Web UI. Go to `Admin -> Backup and Restore Settings -> Backup Settings to File` to get the config file in xml format and find `MIB_TELNET_ENABLE` and its value to 1. There is also `telnet` and `telnet_port` under `ACL_IP_TBL`, you should set these to 2 and 23 respectively.
 
-<Alert content="Curiously, there is also `ssh` and `ssh_port` in there but changing these doesn't do anything for enabling SSH, most likely due to lack of ssh capability of this ONT" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+Curiously, there is also `ssh` and `ssh_port` in there but changing these doesn't do anything for enabling SSH, most likely due to lack of ssh capability of this ONT
+:::
 
 After logining in using the credentials in the table above, use the `su` command to gain root access to the shell.
 ```sh
@@ -134,7 +135,9 @@ GPON_SN=TMBB00000000
 ```
 
 ## Getting/Setting ONU GPON PLOAM password
-<Alert content="The PLOAM password is stored in ASCII format" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+The PLOAM password is stored in ASCII format
+:::
 
 ```sh
 # flash get GPON_PLOAM_PASSWD
@@ -236,7 +239,9 @@ reboot
 ```
 
 ## Getting/Setting the MTU of the L2 bridge
-<Alert content="Settings given via diag are not permanent after reboot" alert="Note" icon="svg-info" color="blue" />
+::: info Note
+Settings given via diag are not permanent after reboot
+:::
 
 ```sh
 # diag switch get max-pkt-len port all 

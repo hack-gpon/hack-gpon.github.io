@@ -1,18 +1,8 @@
 ---
 title: ALLNET ALL-BM410-XGSPON-GBIC
+has_children: false
+parent: ALLNET
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -37,7 +27,7 @@ title: ALLNET ALL-BM410-XGSPON-GBIC
 | Form Factor      | miniONT SFP                                                                       |
 
 This SFP module is made by CIG, it also has a CIG MAC address, and is identical
-to the [FS XGS-ONU-25-20NI](../ont-fs-XGS-ONU-25-20NI/).
+to the [FS XGS-ONU-25-20NI](/xgs/ont-fs-XGS-ONU-25-20NI).
 See also its page for further information.
 
 <ImageFigure file="ALL-BM410-XGSPON-GBIC/top.jpg" alt="ALL-BM410-XGSPON-GBIC top" caption="ALLNET ALL-BM410-XGSPON-GBIC top" />
@@ -56,7 +46,7 @@ To connect to its IP a fibre cable has to be connected!
 
 Use the following form to generate the password:
 
-<CigPasswordXgspon />
+<CigPassword xgspon :password-len="8" />
 
 
 After logging in via Telnet, you will first access the MiniShell with user

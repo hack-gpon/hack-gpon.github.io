@@ -1,18 +1,8 @@
 ---
 title: V-SOL V2802RH
+has_children: false
+parent: V-SOL
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 

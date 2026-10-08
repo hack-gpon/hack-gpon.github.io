@@ -1,18 +1,8 @@
 ---
 title: Nokia G-010S-P
+has_children: false
+parent: Nokia
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -43,17 +33,18 @@ title: Nokia G-010S-P
 <br/>
 <ImageFigure file="g-010s-p-and-ma5671a.jpg" alt="G-010S-P and MA5671A Teardown" caption="G-010S-P and MA5671A Teardown" />
 <br/>
-<Alert content="G-010S-P and other models will not expose an ethernet interface unless the fiber cable is connected ([source](https://forum.mikrotik.com/viewtopic.php?t=116364&start=300))" alert="Warning" icon="svg-warning" color="yellow" />
+::: warning Warning
+G-010S-P and other models will not expose an ethernet interface unless the fiber cable is connected ([source](https://forum.mikrotik.com/viewtopic.php?t=116364&start=300))
+:::
 
 ## Firmware is interchangeable with:
 
 - [Huawei MA5671A](/ont-huawei-ma5671a)
 - [FS.com GPON ONU Stick with MAC / SourcePhotonics SPS-34-24T-HP-TDFO](/ont-fs-com-gpon-onu-stick-with-mac)
 - [Hilink HL23446](/ont-hilink-hl23446)
-- {:.text-red-200 } Dasan H650SFP 
-- {:.text-red-200 } DpOptics D23446    
-- {:.text-red-200 } Photonics SPS-34-24T-HP-TDFO
-
+- Dasan H650SFP {.text-red-200}
+- DpOptics D23446 {.text-red-200}
+- Photonics SPS-34-24T-HP-TDFO {.text-red-200}
 The [Nokia G-010S-A](/ont-nokia-g-010s-a) can be flashed with the Nokia G-010S-P firmware, provided the MTD layout has been changed beforehand to match the new one. For the full procedure, see the post on [lafibre.info](https://lafibre.info/remplacer-livebox/guide-de-connexion-fibre-directement-sur-un-routeur-voire-meme-en-2gbps/msg870551/#msg870551)
 
 ## Serial
@@ -67,9 +58,13 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 | RX                    | pin #7                     |
 | GND                   | pin #14 and #10            |
 
-<Alert content="Try PIN 10 or other GND PINs if the connection doesn't work by using PIN 14." alert="Note" icon="svg-warning" color="yellow" />
+::: warning Note
+Try PIN 10 or other GND PINs if the connection doesn't work by using PIN 14.
+:::
 
-<Alert content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note" icon="svg-warning" color="yellow" />
+::: warning Note
+Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work.
+:::
 
 ## List of partitions
 
@@ -91,7 +86,7 @@ fw_setenv nDyingGaspEnable 0
 
 ## Enabling the Web UI
 
-To activate the web-ui you can use the following guide on [dslreport](https://www.dslreports.com/forum/r32458588-).
+To activate the web-ui you can use [this guide from dslreport forum](https://web.archive.org/web/20241205080939/https://www.dslreports.com/forum/r32458588-) archived on [archive.org](https://archive.org/).
 
 # Miscellaneous Links
 

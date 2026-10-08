@@ -1,18 +1,7 @@
 ---
 title: Free/Iliad
+has_children: true
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Free/Iliad network
 

@@ -1,18 +1,8 @@
 ---
 title: CarlitoxxPro CPGOS03-0490 v2
+has_children: false
+parent: CarlitoxxPro
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -39,10 +29,10 @@ title: CarlitoxxPro CPGOS03-0490 v2
 
 - You should use the VID/VLAN shown by executing the command `omcicli mib get 84` via telnet to bring up PPPoE
 
-{% include_relative ont-luna-sdk-useful-commands.md 
-    flash='flash' 
-    ploam='asciiAndHex' 
-%}
+<!--@partial: ./_partials/ont-luna-sdk-useful-commands.md
+flash: "flash"
+ploam: "asciiAndHex"
+-->
 
 
 # Miscellaneous Links

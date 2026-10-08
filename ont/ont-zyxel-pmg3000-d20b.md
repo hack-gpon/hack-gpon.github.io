@@ -1,18 +1,8 @@
 ---
 title: Zyxel PMG3000-D20B
+has_children: false
+parent: Zyxel
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -53,7 +43,9 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 
 <ImageFigure file="tw236h-cdel-serial.jpg" alt="PMG3000-D20B Serial Pinout" caption="PMG3000-D20B Serial Pinout" />
 
-<Alert content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note" icon="svg-warning" color="yellow" />
+::: warning Note
+Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work.
+:::
 
 ## Firmware is interchangeable with:
 
@@ -63,12 +55,18 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 - [T&W TW2362H-CDEL](/ont-t-w-tw2362h-cdel)
 
 ## List of software versions
-- V1.00(ABVJ.0)b3s (2020)
-- V1.00(ABVJ.0)b3i (2020)
-- V1.00(ABVJ.0)b3v
-- V1.00(ABVJ.1)b1e (ca. 2024)
-- V2.50(ABVJ.0)b1b (2022)
-- V2.50(ABVJ.1)b1d (2023)
+- V1.00(ABVJ.0) (OpenWrt 12.09, with ssh)
+  - V1.00(ABVJ.0)b3i (2020)
+  - V1.00(ABVJ.0)b3s (2020-12-23)
+  - V1.00(ABVJ.0)b3v (2021-05-08)
+- V1.00(ABVJ.1) (OpenWrt 12.09, without ssh)
+  - V1.00(ABVJ.1)b1e (2023-07-26)
+  - V1.00(ABVJ.1)b1i (2026-02-06)
+  - V1.00(ABVJ.1)b1j (2026-05-27)
+- V2.50(ABVJ.1) (OpenWrt 14.07, with ssh)
+  - V2.50(ABVJ.1)b1b (2022-08-10)
+  - V2.50(ABVJ.1)b1d (2023-04-21)
+  - V2.50(ABVJ.1)b1f (2023-07-14)
 
 ## List of partitions
  
@@ -93,7 +91,9 @@ This stick supports dual boot, as visible from the presence of `ImageA` and `Ima
 - `/var/config/ont.sys` - Used to customize various settings on the stick. If you don't have it you can copy the stock one from /ont.sys
 
 # General Settings and Useful Commands
-<Alert content="All commands start from the twmanu shell." alert="Note" icon="svg-info" color="blue" />
+::: info Note
+All commands start from the twmanu shell.
+:::
 
 # GPON ONU status
 
@@ -114,7 +114,9 @@ onu lanpsg 0
 ```
 
 ## Setting Speed LAN Mode
-<Alert content="This command forces the speed to 2.5 and is instantaneous and permanent, use it only if your hardware supports HSGMII and is compatible (e.g. modified Broadcom 57810s NIC)" alert="Note" icon="svg-warning" color="red" />
+::: danger Note
+This command forces the speed to 2.5 and is instantaneous and permanent, use it only if your hardware supports HSGMII and is compatible (e.g. modified Broadcom 57810s NIC)
+:::
 ```sh
 hal
 set speed 2.5g mode full
@@ -136,7 +138,9 @@ show me classid OmciClassId (e.g 7)
 # GPON/OMCI settings
 
 ## Setting ONU GPON Serial Number
-<Alert content="The S/N is stored in the ASCII format." alert="Note" icon="svg-info" color="blue" />
+::: info Note
+The S/N is stored in the ASCII format.
+:::
 ```sh
 manufactory
 set sn ALCLf0f0f0f0
@@ -147,7 +151,9 @@ set sn ALCLf0f0f0f0
 Do not worry if one of the two commands results missing, the change is still applied with just one of them.
 
 ## Setting ONU GPON PLOAM password
-<Alert content="The PLOAM password is stored in the ASCII format." alert="Note" icon="svg-info" color="blue" />
+::: info Note
+The PLOAM password is stored in the ASCII format.
+:::
 This can be done easily via the web UI. To do it via the shell use:
 ```sh
 hal
@@ -161,7 +167,9 @@ The entries for the software version are:
 SW_VER0:0xabcdef
 SW_VER1:0xabcedf
 ```
-<Alert content="It's better to enter the software version in hex format, all lowercase precedeed by 0x." alert="Note" icon="svg-info" color="blue" />
+::: info Note
+It's better to enter the software version in hex format, all lowercase precedeed by 0x.
+:::
 
 ## Setting OMCI hardware version (ME 256)
 ```sh
@@ -178,7 +186,9 @@ ONTG_VER:0x463630303556362e300000000000
 The hardware version must be encoded in hex format and right padded to 28 characters with 0 (excluding the starting 0x) to avoid any spurious values. 
 
 ## Setting OMCI equipment ID (ME 257)
-<Alert content="Model number must not be longer than 20 characters in total." alert="Note" icon="svg-info" color="blue" />
+::: info Note
+Model number must not be longer than 20 characters in total.
+:::
 ```sh
 manufactory
 set equipment id MYEQUIPMENTID
@@ -207,7 +217,9 @@ To restore the default combination try following [this method](https://github.co
 The stick has a tricky image packing method, fortunately it has been reverse engineered. A script to help you create a custom rootfs can be found here: [https://github.com/hack-gpon/zyxel-pmg-3000-mod-kit](https://github.com/hack-gpon/zyxel-pmg-3000-mod-kit)
 
 ## Flashing a new rootfs
-<Alert content="All commands start from the twmanu shell." alert="Note" icon="svg-info" color="blue" />
+::: info Note
+All commands start from the twmanu shell.
+:::
 
 - Transfer the new mtd on the stick via tftp:
 ```
@@ -240,7 +252,9 @@ On the I2C interface, two memories of 256 bytes each will be available at the ad
 
 The Zyxel PMG3000-D20B stores the content of the emulated EEPROM1 (A2h) in `/tmp/config/sfp_eeprom1` to restore it after a reboot.
 
-<Alert content="The contents of EEPROM0 (A0h) are not stored anywhere and they're regenerated at each boot" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+The contents of EEPROM0 (A0h) are not stored anywhere and they're regenerated at each boot
+:::
 
 ## EEPROM0 layout
 
@@ -350,7 +364,9 @@ The Zyxel PMG3000-D20B stores the content of the emulated EEPROM1 (A2h) in `/tmp
 | 241-247 | 7    | Reserved                          | `0x00 0x00 0x00...`                  | Reserved                                                    |
 | 248-255 | 8    | Vendor Control                    | `0x00 0x00 0x00...` (Not used)       | Vendor specific control functions                           |
 
-<Alert content="For more information, see the SFF-8472 Rev 11.0 specification." alert="Info" icon="svg-info" color="blue" />
+::: info Info
+For more information, see the SFF-8472 Rev 11.0 specification.
+:::
 
 # Known Bugs
 - [Works with Broadcom BCM57810S only after solder mod](https://github.com/xvzf/zyxel-gpon-sfp/issues/10)
@@ -359,7 +375,7 @@ The Zyxel PMG3000-D20B stores the content of the emulated EEPROM1 (A2h) in `/tmp
 - On V2.5 the Lantiq SDK has been updated from 6.4.2 to 7.5.1, breaking upload performance
 
 # Miscellaneous Links
-
 - [Zyxel gpon-sfp](https://github.com/xvzf/zyxel-gpon-sfp)
 - [Zyxel PMG-3000 mod kit](https://github.com/hack-gpon/zyxel-pmg-3000-mod-kit)
 - [Rollback SFP Zyxel con il W3 HUB per risolvere il problema dell'upload cappato](https://forum.fibra.click/d/36541-rollback-sfp-zyxel-con-il-w3-hub-per-risolvere-il-problema-dellupload-cappato)
+- [Zyxel PMG3000-D20B firmware image files](https://gist.github.com/maurice-w/faeb60bf8201ce70391873bcb9059bc2)

@@ -1,18 +1,8 @@
 ---
-title: Zyxel PM3100-T0
+title: Zyxel PM3100-T0 
+has_children: false
+parent: Zyxel
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 

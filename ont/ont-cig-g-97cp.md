@@ -1,18 +1,8 @@
 ---
 title: CIG G-97CP
+has_children: false
+parent: CIG
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -37,9 +27,12 @@ title: CIG G-97CP
 <ImageFigure file="cig/cig-1.jpg" alt="CIG G-97CP Unidata" caption="CIG G-97CP Unidata <a href='https://forum.fibra.click/u/papin'>@papin</a>" /> 
 <ImageFigure file="cig/cig-2.jpg" alt="CIG G-97CP Unidata" caption="CIG G-97CP Unidata <a href='https://forum.fibra.click/u/papin'>@papin</a>" />
 
-{% include_relative ont-nokia-use.md username="ont" alertEnablePassword="The following enable password is used to enter GponCLI via serial connection in in firmware where it is not disabled." %}
+<!--@partial: ./_partials/ont-nokia-use.md
+username: "ont"
+alertEnablePassword: "The following enable password is used to enter GponCLI via serial connection in in firmware where it is not disabled."
+-->
 
-<!-- TODO: Include relative file: ont-nokia-useful-command.md -->
+<!--@partial: ./_partials/ont-nokia-useful-command.md-->
 
 # Note
 

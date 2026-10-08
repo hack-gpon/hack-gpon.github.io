@@ -1,18 +1,8 @@
 ---
-title: ZTE F6005v3
+title: ZTE F6005v3 
+has_children: false
+parent: ZTE
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -113,10 +103,14 @@ success!
 
 
 # Use
-<Alert content="Commands have been tested on V3 HW rev. on OpenFiber and TIM firmwares" alert="Note" icon="svg-info" color="blue" />
+::: info Note
+Commands have been tested on V3 HW rev. on OpenFiber and TIM firmwares
+:::
 
 ## Enable Telnet
-<Alert content="This is an external script ([ZTE ONU Telnet Enabler](https://github.com/stich86/zteOnu)), use at your own risk! Credentials don't survive at reboot!" alert="Note" icon="svg-info" color="blue" />
+::: info Note
+This is an external script ([ZTE ONU Telnet Enabler](https://github.com/stich86/zteOnu)), use at your own risk! Credentials don't survive at reboot!
+:::
 
 ```sh
 ./zteOnu -i 192.168.1.1 -u admin -p admin
@@ -230,7 +224,9 @@ setmac 2 2177
 
 ## Setting ONU GPON Serial Number
 
-<Alert content="Both S/N and VID have to be changed. 2176 is for the VID (first 4 letters of the S/N) and 2177 is for the last 8 digits of the S/N" alert="Note" icon="svg-info" color="blue" />
+::: info Note
+Both S/N and VID have to be changed. 2176 is for the VID (first 4 letters of the S/N) and 2177 is for the last 8 digits of the S/N
+:::
 ```sh
 setmac 1 2176 ZTEG
 setmac 1 2177 AABBCCDD
@@ -245,7 +241,9 @@ setmac 2 2178
 
 ## Setting ONU GPON PLOAM password 
 
-<Alert content="The PLOAM password is stored in the ASCII format." alert="Note" icon="svg-info" color="blue" />
+::: info Note
+The PLOAM password is stored in the ASCII format.
+:::
 
 This can be done easily via the Web UI. 
 <ImageFigure file="f6005v3/f6005v3_ploam_change.jpg" alt="F6005v3 Ploam Change" caption="F6005v3 Ploam Change" />
@@ -276,9 +274,13 @@ success!
 
 ## Persistent Telnet access 
 
-<Alert content="This procedure was only tested on OF V3.0.10P3N2 and TIM V3.0.10N06 firmware and it's persistent after an upgrade from OLT" alert="Note" icon="svg-info" color="blue" />
+::: info Note
+This procedure was only tested on OF V3.0.10P3N2 and TIM V3.0.10N06 firmware and it's persistent after an upgrade from OLT
+:::
 
-<Alert content="If you change GPON Serial Number, Telnet will be disabled. You have to run again the tool to enable it" alert="Note" icon="svg-warning" color="red" />
+::: danger Note
+If you change GPON Serial Number, Telnet will be disabled. You have to run again the tool to enable it
+:::
 
 Needed tools:
 
@@ -353,7 +355,9 @@ If you want to flash this dump to another ONT, just run these commands:
 
 ## Changing region code
 
-<Alert content="Be aware that changing the region code may break features such as PPPoE depending on your ISP, and remove Telnet access!" alert="Note" icon="svg-info" color="blue" />
+::: info Note
+Be aware that changing the region code may break features such as PPPoE depending on your ISP, and remove Telnet access!
+:::
 
 ZTE has created various region codes that load default values based on the local ISP. This configuration can be changed using this command:
 

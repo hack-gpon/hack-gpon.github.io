@@ -1,18 +1,8 @@
 ---
-title: Huawei EG8010H
+title: Huawei EG8010H 
+has_children: false
+parent: Huawei
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -48,4 +38,4 @@ title: Huawei EG8010H
 
 - V5R020C10S035
 
-<!-- TODO: Include relative file: ont-huawei-useful-command.md -->
+<!--@partial: ./_partials/ont-huawei-useful-command.md-->

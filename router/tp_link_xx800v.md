@@ -1,18 +1,8 @@
 ---
-title: TP-Link XX800V
+title: TP-Link XX800V 
+has_children: false
+parent: TP-Link
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 

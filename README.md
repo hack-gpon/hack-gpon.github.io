@@ -8,10 +8,7 @@
 
 # Hack GPON
 
-Based on just-the-docs theme:
-- [GitHub](https://github.com/just-the-docs/just-the-docs) 
-- [Demo](https://just-the-docs.github.io/just-the-docs/)
-
+Worldwide wiki on how to access, change and edit ONTs, built with [VitePress](https://vitepress.dev/).
 
 if you want to contribute there is something to be done:
 
@@ -22,12 +19,77 @@ if you want to contribute there is something to be done:
 - quick start
 - absent and new ont
 
-##  How to build
-This website uses typescript, so remember to:
+## How to build
 
-- Install node (20)
-- Run npm ci to install all relevant typescript packages
-- Run npm run build to transpile ts to js
+- Install node (22)
+- Run `npm ci` to install the dependencies
+- Run `npm run dev` to start the development server on http://localhost:5173
+- Run `npm run build` to build the website in `.vitepress/dist` (`npm run preview` serves the build)
 
-Alternatively, you can just run:
-`docker-compose up -d typescript` which will build all the required typescript files for you
+Alternatively, you can just run `docker compose up` and open http://localhost:5173
+
+## Structure
+
+| Folder      | Section                   | URL                  |
+| ----------- | ------------------------- | -------------------- |
+| `ont`       | ONT GPON                  | `/<file name>/`      |
+| `ont-xgs`   | ONT XGS-PON               | `/xgs/<file name>/`  |
+| `ont-epon`  | ONT EPON                  | `/epon/<file name>/` |
+| `router`    | Router PON                | `/router/<file name>/` |
+| `tools`     | Tools                     | `/<file name>/`      |
+| `sfp`       | SFP Resources & standard  | `/<file name>/`      |
+| `gpon`      | GPON Resources & standard | `/<file name>/`      |
+| `sfp-cage`  | SFP cage                  | `/<file name>/`      |
+
+Images and other static files are in `public/assets/` and are served from `/assets/`.
+
+The sidebar is generated from the front matter of the pages:
+
+```yaml
+---
+title: Huawei MA5671A   # title of the page and of the sidebar item
+parent: Huawei          # title of the parent page
+has_children: true      # the page has child pages
+nav_order: 1            # optional, position in the sidebar (otherwise sorted by title)
+nav_exclude: true       # optional, hide the page from the sidebar
+alias: Some other name  # optional, "Also sold as"
+redirect_to: /other-page # optional, the page redirects to another one
+---
+```
+
+## Syntax
+
+Alerts:
+
+```md
+::: info Note
+Some text with **markdown**
+:::
+```
+
+The available types are `info` (blue), `tip` (green), `warning` (yellow), `danger` (red) and `details` (collapsible).
+
+Images with caption (the file is relative to `public/assets/img/`):
+
+```md
+<ImageFigure file="vendor/photo.jpg" alt="Alternative text" caption="Caption" />
+```
+
+Serial dumps (the file is relative to the page):
+
+```md
+::: details Boot log
+<<< ./serial_dump/boot.txt
+:::
+```
+
+Partials with parameters (Liquid templates in the `_partials` folders):
+
+```md
+<!--@partial: ./_partials/ont-luna-sdk-useful-commands.md
+flash: "flash"
+ploam: "ascii"
+-->
+```
+
+Pages written with the old Jekyll syntax (`{% include alert.html ... %}`, `{% include image.html ... %}`, ...) can be converted with `npm run convert -- path/to/page.md`.

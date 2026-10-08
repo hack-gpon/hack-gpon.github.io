@@ -1,20 +1,12 @@
 ---
 title: FS Modded Firmware for Huawei MA5671A and FS.com GPON-ONU-34-20BI
+has_children: false
+parent: Huawei MA5671A
 ---
 
-
-
-
-
-
-
-
-
-
-
-
-
-<Alert content="The following wiki is only compatible with version 5 or later!" alert="Note" icon="svg-warning" color="red" />
+::: danger Note
+The following wiki is only compatible with version 5 or later!
+:::
 
 # Flashing the firmware
 
@@ -109,7 +101,9 @@ fw_setenv onu_serial "YOUR_SERIAL_ASCII"
 fw_setenv onu_ploam "YOUR_PLOAM_ASCII"
 ```
 
-<Alert content="If your ploam is in HEX convert it to ASCII, any non-printable characters write them in HEX with a slash in front, such as `\0x7F`. If the PLOAM is less than 10 bytes (one printable character counts as one byte, `\0x7F` also counts as one byte) add `\0x00` to the end to get to 10 bytes." alert="Note" icon="svg-info" color="blue" />
+::: info Note
+If your ploam is in HEX convert it to ASCII, any non-printable characters write them in HEX with a slash in front, such as `\0x7F`. If the PLOAM is less than 10 bytes (one printable character counts as one byte, `\0x7F` also counts as one byte) add `\0x00` to the end to get to 10 bytes.
+:::
 
 ## Setting ONU GPON LOID
 ```sh
@@ -144,7 +138,9 @@ fw_setenv image1_version "YOUR_SW_VERSION_1"
 
 # Advanced settings
 
-<Alert content="Changing these is normally not necessary and not changing them is a good idea" alert="Note" icon="svg-warning" color="red" />
+::: danger Note
+Changing these is normally not necessary and not changing them is a good idea
+:::
 
 ## Setting custom OMCI MIB file
 
@@ -167,7 +163,9 @@ reboot
 
 # SFP EEPROM settings
 
-<Alert content="Changing these is normally not necessary and not changing them is a good idea" alert="Note" icon="svg-warning" color="red" />
+::: danger Note
+Changing these is normally not necessary and not changing them is a good idea
+:::
 
 ## Setting SFP vendor name
 ```sh
@@ -200,6 +198,6 @@ fw_setenv sfp_vendor_data "YOUR_SFP_VENDOR_DATA"
 ```
 
 # List of firmwares and files
-- [6BA1896SPLQA42_MODDED_ver5-1.img](https://mega.nz/file/5tNwFC5A#aXOlrZgLZ6sL81CKDOoBmXotLqDTJLQzpvokYU--bz0) md5hash: c4f1bbe1695803d3d449f911f43d78ea
-- [6BA1896SPLQA42_MODDED_ver4.img](https://mega.nz/file/Q4dFTBqQ#L8N7kPZtSJ7FtbtxRcnxNF-W3b9wDbCeJ82YgnK7moQ) md5hash: 63b0cc790c0087a5a1197c89b502b002
-- [6BA1896SPLQA42_MODDED_ver3.img](https://mega.nz/file/YkMwHSgR#7Sdk0LIBv3hLQJKQ4TBub4ABtwYyCAdP6Rl2C3RBztw) md5hash: 90348ff0ccaad475cf14d9d0a056cf72
+- [6BA1896SPLQA42_MODDED_ver5-1.img](https://mega.nz/file/5tNwFC5A#aXOlrZgLZ6sL81CKDOoBmXotLqDTJLQzpvokYU--bz0){.btn} md5hash: c4f1bbe1695803d3d449f911f43d78ea
+- [6BA1896SPLQA42_MODDED_ver4.img](https://mega.nz/file/Q4dFTBqQ#L8N7kPZtSJ7FtbtxRcnxNF-W3b9wDbCeJ82YgnK7moQ){.btn} md5hash: 63b0cc790c0087a5a1197c89b502b002
+- [6BA1896SPLQA42_MODDED_ver3.img](https://mega.nz/file/YkMwHSgR#7Sdk0LIBv3hLQJKQ4TBub4ABtwYyCAdP6Rl2C3RBztw){.btn} md5hash: 90348ff0ccaad475cf14d9d0a056cf72

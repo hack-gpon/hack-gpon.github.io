@@ -1,18 +1,9 @@
 ---
 title: Nokia G-010G-Q
+has_children: false
+parent: Nokia
+alias: CIG G-97CU
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -63,7 +54,9 @@ You can easily communicate with the ONT using a TTL converter (for example the C
 
 *You don't actually need the two VCC pins, just use TX/RX and GND*
 
-<Alert content="The ONT's serial logic is 3V3." alert="Warning" icon="svg-warning" color="red" />
+::: danger Warning
+The ONT's serial logic is 3V3.
+:::
 
 Make sure the logic of your TTL converter is 3V3 too, otherwise you might damage the ONT. To be sure 3V3 is being used, a voltage divider made of 2 resistors between the TX pin and ground as shown in the image below can be used.
 
@@ -78,9 +71,11 @@ A shell-like prompt will be visible:
 ONT>
 ```
 
-{% include_relative ont-nokia-use.md username="ONTUSER" %}
+<!--@partial: ./_partials/ont-nokia-use.md
+username: "ONTUSER"
+-->
 
-<!-- TODO: Include relative file: ont-nokia-useful-command.md -->
+<!--@partial: ./_partials/ont-nokia-useful-command.md-->
 
 # Miscellaneous Links
 - [MIB file parser](https://github.com/nanomad/nokia-ont-mib-parser) for NOKIA's GPON ONTs (*helps you parsing the .mib file located in `/mnt/rwdir`*)

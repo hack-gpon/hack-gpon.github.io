@@ -1,18 +1,8 @@
 ---
 title: Nokia G-010S-B
+has_children: false
+parent: Nokia
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -73,9 +63,13 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 | RX                    | pin #7                     |
 | GND                   | pin #14 and #10            |
 
-<Alert content="Try PIN 10 or other GND PINs if the connection doesn't work by using PIN 14." alert="Note" icon="svg-warning" color="yellow" />
+::: warning Note
+Try PIN 10 or other GND PINs if the connection doesn't work by using PIN 14.
+:::
 
-<Alert content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note" icon="svg-warning" color="yellow" />
+::: warning Note
+Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work.
+:::
 
 # General Settings and Useful Commands
 

@@ -1,18 +1,8 @@
 ---
 title: LEOX LXT-010G-D
+has_children: false
+parent: LEOX
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -39,9 +29,9 @@ title: LEOX LXT-010G-D
 
 The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the top surface.
 
-{% include_relative ont-luna-sdk-useful-commands.md 
-    ploam='ascii'
-    flash='/etc/scripts/flash'
-    customSwVersionAlert='This needs the `OMCI_OLT_MODE` value to be set to `21`. This will force the stick to use your own settings from the XML file, but this is a hack and causes sigsegv of `/bin/checkomci`.'
-    omciOLT21='true'
-%}
+<!--@partial: ./_partials/ont-luna-sdk-useful-commands.md
+ploam: "ascii"
+flash: "/etc/scripts/flash"
+customSwVersionAlert: "This needs the `OMCI_OLT_MODE` value to be set to `21`. This will force the stick to use your own settings from the XML file, but this is a hack and causes sigsegv of `/bin/checkomci`."
+omciOLT21: "true"
+-->

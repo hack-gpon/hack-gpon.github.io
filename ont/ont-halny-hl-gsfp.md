@@ -1,18 +1,8 @@
 ---
 title: HALNy HL-GSFP
+has_children: false
+parent: HALNy
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 

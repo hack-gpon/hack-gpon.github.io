@@ -1,18 +1,8 @@
 ---
 title: Nokia G-010G-A
+has_children: false
+parent: Nokia
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 

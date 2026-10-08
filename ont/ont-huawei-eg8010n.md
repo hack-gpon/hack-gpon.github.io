@@ -1,18 +1,8 @@
 ---
-title: Huawei EG8010N
+title: Huawei EG8010N 
+has_children: false
+parent: Huawei
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 

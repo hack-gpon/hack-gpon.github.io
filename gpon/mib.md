@@ -1,18 +1,8 @@
 ---
 title: GPON MIB
+has_children: false
+nav_order: 3
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 The OMCI standard is defined in a way such that suppliers can offer modular and incremental functionality to meet different levels of customer needs.
 

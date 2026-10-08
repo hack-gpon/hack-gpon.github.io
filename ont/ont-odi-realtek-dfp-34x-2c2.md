@@ -1,19 +1,9 @@
 ---
-title: ODI Realtek DFP-34X-2C2
+title: ODI Realtek DFP-34X-2C2 
 description: New model 2022 - v05
+has_children: false
+parent: ODI
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -34,7 +24,9 @@ description: New model 2022 - v05
 | Serial       |                                   |
 | Form Factor  | miniONT SFP                       |
 
-<Alert content="SSH uses an outdated set of algorithms/ciphers, you can connect using the following command:" alert="Note" icon="svg-info" color="blue" />
+::: info Note
+SSH uses an outdated set of algorithms/ciphers, you can connect using the following command:
+:::
 
 ```shell
 ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc -o HostKeyAlgorithms=ssh-rsa admin@192.168.1.1
@@ -86,15 +78,17 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 <ImageFigure file="ont-odi-realtek-dfp-34x-2c2/ttl.jpg" alt="DFP-34X-2C2 TTL Connection" caption="DFP-34X-2C2 TTL Connection" />
 <ImageFigure file="ont-odi-realtek-dfp-34x-2c2/ttl-2.jpg" alt="DFP-34X-2C2 TTL Pin" caption="DFP-34X-2C2 TTL Pin" />
 
-<Alert content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note" icon="svg-warning" color="yellow" />
+::: warning Note
+Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work.
+:::
 
-{% include_relative ont-luna-sdk-useful-commands.md 
-    flash='flash'
-    ploam='hex'
-    customSwVersionAlert="This needs either `OMCI_OLT_MODE` to be set to 3 and firmware version 220530 or 220923 as modded by @stich86 or, if you don't want to replace the installed firmware, set `OMCI_OLT_MODE` value to `21`. This will force the stick to use your own settings from the XML file, but this is a hack and causes sigsegv of `/bin/checkomci`."
-    speedLan='1234567'
-    omciOLT21='true'
-%}
+<!--@partial: ./_partials/ont-luna-sdk-useful-commands.md
+flash: "flash"
+ploam: "hex"
+customSwVersionAlert: "This needs either `OMCI_OLT_MODE` to be set to 3 and firmware version 220530 or 220923 as modded by @stich86 or, if you don't want to replace the installed firmware, set `OMCI_OLT_MODE` value to `21`. This will force the stick to use your own settings from the XML file, but this is a hack and causes sigsegv of `/bin/checkomci`."
+speedLan: "1234567"
+omciOLT21: "true"
+-->
 
 # Known Bugs
 

@@ -1,0 +1,61 @@
+b0=setenv bootargs ${bootargs_base} ${mtdparts0} ${rst2dfl_flg}; bootm ${img0_kernel}
+b1=setenv bootargs ${bootargs_base} ${mtdparts1} ${rst2dfl_flg}; bootm ${img1_kernel}
+baudrate=115200
+boot_by_commit=if itest.s ${sw_commit} == 0;then run set_act0;run b0;else run set_act1;run b1;fi
+boot_by_tryactive=if itest.s ${sw_tryactive} == 0;then setenv sw_tryactive 2;setenv sw_active 0;saveenv;run en_wdt;run b0;else setenv sw_tryactive 2;setenv sw_active 1;saveenv;run en_wdt;run b1;fi
+bootargs_base=console=ttyS0,115200
+bootcmd=if itest.s ${sw_tryactive} == 2; then run boot_by_commit;else run boot_by_tryactive;fi
+bootdelay=2
+en_wdt=mw b8003268 e7c00000
+erase_cfgfs=sf erase ${fl_cfgfs} +${fl_cfgfs_sz}
+erase_env=sf erase ${fl_env} +${fl_env_sz};sf erase ${fl_env2} +${fl_env_sz}
+ethact=LUNA GMAC
+ethaddr=00:E0:4C:86:70:01
+fl_boot_sz=2a000
+fl_cfgfs=2e000
+fl_cfgfs_sz=12000
+fl_env=2a000
+fl_env2=2c000
+fl_env_sz=2000
+fl_kernel1=40000
+fl_kernel1_sz=139000
+fl_kernel2=40000
+fl_kernel2_sz=139000
+fl_rootfs1=179000
+fl_rootfs1_sz=287000
+fl_rootfs2=179000
+fl_rootfs2_sz=287000
+img0_kernel=94040000
+img1_kernel=94040000
+ipaddr=192.168.123.1
+mtdparts0=mtdparts=rtk_spi_nor_mtd:168K(boot),8K(env),8K(env2),72K(config),1252K@256K(k0),1252K@256K(k1),2588K@1508K(r0),2588K@1508K(r1),4K@0ro,4K@0ro,4K@0ro,4K@0ro,1252K@256K(linux),2588K@1508K(rootfs) root=31:6
+mtdparts1=mtdparts=rtk_spi_nor_mtd:168K(boot),8K(env),8K(env2),72K(config),1252K@256K(k0),1252K@256K(k1),2588K@1508K(r0),2588K@1508K(r1),4K@0ro,4K@0ro,4K@0ro,4K@0ro,1252K@256K(linux),2588K@1508K(rootfs) root=31:7
+mupgrade_en=1
+netmask=255.255.255.0
+serverip=192.168.123.100
+set_act0=if itest.s ${sw_active} != 0;then setenv sw_active 0;saveenv;fi
+set_act1=if itest.s ${sw_active} != 1;then setenv sw_active 1;saveenv;fi
+stderr=serial
+stdin=serial
+stdout=serial
+sw_active=1
+sw_commit=1
+sw_tryactive=2
+sw_valid0=1
+sw_valid1=1
+sw_version0=10.0.52B.2095
+sw_version1=10.0.52B.2095
+tftp_base=80000000
+upb=tftp ${tftp_base} plr.img && crc32 ${fileaddr} ${filesize} && sf erase 0 +${fl_boot_sz} && sf write ${fileaddr} 0 ${filesize}
+upe=tftp ${tftp_base} uboot-env-98d-eng.bin && sf erase ${fl_env} +${fl_env_sz} && sf write ${fileaddr} ${fl_env} ${fl_env_sz} && sf erase ${fl_env2} +${fl_env_sz} && sf write ${fileaddr} ${fl_env2} ${fl_env_sz}
+upk=tftp ${tftp_base} uImage && crc32 ${fileaddr} ${filesize} && sf erase ${fl_kernel1} +${fl_kernel1_sz} && sf write ${fileaddr} ${fl_kernel1} ${filesize}
+upk1=tftp ${tftp_base} uImage && crc32 ${fileaddr} ${filesize} && sf erase ${fl_kernel2} +${fl_kernel2_sz} && sf write ${fileaddr} ${fl_kernel2} ${filesize}
+upr=tftp ${tftp_base} rootfs && crc32 ${fileaddr} ${filesize} && sf erase ${fl_rootfs1} +${fl_rootfs1_sz} && sf write ${fileaddr} ${fl_rootfs1} ${filesize}
+upr1=tftp ${tftp_base} rootfs && crc32 ${fileaddr} ${filesize} && sf erase ${fl_rootfs2} +${fl_rootfs2_sz} && sf write ${fileaddr} ${fl_rootfs2} ${filesize}
+upt=tftp 80000000 img.tar && upimgtar ${fileaddr} ${filesize}
+upv=tftp 80000000 vm.img;upvmimg ${fileaddr}
+yk=loady 80000000 && cp.b 80000000 81000000 ${filesize} && cmp.b 80000000 81000000 ${filesize} && sf erase ${fl_kernel1} +${fl_kernel1_sz} && sf write 80000000 ${fl_kernel1} ${filesize}
+yr=loady 80000000 && cp.b 80000000 81000000 ${filesize} && cmp.b 80000000 81000000 ${filesize} && sf erase ${fl_rootfs1} +${fl_rootfs1_sz} && sf write 80000000 ${fl_rootfs1} ${filesize}
+yu=loady 80000000 && cp.b 80000000 81000000 ${filesize} && cmp.b 80000000 81000000 ${filesize} && sf erase 0 +${fl_boot_sz} && sf write 80000000 0 ${filesize}
+
+Environment size: 3733/8187 bytes

@@ -1,18 +1,8 @@
 ---
 title: SourcePhotonics SPS-34-24T-HP-TDFM
+has_children: false
+parent: SourcePhotonics
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 

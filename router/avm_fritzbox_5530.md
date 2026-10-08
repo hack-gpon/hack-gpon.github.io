@@ -1,18 +1,8 @@
 ---
 title: AVM FRITZ!Box 5530
+has_children: false
+parent: AVM
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -41,4 +31,4 @@ title: AVM FRITZ!Box 5530
 | Serial encoding | 8-N-1                                                                    |
 | Form Factor     | CPE with SFP w/o MAC support                                             |
 
-<!-- TODO: Include relative file: avm_fritzbox.md -->
+<!--@partial: ./_partials/avm_fritzbox.md-->

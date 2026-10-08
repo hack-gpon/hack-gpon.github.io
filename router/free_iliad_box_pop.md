@@ -1,18 +1,8 @@
 ---
 title: FreeBox Pop/IliadBox
+has_children: false
+parent: Free/Iliad
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 

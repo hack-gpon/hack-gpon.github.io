@@ -1,18 +1,8 @@
 ---
 title: HiSense LTF7267-BHA+
+has_children: false
+parent: HiSense
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -46,7 +36,9 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 
 <ImageFigure file="ont-hisense-ltf7267-bha+_inside.jpg" alt="HiSense LTF7267-BHA+ Internals" caption="HiSense LTF7267-BHA+ Internals" />
 
-<Alert content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note" icon="svg-warning" color="yellow" />
+::: warning Note
+Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work.
+:::
 
 ## List of software versions
 - 22.05.26.1 - 20220527052622 (from /etc/hi_version - /etc/version)
@@ -320,39 +312,7 @@ Reboot ONT to apply the change
 
 ### Web procedure
 
-<form id="hisense-ploam" novalidate>
-    <div class="form-floating mb-3">
-        <input type="text" class="form-control" placeholder="PLOAM in ASCII" name="ploam" id="ploam" required>
-        <label for="ploam">PLOAM in ASCII</label>
-        <div class="invalid-feedback">
-            Please provide a valid PLOAM password.
-        </div>
-    </div>
-    <div class="mb-3">
-        <input type="submit" class="btn btn-primary" value="Encode!">
-    </div>
-    <div class="language-plaintext highlighter-rouge">
-        <div class="highlight">
-            <pre class="highlight" id="ploam-encoded">
-            </pre>
-        </div>
-    </div>
-</form>
-
-<script type="text/javascript" src="/assets/js/generated/LTF7267-BHA-ploam.js"></script>
-<script type="text/javascript">
-    var hisensePloamForm = document.getElementById('hisense-ploam');
-    var hisenseResult = document.getElementById('ploam-encoded');
-    hisensePloamForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        if (!hisensePloamForm.checkValidity()) {
-            event.preventDefault();
-        } else {
-            const data = new URLSearchParams(new FormData(hisensePloamForm));
-            hisenseResult.innerHTML = hisensePloam(data.get('ploam'));
-        }
-    });
-</script>
+<HisensePloam />
 
 
 ### Normal procedure
@@ -408,7 +368,9 @@ Reboot the ONT to apply the change.
 
 ## Setting ONU GPON LOID and LOID password
 
-<Alert content="The value 0x0 is null, take note of your LoID and password from the original ONT" color="red" />
+::: danger
+The value 0x0 is null, take note of your LoID and password from the original ONT
+:::
 
 
 ```sh

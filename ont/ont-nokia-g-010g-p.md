@@ -1,18 +1,9 @@
 ---
 title: Nokia G-010G-P
+has_children: false
+parent: Nokia
+alias: CIG G-97C1/CIG G-97CU
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -56,7 +47,7 @@ To access a complete linux shell just type:
 
 To exit the shell and reach the parent menu type `exit` or `x`, in each menu the `help` command will show how to use the shell
 
-<!-- TODO: Include relative file: ont-nokia-useful-command.md -->
+<!--@partial: ./_partials/ont-nokia-useful-command.md-->
 
 # Miscellaneous Links
 - [MIB file parser](https://github.com/nanomad/nokia-ont-mib-parser) for NOKIA's GPON ONTs (*helps you parsing the .mib file located in `/mnt/rwdir`*)

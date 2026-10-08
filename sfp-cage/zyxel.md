@@ -1,18 +1,8 @@
 ---
 title: Zyxel
+has_children: false
+alias: EX5601-T0
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -58,13 +48,15 @@ If `rootubi=ubi`, the active partition is `mtd6`.
 
 If `rootubi=ubi2`, the active partition is `mtd7`.
 
-<Alert content="When you flash a new firmware via the web interface the router will automatically write the new firmware in the inactive partition, hence if the firmware upgrade is successfull it will automatically swap the boot partition at next reboot. If everything is ok you don't have to manually swap partitions" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+When you flash a new firmware via the web interface the router will automatically write the new firmware in the inactive partition, hence if the firmware upgrade is successfull it will automatically swap the boot partition at next reboot. If everything is ok you don't have to manually swap partitions
+:::
 
 ## Serial interface
 
 This router has the serial interface pins directly accessible on the board:
 
-<ImageFigure file="zyxel-ex5601t0\zyxel_ex5601t0_serial.jpg" alt="EX5601T0 Serial interface" caption="EX5601T0 Serial interface" />
+<ImageFigure file="zyxel-ex5601t0/zyxel_ex5601t0_serial.jpg" alt="EX5601T0 Serial interface" caption="EX5601T0 Serial interface" />
 
 The serial console speed is 115200 bauds.
 
@@ -80,7 +72,9 @@ By default zloader access is blocked.
 
 ### Unlocking zloader 
 
-<Alert content="The following procedure is provided as-is, if you damage the device this community is not responsibile for any damage in any way." alert="Warning" icon="svg-warning" color="red" />
+::: danger Warning
+The following procedure is provided as-is, if you damage the device this community is not responsibile for any damage in any way.
+:::
 
 1. Open the router case and connect your usb-ttl adapter to the router as show in the picture.
 2. Open putty or any other serial capable software and configure it to use your COMX port with 115200 speed.
@@ -104,13 +98,19 @@ ZHAL>
 ```
 You have successfully unlocked zloader access, this procedure must be done only once.
 
-<Alert content="There is an alternative procedure to achieve the same end result. Flashing the firmware which gives you root access via ssh and you give the same fw_setenv command from point 8. The USB to serial adapter is still needed to access ZHAL" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+There is an alternative procedure to achieve the same end result. Flashing the firmware which gives you root access via ssh and you give the same fw_setenv command from point 8. The USB to serial adapter is still needed to access ZHAL
+:::
 
 
 ### Dumping supervisor password
-<Alert content="The following procedure is provided as-is, if you damage the device this community is not responsibile for any damage in any way." alert="Warning" icon="svg-warning" color="red" />
+::: danger Warning
+The following procedure is provided as-is, if you damage the device this community is not responsibile for any damage in any way.
+:::
 
-<Alert content="The supervisor user is the most powerful user that can be used from the web interface. The supervisor password is written in the nand and it's encrypted. To dump the password you must first complete the **Unlocking zloader** procedure" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+The supervisor user is the most powerful user that can be used from the web interface. The supervisor password is written in the nand and it's encrypted. To dump the password you must first complete the **Unlocking zloader** procedure
+:::
 
 1. Open the router case and connect your usb to serial adapter.
 2. Open putty or any other serial capable software and configure it to use your COMX port with 115200 speed.
@@ -128,9 +128,13 @@ atsr
 
 ### Manually swapping the boot partition
 
-<Alert content="The following procedure is provided as-is, if you damage the device this community is not responsibile for any damage in any way." alert="Warning" icon="svg-warning" color="red" />
+::: danger Warning
+The following procedure is provided as-is, if you damage the device this community is not responsibile for any damage in any way.
+:::
 
-<Alert content="To swap the boot partition you first have to complete the **Unlocking zloader** procedure" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+To swap the boot partition you first have to complete the **Unlocking zloader** procedure
+:::
 
 1. Open the router case and connect your usb to serial adapter.
 2. Open putty or any other serial capable software and configure it to use your COMX port with 115200 speed.
@@ -149,11 +153,17 @@ cat /proc/cmdline
 ```
 
 ## Unlocking u-boot access
-<Alert content="The following procedure is provided as-is, if you damage the device this community is not responsibile for any damage in any way." alert="Warning" icon="svg-warning" color="red" />
+::: danger Warning
+The following procedure is provided as-is, if you damage the device this community is not responsibile for any damage in any way.
+:::
 
-<Alert content="To unlock u-boot access you first have to complete the **Unlocking zloader** procedure" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+To unlock u-boot access you first have to complete the **Unlocking zloader** procedure
+:::
 
-<Alert content="Having full u-boot access can be very dangerous, with great power comes great responsibility." alert="Warning" icon="svg-warning" color="red" />
+::: danger Warning
+Having full u-boot access can be very dangerous, with great power comes great responsibility.
+:::
 
 Up to today a strange combination of actions must be completed in a special sequence to access the u-boot CLI:
 
@@ -178,8 +188,10 @@ MT7986>
 
 ## Flashing a firmware or downgrading firmware
 
-<Alert content="The following procedure is provided as-is and if anything goes wrong you will likely need to open the router case and attach a USB serial adapter to the router to recover it.
-This community is not responsible of any damage you cause by following these procedures." alert="Warning" icon="svg-warning" color="red" />
+::: danger Warning
+The following procedure is provided as-is and if anything goes wrong you will likely need to open the router case and attach a USB serial adapter to the router to recover it.
+This community is not responsible of any damage you cause by following these procedures.
+:::
 
 1. Access the router via ssh or telnet with admin user (admin password is printed on the back of the router).
 2. Disable firmware version check and model check by running the following commands.
@@ -202,9 +214,13 @@ The script reads the device serial number and resets the root password with that
 2. the `/bin` path contains `sfp_wan.sh_wind` and `check_sfp_link.sh_wind` scripts which are very similar to the standard `sfp_wan.sh` and `check_sfp_link.sh` scripts. If everything works with the original ones do not swap them. If you want to allow 2.5gbit HSGMII with the Technicolor AFM0003 SFP stick you need to swap and enable the `_wind` scripts.
 3. Additional packages installed: `mtr`, `htop`, `openvpn`, `wireguard`.
 
-<Alert content="The OpenVPN and Wireguard functionalities will not be directly usable in the Zyxel web interface, they are not supported. If you want to setup a VPN with either protocol you must know how to use the command-line and do your own setup" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+The OpenVPN and Wireguard functionalities will not be directly usable in the Zyxel web interface, they are not supported. If you want to setup a VPN with either protocol you must know how to use the command-line and do your own setup
+:::
 
-<Alert content="Do not try to install packages directly from the internet with opkg update/install, the default repositories are not working and, if you edit them, you'll most likely end up breaking the partition overlay" alert="Warning" icon="svg-warning" color="red" />
+::: danger Warning
+Do not try to install packages directly from the internet with opkg update/install, the default repositories are not working and, if you edit them, you'll most likely end up breaking the partition overlay
+:::
 
 - [Firmware Version V5.70(ACDZ.0)C0_no-brand_pa_0.1](https://mega.nz/file/OJxBCKqR#z31OiJwY6_iaDtj_yrOTrx1oKnFEdnm4Rh0pi3wRtoE)
 
@@ -213,7 +229,9 @@ This router has native OpenWrt support starting from the following [git commit](
 
 You are free to clone the git code and build your own OpenWrt firmware or use the OpenWrt firmware builder.
 
-<Alert content="Carefully read the installation instructions from the git commit link above!" alert="Warning" icon="svg-warning" color="red" />
+::: danger Warning
+Carefully read the installation instructions from the git commit link above!
+:::
 
 The OpenWrt firmware has the following working features out of the box:
 - 3 Gbit LAN ports
@@ -231,7 +249,9 @@ To workaround the missing phy-link support, some modifications to the DTS are ne
 
 The following repo contains a proper example: [EX5601-T0 fixed SFP link git repo](https://github.com/pameruoso/openwrt-ex5601t0-porting/tree/ex5601-t0-fixedlink) you can apply the [patch](https://github.com/openwrt/openwrt/compare/main...pameruoso:openwrt-ex5601t0-porting:ex5601-t0-fixedlink.patch) to the official OpenWrt repo.
 
-<Alert content="It is highly recommended to use the OpenWrt official builds instead of this fork because the latter is not updated that often, still if you want to use the SFP you can insert it into a media converter and use the 2.5Gbe RJ45 port with the official build." alert="Info" icon="svg-info" color="blue" />
+::: info Info
+It is highly recommended to use the OpenWrt official builds instead of this fork because the latter is not updated that often, still if you want to use the SFP you can insert it into a media converter and use the 2.5Gbe RJ45 port with the official build.
+:::
 
 Here is a flashable bin file based on OpenWrt v23.05.0 Stable with the mod to swap SFP/RJ45. This `sysupgrade.bin` already contains the zyfwinfo file for flashing with zloader.
 

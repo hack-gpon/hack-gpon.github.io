@@ -1,18 +1,7 @@
 ---
 title: ZTE
+has_children: false
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 

@@ -1,20 +1,12 @@
 ---
 title: Carlito Firmware for Huawei MA5671A
+has_children: false
+parent: Huawei MA5671A
 ---
 
-
-
-
-
-
-
-
-
-
-
-
-
-<Alert content="Be careful, backup goi_config from uboot before changing the firmware." alert="Info" icon="svg-info" color="blue" />
+::: info Info
+Be careful, backup goi_config from uboot before changing the firmware.
+:::
 
 # GPON ONU status
 

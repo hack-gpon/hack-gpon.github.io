@@ -1,18 +1,8 @@
 ---
 title: LEOX LXT-240G-C1
+has_children: false
+parent: LEOX
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -82,8 +72,8 @@ Volumes `ubi_k0` and `ubi_r0` respectively contain kernel and rootfs of the firs
 
 ## List of software versions
 
-- [V4.1.1L5rc2](https://mega.nz/file/YJkEGCIC#FNdE6Xt6lsFJdOnx3GGGCNi4fpMoN0QFOf5_1VjcGHo) md5hash: 53b80abbda413e3ebc87d1730292d2fd
-- [V4.1.1L5](https://mega.nz/file/VMtTkLDI#5tZ74mAAqn0PhGa4MtbEliSo4B0VwIo28K_8iV2AzQ0) md5hash: 5426cac6eb204ec1b3a8f39bc22d9488, same as rc2 just marked final
+- [V4.1.1L5rc2](https://mega.nz/file/YJkEGCIC#FNdE6Xt6lsFJdOnx3GGGCNi4fpMoN0QFOf5_1VjcGHo){.btn} md5hash: 53b80abbda413e3ebc87d1730292d2fd
+- [V4.1.1L5](https://mega.nz/file/VMtTkLDI#5tZ74mAAqn0PhGa4MtbEliSo4B0VwIo28K_8iV2AzQ0){.btn} md5hash: 5426cac6eb204ec1b3a8f39bc22d9488, same as rc2 just marked final
 
 # GPON/OMCI settings
 

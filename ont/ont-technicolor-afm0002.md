@@ -1,18 +1,9 @@
 ---
-title: Vantiva AFM0002 (formerly Technicolor AFM0002)
+title: Vantiva AFM0002 (formerly Technicolor AFM0002) 
+has_children: false
+parent: Vantiva (formerly Technicolor)
+alias: HiSense LTE3415-SCA+
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -47,7 +38,9 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 
 <ImageFigure file="ont-leox-lxt-010s-h_ttl.jpg" alt="Vantiva (formerly Technicolor) AFM0002 TTL Pinout" caption="Vantiva (formerly Technicolor) AFM0002 TTL Pinout" />
 
-<Alert content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note" icon="svg-warning" color="yellow" />
+::: warning Note
+Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work.
+:::
 
 ## Hardware Revisions
 
@@ -55,8 +48,12 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 - AFM0002FWB (IP address: 169.0.0.1)
 - AFM0002WND (IP address: 169.0.0.1)
 
-<Alert content="The version used to obtain the info shown on this page is the AFM0002TIM" alert="Info" icon="svg-info" color="blue" />
-<Alert content="The AFM0002FWB can be transformed into AFM0002TIM. Usually AFM0002FWBs have older software." alert="Warning" icon="svg-warning" color="red" />
+::: info Info
+The version used to obtain the info shown on this page is the AFM0002TIM
+:::
+::: danger Warning
+The AFM0002FWB can be transformed into AFM0002TIM. Usually AFM0002FWBs have older software.
+:::
 
 
 ## List of software versions
@@ -90,16 +87,16 @@ This stick supports dual boot.
 
 `k0` and `r0` respectively contain kernel and firmware of the first image, while `k1` and `r1` contain kernel and firmware of the second one.
 
-{% include_relative ont-luna-sdk-useful-commands.md 
-	flash='/etc/scripts/flash'
-	ploam='ascii'
-	lastgoodHs=true
-	flashSwVersion=true 
-	customSwVersionAlert="This needs the `/etc/scripts/flash` modded"
-	customHwVersionAlert="This needs the `/etc/scripts/flash` modded"
-	customVendorAlert="This needs the `/etc/scripts/flash` modded"
-	customEquipAlert="This needs the `/etc/scripts/flash` modded"
-%}
+<!--@partial: ./_partials/ont-luna-sdk-useful-commands.md
+flash: "/etc/scripts/flash"
+ploam: "ascii"
+lastgoodHs: true
+flashSwVersion: true
+customSwVersionAlert: "This needs the `/etc/scripts/flash` modded"
+customHwVersionAlert: "This needs the `/etc/scripts/flash` modded"
+customVendorAlert: "This needs the `/etc/scripts/flash` modded"
+customEquipAlert: "This needs the `/etc/scripts/flash` modded"
+-->
 
 ## Enabling the Web UI
 ```sh
@@ -117,10 +114,14 @@ From the PC to the stick:
 # cat lastgood.xml | ssh admin@192.168.2.1  "cat > /var/config/lastgood.xml"
 ```
 
-<Alert content="If a Windows system is used replace type with cat and run the commands from cmd (not Powershell)" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+If a Windows system is used replace type with cat and run the commands from cmd (not Powershell)
+:::
 
 ## Extracting and repacking the rootfs
-<Alert content="Make sure you run both commands as root, otherwise you might get a damaged rootfs image" alert="Warning" icon="svg-warning" color="red" />
+::: danger Warning
+Make sure you run both commands as root, otherwise you might get a damaged rootfs image
+:::
 
 ```sh
 # unsquashfs mtd5.bin
@@ -128,7 +129,9 @@ From the PC to the stick:
 ```
 ## Flashing a new rootfs
 
-<Alert content="Only the inactive image can be flashed, change sw_versionX and sw_commit X based on the bank you have flashed" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+Only the inactive image can be flashed, change sw_versionX and sw_commit X based on the bank you have flashed
+:::
 
 Flash mtd4/5 if you are on image1, mtd6/7 if you are on image0.
 
@@ -141,7 +144,9 @@ The following commands are used to flash a new rootfs to image1 and then boot to
 # reboot
 ```
 
-<Alert content="This section is based on the `V1_7_8_210412` version of the stick's firmware " alert="Info" icon="svg-info" color="blue" />
+::: info Info
+This section is based on the `V1_7_8_210412` version of the stick's firmware
+:::
 
 ## Adding support to configurable SW and HW versions, Vendor ID and equipment ID
 `/etc/scripts/flash` can be modified in order to add support for some variables implemented in `omci_app` but removed from `xmlconfig`. The modified file is below.

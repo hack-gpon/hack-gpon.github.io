@@ -1,18 +1,8 @@
 ---
 title: Huawei MA5671A
+has_children: true
+parent: Huawei
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -46,10 +36,9 @@ title: Huawei MA5671A
 - [Nokia G-010S-P](/ont-nokia-g-010s-p)
 - [FS.com GPON ONU Stick with MAC / SourcePhotonics SPS-34-24T-HP-TDFO](/ont-fs-com-gpon-onu-stick-with-mac)
 - [Hilink HL23446](/ont-hilink-hl23446)
-- {:.text-red-200 } Dasan H650SFP 
-- {:.text-red-200 } DpOptics D23446  
-- {:.text-red-200 } Photonics SPS-34-24T-HP-TDFO
-
+- Dasan H650SFP {.text-red-200}
+- DpOptics D23446 {.text-red-200}
+- Photonics SPS-34-24T-HP-TDFO {.text-red-200}
 ## Serial
 
 The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the SFP connector.
@@ -61,9 +50,13 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 | RX                    | pin #7                     |
 | GND                   | pin #14 and #10            |
 
-<Alert content="Try PIN 10 or other GND PINs if the connection doesn't work by using PIN 14." alert="Note" icon="svg-warning" color="yellow" />
+::: warning Note
+Try PIN 10 or other GND PINs if the connection doesn't work by using PIN 14.
+:::
 
-<Alert content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note" icon="svg-warning" color="yellow" />
+::: warning Note
+Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work.
+:::
 
 ## Root procedure
 
@@ -119,16 +112,18 @@ For more info [XPONos partition layout](https://github.com/XPONos/linux_lantiq-f
 
 ## List of firmwares and files
 
-<Alert content="If the root procedure without tweezers is used, the firmware already on the Huawei Stick corresponds to rooted firmware in this list." alert="Info" icon="svg-info" color="blue" />
+::: info Info
+If the root procedure without tweezers is used, the firmware already on the Huawei Stick corresponds to rooted firmware in this list.
+:::
 
-- [Carlito MTD2](https://ma5671a.s3.nl-ams.scw.cloud/mtd2.bin)  md5hash: d3cb6f7efec201b37931139feb4bb23b
-- [Huawei Rooted MTD2](https://ma5671a.s3.nl-ams.scw.cloud/mA5671a_root_mtd2.img) md5hash: 3138d2dd06a32bb92bc63610fec6fcd6
-- [Carlito MTD5](https://ma5671a.s3.nl-ams.scw.cloud/mtd5.bin)  md5hash: 59d2dc15227d6f693a38131eca89b29e 
-- [Huawei Rooted MTD5](https://ma5671a.s3.nl-ams.scw.cloud/mA5671a_root_mtd5.img)  md5hash: 0e4cfdc1b96be6581869b26b48789556
-- [1224abort.bin](https://ma5671a.s3.nl-ams.scw.cloud/1224ABORT.bin)  md5hash: 10e94a4b4acdc82dec20c7904b69e5c0
-- [right.com.cn (China) 19 July 2022](https://mega.nz/file/9fpSkYTb#wNyjAj1kOLWC9HozX-gTQ-TS3VFqRYg--x1rm7RSuDg) md5hash: 6b5e7e3c659fe3f0204340fa746ac4fc
-- [right.com.cn (China) 29 Aug 2022](https://mega.nz/file/VHFFSBrT#2WhDPcdON5EHR01l6Ut35GC3sl55e4l09Z0NUo_7SWA) md5hash: 3d357e2dc7b59c66fe61b4ddf1fb8dc0
-- [right.com.cn (China) 20 Nov 2023](https://mega.nz/file/8vcwyJRA#yuzjyI9Y9vsA0RegGnNOy_JLv2FNRIMfI5JxHn8t0-s) md5hash: 4901ae8e70991ca1202bc80db9c151cc
+- [Carlito MTD2](https://ma5671a.s3.nl-ams.scw.cloud/mtd2.bin){.btn}  md5hash: d3cb6f7efec201b37931139feb4bb23b
+- [Huawei Rooted MTD2](https://ma5671a.s3.nl-ams.scw.cloud/mA5671a_root_mtd2.img){.btn} md5hash: 3138d2dd06a32bb92bc63610fec6fcd6
+- [Carlito MTD5](https://ma5671a.s3.nl-ams.scw.cloud/mtd5.bin){.btn}  md5hash: 59d2dc15227d6f693a38131eca89b29e 
+- [Huawei Rooted MTD5](https://ma5671a.s3.nl-ams.scw.cloud/mA5671a_root_mtd5.img){.btn}  md5hash: 0e4cfdc1b96be6581869b26b48789556
+- [1224abort.bin](https://ma5671a.s3.nl-ams.scw.cloud/1224ABORT.bin){.btn}  md5hash: 10e94a4b4acdc82dec20c7904b69e5c0
+- [right.com.cn (China) 19 July 2022](https://mega.nz/file/9fpSkYTb#wNyjAj1kOLWC9HozX-gTQ-TS3VFqRYg--x1rm7RSuDg){.btn} md5hash: 6b5e7e3c659fe3f0204340fa746ac4fc
+- [right.com.cn (China) 29 Aug 2022](https://mega.nz/file/VHFFSBrT#2WhDPcdON5EHR01l6Ut35GC3sl55e4l09Z0NUo_7SWA){.btn} md5hash: 3d357e2dc7b59c66fe61b4ddf1fb8dc0
+- [right.com.cn (China) 20 Nov 2023](https://mega.nz/file/8vcwyJRA#yuzjyI9Y9vsA0RegGnNOy_JLv2FNRIMfI5JxHn8t0-s){.btn} md5hash: 4901ae8e70991ca1202bc80db9c151cc
 - [FS.com GPON ONU Stick with MAC firmware / SourcePhotonics SPS-34-24T-HP-TDFO firmware](/ont-fs-com-gpon-onu-stick-with-mac)
 
 # Usage
@@ -136,14 +131,15 @@ For more info [XPONos partition layout](https://github.com/XPONos/linux_lantiq-f
 - [Huawei Rooted Firmware General Setting](/ont-huawei-ma5671a-rooted)
 - [Carlito Firmware General Setting](/ont-huawei-ma5671a-carlito)
 - [SourcePhotonics Firmware General Setting](/ont-huawei-ma5671a-sf)
-- [right.com.cn (China) Firmware General Setting](/ont--huawei-ma5671a-china)
 - [Nokia G-010S-P Firmware General Setting](/ont-nokia-g-010s-p)
 
 # Advanced settings
 
 ## Transferring files to the stick
 
-<Alert content="If you use a modern OpenSSH version (e.g. >= 8.8) you will have to use the legacy protocol and enable some deprecated algorithms: scp `-oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss [...]`" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+If you use a modern OpenSSH version (e.g. >= 8.8) you will have to use the legacy protocol and enable some deprecated algorithms: scp `-oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss [...]`
+:::
 
 ```sh
 # scp rootfs.bin root@192.168.1.10:/tmp/
@@ -163,7 +159,9 @@ cat /proc/mtd
 cp /dev/mtdX /tmp
 ```
 
-<Alert content="If you use a modern OpenSSH version (e.g. >= 8.8) you will have to use the legacy protocol and enable some deprecated algorithms: `scp -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss [...]`" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+If you use a modern OpenSSH version (e.g. >= 8.8) you will have to use the legacy protocol and enable some deprecated algorithms: `scp -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss [...]`
+:::
 
 And in the computer shell:
 ```sh
@@ -196,7 +194,9 @@ cat /dev/mtdX | nc 192.168.1.11 1234
 
 ## Cloning of mtd1 (image 0) into mtd5 (image 1)
 
-<Alert content="Image 0 can be flashed to image 1, while image 1 cannot be flashed to image 0 because it has larger rootfs_data" alert="Warning" icon="svg-warning" color="yellow" />
+::: warning Warning
+Image 0 can be flashed to image 1, while image 1 cannot be flashed to image 0 because it has larger rootfs_data
+:::
 
 The following commands are used to clone image0 to image1 and then boot to it
 ```sh
@@ -209,7 +209,9 @@ The following commands are used to clone image0 to image1 and then boot to it
 
 ## Flashing a new rootfs via SSH
 
-<Alert content="Only the inactive image can be flashed" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+Only the inactive image can be flashed
+:::
 
 The following commands are used to flash a new rootfs to image1 and then boot to it
 ```sh
@@ -219,17 +221,23 @@ The following commands are used to flash a new rootfs to image1 and then boot to
 # reboot
 ```
 
-<Alert content="Some OLTs don't like when ONTs don't boot from image 0, therefore the previous procedure must be preceded by the following procedure with inverted images, as to clone image 1 into image 0" alert="Warning" icon="svg-warning" color="yellow" />
+::: warning Warning
+Some OLTs don't like when ONTs don't boot from image 0, therefore the previous procedure must be preceded by the following procedure with inverted images, as to clone image 1 into image 0
+:::
 
 ## Flashing a new rootfs via serial
 
-<Alert content="We recommend using the flash web app." alert="Info" icon="svg-warning" color="yellow" />
+::: warning Info
+We recommend using the flash web app.
+:::
 
 If you wish to change the firmware via serial, we recommend using the web app: [Web Serial Flash](/ont-huawei-ma5671a-ymodem)
 
-<Alert content="Use this procedure only if you are unable to do the procedure from SSH" alert="Warning" icon="svg-warning" color="red" />
+::: danger Warning
+Use this procedure only if you are unable to do the procedure from SSH
+:::
 
-1. Connecting the molex-serial adapter and the serial to the computer as indicated in [Root Procedure](/ont-huawei-ma5671a-web-root)
+1. Connecting the molex-serial adapter and the serial to the computer as indicated in [Root Procedure](/ont-huawei-ma5671a-root-web)
 2. Open Tera Term (or any other programme capable of connecting to the serial terminal)
 3. Connect the SFP stick to the SFP molex, from the terminal you will have 5 seconds to lock the bootloader by doing a simple CTRL+C. Now upload the firmware image of the new rootfs partition to the stick with the command
 ```
@@ -239,8 +247,7 @@ At this point it will appear:
 
 <ImageFigure file="ma5671a-root-13.jpg" alt="shell requiring `mtd2` upload" caption="shell requiring `mtd2` upload" />
 
-{:style="counter-reset:none"}
-1. From the teratem menu do `FILE` → `TRANSFER` → `YMODEM` → `SEND` → `[mtd2.bin]`.
+4. From the teratem menu do `FILE` → `TRANSFER` → `YMODEM` → `SEND` → `[mtd2.bin]`.
 It will start uploading the file at a speed of about 3-4 KBps. Now you will have to wait more than half an hour for the upload to complete.
 
 1. Once finished, the image loaded on the stick must also be saved to the corresponding system partition (the first of the 2) with the commands
@@ -251,7 +258,9 @@ FALCON => saveenv
 FALCON => sf probe 0 && sf erase C0000 740000 && sf write 80800000 C0000 740000 && reset
 ```
 
-<Alert content="If you need to flash to image 2, you must use the following command `FALCON => sf probe 0 && sf erase 800000 800000 && sf write 80800000 800000 800000 && reset`" alert="Warning" icon="svg-warning" color="red" />
+::: danger Warning
+If you need to flash to image 2, you must use the following command `FALCON => sf probe 0 && sf erase 800000 800000 && sf write 80800000 800000 800000 && reset`
+:::
 
 # EEPROM (I2C slave simulated EEPROM)
 The Huawei MA5671A does not have a physical EEPROM, the Falcon SOC emulates an EEPROM by exposing it on the I2C interface as required by the SFF-8472 specification.
@@ -262,6 +271,13 @@ The Huawei MA5671A stores the content of the emulated EEPROM in U-Boot env varia
 
 - `EEPROM0 (A0h)` stored in U-Boot env variable `sfp_a0_low_128`
 - `EEPROM1 (A2h)` stored in U-Boot env variable `sfp_a2_info`
+
+## EEPROM Editing Tool for MA5671A
+
+A simple tool to help edit the EEPROM of the **Huawei MA5671A**, created by **MrFreeZZ**: https://github.com/hack-gpon/MA5671A-Eeprom/releases
+
+✅ Automatically calculates the checksum, making the process easier and safer.
+
 
 ## EEPROM0 layout
 
@@ -383,7 +399,9 @@ The Huawei MA5671A stores the content of the emulated EEPROM in U-Boot env varia
 | 532-535 | 4    | GPON Vendor ID                    |                                         | GPON Vendor ID (ME 256 and more), may not work in some firmware   |
 | 536-639 | 104  | Reserved                          |                                         | Reserved                                                          |
 
-<Alert content="For more information, see the SFF-8472 Rev 10.2 specification." alert="Info" icon="svg-info" color="blue" />
+::: info Info
+For more information, see the SFF-8472 Rev 10.2 specification.
+:::
 
 
 # Miscellaneous Links

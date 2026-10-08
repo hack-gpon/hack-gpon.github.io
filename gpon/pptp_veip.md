@@ -1,18 +1,8 @@
 ---
-title: GPON PPTP and VEIP
+title: GPON PPTP and VEIP 
+has_children: false
+nav_order: 3
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 ONTs are the terminating elements of every PON network and play an essential role in the PON architecture. The ONT converts the optical media into an electrical interface and takes care of authenticating, monitoring, processing as well as managing all matters related to the GPON tree. Often these devices are installed directly in users' homes[^hsgp_hg_sfu].
 

@@ -1,18 +1,8 @@
 ---
-title: Huawei HG8010H
+title: Huawei HG8010H 
+has_children: false
+parent: Huawei
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -60,13 +50,14 @@ title: Huawei HG8010H
 - V5R020C10S024 (V500R020C10SPC024B001)
 - V5R020C10S025 (V500R020C10SPC025B002)
 - V5R020C10S115 (V500R020C10SPC115B270)
+- V3R017C10S265
 
 ## List of partitions
 
 0x000000000000-0x000000100000 : "bootcode" (1MiB)  
 0x000000100000-0x000008000000 : "ubilayer_v5" (127MiB)  
 
-<!-- TODO: Include relative file: ont-huawei-useful-command.md -->
+<!--@partial: ./_partials/ont-huawei-useful-command.md-->
 
 # Miscellaneous Links
 

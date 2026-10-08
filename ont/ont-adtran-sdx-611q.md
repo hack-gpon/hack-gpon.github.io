@@ -1,18 +1,8 @@
 ---
 title: Adtran SDX 611Q
+has_children: false
+parent: Adtran
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 

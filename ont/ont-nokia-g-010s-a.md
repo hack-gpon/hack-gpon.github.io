@@ -1,18 +1,8 @@
 ---
 title: Nokia G-010S-A
+has_children: false
+parent: Nokia
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -61,9 +51,13 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 | RX                    | pin #6                     |
 | GND                   | pin #14 and #10            |
 
-<Alert content="Try PIN 10 or other GND PINs if the connection doesn't work by using PIN 14." alert="Note" icon="svg-warning" color="yellow" />
+::: warning Note
+Try PIN 10 or other GND PINs if the connection doesn't work by using PIN 14.
+:::
 
-<Alert content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note" icon="svg-warning" color="yellow" />
+::: warning Note
+Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work.
+:::
 
 ## List of partitions
 
@@ -215,7 +209,9 @@ Where `CleiCode` is the prefix and `Mnemonic` the postfix.
 
 ## Transferring files to the stick
 
-<Alert content="If you use a modern OpenSSH version (e.g. >= 8.8) you will have to use the legacy protocol and enable some deprecated algorithms: scp `-oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss [...]`" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+If you use a modern OpenSSH version (e.g. >= 8.8) you will have to use the legacy protocol and enable some deprecated algorithms: scp `-oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss [...]`
+:::
 
 ```sh
 # scp rootfs.bin root@192.168.1.10:/tmp/
@@ -233,7 +229,9 @@ cat /proc/mtd
 cp /dev/mtdX /tmp
 ```
 
-<Alert content="If you use a modern OpenSSH version (e.g. >= 8.8) you will have to use the legacy protocol and enable some deprecated algorithms: `scp -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss [...]`" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+If you use a modern OpenSSH version (e.g. >= 8.8) you will have to use the legacy protocol and enable some deprecated algorithms: `scp -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss [...]`
+:::
 
 And in the computer shell:
 ```sh
@@ -260,9 +258,13 @@ ifconfig eth0:1 192.168.1.10 netmask 255.255.255.0
 
 ## Flashing a new rootfs via SSH
 
-<Alert content="Only the inactive image can be flashed" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+Only the inactive image can be flashed
+:::
 
-<Alert content="It is recommended to enable serial access via TTL" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+It is recommended to enable serial access via TTL
+:::
 
 The following commands are used to flash a new rootfs to image1 and then boot to it:
 ```sh

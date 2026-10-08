@@ -1,18 +1,7 @@
 ---
-title: FiberEthernet Media Converter 2.5
+title: FiberEthernet Media Converter 2.5 
+has_children: false
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 

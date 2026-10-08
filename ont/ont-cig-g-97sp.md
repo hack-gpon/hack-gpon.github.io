@@ -1,18 +1,8 @@
 ---
 title: CIG G-97SP
+has_children: false
+parent: CIG
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 

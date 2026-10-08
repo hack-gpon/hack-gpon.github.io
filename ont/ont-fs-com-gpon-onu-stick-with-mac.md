@@ -1,18 +1,9 @@
 ---
 title: FS.com GPON ONU Stick with MAC (GPON-ONU-34-20BI)
+has_children: true
+alias: FS.com GPON-SFP-ONT-MAC-I (SKU 133619), SourcePhotonics SPS-34-24T-HP-TDFO
+parent: FS.com
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -46,17 +37,21 @@ title: FS.com GPON ONU Stick with MAC (GPON-ONU-34-20BI)
 
 ## Possible clones
 
+- FS.com GPON-SFP-ONT-MAC-I (SKU 133619)
 - SourcePhotonics SPS-34-24T-HP-TDFO
+
+::: warning Warning
+The GPON-SFP-ONT-MAC-I is sold as multiple SKUs; the 133619 SKU is identical to the GPON-ONU-34-20BI, but other SKUs are not the same hardware. The 133619 SKU is now no longer sold.
+:::
 
 ## Firmware is interchangeable with:
 
 - [Huawei MA5671A](/ont-huawei-ma5671a)
 - [Nokia G-010S-P](/ont-nokia-g-010s-p)
 - [Hilink HL23446](/ont-hilink-hl23446)
-- {:.text-red-200 } Dasan H650SFP 
-- {:.text-red-200 } DpOptics D23446  
-- {:.text-red-200 } Photonics SPS-34-24T-HP-TDFO
-
+- Dasan H650SFP {.text-red-200}
+- DpOptics D23446 {.text-red-200}
+- Photonics SPS-34-24T-HP-TDFO {.text-red-200}
 ## Serial
 
 The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the SFP connector.
@@ -69,7 +64,9 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 | GND                   | pin #14                    |
 
 
-<Alert content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note" icon="svg-warning" color="yellow" />
+::: warning Note
+Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work.
+:::
 
 
 ## List of software versions
@@ -121,18 +118,22 @@ For more info [XPONos partition layout](https://github.com/XPONos/linux_lantiq-f
 | mtd5 | 00410000 | 00010000  | "rootfs_data" |
 
 ## List of firmwares and files
-- [6BA1896SPLQA13 MTD0/U-Boot](https://mega.nz/file/wptjyYiS#Xj3cijX2bN0FexsZr1Wn7iRG0Wy4Z8vX0NyNBd1kBWo) md5hash: 992b31a67c644aa68cf7f9caf956b1f9
-- [6BA1896SPLQA13 MTD2/Image0](https://mega.nz/file/1kUlUbgQ#ANS9qH6wCggYshsQ3STD6gxmR_3TL-5MXfdCl5s50Nk) md5hash: 5d46a9acc3c5ba8710887aa32b82aeb4
-- [6BA1896SPLQA42 MTD0/U-Boot](https://mega.nz/file/FkswHbgL#s7-vaH65EPQ2O5vKeD3bU1_RPwzaKPOJdrCWvPQqDvc) md5hash: 992b31a67c644aa68cf7f9caf956b1f9
-- [6BA1896SPLQA42 MTD2/Image0](https://mega.nz/file/AgshDICC#md1vLN14JBF3iaNoZBqQH_zwALHmEaOk3_rDm1FfOic) md5hash: 04533554bb0c8b997697fbc048159002
+- [6BA1896SPLQA13 MTD0/U-Boot](https://mega.nz/file/wptjyYiS#Xj3cijX2bN0FexsZr1Wn7iRG0Wy4Z8vX0NyNBd1kBWo){.btn} md5hash: 992b31a67c644aa68cf7f9caf956b1f9
+- [6BA1896SPLQA13 MTD2/Image0](https://mega.nz/file/1kUlUbgQ#ANS9qH6wCggYshsQ3STD6gxmR_3TL-5MXfdCl5s50Nk){.btn} md5hash: 5d46a9acc3c5ba8710887aa32b82aeb4
+- [6BA1896SPLQA42 MTD0/U-Boot](https://mega.nz/file/FkswHbgL#s7-vaH65EPQ2O5vKeD3bU1_RPwzaKPOJdrCWvPQqDvc){.btn} md5hash: 992b31a67c644aa68cf7f9caf956b1f9
+- [6BA1896SPLQA42 MTD2/Image0](https://mega.nz/file/AgshDICC#md1vLN14JBF3iaNoZBqQH_zwALHmEaOk3_rDm1FfOic){.btn} md5hash: 04533554bb0c8b997697fbc048159002
 
 # Unlock the device
 
-<Alert content="The following commands are to be used on version 6BA1896SPLQA42, to get the commands for version 6BA1896SPLQA41 please check the following page: [Carlito Firmware](/ont-huawei-ma5671a-carlito)." alert="Note" icon="svg-info" color="blu" />
+::: info Note
+The following commands are to be used on version 6BA1896SPLQA42, to get the commands for version 6BA1896SPLQA41 please check the following page: [Carlito Firmware](/ont-huawei-ma5671a-carlito).
+:::
 
 
 ## Bootloader unlock from shell
-<Alert content="It is strongly recommended that you unlock the bootloader before making any major changes to the firmware." alert="Warning" icon="svg-warning" color="yellow" />
+::: warning Warning
+It is strongly recommended that you unlock the bootloader before making any major changes to the firmware.
+:::
 ```sh
 fw_setenv bootdelay 5
 fw_setenv asc0 0
@@ -141,7 +142,9 @@ fw_setenv preboot "gpio set 3;gpio input 2;gpio input 105;gpio input 106;gpio in
 
 ## Emergency bootloader unlock via TTL serial
 
-<Alert content="This is not necessary if you have already unlocked the bootloader from the shell as specified above." alert="Warning" icon="svg-warning" color="yellow" />
+::: warning Warning
+This is not necessary if you have already unlocked the bootloader from the shell as specified above.
+:::
 
 If for some reason you are in the situation where you do not have a bootable firmware on your SFP stick you can do an emergency unlock via TTL serial.
 
@@ -153,13 +156,7 @@ The electrical connections are the same as those of the Huawei MA5671A; see the 
 
 When you are ready with everything plugged in you need to press the button below. A window will open to execute the emergency unlock.
 
-{: .text-center .fs-6 }
-<button id="start-button" class="btn btn-blue" data-jtd-toggle="modal" data-jtd-target="#root-modal" disabled>Start emergency unlock!</button>
-<div id="browser-error" style="display:none"><Alert content="This browser is not compatible with the emergency unlock procedure. See the <a href='https://developer.mozilla.org/en-US/docs/Web/API/Web_Serial_API#browser_compatibility'>Browser compatibility</a>" alert="Note" icon="svg-warning" color="red" /></div>
-{% include root_lantiq.html modelName="FS GPON ONU Stick" unlockHuaweiShell=false %}
-<noscript>
-<Alert content="Your browser does not support JavaScript!" alert="Note" icon="svg-warning" color="red" />
-</noscript>
+<RootLantiq model-name="FS GPON ONU Stick" label="Start emergency unlock!" procedure="emergency unlock" />
 
 # GPON ONU status
 
@@ -244,7 +241,9 @@ cat /rom/etc/mibs/data_1g_8q.ini > /etc/mibs/data_1g_8q.ini
 ```
 
 ## Setting OMCI software version (ME 7)
-<Alert content="The patch below is only compatible with the firmware version `6BA1896SPLQA42`" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+The patch below is only compatible with the firmware version `6BA1896SPLQA42`
+:::
 
 The image version normally can't be changed because it is hard-coded into the `/opt/lantiq/bin/omcid` binary, 
 so the binary has to be modified with the following hex patch which removes the hardcoded version.
@@ -258,7 +257,9 @@ so the binary has to be modified with the following hex patch which removes the 
 
 ```
 
-<Alert content="Proceed only if your `md5sum /opt/lantiq/bin/omcid` has the correct checksum `7e97163e24c9cb39439589c65b438168`" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+Proceed only if your `md5sum /opt/lantiq/bin/omcid` has the correct checksum `7e97163e24c9cb39439589c65b438168`
+:::
 
 This is the patch, encoded in base64
 ```
@@ -271,7 +272,9 @@ Save it on your computer (not on the stick) as `omcid_patch.base64`, then run:
 base64 -d omcid_patch.base64 > omcid.bspatch
 bspatch <your_original_omcid> omcid omcid.bspatch
 ```
-<Alert content="If you don't have bspatch installed, most distributions include it in the bsdiff package" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+If you don't have bspatch installed, most distributions include it in the bsdiff package
+:::
 
 After patching the resulting patched `omcid` should have an md5 checksum of `525139425009c4138e92766645dad7d0`.
 If that is also correct, continue by making a backup copy of your original `omcid` on the stick.
@@ -296,13 +299,19 @@ fw_setenv image1_version YOUR_IMAGE1_VERSION
 ```
 
 Now the stick can be rebooted.
-<Alert content="Be aware that sometimes `omcid` can rewrite the two variables when run in its non-patched state. After reboot, double check the set values are still correct." alert="Info" icon="svg-info" color="blue" />
+::: info Info
+Be aware that sometimes `omcid` can rewrite the two variables when run in its non-patched state. After reboot, double check the set values are still correct.
+:::
 
 # Advanced settings
 
 ## Setting `data_1g_8q_us1280_ds512.ini` OMCI MIB file for 2500 Mbps profiles
-<Alert content="The patch provided below is only compatible with the firmware version `6BA1896SPLQA42`" alert="Info" icon="svg-info" color="blue" />
-<Alert content="If you need to set the ONU version remember that you will have to do it using the MIB file `/etc/mibs/data_1g_8q_us1280_ds512.ini` instead of `/etc/mibs/data_1g_8q.ini`" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+The patch provided below is only compatible with the firmware version `6BA1896SPLQA42`
+:::
+::: info Info
+If you need to set the ONU version remember that you will have to do it using the MIB file `/etc/mibs/data_1g_8q_us1280_ds512.ini` instead of `/etc/mibs/data_1g_8q.ini`
+:::
 
 The MIB file `data_1g_8q_us1280_ds512.ini` is very useful to avoid performance problems in situations where 2500 Mbps speed profiles are used. To enable it, run this command:
 ```sh
@@ -310,7 +319,9 @@ fw_setenv mib_file data_1g_8q_us1280_ds512.ini
 ```
 
 ## Setting custom OMCI MIB file
-<Alert content="If you need to set the ONU version, remember that you will have to do it using your custom MIB file instead of `/etc/mibs/data_1g_8q.ini`" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+If you need to set the ONU version, remember that you will have to do it using your custom MIB file instead of `/etc/mibs/data_1g_8q.ini`
+:::
 
 Copy the MIB file to /etc/mibs, then run this command:
 ```sh
@@ -337,7 +348,9 @@ reboot
 ```
 
 ## Disable RX_LOS status
-<Alert content="The patch provided below is only compatible with the firmware version `6BA1896SPLQA42`" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+The patch provided below is only compatible with the firmware version `6BA1896SPLQA42`
+:::
 
 Some switches/routers (e.g. Mikrotik) do not allow access to the magament interface without the fiber being connected because the SFP reports RX_LOS status It is possible to fix this by modifying the `mod_optic.ko` driver to spoof non RX_LOS status by setting PIN 8 (RX_LOS) to be always low.
 
@@ -349,7 +362,9 @@ This is the change to be made, in hex format:
 > 00013740: 2404 0003 2405 0000 0c00 0000 ac43 0980  $...$........C..
 ```
 
-<Alert content="Proceed only if your `md5sum /lib/modules/3.10.49/mod_optic.ko` has the correct checksum `7c718c3410c4120fe98fa7a9a5c6c407`" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+Proceed only if your `md5sum /lib/modules/3.10.49/mod_optic.ko` has the correct checksum `7c718c3410c4120fe98fa7a9a5c6c407`
+:::
 
 This is the patch, encoded in base64:
 ```
@@ -363,7 +378,9 @@ Save it on your computer (not on the stick) as `mod_optic.base64`, then run:
 base64 -d mod_optic.base64 > mod_optic.bspatch
 bspatch <your_original_mod_optic.ko> mod_optic.ko mod_optic.bspatch
 ```
-<Alert content="If you don't have bspatch installed, most distributions include it in the bsdiff package" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+If you don't have bspatch installed, most distributions include it in the bsdiff package
+:::
 
 After patching the resulting `mod_optic.ko` should have an md5 checksum of `e14a5a70b023873853afe920870f076e`.
 If that is also correct, continue by making a backup copy of your original `mod_optic.ko` on the stick.
@@ -537,14 +554,17 @@ The FS stick stores the content of the emulated EEPROM in U-Boot env variables t
 | 532-535 | 4    | GPON Vendor ID                    |                                                                                             | GPON Vendor ID (ME 256 and more), may not work in some firmware   |
 | 536-639 | 104  | Reserved                          |                                                                                             | Reserved                                                          |
 
-<Alert content="For more information, see the SFF-8472 Rev 11.0 specification." alert="Info" icon="svg-info" color="blue" />
+::: info Info
+For more information, see the SFF-8472 Rev 11.0 specification.
+:::
 
 # Miscellaneous Links
 
-- [FS.com](https://www.fs.com/it/products/133619.html)
+- [FS.com (no longer available)](https://www.fs.com/it/products/133619.html)
 - [General setting of lantiq](https://forum.fibra.click/d/23881-ma5671a-e-vodafone-25-gbps/64)
 - [Usage GPON module SFP in Spain](https://forum.mikrotik.com/viewtopic.php?t=116364&start=300)
 - [SourcePhotonics SPS-34-24T-HP-TDFO Datasheet](https://www.sourcephotonics.com/wp-content/uploads/2017/08/DS-8085-02_SPS-34-24T-HP-TDFO.pdf)
+- [FS.com GPON-SFP-ONT-MAC-I SKU 133619 Datasheet](https://resource.fs.com/mall/resource/gpon-sfp-ont-mac-i-datasheet.pdf)
 - [FS.com GPON-ONU-34-20BI Configuration Guide](https://resource.fs.com/mall/doc/20230831180515egrzs6.pdf)
 
 ---

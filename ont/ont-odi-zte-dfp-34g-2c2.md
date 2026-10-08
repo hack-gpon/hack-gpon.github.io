@@ -1,19 +1,10 @@
 ---
 title: ODI ZTE DFP-34G-2C2
 description: Old model 2020 - v04
+has_children: false
+parent: ODI
+alias: Usourcetech UGP-N1S
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 

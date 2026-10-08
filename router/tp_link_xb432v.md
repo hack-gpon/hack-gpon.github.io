@@ -1,18 +1,8 @@
 ---
-title: TP-Link XB432V
+title: TP-Link XB432V 
+has_children: false
+parent: TP-Link
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 

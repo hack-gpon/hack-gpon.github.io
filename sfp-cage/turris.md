@@ -1,18 +1,7 @@
 ---
 title: Turris
+has_children: false
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 

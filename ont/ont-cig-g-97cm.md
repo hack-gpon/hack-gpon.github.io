@@ -1,18 +1,8 @@
 ---
 title: CIG G-97CM
+has_children: false
+parent: CIG
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 

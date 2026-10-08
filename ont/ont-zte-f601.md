@@ -1,18 +1,8 @@
 ---
-title: ZTE F601
+title: ZTE F601 
+has_children: false
+parent: ZTE
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -88,12 +78,18 @@ syn_version
 ```
 
 # Use
-<Alert content="Commands have been tested on V6/V7 HW rev. on TIM and OpenFiber firmwares" alert="Note" icon="svg-info" color="blue" />
+::: info Note
+Commands have been tested on V6/V7 HW rev. on TIM and OpenFiber firmwares
+:::
 
 ## Enable Telnet
-<Alert content="This is an external script ([ZTE Telnet enabler](https://github.com/douniwan5788/zte_modem_tools)), use at your own risk! Credentials don't survive at reboot!" alert="Note" icon="svg-info" color="blue" />
+::: info Note
+This is an external script ([ZTE Telnet enabler](https://github.com/douniwan5788/zte_modem_tools)), use at your own risk! Credentials don't survive at reboot!
+:::
 
-<Alert content="For italian users, the script above only works on versions V6.0.10N40 (TIM) and V6.0.10P6N7 (OpenFiber)" alert="Note" icon="svg-info" color="blue" />
+::: info Note
+For italian users, the script above only works on versions V6.0.10N40 (TIM) and V6.0.10P6N7 (OpenFiber)
+:::
 
 ```sh
 python3 zte_factroymode.py --user admin --pass admin --ip 192.168.1.1 --port 80 telnet open
@@ -204,7 +200,9 @@ MIB INFO:
 
 ## Setting ONU GPON Serial Number
 
-<Alert content="Both S/N and VID have to be changed. 2176 is for the VID (first 4 letters of the S/N) and 2177 is for the last 8 digits of the S/N" alert="Note" icon="svg-info" color="blue" />
+::: info Note
+Both S/N and VID have to be changed. 2176 is for the VID (first 4 letters of the S/N) and 2177 is for the last 8 digits of the S/N
+:::
 ```sh
 setmac 1 2176 ZTEG
 setmac 1 2177 AABBCCDD
@@ -212,7 +210,9 @@ setmac 1 2177 AABBCCDD
 
 ## Setting ONU GPON PLOAM password
 
-<Alert content="The PLOAM password is stored in the ASCII format." alert="Note" icon="svg-info" color="blue" />
+::: info Note
+The PLOAM password is stored in the ASCII format.
+:::
 This can be done easily via the web UI. To do it via the shell use:
 ```sh
 setmac 1 2181 1234567890
@@ -221,9 +221,15 @@ setmac 1 2178 1234567890
 
 ## Changing ONU HW/SW Version and gaining persistent telnet access 
 
-<Alert content="The only way to change HW/SWVer on this ONT is to modify the firmware, so do it at your own risk" alert="Note" icon="svg-info" color="blue" />
-<Alert content="This procedure was only tested on TIM V6.0.10N40 and OF V6.0.10P6N7 firmwares" alert="Note" icon="svg-info" color="blue" />
-<Alert content="This procedure works with `ZTE_Firmware_Mod.py` v1.0.0" alert="Note" icon="svg-info" color="blue" />
+::: info Note
+The only way to change HW/SWVer on this ONT is to modify the firmware, so do it at your own risk
+:::
+::: info Note
+This procedure was only tested on TIM V6.0.10N40 and OF V6.0.10P6N7 firmwares
+:::
+::: info Note
+This procedure works with `ZTE_Firmware_Mod.py` v1.0.0
+:::
 
 
 Needed tools:
@@ -462,7 +468,9 @@ Delete dump:
 
 ## Changing region code
 
-<Alert content="Be aware that changing the region code may break features such as PPPoE depending on your ISP" alert="Note" icon="svg-info" color="blue" />
+::: info Note
+Be aware that changing the region code may break features such as PPPoE depending on your ISP
+:::
 
 ZTE has created various region codes that load default values based on the local ISP. This configuration can be changed using this command:
 

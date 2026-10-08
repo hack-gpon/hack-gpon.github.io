@@ -1,18 +1,7 @@
 ---
-title: TP-Link
+title: TP-Link 
+has_children: false
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # Hardware Specifications

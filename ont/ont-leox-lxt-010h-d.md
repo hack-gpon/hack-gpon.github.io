@@ -1,18 +1,8 @@
 ---
 title: LEOX LXT-010H-D
+has_children: false
+parent: LEOX
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -47,7 +37,9 @@ The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be acc
 
 <ImageFigure file="ont-leox-lxt-010-h-d_ttl.jpg" alt="Leox LXT-010H-D TTL Pinout" caption="Leox LXT-010H-D TTL Pinout" />
 
-<Alert content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note" icon="svg-warning" color="yellow" />
+::: warning Note
+Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work.
+:::
 
 ## List of partitions
 
@@ -82,13 +74,15 @@ This ONT supports dual boot.
 - V3.3.2L10 (Build date: 2025-02-24 15:50:43)
 - V3.3.2L10V (Build date: 2025-02-24 14:54:15 [Veip](/pptp_veip/) firmware)
 
-<Alert content="Before proceeding with any modification, make a backup of files rtl8290b.data and europa.data from /var/config folder. These files include optical calibration of your ONT's laser, if you accidentally delete or ruin them, your ONT will be unusable" alert="Note" icon="svg-warning" color="yellow" />
+::: warning Note
+Before proceeding with any modification, make a backup of files rtl8290b.data and europa.data from /var/config folder. These files include optical calibration of your ONT's laser, if you accidentally delete or ruin them, your ONT will be unusable
+:::
 
-{% include_relative ont-luna-sdk-useful-commands.md 
-    ploam='ascii'
-    flash='/etc/scripts/flash'
-    customSwVersionAlert='This needs the `OMCI_OLT_MODE` value to be set to `21`. This will force the stick to use your own settings from the XML file, but this is a hack and causes sigsegv of `/bin/checkomci`.'
-    omciOLT21='true'
-%}
+<!--@partial: ./_partials/ont-luna-sdk-useful-commands.md
+ploam: "ascii"
+flash: "/etc/scripts/flash"
+customSwVersionAlert: "This needs the `OMCI_OLT_MODE` value to be set to `21`. This will force the stick to use your own settings from the XML file, but this is a hack and causes sigsegv of `/bin/checkomci`."
+omciOLT21: "true"
+-->
 
 

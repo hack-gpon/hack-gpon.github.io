@@ -1,18 +1,8 @@
 ---
 title: D-LINK DPN-100 Rev A2
+has_children: false
+parent: D-LINK
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -50,10 +40,14 @@ Once you access the stick via ssh you will be presented with a second tier login
 
 # GPON/OMCI settings
 
-<Alert content="All commands start from the twmanu shell." alert="Note" icon="svg-info" color="blue" />
+::: info Note
+All commands start from the twmanu shell.
+:::
 
 ## Setting ONU GPON Serial Number
-<Alert content="The S/N is stored in the ASCII format." alert="Note" icon="svg-info" color="blue" />
+::: info Note
+The S/N is stored in the ASCII format.
+:::
 
 ```sh
 manufactory
@@ -65,7 +59,9 @@ set sn ALCLf0f0f0f0
 
 ## Setting ONU GPON PLOAM password
 
-<Alert content="The PLOAM password is stored in the ASCII format." alert="Note" icon="svg-info" color="blue" />
+::: info Note
+The PLOAM password is stored in the ASCII format.
+:::
 
 This can be done easily via the web UI. If you prefer to do it via the shell use:
 ```sh

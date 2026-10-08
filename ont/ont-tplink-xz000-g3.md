@@ -1,18 +1,8 @@
 ---
 title: TP-Link XZ000-G3
+has_children: false
+parent: TP-Link
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 

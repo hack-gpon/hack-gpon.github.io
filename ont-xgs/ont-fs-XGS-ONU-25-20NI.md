@@ -1,18 +1,8 @@
 ---
 title: FS.com Generic Compatible XGSPON Stick ONU with MAC SFP+ (XGS-ONU-25-20NI)
+has_children: true
+parent: FS.com
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -67,7 +57,9 @@ By shorting these two points with solder, you can access the UART from SFP pins 
 | RX                    | pin #2                     |
 | GND                   | pin #10                    |
 
-<Alert content="USB TTL adapter may not work due to insufficient power supply. If possible, obtain 3.3V from a dedicated power supply instead of the USB TTL adapter." alert="Note" icon="svg-info" color="blue" />
+::: info Note
+USB TTL adapter may not work due to insufficient power supply. If possible, obtain 3.3V from a dedicated power supply instead of the USB TTL adapter.
+:::
 
 <ImageFigure file="XGS-ONU-25-20NI/UART_SFP.png" alt="XGS-ONU-25-20NI UART Short point" caption="XGS-ONU-25-20NI UART Short point" />
 
@@ -136,7 +128,9 @@ To configure settings using the MISC command, execute the following command:
 This stick does not have a web UI.
 To configure it, you must log in via `UART` or `telnet`.
 
-<Alert content="FS.com Stick XGS-ONU-25-20NI does not have its PON S/N on the label: the S/N field stamped on the label is FS.com's internal S/N, not the PON S/N. In order to obtain the actual PON S/N, either ask an FS.com sales representative or check the boot log from the UART!" alert="Note" icon="svg-info" color="blue" />
+::: info Note
+FS.com Stick XGS-ONU-25-20NI does not have its PON S/N on the label: the S/N field stamped on the label is FS.com's internal S/N, not the PON S/N. In order to obtain the actual PON S/N, either ask an FS.com sales representative or check the boot log from the UART!
+:::
 
 | User                     | Password (Enable Password)                                  |
 | ------------------------ | ----------------------------------------------------------- |
@@ -144,7 +138,7 @@ To configure it, you must log in via `UART` or `telnet`.
 
 Use the following form to generate login credentials:
 
-<CigPasswordXgspon />
+<CigPassword xgspon :password-len="8" />
 
 Or follow this external documentation on how to [emulate the ONT in QEMU](https://github.com/YuukiJapanTech/CA8271x), use at your own risk.
 
@@ -481,7 +475,9 @@ For example, if the desired management IP mask is `255.255.255.0`:
 # Random notes
 
 ## Bricked stick Repair
-<Alert content="This is an external file ([mtd dump](https://github.com/YuukiJapanTech/CA8271x)), so use it at your own risk!" alert="Note" icon="svg-info" color="blue" />
+::: info Note
+This is an external file ([mtd dump](https://github.com/YuukiJapanTech/CA8271x)), so use it at your own risk!
+:::
 
 If the stick is bricked, it can be repaired by accessing uboot from the UART.
 

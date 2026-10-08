@@ -1,18 +1,8 @@
 ---
 title: LEOX LXT-010S-H
+has_children: false
+parent: LEOX
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -67,11 +57,15 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 
 <ImageFigure file="ont-leox-lxt-010s-h_ttl.jpg" alt="Leox LXT-010S-H TTL Pinout" caption="Leox LXT-010S-H TTL Pinout" />
 
-<Alert content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note" icon="svg-warning" color="yellow" />
+::: warning Note
+Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work.
+:::
 
 ## List firmware version
 
-<Alert content="There is a new firmware provided by LeoLabs that fixes issues with the stick operating at 2.5GbE speeds" alert="Note" icon="svg-info" color="blue" />
+::: info Note
+There is a new firmware provided by LeoLabs that fixes issues with the stick operating at 2.5GbE speeds
+:::
 
 - V3.3.4L3
 - V3.3.4L4rc1 (Fix 2.5GbE HiSGMII)
@@ -81,14 +75,16 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 - V3.3.4L5rc1 - This version adds "auto-negotiation" capability to the stick. It always prefers 1G (to keep the stick consistently accessible). When you force the link to 2.5G (disabling auto-negotiation), it takes at least 40 seconds to establish the connection.
 - V3.3.4L5V (Build date: 2024-02-26 14:05:05 VEIP firmware)
 - V3.3.4L6 (Build date: 2024-06-27 16:43:48)
+- V3.3.4L7 (Build date: 2025-05-19 17:26:03)
 
-{% include_relative ont-luna-sdk-useful-commands.md 
-    ploam='ascii'
-    speedLan='18'
-    customSpeedLanAlert='Firmware version `V3.3.4L4rc1` or higher is required. Before editing the speed make sure your hardware supports it. If you try to use any mode not listed here, the stick will default to mode 1.'
-    flash='/etc/scripts/flash'
-    customSwVersionAlert='This needs the `OMCI_OLT_MODE` value to be set to `21`. This will force the stick to use your own settings from the XML file, but this is a hack and causes sigsegv of `/bin/checkomci`.'
-    omciOLT21='true' %}
+<!--@partial: ./_partials/ont-luna-sdk-useful-commands.md
+ploam: "ascii"
+speedLan: "18"
+customSpeedLanAlert: "Firmware version `V3.3.4L4rc1` or higher is required. Before editing the speed make sure your hardware supports it. If you try to use any mode not listed here, the stick will default to mode 1."
+flash: "/etc/scripts/flash"
+customSwVersionAlert: "This needs the `OMCI_OLT_MODE` value to be set to `21`. This will force the stick to use your own settings from the XML file, but this is a hack and causes sigsegv of `/bin/checkomci`."
+omciOLT21: "true"
+-->
 
 # Known Bugs
 

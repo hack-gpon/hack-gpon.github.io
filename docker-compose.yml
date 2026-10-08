@@ -1,25 +1,13 @@
-version: "3.3"
-
 services:
-  typescript:
-    image: node:20
-    command: sh -c "cd /mnt && npm ci && npm run build"
-    restart: on-failure
-    volumes:
-      - ./tsup.config.ts:/mnt/tsup.config.ts
-      - ./package.json:/mnt/package.json
-      - ./package-lock.json:/mnt/package-lock.json
-      - ./assets:/mnt/assets
   site:
-    image: jekyll/jekyll:latest 
-    command: jekyll serve --verbose --incremental --force_polling --config  _config.yml,_config.docker.yml
-    environment:
-      - JEKYLL_ENV=docker
+    image: node:22
+    working_dir: /srv/site
+    command: sh -c "npm ci && npm run dev -- --host 0.0.0.0"
     volumes:
-      - .:/srv/jekyll
+      - .:/srv/site
+      - node_modules:/srv/site/node_modules
     ports:
-      - 4000:4000
-    depends_on:
-      typescript:
-        condition: service_completed_successfully
-        
+      - 5173:5173
+
+volumes:
+  node_modules:

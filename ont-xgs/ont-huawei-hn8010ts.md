@@ -1,18 +1,8 @@
 ---
 title: Huawei HN8010Ts
+has_children: false
+parent: Huawei
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -49,4 +39,4 @@ title: Huawei HN8010Ts
 0x000000100000-0x000008000000 : "ubilayer_v5" (127MiB)  
 
 
-<!-- TODO: Include relative file: ont-huawei-useful-command.md -->
+<!--@partial: ./_partials/ont-huawei-useful-command.md-->

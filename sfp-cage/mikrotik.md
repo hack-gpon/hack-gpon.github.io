@@ -1,18 +1,7 @@
 ---
 title: MikroTik
+has_children: false
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 

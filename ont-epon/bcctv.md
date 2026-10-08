@@ -1,18 +1,7 @@
 ---
 title: BCCTV
+has_children: true
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # BCCTV network
 

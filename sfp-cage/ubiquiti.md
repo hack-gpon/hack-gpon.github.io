@@ -1,18 +1,8 @@
 ---
 title: Ubiquiti
+has_children: false
+alias: EdgeSwitch ES-16-XG, UniFi US-16-XG, UniFi US-XG-6POE
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 

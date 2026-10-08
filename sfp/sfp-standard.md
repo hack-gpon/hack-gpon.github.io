@@ -1,18 +1,8 @@
 ---
 title: SFP standard and ONT
+has_children: false
+nav_order: 1
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 The organisation that developed SFPs (MSA SFP) has always been very cautious about defining a hardened list of admissible signals for SFPs, their first standard only providing pinout, form-factor and dissipative capacity specifications. It is up to the manufacturer to decide which communication to use in the Tx and Rx pins[^sfpstandard]. 

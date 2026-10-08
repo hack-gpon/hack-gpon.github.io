@@ -1,18 +1,8 @@
 ---
-title: ZTE F6005
+title: ZTE F6005 
+has_children: false
+parent: ZTE
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -45,7 +35,9 @@ The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be acc
 
 <ImageFigure file="q-010g-t_ttl.jpg" alt="ZTE F6005 TTL" caption="ZTE F6005 TTL" />
 
-<Alert content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note" icon="svg-warning" color="yellow" />
+::: warning Note
+Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work.
+:::
 
 ## List of software versions
 - V6.0.10N14 (TIM)
@@ -54,9 +46,12 @@ The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be acc
 - V6.0.10P2N18 (OpenFiber)
 - V6.0.10P2N19 (OpenFiber)
 
-{% include_relative ont-nokia-use.md disableEnablePassword=true alertUsage="The following commands need to be executed on GponCLI via a terminal (serial, telnet or SSH). The models currently distributed in Italy by TIM and OpenFiber have no way to enter GponCLI via serial, only via telnet after flashing a custom firmware."  %}
+<!--@partial: ./_partials/ont-nokia-use.md
+disableEnablePassword: true
+alertUsage: "The following commands need to be executed on GponCLI via a terminal (serial, telnet or SSH). The models currently distributed in Italy by TIM and OpenFiber have no way to enter GponCLI via serial, only via telnet after flashing a custom firmware."
+-->
 
-<!-- TODO: Include relative file: ont-nokia-useful-command.md -->
+<!--@partial: ./_partials/ont-nokia-useful-command.md-->
 
 # Advanced settings
 ## Unlock serial to flash another firmware
@@ -64,7 +59,9 @@ The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be acc
 This ONT is the twin brother of [CIG G97-CP](/ont-cig-g-97cp), if you can find its bootloader (named `CIG_bu.en_V3.09.15`), you can easly repack the firmware and enable its serial port limited to bootloader. 
 You need a 3.3V SPI programmer (like a modded CH341a) to read and write back the flash.
 
-<Alert content="This was tested only on a TIM V6.0.10N20 firmware!" alert="Note" icon="svg-info" color="blue" />
+::: info Note
+This was tested only on a TIM V6.0.10N20 firmware!
+:::
 
 After getting a full dump of your ONT, here is the procedure to replace the original bootloader with CIG's to enable the serial port:
 
@@ -102,7 +99,9 @@ Configure Tera Term with the correct serial parameters (refer to **Serial** para
 9601D#
 ```
 
-<Alert content="Note that this proceedure needs to be done each time you power-cycle the ONT" alert="Note" icon="svg-info" color="blue" />
+::: info Note
+Note that this proceedure needs to be done each time you power-cycle the ONT
+:::
 
 Now with the U-Boot prompt a custom firmware that enables TELNET can be flashed. 
 Please note that if a **TIM** or **OpenFiber** base firmware is used, the TTL will be silent after kernel loading because it is disabled at kernel level.
@@ -142,7 +141,9 @@ Writing 6619136 B from 80400000 to 00200000... 100% ~ 0084ffff/6619136 B
         [Done]
 ```
 
-<Alert content="Please note that some OLTs (like TIM's Alcatel OLTs in Italy) need to have software image 0 or 1 set as active. So in this case, these commands will have to be executed twice to flash the image on both slots:" alert="Note" icon="svg-info" color="blue" />
+::: info Note
+Please note that some OLTs (like TIM's Alcatel OLTs in Italy) need to have software image 0 or 1 set as active. So in this case, these commands will have to be executed twice to flash the image on both slots:
+:::
 
 
 **ImageA**:

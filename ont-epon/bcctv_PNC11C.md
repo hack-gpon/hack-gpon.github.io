@@ -1,18 +1,8 @@
 ---
 title: BCCTV PNC11C
+has_children: false
+parent: BCCTV
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 

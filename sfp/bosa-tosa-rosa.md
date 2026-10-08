@@ -1,18 +1,8 @@
 ---
-title: BOSA, TOSA and ROSA: the conversion from optical to electrical
+title: "BOSA, TOSA and ROSA: the conversion from optical to electrical"
+has_children: false
+nav_order: 3
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 In optical-electrical conversions, special components called TOSA (Transmitter Optical Sub Assembly) and ROSA (Receiver Optical Sub Assembly) are used to convert the signal.
 They are responsible for translating the optical signal into a corresponding electrical signal and viceversa, which inputs or outputs symbols corresponding to the optical values. These values, which we refer to as unprocessed or RAW values for simplicity, are not standard signals and must be converted into standard signals[^huawei].

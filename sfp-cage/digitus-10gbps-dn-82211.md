@@ -1,18 +1,8 @@
 ---
 title: DIGITUS 10Gbps DN-82211
+has_children: false
+alias:
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 

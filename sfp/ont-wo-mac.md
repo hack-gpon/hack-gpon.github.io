@@ -1,24 +1,14 @@
 ---
 title: SFP with PON MAC and w/o PON MAC
+has_children: false
+nav_order: 2
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 PON technologies, unlike Ethernet, are not P2P but one-to-many with two device types: ONU (Optical Network Unit)/ONT (Optical Network Terminal) and OLT (Optical Line Terminal). Both devices can be manufactured using the SFP form factor[^tibit].
 
 The OLT provides an integrated access box for Passive Optical Networks. OLTs are typically chassis with one or more line cards inside, and on each line card there is one or more PON transceiver, usually in the SFP form factor. Each line card is connected to a secondary switch that provides line card aggregation to the Ethernet uplinks. OLTs are often a mixture of Layer 2 and Layer 3 switching with traffic shaping on a per-customer, per-service basis[^tibit].
 
-The communication within the SFP PON transceiver is neither MII nor Ethernet, outside [SFP standards](/sfp-standard.md), but rather it is an *equivalent electrical symbols of optical transmission* (which is simply the input/output of the [BOSA](/bosa-tosa-rosa.md)) that for simplicity's sake we call **PON RAW communication** (also referred to as SFP w/o PON MAC). All the PON management part is left to the line card itself. Each equivalent electrical symbol of optical transmission is a separate dialect, distinct from other dialects. Furthermore, as one can easily guess, this communication is not standard and is not within the signalling standards ([^sfprate],[^sfprate2],[^sfpplusstandard]) but it is compliant with some portions of the MSA [^sfpstandard],[^sfpplusstandard],[^sfpplusmi]. This requires extreme compatibility between ONT and transceiver. This design choice is made for several reasons:
+The communication within the SFP PON transceiver is neither MII nor Ethernet, outside [SFP standards](/sfp-standard), but rather it is an *equivalent electrical symbols of optical transmission* (which is simply the input/output of the [BOSA](/bosa-tosa-rosa)) that for simplicity's sake we call **PON RAW communication** (also referred to as SFP w/o PON MAC). All the PON management part is left to the line card itself. Each equivalent electrical symbol of optical transmission is a separate dialect, distinct from other dialects. Furthermore, as one can easily guess, this communication is not standard and is not within the signalling standards ([^sfprate],[^sfprate2],[^sfpplusstandard]) but it is compliant with some portions of the MSA [^sfpstandard],[^sfpplusstandard],[^sfpplusmi]. This requires extreme compatibility between ONT and transceiver. This design choice is made for several reasons:
 - *size*: the size of an OLT w/o PON MAC is very similar to that of an MII or Ethernet transceiver, and the size of an OLT with the integrated PON MAC far exceeds that of the standard SFP form factor;
 - *dissipative heating capacity*: the dissipative heating capacity of an OLT with PON MAC is higher than a normal transceiver, such as a 1 or 10 Gbps Ethernet link;
 - *duplication*: there is a double `MAC` → `MII` conversion (`MII` → `MAC` → `PHY` → `MAC` → `OLT CPU`);

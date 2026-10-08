@@ -1,18 +1,9 @@
 ---
 title: Vantiva AFM0003 (formerly Technicolor AFM0003)
+has_children: false
+parent: Vantiva (formerly Technicolor)
+alias: HiSense LTE3415-SH+
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -46,7 +37,9 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 
 <ImageFigure file="ont-leox-lxt-010s-h_ttl.jpg" alt="Vantiva (formerly Technicolor) AFM0003 TTL Pinout" caption="Vantiva (formerly Technicolor) AFM0003 TTL Pinout" />
 
-<Alert content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note" icon="svg-warning" color="yellow" />
+::: warning Note
+Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work.
+:::
 
 # Hardware Revisions
 
@@ -78,14 +71,14 @@ This stick supports dual boot.
 
 `k0` and `r0` respectively contain kernel and firmware of the first image, while `k1` and `r1` contain kernel and firmware of the second one.
 
-{% include_relative ont-luna-sdk-useful-commands.md
-    flash='/etc/scripts/flash'
-    ploam='ascii'
-    speedLan='123456'
-    customSpeedLanAlert='The default firmware does not allow modification of the `LAN_SDS_MODE` parameter. Using modded firmware is needed. Before editing the sync speed make sure your hardware supports it.'
-    lastgoodHs=true
-    flashSwVersion=true
-%}
+<!--@partial: ./_partials/ont-luna-sdk-useful-commands.md
+flash: "/etc/scripts/flash"
+ploam: "ascii"
+speedLan: "123456"
+customSpeedLanAlert: "The default firmware does not allow modification of the `LAN_SDS_MODE` parameter. Using modded firmware is needed. Before editing the sync speed make sure your hardware supports it."
+lastgoodHs: true
+flashSwVersion: true
+-->
 
 ## Enabling the Web UI
 ```sh
@@ -108,7 +101,9 @@ tftp> q
 ```
 
 ## Extracting and repacking the rootfs
-<Alert content="Make sure you run both commands as root, otherwise you might get a damaged rootfs image" alert="Warning" icon="svg-warning" color="red" />
+::: danger Warning
+Make sure you run both commands as root, otherwise you might get a damaged rootfs image
+:::
 
 ```sh
 # unsquashfs mtd5.bin
@@ -116,7 +111,9 @@ tftp> q
 ```
 ## Flashing a new rootfs
 
-<Alert content="Only the inactive image can be flashed, change sw_versionX and sw_commit X based on the bank you have flashed" alert="Info" icon="svg-info" color="blue" />
+::: info Info
+Only the inactive image can be flashed, change sw_versionX and sw_commit X based on the bank you have flashed
+:::
 
 Flash mtd4/5 if you are on image1, mtd6/7 if you are on image0.
 

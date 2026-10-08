@@ -1,18 +1,8 @@
 ---
 title: Huawei Rooted Firmware for Huawei MA5671A
+has_children: false
+parent: Huawei MA5671A
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Usage
 
@@ -20,7 +10,9 @@ title: Huawei Rooted Firmware for Huawei MA5671A
 
 This firmware version offers a minishell in addition to the normal sh shell. Commands offered by minishell are as follows:
 
-<SerialDump title="Huawei MA5671A minishell" file="ma5671a_minishell.txt" />
+::: details Huawei MA5671A minishell
+<<< ./serial_dump/ma5671a_minishell.txt
+:::
 
 ## Root
 
@@ -42,29 +34,27 @@ Where `MIB_IDX` is the MIB ID and `ME_IN` is the ME instance number
 
 # GPON/OMCI settings
 
-<Alert content="In this firmware, unlike the other ones, all data must be modified in a base64-encoded file. To simplify this, you can use the following web application." alert="Info" icon="svg-info" color="blue" />
+::: info Info
+In this firmware, unlike the other ones, all data must be modified in a base64-encoded file. To simplify this, you can use the following web application.
+:::
 
 ## Web procedure
 
 
 1. Get `fw_printenv sfp_a2_info` and paste into the form:
 
-<div id="app">
-    <vue-lantiq-eeprom type='eeprom-rooted-edit'></vue-lantiq-eeprom>
-</div>
-<script src="https://unpkg.com/vue@latest"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue3-sfc-loader"></script>
-<script src="/assets/js/vue-eeprom.js"></script>
+<LantiqEeprom type="eeprom-rooted-edit" />
 
-<Alert content="Executing these commands requires familiarity with `vim`. If you are not in any way familiar with `vim`, follow these commands precisely." alert="Danger" icon="svg-warning" color="red" />
+::: danger Danger
+Executing these commands requires familiarity with `vim`. If you are not in any way familiar with `vim`, follow these commands precisely.
+:::
 
-{:style="counter-reset:none"}
-1. Copy the script's output to the clipboard 
-1. Run the comman `vim /tmp/sfp_a2.txt` in the stick
-1. Press the right mouse button in the terminal or `CTRL`+`V`
-1. Press `ESC` command from keyboard
-1. Type `:wq`
-1. Run:
+2. Copy the script's output to the clipboard 
+3. Run the comman `vim /tmp/sfp_a2.txt` in the stick
+4. Press the right mouse button in the terminal or `CTRL`+`V`
+5. Press `ESC` command from keyboard
+6. Type `:wq`
+7. Run:
 
 
 ```shell

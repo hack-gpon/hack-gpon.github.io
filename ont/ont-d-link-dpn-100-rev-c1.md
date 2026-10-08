@@ -1,18 +1,8 @@
 ---
 title: D-LINK DPN-100 Rev C1
+has_children: false
+parent: D-LINK
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -51,7 +41,7 @@ title: D-LINK DPN-100 Rev C1
 | mtd3 | 00700000 | 00010000  | "ImageB" |
 
 
-<!-- TODO: Include relative file: ont-nokia-useful-command.md -->
+<!--@partial: ./_partials/ont-nokia-useful-command.md-->
 
 # Miscellaneous Links
 

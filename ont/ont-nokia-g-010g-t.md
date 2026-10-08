@@ -1,18 +1,9 @@
 ---
 title: Nokia G-010G-T
+has_children: false
+parent: Nokia
+alias: CIG G-97CP/G-97CU
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -82,11 +73,15 @@ The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be acc
 
 <ImageFigure file="q-010g-t_ttl.jpg" alt="Nokia G-010G-T TTL" caption="Nokia G-010G-T TTL" />
 
-<Alert content="Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work." alert="Note" icon="svg-warning" color="yellow" />
+::: warning Note
+Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work.
+:::
 
-{% include_relative ont-nokia-use.md username="ONTUSER" %}
+<!--@partial: ./_partials/ont-nokia-use.md
+username: "ONTUSER"
+-->
 
-<!-- TODO: Include relative file: ont-nokia-useful-command.md -->
+<!--@partial: ./_partials/ont-nokia-useful-command.md-->
 
 ## Notes for Openreach ONT
 

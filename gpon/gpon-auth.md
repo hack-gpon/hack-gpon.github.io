@@ -1,20 +1,10 @@
 ---
 title: GPON Auth (ONU Online Status)
+has_children: false
+nav_order: 3
 ---
 
-
-
-
-
-
-
-
-
-
-
-
-
-The information on this page is taken from the GPON standard and information from the major vendors of GPON equipment, each individual item containing a verifiable citation in the standard. Feel free to cite this page as: `{{ $frontmatter.title }}, Hack GPON. Available at: https://hack-gpon.org{{ $page.filePath }}`.
+The information on this page is taken from the GPON standard and information from the major vendors of GPON equipment, each individual item containing a verifiable citation in the standard. Feel free to cite this page as: <CiteAs />.
 
 # ONU activation state: `Ox`[^huawei],[^standardgpon]
 The process for an unconfigured ONU to go online involves five states:

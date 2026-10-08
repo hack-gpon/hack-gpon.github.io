@@ -1,18 +1,9 @@
 ---
 title: Nokia G-010S-Q
+has_children: false
+parent: Nokia
+alias: CIG G-97S
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -39,7 +30,7 @@ title: Nokia G-010S-Q
 <ImageFigure file="g-010s-q-teardown-1.jpg" alt="Nokia G-010S-Q Teardown Up" caption="Nokia G-010S-Q Teardown Up" />
 <ImageFigure file="g-010s-q-teardown-2.jpg" alt="Nokia G-010S-Q Teardown Down" caption="Nokia G-010S-Q Teardown Down" />
 
-<!-- TODO: Include relative file: ont-nokia-useful-command.md -->
+<!--@partial: ./_partials/ont-nokia-useful-command.md-->
 
 # Miscellaneous Links
 

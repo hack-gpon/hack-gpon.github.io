@@ -1,18 +1,8 @@
 ---
 title: Free/Iliad P-MDONU4B (pro)
+has_children: false
+parent: Free/Iliad
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 

@@ -1,18 +1,8 @@
 ---
 title: UFiber UF-Instant
+has_children: false
+parent: UFiber
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -35,7 +25,9 @@ title: UFiber UF-Instant
 
 ## Firmware is interchangeable with:
 
-<Alert content="The UFiber UF-Instant can be used as universal GPON stick with V2801F rootfs, but only with stock UF kernel (4.3.1/4.4.2): needed for Laser controller." alert="Info" icon="svg-info" color="blue" />
+::: info Info
+The UFiber UF-Instant can be used as universal GPON stick with V2801F rootfs, but only with stock UF kernel (4.3.1/4.4.2): needed for Laser controller.
+:::
 
 
 - [VSOL V2801F](/ont-vsol-v2801f)

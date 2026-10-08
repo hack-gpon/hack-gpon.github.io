@@ -1,18 +1,8 @@
 ---
 title: Zyxel PM7300-T0
+has_children: false
+parent: Zyxel
 ---
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Hardware Specifications
 
@@ -40,7 +30,9 @@ title: Zyxel PM7300-T0
 
 <ImageFigure file="zyxel-pm7300/bottom.jpg" alt="Zyxel PM7300-T0 bottom" caption="Zyxel PM7300-T0 bottom" />
 
-<Alert content="The GPON-SN on the sticker is not the same as you get from [Get GPON serial number](#get-gpon-serial-number)!" alert="Hint" icon="svg-info" color="grey" />
+::: info Hint
+The GPON-SN on the sticker is not the same as you get from [Get GPON serial number](#get-gpon-serial-number)!
+:::
 
 Unscrew the screws beneath the two encircled rubber feet.
 Then slide a plastic spudger/pry/case opening tool around to separate the top half from the bottom half of the case.
@@ -73,7 +65,9 @@ Alternatively, the command `ATSH` in the zloader bootloader can be used.
 ssh -o HostKeyAlgorithms=+ssh-rsa admin@192.168.0.1
 ```
 
-<Alert content="The device only presents SSH host keys using SHA1 which is not accepted anymore since OpenSSH 8.8. If the connection fails add `-o HostKeyAlgorithms=+ssh-rsa`. Other SSH clients may behave similarly." alert="Hint" icon="svg-info" color="grey" />
+::: info Hint
+The device only presents SSH host keys using SHA1 which is not accepted anymore since OpenSSH 8.8. If the connection fails add `-o HostKeyAlgorithms=+ssh-rsa`. Other SSH clients may behave similarly.
+:::
 
 
 ## Serial
@@ -82,6 +76,8 @@ Follow the procedure in [tear down](#tear-down) to open the case, then connect a
 
 <ImageFigure file="zyxel-pm7300/UART.jpg" alt="Zyxel PM7300-T0 UART pins" />
 
-<Alert content="Some USB-TTL adapters label Tx and Rx pins the other way around; try to swap them if the connection doesn't work." alert="Hint" icon="svg-warning" color="yellow" />
+::: warning Hint
+Some USB-TTL adapters label Tx and Rx pins the other way around; try to swap them if the connection doesn't work.
+:::
 
 **Baudrate:** 115200 8n1
