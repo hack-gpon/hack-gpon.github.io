@@ -12,15 +12,22 @@ const props = defineProps<{
 }>()
 
 const src = computed(() => withBase(`/assets/img/${props.file.replace(/\\/g, '/')}`))
+// The WebP copies are made by scripts/optimize-images.mjs, so they only exist in the built site
+const webp = computed(() =>
+  import.meta.env.PROD && /\.(jpe?g|png)$/i.test(src.value) ? src.value.replace(/\.(jpe?g|png)$/i, '.webp') : undefined
+)
 const style = computed(() => (props.maxWidth ? { maxWidth: `${props.maxWidth}px` } : undefined))
 </script>
 
 <template>
   <figure class="image-figure">
-    <a v-if="url" :href="url" target="_blank" rel="noopener">
-      <img :src="src" :alt="alt" :style="style" loading="lazy" />
+    <!-- Without an explicit link, the image opens the original at full resolution -->
+    <a :href="url ?? src" target="_blank" rel="noopener">
+      <picture>
+        <source v-if="webp" :srcset="webp" type="image/webp" />
+        <img :src="src" :alt="alt" :style="style" loading="lazy" />
+      </picture>
     </a>
-    <img v-else :src="src" :alt="alt" :style="style" loading="lazy" />
     <figcaption v-if="caption" v-html="caption" />
   </figure>
 </template>
