@@ -1,0 +1,47 @@
+<script setup lang="ts">
+import { withBase } from 'vitepress'
+import { computed } from 'vue'
+
+/** Image stored in `public/assets/img/`, with an optional caption and link. */
+const props = defineProps<{
+  file: string
+  alt?: string
+  caption?: string
+  url?: string
+  maxWidth?: string | number
+}>()
+
+const src = computed(() => withBase(`/assets/img/${props.file.replace(/\\/g, '/')}`))
+const style = computed(() => (props.maxWidth ? { maxWidth: `${props.maxWidth}px` } : undefined))
+</script>
+
+<template>
+  <figure class="image-figure">
+    <a v-if="url" :href="url" target="_blank" rel="noopener">
+      <img :src="src" :alt="alt" :style="style" loading="lazy" />
+    </a>
+    <img v-else :src="src" :alt="alt" :style="style" loading="lazy" />
+    <figcaption v-if="caption" v-html="caption" />
+  </figure>
+</template>
+
+<style scoped>
+.image-figure {
+  display: table;
+  margin: 16px 0;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.image-figure img {
+  display: block;
+  max-width: 100%;
+}
+
+.image-figure figcaption {
+  padding: 8px 12px;
+  font-size: 14px;
+  background-color: var(--vp-c-bg-soft);
+}
+</style>

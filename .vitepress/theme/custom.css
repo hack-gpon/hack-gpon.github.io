@@ -1,0 +1,210 @@
+:root {
+  --vp-c-brand-1: #7253ed;
+  --vp-c-brand-2: #5e41d0;
+  --vp-c-brand-3: #4e26af;
+  --vp-c-brand-soft: rgba(114, 83, 237, 0.14);
+}
+
+.dark {
+  --vp-c-brand-1: #a28ff5;
+  --vp-c-brand-2: #8c75f2;
+  --vp-c-brand-3: #7253ed;
+  --vp-c-brand-soft: rgba(114, 83, 237, 0.16);
+}
+
+/* Kramdown classes used in the pages */
+.vp-doc .text-red-200 {
+  color: var(--vp-c-red-1);
+}
+
+.vp-doc .hero-buttons {
+  margin-top: 16px;
+  font-size: 1.25em;
+}
+
+/* Buttons */
+.vp-doc a.btn,
+.btn {
+  display: inline-block;
+  margin: 2px 4px 2px 0;
+  padding: 6px 16px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  font-weight: 500;
+  line-height: 1.5;
+  text-decoration: none;
+  color: var(--vp-c-text-1);
+  background-color: var(--vp-c-default-soft);
+  cursor: pointer;
+  transition: background-color 0.25s, border-color 0.25s;
+}
+
+.vp-doc a.btn:hover,
+.btn:hover {
+  border-color: var(--vp-c-brand-1);
+}
+
+.vp-doc a.btn-blue,
+.vp-doc a.btn-green,
+.vp-doc a.btn-primary,
+.btn-blue,
+.btn-green,
+.btn-primary {
+  border-color: transparent;
+  color: var(--vp-c-white);
+}
+
+.vp-doc a.btn-primary,
+.btn-primary {
+  background-color: var(--vp-c-brand-3);
+}
+
+.vp-doc a.btn-primary:hover,
+.btn-primary:hover {
+  background-color: var(--vp-c-brand-2);
+}
+
+.vp-doc a.btn-blue,
+.btn-blue {
+  background-color: #2869e6;
+}
+
+.vp-doc a.btn-blue:hover,
+.btn-blue:hover {
+  background-color: #1955c7;
+}
+
+.vp-doc a.btn-green,
+.btn-green {
+  background-color: #10ac7d;
+}
+
+.vp-doc a.btn-green:hover,
+.btn-green:hover {
+  background-color: #0d9068;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Forms of the interactive tools */
+.hg-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 16px 0 24px;
+}
+
+.hg-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  color: var(--vp-c-text-2);
+}
+
+.hg-form label.check,
+.hg-form .radio-group label {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.hg-form .radio-group {
+  display: flex;
+  gap: 24px;
+}
+
+.hg-form input:not([type='radio']):not([type='checkbox']),
+.hg-form select,
+.hg-form textarea,
+.form-control {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  font-family: var(--vp-font-family-mono);
+  font-size: 14px;
+  color: var(--vp-c-text-1);
+  background-color: var(--vp-c-bg-alt);
+  transition: border-color 0.25s;
+}
+
+.hg-form input:focus,
+.hg-form select:focus,
+.hg-form textarea:focus,
+.form-control:focus {
+  border-color: var(--vp-c-brand-1);
+  outline: none;
+}
+
+.hg-form input[readonly],
+.form-control[readonly] {
+  background-color: var(--vp-c-bg-soft);
+}
+
+.hg-form select {
+  appearance: auto;
+}
+
+.hg-form .invalid {
+  display: none;
+  color: var(--vp-c-red-1);
+}
+
+.hg-form.validated input:invalid,
+.hg-form.validated select:invalid {
+  border-color: var(--vp-c-red-1);
+}
+
+.hg-form.validated label:has(:invalid) .invalid {
+  display: block;
+}
+
+.hg-form .error {
+  color: var(--vp-c-red-1);
+}
+
+/* Bootstrap-like classes used by the EEPROM decoder */
+.form-floating {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 0;
+  margin-bottom: 12px;
+}
+
+.form-floating > label {
+  order: -1;
+  width: 100%;
+  font-size: 14px;
+  color: var(--vp-c-text-2);
+}
+
+.form-floating > textarea.form-control {
+  min-height: 160px;
+}
+
+.form-floating > select.form-control {
+  appearance: auto;
+}
+
+/* The hardware specifications table is shown in the aside when there is room for it */
+@media (min-width: 1280px) {
+  .VPDoc main .vp-doc table.hardware-specs {
+    display: none;
+  }
+}
+
+/* Sidebar: expand arrow on the left of the items (as in Just the Docs) */
+.VPSidebarItem .item > .caret {
+  order: -1;
+  flex-shrink: 0;
+  width: 20px;
+  margin: 0 2px 0 -4px;
+}
+
+.VPSidebarItem:not(.collapsible) > .item > .link {
+  padding-left: 18px;
+}

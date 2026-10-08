@@ -1,9 +1,8 @@
 ---
-layout: default
 title: Privacy Policy
-permalink: /privacy-policy
 nav_exclude: true
 search_exclude: true
+search: false
 ---
 
 # Privacy Policy for hack-gpon.org

@@ -1,9 +1,7 @@
-### Jekyll ###
-_site/
-.sass-cache/
-.jekyll-cache/
-.jekyll-metadata
-Gemfile.lock
-assets/js/zzzz-search-data.json
+### VitePress ###
+.vitepress/dist/
+.vitepress/cache/
+.vitepress/.temp/
+
+### Node ###
 node_modules/
-assets/js/generated

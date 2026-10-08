@@ -1,11 +1,21 @@
 {
+  "name": "hack-gpon",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "build": "tsup",
-    "watch": "tsup --watch",
-    "clean": "rimraf assets/js/generated"
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview",
+    "convert": "node scripts/jekyll-to-vitepress.mjs"
   },
   "devDependencies": {
-    "rimraf": "^5.0.1",
-    "tsup": "^6.7.0"
+    "@types/crypto-js": "^4.2.2",
+    "@types/markdown-it-footnote": "^3.0.4",
+    "crypto-js": "^4.2.0",
+    "liquidjs": "^10.30.0",
+    "markdown-it-footnote": "^4.0.0",
+    "mermaid": "^11.12.1",
+    "vitepress": "^1.6.4",
+    "vue": "^3.5.25"
   }
 }
