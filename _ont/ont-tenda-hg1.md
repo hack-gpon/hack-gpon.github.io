@@ -1,6 +1,6 @@
 ---
 title: Tenda HG1
-has_children: false
+has_children: true
 layout: default
 parent: Tenda
 ---
@@ -39,7 +39,7 @@ parent: Tenda
 
 ## List of software versions
 
-- V1.7.1
+- V1.0.2
  
 # List of partitions 
 
@@ -79,6 +79,14 @@ Default configuration restricts telnet to WAN interface only. To re-enable it ne
 Device has a hidden page `http://192.168.1.1/tddeviceinfo.asp` for configuring OMCI parameters, MAC and XPON switch.
 
 OMCI equipment ID (ME 257) and OMCI hardware version (ME 256) are hardcoded into `/etc/version.sh` and `/bin/startup` requiring a firmware patch to change.
+
+## WAN backdoor account
+There are hardcoded credentials for WAN user, it's recommended WWW and Telnet are disabled on and this second password changed.
+
+```xml
+<Value Name="WAN_USER_NAME" Value="tendaxpon"/>
+<Value Name="WAN_USER_PASSWORD" Value="XPON#TDWLD"/>
+```
 
 # Miscellaneous Links
 
