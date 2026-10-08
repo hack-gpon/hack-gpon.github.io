@@ -93,7 +93,7 @@ mtd4 --> rootfs
 mtd5 --> rootfs_data
 ```
 
-For more info [XPONos partition layout](https://github.com/XPONos/linux_lantiq-falcon/commit/456f68f69a84c846a542a9f0ea47c37476535dcb).
+For more info [XPONos partition layout](https://web.archive.org/web/20240925035217/https://github.com/XPONos/linux_lantiq-falcon/commit/456f68f69a84c846a542a9f0ea47c37476535dcb).
 
 ### When booting from image0
 
