@@ -4,6 +4,8 @@ has_children: true
 parent: Tenda
 ---
 
+# Hardware Specifications
+
 |                 |                                                                            |
 | --------------- | -------------------------------------------------------------------------- |
 | Vendor/Brand    | Tenda                                                                      |
