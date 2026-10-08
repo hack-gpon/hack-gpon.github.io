@@ -28,8 +28,7 @@ parent: CIG
 
 # Miscellaneous Links
 
-- [CUG G-97CM DataSheet](https://www.cigtech.com/wp-content/uploads/2018/02/G-97CM_DataSheet_V3.pdf)
-
+- [CUG G-97CM DataSheet](https://web.archive.org/web/20230803031339/https://www.cigtech.com/wp-content/uploads/2018/02/G-97CM_DataSheet_V3.pdf)
 
 
 
