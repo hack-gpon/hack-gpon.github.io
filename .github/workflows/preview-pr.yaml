@@ -5,7 +5,7 @@ on:
     types: [opened, reopened, synchronize]
 
 permissions:
-  pull-requests: write
+  contents: read
 
 jobs:
   authorize:
@@ -17,32 +17,33 @@ jobs:
     steps:
       - run: "true"
 
+  # The PR code is built without access to any secret
   build:
     needs: authorize
+    uses: ./.github/workflows/build.yml
+    with:
+      ref: ${{ github.event.pull_request.head.sha }}
+
+  deploy:
+    needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Download artifact
+        uses: actions/download-artifact@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
-          fetch-depth: 0
-          persist-credentials: false
-      - name: Setup node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-      - run: npm ci
-      - run: npm run build
+          name: github-pages
+      - name: Extract site
+        run: mkdir dist && tar -xf artifact.tar -C dist
       - name: Publish to Cloudflare Pages
         id: preview-pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT }}
-          command: pages deploy .vitepress/dist --project-name=hack-gpon-preview --branch=preview
+          command: pages deploy dist --project-name=hack-gpon-preview --branch=preview
       - uses: thollander/actions-comment-pull-request@v2
         with:
           message: |
             Preview of the website obtained from the PR: ${{ steps.preview-pages.outputs.deployment-url }}
-
