@@ -2,7 +2,9 @@
 import { useData, withBase } from 'vitepress'
 import { computed, onMounted, ref, watch } from 'vue'
 
-const { frontmatter, page } = useData()
+const { frontmatter, page, theme } = useData()
+
+const editUrl = computed(() => theme.value.editLink?.pattern.replace(':path', page.value.filePath))
 
 const redirect = computed<string | undefined>(() => {
   const target: string | undefined = frontmatter.value.redirect_to
@@ -50,13 +52,51 @@ async function authorsOf(path: string, scanned: Set<string>): Promise<Contributo
   return authors.filter((a, i, all) => all.findIndex((b) => b.login === a.login) === i)
 }
 
+/** Path of the page in the Jekyll version of the site (e.g. `ont/x.md` -> `_ont/x.md`). */
+const jekyllDirs: Record<string, string> = {
+  ont: '_ont',
+  'ont-xgs': '_ont_xgs',
+  'ont-epon': '_ont_epon',
+  router: '_router_pon',
+  tools: '_tools',
+  sfp: '_sfp',
+  gpon: '_gpon',
+  'sfp-cage': '_sfp_cage'
+}
+
+function jekyllPath(path: string) {
+  const [dir, ...rest] = path.split('/')
+  return jekyllDirs[dir] && rest.length ? [jekyllDirs[dir], ...rest].join('/') : undefined
+}
+
 async function loadContributors() {
   contributors.value = null
   contributorsError.value = false
   showContributors.value = false
-  if (redirect.value || !page.value.filePath) return
+  const path = page.value.filePath
+  if (redirect.value || !path) return
+  // the GitHub API allows 60 requests per hour without authentication
+  const cacheKey = `contributors:${path}`
   try {
-    contributors.value = await authorsOf(page.value.filePath, new Set())
+    const cached = sessionStorage.getItem(cacheKey)
+    if (cached) {
+      contributors.value = JSON.parse(cached)
+      return
+    }
+  } catch {}
+  try {
+    const scanned = new Set<string>()
+    const authors = await authorsOf(path, scanned)
+    const legacy = jekyllPath(path)
+    if (legacy && !scanned.has(legacy)) authors.push(...(await authorsOf(legacy, scanned)))
+    const unique = authors
+      .filter((a, i, all) => all.findIndex((b) => b.login === a.login) === i)
+      .map(({ login, name, html_url, avatar_url }) => ({ login, name, html_url, avatar_url }))
+    if (page.value.filePath !== path) return
+    contributors.value = unique
+    try {
+      sessionStorage.setItem(cacheKey, JSON.stringify(unique))
+    } catch {}
   } catch {
     contributorsError.value = true
   }
@@ -75,7 +115,12 @@ watch(() => page.value.filePath, loadContributors)
 
 <template>
   <header class="page-header">
-    <h1>{{ frontmatter.title ?? page.title }}</h1>
+    <h1>
+      {{ frontmatter.title ?? page.title }}
+      <a v-if="editUrl" class="edit-link" :href="editUrl" target="_blank" rel="noopener" :title="theme.editLink.text" :aria-label="theme.editLink.text">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z" /></svg>
+      </a>
+    </h1>
     <p v-if="frontmatter.alias" class="alias"><span>Also sold as:</span> {{ frontmatter.alias }}</p>
     <p v-if="frontmatter.description" class="description">{{ frontmatter.description }}</p>
     <p v-if="redirect">
@@ -110,6 +155,37 @@ h1 {
   font-weight: 700;
   line-height: 40px;
   letter-spacing: -0.02em;
+}
+
+/* like the "#" anchor of the headings: visible on hover */
+.edit-link {
+  display: inline-flex;
+  margin-left: 8px;
+  vertical-align: middle;
+  color: var(--vp-c-brand-1);
+  opacity: 0;
+  transition: color 0.25s, opacity 0.25s;
+}
+
+.edit-link svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+h1:hover .edit-link,
+.edit-link:focus {
+  opacity: 1;
+}
+
+.edit-link:hover {
+  color: var(--vp-c-brand-2);
+}
+
+@media (hover: none) {
+  .edit-link {
+    opacity: 1;
+  }
 }
 
 .alias {

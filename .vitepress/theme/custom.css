@@ -189,3 +189,10 @@
 .form-floating > select.form-control {
   appearance: auto;
 }
+
+/* The hardware specifications table is shown in the aside when there is room for it */
+@media (min-width: 1280px) {
+  .VPDoc main .vp-doc table.hardware-specs {
+    display: none;
+  }
+}

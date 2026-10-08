@@ -51,6 +51,41 @@ function canonicalLinks(md: MarkdownIt) {
   })
 }
 
+const hardwareSpecsHeading = /^#{1,6}[ \t]+Hardware Specifications[ \t]*$/m
+
+/** Markdown of the table under the "Hardware Specifications" heading, shown in the aside. */
+export function extractHardwareSpecs(src: string): string | undefined {
+  const heading = hardwareSpecsHeading.exec(src)
+  if (!heading) return
+  const lines = src.slice(heading.index + heading[0].length).split(/\r?\n/)
+  let i = 0
+  while (i < lines.length && lines[i].trim() === '') i++
+  const table: string[] = []
+  while (i < lines.length && lines[i].trim().startsWith('|')) table.push(lines[i++])
+  return table.length > 2 ? table.join('\n') : undefined
+}
+
+/** Marks the "Hardware Specifications" table, hidden in the page when it is shown in the aside. */
+function hardwareSpecs(md: MarkdownIt) {
+  md.core.ruler.push('hardware_specs', (state) => {
+    const tokens = state.tokens
+    const heading = tokens.findIndex(
+      (t, i) => t.type === 'heading_open' && tokens[i + 1]?.content.trim() === 'Hardware Specifications'
+    )
+    if (heading === -1) return
+    // the table must follow the heading directly
+    const table = tokens[heading + 3]
+    if (table?.type === 'table_open') table.attrJoin('class', 'hardware-specs')
+  })
+  // the VitePress renderer of the tables drops the attributes
+  const tableOpen = md.renderer.rules.table_open!
+  md.renderer.rules.table_open = (tokens, idx, options, env, self) => {
+    const html = tableOpen(tokens, idx, options, env, self)
+    const cls = tokens[idx].attrGet('class')
+    return cls ? html.replace('<table', `<table class="${cls}"`) : html
+  }
+}
+
 /** ```mermaid code blocks are rendered client side by the <Mermaid> component. */
 function mermaid(md: MarkdownIt) {
   const fence = md.renderer.rules.fence!
@@ -71,5 +106,6 @@ export function configureMarkdown(md: MarkdownIt) {
   }
   md.use(footnote)
   md.use(canonicalLinks)
+  md.use(hardwareSpecs)
   md.use(mermaid)
 }

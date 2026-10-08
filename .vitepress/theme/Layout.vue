@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import DefaultTheme from 'vitepress/theme'
+import AsideSpecs from './components/AsideSpecs.vue'
 import NotFound from './components/NotFound.vue'
 import PageHeader from './components/PageHeader.vue'
 import SiteFooter from './components/SiteFooter.vue'
@@ -9,6 +10,9 @@ import SiteFooter from './components/SiteFooter.vue'
   <DefaultTheme.Layout>
     <template #doc-before>
       <PageHeader />
+    </template>
+    <template #aside-outline-before>
+      <AsideSpecs />
     </template>
     <template #doc-after>
       <SiteFooter />
