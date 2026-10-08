@@ -70,7 +70,7 @@ Simple change with a hex editor can be done to enable full shell, inside /lib/li
 
 Then add /bin/ash to /etc/shells to enable normal shell.
 
-Binary patch is required to prevent `/bin/startup` from reseting ME 256 and 257 parameters on reboot.
+In case device contains locked default configuration `/etc/config_default.xml` can be modified to undo any unwanted restrictions.
 
 ## Flashing new firmware
 
