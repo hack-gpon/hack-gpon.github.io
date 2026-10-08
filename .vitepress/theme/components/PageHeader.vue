@@ -151,25 +151,27 @@ watch(() => page.value.filePath, loadContributors)
 }
 
 h1 {
+  position: relative;
   font-size: 32px;
   font-weight: 700;
   line-height: 40px;
   letter-spacing: -0.02em;
 }
 
-/* like the "#" anchor of the headings: visible on hover */
+/* like the "#" anchor of the headings: on the left of the title, visible on hover */
 .edit-link {
-  display: inline-flex;
-  margin-left: 8px;
-  vertical-align: middle;
+  position: absolute;
+  top: 10px;
+  left: -28px;
+  display: flex;
   color: var(--vp-c-brand-1);
   opacity: 0;
   transition: color 0.25s, opacity 0.25s;
 }
 
 .edit-link svg {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   fill: currentColor;
 }
 
@@ -182,8 +184,13 @@ h1:hover .edit-link,
   color: var(--vp-c-brand-2);
 }
 
+/* touch screens have no hover and no room on the left: show it after the title */
 @media (hover: none) {
   .edit-link {
+    position: static;
+    display: inline-flex;
+    margin-left: 8px;
+    vertical-align: middle;
     opacity: 1;
   }
 }
