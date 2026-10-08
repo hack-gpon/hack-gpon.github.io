@@ -35,15 +35,24 @@ export interface Page {
   frontmatter: Record<string, any>
 }
 
-/** Minimal parser for the flat `key: value` front matter used by the pages. */
-function parseFrontmatter(src: string): Record<string, any> {
+/**
+ * Minimal parser for the flat `key: value` front matter used by the pages (it is enough for the
+ * navigation keys). Lists and multi-line values are not supported and are reported.
+ */
+function parseFrontmatter(src: string, file: string): Record<string, any> {
   const match = /^---\r?\n([\s\S]*?)\r?\n---/.exec(src)
   const data: Record<string, any> = {}
   if (!match) return data
   for (const line of match[1].split(/\r?\n/)) {
+    if (line.trim() === '' || line.trimStart().startsWith('#')) continue
     const kv = /^([A-Za-z_][\w-]*):\s*(.*?)\s*$/.exec(line)
-    if (!kv) continue
+    if (!kv) {
+      console.warn(`[pages] ${file}: unsupported front matter line, only "key: value" is read: ${line}`)
+      continue
+    }
     let value: any = kv[2]
+    // trailing comment of an unquoted value
+    if (!/^["']/.test(value)) value = value.replace(/\s+#.*$/, '')
     if (/^(["']).*\1$/.test(value)) value = value.slice(1, -1)
     else if (value === 'true' || value === 'false') value = value === 'true'
     else if (/^-?\d+(\.\d+)?$/.test(value)) value = Number(value)
@@ -53,7 +62,7 @@ function parseFrontmatter(src: string): Record<string, any> {
 }
 
 function readPage(file: string, collection?: (typeof collections)[number]): Page {
-  const frontmatter = parseFrontmatter(fs.readFileSync(path.join(root, file), 'utf8'))
+  const frontmatter = parseFrontmatter(fs.readFileSync(path.join(root, file), 'utf8'), file)
   const name = path.basename(file, '.md')
   const url = name === 'index' && !collection ? '/' : `${collection?.prefix ?? '/'}${name}/`
   return { file, url, collection: collection?.dir, frontmatter }
@@ -90,6 +99,33 @@ export function resolvePageUrl(pathname: string): string | undefined {
   return urls.has(withSlash.toLowerCase()) ? encodeURI(withSlash) : undefined
 }
 
+const pagesByUrl = new Map(pages.map((p) => [p.url.toLowerCase(), p]))
+
+export function isExternal(href: string) {
+  return /^([a-z][a-z0-9+.-]*:)?\/\//i.test(href)
+}
+
+/**
+ * Final destination of a link: canonical URL of the page, following the `redirect_to` of the
+ * redirect pages. Returns undefined if the link does not point to a page of the site.
+ */
+export function resolveLink(href: string): string | undefined {
+  const [, pathname, hrefRest] = /^([^?#]*)(.*)$/.exec(href)!
+  let rest = hrefRest
+  let url = resolvePageUrl(pathname)
+  for (let i = 0; url && i < 10; i++) {
+    const redirect: string | undefined = pagesByUrl.get(url.toLowerCase())?.frontmatter.redirect_to
+    if (!redirect) return url + rest
+    if (isExternal(redirect)) return redirect
+    const [, target, targetRest] = /^([^?#]*)(.*)$/.exec(redirect)!
+    // the anchor of the original link wins over the one of the redirect
+    rest = rest || targetRest
+    url = resolvePageUrl(target)
+    if (!url) return redirect
+  }
+  return url && url + rest
+}
+
 const rewriteMap = new Map(pages.filter((p) => p.url !== '/').map((p) => [p.file, `${p.url.slice(1)}index.md`]))
 
 /** VitePress rewrites: `ont/ont-zte.md` -> `ont-zte/index.md` */
@@ -110,9 +146,7 @@ function byNavOrder(a: Page, b: Page) {
 }
 
 function link(page: Page) {
-  const redirect = page.frontmatter.redirect_to
-  if (redirect) return resolvePageUrl(redirect) ?? redirect
-  return page.url
+  return resolveLink(page.url) ?? page.frontmatter.redirect_to ?? page.url
 }
 
 function sidebarItems(list: Page[], parent?: string): DefaultTheme.SidebarItem[] {

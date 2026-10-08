@@ -54,8 +54,13 @@ nav_order: 1            # optional, position in the sidebar (otherwise sorted by
 nav_exclude: true       # optional, hide the page from the sidebar
 alias: Some other name  # optional, "Also sold as"
 redirect_to: /other-page # optional, the page redirects to another one
+search: false           # optional, exclude the page from the search (was `search_exclude`)
 ---
 ```
+
+Only one `key: value` per line is read for the navigation: YAML lists and multi-line values are not supported (the build prints a warning).
+
+Links to a redirect page are replaced at build time by links to its destination.
 
 ## Syntax
 

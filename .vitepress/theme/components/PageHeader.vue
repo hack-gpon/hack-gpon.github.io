@@ -8,7 +8,10 @@ const editUrl = computed(() => theme.value.editLink?.pattern.replace(':path', pa
 
 const redirect = computed<string | undefined>(() => {
   const target: string | undefined = frontmatter.value.redirect_to
-  return target && !target.endsWith('/') ? target + '/' : target
+  if (!target || !target.startsWith('/') || target.startsWith('//')) return target
+  // the URLs of the pages end with a slash
+  const [, path, rest] = /^([^?#]*)(.*)$/.exec(target)!
+  return path.endsWith('/') || /\.[a-z0-9]+$/i.test(path) ? target : `${path}/${rest}`
 })
 
 interface Contributor {
@@ -102,15 +105,17 @@ async function loadContributors() {
   }
 }
 
-onMounted(() => {
+/** Redirect pages: also needed when the page is reached by a client side navigation */
+function load() {
   if (redirect.value) {
     window.location.replace(withBase(redirect.value))
     return
   }
   loadContributors()
-})
+}
 
-watch(() => page.value.filePath, loadContributors)
+onMounted(load)
+watch(() => page.value.filePath, load)
 </script>
 
 <template>

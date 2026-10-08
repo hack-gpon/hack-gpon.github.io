@@ -2,7 +2,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { createMarkdownRenderer, defineConfig, type MarkdownRenderer } from 'vitepress'
 import { configureMarkdown, extractHardwareSpecs } from './markdown'
-import { pages, resolvePageUrl, rewrites, sidebar, srcExclude } from './pages'
+import { isExternal, pages, resolveLink, rewrites, sidebar, srcExclude } from './pages'
 
 const hostname = 'https://hack-gpon.org'
 const repository = 'https://github.com/hack-gpon/hack-gpon.github.io'
@@ -21,7 +21,14 @@ export default defineConfig({
   rewrites,
   cleanUrls: true,
   lastUpdated: true,
-  sitemap: { hostname },
+  sitemap: {
+    hostname,
+    // the redirect pages are not real pages (as with jekyll-redirect-from)
+    transformItems: (items) => {
+      const redirects = new Set(pages.filter((p) => p.frontmatter.redirect_to).map((p) => p.url.slice(1)))
+      return items.filter((item) => !redirects.has(decodeURI(item.url)))
+    }
+  },
 
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico', sizes: '48x48' }],
@@ -39,9 +46,9 @@ export default defineConfig({
     const page = pages.find((p) => p.file === pageData.filePath)
     const redirect = pageData.frontmatter.redirect_to
     if (redirect) {
-      const target = resolvePageUrl(redirect) ?? redirect
+      const target = (page && resolveLink(page.url)) ?? redirect
       head.push(['meta', { 'http-equiv': 'refresh', content: `0; url=${target}` }])
-      head.push(['link', { rel: 'canonical', href: hostname + target }])
+      head.push(['link', { rel: 'canonical', href: isExternal(target) ? target : hostname + target }])
     } else if (page) {
       head.push(['link', { rel: 'canonical', href: hostname + page.url }])
     }
@@ -49,7 +56,10 @@ export default defineConfig({
   },
 
   markdown: {
-    config: configureMarkdown
+    config: configureMarkdown,
+    // in dev the cache of the rendered pages is not cleared for the rewritten pages when a
+    // partial changes, so the page would not be updated
+    cache: process.argv[2] !== 'dev'
   },
 
   // the "Hardware Specifications" table is also rendered in the aside, above the outline
