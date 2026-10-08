@@ -1,6 +1,6 @@
 ---
 title: KAON PM1191
-has_children: false
+has_children: true
 layout: default
 parent: KAON
 ---
