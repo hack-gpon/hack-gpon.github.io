@@ -16,6 +16,7 @@
             </div>
             <div class="table-wrapper">
                 <table>
+                    <thead>
                     <tr>
                         <th>address</th>
                         <th>size</th>
@@ -24,6 +25,8 @@
                         <th>decoded value</th>
                         <th>description</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <tr v-for="(value, key, index) in eeprom_json" :key="index">
                         <td>{{ value.address }}</td>
                         <td>{{ value.size }}</td>
@@ -34,6 +37,7 @@
                         <td v-if="value.description.startsWith('**')"><b>{{ value.description.replaceAll('**', '') }}</b></td>
                         <td v-else>{{ value.description }}</td>
                     </tr>
+                    </tbody>
                 </table>
             </div>
             <div class="info custom-block" v-if="revision">
@@ -51,6 +55,7 @@
             </div>
             <div class="table-wrapper">
                 <table>
+                    <thead>
                     <tr>
                         <th>address</th>
                         <th>size</th>
@@ -59,6 +64,8 @@
                         <th>decoded value</th>
                         <th>description</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <tr v-for="(value, key, index) in eeprom_json" :key="index">
                         <td>{{ value.address }}</td>
                         <td>{{ value.size }}</td>
@@ -69,6 +76,7 @@
                         <td v-if="value.description.startsWith('**')"><b>{{ value.description.replaceAll('**', '') }}</b></td>
                         <td v-else>{{ value.description }}</td>
                     </tr>
+                    </tbody>
                 </table>
             </div>
             <div class="info custom-block" v-if="revision">
