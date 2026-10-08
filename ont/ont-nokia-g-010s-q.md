@@ -15,7 +15,7 @@ alias: CIG G-97S
 | ODM Product Code | G-97S                                                                                                             |
 | Chipset          | RTL9601CI                                                                                                         |
 | Flash            | 16 MB (Macronix MX25L12835F)                                                                                      |
-| RAM              |                                                                                                                   |
+| RAM              | 32 MB                                                                                                             |
 | System           |                                                                                                                   |
 | HSGMII           |                                                                                                                   |
 | Optics           |                                                                                                                   |
@@ -32,10 +32,17 @@ alias: CIG G-97S
 
 <!--@partial: ./_partials/ont-nokia-useful-command.md-->
 
+## Enable full telnet shell
+Full telnet and secondary factory IP can be enabled by sending [Nokia magic packet](https://github.com/YuukiJapanTech/CA8271x/blob/main/doc/rootShell.md#nokia-xs-010x-r). 
+
+If factory mode is enabled sucessfully second IP `192.168.188.1/24` will be assinged to SFP LAN interface.
+
+Newly available login credentials will be `ATE` / `CATS2388` and `ONTUSER` / `sha256 of SN formated as GPONa1b2c3d4` with GponCLI shell.
+
 # Miscellaneous Links
 
 - [Nokia G-010S-Q](https://github.com/Anime4000/RTL960x/issues/52)
-- [CUG G-97S DataSheet](https://www.cigtech.com/wp-content/uploads/2018/09/G-97S_DataSheet_V2.pdf)
+- [CIG G-97S DataSheet](https://web.archive.org/web/20230803034001/https://www.cigtech.com/wp-content/uploads/2018/09/G-97S_DataSheet_V2.pdf)
 - [MIB file parser](https://github.com/nanomad/nokia-ont-mib-parser) for NOKIA's GPON ONTs (*helps you parsing the .mib file located in `/mnt/rwdir`*)
 
 

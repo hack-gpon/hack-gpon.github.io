@@ -158,9 +158,10 @@ FGS202:/# show i2c (ASCII view added for readability)
 000001d0: 3230 3231 3132 0000 5343 4f4d 4647 5332  202112..SCOMFGS2
 000001e0: 3032 3131 3200 ff00 0000 1000 0000 0000  02112...........
 000001f0: 0000 0000 0000 0000 0000 0000 0000 0020  ............... 
+```
 
 It can also be read and written using an external I2C reader.
-```
+
 
 # Advanced settings
 
@@ -180,14 +181,18 @@ Simple U-Boot-style storage `key=value\0` padded by 0xFF, after modification, a 
 
 ```py
 from zlib import crc32
-wholeflash = open("FGS202.bin", "rb").read()  # Full SPI dump
-ubootenv   =  wholeflash[262144:262144+65536] # 0x40000-0x5FFFF
-factoryenv = wholeflash[327680:327680+65536]  # 0x50000-0x6FFFF
-ecosenv    = wholeflash[393216:393216+65536]  # 0x60000-0x7FFFF
+wholeflash = open("FGS202.bin", "rb").read()    # Full SPI dump
+ubootenv   = wholeflash[262144:262144+65536]    # 0x40000-0x50000
+factoryenv = wholeflash[327680:327680+65536]    # 0x50000-0x60000
+ecosenv    = wholeflash[393216:393216+65536]    # 0x60000-0x70000
+ubootenv2  = wholeflash[262144:262144+65536]    # 0x80000-0x90000
+ecosenv2   = wholeflash[8323072:8323072+65536]  # 0x7F0000-0x800000
 
 print(f'U-Boot\n| CRC: {ubootenv[0:4].hex()} | Version {ubootenv[4:5]} | New CRC: {crc32(ubootenv[5:]):08x} ')
 print(f'Factory\n| CRC: {factoryenv[0:4].hex()} | Version {factoryenv[4:5]} | New CRC: {crc32(factoryenv[5:]):08x} ')
 print(f'eCos\n| CRC: {ecosenv[0:4].hex()} | Version {ecosenv[4:5]} | New CRC: {crc32(ecosenv[5:]):08x} ')
+print(f'U-Boot backup\n| CRC: {ubootenv2[0:4].hex()} | Version {ubootenv2[4:5]}  | New CRC: {crc32(ubootenv2[5:]):08x}')
+print(f'eCos backup\n| CRC: {ecosenv2[0:4].hex()} | Version {ecosenv2[4:5]}  | New CRC: {crc32(ecosenv2[5:]):08x}')
 ```
 
 ## Decrypting "encrypt_data" variable from flash
@@ -220,10 +225,18 @@ At boot time, this variable is read by the modified U-Boot and waits for [sercom
 
 Due to an uninitialized SFP EEPROM, a simple SFP-to-Ethernet converter is required.
 
-The input for sercomm-recovery tool must be a complete dump of complete flash memory, the client writes only the Image0 and Image1 regions, and the rest is skipped (so a failed write will drop you back into recovery).
+The input for sercomm-recovery tool must be a complete dump of flash memory, the client writes only the Image0 and Image1 regions, and the rest is skipped (so a failed write will drop you back into recovery).
 
 It is not possible to exit this mode until the write operation completes or the environment settings are manually reset to 0.
 
+## Boot and update log
+::: details eCos boot
+<<< ./serial_dump/fgs202-boot.txt
+:::
+
+::: details Update with sercomm-recovery
+<<< ./serial_dump/fgs202-flash.txt
+:::
 
 # Hardware Modding
 

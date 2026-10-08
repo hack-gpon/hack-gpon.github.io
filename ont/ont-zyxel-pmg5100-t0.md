@@ -29,3 +29,32 @@ parent: Zyxel
 <ImageFigure file="zyxel-pmg5100/port.jpg" alt="PM5100-T0" caption="PM5100-T0" />
 <ImageFigure file="zyxel-pmg5100/back-board.jpg" alt="PM5100-T0 Teardown" caption="PM5100-T0 Teardown" />
 <ImageFigure file="zyxel-pmg5100/front-board.jpg" alt="PM5100-T0 Teardown" caption="PM5100-T0 Teardown" />
+
+## List of software versions
+- V5.42-ACEQ-0b10 (Cetin)
+- V5.42-ACBF.1.1-C0 (Zyxel)
+
+## Unlock bootloader and root shell
+Full linux shell can be accessed if the current firmware allows it, this ONT has per-device password burned into flash.
+
+Depending on Z-Loader version bootloader access might be protected with supervisors password until `EngDebugFlag` is enabled.
+
+Default passwords can be obtained with normal ATEN/ATSE unlock process.
+
+```sh
+# Generate unlock seed
+ATSE PM5100-T0
+# Generate ATEN key with https://github.com/cjdelisle/ATENv3
+ATEN 1,RESULT
+# Allow nvram write
+ATBT 1
+# Write EngDebugFlag to nvram
+ATSB
+# Dump passwords from nvram
+ATCK
+```
+
+If network upgrade isn't disabled by ISP branding [zyeng](https://github.com/bmork/zyxel-hacks) tool can be used to write EngDebugFlag it over the network.
+
+When both methods fail only option is to desolder the SPI flash and locate passwords inside U-Boot ENV.
+

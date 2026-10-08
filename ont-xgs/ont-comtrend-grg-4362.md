@@ -1,6 +1,6 @@
 ---
 title: Comtrend GRG-4362
-has_children: false
+has_children: true
 parent: Comtrend
 ---
 
@@ -19,7 +19,7 @@ parent: Comtrend
 | PHY Ethernet    | RTL8261B                                                                   |
 | Optics          | SC/APC (SEMTECH GN28L96)                                                   |
 | IP address      | 192.168.1.1/24                                                             |
-| Web Gui         | ✅ user `root`, password `root`                                            |
+| Web Gui         | ✅                                                                         |
 | SSH             | ✅                                                                         |
 | Telnet          | ✅                                                                         |
 | FTP             | ✅, Download only                                                          |
@@ -30,9 +30,9 @@ parent: Comtrend
 
 # External/Internal Photo
 
-<ImageFigure file="comtrend_grg-4362_teardown_1.jpg" alt="Comtrend GRG-4362 Top Cover" caption="Comtrend GRG-4362 Top Cover" />
-<ImageFigure file="comtrend_grg-4362_teardown_2.jpg" alt="Comtrend GRG-4362 Bottom Cover" caption="Comtrend GRG-4362 Bottom Cover" />
-<ImageFigure file="comtrend_grg-4362_teardown_3.jpg" alt="Comtrend GRG-4362 PCB" caption="Comtrend GRG-4362 PCB" />
+<ImageFigure file="grg-4362/comtrend_grg-4362_teardown_1.jpg" alt="Comtrend GRG-4362 Top Cover" caption="Comtrend GRG-4362 Top Cover" />
+<ImageFigure file="grg-4362/comtrend_grg-4362_teardown_2.jpg" alt="Comtrend GRG-4362 Bottom Cover" caption="Comtrend GRG-4362 Bottom Cover" />
+<ImageFigure file="grg-4362/comtrend_grg-4362_teardown_3.jpg" alt="Comtrend GRG-4362 PCB" caption="Comtrend GRG-4362 PCB" />
 
 
 ## Hardware Revisions
@@ -302,11 +302,12 @@ mkdir /var/tmp
 mkdir /var/config
 mount -t ubifs ubi0:ubi_Config /var/config/
 
-# Read device login
+# To regain access from locked ISP firmware:
+# 1. Read device login
 flash get SUSER_NAME
 flash get SUSER_PASSWORD
 
-# Unblock ACL rules
+# 2. Unblock ACL rules
 flash set ACL_IP_TBL.0.any 0
 flash set ACL_IP_TBL.0.telnet 1
 flash set ACL_IP_TBL.0.web 1
@@ -320,7 +321,7 @@ flash set ACL_IP_TBL.1.https 0
 flash set ACL_IP_TBL.1.ssh 0
 flash set ACL_IP_TBL.1.icmp 0
 
-# Enable full shell instead of CLI
+# 3. Enable full shell instead of CLI
 # This script runs too early in boot process, delay was needed to get /var into right state
 cat <<EOF > /var/config/run_customized_sdk.sh
 #!/bin/sh
@@ -346,8 +347,9 @@ Simple change with a hex editor can be done to enable full shell, inside /lib/li
 
 Then add /bin/ash to /etc/shells to enable normal shell.
 
-Binary patch is required to prevent `/bin/startup` from reseting ME 256 and 257 parameters on reboot.
+In case device contains locked default configuration `/etc/config_default.xml` can be modified to undo any unwanted restrictions.
 
+Binary patch is required to prevent `/bin/startup` from reseting ME 256 and 257 parameters on reboot.
 
 ## Flashing new firmware
 - U-Boot
