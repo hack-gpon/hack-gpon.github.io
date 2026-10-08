@@ -196,3 +196,15 @@
     display: none;
   }
 }
+
+/* Sidebar: expand arrow on the left of the items (as in Just the Docs) */
+.VPSidebarItem .item > .caret {
+  order: -1;
+  flex-shrink: 0;
+  width: 20px;
+  margin: 0 2px 0 -4px;
+}
+
+.VPSidebarItem:not(.collapsible) > .item > .link {
+  padding-left: 18px;
+}
