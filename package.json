@@ -14,7 +14,7 @@
     "crypto-js": "^4.2.0",
     "liquidjs": "^10.30.0",
     "markdown-it-footnote": "^4.0.0",
-    "mermaid": "^11.12.1",
+    "mermaid": "^12.1.0",
     "vitepress": "^1.6.4",
     "vue": "^3.5.25"
   }
