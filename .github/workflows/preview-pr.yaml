@@ -29,6 +29,10 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
+    # Shows the preview link on the job and in the PR, like the Pages deploy
+    environment:
+      name: preview
+      url: ${{ steps.preview-pages.outputs.deployment-url }}
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v4
