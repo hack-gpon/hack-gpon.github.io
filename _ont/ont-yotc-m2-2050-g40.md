@@ -199,20 +199,40 @@ mib set ELAN_MAC_ADDR 1A2B3C4D5E6F
 ```
 mib set LAN_IP_ADDR 192.168.8.1
 ```
+
 ## Switch PON Mode
 ```
+# RJ45 Ethernet Mode
+mib set PON_MODE 0
+mib set WAN_PHY_PORT 0
+```
+
+```
 # GPON mode
+mib set WAN_PHY_PORT 5
 mib set PON_MODE 1
 ```
 
 ```
 # EPON mode
+mib set WAN_PHY_PORT 5
 mib set PON_MODE 2
 ```
 
 ```
-# Ethernet mode
+# Fiber Ethernet mode
+mib set WAN_PHY_PORT 5
 mib set PON_MODE 3
+```
+
+
+## RJ45 Ethernet PON_MODE mapping:
+```
+#for the first rj45 port (ge1)
+mib set WAN_PHY_PORT 0
+
+#for the 2nd rj45 port (ge2)
+mib set WAN_PHY_PORT 1
 ```
 
 ## Checking the currently active image
