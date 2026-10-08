@@ -4,6 +4,8 @@ has_children: false
 parent: Comtrend
 ---
 
+# Hardware Specifications
+
 |                 |                                                                            |
 | --------------- | -------------------------------------------------------------------------- |
 | Vendor/Brand    | Comtrend                                                                   |
