@@ -16,14 +16,29 @@ The workflow is:
 
 ## omcilog2pcap
 
-[omcilog2pcap](https://github.com/hack-gpon/omcilog2pcap) converts the OMCI logs of the ONTs into `.pcap` files. It supports the logs of:
+[omcilog2pcap](https://github.com/hack-gpon/omcilog2pcap) converts the OMCI logs of the ONTs into `.pcap` files. The format of the log is detected automatically:
 
-- Lantiq based chips (e.g. [Huawei MA5671A](/ont-huawei-ma5671a))
-- Realtek based chips (e.g. [Technicolor AFM0002TIM](/ont-technicolor-afm0002))
-- Sagemcom devices
-- Cortina Access devices: you can merge the `pkt_rx` and `pkt_tx` logs into a single file and the software re-orders the packets automatically
+| Log                                                                                   | Detected by                |
+| ------------------------------------------------------------------------------------- | -------------------------- |
+| Lantiq based chips (e.g. [Huawei MA5671A](/ont-huawei-ma5671a)), `omcid` log         | `[omcid]` lines            |
+| Sagemcom devices (e.g. the TIM [F@st 5684S](/router/sagemcom_fast_5684s))             | `:omci capture:` lines     |
+| Cortina Access devices: merge the `pkt_rx` and `pkt_tx` logs into a single file, the packets are re-ordered automatically | ` debug: ` lines |
+| Huawei (e.g. [OptiXstar S800E](/xgs/ont-huawei-optixstar-s800e), B450)                | `OLT->ONT` / `ONT->OLT` blocks |
+| Realtek based chips (e.g. [Technicolor AFM0002TIM](/ont-technicolor-afm0002)): one OMCI message in hex per line | any other text log |
 
-The current version is written in JavaScript (ALPHA); the previous .NET 7.0 version is in the [`C#` branch](https://github.com/hack-gpon/omcilog2pcap/tree/C%23).
+The default version is the .NET 7.0 one (native AOT), in the [`C#` branch](https://github.com/hack-gpon/omcilog2pcap/tree/C%23). The Windows executables (x64 and arm64) are in the [releases](https://github.com/hack-gpon/omcilog2pcap/releases/tag/release); on other OS build it from `src/` with the .NET SDK.
+
+To convert a log, drag and drop it on the executable, or pass it as argument:
+
+```sh
+omcilog2pcap_winx64.exe omci_log.txt
+```
+
+The `.pcap` file is written in the current directory with the same name as the log (`omci_log.pcap`). Each OMCI message is wrapped in a fake Ethernet frame with EtherType `0x88B5` (OLT MAC `08:87:01:70:17:01`, ONT MAC `08:87:88:00:00:00`), which is the EtherType the dissector is registered on.
+
+::: warning
+The [`js` branch](https://github.com/hack-gpon/omcilog2pcap/tree/js) contains an experimental JavaScript port (ALPHA) that has never been tested: use the `C#` version.
+:::
 
 ### Getting the OMCI log on Realtek based sticks
 
