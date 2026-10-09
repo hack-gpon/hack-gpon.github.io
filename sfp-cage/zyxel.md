@@ -73,6 +73,10 @@ By default zloader access is blocked.
 ### Unlocking zloader 
 
 ::: danger Warning
+Starting from firmware version 34.0 (released 9th May 2025), Zyxel has patched the `EngDebugFlag` security flaw. The procedure below to unlock zloader via `fw_setenv EngDebugFlag 0x1` no longer works on firmware 34.0 and newer. If your device has been updated to this firmware, the root/zloader access methods described here are not available.
+:::
+
+::: danger Warning
 The following procedure is provided as-is, if you damage the device this community is not responsibile for any damage in any way.
 :::
 
