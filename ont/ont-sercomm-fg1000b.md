@@ -23,9 +23,9 @@ parent: Sercomm
 | PHY Ethernet    | RTL8221B                                                            |
 | Optics          | LC/APC                                                              |
 | IP address      | 192.168.1.1/24 or 192.168.100.1/24 (depending on the derivate)      |
-| Web Gui         | ✅, login may be needed (depending on the derivate)                 |
-| SSH             | No                                                                  |
-| Telnet          | No                                                                  |
+| Web Gui         | ✅, login may be needed (depending on the derivate, see [Web UI credentials](#web-ui-credentials)) |
+| SSH             | After enabling (see [Enabling SSH](#enabling-ssh))                  |
+| Telnet          | After enabling (see [Enabling telnet/SSH/serial](#enabling-telnetsshserial)) |
 | Serial          | ✅, only TX                                                         |
 | Serial baud     | 115200                                                              |
 | Serial encoding | 8-N-1                                                               |
@@ -53,6 +53,7 @@ The ONT seems to only display output of the ROM CFE and flash CFE, but doesn't s
 
 | Firmware version | Firmware date | used by                       |
 | ---------------- | ------------- | ----------------------------- |
+| 090111.1.0.002   | 31.08.2021    | 1&1 (FG1000B.11)              |
 | 090122.1.0.001   | 03.11.2022    | Vodafone (FG1000B.VF)         |
 | 090133.1.0.003   | 11.09.2023    | o2/Telefonica (FG1000B.O2)    |
 | 090144.1.0.001   |               | Deutsche Telekom (FG1000B.11) |
@@ -119,6 +120,33 @@ Please back them up before any hacking! Recovery is possible if you hardware res
 
 * `smd` - daemon in charge of launching the `/opt/` plugin for each of the ONT's service like: `init, gpon, iptv, temperature, account, http, lan, network, syslog, system`. All is done in code which does not help hacking the device.
 
+# Web UI credentials
+
+## Deutsche Telekom (FG1000B.11)
+
+The Deutsche Telekom variant does not require login credentials for the web interface on firmware 090144.1.0.001.
+
+## 1&1 (FG1000B.11)
+
+| Field    | Value                                                |
+| -------- | ---------------------------------------------------- |
+| Username | `1UND1`                                              |
+| Password | `G6m%Z` followed by the last 5 digits of the GPON SN (Modem-ID on the sticker) |
+
+## Vodafone (FG1000B.VF)
+
+| Field    | Value                                                |
+| -------- | ---------------------------------------------------- |
+| Username | `vodafone`                                           |
+| Password | Printed on the device label                          |
+
+## o2/Telefonica (FG1000B.O2)
+
+| Field    | Value                                                |
+| -------- | ---------------------------------------------------- |
+| Username | Not required (login page only asks for password)     |
+| Password | Printed on the device label                          |
+
 # Usage
 
 ## Enabling telnet/SSH/serial
@@ -153,6 +181,48 @@ fetch('http://192.168.100.1/data/statussupporteventlog_applog_download.json?_=16
 .then(res => res.json())
 .then(console.log)
 ```
+
+### Simplified method (for 1&1/Vodafone/o2 variants, after web login)
+
+After logging into the web interface, the following simplified command can be run in the browser console to enable telnet. The `page_data_send` function handles the `csrf_token` automatically:
+
+```javascript
+page_data_send("/data/statussupporteventlog_applog_download.json", 'applog_select=a;echo "#!/bin/sh" > /tmp/slogin;echo "export PATH=/bin:/sbin:/usr/bin:/usr/sbin" >> /tmp/slogin;echo "/bin/sh" >> /tmp/slogin;/bin/chmod 755 /tmp/slogin;/usr/sbin/telnetd -l /tmp/slogin')
+```
+
+## Enabling SSH
+
+On the 1&1, Vodafone, and o2 variants (which have `/opt/lib/libsl_access_control.so`, unlike the DT variant), the SSH server can be enabled persistently:
+
+```sh
+cmld_client set InternetGatewayDevice.X_SC_Management.Server.SSHServer.Enable=1
+cmld_client save
+reboot
+```
+
+After reboot, connect with SSH using the same credentials as the web interface:
+```sh
+ssh -oHostKeyAlgorithms=+ssh-rsa -oKbdInteractiveAuthentication=no 1UND1@192.168.100.1
+```
+Replace `1UND1` with `vodafone` or `o2` depending on the variant, and adjust the IP address accordingly (o2 uses `192.168.1.1`).
+
+::: warning Note
+By default the SSH server runs a limited `sc_cli` shell. To get a full shell, first enable telnet, then run:
+```sh
+mount --bind /dev/null /bin/sc_cli
+```
+This restores normal SSH behavior with a full shell. This change is not persistent across reboots.
+:::
+
+### Access control page
+
+The web interface has a hidden `Access Control` page that may allow enabling SSH/Telnet from the UI. It can be accessed directly at:
+```
+http://192.168.100.1/settings.html#sub=80
+```
+This page is commented out in the navigation menu but still functional.
+
+## Boot-persistent telnet
 
 There is a way to make a script call at boot to ensure telnet or other services start at boot if needed. It uses a hack from libsl_system.so where there is a `system(...)` call using a String from config, string must be <=12 char. The system call is supposed to set set hostname of the device for storage sharing.
 In the example below, a `/data/up` shell script would be created (ensure it has execute rights, such as: `chmod 755`).

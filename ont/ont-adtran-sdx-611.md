@@ -16,11 +16,11 @@ parent: Adtran
 | System          |                                          |
 | Optics          | SC/APC (U&T UTG24P05)                    |
 | 2.5GbaseT       | No                                       |
-| IP address      |                                          |
+| IP address      | 192.168.1.1                              |
 | Web Gui         |                                          |
 | SSH             |                                          |
 | Telnet          |                                          |
-| Serial          | ✅                                       |
+| Serial          | ✅, no credentials needed                |
 | Serial baud     | 115200                                   |
 | Serial encoding | 8-N-1                                    |
 | Form Factor     | ONT                                      |
