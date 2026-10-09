@@ -1,0 +1,69 @@
+# Publish the site built by preview-pr.yaml to Cloudflare Pages. It runs from
+# the default branch with the secrets, and never runs the PR code: it only
+# uploads the files built by preview-pr.yaml.
+name: preview-deploy
+
+on:
+  workflow_run:
+    workflows: [preview-pr]
+    types: [completed]
+
+permissions:
+  contents: read
+
+jobs:
+  # PRs from forks wait for a manual approval of the "external" environment
+  authorize:
+    if: github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success'
+    environment:
+      ${{ github.event.workflow_run.head_repository.full_name != github.repository &&
+      'external' || 'internal' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: "true"
+
+  deploy:
+    needs: authorize
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      pull-requests: write
+    # Shows the preview link on the job, like the Pages deploy
+    environment:
+      name: preview
+      url: ${{ steps.preview-pages.outputs.deployment-url }}
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+      # The artifacts come from the PR code: make sure the number is really
+      # the PR of the commit that was built
+      - name: Find the PR
+        id: pr
+        env:
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          number=$(cat pr-number/pr-number)
+          [[ "$number" =~ ^[0-9]+$ ]] || { echo "Invalid PR number"; exit 1; }
+          sha=$(gh api "repos/$GITHUB_REPOSITORY/pulls/$number" --jq .head.sha)
+          [[ "$sha" == "$HEAD_SHA" ]] || { echo "PR #$number is not at $HEAD_SHA"; exit 1; }
+          echo "number=$number" >> "$GITHUB_OUTPUT"
+      - name: Extract site
+        run: mkdir dist && tar -xf github-pages/artifact.tar -C dist
+      - name: Publish to Cloudflare Pages
+        id: preview-pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT }}
+          command: pages deploy dist --project-name=hack-gpon-preview --branch=preview
+      - name: Comment on the PR
+        env:
+          URL: ${{ steps.preview-pages.outputs.deployment-url }}
+        run: |
+          gh pr comment "${{ steps.pr.outputs.number }}" --repo "$GITHUB_REPOSITORY" \
+            --body "Preview of the website obtained from the PR: $URL"
