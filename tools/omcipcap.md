@@ -24,3 +24,5 @@ Project:
 
 - [GitHub](https://github.com/RainbowCloudLabs/omcipcap)
 - [PyPI](https://pypi.org/project/omcipcap/)
+
+To capture the OMCI messages of an ONT and open them in Wireshark see [OMCI Wireshark and PCAP tools](/omci-wireshark).
