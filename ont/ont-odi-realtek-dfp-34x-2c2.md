@@ -97,6 +97,7 @@ omciOLT21: "true"
 # Miscellaneous Links
 
 - [Hacking RTL960x](https://github.com/Anime4000/RTL960x)
+- [Asenheim firmware repository](https://cloud.asenheim.org/s/tqGTgBDSZgoKFyg) - alternative firmware collection for ODI/HSGQ, Alcatel/Nokia and Huawei modules
 - [Ditch ONU, use GPON SFP on Business Grade Router, Mikrotik/Ubiquiti/pfSense (Home Networking)](https://forum.lowyat.net/topic/4925452)
 - [For the old model ODI ZTE DFP-34G-C2C](/ont-odi-zte-dfp-34g-2c2)
 

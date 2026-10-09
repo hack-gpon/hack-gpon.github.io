@@ -302,6 +302,7 @@ FALCON => saveenv
 
 # Miscellaneous Links
 
+- [Asenheim firmware repository](https://cloud.asenheim.org/s/tqGTgBDSZgoKFyg) - alternative firmware collection for ODI/HSGQ, Alcatel/Nokia and Huawei modules
 - [alcatel_lucent-lantiq_falcon](https://github.com/minhng99/alcatel_lucent-lantiq_falcon)
 - [uboot lantiq falcon](https://github.com/minhng99/u-boot_lantiq_falcon)
 - [Usage GPON module SFP in Spain](https://forum.mikrotik.com/viewtopic.php?t=116364&start=300)

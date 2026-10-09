@@ -83,11 +83,33 @@ This ONT supports dual boot.
 
 `kernel0` and `rootfs0` respectively contain the kernel and firmware of the first image, `kernel1` and `rootfs1` the kernel and firmware of the second one.
 
-`mfginfo0` and `mfginfo1` (in the first 256bytes) contain the MAC-addresses and the serial (at offset 0x68). The last 4 byte seem to be a UNKNOWN checksum.<br>
-The third 256 byte block (offsets 0x7800200 and 0x7900200) contains the user configurable PON-ID. Here the 4byte checksum at the end is CRC-32/BZIP2 in BIG-endian (Polynom: 0x04C11DB7).
+`mfginfo0` and `mfginfo1` (in the first 256 bytes) contain the MAC-addresses and the serial (at offset 0x68). The last 4 bytes are a CRC-32/BZIP2 checksum (Polynom: 0x04C11DB7, Init: 0xFFFFFFFF, XorOut: 0xFFFFFFFF) calculated over the first 236 bytes of the block.<br>
+The third 256 byte block (offsets 0x7800200 and 0x7900200) contains the user configurable PON-ID. Here the 4-byte checksum at the end is also CRC-32/BZIP2 in BIG-endian (Polynom: 0x04C11DB7).
 
-<b> I really would be interested what the checksum is / how the checksum of the first block is calculated. </b><br>
-Even the relevant kernel modules "ca_ne.ko" (authored by Aaron ans Raymond Tseng) claims to be GPL - the cortina team didn't respond to my mails asking for source code / details.
+The CRC algorithm is implemented in the `cig-misc.ko` kernel module (function `nvram_nand_eeprom_valid_check()`), which prints the correct length needed for the CRC calculation (236 bytes).
+
+::: details Python script to verify the mfginfo CRC
+```python
+import struct
+
+def crc32_bzip2(data, poly=0x04C11DB7, init=0xFFFFFFFF, xorout=0xFFFFFFFF):
+    crc = init & 0xFFFFFFFF
+    for byte in data:
+        crc ^= (byte << 24) & 0xFFFFFFFF
+        for _ in range(8):
+            if crc & 0x80000000:
+                crc = ((crc << 1) ^ poly) & 0xFFFFFFFF
+            else:
+                crc = (crc << 1) & 0xFFFFFFFF
+    return crc ^ xorout
+
+# Read 256 bytes from mfginfo partition
+# mfginfo_256 = open("mtd10.bin", "rb").read(256)
+# crc_expected = struct.unpack("I", mfginfo_256[252:])[0]
+# crc_calculated = crc32_bzip2(mfginfo_256[0:236])
+# print(f"Expected: {crc_expected:#010x} | Calculated: {crc_calculated:#010x} | Match: {crc_expected == crc_calculated}")
+```
+:::
 
 <!--@partial: ./_partials/ont-nokia-use.md-->
 
@@ -103,3 +125,8 @@ After loggin in as "admin". the telnetd hands over to "/usr/bin/GponSLID".
 
 With the possiblility to unsolder and clone the NAND (I wrote my own C-Tool using spidev) it might be possible to modify the `rootfs0`.<br>
 <b>This could be a practical way to enable full telnet by replacing "/usr/bin/GponSLID" with "/usr/bin/GponCLI" - or even better "/bin/sh"...</b>
+
+# Miscellaneous Links
+
+- [CA8271x documentation and tools](https://github.com/YuukiJapanTech/CA8271x) - includes mtd dumps, root shell methods, and CIG backdoor packet info
+- [pon.wiki: Nokia XS-010X-R](https://pon.wiki/xgs-pon/ont/nokia/xs-010x-r/)
