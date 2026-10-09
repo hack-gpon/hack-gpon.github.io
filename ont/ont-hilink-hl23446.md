@@ -38,6 +38,7 @@ parent: Hilink
 - [FS.com GPON ONU Stick with MAC / SourcePhotonics SPS-34-24T-HP-TDFO](/ont-fs-com-gpon-onu-stick-with-mac)
 - Dasan H650SFP {.text-red-200}
 - DpOptics D23446 {.text-red-200}
+- Photonics SPS-34-24T-HP-TDFO {.text-red-200}
 ## List of partitions
 
 | dev  | size     | erasesize | name          |

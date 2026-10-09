@@ -51,6 +51,7 @@ The GPON-SFP-ONT-MAC-I is sold as multiple SKUs; the 133619 SKU is identical to 
 - [Hilink HL23446](/ont-hilink-hl23446)
 - Dasan H650SFP {.text-red-200}
 - DpOptics D23446 {.text-red-200}
+- Photonics SPS-34-24T-HP-TDFO {.text-red-200}
 ## Serial
 
 The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the SFP connector.
