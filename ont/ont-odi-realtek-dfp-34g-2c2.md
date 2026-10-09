@@ -39,6 +39,19 @@ ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc -oHostKeyAlg
 
 The recommended versions are `M114_sfp_ODI_Vlan_220414.tar`, `M114_sfp_ODI_hybrid_220527.tar` or `M114_sfp_ODI_hybrid_220916.tar`, as these have working VLAN translation.  
 
+The firmwares are the same of the [ODI Realtek DFP-34X-2C2](/ont-odi-realtek-dfp-34x-2c2#list-of-firmwares-and-files), see that page for the SFU/HGU type of each firmware: switching between a SFU and an HGU firmware requires a [factory reset](#factory-reset) and a new [MAC key](#mac-key).
+
+## MAC key
+
+From the firmware `V1.0-220304` onwards, changing `ELAN_MAC_ADDR` requires a matching `MAC_KEY`, the MD5 of `hsgq1.9a` followed by the MAC address in uppercase[^rtl960x_setup]:
+
+```sh
+echo -n "hsgq1.9aFFFFFF000000" | md5sum
+46f4ea2e3f18ba3bc1f2671b5f7e1f62  -
+flash set ELAN_MAC_ADDR FFFFFF000000
+flash set MAC_KEY 46f4ea2e3f18ba3bc1f2671b5f7e1f62
+```
+
 ## List of partitions
  
 | dev   | size     | erasesize | name            |
@@ -79,15 +92,19 @@ ploam: "hex"
 customSwVersionAlert: "This needs either `OMCI_OLT_MODE` to be set to 3 and firmware version 220530 or 220923 as modded by @stich86 or, if you don't want to replace the installed firmware, set `OMCI_OLT_MODE` value to `21`. This will force the stick to use your own settings from the XML file, but this is a hack and causes sigsegv of `/bin/checkomci`."
 speedLan: "1234567"
 omciOLT21: "true"
+rtl960x: true
+macKey: "odi"
 -->
 
 # Known Bugs
 
 - Auto-sensing mode to switch between SGMII/HiSGMII
+- Slow upload with the 2.5G modes on some OLTs, see the [DFP-34X-2C2 known bugs](/ont-odi-realtek-dfp-34x-2c2#known-bugs)
 
 # Miscellaneous Links
 
 - [Hacking RTL960x](https://github.com/Anime4000/RTL960x)
+- [RTL960x stick setup guide](https://github.com/Anime4000/RTL960x/blob/main/Docs/StickSetup.md)
 - [Ditch ONU, use GPON SFP on Business Grade Router, Mikrotik/Ubiquiti/pfSense (Home Networking)](https://forum.lowyat.net/topic/4925452)
 - [For the new model ODI ZTE DFP-34X-C2C](/ont-odi-zte-dfp-34x-2c2)
 

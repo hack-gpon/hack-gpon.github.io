@@ -43,8 +43,28 @@ This happens when the OLT detects that the ONT is `drunk`, so it tries to update
 
 This is most likely to reduce logs from misconfigured ONTs and to be able to send updates automatically to ONTs.
 
+The same happens on other OLTs that support any ONU (e.g. Fiberhome, Calix and Nokia): the ONU reaches `O5` even with a wrong serial number or PLOAM password, but the OLT does not send the VLAN configuration (ME 84 and ME 171)[^rtl960x]. To fix it:
+
+- check again the serial number and the PLOAM password;
+- clone all the identity values of the original ONT: vendor ID, equipment ID, hardware and software versions, OMCC version and, for some OLTs, OUI, hardware serial number and MAC address;
+- some ISPs require vendor specific MEs (350-399), which a stick may not be able to emulate.
+
+On the Realtek based sticks, `OMCI_FAKE_OK` (reply OK to every OMCI message) and `OMCI_OLT_MODE` (vendor compatibility mode) can help, see for example the [ODI DFP-34X-2C2](/ont-odi-realtek-dfp-34x-2c2#gpon-omci-settings). Some ISPs keep the OMCI configuration in cache on the OLT: e.g. Chunghwa Telecom (Taiwan) can reset the line from its support. Some ISPs blacklist the PON port after a few failed attempts (e.g. Movistar Chile after 3 attempts), and the reset requires a technician[^anime4000].
+
+# `O2`-`O5` loop
+
+The ONU cycles between `O2` and `O5` without ever staying in `O5`[^rtl960x]:
+
+- the OLT does not accept the ONU identity, as in the [Fake O5](#fake-o5-status) case, e.g. with some Fiberhome OLTs, or with PLDT (Philippines) when a SFU firmware is used instead of an HGU one;
+- the received optical power is too low (e.g. ≤ -23 dBm): clean the connectors and check the RX power again.
+
+::: danger Warning
+If the ONU still does not work after checking all the values, stop: every failed attempt is logged by the OLT, and a misbehaving ONU can disrupt the whole PON tree, with service suspension or penalties from the ISP.
+:::
+
 <hr>
 
 [^huawei]: *The Process for an ONU to go Online* https://forum.huawei.com/enterprise/en/the-process-for-an-onu-to-go-online-gpon-technical-posts-12/thread/462895-100181
 [^standardgpon]: *G.984.3: Gigabit-capable passive optical networks (GPON): Transmission convergence layer specification* https://www.itu.int/rec/T-REC-G.984.3
 [^anime4000]: *`O5` No Internet* https://github.com/Anime4000/RTL960x/blob/main/Docs/fakeO5.md
+[^rtl960x]: *Hacking RTL960x: Fake O5 State and O2-O5 Loop*, Anime4000/RTL960x https://github.com/Anime4000/RTL960x

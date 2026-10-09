@@ -96,6 +96,7 @@ customSwVersionAlert: "This needs the `/etc/scripts/flash` modded"
 customHwVersionAlert: "This needs the `/etc/scripts/flash` modded"
 customVendorAlert: "This needs the `/etc/scripts/flash` modded"
 customEquipAlert: "This needs the `/etc/scripts/flash` modded"
+ip: "192.168.2.1"
 -->
 
 ## Enabling the Web UI
@@ -103,45 +104,11 @@ customEquipAlert: "This needs the `/etc/scripts/flash` modded"
 # /bin/iptables -D INPUT -p tcp --dport 80 -j DROP
 ```
 
-## Transfering files from/to the stick
-Works with binary files too, just run md5sum on source and destination to make sure you are not corrupting anything...
-From the stick to the PC:
+## Copying the configuration and the logs
+The same commands of [Transferring files from/to the stick](#transferring-files-from-to-the-stick) work for the configuration and the logs:
 ```sh
 # ssh admin@192.168.2.1 "cat /tmp/omcilog" > omcilog.log
-```
-From the PC to the stick:
-```sh
 # cat lastgood.xml | ssh admin@192.168.2.1  "cat > /var/config/lastgood.xml"
-```
-
-::: info Info
-If a Windows system is used replace type with cat and run the commands from cmd (not Powershell)
-:::
-
-## Extracting and repacking the rootfs
-::: danger Warning
-Make sure you run both commands as root, otherwise you might get a damaged rootfs image
-:::
-
-```sh
-# unsquashfs mtd5.bin
-# mksquashfs squashfs-root rootfs -b 131072 -comp lzma -no-recovery
-```
-## Flashing a new rootfs
-
-::: info Info
-Only the inactive image can be flashed, change sw_versionX and sw_commit X based on the bank you have flashed
-:::
-
-Flash mtd4/5 if you are on image1, mtd6/7 if you are on image0.
-
-The following commands are used to flash a new rootfs to image1 and then boot to it
-```sh
-# flash_eraseall /dev/mtd7
-# cat /tmp/rootfs.new > /dev/mtd7
-# nv setenv sw_version1 NEW_SOFTWARE_VERSION
-# nv setenv sw_commit 1
-# reboot
 ```
 
 ::: info Info

@@ -28,6 +28,77 @@ diag gpon get onu-state
 # omcicli mib get MIB_IDX
 ```
 
+The most useful MEs to check the provisioning received from the OLT[^rtl960x_omci]:
+
+| ME  | Name                             | Notes                                                                           |
+| --- | -------------------------------- | ------------------------------------------------------------------------------- |
+| 6   | Circuit pack                     | Type and number of ports emulated by the stick                                  |
+| 7   | Software image                   | Software versions reported to the OLT                                           |
+| 11  | PPTP Ethernet UNI                | Physical LAN ports, with the `AdminState` set by the OLT                        |
+| 84  | VLAN tagging filter data         | VLANs sent to the stick by the OLT, e.g. the internet VLAN to use on the router |
+| 131 | OLT-G                            | OLT vendor ID                                                                   |
+| 171 | Extended VLAN tagging operation  | VLAN translation rules, which VLAN goes to which LAN port                       |
+| 256 | ONU-G                            | Vendor ID, version and serial number                                            |
+| 257 | ONU2-G                           | Equipment ID, OMCC version                                                      |
+| 262 | T-CONT                           |                                                                                 |
+| 263 | ANI-G                            | PON side                                                                        |
+| 264 | UNI-G                            | LAN side                                                                        |
+| 277 | Priority queue                   |                                                                                 |
+| 309 | Multicast operations profile     | VLANs used for the IPTV multicast traffic                                       |
+| 329 | Virtual Ethernet interface point | VEIP, used for VoIP, TR-069 or the router mode of the HGUs                      |
+
+To dump all the MEs at once:
+
+```sh
+for ME in 2 5 6 7 11 24 45 47 49 50 52 78 79 83 84 89 130 131 133 134 136 137 148 157 158 171 240 244 245 248 249 250 253 255 256 257 262 263 264 266 267 268 272 273 274 277 278 280 281 284 287 296 298 307 308 309 310 311 312 321 322 329 330 334 340 341 65282 65294 65408 65527 65528 65529 65530 65531; do echo "MIB: $ME"; omcicli mib get $ME; done
+```
+
+See [PPTP and VEIP](/gpon/pptp_veip) for the meaning of the UNIs and [OMCI Wireshark](/tools/omci-wireshark) to decode the full OMCI log.
+
+## Getting the GEM ports and the flows
+
+```sh
+# diag gpon show us-flow
+============================================================
+    GPON ONU MAC U/S Flow Status
+Flow ID | GEM Port | Type | TCont
+      0 |      263 |  ETH |     0
+      1 |      264 |  ETH |     1
+     64 |        2 | OMCI |    16
+============================================================
+# diag gpon show ds-flow
+```
+
+## Getting the VLANs bridged by the stick
+
+The L2 table shows the learned MAC addresses with their VLAN (`Vid`): if the internet traffic arrives untagged on the router, this is a way to find which VLAN is used on the PON side[^rtl960x_diag].
+
+```sh
+# diag l2-table get entry address valid
+```
+
+On the RTL9601D (e.g. ODI DFP-34X-2C2) the `valid` parameter is not available, the table has to be read entry by entry:
+
+```sh
+i=0
+while [ $i -lt 2047 ]; do
+    diag l2-table get entry address $i | grep -q "LUT" && diag l2-table get entry address $i
+    i=$((i+1))
+done
+```
+
+## Getting the port status and the bandwidth limits
+
+```sh
+# diag port get status port all
+Port Status Speed    Duplex TX_FC RX_FC
+---- ------ -----    ------ ----- -----
+0    Up     1000M    Full   Dis   Dis
+2    Up     1000M    Full   Dis   Dis
+# diag bandwidth get egress port all
+# diag bandwidth get ingress port all
+```
+
 
 {% if include.speedLan %}
 
@@ -56,6 +127,18 @@ LAN_SDS_MODE=0
 | 6     | `<4>change mode to 6(2500BaseX)`     | `FIBER`  | 2500baseX with auto-neg on  |{% endif %}{% if include.speedLan contains '7' %}
 | 7     | `<4>change mode to 7(SGMII Force)`   | `TP`     | 1GbaseT with auto-neg off   |{% endif %}{% if include.speedLan contains '8' %}
 | 8     | `<4>change mode to 8(HISGMII Force)` | `TP`     | 2500baseT with auto-neg off |{% endif %}
+
+{% if include.speedLanDefault %}
+The default value on this stick is `{{ include.speedLanDefault }}`.
+{% endif %}
+
+{% if include.speedLan contains '6' %}
+The 2.5G modes are `4` (HiSGMII PHY), `5` (HiSGMII MAC) and `6` (2500BASE-X): most of the hosts that support 2.5G work with the mode `6` and the port forced to 2500BASE-X, see the [SFP standard](/sfp/sfp-standard) page and the [2.5G compatibility list](https://github.com/Anime4000/RTL960x/blob/main/Docs/2.5Gb.md)[^rtl960x_25g].
+{% endif %}
+
+::: warning
+A `LAN_SDS_MODE` not supported by the host makes the stick unreachable: the only way to restore it is the serial console.
+:::
 
 {% endif %}
 
@@ -87,6 +170,10 @@ GPON_PLOAM_PASSWD=AAAAAAAAAA
 ::: info Note
 The PLOAM password is stored in HEX format, without any 0x or separators
 :::
+
+{% if include.rtl960x %}
+From the firmware `220304` onwards only the HEX format is accepted via telnet/SSH (`GPON_PLOAM_FORMAT` set to `0`): use the Web GUI to enter it in ASCII[^rtl960x_setup].
+{% endif %}
 
 ```sh
 # {{ include.flash }} get GPON_PLOAM_PASSWD
@@ -212,6 +299,84 @@ OMCI_FAKE_OK=0
 # {{ include.flash }} set OMCI_FAKE_OK 1
 ```
 
+{% if include.rtl960x %}
+## Getting/Setting the OMCC version
+
+The OMCC version (ME 257) advertised to the OLT, e.g. `128` (`0x80`) or `160` (`0xA0`):
+
+```sh
+# {{ include.flash }} get OMCC_VER
+OMCC_VER=128
+# {{ include.flash }} set OMCC_VER 160
+```
+
+## Getting/Setting the OMCI traffic management option
+
+How the OLT manages the upstream bandwidth (ME 256 `Traffic management option`): if the upload speed is lower than expected, try the other values[^rtl960x_slow].
+
+```sh
+# {{ include.flash }} get OMCI_TM_OPT
+OMCI_TM_OPT=2
+# {{ include.flash }} set OMCI_TM_OPT 0
+```
+
+| Value | Mode                         |
+| ----- | ---------------------------- |
+| 0     | Priority controlled          |
+| 1     | Rate controlled              |
+| 2     | Priority and rate controlled |
+
+## Getting/Setting the VEIP slot ID
+
+Some OLTs expect the VEIP (ME 329) with the same Entity ID of the original ONT, usually `0x0e01`. The slot ID is the most significant byte of the Entity ID (`0x0e` = `14`), and it is applied only if the bit `0x100` (`cf_apply_customized_veip_slot_id`) of `OMCI_CUSTOM_ME` is set: the default value on the SFU firmwares is `65536` (`0x10000`), so it must be set to `65792` (`0x10100`)[^rtl960x_veip].
+
+```sh
+# {{ include.flash }} set OMCI_VEIP_SLOT_ID 14
+# {{ include.flash }} set OMCI_CUSTOM_ME 65792
+```
+
+The other feature bits of `OMCI_CUSTOM_ME` have been documented by [@rajkosto](https://gist.github.com/rajkosto/79034a1f7b3de3f40edf50ffbd8396b0).
+
+## Getting/Setting the other identity values
+
+Some OLTs (mostly the ones that accept any ONU, e.g. Fiberhome and Calix) also check other values of the original ONT[^rtl960x_setup]:
+
+| Variable               | Description                                                    | Example                        |
+| ---------------------- | -------------------------------------------------------------- | ------------------------------ |
+| `OUI`                  | Organizationally Unique Identifier of the original MAC address | `875773`                       |
+| `HW_SERIAL_NO`         | Hardware serial number (not the GPON serial number)            | `UONHUWH12341234123`           |
+| `ELAN_MAC_ADDR`        | MAC address of the stick, required by EPON                     | `781735000000`                 |
+| `HW_CWMP_MANUFACTURER` | TR-069 manufacturer                                            | `Huawei Technologies Co., Ltd` |
+| `HW_CWMP_PRODUCTCLASS` | TR-069 product class                                           | `HG8240H`                      |
+| `LOID`, `LOID_PASSWD`  | Logical ONU ID and password, used by EPON and some GPON ISPs   |                                |
+
+```sh
+# {{ include.flash }} set OUI 875773
+# {{ include.flash }} set HW_CWMP_MANUFACTURER 'Huawei Technologies Co., Ltd'
+```
+
+{% if include.macKey == 'odi' %}
+::: warning
+Changing `ELAN_MAC_ADDR` requires a new `MAC_KEY`, see [MAC key](/ont-odi-realtek-dfp-34x-2c2#mac-key).
+:::
+{% elsif include.macKey == 'vsol' %}
+::: warning
+Changing `ELAN_MAC_ADDR` or `HW_HWVER` requires a new `VS_AUTH_KEY`, see [VS_AUTH_KEY](/ont-vsol-v2801f#vs-auth-key).
+:::
+{% endif %}
+
+## Getting/Setting the PON mode, device type and VLAN mode
+
+| Variable         | Values                                                                                             |
+| ---------------- | -------------------------------------------------------------------------------------------------- |
+| `PON_MODE`       | `1` GPON (default), `2` EPON, `3` Ethernet (the PON side works as an Ethernet fiber transceiver)    |
+| `DEVICE_TYPE`    | `0` bridge, `1` router, `2` hybrid                                                                  |
+| `VLAN_CFG_TYPE`  | `0` auto (from OMCI), `1` manual (uses `VLAN_MANU_MODE`)                                             |
+| `VLAN_MANU_MODE` | `0` transparent, `1` tagging (Q-in-Q, the outer tag is removed), `2` remote access, `3` special case |
+
+Every `{{ include.flash }} set` requires a reboot to be applied[^rtl960x_flash].
+{% endif %}
+
 # Advanced settings
 
 ## Setting management IP
@@ -248,7 +413,126 @@ sw_version1=V1_7_8_210412
 ```
 
 ## Booting to a different image
+
+The firmware upgrade always writes the inactive image, so it is possible to go back to the previous firmware[^rtl960x_fw]:
+
 ```sh
 # nv setenv sw_commit 0|1
+# nv setenv sw_active 0|1
 # reboot
 ```
+{% if include.rtl960x %}
+
+## Factory reset
+
+::: danger
+Make a backup of the `env`, `env2` and `config` partitions (see this [guide](https://github.com/Anime4000/RTL960x/discussions/28)) and write down `ELAN_MAC_ADDR` and the license key ({% if include.macKey == 'vsol' %}`VS_AUTH_KEY`{% else %}`MAC_KEY`{% endif %}) before the reset: after it the stick uses the default MAC address, and a wrong key prevents the authentication to the OLT.
+:::
+
+The configuration is stored in the `config` partition (`/dev/mtd3`), erasing it restores the default settings[^rtl960x_reset]:
+
+```sh
+# flash_eraseall /dev/mtd3
+# reboot
+```
+
+If the stick reboots in a loop, the [reset-config-partition.sh](https://github.com/Anime4000/RTL960x/blob/main/Tools/reset/reset-config-partition.sh) script keeps trying until it can erase the partition via SSH.
+{% endif %}
+
+# Modifying the firmware
+
+::: danger Warning
+A wrong rootfs makes the image unbootable: always flash the **inactive** image, so that the stick can still boot the other one, and keep a backup of all the partitions.
+:::
+
+## Transferring files from/to the stick
+
+Run `md5sum` on the source and on the destination to make sure that the file has not been corrupted.
+
+Via SSH, from the stick to the PC and vice versa:
+
+```sh
+ssh admin@{{ include.ip | default: "192.168.1.1" }} "cat /dev/mtd5" > mtd5.bin
+cat rootfs.new | ssh admin@{{ include.ip | default: "192.168.1.1" }} "cat > /tmp/rootfs.new"
+```
+
+Via TFTP (a TFTP server must be running on the PC):
+
+```sh
+# tftp <PC IP>
+tftp> get rootfs.new
+tftp> put <filename> <directory>
+tftp> q
+```
+
+Via netcat (`nc` on the stick does not exit at the end of the transfer: stop it with `CTRL+C`)[^rtl960x_mod]:
+
+```sh
+# on the stick
+nc -l -p 12345 > /tmp/rootfs.new
+# on the PC
+nc {{ include.ip | default: "192.168.1.1" }} 12345 < rootfs.new
+```
+
+::: info Info
+On Windows run the commands from `cmd` (not PowerShell) and replace `cat` with `type`.
+:::
+
+## Extracting and repacking the rootfs
+
+The rootfs is a SquashFS (LZMA) image: on the stick it is in `r0` (`/dev/mtd5`) for the image 0 and in `r1` (`/dev/mtd7`) for the image 1, while the kernel is in `k0` (`/dev/mtd4`) and `k1` (`/dev/mtd6`).
+
+::: danger Warning
+Run both commands as root, otherwise the rootfs image might be damaged.
+:::
+
+```sh
+# unsquashfs mtd5.bin
+# mksquashfs squashfs-root rootfs.new -b 131072 -comp lzma -no-recovery
+```
+
+The [RTL960x emulator](https://github.com/Anime4000/RTL960x/tree/main/Tools/emulator) runs the extracted firmware in QEMU (`qemu-user-static`) to modify and test it before flashing it: any file in its `custom` folder is copied over `squashfs-root` when leaving the chroot, and the custom startup scripts go in `/etc/init.d/rc35`.
+
+## Flashing a new rootfs
+
+Check which image is running (`nv getenv sw_active`): flash `mtd6`/`mtd7` if the image 0 is running, `mtd4`/`mtd5` if the image 1 is running. The following commands flash a new rootfs to the image 1 and boot it:
+
+```sh
+# flash_eraseall /dev/mtd7
+# cat /tmp/rootfs.new > /dev/mtd7
+# nv setenv sw_version1 NEW_SOFTWARE_VERSION
+# nv setenv sw_commit 1
+# reboot
+```
+
+If `cat` fails with `cat: write error: Invalid Argument`, write the image to the block device instead:
+
+```sh
+# flash_eraseall /dev/mtd7
+# cat /tmp/rootfs.new > /dev/mtdblock7
+```
+
+## Repacking a firmware upgrade file
+
+The firmware upgrade files of the ODM firmwares (e.g. V-SOL, T&W, ODI) are a `tar` containing the kernel (`uImage`), the `rootfs`, the `fwu.sh` upgrade script, the `fwu_ver` version file and the `md5.txt` checksums: after replacing the rootfs, update the checksums and repack it, then upload it from the Web GUI firmware upgrade page[^rtl960x_mod]:
+
+```sh
+tar -xf firmware.tar
+mv rootfs.new rootfs
+md5sum fwu.sh rootfs uImage fwu_ver > md5.txt
+tar -cvf ../firmware-mod.tar *
+```
+
+The [Firmware_Mod](https://github.com/Anime4000/RTL960x/tree/main/Firmware_Mod) folder of the RTL960x repository contains the community patches for the ODI DFP-34X-2C2, V-SOL V2801F and T&W TWCGPON657 (Bootstrap Web GUI, VLAN, speed and software version fixes).
+
+[^rtl960x_omci]: *OMCI MIB*, Anime4000/RTL960x https://github.com/Anime4000/RTL960x/blob/main/Docs/OMCI_CLI.md
+[^rtl960x_diag]: *Diag*, Anime4000/RTL960x https://github.com/Anime4000/RTL960x/blob/main/Docs/DIAG.md
+[^rtl960x_fw]: *Firmware Partition*, Anime4000/RTL960x https://github.com/Anime4000/RTL960x/blob/main/Docs/fw_part.md
+[^rtl960x_mod]: *Modify firmware*, Anime4000/RTL960x https://github.com/Anime4000/RTL960x/blob/main/Docs/Modify_Firmware.md
+{% if include.speedLan contains '6' %}[^rtl960x_25g]: *2.5Gb Compatibility*, Anime4000/RTL960x https://github.com/Anime4000/RTL960x/blob/main/Docs/2.5Gb.md
+{% endif %}{% if include.rtl960x %}[^rtl960x_setup]: *RTL960x SFP xPON ONU Configuration Guide*, Anime4000/RTL960x https://github.com/Anime4000/RTL960x/blob/main/Docs/StickSetup.md
+[^rtl960x_flash]: *`flash get`, `flash set`*, Anime4000/RTL960x https://github.com/Anime4000/RTL960x/blob/main/Docs/FLASH_GETSET_INFO.md
+[^rtl960x_slow]: *Slow Upload Speed*, Anime4000/RTL960x https://github.com/Anime4000/RTL960x/blob/main/Docs/SlowUploadSpeed.md
+[^rtl960x_veip]: *`OMCI_VEIP_SLOT_ID`*, Anime4000/RTL960x https://github.com/Anime4000/RTL960x/blob/main/Docs/VEIP.md
+[^rtl960x_reset]: *Factory Reset*, Anime4000/RTL960x https://github.com/Anime4000/RTL960x/blob/main/Docs/factory_reset.md
+{% endif %}

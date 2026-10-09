@@ -78,68 +78,16 @@ speedLan: "123456"
 customSpeedLanAlert: "The default firmware does not allow modification of the `LAN_SDS_MODE` parameter. Using modded firmware is needed. Before editing the sync speed make sure your hardware supports it."
 lastgoodHs: true
 flashSwVersion: true
+ip: "192.168.2.1"
 -->
+
+::: info Info
+On this stick the files are usually transferred via TFTP (see [Transferring files from/to the stick](#transferring-files-from-to-the-stick)), and writing the rootfs to `/dev/mtd7` may fail with `Invalid Argument`: in that case write it to the block device `/dev/mtdblock7`.
+:::
 
 ## Enabling the Web UI
 ```sh
 # /bin/iptables -D INPUT -p tcp --dport 80 -j DROP
-```
-
-## Transfering files from/to the stick
-Works with binary files too, just run md5sum on source and destination to make sure you are not corrupting anything...
-From the stick to the PC:
-```sh
-# tftp <IP>
-tftp> put <filename> <directory>
-tftp> q
-```
-From the PC to the stick:
-```sh
-# tftp <IP>
-tftp> get <filename>
-tftp> q
-```
-
-## Extracting and repacking the rootfs
-::: danger Warning
-Make sure you run both commands as root, otherwise you might get a damaged rootfs image
-:::
-
-```sh
-# unsquashfs mtd5.bin
-# mksquashfs squashfs-root rootfs -b 131072 -comp lzma -no-recovery
-```
-## Flashing a new rootfs
-
-::: info Info
-Only the inactive image can be flashed, change sw_versionX and sw_commit X based on the bank you have flashed
-:::
-
-Flash mtd4/5 if you are on image1, mtd6/7 if you are on image0.
-
-The following commands are used to flash a new rootfs to image1 and then boot to it
-```sh
-# flash_eraseall /dev/mtd7
-# cat /tmp/rootfs.new > /dev/mtd7
-```
-
-If you get this error on `cat` command
-```sh
-# cat /tmp/rootfs.new > /dev/mtd7
-cat: write error: Invalid Argument
-```
-
-Use this proceudre instead to write firmware back to mtd:
-```sh
-# flash_eraseall /dev/mtd7
-# cat /tmp/rootfs.new > /dev/mtdblock7
-```
-
-Then make new firmware bootable
-```sh
-# nv setenv sw_version1 NEW_SOFTWARE_VERSION
-# nv setenv sw_commit 1
-# reboot
 ```
 
 # Miscellaneous Links
