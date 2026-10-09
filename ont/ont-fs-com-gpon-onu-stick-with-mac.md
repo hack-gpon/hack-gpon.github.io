@@ -44,6 +44,10 @@ parent: FS.com
 The GPON-SFP-ONT-MAC-I is sold as multiple SKUs; the 133619 SKU is identical to the GPON-ONU-34-20BI, but other SKUs are not the same hardware. The 133619 SKU is now no longer sold.
 :::
 
+::: danger Warning
+Newer FS.com GPON-SFP-ONT-MAC-I SKUs (e.g. 351553, 351565) use a **Faraday/Galachip GC1601** chipset instead of the Lantiq PEB98035. These are completely different hardware and the firmware, commands, and patches on this page do **not** apply to them. The GalaChip-based sticks use `gccli` commands instead of the Lantiq shell.
+:::
+
 ## Firmware is interchangeable with:
 
 - [Huawei MA5671A](/ont-huawei-ma5671a)
