@@ -20,7 +20,7 @@ parent: Free/Iliad
 | Bootloader       | TK2000 Boot v3.27               |
 | System           | bare-metal (no OS)              |
 | Load addr        | 0x20000000 (ICCM)              |
-| SFP interfaces   | None, PON RAW (w/o PON MAC, see [SFP with PON MAC and w/o PON MAC](/ont-wo-mac)) |
+| SFP interfaces   | PON RAW (w/o PON MAC, see [SFP with PON MAC and w/o PON MAC](/ont-wo-mac)) |
 | Optics           | SFP w/o MAC                     |
 | IP address       |                                 |
 | Web Gui          |                                 |
