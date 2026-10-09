@@ -1,6 +1,7 @@
 ---
 title: FS.com Generic Compatible XGSPON Stick ONU with MAC SFP+ (XGS-ONU-25-20NI)
 has_children: true
+alias: E.C.I. Networks EN-XGSFPP-OMAC v1
 parent: FS.com
 ---
 

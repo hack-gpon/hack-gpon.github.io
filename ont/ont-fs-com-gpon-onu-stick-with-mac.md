@@ -566,6 +566,7 @@ For more information, see the SFF-8472 Rev 11.0 specification.
 - [SourcePhotonics SPS-34-24T-HP-TDFO Datasheet](https://www.sourcephotonics.com/wp-content/uploads/2017/08/DS-8085-02_SPS-34-24T-HP-TDFO.pdf)
 - [FS.com GPON-SFP-ONT-MAC-I SKU 133619 Datasheet](https://resource.fs.com/mall/resource/gpon-sfp-ont-mac-i-datasheet.pdf)
 - [FS.com GPON-ONU-34-20BI Configuration Guide](https://resource.fs.com/mall/doc/20230831180515egrzs6.pdf)
+- [pon.wiki: Source Photonics SPS-34-24T-HP-TDFO](https://pon.wiki/gpon/ont/source-photonics/sps-34-24t-hp-tdfo/)
 
 ---
 

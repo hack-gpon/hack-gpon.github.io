@@ -1,6 +1,7 @@
 ---
 title: Sercomm FG1000B
 has_children: false
+alias: Telekom Glasfaser-Modem 2 (FG1000B.11)
 parent: Sercomm
 ---
 
