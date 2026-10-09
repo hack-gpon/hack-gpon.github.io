@@ -26,7 +26,7 @@ parent: Adtran
 | Serial encoding |                                       |
 | Form Factor     | ONT                                   |
 
-The SDX 621 is the 10GbE XGS-PON single family unit (SFU) ONT of the Adtran SDX 620 series. The 1GbE variant is the [SDX 621i](/xgs/ont-adtran-sdx-621i), the variant with one POTS port is the 621-V (1287837Fx). It is succeeded by the [SDX 631](/xgs/ont-adtran-sdx-631) of the SDX 630 series.
+The SDX 621 is the 10GbE XGS-PON single family unit (SFU) ONT of the Adtran SDX 620 series. The 1GbE variant is the [SDX 621i](/xgs/ont-adtran-sdx-621i), the variant with one POTS port is the 621-V (1287837Fx). The [SDX 621X](/xgs/ont-adtran-sdx-621x) is the version with a pluggable SFP+ WAN port. It is succeeded by the [SDX 631](/xgs/ont-adtran-sdx-631) of the SDX 630 series.
 
 ## Specifications
 
