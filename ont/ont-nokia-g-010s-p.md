@@ -44,7 +44,6 @@ G-010S-P and other models will not expose an ethernet interface unless the fiber
 - [Hilink HL23446](/ont-hilink-hl23446)
 - Dasan H650SFP {.text-red-200}
 - DpOptics D23446 {.text-red-200}
-- Photonics SPS-34-24T-HP-TDFO {.text-red-200}
 The [Nokia G-010S-A](/ont-nokia-g-010s-a) can be flashed with the Nokia G-010S-P firmware, provided the MTD layout has been changed beforehand to match the new one. For the full procedure, see the post on [lafibre.info](https://lafibre.info/remplacer-livebox/guide-de-connexion-fibre-directement-sur-un-routeur-voire-meme-en-2gbps/msg870551/#msg870551)
 
 ## List of software versions

@@ -1,6 +1,7 @@
 ---
 title: Zisa OP151S
 has_children: false
+alias: T&W TW2362H-CDEL
 parent: Zisa
 ---
 
@@ -45,7 +46,6 @@ Some USB TTL adapters label TX and RX pins the other way around: try to swap the
 
 - [Halny HL-GSFP](/ont-halny-hl-gsfp)
 - [D-LINK DPN-100-Rev-A2](/ont-d-link-dpn-100-rev-a2)
-- [Zisa OP151s](/ont-zisa-op151s)
 - [T&W TW2362H-CDEL](/ont-t-w-tw2362h-cdel)
 
 # Miscellaneous Links

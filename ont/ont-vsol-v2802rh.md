@@ -1,6 +1,7 @@
 ---
 title: V-SOL V2802RH
 has_children: false
+alias: Uplink GP502R
 parent: V-SOL
 ---
 

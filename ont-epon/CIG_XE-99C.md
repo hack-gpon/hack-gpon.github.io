@@ -1,6 +1,7 @@
 ---
 title: CIG XE-99C
 has_children: false
+alias: Actiontec XE-99C
 parent: CIG
 ---
 
@@ -28,12 +29,6 @@ parent: CIG
 The XE-99C is the 10G-EPON ONT of the CIG XE-99 series (the SFP+ version is the [CIG XE-99S](/epon/CIG_XE-99S)).
 
 It is compliant with IEEE 802.3av, IEEE 1904.1, DPoE v2.0 and CTC V3.0 EPON standards, and it has a 2-pin power plug (+12 VDC), a power switch and a pin-hole reset button.
-
-## Value-added resellers
-
-| Company   | Product Number |
-| --------- | -------------- |
-| Actiontec | XE-99C         |
 
 # Miscellaneous Links
 

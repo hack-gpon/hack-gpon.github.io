@@ -120,3 +120,7 @@ normal load eep datat
 ```
 
 Now reboot the ONT and you can access telnet with `ONTUSER` and full power :)
+
+# Miscellaneous Links
+
+- [pon.wiki: Nokia XS-010X-Q](https://pon.wiki/xgs-pon/ont/nokia/xs-010x-q/)

@@ -1,6 +1,7 @@
 ---
 title: CIG XG-99C
 has_children: false
+alias: Actiontec XG-99C
 parent: CIG
 ---
 
@@ -32,12 +33,6 @@ The XG-99C is the XGS-PON SFU ONT of the CIG XG-99 series (the SFP+ version is t
 | ------- | --------- | ----------------- |
 | XG-99C1 | 1         | 1                 |
 | XG-99C2 | 1         | 0                 |
-
-## Value-added resellers
-
-| Company   | Product Number |
-| --------- | -------------- |
-| Actiontec | XG-99C         |
 
 ## Specifications
 

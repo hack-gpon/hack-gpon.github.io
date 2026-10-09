@@ -1,6 +1,7 @@
 ---
 title: CIG G-95SP
 has_children: false
+alias: AVM GmbH G-95SP
 parent: CIG
 ---
 
@@ -29,12 +30,6 @@ parent: CIG
 The G-95SP is the older CIG GPON SFP stick, based on a Lantiq board (the newer [CIG G-97SP](/ont-cig-g-97sp) uses a Realtek board).
 
 It is shipped by AVM, labelled "AVM GmbH (G-95SP)", together with some FRITZ!Box models with an SFP cage (e.g. FRITZ!Box 5491).
-
-## Value-added resellers
-
-| Company  | Product Number |
-| -------- | -------------- |
-| AVM GmbH | G-95SP         |
 
 ## Optical and electrical specifications
 
