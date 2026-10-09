@@ -38,6 +38,8 @@ From the SDX 630 series datasheet:
 | Management             | OMCI (ITU-T G.988), BBF.247, TR-471 speedtest, Y.1731                |
 | Operating temperature  | 0 °C ~ +40 °C                                                        |
 | Dimensions (D x W x H) | 114.5 x 133.3 x 35.5 mm                                              |
+| Weight                 | 0.75 lbs / 0.3 kg                                                    |
+| Relative humidity      | up to 95%, non-condensing                                            |
 | Mounting               | Desk, wall, fiber tray, wall mount box, DIN rail                     |
 
 # Miscellaneous Links

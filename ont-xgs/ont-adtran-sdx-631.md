@@ -40,6 +40,8 @@ From the SDX 630 series datasheet:
 | Ethernet               | 9k jumbo frames, 802.1ad Q-in-Q, SyncE                               |
 | Operating temperature  | 0 °C ~ +40 °C                                                        |
 | Dimensions (D x W x H) | 114.5 x 133.3 x 35.5 mm                                              |
+| Weight                 | 0.75 lbs / 0.3 kg                                                    |
+| Relative humidity      | up to 95%, non-condensing                                            |
 | Mounting               | Desk, wall, fiber tray, wall mount box, DIN rail                     |
 
 # Miscellaneous Links
