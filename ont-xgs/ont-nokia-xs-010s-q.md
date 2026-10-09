@@ -10,14 +10,14 @@ parent: Nokia
 | ---------------- | ------------------------------------------------------------------ |
 | Vendor           | Nokia                                                              |
 | Model            | XS-010S-Q                                                          |
-| ODM              | ?                                                                  |
-| ODM Product Code | ?                                                                  |
+| ODM              | CIG                                                                |
+| ODM Product Code | [XG-99S](/xgs/ont-fs-XGS-ONU-25-20NI)                              |
 | Chipset          | Cortina CA8271S                                                    |
 | CPU              | Dual core CPU (four virtual CPUs) running at 800 MHz               |
 | L1 Cache         | 64KB (32KB instruction, 32KB data)                                 |
 | L2 Cache         | 256KB with I/O coherency                                           |
 | Manufacter       | ?                                                                  |
-| Flash            | 1GB                                                                |
+| Flash            | Macronix MX35LF1GE4AB 1 Gbit (128 MB) SPI NAND                     |
 | RAM              | ?                                                                  |
 | System           | ?                                                                  |
 | SFP interfaces   | 10GBASE-R                                                          |
@@ -27,6 +27,10 @@ parent: Nokia
 | SSH              | ✅ (see Enable SSH)                                                |
 | Telnet           | ✅ Port 23 user: `admin`, password: `1234` (see Telnet Full Shell) |
 | Form Factor      | SFP+                                                               |
+
+This stick is an OEM of the CIG XG-99S, the same hardware of the [FS.com XGS-ONU-25-20NI](/xgs/ont-fs-XGS-ONU-25-20NI), and it supports only the PPTP[^ca8271x]. A NAND dump is available in the [CA8271x repository](https://github.com/YuukiJapanTech/CA8271x/tree/main/NAND_dump/NOKIA_XS-010S-Q): in that dump the kernel partition had been erased and the uboot is password protected, with an unknown password.
+
+[^ca8271x]: *Hacking CA8271x / CA8289x XGS-PON & 10G-EPON ONTs*, YuukiJapanTech/CA8271x https://github.com/YuukiJapanTech/CA8271x
 
 # Module Pinout
 

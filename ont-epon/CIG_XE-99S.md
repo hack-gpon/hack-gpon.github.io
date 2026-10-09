@@ -71,6 +71,8 @@ The custom firmware is compatible with the following.
 - Hisense LTF-7267-BH+ (GPON)
 - Hisense LTF-7263-BH+
 
+The stick is the same hardware of the CIG XG-99S (XGS-PON), and it can be switched to XGS-PON and back by replacing the firmware, see [Switching between XGS-PON and 10G-EPON](/xgs/ont-fs-XGS-ONU-25-20NI#switching-between-xgs-pon-and-10g-epon).
+
 ## Firmware versions
 ### Original firmware (SIEPON Package-C)
 - CTC20220901
