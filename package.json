@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "vitepress dev",
-    "build": "vitepress build",
+    "build": "vitepress build && node scripts/optimize-images.mjs",
     "preview": "vitepress preview",
     "convert": "node scripts/jekyll-to-vitepress.mjs"
   },
@@ -15,6 +15,7 @@
     "liquidjs": "^10.30.0",
     "markdown-it-footnote": "^4.0.0",
     "mermaid": "^12.1.0",
+    "sharp": "^0.35.5",
     "vitepress": "^1.6.4",
     "vue": "^3.5.25"
   }
