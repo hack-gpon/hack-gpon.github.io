@@ -40,6 +40,9 @@
                     </tbody>
                 </table>
             </div>
+            <p v-if="eeprom_decode">
+                <button type="button" class="btn btn-primary" @click="copyMarkdown">{{ copied ? 'Copied!' : 'Copy as Markdown' }}</button>
+            </p>
             <div class="info custom-block" v-if="revision">
                 <p class="custom-block-title">Info</p>
                 <p>For more information, see the {{ revision }} specification.</p>
@@ -79,6 +82,9 @@
                     </tbody>
                 </table>
             </div>
+            <p v-if="eeprom_decode">
+                <button type="button" class="btn btn-primary" @click="copyMarkdown">{{ copied ? 'Copied!' : 'Copy as Markdown' }}</button>
+            </p>
             <div class="info custom-block" v-if="revision">
                 <p class="custom-block-title">Info</p>
                 <p>For more information, see the {{ revision }} specification.</p>
@@ -857,7 +863,8 @@ export default {
                     }
                 ]
                 },
-            eeprom_switch: "A0"
+            eeprom_switch: "A0",
+            copied: false
         }
     },
     props: ['type'],
@@ -1099,6 +1106,35 @@ export default {
         }
     },
     methods: {
+        eepromMarkdown: function () {
+            const cell = (str) => (str ?? '').toString().replaceAll('**', '').replaceAll('|', '\\|').replace(/\s+/g, ' ').trim();
+            const rows = this.eeprom_json.map(it => {
+                const hex = it.value ? `\`${this.chunk(it.value)?.map(b => `0x${b}`)?.join(' ')}\`` : '';
+                return `| ${cell(it.address)} | ${cell(it.size)} | ${cell(it.name)} | ${hex} | ${cell(it.human)} | ${cell(it.description)} |`;
+            });
+            return [
+                `EEPROM ${this.eeprom_switch} (${this.revision})`,
+                '',
+                '| address | size | name | hex value | decoded value | description |',
+                '| ------- | ---- | ---- | --------- | ------------- | ----------- |',
+                ...rows
+            ].join('\n');
+        },
+        copyMarkdown: async function () {
+            const markdown = this.eepromMarkdown();
+            try {
+                await navigator.clipboard.writeText(markdown);
+            } catch (e) {
+                const textarea = document.createElement('textarea');
+                textarea.value = markdown;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+            }
+            this.copied = true;
+            setTimeout(() => this.copied = false, 2000);
+        },
         getPart: function (startIndex, endIndex) {
             return this.eeprom_decode?.slice(startIndex * 2, (endIndex + 1) * 2)?.join('');
         },
