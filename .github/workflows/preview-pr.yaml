@@ -1,53 +1,26 @@
+# Build the site of a PR. It runs the PR code, so it has no secrets and a
+# read-only token: preview-deploy.yaml publishes the result.
 name: preview-pr
 
 on:
-  pull_request_target:
+  pull_request:
     types: [opened, reopened, synchronize]
 
 permissions:
   contents: read
 
 jobs:
-  authorize:
-    environment:
-      ${{ github.event_name == 'pull_request_target' &&
-      github.event.pull_request.head.repo.full_name != github.repository &&
-      'external' || 'internal' }}
-    runs-on: ubuntu-latest
-    steps:
-      - run: "true"
-
-  # The PR code is built without access to any secret
   build:
-    needs: authorize
     uses: ./.github/workflows/build.yml
     with:
       ref: ${{ github.event.pull_request.head.sha }}
 
-  deploy:
-    needs: build
+  # Tells preview-deploy.yaml which PR to comment on
+  pr-number:
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-    # Shows the preview link on the job and in the PR, like the Pages deploy
-    environment:
-      name: preview
-      url: ${{ steps.preview-pages.outputs.deployment-url }}
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
+      - run: echo "${{ github.event.pull_request.number }}" > pr-number
+      - uses: actions/upload-artifact@v4
         with:
-          name: github-pages
-      - name: Extract site
-        run: mkdir dist && tar -xf artifact.tar -C dist
-      - name: Publish to Cloudflare Pages
-        id: preview-pages
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT }}
-          command: pages deploy dist --project-name=hack-gpon-preview --branch=preview
-      - uses: thollander/actions-comment-pull-request@v2
-        with:
-          message: |
-            Preview of the website obtained from the PR: ${{ steps.preview-pages.outputs.deployment-url }}
+          name: pr-number
+          path: pr-number
