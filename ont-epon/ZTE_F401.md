@@ -15,7 +15,7 @@ parent: ZTE
 | RAM             |                                  |
 | System          |                                  |
 | 2.5GBaseT       | No (1x GE)                       |
-| Optics          |                                  |
+| Optics          | SC/APC or SC/UPC (depends on the variant) |
 | IP address      |                                  |
 | Web Gui         |                                  |
 | SSH             |                                  |
