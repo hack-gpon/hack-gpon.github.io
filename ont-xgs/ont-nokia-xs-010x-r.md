@@ -88,26 +88,23 @@ The third 256 byte block (offsets 0x7800200 and 0x7900200) contains the user con
 
 The CRC algorithm is implemented in the `cig-misc.ko` kernel module (function `nvram_nand_eeprom_valid_check()`), which prints the correct length needed for the CRC calculation (236 bytes).
 
-::: details Python script to verify the mfginfo CRC
-```python
-import struct
+::: details JavaScript snippet to verify the mfginfo CRC
+```js
+function crc32Bzip2(data, poly = 0x04C11DB7, init = 0xFFFFFFFF, xorout = 0xFFFFFFFF) {
+    let crc = init >>> 0;
+    for (const byte of data) {
+        crc ^= (byte << 24) >>> 0;
+        for (let i = 0; i < 8; i++) {
+            crc = crc & 0x80000000 ? ((crc << 1) ^ poly) >>> 0 : (crc << 1) >>> 0;
+        }
+    }
+    return (crc ^ xorout) >>> 0;
+}
 
-def crc32_bzip2(data, poly=0x04C11DB7, init=0xFFFFFFFF, xorout=0xFFFFFFFF):
-    crc = init & 0xFFFFFFFF
-    for byte in data:
-        crc ^= (byte << 24) & 0xFFFFFFFF
-        for _ in range(8):
-            if crc & 0x80000000:
-                crc = ((crc << 1) ^ poly) & 0xFFFFFFFF
-            else:
-                crc = (crc << 1) & 0xFFFFFFFF
-    return crc ^ xorout
-
-# Read 256 bytes from mfginfo partition
-# mfginfo_256 = open("mtd10.bin", "rb").read(256)
-# crc_expected = struct.unpack("I", mfginfo_256[252:])[0]
-# crc_calculated = crc32_bzip2(mfginfo_256[0:236])
-# print(f"Expected: {crc_expected:#010x} | Calculated: {crc_calculated:#010x} | Match: {crc_expected == crc_calculated}")
+// const buf = new Uint8Array(await fetch("mtd10.bin").then(r => r.arrayBuffer()));
+// const expected = new DataView(buf.buffer).getUint32(252, true);
+// const calculated = crc32Bzip2(buf.slice(0, 236));
+// console.log(`Expected: 0x${expected.toString(16).padStart(8,"0")} | Calculated: 0x${calculated.toString(16).padStart(8,"0")} | Match: ${expected === calculated}`);
 ```
 :::
 
