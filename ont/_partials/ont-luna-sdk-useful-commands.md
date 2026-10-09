@@ -28,32 +28,19 @@ diag gpon get onu-state
 # omcicli mib get MIB_IDX
 ```
 
-The most useful MEs to check the provisioning received from the OLT[^rtl960x_omci]:
+The list of the MEs is in [GPON MIB](/mib), and the most useful ones to check the provisioning received from the OLT are in [Most useful MEs to check the provisioning](/mib#most-useful-mes-to-check-the-provisioning).
 
-| ME  | Name                             | Notes                                                                           |
-| --- | -------------------------------- | ------------------------------------------------------------------------------- |
-| 6   | Circuit pack                     | Type and number of ports emulated by the stick                                  |
-| 7   | Software image                   | Software versions reported to the OLT                                           |
-| 11  | PPTP Ethernet UNI                | Physical LAN ports, with the `AdminState` set by the OLT                        |
-| 84  | VLAN tagging filter data         | VLANs sent to the stick by the OLT, e.g. the internet VLAN to use on the router |
-| 131 | OLT-G                            | OLT vendor ID                                                                   |
-| 171 | Extended VLAN tagging operation  | VLAN translation rules, which VLAN goes to which LAN port                       |
-| 256 | ONU-G                            | Vendor ID, version and serial number                                            |
-| 257 | ONU2-G                           | Equipment ID, OMCC version                                                      |
-| 262 | T-CONT                           |                                                                                 |
-| 263 | ANI-G                            | PON side                                                                        |
-| 264 | UNI-G                            | LAN side                                                                        |
-| 277 | Priority queue                   |                                                                                 |
-| 309 | Multicast operations profile     | VLANs used for the IPTV multicast traffic                                       |
-| 329 | Virtual Ethernet interface point | VEIP, used for VoIP, TR-069 or the router mode of the HGUs                      |
-
-To dump all the MEs at once:
+To dump all the MEs at once[^rtl960x_omci]:
 
 ```sh
 for ME in 2 5 6 7 11 24 45 47 49 50 52 78 79 83 84 89 130 131 133 134 136 137 148 157 158 171 240 244 245 248 249 250 253 255 256 257 262 263 264 266 267 268 272 273 274 277 278 280 281 284 287 296 298 307 308 309 310 311 312 321 322 329 330 334 340 341 65282 65294 65408 65527 65528 65529 65530 65531; do echo "MIB: $ME"; omcicli mib get $ME; done
 ```
 
-See [PPTP and VEIP](/gpon/pptp_veip) for the meaning of the UNIs and [OMCI Wireshark](/tools/omci-wireshark) to decode the full OMCI log.
+To dump the most useful MEs at once:
+
+```sh
+for ME in 6 7 11 84 131 171 256 257 262 263 264 277 309 329; do echo "MIB: $ME"; omcicli mib get $ME; done
+```
 
 ## Getting the GEM ports and the flows
 
@@ -133,7 +120,7 @@ The default value on this stick is `{{ include.speedLanDefault }}`.
 {% endif %}
 
 {% if include.speedLan contains '6' %}
-The 2.5G modes are `4` (HiSGMII PHY), `5` (HiSGMII MAC) and `6` (2500BASE-X): most of the hosts that support 2.5G work with the mode `6` and the port forced to 2500BASE-X, see the [SFP standard](/sfp/sfp-standard) page and the [2.5G compatibility list](https://github.com/Anime4000/RTL960x/blob/main/Docs/2.5Gb.md)[^rtl960x_25g].
+The 2.5G modes are `4` (HiSGMII PHY), `5` (HiSGMII MAC) and `6` (2500BASE-X): most of the hosts that support 2.5G work with the mode `6` and the port forced to 2500BASE-X, see the [SFP standard](/sfp-standard) page and the [2.5G compatibility list](https://github.com/Anime4000/RTL960x/blob/main/Docs/2.5Gb.md)[^rtl960x_25g].
 {% endif %}
 
 ::: warning

@@ -173,7 +173,7 @@ macKey: "odi"
   diag bandwidth set egress port all rate 4194296
   diag bandwidth set ingress port all rate 4194296
   ```
-- With a 2.5G link the host can send more than the ~1.24 Gbps of the GPON upstream, causing drops and bufferbloat: limit the egress on the host, see [MikroTik](/sfp-cage/mikrotik#gpon-upstream-flooding)
+- With a 2.5G link the host can send more than the ~1.24 Gbps of the GPON upstream, causing drops and bufferbloat: limit the egress on the host, see [MikroTik](/mikrotik#gpon-upstream-flooding)
 
 # Miscellaneous Links
 

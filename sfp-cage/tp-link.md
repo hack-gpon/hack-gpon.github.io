@@ -34,7 +34,7 @@ combo_debug ipg_set combo10g 1_192bit
 
 `combo_debug ipg_set combo10g 1` goes back to 1 Gbps. The setting is lost at every reboot.
 
-On the hosts that detect the 2.5G modules from the EEPROM (e.g. Linux `sfp-bus.c`), the stick must report the transceiver code `00h` at the offset `06h` and the nominal bit rate `1Fh` (2500 Mbps) at the offset `0Ch`, see [SFP standard](/sfp/sfp-standard).
+On the hosts that detect the 2.5G modules from the EEPROM (e.g. Linux `sfp-bus.c`), the stick must report the transceiver code `00h` at the offset `06h` and the nominal bit rate `1Fh` (2500 Mbps) at the offset `0Ch`, see [SFP standard](/sfp-standard).
 
 - [2.5Gb Compatibility](https://github.com/Anime4000/RTL960x/blob/main/Docs/2.5Gb.md)
 

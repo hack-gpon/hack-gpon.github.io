@@ -24,7 +24,7 @@ It is suggested upgrade to 7.15 and activate "Interface/SFP/Ignore Rx LOS", or u
 
 With the Realtek RTL960x based sticks (e.g. [ODI DFP-34X-2C2](/ont-odi-realtek-dfp-34x-2c2)) the 2.5G link works on RouterOS 7.11+ with the port forced to `2.5G-baseX` and `LAN_SDS_MODE` set to `6` (2500BASE-X) on the stick[^rtl960x_25g]:
 
-```rsc
+```
 /interface/ethernet/set sfp-sfpplus1 auto-negotiation=no speed=2.5G-baseX
 ```
 
@@ -47,7 +47,7 @@ With the Realtek RTL960x based sticks (e.g. [ODI DFP-34X-2C2](/ont-odi-realtek-d
 
 The GPON upstream is ~1.24 Gbps: with a 2.5G link the router can send faster than the stick can transmit, causing drops, bufferbloat and a slow upload[^rtl960x_slow]. On the devices with a switch chip (e.g. RB5009) limit the egress of the port and enable the flow control:
 
-```rsc
+```
 /interface/ethernet/switch/port/set sfp-sfpplus1 egress-rate=1200M
 /interface/ethernet/set sfp-sfpplus1 auto-negotiation=no speed=2.5G-baseX rx-flow-control=on tx-flow-control=on
 /queue interface set sfp-sfpplus1 queue=multi-queue-ethernet-default
@@ -55,7 +55,7 @@ The GPON upstream is ~1.24 Gbps: with a 2.5G link the router can send faster tha
 
 On the devices without a switch chip (e.g. CCR2004-1G-12S+2XS) use a CAKE queue instead:
 
-```rsc
+```
 /queue type add name=cake-egress-gpon kind=cake cake-bandwidth=1200M
 /queue interface set sfp-sfpplus1 queue=cake-egress-gpon
 ```
