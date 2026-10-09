@@ -1,6 +1,7 @@
 ---
 title: Huawei OptiXstar S600E
 has_children: false
+alias: Huawei MA5671B
 parent: Huawei
 ---
 
@@ -10,7 +11,8 @@ parent: Huawei
 | ---------------- | --------------------------------------- |
 | Vendor/Brand     | Huawei                                  |
 | Model            | OptiXstar S600E                         |
-| Chipset          |                                         |
+| Chipset          | HiSilicon SD5182S                       |
+| BOSA             | UX5176 (GPON)                           |
 | Flash            |                                         |
 | RAM              |                                         |
 | System           |                                         |
@@ -25,6 +27,15 @@ parent: Huawei
 | Form Factor      | miniONT SFP                             |
 
 The OptiXstar S600E is a GPON SFP ONU designed by Huawei to be plugged into the SFP port of cameras and access points for video or wireless backhaul.
+
+It is also sold as MA5671B, the successor of the [Huawei MA5671A](/ont-huawei-ma5671a). The XGS-PON version is the [OptiXstar S800E](/xgs/ont-huawei-optixstar-s800e): the two sticks share the same SoC (HiSilicon SD5182S) and differ only in the BOSA.
+
+## Board configuration
+
+```
+# MA5671B T600
+board_id=2001; pcb_id=0; soc_type=SD5182S; slic_type=NONE; ext_phy_type=NONE; bob_type=UX5176; xml_path=S600E_SD5182S/; usb=N; sd=N; rf=N; battery=N; iot=N; nfc=N; lte=N; pse_type=NONE; rs485=Y;
+```
 
 ## Optical and electrical specifications
 
@@ -46,3 +57,5 @@ From the Huawei product page:
 # Miscellaneous Links
 
 - [Huawei OptiXstar S600E](https://e.huawei.com/en/products/optical-terminal/optixstar-s600e)
+- [Huawei OptiXstar S800E](/xgs/ont-huawei-optixstar-s800e)
+- [Huawei MA5671A](/ont-huawei-ma5671a)

@@ -1,6 +1,7 @@
 ---
 title: Huawei OptiXstar S800E
 has_children: false
+alias: Huawei OptiXstar S800E-M
 parent: Huawei
 ---
 
@@ -10,7 +11,8 @@ parent: Huawei
 | --------------- | --------------------------------------- |
 | Vendor/Brand    | Huawei                                  |
 | Model           | OptiXstar S800E                         |
-| Chipset         |                                         |
+| Chipset         | HiSilicon SD5182S                       |
+| BOSA            | HN517X (XGS-PON)                        |
 | Flash           |                                         |
 | RAM             |                                         |
 | System          |                                         |
@@ -23,7 +25,14 @@ parent: Huawei
 | Serial          |                                         |
 | Form Factor     | miniONT SFP+                            |
 
-The OptiXstar S800E is an XGS-PON SFP+ ONU designed by Huawei to be plugged into the SFP+ port of cameras, access points or routers. The GPON version is the [OptiXstar S600E](/ont-huawei-optixstar-s600e).
+The OptiXstar S800E is an XGS-PON SFP+ ONU designed by Huawei to be plugged into the SFP+ port of cameras, access points or routers. The GPON version is the [OptiXstar S600E / MA5671B](/ont-huawei-optixstar-s600e): the two sticks share the same SoC (HiSilicon SD5182S) and differ only in the BOSA.
+
+## Board configuration
+
+```
+# S800E-M S800E
+board_id=2014; pcb_id=0; soc_type=SD5182S; slic_type=NONE; ext_phy_type=NONE; bob_type=HN517X; xml_path=S800E_SD5182S/; usb=N; sd=N; rf=N; battery=N; iot=N; nfc=N; lte=N; pse_type=NONE; rs485=Y; sfp_onu=Y;
+```
 
 ## Optical and electrical specifications
 
@@ -45,3 +54,4 @@ From the Huawei product page:
 
 - [Huawei OptiXstar S800E](https://e.huawei.com/en/products/optical-terminal/optixstar-s800e)
 - [Huawei OptiXstar S800E support](https://support.huawei.com/enterprise/en/optical-access/optixstar-s800e-pid-250646194)
+- [Huawei OptiXstar S600E / MA5671B](/ont-huawei-optixstar-s600e)
