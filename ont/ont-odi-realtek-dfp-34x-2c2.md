@@ -2,7 +2,7 @@
 title: ODI Realtek DFP-34X-2C2 
 description: New model 2022 - v05
 has_children: false
-parent: ODI
+parent: HSGQ (formerly ODI)
 ---
 
 # Hardware Specifications

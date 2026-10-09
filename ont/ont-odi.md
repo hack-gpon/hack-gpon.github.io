@@ -1,7 +1,7 @@
 ---
-title: ODI
+title: HSGQ (formerly ODI)
 has_children: true
-alias: HSGQ
+alias: ODI
 ---
 
 ::: info Note
