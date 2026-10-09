@@ -24,7 +24,7 @@ The workflow is:
 | Lantiq based chips (e.g. [Huawei MA5671A](/ont-huawei-ma5671a)), `omcid` log         | `[omcid]` lines            |
 | Sagemcom devices (e.g. the TIM [F@st 5684S](/router/sagemcom_fast_5684s))             | `:omci capture:` lines     |
 | Cortina Access devices: merge the `pkt_rx` and `pkt_tx` logs into a single file, the packets are re-ordered automatically | ` debug: ` lines |
-| Huawei devices                                                                        | `OLT->ONT` / `ONT->OLT` blocks |
+| Huawei devices (e.g. [OptiXstar S800E](/xgs/ont-huawei-optixstar-s800e), B450)        | `OLT->ONT` / `ONT->OLT` blocks |
 | Realtek based chips (e.g. [Technicolor AFM0002TIM](/ont-technicolor-afm0002)): one OMCI message in hex per line | any other text log |
 
 The default version is the .NET one (native AOT), in the [`C#` branch](https://github.com/hack-gpon/omcilog2pcap/tree/C%23). Download the executable for your OS from the [releases](https://github.com/hack-gpon/omcilog2pcap/releases), or build it from `src/` with the .NET SDK.
