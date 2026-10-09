@@ -13,7 +13,7 @@ parent: FS.com
 | Model            | XGS-ONU-25-20NI                                                            |
 | ODM              | CIG                                                                        |
 | ODM Product Code | XG-99S                                                                     |
-| Chipset          | Cortina CA8271A                                                            |
+| Chipset          | Cortina CA8271S                                                            |
 | Flash            | MX35LF1GE4AB 128MB                                                         |
 | RAM              | 128MB                                                                      |
 | CPU              | Taroko V0.2 (MIPS)                                                         |
@@ -487,6 +487,8 @@ ERROR: can't get kernel image!
 SATURN#
 ```
 
+If the stick still boots, the uboot prompt can be reached while `Hit any key to stop autoboot` is displayed: on the old models any key works, while the new CIG models (XGS-ONU-25-20NI, XE-99S, ...) require to send the raw bytes `0x1b 0x1d 0x0f 0x0b`, e.g. with a Tera Term macro or PComm Terminal Emulator (found by [@rssor](https://github.com/rssor))[^ca8271x_mtd].
+
 Download the stick's mtd dump from [GitHub.](https://github.com/YuukiJapanTech/CA8271x/tree/main/mtd)
 
 Enable NAND with the following command:
@@ -536,6 +538,38 @@ SATURN# spi_nand write 0x81000000 0x000003b00000 0x2800000
 
 When the stick turns back on, it will boot with the transferred kernel and rootfs.
 
+## Switching between XGS-PON and 10G-EPON
+
+The XG-99S (and its OEMs, like this stick) and the [CIG XE-99S](/epon/CIG_XE-99S) (10G-EPON) are the same hardware, so the stick can be switched between XGS-PON and 10G-EPON by replacing the firmware: changing only `scfg.txt` is not enough[^ca8271x_switch].
+
+::: danger
+Backup all the partitions first, and never remove the power while writing the partitions: a bricked stick can be repaired only via UART, see [Bricked stick Repair](#bricked-stick-repair).
+:::
+
+The following must be replaced, using the [images](https://github.com/YuukiJapanTech/CA8271x/tree/main/XG-XE_Switch) of the CA8271x repository (they contain the GPON serial number `GPON2350004b`, login password `UzwugGYT`, and the EPON MAC address `CC:CF:83:59:FF:F8`):
+
+| Partition / item          | Content                                                                     |
+| ------------------------- | --------------------------------------------------------------------------- |
+| `mtd2` / `mtd5`           | `dtb`                                                                       |
+| `mtd3` / `mtd6`           | `kernel`                                                                    |
+| `mtd4` / `mtd7`           | `rootfs`                                                                    |
+| `mtd9` / `mtd10`          | `mfginfo`                                                                   |
+| `/userdata`               | `userdata.tar.gz` (only when switching from XG-99S to XE-99S)               |
+| uboot `setpartlayout`, `more_args` | partition layout and boot partition (`rootfs` is `/dev/mtdblock12` for XGS-PON, `/dev/mtdblock11` for 10G-EPON) |
+
+Each partition is written with:
+
+```sh
+# flash_eraseall /dev/mtd3
+# flashcp -v kernel.bin /dev/mtd3
+```
+
+The full procedure, with the uboot environment for both directions, is in the [CA8271x repository](https://github.com/YuukiJapanTech/CA8271x/tree/main/XG-XE_Switch). The current mode is shown in the kernel log:
+
+```sh
+# grep "ca-pon: load PON_MAC_MODE:" /var/log/messages
+Jan  1 00:00:13 saturn-sfpplus-eng user.warn kernel: [   13.843922] ca-pon: load PON_MAC_MODE: XGSPON
+```
 
 # Known Bugs
 - There is a bug in the `register_id` command in the `misc` CLI option that changes the value of `pon_passwd` (LOID Password) instead of `register_id` (PLOAM).
@@ -543,4 +577,8 @@ When the stick turns back on, it will boot with the transferred kernel and rootf
 
 # Miscellaneous Links
 - [GitHub - CA8271x](https://github.com/YuukiJapanTech/CA8271x)
+- [FS.com XGS-ONU-25-20NI / CIG XG-99S Modification Utility](https://github.com/rssor/fs_xgspon_mod)
+
+[^ca8271x_mtd]: *Dump images & Bricked Stick Repair*, YuukiJapanTech/CA8271x https://github.com/YuukiJapanTech/CA8271x/tree/main/mtd
+[^ca8271x_switch]: *Switch between XGS and 10GE*, YuukiJapanTech/CA8271x https://github.com/YuukiJapanTech/CA8271x/tree/main/XG-XE_Switch
 

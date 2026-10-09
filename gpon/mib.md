@@ -360,6 +360,29 @@ The new ME introduced in G.988 [^G_988] do not have a description because G.988 
 | 453-65279         | Reserved for future standardization                                                |                                                                                                                                                                     |                        |                      |                                |                                       |                                   |                                              |                         |                         |                                       |
 | 65280-65535       | Reserved for vendor-specific use                                                   |                                                                                                                                                                     |                        |                      |                                |                                       |                                   |                                              |                         |                         |                                       |
 
+# Most useful MEs to check the provisioning
+
+When an ONT or a stick replaces the ISP one, these are the MEs to check to understand what the OLT has provisioned[^rtl960x_omci]:
+
+| ME  | Name                             | Notes                                                                           |
+| --- | -------------------------------- | ------------------------------------------------------------------------------- |
+| 6   | Circuit pack                     | Type and number of ports emulated by the ONT                                    |
+| 7   | Software image                   | Software versions reported to the OLT                                           |
+| 11  | PPTP Ethernet UNI                | Physical LAN ports, with the `AdminState` set by the OLT                        |
+| 84  | VLAN tagging filter data         | VLANs sent to the ONT by the OLT, e.g. the internet VLAN to use on the router   |
+| 131 | OLT-G                            | OLT vendor ID                                                                   |
+| 171 | Extended VLAN tagging operation  | VLAN translation rules, which VLAN goes to which LAN port, see the [OMCI VLAN table parser](/gpon-omci-vlan-parser) |
+| 256 | ONU-G                            | Vendor ID, version and serial number                                            |
+| 257 | ONU2-G                           | Equipment ID, OMCC version                                                      |
+| 262 | T-CONT                           |                                                                                 |
+| 263 | ANI-G                            | PON side                                                                        |
+| 264 | UNI-G                            | LAN side                                                                        |
+| 277 | Priority queue                   |                                                                                 |
+| 309 | Multicast operations profile     | VLANs used for the IPTV multicast traffic                                       |
+| 329 | Virtual Ethernet interface point | VEIP, used for VoIP, TR-069 or the router mode of the HGUs, see [PPTP and VEIP](/pptp_veip) |
+
+The commands to read the MEs depend on the chipset, see the useful commands in the device pages (e.g. `omcicli mib get` on the [Realtek sticks](/ont-odi-realtek-dfp-34x-2c2#querying-a-particular-omci-me)), or decode the full OMCI log with [OMCI Wireshark](/omci-wireshark).
+
 
 ---
 
@@ -372,3 +395,4 @@ The new ME introduced in G.988 [^G_988] do not have a description because G.988 
 [^verizon_open_omci]: *Verizon OpenOMCI Specification, Version 1.00 June 30, 2017* 
 [^B-PON]: MIB for legacy B-PON
 
+[^rtl960x_omci]: *OMCI MIB*, Anime4000/RTL960x https://github.com/Anime4000/RTL960x/blob/main/Docs/OMCI_CLI.md

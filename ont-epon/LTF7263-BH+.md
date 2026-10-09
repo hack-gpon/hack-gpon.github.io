@@ -45,6 +45,8 @@ The custom firmware is compatible with the following.
 - CIG XE-99S
 - Hisense LTF-7263-BH+
 
+The stick is the same hardware of the HiSense LTF7267-BH+ (XGS-PON), and it can be switched to XGS-PON and back by replacing the firmware, see [Switching between XGS-PON and 10G-EPON](/xgs/ont-hisense-ltf7267-bha+#switching-between-xgs-pon-and-10g-epon).
+
 ## Firmware versions
 ### Original firmware (SIEPON Package-C)
 - 20210421024332

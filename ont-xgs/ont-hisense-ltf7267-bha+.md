@@ -11,7 +11,7 @@ parent: HiSense
 | Vendor/Brand     | HiSense                                                  |
 | Model            | LTF7267-BHA+                                             |
 | ODM              | ✅                                                       |
-| Chipset          | Cortina CA8271A                                          |
+| Chipset          | Cortina CA8271S                                          |
 | Flash            | 128MB                                                    |
 | RAM              | 128MB                                                    |
 | System           | Custom Linux by Cortina (Saturn SDK) based on Kernel 4.4 |
@@ -40,29 +40,40 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work.
 :::
 
+The UART pads are connected to the `15K` and `16K` pins of the CA8271S[^ca8271x_uart].
+
 ## List of software versions
 - 22.05.26.1 - 20220527052622 (from /etc/hi_version - /etc/version)
 
 
 ## List of partitions
 
-| dev   | size     | erasesize | name            |
-| ----- | -------- | --------- | --------------- |
-| mtd0  | 00040000 | 00001000  | "ssb"           |
-| mtd1  | 00002000 | 00001000  | "uboot-env"     |
-| mtd2  | 00002000 | 00001000  | "dtb0"          |
-| mtd3  | 0003c000 | 00001000  | "kernel0"       |
-| mtd4  | 00300000 | 00001000  | "rootfs0"       |
-| mtd5  | 004c0000 | 00001000  | "dtb1"          |
-| mtd6  | 00300000 | 00001000  | "kernel1"       |
-| mtd7  | 004c0000 | 00001000  | "rootfs1"       |
-| mtd8  | 00001000 | 00001000  | "userdata"      |
-| mtd9  | 00001000 | 00001000  | "squashfs_ubi"  |
-| mtd10 | 00001000 | 00001000  | "userdata"      |
+| dev  | start        | size      | name        |
+| ---- | ------------ | --------- | ----------- |
+| mtd0 | `0x00000000` | `0x400000`  | "ssb" (U-Boot) |
+| mtd1 | `0x00400000` | `0x100000`  | "uboot-env" |
+| mtd2 | `0x00500000` | `0x100000`  | "dtb0"      |
+| mtd3 | `0x00600000` | `0x600000`  | "kernel0"   |
+| mtd4 | `0x00c00000` | `0x2800000` | "rootfs0"   |
+| mtd5 | `0x03400000` | `0x100000`  | "dtb1"      |
+| mtd6 | `0x03500000` | `0x600000`  | "kernel1"   |
+| mtd7 | `0x03b00000` | `0x2800000` | "rootfs1"   |
+| mtd8 | `0x06300000` | `0x1400000` | "userdata"  |
 
 This ONT supports dual boot. 
 
-`kernel0` and `rootfs0` respectively contain the kernel and firmware of the first image, `kernel1` and `rootfs1` the kernel and firmware of the second one.
+`kernel0` and `rootfs0` respectively contain the kernel and firmware of the first image, `kernel1` and `rootfs1` the kernel and firmware of the second one. The mtd dumps of the LTF7263-BH+, XGS800E and NATYWISH LTF-7267-BH+ are available in the [CA8271x repository](https://github.com/YuukiJapanTech/CA8271x/tree/main/mtd)[^ca8271x_mtd].
+
+## Configuration files
+
+The stick reads its configuration from two `scfg.txt` files, the second one overrides the first one[^ca8271x_scfg]:
+
+| File                       | Description                                                                          |
+| -------------------------- | ------------------------------------------------------------------------------------ |
+| `/config/default_scfg.txt` | Default settings of the manufacturer, do not change it                               |
+| `/config/scfg.txt`         | Settings of the user or of the ISP, the settings below are appended here             |
+
+The default `scfg.txt` files of many CA8271x ONTs (LTF-7263-BH+, NATYWISH LTF-7267-BH+, XGS800E, NTT, NEC, ...) are in the [CA8271x repository](https://github.com/YuukiJapanTech/CA8271x/tree/main/default_scfg).
 
 # XGS-PON ONU status
 
@@ -457,10 +468,63 @@ Reboot ONT to apply the change.
 
 ## Variants
 
-The LTF7267-BH+ is a variant of the LTF7267-BHA+ with the same Cortina CA8271A chipset. The information on this page applies to both models.
+The LTF7267-BH+ is a variant of the LTF7267-BHA+ with the same Cortina CA8271S chipset. The information on this page applies to both models.
+
+The same hardware is also sold as[^ca8271x]:
+
+| Model                       | Mgmt IP       | Notes                                                                                                   |
+| --------------------------- | ------------- | ------------------------------------------------------------------------------------------------------- |
+| XGS800E                     | 192.168.0.1   | OEM                                                                                                     |
+| ZTE E910F                   | 192.168.0.1   | OEM                                                                                                     |
+| Raisecom ISCOM HT801-XGSFP  | 192.168.0.1   | OEM                                                                                                     |
+| NATYWISH LTF-7267-BH+       | 192.168.1.1   | Custom firmware with kernel 4.14: telnet user `hbmt`, password `hbmt521@`; UART user `admin`, password `hbmt521@`; Web GUI `http://192.168.1.1/hihtml/login_hi.html` user `useradmin`, password `12345678` |
+| [HiSense LTF7263-BH+](/epon/LTF7263-BH+) | 192.168.0.1 | 10G-EPON version, see below                                                                   |
+
+## Switching between XGS-PON and 10G-EPON
+
+The LTF7267-BH+ (and its OEMs) and the [LTF7263-BH+](/epon/LTF7263-BH+) (10G-EPON) are the same hardware: the stick can be switched between XGS-PON and 10G-EPON by replacing the kernel (`mtd3`/`mtd6`) and the rootfs (`mtd4`/`mtd7`) with the [images](https://github.com/YuukiJapanTech/CA8271x/tree/main/XG-XE_Switch) of the CA8271x repository[^ca8271x_switch]. Changing only `scfg.txt` is not enough, and the NATYWISH LTF-7267-BH+ is not compatible with this procedure.
+
+::: danger
+Backup all the partitions first, and never remove the power while writing the partitions: a bricked stick can be repaired only via UART.
+:::
+
+From the root shell, in `/tmp` (one file at a time, to avoid filling the tmpfs):
+
+```sh
+tftp -r kernel.bin -g <TFTP server IP>
+flash_eraseall /dev/mtd3
+flashcp -v kernel.bin /dev/mtd3
+flash_eraseall /dev/mtd6
+flashcp -v kernel.bin /dev/mtd6
+rm kernel.bin
+tftp -r rootfs.bin -g <TFTP server IP>
+flash_eraseall /dev/mtd4
+flashcp -v rootfs.bin /dev/mtd4
+flash_eraseall /dev/mtd7
+flashcp -v rootfs.bin /dev/mtd7
+rm -r /overlay/upper*
+reboot
+```
+
+The images contain the GPON serial number `HBMT00000001` (LTF7267-BH+) or the EPON MAC address `00:13:25:00:00:01` (LTF7263-BH+). The current mode is shown in the boot log:
+
+```sh
+# grep "app dev mode:1, scfg mode:" /var/log/boot
+Fri May 27 05:31:39 2022: app dev mode:1, scfg mode:[XGS-PON]
+```
 
 # Known Bugs
 - `ALCL` OLT mode uses some static configurations on MIBs, so if your OLT has strict configuration checks it might not work properly.
 - During initial tests the only currently working mode of the stick is `PPTP EthUni`.
 - Stick can be configured to also emulate `VEIP` mode (adding it to the scfg.txt file), but the current firmware doesn't link correctly the XGBE interface, so no traffic is passing between LAN and PON interfaces.
 - On some SFP+ cages that do not support USXGMII, the kernel may log `Warning!!! port 6 isnt USXGMII and can't do AN` during activation. This can cause repeated ONU deactivation/reactivation cycles (`DEACTIVE_ONUID_REQ`). Ensure your host device's SFP+ cage supports 10GBase-R or USXGMII auto-negotiation.
+
+# Miscellaneous Links
+
+- [GitHub - CA8271x](https://github.com/YuukiJapanTech/CA8271x)
+
+[^ca8271x]: *Hacking CA8271x / CA8289x XGS-PON & 10G-EPON ONTs*, YuukiJapanTech/CA8271x https://github.com/YuukiJapanTech/CA8271x
+[^ca8271x_mtd]: *Dump images & Bricked Stick Repair*, YuukiJapanTech/CA8271x https://github.com/YuukiJapanTech/CA8271x/tree/main/mtd
+[^ca8271x_scfg]: *scfg.txt*, YuukiJapanTech/CA8271x https://github.com/YuukiJapanTech/CA8271x/blob/main/doc/scfg_files.md
+[^ca8271x_switch]: *Switch between XGS and 10GE*, YuukiJapanTech/CA8271x https://github.com/YuukiJapanTech/CA8271x/tree/main/XG-XE_Switch
+[^ca8271x_uart]: *UART pin*, YuukiJapanTech/CA8271x https://github.com/YuukiJapanTech/CA8271x/blob/main/doc/UART.md
