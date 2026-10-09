@@ -20,8 +20,7 @@ parent: FS.com
 | CPU Clock        | 500MHz                                                                     |
 | Bootloader       | SATURN uboot                                                               |
 | System           | Custom Linux by Cortina (Saturn SDK) based on Kernel 4.4 Saturn-sfpplus-r1 |
-| 2.5GBaseX        | Yes                                                                        |
-| XGMII/XSGMII     | Yes                                                                        |
+| SFP interfaces   | 2500BASE-X, 10GBASE-R                                                      |
 | Optics           | SC/APC                                                                     |
 | IP address       | 192.168.100.1                                                              |
 | Web Gui          |                                                                            |

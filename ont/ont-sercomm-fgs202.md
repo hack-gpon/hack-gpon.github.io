@@ -14,7 +14,7 @@ parent: Sercomm
 | Flash           | 8 MiB (MXIC MX25L6405D)           |
 | RAM             | 1 MiB                             |
 | System          | eCos                              |
-| HSGMII          | Yes                               |
+| SFP interfaces  | HSGMII                            |
 | Optics          | SC/APC                            |
 | IP address      | 192.168.2.200/24                  |
 | Web Gui         | No                                |

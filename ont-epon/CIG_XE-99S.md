@@ -19,8 +19,7 @@ parent: CIG
 | CPU Clock        | 125MHz                                                                     |
 | Bootloader       | SATURN uboot                                                               |
 | System           | Custom Linux by Cortina (Saturn SDK) based on Kernel 4.4 Saturn-sfpplus-r1 |
-| 2.5GBaseX        | Yes                                                                        |
-| XGMII/XSGMII     | Yes                                                                        |
+| SFP interfaces   | 2500BASE-X, 10GBASE-R                                                      |
 | Optics           | SC/UPC                                                                     |
 | IP address       | 192.168.0.1                                                                |
 | Web Gui          | ✅ user `admin`, password `admin` (Custom firmware only)                   |

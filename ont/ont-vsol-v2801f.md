@@ -14,7 +14,7 @@ parent: V-SOL
 | Flash        | 8 MB                                  |
 | RAM          | 64 MB                                 |
 | System       | Linux (Luna SDK)                      |
-| HSGMII       | No                                    |
+| SFP interfaces | 1 Gbps only, no HSGMII                |
 | Optics       | SC/APC                                |
 | IP address   |                                       |
 | Web Gui      | ✅ user `admin`, password `stdONU101` |

@@ -20,7 +20,7 @@ parent: SourcePhotonics
 | System             |                    |
 | Serial baud        |                    |
 | Load addr          |                    |
-| HSGMII             |                    |
+| SFP interfaces     |                    |
 | Optics             | SC                 |
 | IP address         |                    |
 | Web Gui            |                    |

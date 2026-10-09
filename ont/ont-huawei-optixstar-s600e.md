@@ -16,7 +16,7 @@ parent: Huawei
 | Flash            |                                         |
 | RAM              |                                         |
 | System           |                                         |
-| HSGMII           |                                         |
+| SFP interfaces   |                                         |
 | Host interface   | GE/2.5GE/5GE/10GE adaptive (per Huawei) |
 | Optics           | SC/APC                                  |
 | IP address       |                                         |

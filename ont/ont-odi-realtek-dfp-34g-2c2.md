@@ -15,7 +15,7 @@ parent: ODI
 | Flash        | 8 MB                              |
 | RAM          | 64 MB                             |
 | System       | Linux (Luna SDK 1.9)              |
-| HSGMII       | Yes                               |
+| SFP interfaces | HSGMII                            |
 | Optics       | SC/UPC                            |
 | IP address   | 192.168.1.1                       |
 | Web Gui      | ✅ user `admin`, password `admin` |

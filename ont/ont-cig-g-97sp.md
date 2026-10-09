@@ -16,7 +16,7 @@ parent: CIG
 | CPU Clock        |                 |
 | Flash            |                 |
 | RAM              |                 |
-| HSGMII           |                 |
+| SFP interfaces   |                 |
 | Optics           | SC              |
 | IP address       |                 |
 | Web Gui          |                 |

@@ -19,8 +19,7 @@ parent: HiSense
 | CPU Clock        | 500MHz                                                                     |
 | Bootloader       | SATURN uboot                                                               |
 | System           | Custom Linux by Cortina (Saturn SDK) based on Kernel 4.4 Saturn-sfpplus-r1 |
-| 2.5GBaseX        | Yes (Custom firmware only)                                                 |
-| XGMII/XSGMII     | Yes                                                                        |
+| SFP interfaces   | 2500BASE-X (custom firmware only), 10GBASE-R                               |
 | Optics           | SC/UPC                                                                     |
 | IP address       | 192.168.0.1                                                                |
 | Web Gui          | ✅ Oliginal firmware : user `admin`, password `system` / Custom firmware : user `admin`, password `admin` |

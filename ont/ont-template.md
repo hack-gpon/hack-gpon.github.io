@@ -14,11 +14,8 @@
 | Bootloader       |                                         |
 | System           |                                         |
 | Load addr        |                                         |
-| HSGMII           | Yes/No (only if miniONT SFP PHY)        |
-| 2.5GBaseX        | Yes/No (only if miniONT SFP MAC)        |
+| SFP interfaces   | e.g. SGMII, 1000BASE-X, HSGMII, 2500BASE-X, 10GBASE-R, see [SFP standard](/sfp-standard#interfaces-table) (only if miniONT SFP) |
 | 2.5GBaseT        | Yes/No (only if ONT)                    |
-| XGMII/XSGMII     | Yes (only if miniONT SFP PHY)           |
-| 10GBaseX         | Yes/No (only if miniONT SFP MAC)        |
 | 10GBaseT         | Yes/No (only if ONT)                    |
 | 2.5/5/10GBaseT   | Yes/No (only if ONT multigig)           |
 | Optics           | SC/APC or SC/UPC                        |

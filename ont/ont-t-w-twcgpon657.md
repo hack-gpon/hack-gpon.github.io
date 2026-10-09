@@ -15,7 +15,7 @@ parent: T&W
 | Flash            | 16 MB                              |
 | RAM              | 64 MB                              |
 | System           | Linux (Luna SDK)                   |
-| HSGMII           | Yes                                |
+| SFP interfaces   | HSGMII                             |
 | Optics           | SC/APC                             |
 | IP address       |                                    |
 | Web Gui          | ✅ user `admin`, password `system` |

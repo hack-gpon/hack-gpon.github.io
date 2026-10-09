@@ -17,7 +17,7 @@ parent: Nokia
 | CPU              | MIPS 34Kc interAptiv                     |
 | CPU Clock        | 400MHz                                   |
 | System           | OpenWRT                                  |
-| HSGMII           | Yes                                      |
+| SFP interfaces   | HSGMII                                   |
 | Optics           | SC/UPC                                   |
 | IP address       | 192.168.1.10                             |
 | Web Gui          | ✅ user `adminadmin`, password `ALC#FGU` |

@@ -21,7 +21,7 @@ parent: FS.com
 | Bootloader       | U-Boot 2011.12-lantiq-gpon-1.2.24        |
 | System           | OpenWRT 14.07_ltq (Kernel 3.10.49)       |
 | Load addr        | 0x80800000                               |
-| HSGMII           | Yes                                      |
+| SFP interfaces   | HSGMII                                   |
 | Optics           | SC/APC                                   |
 | IP address       | 192.168.1.10                             |
 | Web Gui          |                                          |

@@ -17,7 +17,7 @@ alias: HiSense LTE3415-SCA+
 | Flash            | 32MB                                            |
 | RAM              | 16MB                                            |
 | System           | Linux (Luna SDK 1.9)                            |
-| HSGMII           | No                                              |
+| SFP interfaces   | 1 Gbps only, no HSGMII                          |
 | Optics           | SC/APC                                          |
 | IP address       | 192.168.2.1 / 169.0.0.1                         |
 | Web Gui          | Can be enabled, user `admin`, password `system` |

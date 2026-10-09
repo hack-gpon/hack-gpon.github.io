@@ -19,7 +19,7 @@ parent: Zisa
 | Flash            | 8 MB (GigaDevice GD25Q64CW16)                              |
 | RAM              | 64 MB (Nanya NT5TU32M16FG-AC1)                             |
 | System           | eCoS                                                       |
-| HSGMII           | Yes                                                        |
+| SFP interfaces   | HSGMII                                                     |
 | Optics           | SC/APC                                                     |
 | IP address       | 10.10.1.1                                                  |
 | Web Gui          | ✅ username `admin` or `guest`, password `1234` or `guest` |

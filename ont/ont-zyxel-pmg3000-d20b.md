@@ -18,7 +18,7 @@ parent: Zyxel
 | CPU              | MIPS 34Kc interAptiv                                       |
 | CPU Clock        | 400MHz                                                     |
 | System           | eCoS                                                       |
-| HSGMII           | Yes                                                        |
+| SFP interfaces   | HSGMII                                                     |
 | Optics           | SC/APC                                                     |
 | IP address       | 10.10.1.1                                                  |
 | Web Gui          | ✅ username `admin` or `guest`, password `1234` or `guest` |

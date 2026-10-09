@@ -20,7 +20,7 @@ parent: Free/Iliad
 | Bootloader       |             |
 | System           |             |
 | Load addr        |             |
-| HSGMII           | No          |
+| SFP interfaces   | PON RAW (w/o PON MAC, see [SFP with PON MAC and w/o PON MAC](/ont-wo-mac)) |
 | Optics           | SFP w/o MAC |
 | IP address       |             |
 | Web Gui          |             |

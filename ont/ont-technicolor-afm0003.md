@@ -17,7 +17,7 @@ alias: HiSense LTE3415-SH+
 | Flash            | 128MB                                           |
 | RAM              | 32MB                                            |
 | System           | Linux 2.6 (Luna SDK 1.9)                        |
-| HSGMII           | Yes, but not working with stock firmware        |
+| SFP interfaces   | HSGMII (not working with stock firmware)        |
 | Optics           | SC/APC                                          |
 | IP address       | 192.168.2.1                                     |
 | Web Gui          | Can be enabled, user `admin`, password `system` |

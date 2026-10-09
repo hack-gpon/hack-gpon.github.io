@@ -16,7 +16,7 @@ parent: D-LINK
 | Flash            | 16MB                                                     |
 | RAM              | 32MB                                                     |
 | System           | Linux (Luna SDK 1.9.0)                                   |
-| HSGMII           | ✅                                                       |
+| SFP interfaces   | HSGMII                                                   |
 | Optics           | SC/APC                                                   |
 | IP address       | 192.168.100.1                                            |
 | Web Gui          |                                                          |
