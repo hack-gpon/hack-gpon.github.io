@@ -13,7 +13,7 @@ Currently, there are only a few main PON chipset vendors:
     * RTL9601 series (for SFU ONT and SFP ONT)
         - RTL9601B
         - RTL9601C (End Of Life)
-        - RTL9601CI (HSGMII)
+        - RTL9601CI (HSGMII, End Of Life)
         - RTL9601D (HSGMII)
     * RTL9602/RTL9603 series (for routers with integrated PON)
         - RTL9602C
@@ -45,7 +45,7 @@ Currently, there are only a few main PON chipset vendors:
     * ZX279110a1
     * ZX279125
     * ZX279127S
-    * ZX279133
+    * ZX279133 (HSGMII)
 - HiSilicon (Huawei)
     * SD5116
     * SD5117 (XGS-PON)
@@ -78,7 +78,7 @@ The Realtek xPON ICs (RTL9601, RTL9602, RTL9603, RTL9607 and the RTL8290 laser d
 Community guides for the RTL960x based sticks and ONTs (OMCI cloning, flash variables, 4-port emulation, firmware and key generators): [Hacking RTL960x](https://github.com/fernandothx/Hacking-RTL960x-your-ISP-Fiber).
 
 ::: warning End Of Life
-Realtek announced that the RTL9601C will be End Of Life at the end of November 2026, and it will not get a replacement.
+Realtek announced that the RTL9601C and RTL9601CI will be End Of Life at the end of November 2026, and they will not get a replacement.
 :::
 
 ## Lantiq Chipsets
