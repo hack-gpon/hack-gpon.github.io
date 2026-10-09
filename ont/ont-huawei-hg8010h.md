@@ -19,12 +19,20 @@ parent: Huawei
 | 2.5GBaseT    | No                                                                                             |
 | Optics       | SC/APC and SC/UPC                                                                              |
 | IP address   | 192.168.100.1                                                                                  |
-| Web Gui      | ✅ user `root`, password `admin` or `adminHW` and user `telecomadmin`, password `admintelecom` |
+| Web Gui      | ✅ user `root`, password `admin` or `adminHW` and user `telecomadmin`, password `admintelecom` (see [Default credentials](#default-credentials)) |
 | SSH          |                                                                                                |
-| Telnet       | After Enabling user `root`, password `admin` or `adminHW`                                      |
+| Telnet       | After Enabling user `root`, password `admin` or `adminHW` (see [Default credentials](#default-credentials)) |
 | Serial       |                                                                                                |
 | Form Factor  | ONT                                                                                            |
 
+
+## Default credentials
+
+The default credentials are `root`/`admin` or `root`/`adminHW`, and `telecomadmin`/`admintelecom`.
+
+::: warning ISP-specific passwords
+Some ISP deployments (e.g. certain Turkish ISPs) use a custom password instead of the defaults above. In this case, the password is an 8-character seemingly random string (mixed uppercase/lowercase letters and numbers) printed on the back of the ONT, in the same location as shown in the sticker photo below. The `telecomadmin` username also works with this ISP-specific password.
+:::
 
 <ImageFigure file="hg8010h.jpg" alt="HG8010H" caption="HG8010H: Horizontal PON port (left, middle); vertical PON port (right)" />
 <ImageFigure file="hg8010hvorr.jpg" alt="HG8010Hv3/4/5" caption="Bottom of the HG8010Hv3/4/5" />

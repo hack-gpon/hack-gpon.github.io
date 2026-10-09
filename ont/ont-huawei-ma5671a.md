@@ -406,6 +406,7 @@ For more information, see the SFF-8472 Rev 10.2 specification.
 
 # Miscellaneous Links
 
+- [Asenheim firmware repository](https://cloud.asenheim.org/s/tqGTgBDSZgoKFyg) - alternative firmware collection for ODI/HSGQ, Alcatel/Nokia and Huawei modules
 - [Huawei MA5671B / OptiXstar S600E (successor)](/ont-huawei-optixstar-s600e)
 - [Support MA5671A SFP GPON - OpenWRT forum](https://forum.openwrt.org/t/support-ma5671a-sfp-gpon/48042)
 - [u boot lantiq falcon - GitHub](https://github.com/minhng99/u-boot_lantiq_falcon)

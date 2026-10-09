@@ -3,6 +3,7 @@ import DefaultTheme from 'vitepress/theme'
 import Layout from './Layout.vue'
 import AsciiHex from './components/AsciiHex.vue'
 import CigPassword from './components/CigPassword.vue'
+import CrcVerifier from './components/CrcVerifier.vue'
 import CiteAs from './components/CiteAs.vue'
 import HisensePloam from './components/HisensePloam.vue'
 import ImageFigure from './components/ImageFigure.vue'
@@ -20,6 +21,7 @@ export default {
   enhanceApp({ app, router }) {
     app.component('AsciiHex', AsciiHex)
     app.component('CigPassword', CigPassword)
+    app.component('CrcVerifier', CrcVerifier)
     app.component('CiteAs', CiteAs)
     app.component('HisensePloam', HisensePloam)
     app.component('ImageFigure', ImageFigure)

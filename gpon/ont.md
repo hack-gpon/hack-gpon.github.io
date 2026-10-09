@@ -69,6 +69,8 @@ Currently, there are only a few main PON chipset vendors:
 - Airoha (continuation of EcoNet)
     * AN7581
     * AN7583/AN7553
+- Faraday Technology (Galachip)
+    * GC1601
 ## Realtek Chipsets
 
 HSGMII chipsets are relatively recent, they became more common starting in 2020, and are used in many ONTs. Realtek offers an official SDK, Luna SDK, which offers very good performance in queue management, unfortunately it is not used by all devices based on these chipsets.
