@@ -17,7 +17,7 @@ alias: Usourcetech UGP-N1S
 | Flash        | 16 MB                                           |
 | RAM          | 32 MB                                           |
 | System       | System ZTE Linux (based on Linux Kernel 2.6.32) |
-| HSGMII       | No                                              |
+| SFP interfaces | 1 Gbps only, no HSGMII                          |
 | Optics       | SC/UPC                                          |
 | IP address   | 192.168.1.1                                     |
 | Web Gui      | ✅ user `admin`, password `admin`               |

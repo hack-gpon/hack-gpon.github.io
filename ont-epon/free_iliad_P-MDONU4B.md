@@ -19,8 +19,7 @@ parent: Free/Iliad
 | Bootloader      |                      |
 | System          |                      |
 | Load addr       |                      |
-| XGMII/XSGMII    | Yes                  |
-| 10GBaseX        | Yes                  |
+| SFP interfaces  | None, PON RAW (w/o PON MAC, see [SFP with PON MAC and w/o PON MAC](/ont-wo-mac)) |
 | Optics          | SFP w/o MAC          |
 | IP address      |                      |
 | Web Gui         |                      |

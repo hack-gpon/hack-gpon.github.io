@@ -17,7 +17,7 @@ parent: Hilink
 | CPU          | MIPS 34Kc interAptiv |
 | CPU Clock    | 400MHz               |
 | System       | OpenWRT              |
-| HSGMII       | Yes                  |
+| SFP interfaces | HSGMII               |
 | Optics       | SC/APC               |
 | IP address   |                      |
 | Web Gui      | ✅                   |

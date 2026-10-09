@@ -18,7 +18,7 @@ parent: HALNy
 | CPU              | MIPS 34Kc interAptiv |
 | CPU Clock        | 400MHz               |
 | System           | OpenWRT              |
-| HSGMII           | Yes                  |
+| SFP interfaces   | HSGMII               |
 | Optics           | SC/APC               |
 | IP address       | 192.168.77.154/30    |
 | Web Gui          | none                 |

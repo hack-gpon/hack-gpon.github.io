@@ -17,7 +17,7 @@ alias: CIG G-97S
 | Flash            | 16 MB (Macronix MX25L12835F)                                                                                      |
 | RAM              | 32 MB                                                                                                             |
 | System           |                                                                                                                   |
-| HSGMII           |                                                                                                                   |
+| SFP interfaces   |                                                                                                                   |
 | Optics           |                                                                                                                   |
 | IP address       | 192.168.100.1                                                                                                     |
 | Web Gui          | ✅ Port 80 (⚠️ *only available when the PON connection **IS NOT** estabilished*), user `admin`, password `1234` |

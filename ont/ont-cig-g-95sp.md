@@ -17,7 +17,7 @@ parent: CIG
 | Flash            |                                                          |
 | RAM              |                                                          |
 | System           |                                                          |
-| HSGMII           | No (SGMII / 1000Base-X)                                  |
+| SFP interfaces   | SGMII, 1000BASE-X                                        |
 | Optics           | SC/APC                                                   |
 | IP address       |                                                          |
 | Web Gui          |                                                          |

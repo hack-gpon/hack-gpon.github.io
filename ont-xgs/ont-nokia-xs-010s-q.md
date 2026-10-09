@@ -20,7 +20,7 @@ parent: Nokia
 | Flash            | 1GB                                                                |
 | RAM              | ?                                                                  |
 | System           | ?                                                                  |
-| 10GBaseT         | Yes                                                                |
+| SFP interfaces   | 10GBASE-R                                                          |
 | Optics           | SC/APC                                                             |
 | IP address       | 192.168.100.1                                                      |
 | Web Gui          | ✅ Port 80 user: `admin`, password: `1234`                         |

@@ -16,7 +16,7 @@ parent: D-LINK
 | Flash            | 8 MB            |
 | RAM              | 64 MB           |
 | System           |                 |
-| HSGMII           |                 |
+| SFP interfaces   |                 |
 | Optics           |                 |
 | IP address       |                 |
 | Web Gui          |                 |

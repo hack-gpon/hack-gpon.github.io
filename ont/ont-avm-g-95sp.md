@@ -18,7 +18,7 @@ parent: AVM
 | Flash            |                                                  |
 | RAM              |                                                  |
 | System           | Linux (kernel 3.10.4, AVM firmware `SFP_7.5.13`) |
-| HSGMII           | No (SGMII / 1000Base-X)                          |
+| SFP interfaces   | SGMII, 1000BASE-X                                |
 | Optics           | SC/APC                                           |
 | IP address       | 192.168.47.1                                     |
 | Web Gui          | No                                               |

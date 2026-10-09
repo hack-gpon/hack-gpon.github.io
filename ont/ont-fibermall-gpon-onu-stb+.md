@@ -18,7 +18,7 @@ This is an ONU Stick SFP with integrated GPON MAC. For the raw SFP transceiver w
 | Flash                 |                                                                       |
 | RAM                   |                                                                       |
 | System                |                                                                       |
-| HSGMII                |                                                                       |
+| SFP interfaces        |                                                                       |
 | Optics                | SC/UPC or SC/APC                                                      |
 | IP address            |                                                                       |
 | Web Gui               |                                                                       |
