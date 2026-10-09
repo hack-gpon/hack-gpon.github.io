@@ -12,7 +12,8 @@ The workflow is:
 
 1. enable the OMCI log on the ONT and copy the log to the PC;
 2. convert the log to a `.pcap` file with [omcilog2pcap](https://github.com/hack-gpon/omcilog2pcap);
-3. open the `.pcap` file in Wireshark with the [OMCI Wireshark dissector](https://github.com/hack-gpon/omci-wireshark-dissector).
+3. open the `.pcap` file in Wireshark with the [OMCI Wireshark dissector](https://github.com/hack-gpon/omci-wireshark-dissector);
+4. optionally, analyze large captures with [omcipcap](#omcipcap).
 
 ## omcilog2pcap
 
@@ -23,7 +24,7 @@ The workflow is:
 | Lantiq based chips (e.g. [Huawei MA5671A](/ont-huawei-ma5671a)), `omcid` log         | `[omcid]` lines            |
 | Sagemcom devices (e.g. the TIM [F@st 5684S](/router/sagemcom_fast_5684s))             | `:omci capture:` lines     |
 | Cortina Access devices: merge the `pkt_rx` and `pkt_tx` logs into a single file, the packets are re-ordered automatically | ` debug: ` lines |
-| Huawei (e.g. [OptiXstar S800E](/xgs/ont-huawei-optixstar-s800e), B450)                | `OLT->ONT` / `ONT->OLT` blocks |
+| Huawei devices                                                                        | `OLT->ONT` / `ONT->OLT` blocks |
 | Realtek based chips (e.g. [Technicolor AFM0002TIM](/ont-technicolor-afm0002)): one OMCI message in hex per line | any other text log |
 
 The default version is the .NET one (native AOT), in the [`C#` branch](https://github.com/hack-gpon/omcilog2pcap/tree/C%23). Download the executable for your OS from the [releases](https://github.com/hack-gpon/omcilog2pcap/releases), or build it from `src/` with the .NET SDK.
@@ -75,13 +76,23 @@ Restart Wireshark and open `omci-example.pcap` from the repository to check that
 
 The dissector is a fork of [0liv1er/omci-wireshark-dissector](https://github.com/0liv1er/omci-wireshark-dissector), originally published on Google Code.
 
-## Semantic analysis
+## omcipcap
 
-To analyze large captures (failed provisioning, MIB snapshots, VLAN rules of ME 171, T-CONT/GEM topology) see [omcipcap](/omcipcap).
+[omcipcap](https://github.com/RainbowCloudLabs/omcipcap) is an open-source GPON/XGS-PON OMCI semantic analysis framework for `.pcap` and `.pcapng` files. It complements packet-level inspection tools such as Wireshark by reconstructing protocol-level engineering information from OMCI traffic:
+
+- Detect OMCI provisioning failures and error responses
+- Build and compare MIB snapshots
+- Analyze Extended VLAN Tagging Operation Configuration Data (ME 171)
+- Reconstruct T-CONT, GEM Port and Priority Queue relationships
+- Generate OMCI topology information
+- Produce structured JSON and Markdown output for automation and AI-assisted analysis
+- Support vendor-specific Managed Entity definitions and semantic extensions
+
+It is available on [GitHub](https://github.com/RainbowCloudLabs/omcipcap) and [PyPI](https://pypi.org/project/omcipcap/).
 
 # Miscellaneous Links
 
 - [omcilog2pcap](https://github.com/hack-gpon/omcilog2pcap)
 - [OMCI Wireshark dissector](https://github.com/hack-gpon/omci-wireshark-dissector)
-- [omcipcap](/omcipcap)
+- [omcipcap](https://github.com/RainbowCloudLabs/omcipcap)
 - [GPON OMCI VLAN parser](/gpon-omci-vlan-parser)
