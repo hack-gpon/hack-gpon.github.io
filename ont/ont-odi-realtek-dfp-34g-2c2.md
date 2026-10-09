@@ -2,7 +2,7 @@
 title: ODI Realtek DFP-34G-2C2 
 description: New model 2022 - v05
 has_children: false
-parent: ODI
+parent: HSGQ (formerly ODI)
 ---
 
 # Hardware Specifications
@@ -105,6 +105,7 @@ macKey: "odi"
 
 - [Hacking RTL960x](https://github.com/Anime4000/RTL960x)
 - [RTL960x stick setup guide](https://github.com/Anime4000/RTL960x/blob/main/Docs/StickSetup.md)
+- [Asenheim firmware repository](https://cloud.asenheim.org/s/tqGTgBDSZgoKFyg) - alternative firmware collection for ODI/HSGQ, Alcatel/Nokia and Huawei modules
 - [Ditch ONU, use GPON SFP on Business Grade Router, Mikrotik/Ubiquiti/pfSense (Home Networking)](https://forum.lowyat.net/topic/4925452)
 - [For the new model ODI ZTE DFP-34X-C2C](/ont-odi-zte-dfp-34x-2c2)
 

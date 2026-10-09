@@ -2,7 +2,7 @@
 title: ODI Realtek DFP-34X-2C2 
 description: New model 2022 - v05
 has_children: false
-parent: ODI
+parent: HSGQ (formerly ODI)
 ---
 
 # Hardware Specifications
@@ -181,6 +181,7 @@ macKey: "odi"
 - [RTL960x stick setup guide](https://github.com/Anime4000/RTL960x/blob/main/Docs/StickSetup.md)
 - [English ODI configuration guide by @rajkosto](https://gist.github.com/rajkosto/b684b7bb2697baa342cd2601ed5717d2)
 - [Making it work on the Intel 82599ES](https://omaera.org/wlog/tech/odi_sfp)
+- [Asenheim firmware repository](https://cloud.asenheim.org/s/tqGTgBDSZgoKFyg) - alternative firmware collection for ODI/HSGQ, Alcatel/Nokia and Huawei modules
 - [Ditch ONU, use GPON SFP on Business Grade Router, Mikrotik/Ubiquiti/pfSense (Home Networking)](https://forum.lowyat.net/topic/4925452)
 - [Orange France at 2 Gbps with a MikroTik CCR2004](https://lafibre.info/remplacer-livebox/guide-de-connexion-fibre-directement-sur-un-routeur-voire-meme-en-2gbps/)
 - [Pururin Collective forum](https://pururin.moe/viewtopic.php?t=7)

@@ -22,4 +22,13 @@ has_children: false
 
 
 
+## Variants with TTL serial pins
+
+Some 2.5G SFP media converters include built-in TTL serial pins, eliminating the need for a separate SFP-to-TTL adapter:
+
+- [2.5G SFP Media Converter with TTL pins (variant 1)](https://aliexpress.com/item/1005010123324704.html)
+- [2.5G SFP Media Converter with TTL pins (variant 2)](https://aliexpress.com/item/1005010111907029.html)
+
+# Miscellaneous Links
+
 - [2.5G Fiber Optic Media Converter Gigabit SFP Transceiver 1000Mbps Compatible With Common E/GPON](https://aliexpress.com/item/1005004340369253.html)

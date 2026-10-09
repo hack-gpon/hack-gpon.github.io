@@ -23,9 +23,17 @@ parent: Nokia
 | SSH              | ✅ but no login possible                                                     |
 | Telnet           | ✅ user `admin`, password `1234`, but has access to GponSLID and not GponCLI |
 | Serial           | ✅                                                                           |
-| Serial baud      | 115200                                                                      |
+| Serial baud      | 115200 (some models use 9600 for the `ONT>` console)                        |
 | Serial encoding  | 8-N-1                                                                       |
 | Form Factor      | ONT                                                                         |
+
+## Hardware variants
+
+Some G-010G-R models use a G-97CL PCB with a SEMTECH 25L95 laser driver. On these models, the `ONT>` console may only be accessible at 9600 baud rate instead of the standard 115200.
+
+::: warning Note
+The enable password generator may not work on all variants. If the `ONT>` console is accessible but commands are limited, a flash dump and analysis may be needed to change the serial number.
+:::
 
 ## List of software versions
 - 3FE49717AOCK12 

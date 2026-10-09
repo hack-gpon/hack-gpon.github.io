@@ -29,6 +29,13 @@ parent: Nokia
 | Form Factor      | ONT                                                                              |
 
 
+## Accessing the Web GUI
+
+The ONT's web GUI is available at `192.168.100.1` on port 80. To access it, your device must be on the same subnet (`192.168.100.0/24`). If your router uses a different subnet (e.g. `10.0.0.0/20`), you have two options:
+
+- **Direct connection**: connect your PC directly to the ONT's Ethernet port and set a static IP address (e.g. `192.168.100.2`, netmask `255.255.255.0`)
+- **Via router**: add a virtual IP in the `192.168.100.0/24` range to your router's WAN interface and create the appropriate routing/NAT rules
+
 # External/Internal Photo
 
 <ImageFigure file="ont-nokia_xs-010x-q_front.jpg" alt="Nokia XS-010X-Q Front" caption="Nokia XS-010X-Q Front" />
