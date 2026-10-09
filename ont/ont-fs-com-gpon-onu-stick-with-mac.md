@@ -172,6 +172,30 @@ omci_pipe.sh meg MIB_IDX ME_IN
 ```
 Where `MIB_IDX` is the MIB ID and the `ME_IN` is the ME instance number
 
+## Debug menu (gtop)
+
+The `gtop` command provides an interactive debug menu for monitoring and diagnostics. To access it, run:
+```sh
+gtop
+```
+
+Inside the debug menu, composite key commands can be used by pressing two keys simultaneously (e.g. `c` + `a`).
+
+### Getting VLAN table rule
+```sh
+gtop -g "GPE VLAN rule"
+```
+
+### Getting GEM port status table
+```sh
+gtop -g e
+```
+
+## Getting ONU GPON Serial Number (alternative)
+```sh
+onu gtcsng
+```
+
 ## Getting/Setting Speed LAN Mode
 
 To get the LAN Mode:
