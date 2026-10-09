@@ -208,6 +208,17 @@ The equipment id must be encoded in hex format and right padded to 39 characters
 
 # Advanced settings
 
+## Setting root password via bootloader (V2.50 only)
+
+On firmware V2.50(ABVJ.1), the root password can be set via the bootloader environment variable `remote_account_pwd`:
+
+```sh
+setenv remote_account_pwd thepassword
+saveenv
+```
+
+After rebooting, the password set here can be used for root access.
+
 ## Resetting Web GUI admin credentials
 
 Under certain circumstances, the Web GUI admin credentials might get changed from the default `admin`/`1234` combination.

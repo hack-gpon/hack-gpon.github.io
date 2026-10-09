@@ -455,7 +455,12 @@ CHAR            CFG_ID_OMCC_VERSION                             = 0xB2;
 Reboot ONT to apply the change.
 
 
+## Variants
+
+The LTF7267-BH+ is a variant of the LTF7267-BHA+ with the same Cortina CA8271A chipset. The information on this page applies to both models.
+
 # Known Bugs
 - `ALCL` OLT mode uses some static configurations on MIBs, so if your OLT has strict configuration checks it might not work properly.
 - During initial tests the only currently working mode of the stick is `PPTP EthUni`.
 - Stick can be configured to also emulate `VEIP` mode (adding it to the scfg.txt file), but the current firmware doesn't link correctly the XGBE interface, so no traffic is passing between LAN and PON interfaces.
+- On some SFP+ cages that do not support USXGMII, the kernel may log `Warning!!! port 6 isnt USXGMII and can't do AN` during activation. This can cause repeated ONU deactivation/reactivation cycles (`DEACTIVE_ONUID_REQ`). Ensure your host device's SFP+ cage supports 10GBase-R or USXGMII auto-negotiation.
