@@ -31,7 +31,7 @@ parent: Adtran
 | Weight          | 1.15 lbs (~520 g)                |
 | Dimensions      | 10" x 6.25" x 2.75" (254 x 159 x 70 mm) |
 
-The SDX 621i is the 1GbE variant of the Adtran 621 family of XGS-PON single family unit (SFU) ONTs. It supports remote activation/deactivation, remote firmware upgrades/downgrades and remote OMCI management.
+The SDX 621i is the 1GbE variant of the Adtran 621 family of XGS-PON single family unit (SFU) ONTs (the 10GbE version is the [SDX 621](/xgs/ont-adtran-sdx-621)). It supports remote activation/deactivation, remote firmware upgrades/downgrades and remote OMCI management.
 
 ## List of software versions
 
