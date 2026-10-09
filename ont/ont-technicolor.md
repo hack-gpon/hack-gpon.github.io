@@ -5,5 +5,5 @@ alias: Technicolor
 ---
 
 ::: info Note
-Technicolor has rebranded as Vantiva. The devices are the same; only the company name has changed.
+Technicolor rebranded as Vantiva in 2022. The devices are the same; only the company name has changed.
 :::
