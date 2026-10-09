@@ -11,7 +11,31 @@ on:
 permissions:
   contents: read
 
+# The statuses are set on the PR commit, so they show among the PR checks
+env:
+  GH_TOKEN: ${{ github.token }}
+  HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+  RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
 jobs:
+  # Tells the PR that the deploy of a fork waits for an approval, linking the
+  # run where a maintainer can approve it
+  request-approval:
+    if: >-
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.head_repository.full_name != github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      statuses: write
+    steps:
+      - name: Report approval required
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/statuses/$HEAD_SHA" \
+            -f state=pending -f context=preview-deploy/approval \
+            -f description="Waiting for a maintainer to approve the preview deploy" \
+            -f target_url="$RUN_URL"
+
   # PRs from forks wait for a manual approval of the "external" environment
   authorize:
     if: github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success'
@@ -19,8 +43,34 @@ jobs:
       ${{ github.event.workflow_run.head_repository.full_name != github.repository &&
       'external' || 'internal' }}
     runs-on: ubuntu-latest
+    permissions:
+      statuses: write
     steps:
-      - run: "true"
+      - name: Report approval granted
+        if: github.event.workflow_run.head_repository.full_name != github.repository
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/statuses/$HEAD_SHA" \
+            -f state=success -f context=preview-deploy/approval \
+            -f description="Preview deploy approved" \
+            -f target_url="$RUN_URL"
+
+  # Closes the approval status when the deploy is rejected or never approved
+  approval-rejected:
+    needs: [request-approval, authorize]
+    if: >-
+      always() &&
+      needs.request-approval.result == 'success' &&
+      needs.authorize.result != 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      statuses: write
+    steps:
+      - name: Report approval rejected
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/statuses/$HEAD_SHA" \
+            -f state=failure -f context=preview-deploy/approval \
+            -f description="Preview deploy not approved" \
+            -f target_url="$RUN_URL"
 
   deploy:
     needs: authorize
@@ -28,13 +78,19 @@ jobs:
     permissions:
       actions: read
       pull-requests: write
+      statuses: write
     # Shows the preview link on the job, like the Pages deploy
     environment:
       name: preview
       url: ${{ steps.preview-pages.outputs.deployment-url }}
-    env:
-      GH_TOKEN: ${{ github.token }}
     steps:
+      # Shows the deploy among the PR checks, next to the build
+      - name: Report deploy started
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/statuses/$HEAD_SHA" \
+            -f state=pending -f context=preview-deploy \
+            -f description="Publishing the preview to Cloudflare Pages..." \
+            -f target_url="$RUN_URL"
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
@@ -44,8 +100,6 @@ jobs:
       # the PR of the commit that was built
       - name: Find the PR
         id: pr
-        env:
-          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
         run: |
           number=$(cat pr-number/pr-number)
           [[ "$number" =~ ^[0-9]+$ ]] || { echo "Invalid PR number"; exit 1; }
@@ -67,3 +121,22 @@ jobs:
         run: |
           gh pr comment "${{ steps.pr.outputs.number }}" --repo "$GITHUB_REPOSITORY" \
             --body "Preview of the website obtained from the PR: $URL"
+      - name: Report deploy status
+        if: always()
+        env:
+          OUTCOME: ${{ steps.preview-pages.outcome }}
+          URL: ${{ steps.preview-pages.outputs.deployment-url }}
+        run: |
+          if [ "$OUTCOME" = "success" ]; then
+            state=success
+            description="Preview published to Cloudflare Pages."
+            target_url="$URL"
+          else
+            state=failure
+            description="Preview deploy failed, see the workflow run."
+            target_url="$RUN_URL"
+          fi
+          gh api "repos/$GITHUB_REPOSITORY/statuses/$HEAD_SHA" \
+            -f state="$state" -f context=preview-deploy \
+            -f description="$description" \
+            -f target_url="$target_url"
