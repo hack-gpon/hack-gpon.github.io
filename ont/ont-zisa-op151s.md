@@ -42,6 +42,17 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work.
 :::
 
+## Setting MAC address
+
+The MAC address can be changed via the `manufactory` menu:
+```
+manufactory -> set uni mac addr xx:xx:xx:xx:xx:xx
+```
+
+::: warning RSTP bridge mode
+Enabling RSTP bridge mode with `set rstp bridge enable` may cause loss of telnet access. If this happens, access can be recovered via UART serial console.
+:::
+
 ## Firmware is interchangeable with:
 
 - [Halny HL-GSFP](/ont-halny-hl-gsfp)

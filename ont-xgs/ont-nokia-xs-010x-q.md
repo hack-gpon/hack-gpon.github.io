@@ -49,6 +49,10 @@ The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be acc
 Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work.
 :::
 
+::: warning Firmware 3FE49337BOCK28
+Newer firmware versions (starting from 3FE49337BOCK28) disable the serial console after the boot process completes. The boot log is still visible via UART, but no interactive shell or prompt is available. Interrupting the boot into U-Boot via Ctrl+C does not appear to work on this firmware.
+:::
+
 ## List of software versions
 - 3FE49337AOCK80 - (R4.4.17.063 CIG 25/06/2021)
 - 3FE49337BOCK28
