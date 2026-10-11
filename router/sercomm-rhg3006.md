@@ -14,7 +14,7 @@ parent: Sercomm
 | Flash           | 4 Gbit (MXIC MX30LF4G28AD) |
 | RAM             | 256 Mb                     |
 | Bootloader      | Broadcom CFE               |
-| 2.5GBaseT       | ?                          |
+| Ethernet        | 1×1Gb WAN/LAN + 3×1Gb LAN  |
 | Optics          | SC/APC                     |
 | IP address      | 192.168.1.1/24             |
 | POTS            | 2x RJ11                    |
