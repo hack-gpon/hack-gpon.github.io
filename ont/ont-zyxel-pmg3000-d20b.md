@@ -13,17 +13,20 @@ parent: Zyxel
 | ODM              | T&W                                                        |
 | ODM Product Code | TW2362H-CDEL                                               |
 | Chipset          | Lantiq PEB98035                                            |
-| Flash            | 8 MB                                                       |
+| Flash            | 8 MB SPI NOR (GigaDevice GD25Q64B)                         |
 | RAM              | 64 MB                                                      |
 | CPU              | MIPS 34Kc interAptiv                                       |
 | CPU Clock        | 400MHz                                                     |
-| System           | eCoS                                                       |
-| SFP interfaces   | HSGMII                                                     |
+| Bootloader       | U-Boot 2011.12-lantiq-gpon-1.2.16                          |
+| System           | OpenWrt 12.09 (kernel 3.10.12) / 14.07 (kernel 3.10.49)    |
+| Linux shell      | BusyBox 1.19.4 / 1.22.1                                    |
+| SDK              | Lantiq FALC ON 6.4.2 / 7.5.1                               |
+| SFP interfaces   | HSGMII (1G / 2.5G)                                         |
 | Optics           | SC/APC                                                     |
 | IP address       | 10.10.1.1                                                  |
 | Web Gui          | ✅ username `admin` or `guest`, password `1234` or `guest` |
-| SSH              | ✅ username `admin`, password `admin`. Not available in firmware V1.00(ABVJ.1)b1e |
-| Telnet           |                                                            |
+| SSH              | ✅ username `admin`, password `admin` (not V1.00(ABVJ.1))  |
+| Telnet           | ❌                                                         |
 | Serial           | ✅                                                         |
 | Serial baud      | 115200                                                     |
 | Serial encoding  | 8-N-1                                                      |
@@ -70,19 +73,19 @@ Some USB TTL adapters label TX and RX pins the other way around: try to swap the
 
 ## List of partitions
  
-| dev  | size     | erasesize | name           |
-| ---- | -------- | --------- | -------------- |
-| mtd0 | 00060000 | 00010000  | "Boot"         |
-| mtd1 | 00010000 | 00010000  | "Env"          |
-| mtd2 | 00390000 | 00010000  | "ImageA"       |
-| mtd3 | 00390000 | 00010000  | "ImageB"       |
-| mtd4 | 00060000 | 00010000  | "Config"       |
-| mtd5 | 00010000 | 00010000  | "SECTION_EGIS" |
-| mtd6 | 00250000 | 00010000  | "rootfs"       |
-| mtd7 | 00020000 | 00010000  | "rootfs_data"  |
+| dev  | size                | erasesize | name           | purpose                                     |
+| ---- | ------------------- | --------- | -------------- | ------------------------------------------- |
+| mtd0 | 00060000  (384 kiB) | 00010000  | "Boot"         | U-Boot                                      |
+| mtd1 | 00010000   (64 kiB) | 00010000  | "Env"          | U-Boot environment                          |
+| mtd2 | 00390000 (3648 kiB) | 00010000  | "ImageA"       | OpenWrt (1280 kiB kernel + 2368 kiB rootfs) |
+| mtd3 | 00390000 (3648 kiB) | 00010000  | "ImageB"       | OpenWrt (1280 kiB kernel + 2368 kiB rootfs) |
+| mtd4 | 00060000  (384 kiB) | 00010000  | "Config"       | /tmp/config (JFFS2); log files etc.         |
+| mtd5 | 00010000   (64 kiB) | 00010000  | "SECTION_EGIS" | serial number, MAC addresses etc.           |
+|_mtd6_|_00250000 (2368 kiB)_|_00010000_ |_"rootfs"_      |_mapped to read-only rootfs on mtd2 / mtd3_  |
+|_mtd7_|_00010000   (64 kiB)_|_00010000_ |_"rootfs_data"_ |_mapped to last 64 kiB of mtd2 / mtd3, blank_|
 
 
-This stick supports dual boot, as visible from the presence of `ImageA` and `ImageB`, which contain the rootfs.
+This stick supports dual boot, as visible from the presence of `ImageA` and `ImageB`, which contain the kernel (uImage) and read-only rootfs (SquashFS).
 
 
 # Useful files and binaries
