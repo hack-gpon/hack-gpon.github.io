@@ -22,15 +22,21 @@ parent: V-SOL
 | Serial       |                                                                       |
 | Form Factor  | ONT                                                                   |
 
+
 ## List of firmwares and files
 |              |                                                                       |
 | ------------ | --------------------------------------------------------------------- |
-| V1.2.1 |  [V2801RD_V1.2.1_260706_S1243.img](https://support.vsol-tech.com:8443/#/register) |
+| V1.2.1 |  [V2801RD_V1.2.1_260706_S1243.img](https://vsol.cz/fw/V2801RD_V1.2.1_260706_S1243.img) |
 | V1.2.0 |  [V2801RD_V1.2.0_251125_S1114.img](https://www.tripleoxygen.net/files/devices/vsol/v2802rh/firmware/stock/V2801RD_V1.2.0_251125_S1114.img) |
+| V1.1.8 |  [V2802RH_V1.1.8_241206_S1006.img](https://www.tripleoxygen.net/files/devices/vsol/v2802rh/firmware/stock/V2802RH_V1.1.8_241206_S1006.img) |
 
-* This Fireware Compatible with V2801RD V2801RE V2802RH V2801Q V2802PH V2801P
+* This Firmware Compatible with V2801RD V2801RE V2802RH V2801Q V2802PH V2801P
 
 
 # Miscellaneous Links
 
-https://www.vsolcn.com/product/1xpon-2-5gbe-onu-v2801q
+Official ONT Web Page [https://www.vsolcn.com/product/1xpon-2-5gbe-onu-v2801q]
+
+- Official Chinese VSOL ONT Vendor firmware and guides Page (https://support.vsol-tech.com:8443/#/register) **register required.
+- Official Distributor VSOL ONT Reseller firmware and guides page (https://vsol.cz/podpora.html) *No register required. (Thanks @ [Troll338cz](https://github.com/Troll338cz) )
+- 
