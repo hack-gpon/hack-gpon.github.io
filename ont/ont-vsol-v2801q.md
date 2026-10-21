@@ -35,8 +35,7 @@ parent: V-SOL
 
 # Miscellaneous Links
 
-Official ONT Web Page [https://www.vsolcn.com/product/1xpon-2-5gbe-onu-v2801q]
+- Official ONT Web Page [https://www.vsolcn.com/product/1xpon-2-5gbe-onu-v2801q]
 
-- Official Chinese VSOL ONT Vendor firmware and guides Page (https://support.vsol-tech.com:8443/#/register) **register required.
-- Official Distributor VSOL ONT Reseller firmware and guides page (https://vsol.cz/podpora.html) *No register required. (Thanks @ [Troll338cz](https://github.com/Troll338cz) )
-- 
+- Official Chinese VSOL ONT Vendor FW: (https://support.vsol-tech.com:8443/#/register) **register required.
+- Official Czech Distributor VSOL ONT Reseller FW: (https://vsol.cz/podpora.html) *No register required. (Thanks @ [Troll338cz](https://github.com/Troll338cz) )
