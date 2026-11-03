@@ -6,6 +6,10 @@ parent: Huawei MA5671A
 
 # Root the stick
 
+::: warning Nokia G-010S-A
+This procedure is for Huawei MA5671A. For Nokia G-010S-A, use the [Nokia serial-console instructions and helper](/ont-nokia-g-010s-a#enabling-serial). Its boot log may omit the `U-Boot` banner expected here, and the GPIO and Linux-shell steps are different. Receiving only `ROM:` lines does not mean that U-Boot commands can be executed.
+:::
+
 Connect the SFP adapter to the TTL adapter according to the following diagram:
 
 | USB TTL (UART) Adapter | wire colour in picture | SFP 20pins Molex connector |

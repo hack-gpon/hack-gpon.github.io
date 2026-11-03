@@ -32,6 +32,8 @@ jobs:
           cache: npm
       - name: Install Node deps
         run: npm ci
+      - name: Run serial protocol tests
+        run: npm test
       - name: Build with VitePress
         run: npm run build
       - name: Upload artifact

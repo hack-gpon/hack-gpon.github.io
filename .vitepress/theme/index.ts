@@ -9,6 +9,7 @@ import HisensePloam from './components/HisensePloam.vue'
 import ImageFigure from './components/ImageFigure.vue'
 import LantiqEeprom from './components/LantiqEeprom.vue'
 import Mermaid from './components/Mermaid.vue'
+import NokiaSerial from './components/NokiaSerial.vue'
 import OmciVlanParser from './components/OmciVlanParser.vue'
 import RootLantiq from './components/RootLantiq.vue'
 import SpeedCalculator from './components/SpeedCalculator.vue'
@@ -27,6 +28,7 @@ export default {
     app.component('ImageFigure', ImageFigure)
     app.component('LantiqEeprom', LantiqEeprom)
     app.component('Mermaid', Mermaid)
+    app.component('NokiaSerial', NokiaSerial)
     app.component('OmciVlanParser', OmciVlanParser)
     app.component('RootLantiq', RootLantiq)
     app.component('SpeedCalculator', SpeedCalculator)

@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build && node scripts/optimize-images.mjs",
+    "test": "node --test tests/*.test.js",
     "preview": "vitepress preview",
     "convert": "node scripts/jekyll-to-vitepress.mjs"
   },
