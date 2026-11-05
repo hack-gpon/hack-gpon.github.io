@@ -116,6 +116,12 @@ For more info [XPONos partition layout](https://web.archive.org/web/202409250352
 
 # General Settings and Useful Commands
 
+## Web rooting
+
+The [Huawei MA5671A browser rooting procedure](/ont-huawei-ma5671a-root-web) has been [reported to work](https://github.com/hack-gpon/hack-gpon.github.io/pull/518#discussion_r4485260237) on an Alcatel-Lucent G-010S-P. The firmware version was not provided in that report; this does not establish compatibility with every G-010S-P firmware version.
+
+Use this page's [serial pinout](#serial) for G-010S-P. The [Nokia G-010S-A serial-console helper](/ont-nokia-g-010s-a#enabling-serial) is a separate procedure for a different model and pinout.
+
 ## Bootloader unlock from shell
 ::: warning Warning
 It is strongly recommended that you unlock the bootloader before making any major changes to the firmware.
