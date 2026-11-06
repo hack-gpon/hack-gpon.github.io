@@ -86,7 +86,23 @@ customSwVersionAlert: "This needs the `OMCI_OLT_MODE` value to be set to `21`. T
 omciOLT21: "true"
 -->
 
+## CLI access via web handler
+
+On `V3.3.4L7` the telnet service accepts the connection on port 23 but closes it immediately (no banner, no login), and the web UI "Remote Access Configuration" page renders an empty service table. The stick still exposes the Realtek Boa handler `formSysCmd`, which passes the `sysCmd` parameter to `system()` (command injection, see CVE-2019-19824), authenticated with the `leox` account. This allows read-only `omcicli`/`diag` commands without telnet or UART.
+
+```sh
+# on the stick — POST to /boaform/formSysCmd with:
+#   sysCmd=<command> >/tmp/out 2>&1; busybox nc -l -p <port> </tmp/out &
+# from the LAN side, read the output:
+#   socat - TCP:192.168.100.1:<port>
+```
+
+::: warning Note
+Do not use the `formExportOMCIlog` handler: it hangs the single-threaded Boa server and leaves verbose OMCI logging enabled (`omcicli set logfile 3 ffffffff`), requiring a physical power cycle to recover.
+:::
+
 # Known Bugs
 
 The stock firmware doesn't work at 2.5GbE. There is a new firmware provided by LeoLabs that fixes this issue.
 Sometimes, when connecting to a Huawei OLT and cloning another ONT using GPON_SN, the Leox ONT will report O5 status but won't actually get a proper connection. Workaround - set PON_VENDOR_ID to HWTC. 
+- On `V3.3.4L7`, telnet accepts the connection but closes it immediately (see [CLI access via web handler](#cli-access-via-web-handler)).
