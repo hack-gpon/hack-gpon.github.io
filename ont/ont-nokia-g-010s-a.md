@@ -92,11 +92,33 @@ See more info on: [Firmwares G-010S-A](https://github.com/hwti/G-010S-A#firmware
 
 ## Enabling serial
 
+Run these commands from an administrative SSH shell on the stick, then reboot it:
+
 ```sh
 fw_setenv bootdelay 5
 fw_setenv asc0 0
 fw_setenv preboot
 ```
+
+After rebooting, connect at 115200 8-N-1 and press Ctrl-C during the boot delay. Check that you can obtain the `FALCON =>` prompt and execute a command before relying on UART for recovery.
+
+If the output stops after the three `ROM:` lines, the UART console may be disabled (for example, by `asc0=3`). Those lines are emitted by BootROM and do not prove that an interactive U-Boot console is available. Use the SSH commands above, or the serial-console setting provided by your firmware, while network access still works. Firmware that also stores an ASC setting in its own configuration may need that setting enabled as well.
+
+### Configure serial through the browser
+
+The helper below is specific to **G-010S-A**. Connect the USB-UART adapter using this page's [serial pinout](#serial), close other programs using the port, and select **Configure Nokia UART**. When prompted, power-cycle the module. If it is already stopped at `FALCON =>`, it can be used directly.
+
+The helper waits for the actual `FALCON =>` prompt rather than a `U-Boot` version banner, which is absent from some Nokia boot logs. It verifies command input with an `echo` challenge, reads `asc0`, `bootdelay` and `preboot`, and lets you download the original settings and review changes before saving. It sets `asc0=0`, keeps a positive boot delay (otherwise sets `5`), and clears only recognized Nokia `preboot` values. A custom `preboot` requires manual review.
+
+<NokiaSerial />
+
+After a successful save, the module remains at the bootloader. Power-cycle it to boot normally, then verify both UART and network access. This helper changes console settings; it does not flash firmware or change Linux login credentials.
+
+::: warning ROM-only output is not a command prompt
+This helper cannot enable a console that never accepts U-Boot commands. It stops with an explanation if only BootROM output is received, instead of sending configuration commands blindly. If neither SSH nor an interactive bootloader is available, see the [G-010S-A recovery procedure](https://github.com/wteiken/G-010S-A/blob/main/unbricking.md#unbrick-unprepared-sfp-modules).
+:::
+
+The [documented Nokia boot transcript](https://github.com/wteiken/G-010S-A/blob/main/unbricking.md#connecting-to-the-console) illustrates why a `U-Boot` banner alone is not a suitable trigger. The Huawei MA5671A web-root procedure uses different GPIO and Linux-shell steps and should not be used for G-010S-A.
 
 # GPON ONU status
 

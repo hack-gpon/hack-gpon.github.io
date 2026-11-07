@@ -6,6 +6,12 @@ parent: Huawei MA5671A
 
 # Root the stick
 
+The browser procedure below has also been [reported to work](https://github.com/hack-gpon/hack-gpon.github.io/pull/518#discussion_r4485260237) on an Alcatel-Lucent [G-010S-P](/ont-nokia-g-010s-p#web-rooting). The firmware version was not provided in that report, so it does not establish compatibility with every G-010S-P firmware version.
+
+::: warning Nokia G-010S-A
+For Nokia G-010S-A, use the [Nokia serial-console instructions and helper](/ont-nokia-g-010s-a#enabling-serial) and its [serial pinout](/ont-nokia-g-010s-a#serial). Its boot log may omit the `U-Boot` banner expected here, and the GPIO and Linux-shell steps are different. Receiving only `ROM:` lines does not mean that U-Boot commands can be executed.
+:::
+
 Connect the SFP adapter to the TTL adapter according to the following diagram:
 
 | USB TTL (UART) Adapter | wire colour in picture | SFP 20pins Molex connector |
