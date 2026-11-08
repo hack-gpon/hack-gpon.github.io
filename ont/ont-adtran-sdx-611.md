@@ -153,5 +153,6 @@ U-Boot also offers a console prompt (`* Ctrl+C -- Enter console terminal *`) wit
 # Miscellaneous Links
 
 * [ispreview.co.uk](https://www.ispreview.co.uk/index.php/2022/09/pictured-openreachs-future-2-5gbps-ont-for-fttp-broadband.html)
-* [Adtran SDX 611](https://www.adtran.com/solutions/by-segment/products/by-category/fiber-access/optical-network-terminals-ont/611.html)
+* ~~[Adtran SDX 611](https://www.adtran.com/solutions/by-segment/products/by-category/fiber-access/optical-network-terminals-ont/611.html)~~
+* [Adtran SDX 610 family datasheet](https://www.adtran.com/-/media/adtran/resources/data-sheets/pdfs/sdx-610-series.pdf)
 * [sdx611-firmware](https://github.com/Jaylouisw/sdx611-firmware) — recovered mtdparts, flash map and boot chain
