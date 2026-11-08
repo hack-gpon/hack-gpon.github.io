@@ -8,15 +8,20 @@ parent: Adtran
 
 |                 |                                          |
 | --------------- | ---------------------------------------- |
-| Vendor/Brand    | Adtran                                   |
-| Model           | SDX 611 (Adtran-611-V2 REV1.0)           |
-| Chipset         | Realtek RTL9601D                         |
-| Flash           | 16 MB (Winbond W25Q128JVSQ)              |
-| RAM             |                                          |
-| System          |                                          |
-| Optics          | SC/APC (U&T UTG24P05)                    |
-| 2.5GbaseT       | No                                       |
-| IP address      | 192.168.1.1                              |
+| Vendor/Brand    | Adtran                                                        |
+| Model           | SDX 611 (Adtran-611-V2 REV1.0)                                |
+| Chipset         | Realtek RTL9601D (Realtek "Luna" SDK)                         |
+| Flash           | 16 MB (Winbond W25Q128JVSQ)                                   |
+| RAM             |                                                               |
+| System          |                                                               |
+| Firmware        | `GRO100_ADTRAN611V2` V2.2.9.11 (built 2022-11-12)             |
+| Bootloader      | U-Boot 2011.12.NA-g61AC973                                    |
+| Kernel          | 3.18.24 (uImage, LZMA, load address `0x80000000`)             |
+| Root filesystem | squashfs 4.0, XZ compressed, 128 KiB blocks                   |
+| Userland        | uClibc 0.9.33.2 + BusyBox                                     |
+| Optics          | SC/APC (U&T UTG24P05)                                         |
+| 2.5GbaseT       | No                                                            |
+| IP address      | 192.168.1.1 (U-Boot `serverip` 192.168.1.54)                  |
 | Web Gui         |                                          |
 | SSH             |                                          |
 | Telnet          | ❌ (path present, service stubbed out)    |
@@ -67,17 +72,6 @@ Some USB TTL adapters label TX and RX pins the other way around: try to swap the
 # Firmware
 
 Analysed from a verified full-chip read of the 16 MB SPI NOR.
-
-| Field              | Value                                                     |
-| ------------------ | --------------------------------------------------------- |
-| Firmware string    | `GRO100_ADTRAN611V2` V2.2.9.11 (`V1.0.0(V2.2.9.11)`)      |
-| Root filesystem built | 2022-11-12 13:53 UTC                                   |
-| Bootloader         | U-Boot 2011.12.NA-g61AC973                                |
-| SoC / SDK          | Realtek RTL9601D, Realtek "Luna" SDK                       |
-| Kernel             | 3.18.24 (uImage, LZMA, load address `0x80000000`)         |
-| Root filesystem    | squashfs 4.0, XZ compressed, 128 KiB blocks               |
-| Userland           | uClibc 0.9.33.2 + BusyBox                                  |
-| Default IP         | 192.168.1.1 / 255.255.255.0 (U-Boot `serverip` 192.168.1.54) |
 
 ## Reading the flash
 
@@ -160,9 +154,4 @@ U-Boot also offers a console prompt (`* Ctrl+C -- Enter console terminal *`) wit
 
 * [ispreview.co.uk](https://www.ispreview.co.uk/index.php/2022/09/pictured-openreachs-future-2-5gbps-ont-for-fttp-broadband.html)
 * [Adtran SDX 611](https://www.adtran.com/solutions/by-segment/products/by-category/fiber-access/optical-network-terminals-ont/611.html)
-
-# Credits
-
-Everything on this page — hardware specifications, teardown, chip identification, serial console and
-the firmware/flash analysis — was produced by [@Jaylouisw](https://github.com/Jaylouisw) from their own
-Adtran SDX 611 (flash read with a CH341A and SOIC-8 clip, ONT unpowered, programmer verify pass).
+* [sdx611-firmware](https://github.com/Jaylouisw/sdx611-firmware) — recovered mtdparts, flash map and boot chain
