@@ -21,7 +21,7 @@ parent: Comtrend
 | PHY Ethernet    | RTL8261B                                                                   |
 | Optics          | SC/APC (SEMTECH GN28L96)                                                   |
 | IP address      | 192.168.1.1/24                                                             |
-| Web Gui         | ✅                                                                         |
+| Web Gui         | ✅  user: `root`, password: `12345`                                        |
 | SSH             | ✅                                                                         |
 | Telnet          | ✅                                                                         |
 | FTP             | ✅, Download only                                                          |
@@ -32,8 +32,8 @@ parent: Comtrend
 
 # External/Internal Photo
 
-<ImageFigure file="grg-4362/comtrend_grg-4362_teardown_1.jpg" alt="Comtrend GRG-4362 Top Cover" caption="Comtrend GRG-4362 Top Cover" />
-<ImageFigure file="grg-4362/comtrend_grg-4362_teardown_2.jpg" alt="Comtrend GRG-4362 Bottom Cover" caption="Comtrend GRG-4362 Bottom Cover" />
+<ImageFigure file="grg-4362/comtrend_grg-4362_teardown_2.jpg" alt="Comtrend GRG-4362 Top Cover" caption="Comtrend GRG-4362 Top Cover" />
+<ImageFigure file="grg-4362/comtrend_grg-4362_teardown_1.jpg" alt="Comtrend GRG-4362 Bottom Cover" caption="Comtrend GRG-4362 Bottom Cover" />
 <ImageFigure file="grg-4362/comtrend_grg-4362_teardown_3.jpg" alt="Comtrend GRG-4362 PCB" caption="Comtrend GRG-4362 PCB" />
 
 
@@ -68,7 +68,7 @@ Only the first 4 partitions with erasesize 0x20000 should be manipulated using m
 `ubinfo -a`
 
 | dev    | size                     | type    | name             |
-| ------ | --------------- -------- | ------- | ---------------- |
+| ------ | ------------------------ | ------- | ---------------- |
 | ubi0_0 | 10539008 bytes, 10.1 MiB | dynamic | "ubi_Config"     |
 | ubi0_1 | 380928 bytes, 372.0 KiB  | dynamic | "ubi_DTB0"       |
 | ubi0_2 | 6348800 bytes, 6.1 MiB   | dynamic | "ubi_k0"         |
@@ -286,7 +286,7 @@ shell
 ```
 
 ## Maintenance root shell
-By editing U-Boot ENV you can boot this device straight into a root shell.
+By editing U-Boot ENV you can boot this device straight into a root shell, which bypasses all firmware restrictions and allows for configuration changes.
 
 ```sh
 # Make sure to save your original variable content before re-writing.
@@ -305,9 +305,10 @@ mkdir /var/config
 mount -t ubifs ubi0:ubi_Config /var/config/
 
 # To regain access from locked ISP firmware:
-# 1. Read device login
+# 1. View/change device login
 flash get SUSER_NAME
 flash get SUSER_PASSWORD
+flash set SUSER_PASSWORD 12345
 
 # 2. Unblock ACL rules
 flash set ACL_IP_TBL.0.any 0

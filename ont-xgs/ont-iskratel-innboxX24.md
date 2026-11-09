@@ -4,6 +4,8 @@ has_children: false
 parent: Iskratel
 ---
 
+# Hardware Specifications
+
 |                 |                                                                            |
 | --------------- | -------------------------------------------------------------------------- |
 | Vendor          | Iskratel                                                                   |
