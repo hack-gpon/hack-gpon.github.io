@@ -25,7 +25,7 @@ parent: YOTC
 | SSH             | NO                                                                     |
 | Serial baud     | 115200                                                                 |
 | Serial encoding | 8-N-1                                                                  |
-| Form Factor     | ONT                                                                    |
+| Form Factor     | ONT HGU                                                                |
 
 
 <ImageFigure file="yotc-m2-2050-g40-top.jpg" alt="YOTC M2-2050-G40 Top" caption="YOTC M2-2050-G40 Top" /> 

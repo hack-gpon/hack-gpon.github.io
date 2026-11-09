@@ -25,12 +25,12 @@ parent: BT-PON
 | IP address      | 192.168.1.1/24                                                             |
 | Web Gui         | ✅ user `admin`, password `YnQtcG9u` OR user `useradmin`, password `123456` |
 | SSH             | NO                                                                         |
-| Telnet          | ✅ user `supertelnet`, password `supertelnet`                               |
-| FTP             | ✅ port 21                                                                  |
-| Serial          | ✅                                                                          |
+| Telnet          | ✅ user `supertelnet`, password `supertelnet`                              |
+| FTP             | ✅ port 21                                                                 |
+| Serial          | ✅                                                                         |
 | Serial baud     | 115200                                                                     |
 | Serial encoding | 8-N-1                                                                      | 
-| Form Factor     | ONT                                                                        |
+| Form Factor     | ONT HGU                                                                    |
 
 ## Serial
 <ImageFigure file="bt-g711ax-serial.jpg" alt="BT-G711AX" caption="BT-G711AX: serial pinout" />
