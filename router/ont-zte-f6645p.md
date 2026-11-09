@@ -59,7 +59,7 @@ You can also clone the currently running image into the other slot using this co
 syn_version
 ```
 
-# Use
+# Advanced settings
 
 ## Enable Telnet
 ::: info Note

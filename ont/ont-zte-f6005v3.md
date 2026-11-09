@@ -102,7 +102,7 @@ success!
 ```
 
 
-# Use
+# Advanced settings
 ::: info Note
 Commands have been tested on V3 HW rev. on OpenFiber and TIM firmwares
 :::
