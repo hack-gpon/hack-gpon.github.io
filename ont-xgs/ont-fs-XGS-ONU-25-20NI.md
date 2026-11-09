@@ -76,6 +76,7 @@ Available from `#ONT/system>ontver build` and `#ONT/system/shell>cat /etc/versio
 - R4.4.20.016 (from FS.com docs)
 - R4.4.20.018 - 20230426061821
 - R4.4.20.022 - 20230612033149
+- R4.4.20.023
 
 ## List of partitions
 
@@ -183,7 +184,7 @@ TO2:   1
 eqd:   0
 Serial Number(vendor code): GPON
 Serial Number(sn):          abcd1234
-Password:                   30 31 32 33 34 353 36 37 38 39
+Password:                   30 31 32 33 34 35 36 37 38 39
 Registration ID:           0x44454641554c540000000000000000000000000000000000000000000000000000000000
 ------------------------- INFO END --------------------------
 
@@ -200,6 +201,33 @@ Check the ONU operation state with the following command:
  ----------------- STATE  END -----------------
 
 #ONT>
+```
+
+When the ONU is registered on the OLT, the state is `OPERATION (O5)`:
+
+```
+#ONT>traffic/pon/show link
+
+ ----------------- LINK STATE -----------------
+ Operation State Machine: OPERATION (O5)
+ ----------------- STATE  END -----------------
+
+#ONT>
+```
+
+::: info Note
+The `O5` state does not guarantee data service. If the ISP has not provisioned the line, the ONU can stay in `O5` without getting a DHCP lease.
+:::
+
+## Getting the optical levels from the host
+If the host supports it, the optical levels can be read with `ethtool`. This also works when the management IP is not reachable:
+
+```
+# ethtool -m eth2
+Laser bias current                        : 20.096 mA
+Laser output power                        : 4.0884 mW / 6.12 dBm
+Receiver signal average optical power     : 0.0341 mW / -14.67 dBm
+etc...
 ```
 
 ## Getting OLT vendor information
@@ -322,6 +350,11 @@ type            28
 # GPON/OMCI settings
 XGS-ONU-25-20NI ONT uses the `scfg.txt` file and misc command for configuration.
 
+::: info Note
+Settings changed with the `misc` CLI option are applied at the next boot. The values in use can be checked with `traffic/pon/show onu`.
+The telnet credentials change as soon as `eqsn set` is executed: the next login requires the new S/N and its password.
+:::
+
 ## Getting/Setting ONU GPON Serial Number
 This setting must be changed with the `misc` CLI option and the `eqsn set "<serialnumber>"` command.
 For example, if the desired S/N is `GPONabcd1234` (`47504f4eabcd1234`):
@@ -364,6 +397,20 @@ The `exeep_r8` command can also be used to retrieve the configured PLOAM passwor
 [f0, 240] ff ff ff ff ff ff ff ff - ff ff ff ff 15 91 f3 9f     |  ............k
 ```
 
+## Getting/Setting ONU XGS-PON Registration ID
+This setting must be changed with the `misc` CLI option and the `xgspon_regid set <hex>` command.
+The Registration ID must be hex-encoded, the stick fills the remaining bytes with zeros (72 hex digits in total).
+For example, if the desired Registration ID is `DEFAULT` (`44454641554c54`):
+```
+#ONT/system/misc> xgspon_regid set 44454641554c54
+```
+
+The `get` option can also be used to retrieve the configured Registration ID.
+```
+#ONT/system/misc> xgspon_regid get
+xgspon_regid: 44454641554c540000000000000000000000000000000000000000000000000000000000
+```
+
 ## Getting/Setting ONU GPON LOID
 This setting must be changed in `scfg.txt`, using the key `CHAR-ARRAY CFG_ID_LOID`. 
 To modify the LOID username, add the following line to `/userdata/scfg.txt`:
@@ -386,7 +433,7 @@ For example, if the desired LOID password is `0123456789`:
 The `get` option can also be used to retrieve the configured LOID password:
 ```
 #ONT/system/misc> pon_passwd get
-eqsn: 01234567890000000000
+pon_passwd: 01234567890000000000
 ```
 
 ## Getting/Setting OMCI hardware version (ME 256)
@@ -442,7 +489,7 @@ Stick's busybox (Linux shell) supports netcat and TFTP, which allow to send and 
 To obtain a backup, use the `dd` command to save it on `/tmp`: 
 ```
 # dd if=/dev/mtdX of=/tmp/mtdX.bin
-# tftp -l /tmp/mtdX.bin -r remotehost-ip
+# tftp -p -l /tmp/mtdX.bin -r mtdX.bin remotehost-ip
 ```
 
 Or use the `cat` command to transfer it via netcat:
@@ -472,7 +519,29 @@ For example, if the desired management IP mask is `255.255.255.0`:
 ```
 
 
+## Accessing the management IP from a router's WAN port
+When the stick is installed on the WAN port of a Linux router, the management IP must be reached through the untagged interface, not the VLAN one.
+If `arp_ignore=1` is set on the WAN port, the router does not reply to the stick's ARP requests for an address configured on another interface, and the connection fails.
+
+To avoid this, add a temporary address and a host route on the WAN port. For example, if the WAN port is `eth2`:
+```
+# ip addr add 192.168.100.2/32 dev eth2
+# ip route add 192.168.100.1/32 dev eth2 src 192.168.100.2
+# telnet 192.168.100.1
+```
+
+To remove them when finished:
+```
+# ip route del 192.168.100.1/32 dev eth2
+# ip addr del 192.168.100.2/32 dev eth2
+```
+
+
 # Random notes
+
+## Stick stuck at 1G on UniFi gateways
+On UniFi Gateway Pro (firmware 5.1.35), with the SFP+ port set to Auto, the link can get stuck at 1G because `sfp-auto-detect` saves the speed in its link cache.
+Setting the port to 10 Gbps, then back to Auto, and rebooting the stick brought the link back to 10G.
 
 ## Bricked stick Repair
 ::: info Note
