@@ -4,6 +4,8 @@ has_children: true
 parent: KAON
 ---
 
+# Hardware Specifications
+
 |                 |                                                                            |
 | --------------- | -------------------------------------------------------------------------- |
 | Vendor          | KAON                                                                       |
