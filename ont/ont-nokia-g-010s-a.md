@@ -120,6 +120,12 @@ This helper cannot enable a console that never accepts U-Boot commands. It stops
 
 The [documented Nokia boot transcript](https://github.com/wteiken/G-010S-A/blob/main/unbricking.md#connecting-to-the-console) illustrates why a `U-Boot` banner alone is not a suitable trigger. The Huawei MA5671A web-root procedure uses different GPIO and Linux-shell steps and should not be used for G-010S-A.
 
+## Flashing firmware through the browser
+
+The [Nokia Web Serial firmware flasher](/ont-nokia-g-010s-a-ymodem) can upload a reviewed G-010S-A image over YMODEM, verify it in RAM, write the slot opposite the committed image, and verify the complete slot after writing. It supports staging, a trial boot, or selecting the new firmware as the default, with the inspected image's required boot-script migration.
+
+It requires an interactive UART console and a supported bootloader configuration. Read the supported-image list and backup requirements on that page first. The Huawei flasher uses different slot sizes, addresses and boot-selection settings.
+
 # GPON ONU status
 
 ## Getting the operational status of the ONU

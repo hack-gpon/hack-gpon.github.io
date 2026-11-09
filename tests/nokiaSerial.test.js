@@ -181,6 +181,13 @@ test('a U-Boot banner alone does not authorize commands', { timeout: 1000 }, asy
     assert.deepEqual(port.commands(), []);
 });
 
+test('a bad saved environment warning at boot is rejected before its prompt is discarded', async () => {
+    const port = new FakePort({ initial: ['Warning: bad CRC, using default environment\r\n'] });
+    await assert.rejects(run(port), { code: 'BAD_ENVIRONMENT' });
+    assert.deepEqual(port.mutations(), []);
+    assert.equal(port.closeCount, 1);
+});
+
 test('continuous irrelevant output does not extend the overall timeout', { timeout: 1000 }, async () => {
     const port = new FakePort({ promptOnCR: false, noise: true });
     await assert.rejects(run(port, { startupTimeoutMs: 70 }), { code: 'TIMEOUT' });
@@ -295,7 +302,7 @@ test('CRC/environment errors are not treated as undefined variables', async () =
             return true;
         }
     });
-    await assert.rejects(run(port), { code: 'COMMAND_FAILED' });
+    await assert.rejects(run(port), { code: 'BAD_ENVIRONMENT' });
     assert.deepEqual(port.mutations(), []);
 });
 
