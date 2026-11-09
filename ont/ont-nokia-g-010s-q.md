@@ -20,8 +20,8 @@ alias: CIG G-97S
 | SFP interfaces   |                                                                                                                   |
 | Optics           |                                                                                                                   |
 | IP address       | 192.168.100.1                                                                                                     |
-| Web Gui          | ✅ Port 80 (⚠️ *only available when the PON connection **IS NOT** estabilished*), user `admin`, password `1234` |
-| Telnet           | ✅ user `admin`, password `1234`, but has access to GponSLID and not GponCLI                                      |
+| Web Gui          | ✅ Port 80 (⚠️ *only available when the PON connection **IS NOT** estabilished*), user `admin`, password `1234`    |
+| Telnet           | ✅ user `admin`, password `1234`, but has access to limited GponSLID, full shell can be unlocked.                 |
 | SSH              |                                                                                                                   |
 | Telnet           |                                                                                                                   |
 | Serial           |                                                                                                                   |
@@ -35,7 +35,7 @@ alias: CIG G-97S
 ## Enable full telnet shell
 Full telnet and secondary factory IP can be enabled by sending [Nokia magic packet](https://github.com/YuukiJapanTech/CA8271x/blob/main/doc/rootShell.md#nokia-xs-010x-r). 
 
-If factory mode is enabled sucessfully second IP `192.168.188.1/24` will be assinged to SFP LAN interface.
+If factory mode is enabled sucessfully second IP `192.168.188.1/24` will be assinged to SFP LAN interface, use this IP to login to privileged accounts.
 
 Newly available login credentials will be `ATE` / `CATS2388` and `ONTUSER` / `sha256 of SN formated as GPONa1b2c3d4` with GponCLI shell.
 
