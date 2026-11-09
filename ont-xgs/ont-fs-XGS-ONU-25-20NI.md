@@ -219,6 +219,29 @@ When the ONU is registered on the OLT, the state is `OPERATION (O5)`:
 The `O5` state does not guarantee data service. If the ISP has not provisioned the line, the ONU can stay in `O5` without getting a DHCP lease.
 :::
 
+## Getting the optical levels
+Check the optical levels with the following command:
+
+```
+#ONT/system/misc> show trans state
+Power           : 3V3 (3.4)
+Temperature     : 51.64 C
+Data Rx Power   : -14.7 dBm
+APD Prot        : No
+Data Tx bias    : 19.8 mA
+Data Tx Power   : 6.1 dBm
+#ONT/system/misc>
+```
+
+If the stick is not receiving light from the fiber, `Data Rx Power` shows `No input`.
+
+Check the transceiver alarms with the following command. The output is empty if there are no alarms:
+
+```
+#ONT/system/misc> show trans alarm
+#ONT/system/misc>
+```
+
 ## Getting the optical levels from the host
 If the host supports it, the optical levels can be read with `ethtool`. This also works when the management IP is not reachable:
 
