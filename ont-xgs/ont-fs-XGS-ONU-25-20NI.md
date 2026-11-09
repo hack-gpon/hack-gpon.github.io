@@ -76,7 +76,7 @@ Available from `#ONT/system>ontver build` and `#ONT/system/shell>cat /etc/versio
 - R4.4.20.016 (from FS.com docs)
 - R4.4.20.018 - 20230426061821
 - R4.4.20.022 - 20230612033149
-- R4.4.20.023
+- R4.4.20.023 - 20240205053100
 
 ## List of partitions
 
