@@ -8,24 +8,24 @@ parent: Prolink
 
 |                 |                                                                        |
 | --------------- | ---------------------------------------------------------------------- |
-| Vendor/Brand    | Prolink                                                                   |
-| Model           | PGN6401V                                                            |
-| Chipset         | Realtek RTL9607Cv2                                          |
+| Vendor/Brand    | Prolink                                                                |
+| Model           | PGN6401V                                                               |
+| Chipset         | Realtek RTL9607Cv2                                                     |
 | Flash           | SPI NAND 128MB                                                         |
 | RAM             | 256MB                                                                  |
 | CPU             | Formosa MIPS interAptiv (multi) V2.0                                   |
-| CPU Clock       | 1150MHz                                                       |
-| BogoMIPS        | 766.77MHz                                                  |
+| CPU Clock       | 1150MHz                                                                |
+| BogoMIPS        | 766.77MHz                                                              |
 | System          | Linux 4.4.140 (GCC Realtek MSDK-4.8.5p1 Build 3068)                    |
 | Ethernet ports  | 4x1G                                                                   |
 | Optics          | SC/UPC                                                                 |
-| IP address      | 192.168.1.1                                              |
-| Web Gui         | ✅ user `admin`, password `1234` |
-| Telnet          | ✅ user `admin`, password `1234` |
-| SSH             |  ✅ user `admin`, password `1234`                                    |
+| IP address      | 192.168.1.1                                                            |
+| Web Gui         | ✅ user `admin`, password `1234`                                       |
+| Telnet          | ✅ user `admin`, password `1234`                                       |
+| SSH             |  ✅ user `admin`, password `1234  `                                    |
 | Serial baud     | 115200                                                                 |
 | Serial encoding | 8-N-1                                                                  |
-| Form Factor     | ONT                                                                    |
+| Form Factor     | ONT HGU                                                                |
 
 
 <ImageFigure file="Prolink-PGN6401V-pcbtop.jpg" alt="Prolink PGN6401V PCB top" caption="Prolink PGN6401V PCB top" />

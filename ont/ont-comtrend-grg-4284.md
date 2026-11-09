@@ -20,7 +20,7 @@ parent: Comtrend
 | System          | Linux 3.10                                                                 |
 | Optics          | SC/APC                                                                     |
 | IP address      | 192.168.1.1/24                                                             |
-| Web Gui         | ✅                                                                         |
+| Web Gui         | ✅  user: `root`, password: `12345`                                        |
 | SSH             | ✅                                                                         |
 | Telnet          | ✅                                                                         |
 | FTP             | ✅                                                                         |

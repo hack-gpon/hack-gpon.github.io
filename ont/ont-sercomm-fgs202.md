@@ -37,8 +37,13 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 | --------------------- | -------------------------- |
 | 3.3V                  | pin #15 and #16            |
 | TX                    | pin #3                     |
-| RX                    | pin #6                     |
+| RX (ROM only)         | pin #6                     |
 | GND                   | pin #14 and #10            |
+
+::: warning
+This SFP module has limited OLT support only for Huawei and Alcatel-Lucent (Nokia), is also difficult to configure without disassembly and reprogramming its flash memory.
+For these reasons, we recommend purchasing another module preferably based on a newer Realtek SoC.
+:::
 
 ## Telnet Access
 

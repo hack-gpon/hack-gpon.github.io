@@ -67,6 +67,10 @@ Some ISP deployments (e.g. certain Turkish ISPs) use a custom password instead o
 
 <!--@partial: ./_partials/ont-huawei-useful-command.md-->
 
+# Notes for hardware revision V1/V2
+This older revision has a smaller 16MiB Winbind flash chip, single core Hisilicon SoC and only 128MiB of RAM, it supports XPON but switching requires flashing new firmware.
+Its case is also slightly larger then newer units.
+
 # Miscellaneous Links
 
 - [Exploring the Huawei HG8010H GPON ONT](https://www.linux.it/~md/text/gpon-sha2017.pdf)

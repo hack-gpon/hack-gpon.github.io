@@ -77,7 +77,7 @@ You can also clone the currently running image into the other slot using this co
 syn_version
 ```
 
-# Use
+# Advanced settings
 ::: info Note
 Commands have been tested on V6/V7 HW rev. on TIM and OpenFiber firmwares
 :::

@@ -291,6 +291,12 @@ nobody:x:99:99:Nobody:/:/bin/false
 #ONT/system/shell>cat /etc/shadow
 root::10933:0:99999:7:::
 ```
+# Enable full telnet shell
+Full telnet and secondary factory IP can be enabled by sending [Nokia magic packet](https://github.com/YuukiJapanTech/CA8271x/blob/main/doc/rootShell.md#nokia-xs-010x-r).
+
+If factory mode is enabled sucessfully second IP `192.168.188.1/24` will be assinged to LAN interface, use this IP to login to privileged accounts.
+
+Newly available login will be `ATE` / `CATS2388` with GponCLI shell.
 
 
 # Miscellaneous Links

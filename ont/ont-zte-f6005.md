@@ -45,6 +45,7 @@ Some USB TTL adapters label TX and RX pins the other way around: try to swap the
 - V6.0.10P2N02 (OpenFiber)
 - V6.0.10P2N18 (OpenFiber)
 - V6.0.10P2N19 (OpenFiber)
+- V6.0.10P4N03 (Fiberhost)
 
 <!--@partial: ./_partials/ont-nokia-use.md
 disableEnablePassword: true
