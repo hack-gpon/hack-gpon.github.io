@@ -2,20 +2,19 @@
 # its own branch (pr-<number>, see preview-deploy.yaml): only the newest
 # deployment of each open PR is kept, everything else is deleted (older
 # deployments of open PRs, closed PRs, previews of the old shared "preview"
-# branch). It never runs the PR code, so pull_request_target is safe here.
+# branch).
 name: preview-cleanup
 
 on:
-  # A PR is closed or merged: its preview is no longer needed
-  pull_request_target:
-    types: [closed]
   # A new preview is published: the previous ones of the same PR are obsolete
   workflow_run:
     workflows: [preview-deploy]
     types: [completed]
-  # Catches up anything the events above missed
+  # Removes the previews of the PRs closed or merged since the last run.
+  # No pull_request_target on close: GitHub restricts it on public repos, and
+  # pull_request gets no secrets for PRs from forks
   schedule:
-    - cron: "17 3 * * 0"
+    - cron: "17 3 * * *"
   workflow_dispatch:
     inputs:
       dry-run:
