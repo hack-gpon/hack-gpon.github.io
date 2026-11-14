@@ -40,3 +40,6 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: .vitepress/dist
+          # The default is 1 day: a fork PR preview may wait longer than that
+          # for a maintainer to approve the deploy
+          retention-days: 30

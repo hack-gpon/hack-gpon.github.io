@@ -1,0 +1,96 @@
+# Delete the old PR previews from Cloudflare Pages. Each PR is published on
+# its own branch (pr-<number>, see preview-deploy.yaml): only the newest
+# deployment of each open PR is kept, everything else is deleted (older
+# deployments of open PRs, closed PRs, previews of the old shared "preview"
+# branch). It never runs the PR code, so pull_request_target is safe here.
+name: preview-cleanup
+
+on:
+  # A PR is closed or merged: its preview is no longer needed
+  pull_request_target:
+    types: [closed]
+  # A new preview is published: the previous ones of the same PR are obsolete
+  workflow_run:
+    workflows: [preview-deploy]
+    types: [completed]
+  # Catches up anything the events above missed
+  schedule:
+    - cron: "17 3 * * 0"
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: Only list the deployments that would be deleted
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+# Never run two cleanups at the same time, but don't drop the queued one
+concurrency:
+  group: preview-cleanup
+  cancel-in-progress: false
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+      CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT }}
+      PROJECT: hack-gpon-preview
+      DRY_RUN: ${{ inputs.dry-run && 'true' || 'false' }}
+    steps:
+      - name: Delete old deployments
+        run: |
+          set -euo pipefail
+          api="https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT/pages/projects/$PROJECT"
+          cf() { curl -sS --fail-with-body -H "Authorization: Bearer $CF_TOKEN" "$@"; }
+
+          # The deployment served on the project's main URL can't be deleted
+          canonical=$(cf "$api" | jq -r '.result.canonical_deployment.id // empty')
+          open_prs=$(gh pr list --repo "$GITHUB_REPOSITORY" --state open --limit 1000 \
+            --json number --jq '[.[].number]')
+          echo "Open PRs: $open_prs"
+
+          # Collect every deployment first: deleting while paging shifts the pages
+          : > deployments.jsonl
+          page=1
+          while :; do
+            resp=$(cf "$api/deployments?per_page=25&page=$page")
+            jq -c '.result[]' <<<"$resp" >> deployments.jsonl
+            total=$(jq -r '.result_info.total_pages // 1' <<<"$resp")
+            (( page >= total )) && break
+            page=$((page + 1))
+          done
+          echo "Found $(wc -l < deployments.jsonl) deployments"
+
+          # Newest first: keep the first deployment seen for each open PR
+          jq -rs --arg canonical "$canonical" --argjson open "$open_prs" '
+            sort_by(.created_on) | reverse
+            | reduce .[] as $d ({seen: {}, delete: []};
+                ($d.deployment_trigger.metadata.branch // "-") as $branch
+                | ([$branch | capture("^pr-(?<n>[0-9]+)$") | .n | tonumber][0]) as $pr
+                | if $d.id == $canonical then .
+                  elif $pr != null and any($open[]; . == $pr) and (.seen[$branch] | not)
+                  then .seen[$branch] = true
+                  else .delete += ["\($d.id) \($branch) \($d.created_on)"]
+                  end)
+            | .delete[]' deployments.jsonl > to-delete.txt
+
+          echo "Deleting $(wc -l < to-delete.txt) deployments"
+          failed=0
+          while read -r id branch created; do
+            echo "- $id ($branch, $created)"
+            [ "$DRY_RUN" = "true" ] && continue
+            # force: also delete deployments that still have a branch alias
+            cf -X DELETE "$api/deployments/$id?force=true" > /dev/null \
+              || { echo "::warning::Failed to delete deployment $id"; failed=$((failed + 1)); }
+          done < to-delete.txt
+
+          if (( failed > 0 )); then
+            echo "::error::$failed deployments could not be deleted"
+            exit 1
+          fi
