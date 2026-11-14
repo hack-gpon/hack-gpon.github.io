@@ -65,7 +65,9 @@ The ONT seems to only display output of the ROM CFE and flash CFE, but doesn't s
 | 090165.1.0.013   |               | Deutsche Telekom (FG1000B.11) |
 
 ::: info Firmware downloads
-Deutsche Telekom makes firmware update files available on their website: [Glasfaser-Modem firmware](https://www.telekom.de/hilfe/geraete/router/zubehoer/glasfaser-modem). Note that the firmware files appear to be encrypted/obfuscated (Sercomm proprietary format).
+Deutsche Telekom makes firmware update files available on their website: [Glasfaser-Modem firmware](https://www.telekom.de/hilfe/geraete/router/zubehoer/glasfaser-modem).
+Both the original Glasfaser-Modem 2 (090144) and Glasfaser-Modem 2b (090165) use the same firmware image.
+Note that the firmware files are encrypted, but there are some [scripts for decryption and unpacking](https://github.com/janh/gfm2-fw-tools).
 :::
 
 ## List of partitions
