@@ -107,20 +107,33 @@ jobs:
           [[ "$sha" == "$HEAD_SHA" ]] || { echo "PR #$number is not at $HEAD_SHA"; exit 1; }
           echo "number=$number" >> "$GITHUB_OUTPUT"
       - name: Extract site
-        run: mkdir dist && tar -xf github-pages/artifact.tar -C dist
+        run: |
+          if [ ! -f github-pages/artifact.tar ]; then
+            echo "::error::The built site has expired, re-run the preview-pr workflow of the PR"
+            exit 1
+          fi
+          mkdir dist && tar -xf github-pages/artifact.tar -C dist
+      # One branch per PR: its alias URL always shows the latest preview, and
+      # preview-cleanup.yaml can tell which deployments belong to which PR
       - name: Publish to Cloudflare Pages
         id: preview-pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT }}
-          command: pages deploy dist --project-name=hack-gpon-preview --branch=preview
+          command: >-
+            pages deploy dist --project-name=hack-gpon-preview
+            --branch=pr-${{ steps.pr.outputs.number }} --commit-hash=${{ env.HEAD_SHA }}
       - name: Comment on the PR
         env:
           URL: ${{ steps.preview-pages.outputs.deployment-url }}
+          ALIAS_URL: ${{ steps.preview-pages.outputs.deployment-alias-url }}
         run: |
-          gh pr comment "${{ steps.pr.outputs.number }}" --repo "$GITHUB_REPOSITORY" \
-            --body "Preview of the website obtained from the PR: $URL"
+          body="Preview of the website obtained from the PR at $HEAD_SHA: $URL"
+          if [ -n "$ALIAS_URL" ]; then
+            body+=$'\n\n'"Always the latest preview of this PR: $ALIAS_URL"
+          fi
+          gh pr comment "${{ steps.pr.outputs.number }}" --repo "$GITHUB_REPOSITORY" --body "$body"
       - name: Report deploy status
         if: always()
         env:
