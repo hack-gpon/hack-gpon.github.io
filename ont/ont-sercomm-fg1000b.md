@@ -61,6 +61,8 @@ The ONT seems to only display output of the ROM CFE and flash CFE, but doesn't s
 | 090144.1.0.006   |               | Deutsche Telekom (FG1000B.11) |
 | 090144.1.0.009   | 23.05.2025    | Deutsche Telekom (FG1000B.11) |
 | 090165.1.0.009   |               | Deutsche Telekom (FG1000B.11) |
+| 090144.1.0.013   | 29.04.2026    | Deutsche Telekom (FG1000B.11) |
+| 090165.1.0.013   |               | Deutsche Telekom (FG1000B.11) |
 
 ::: info Firmware downloads
 Deutsche Telekom makes firmware update files available on their website: [Glasfaser-Modem firmware](https://www.telekom.de/hilfe/geraete/router/zubehoer/glasfaser-modem). Note that the firmware files appear to be encrypted/obfuscated (Sercomm proprietary format).
