@@ -25,7 +25,7 @@ parent: Sercomm
 | IP address      | 192.168.1.1/24 or 192.168.100.1/24 (depending on the derivate)      |
 | Web Gui         | ✅, login may be needed (depending on the derivate, see [Web UI credentials](#web-ui-credentials)) |
 | SSH             | After enabling (see [Enabling SSH](#enabling-ssh))                  |
-| Telnet          | After enabling (see [Enabling telnet/SSH/serial](#enabling-telnetsshserial)) |
+| Telnet          | After enabling (see [Enabling telnet/SSH/serial](#enabling-telnet-ssh-serial)) |
 | Serial          | ✅, only TX                                                         |
 | Serial baud     | 115200                                                              |
 | Serial encoding | 8-N-1                                                               |
@@ -47,7 +47,7 @@ The ONT seems to only display output of the ROM CFE and flash CFE, but doesn't s
 :::
 
 ## Root procedure
-[See the enable telnet/ssh section](/ont-sercomm-fg1000b-11/#enable-telnetsshserial)
+[See the enable telnet/ssh section](#enabling-telnet-ssh-serial)
 
 ## List of software versions
 
