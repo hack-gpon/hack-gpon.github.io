@@ -33,11 +33,22 @@ parent: Nokia
 <br/>
 <ImageFigure file="g-010s-p-and-ma5671a.jpg" alt="G-010S-P and MA5671A Teardown" caption="G-010S-P and MA5671A Teardown" />
 <br/>
+
 ::: warning Warning
 G-010S-P and other models will not expose an ethernet interface unless the fiber cable is connected ([source](https://forum.mikrotik.com/viewtopic.php?t=116364&start=300))
 :::
 
+## EEPROM
+
+Like the [Nokia G-010S-A](/ont-nokia-g-010s-a), the Nokia G-010S-P has a physical EEPROM chip (circled in red in the picture below). The [Huawei MA5671A](/ont-huawei-ma5671a) and the [FS.com GPON ONU Stick](/ont-fs-com-gpon-onu-stick-with-mac) do not have it: on those sticks the Falcon SOC emulates the EEPROM on the I2C interface.
+
+<ImageFigure file="g-010s-p-and-ma5671a-eeprom.jpg" alt="Physical EEPROM on the G-010S-P, missing on the MA5671A" caption="Physical EEPROM on the G-010S-P (circled in red), missing on the MA5671A" />
+
 ## Firmware is interchangeable with:
+
+::: warning Warning
+Cross-flashing a firmware made for another stick is not recommended unless that firmware supports the physical EEPROM. This support is present in the China (right.com.cn) and Carlito firmwares listed on the [Huawei MA5671A](/ont-huawei-ma5671a#list-of-firmwares-and-files) page.
+:::
 
 - [Huawei MA5671A](/ont-huawei-ma5671a)
 - [FS.com GPON ONU Stick with MAC / SourcePhotonics SPS-34-24T-HP-TDFO](/ont-fs-com-gpon-onu-stick-with-mac)
@@ -45,6 +56,7 @@ G-010S-P and other models will not expose an ethernet interface unless the fiber
 - Dasan H650SFP {.text-red-200}
 - DpOptics D23446 {.text-red-200}
 - Photonics SPS-34-24T-HP-TDFO {.text-red-200}
+
 The [Nokia G-010S-A](/ont-nokia-g-010s-a) can be flashed with the Nokia G-010S-P firmware, provided the MTD layout has been changed beforehand to match the new one. For the full procedure, see the post on [lafibre.info](https://lafibre.info/remplacer-livebox/guide-de-connexion-fibre-directement-sur-un-routeur-voire-meme-en-2gbps/msg870551/#msg870551)
 
 ## List of software versions
