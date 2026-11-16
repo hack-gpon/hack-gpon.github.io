@@ -20,8 +20,8 @@ parent: ZTE
 | Optics           | SC/APC                            |
 | IP address       | 192.168.1.1                       |
 | Web Gui          | ✅ user `admin`, password `admin` |
-| SSH              |                                   |
-| Telnet           |                                   |
+| SSH              | Not enabled in stock firmware     |
+| Telnet           | Not enabled in stock firmware     |
 | Serial           |                                   |
 | Form Factor      | ONT                               |
  
@@ -181,10 +181,31 @@ On some software versions, Password and Update Password fields are disabled and 
 This has been tested on the following firmware versions:
 - V6.0.10P2N19 (OpenFiber)
 
+## Enable SSH shell
+
+Requires prior access via UART console or Telnet.
+
+After a reboot, SSH will be permantly enabled with the username `root` and a password generated from the serial number, same as [CIG G97-CP](/ont-cig-g-97cp#login-and-enable).
+
+```sh
+#ONT>system
+#ONT/system>misc
+#ONT/system/misc>
+#ONT/system/misc>ssh_en set 2 
+---ATECMDRESULT--- OK
+#ONT/system/misc>ssh_en get
+ssh_en: 02
+---ATECMDRESULT--- OK
+```
+
+This has been tested on the following firmware versions:
+- V6.0.10N20 (TIM)
+- V6.0.10P4N03 (Fiberhost)
 
 # Known Bugs
 
 The buffer size of the hardware is suboptimal: because of this the ONT is unable to work at full speed during uploads if the server is geographically and/or latency-wise far. There are no known problems if there is only one subscriber on the GPON tree. 
+
 In versions V6.0.10N14 and V6.0.10P2N02 this problem is felt more than with newer firmware as in the new versions (V6.0.10N20, V6.0.10P2N18, V6.0.10P2N19), an attempt is made to avoid buffer filling by means of pause frames. Not all routers support pause frames and some may still suffer from problems with the latest updates.
 
 In version V6.0.10P2N18, problems were found in download speeds with 1 Gbps links.
