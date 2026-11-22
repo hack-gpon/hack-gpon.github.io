@@ -1,5 +1,5 @@
 ---
-title: Nokia G-010S-P
+title: Nokia / Alcatel-Lucent G-010S-P
 has_children: false
 parent: Nokia
 ---
@@ -8,7 +8,7 @@ parent: Nokia
 
 |                  |                                          |
 | ---------------- | ---------------------------------------- |
-| Vendor/Brand     | Nokia                                    |
+| Vendor/Brand     | Nokia / Alcatel-Lucent                   |
 | Model            | G-010S-P                                 |
 | ODM              | SourcePhotonics                          |
 | ODM Product Code | SPS-34-24T-HP-TDFO                       |
@@ -40,7 +40,7 @@ G-010S-P and other models will not expose an ethernet interface unless the fiber
 
 ## EEPROM
 
-Like the [Nokia G-010S-A](/ont-nokia-g-010s-a), the Nokia G-010S-P has a physical EEPROM chip (circled in red in the picture below). The [Huawei MA5671A](/ont-huawei-ma5671a) and the [FS.com GPON ONU Stick](/ont-fs-com-gpon-onu-stick-with-mac) do not have it: on those sticks the Falcon SOC emulates the EEPROM on the I2C interface.
+Like the [Nokia G-010S-A](/ont-nokia-g-010s-a), the Nokia / Alcatel-Lucent G-010S-P has a physical EEPROM chip (circled in red in the picture below). The [Huawei MA5671A](/ont-huawei-ma5671a) and the [FS.com GPON ONU Stick](/ont-fs-com-gpon-onu-stick-with-mac) do not have it: on those sticks the Falcon SOC emulates the EEPROM on the I2C interface.
 
 <ImageFigure file="g-010s-p-and-ma5671a-eeprom.jpg" alt="Physical EEPROM on the G-010S-P, missing on the MA5671A" caption="Physical EEPROM on the G-010S-P (circled in red), missing on the MA5671A" />
 
@@ -130,7 +130,7 @@ For more info [XPONos partition layout](https://web.archive.org/web/202409250352
 
 ## Web rooting
 
-The [Huawei MA5671A browser rooting procedure](/ont-huawei-ma5671a-root-web) has been [reported to work](https://github.com/hack-gpon/hack-gpon.github.io/pull/518#discussion_r4485260237) on an Alcatel-Lucent G-010S-P. The firmware version was not provided in that report; this does not establish compatibility with every G-010S-P firmware version.
+The [Huawei MA5671A browser rooting procedure](/ont-huawei-ma5671a-root-web) has been [reported to work](https://github.com/hack-gpon/hack-gpon.github.io/pull/518#discussion_r4485260237) on an Nokia / Alcatel-Lucent G-010S-P. The firmware version was not provided in that report; this does not establish compatibility with every G-010S-P firmware version.
 
 Use this page's [serial pinout](#serial) for G-010S-P. The [Nokia G-010S-A serial-console helper](/ont-nokia-g-010s-a#enabling-serial) is a separate procedure for a different model and pinout.
 
