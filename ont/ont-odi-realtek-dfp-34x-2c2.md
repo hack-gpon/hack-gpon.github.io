@@ -164,6 +164,12 @@ rtl960x: true
 macKey: "odi"
 -->
 
+## Open firmware
+
+[odi-oss](https://github.com/AndreZiviani/odi-oss) is an open replacement for the stock image, built from source rather than repacked: a mainline Linux 6.18 kernel, its own switch and GPON MAC drivers, its own OMCI daemon and web UI, and no proprietary code. It was written with AI assistance and validated on real hardware: it is tested on hardware v06, and users report it working on the DFP-34X-2C3, the Luleey LL-XS2510 and the HSGQ XPON stick (hardware v08).
+
+It is flashed from the stock firmware into the inactive image and boots on trial first, so a boot that fails goes back to the stock image. Back up the flash and follow its [install guide](https://github.com/AndreZiviani/odi-oss#install-from-the-stock-firmware) before flashing.
+
 # Known Bugs
 
 - Auto-sensing mode to switch between SGMII/HiSGMII
