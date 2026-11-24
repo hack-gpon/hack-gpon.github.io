@@ -17,6 +17,7 @@ export const collections = [
   { dir: 'ont-xgs', name: 'ONT XGS-PON', prefix: '/xgs/' },
   { dir: 'ont-epon', name: 'ONT EPON', prefix: '/epon/' },
   { dir: 'router', name: 'Router PON', prefix: '/router/' },
+  { dir: 'firmware', name: 'Firmware', prefix: '/' },
   { dir: 'tools', name: 'Tools', prefix: '/' },
   { dir: 'sfp', name: 'SFP Resources & standard', prefix: '/' },
   { dir: 'gpon', name: 'GPON Resources & standard', prefix: '/' },
@@ -174,3 +175,78 @@ export function sidebar(): DefaultTheme.SidebarItem[] {
     }))
   ]
 }
+
+/**
+ * Firmware index, built from the front matter of the pages of the `firmware` collection:
+ *
+ *   badge: foss-verified           # one of `firmwareBadges`
+ *   platform: Lantiq SDK (OpenWrt) # free text, optional
+ *   source: https://...            # source code, required by the `foss*` badges
+ *   maintained: false              # optional, the firmware is no longer maintained
+ *   devices: ont-huawei-ma5671a:works, ont-nokia-g-010s-p:reported
+ *
+ * `devices` lists the device pages (URL without slashes, e.g. `ont-huawei-ma5671a` or
+ * `xgs/ont-nokia-xs-010x-q`) with their compatibility status: `works` (default), `procedure` (works
+ * after a procedure described in the firmware page), `reported` (single report) or `broken`. The
+ * device pages show their firmwares with the `<FirmwareList />` component.
+ */
+
+/** Badges, from the best to the worst: the order is the one of the lists. */
+export const firmwareBadges = ['foss-verified', 'foss', 'maintainers', 'contributors', 'stock', 'unverified'] as const
+export type FirmwareBadge = (typeof firmwareBadges)[number]
+
+export const compatibilityStatuses = ['works', 'procedure', 'reported', 'broken'] as const
+export type CompatibilityStatus = (typeof compatibilityStatuses)[number]
+
+export interface FirmwareDevice {
+  url: string
+  title: string
+  status: CompatibilityStatus
+}
+
+export interface Firmware {
+  url: string
+  title: string
+  badge: FirmwareBadge
+  platform?: string
+  source?: string
+  maintained: boolean
+  devices: FirmwareDevice[]
+}
+
+function readFirmware(page: Page): Firmware {
+  const fm = page.frontmatter
+  const fail = (msg: string) => {
+    throw new Error(`[firmware] ${page.file}: ${msg}`)
+  }
+  if (!firmwareBadges.includes(fm.badge)) fail(`"badge" must be one of ${firmwareBadges.join(', ')}`)
+  if (String(fm.badge).startsWith('foss') && !fm.source) fail(`the "${fm.badge}" badge needs the "source" of the firmware`)
+  const devices = String(fm.devices ?? '')
+    .split(',')
+    .map((d) => d.trim())
+    .filter(Boolean)
+    .map((entry): FirmwareDevice => {
+      const [name, status = 'works'] = entry.split(':').map((s) => s.trim())
+      if (!compatibilityStatuses.includes(status as CompatibilityStatus)) {
+        fail(`unknown status "${status}" of ${name}, it must be one of ${compatibilityStatuses.join(', ')}`)
+      }
+      const device = pages.find((p) => p.url === `/${name}/` && p.collection !== 'firmware' && !p.frontmatter.redirect_to)
+      if (!device) fail(`device page "${name}" not found`)
+      return { url: device!.url, title: String(device!.frontmatter.title).trim(), status: status as CompatibilityStatus }
+    })
+  if (!devices.length) fail('"devices" is empty')
+  return {
+    url: page.url,
+    title: String(fm.title).trim(),
+    badge: fm.badge,
+    platform: fm.platform || undefined,
+    source: fm.source || undefined,
+    maintained: fm.maintained !== false,
+    devices
+  }
+}
+
+export const firmwares: Firmware[] = pages
+  .filter((p) => p.collection === 'firmware' && p.frontmatter.badge !== undefined && !p.frontmatter.redirect_to)
+  .map(readFirmware)
+  .sort((a, b) => firmwareBadges.indexOf(a.badge) - firmwareBadges.indexOf(b.badge) || a.title.localeCompare(b.title))

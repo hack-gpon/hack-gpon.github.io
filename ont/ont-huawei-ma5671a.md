@@ -31,14 +31,6 @@ parent: Huawei
 <ImageFigure file="g-010s-p-and-ma5671a.jpg" alt="G-010S-P and MA5671A Teardown" caption="G-010S-P and MA5671A Teardown" />
 
 
-##  Firmware is interchangeable with:
-
-- [Nokia G-010S-P](/ont-nokia-g-010s-p)
-- [FS.com GPON ONU Stick with MAC / SourcePhotonics SPS-34-24T-HP-TDFO](/ont-fs-com-gpon-onu-stick-with-mac)
-- [Hilink HL23446](/ont-hilink-hl23446)
-- Dasan H650SFP {.text-red-200}
-- DpOptics D23446 {.text-red-200}
-- Photonics SPS-34-24T-HP-TDFO {.text-red-200}
 ## Serial
 
 The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the SFP connector.
@@ -110,28 +102,24 @@ For more info [XPONos partition layout](https://web.archive.org/web/202409250352
 | mtd4 | 006d8077 | 00010000  | "rootfs"      |
 | mtd5 | 00410000 | 00010000  | "rootfs_data" |
 
-## List of firmwares and files
+# Firmware
 
-::: info Info
-If the root procedure without tweezers is used, the firmware already on the Huawei Stick corresponds to rooted firmware in this list.
+<FirmwareList />
+
+The firmwares built on the Lantiq SDK with OpenWrt share some commands: see [Lantiq SDK (OpenWrt)](/firmware-lantiq-openwrt).
+
+::: warning
+The MA5671A has no physical EEPROM (it is emulated by the firmware): a firmware made for a stick with a physical EEPROM, like the [Nokia G-010S-P](/ont-nokia-g-010s-p), may not work correctly on it.
 :::
 
-- [Carlito MTD2](https://ma5671a.s3.nl-ams.scw.cloud/mtd2.bin){.btn}  md5hash: d3cb6f7efec201b37931139feb4bb23b
-- [Huawei Rooted MTD2](https://ma5671a.s3.nl-ams.scw.cloud/mA5671a_root_mtd2.img){.btn} md5hash: 3138d2dd06a32bb92bc63610fec6fcd6
-- [Carlito MTD5](https://ma5671a.s3.nl-ams.scw.cloud/mtd5.bin){.btn}  md5hash: 59d2dc15227d6f693a38131eca89b29e 
-- [Huawei Rooted MTD5](https://ma5671a.s3.nl-ams.scw.cloud/mA5671a_root_mtd5.img){.btn}  md5hash: 0e4cfdc1b96be6581869b26b48789556
-- [1224abort.bin](https://ma5671a.s3.nl-ams.scw.cloud/1224ABORT.bin){.btn}  md5hash: 10e94a4b4acdc82dec20c7904b69e5c0
-- [right.com.cn (China) 19 July 2022](https://mega.nz/file/9fpSkYTb#wNyjAj1kOLWC9HozX-gTQ-TS3VFqRYg--x1rm7RSuDg){.btn} md5hash: 6b5e7e3c659fe3f0204340fa746ac4fc
-- [right.com.cn (China) 29 Aug 2022](https://mega.nz/file/VHFFSBrT#2WhDPcdON5EHR01l6Ut35GC3sl55e4l09Z0NUo_7SWA){.btn} md5hash: 3d357e2dc7b59c66fe61b4ddf1fb8dc0
-- [right.com.cn (China) 20 Nov 2023](https://mega.nz/file/8vcwyJRA#yuzjyI9Y9vsA0RegGnNOy_JLv2FNRIMfI5JxHn8t0-s){.btn} md5hash: 4901ae8e70991ca1202bc80db9c151cc
-- [FS.com GPON ONU Stick with MAC firmware / SourcePhotonics SPS-34-24T-HP-TDFO firmware](/ont-fs-com-gpon-onu-stick-with-mac)
+## Other files
 
-# Usage
+These files are not documented in a firmware page:
 
-- [Huawei Rooted Firmware General Setting](/ont-huawei-ma5671a-rooted)
-- [Carlito Firmware General Setting](/ont-huawei-ma5671a-carlito)
-- [SourcePhotonics Firmware General Setting](/ont-huawei-ma5671a-sf)
-- [Nokia G-010S-P Firmware General Setting](/ont-nokia-g-010s-p)
+- [1224abort.bin](https://ma5671a.s3.nl-ams.scw.cloud/1224ABORT.bin){.btn}  md5hash: 10e94a4b4acdc82dec20c7904b69e5c0 <FirmwareBadge type="unverified" />
+- [right.com.cn (China) 19 July 2022](https://mega.nz/file/9fpSkYTb#wNyjAj1kOLWC9HozX-gTQ-TS3VFqRYg--x1rm7RSuDg){.btn} md5hash: 6b5e7e3c659fe3f0204340fa746ac4fc <FirmwareBadge type="unverified" />
+- [right.com.cn (China) 29 Aug 2022](https://mega.nz/file/VHFFSBrT#2WhDPcdON5EHR01l6Ut35GC3sl55e4l09Z0NUo_7SWA){.btn} md5hash: 3d357e2dc7b59c66fe61b4ddf1fb8dc0 <FirmwareBadge type="unverified" />
+- [right.com.cn (China) 20 Nov 2023](https://mega.nz/file/8vcwyJRA#yuzjyI9Y9vsA0RegGnNOy_JLv2FNRIMfI5JxHn8t0-s){.btn} md5hash: 4901ae8e70991ca1202bc80db9c151cc <FirmwareBadge type="unverified" />
 
 # Advanced settings
 

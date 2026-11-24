@@ -72,6 +72,10 @@ The defaults of the other ONTs that can be useful to clone are in the [configura
 - V1.0-220304
 - V1.0-210702
 
+## Firmware
+
+<FirmwareList />
+
 ## List of firmwares and files
 - [Firmware repository by Anime4000](https://github.com/Anime4000/RTL960x/tree/main/Firmware/DFP-34X-2C2)
 
