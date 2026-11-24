@@ -48,14 +48,10 @@ The GPON-SFP-ONT-MAC-I is sold as multiple SKUs; the 133619 SKU is identical to 
 Newer FS.com GPON-SFP-ONT-MAC-I SKUs (e.g. 351553, 351565) use a **Faraday/Galachip GC1601** chipset instead of the Lantiq PEB98035. These are completely different hardware and the firmware, commands, and patches on this page do **not** apply to them. The GalaChip-based sticks use `gccli` commands instead of the Lantiq shell.
 :::
 
-## Firmware is interchangeable with:
+## Firmware
 
-- [Huawei MA5671A](/ont-huawei-ma5671a)
-- [Nokia G-010S-P](/ont-nokia-g-010s-p)
-- [Hilink HL23446](/ont-hilink-hl23446)
-- Dasan H650SFP {.text-red-200}
-- DpOptics D23446 {.text-red-200}
-- Photonics SPS-34-24T-HP-TDFO {.text-red-200}
+<FirmwareList />
+
 ## Serial
 
 The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the SFP connector.

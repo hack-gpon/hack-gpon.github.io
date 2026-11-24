@@ -5,7 +5,7 @@ parent: Lantiq SDK (OpenWrt)
 badge: contributors
 platform: Lantiq SDK (OpenWrt)
 maintained: false
-devices: ont-huawei-ma5671a:works, ont-fs-com-gpon-onu-stick-with-mac:works
+devices: ont-huawei-ma5671a:works, ont-fs-com-gpon-onu-stick-with-mac:works, ont-hilink-hl23446:reported, ont-nokia-g-010s-a:procedure, ont-zyxel-pmg3000-d20b:untested, ont-halny-hl-gsfp:untested, ont-zisa-op151s:untested, ont-d-link-dpn-100-rev-a2:untested
 ---
 
 A modified version of the `6BA1896SPLQA42` firmware of the [FS.com GPON ONU Stick with MAC](/ont-fs-com-gpon-onu-stick-with-mac), made by the community. It is no longer maintained.
@@ -15,6 +15,10 @@ For the commands shared with the other Lantiq firmwares see [Lantiq SDK (OpenWrt
 # Compatibility
 
 <FirmwareCompatibility />
+
+The [Nokia G-010S-A](/ont-nokia-g-010s-a) can run this firmware after changing its MTD layout, see [Nokia G-010S-A](/firmware-lantiq-openwrt#nokia-g-010s-a).
+
+The T&W TW2362H-CDEL based sticks ([Zyxel PMG3000-D20B](/ont-zyxel-pmg3000-d20b), [HALNy HL-GSFP](/ont-halny-hl-gsfp), [Zisa OP151S](/ont-zisa-op151s), [D-LINK DPN-100 Rev A2](/ont-d-link-dpn-100-rev-a2)) use the same chipset: the firmware can technically run on them after changing their MTD layout to the one of the [Huawei MA5671A](/ont-huawei-ma5671a#list-of-partitions), but nobody has tested it yet. They have 8 MB of flash instead of 16 MB.
 
 # Files
 

@@ -34,5 +34,6 @@ export const statusInfo: Record<CompatibilityStatus, string> = {
   works: 'Works',
   procedure: 'Works after a procedure',
   reported: 'Reported working',
+  untested: 'Possible, not tested',
   broken: 'Does not work'
 }

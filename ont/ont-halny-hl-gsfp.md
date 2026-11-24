@@ -32,12 +32,9 @@ parent: HALNy
 <ImageFigure file="hl-gsfp-1.png" alt="HALNy HL-GSFP top" caption="HALNy HL-GSFP top" />
 <ImageFigure file="hl-gsfp-2.png" alt="HALNy HL-GSFP bottom" caption="HALNy HL-GSFP bottom" />
 
-## Firmware is interchangeable with:
+## Firmware
 
-- [Zyxel PMG3000-D20B](/ont-zyxel-pmg3000-d20b)
-- [D-LINK DPN-100-Rev-A2](/ont-d-link-dpn-100-rev-a2)
-- [Zisa OP151s](/ont-zisa-op151s)
-- [T&W TW2362H-CDEL](/ont-t-w-tw2362h-cdel)
+<FirmwareList />
 
 ## List of partitions
 

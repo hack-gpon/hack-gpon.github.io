@@ -187,7 +187,8 @@ export function sidebar(): DefaultTheme.SidebarItem[] {
  *
  * `devices` lists the device pages (URL without slashes, e.g. `ont-huawei-ma5671a` or
  * `xgs/ont-nokia-xs-010x-q`) with their compatibility status: `works` (default), `procedure` (works
- * after a procedure described in the firmware page), `reported` (single report) or `broken`. The
+ * after a procedure described in the firmware page), `reported` (single report), `untested` (technically
+ * possible, nobody tried it yet) or `broken`. The
  * device pages show their firmwares with the `<FirmwareList />` component.
  */
 
@@ -195,7 +196,7 @@ export function sidebar(): DefaultTheme.SidebarItem[] {
 export const firmwareBadges = ['foss-verified', 'foss', 'maintainers', 'contributors', 'stock', 'unverified'] as const
 export type FirmwareBadge = (typeof firmwareBadges)[number]
 
-export const compatibilityStatuses = ['works', 'procedure', 'reported', 'broken'] as const
+export const compatibilityStatuses = ['works', 'procedure', 'reported', 'untested', 'broken'] as const
 export type CompatibilityStatus = (typeof compatibilityStatuses)[number]
 
 export interface FirmwareDevice {

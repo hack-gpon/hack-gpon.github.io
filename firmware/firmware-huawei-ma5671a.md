@@ -4,7 +4,7 @@ has_children: false
 parent: Lantiq SDK (OpenWrt)
 badge: stock
 platform: Lantiq SDK (OpenWrt)
-devices: ont-huawei-ma5671a:works
+devices: ont-huawei-ma5671a:works, ont-fs-com-gpon-onu-stick-with-mac:reported, ont-hilink-hl23446:reported, ont-nokia-g-010s-a:procedure
 ---
 
 The original firmware of the [Huawei MA5671A](/ont-huawei-ma5671a). The images below are already rooted: if the [root procedure without tweezers](/ont-huawei-ma5671a-root-web) is used, the firmware on the stick corresponds to these images.
@@ -14,6 +14,8 @@ For the commands shared with the other Lantiq firmwares see [Lantiq SDK (OpenWrt
 # Compatibility
 
 <FirmwareCompatibility />
+
+The [Nokia G-010S-A](/ont-nokia-g-010s-a) can run this firmware after changing its MTD layout, see [Nokia G-010S-A](/firmware-lantiq-openwrt#nokia-g-010s-a).
 
 # Files
 

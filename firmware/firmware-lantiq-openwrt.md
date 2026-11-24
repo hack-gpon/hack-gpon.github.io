@@ -9,6 +9,8 @@ This page collects the commands shared by the firmwares built on the Lantiq Falc
 These commands do not apply to the firmwares built on other systems (e.g. eCos) or on other SDKs, even if they run on the same chipset. Every firmware also has its own commands and settings: check the page of the firmware.
 :::
 
+Dasan H650SFP and DpOptics D23446 are also reported to share the same hardware, this is not verified.
+
 The procedures that depend on the bootloader and on the flash (backup, flashing, switching the active image, serial recovery) are in the device pages, e.g. [Huawei MA5671A](/ont-huawei-ma5671a#advanced-settings).
 
 # GPON ONU status
@@ -74,3 +76,11 @@ fw_setenv VARIABLE
 ```
 
 The names of the variables (serial number, PLOAM password, LOID, OMCI identity...) depend on the firmware.
+
+# Nokia G-010S-A
+
+The firmwares that run on the [Nokia G-010S-P](/ont-nokia-g-010s-p) and on the [Huawei MA5671A](/ont-huawei-ma5671a) also run on the [Nokia G-010S-A](/ont-nokia-g-010s-a), provided its MTD layout has been changed beforehand to match the new one. For the full procedure, see this post on [lafibre.info](https://lafibre.info/remplacer-livebox/guide-de-connexion-fibre-directement-sur-un-routeur-voire-meme-en-2gbps/msg870551/#msg870551).
+
+::: warning
+Like the G-010S-P, the G-010S-A has a physical EEPROM: a firmware that does not support it may not work correctly.
+:::

@@ -36,6 +36,7 @@ The firmware pages list the devices the firmware runs on, with one of these stat
 | Works                   | Documented as working on the device                                  |
 | Works after a procedure | Works only after a procedure described in the firmware page          |
 | Reported working        | Single report, not confirmed                                         |
+| Possible, not tested    | Technically possible (e.g. after a procedure), but nobody tried it yet |
 | Does not work           | Known not to work on the device, with the reason in the firmware page |
 
 # List of firmwares

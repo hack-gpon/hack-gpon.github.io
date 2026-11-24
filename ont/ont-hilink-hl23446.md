@@ -31,14 +31,10 @@ parent: Hilink
 ## Possible Clones
 - CarlitoxxPro CPGOS03-0490 **v1**
 
-## Firmware is interchangeable with:
+## Firmware
 
-- [Huawei MA5671A](/ont-huawei-ma5671a)
-- [Nokia G-010S-P](/ont-nokia-g-010s-p)
-- [FS.com GPON ONU Stick with MAC / SourcePhotonics SPS-34-24T-HP-TDFO](/ont-fs-com-gpon-onu-stick-with-mac)
-- Dasan H650SFP {.text-red-200}
-- DpOptics D23446 {.text-red-200}
-- Photonics SPS-34-24T-HP-TDFO {.text-red-200}
+<FirmwareList />
+
 ## List of partitions
 
 | dev  | size     | erasesize | name          |

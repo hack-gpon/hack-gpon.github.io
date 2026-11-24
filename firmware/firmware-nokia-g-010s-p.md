@@ -4,7 +4,7 @@ has_children: false
 parent: Lantiq SDK (OpenWrt)
 badge: stock
 platform: Lantiq SDK (OpenWrt)
-devices: ont-nokia-g-010s-p:works, ont-nokia-g-010s-a:procedure, ont-huawei-ma5671a:reported
+devices: ont-nokia-g-010s-p:works, ont-nokia-g-010s-a:procedure, ont-huawei-ma5671a:reported, ont-hilink-hl23446:reported
 ---
 
 The original firmware of the [Nokia / Alcatel-Lucent G-010S-P](/ont-nokia-g-010s-p).
@@ -15,7 +15,7 @@ For the commands shared with the other Lantiq firmwares see [Lantiq SDK (OpenWrt
 
 <FirmwareCompatibility />
 
-The [Nokia G-010S-A](/ont-nokia-g-010s-a) can be flashed with this firmware, provided the MTD layout has been changed beforehand to match the new one. For the full procedure, see the post on [lafibre.info](https://lafibre.info/remplacer-livebox/guide-de-connexion-fibre-directement-sur-un-routeur-voire-meme-en-2gbps/msg870551/#msg870551).
+The [Nokia G-010S-A](/ont-nokia-g-010s-a) can run this firmware after changing its MTD layout, see [Nokia G-010S-A](/firmware-lantiq-openwrt#nokia-g-010s-a).
 
 # Usage
 

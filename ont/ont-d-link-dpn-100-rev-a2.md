@@ -31,12 +31,9 @@ parent: D-LINK
 Once you access the stick via ssh you will be presented with a second tier login. The credentials to access the dell shell are: username: `twmanu` , password: `twmanu`.
 
 
-## Firmware is interchangeable with:
+## Firmware
 
-- [Zyxel PMG3000-D20B](/ont-zyxel-pmg3000-d20b)
-- [Halny HL-GSFP](/ont-halny-hl-gsfp)
-- [Zisa OP151s](/ont-zisa-op151s)
-- [T&W TW2362H-CDEL](/ont-t-w-tw2362h-cdel)
+<FirmwareList />
 
 # GPON/OMCI settings
 

@@ -4,7 +4,7 @@ has_children: false
 parent: Lantiq SDK (OpenWrt)
 badge: unverified
 platform: Lantiq SDK (OpenWrt)
-devices: ont-huawei-ma5671a:works, ont-nokia-g-010s-p:reported
+devices: ont-huawei-ma5671a:works, ont-nokia-g-010s-p:reported, ont-fs-com-gpon-onu-stick-with-mac:reported, ont-hilink-hl23446:reported, ont-nokia-g-010s-a:procedure
 ---
 
 A modified firmware found on the internet: the original author is unknown and there is no source code. It supports the physical EEPROM of the [Nokia G-010S-P](/ont-nokia-g-010s-p).
@@ -18,6 +18,8 @@ For the commands shared with the other Lantiq firmwares see [Lantiq SDK (OpenWrt
 # Compatibility
 
 <FirmwareCompatibility />
+
+The [Nokia G-010S-A](/ont-nokia-g-010s-a) can run this firmware after changing its MTD layout, see [Nokia G-010S-A](/firmware-lantiq-openwrt#nokia-g-010s-a).
 
 # Files
 
