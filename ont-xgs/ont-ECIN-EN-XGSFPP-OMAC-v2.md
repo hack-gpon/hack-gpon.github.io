@@ -31,6 +31,10 @@ This is the V2 version of the E.C.I. Networks stick, based on the MaxLinear PRX1
 
 The V2 has a web-based GUI for configuration, including PON status, LAN settings, and ONU authentication. It also supports a CLI interface.
 
+## Firmware
+
+<FirmwareList />
+
 ## Web GUI
 
 The web GUI provides pages for:

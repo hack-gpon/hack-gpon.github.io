@@ -52,7 +52,7 @@ The chip is a Microchip 24LC02B (2 Kbit I²C EEPROM)[^ponwiki-sps].
 ## Firmware
 
 ::: warning Warning
-Cross-flashing a firmware made for another stick is not recommended unless that firmware supports the physical EEPROM. This support is present in the China (right.com.cn) and Carlito firmwares listed on the [Huawei MA5671A](/ont-huawei-ma5671a#firmware) page.
+Cross-flashing a firmware made for another stick is not recommended unless that firmware supports the physical EEPROM. This support is present in the [China (right.com.cn)](/firmware-right-com-cn) and [Carlito](/firmware-carlito) firmwares.
 :::
 
 <FirmwareList />

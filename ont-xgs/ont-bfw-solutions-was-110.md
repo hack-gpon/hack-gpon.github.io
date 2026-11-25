@@ -38,6 +38,10 @@ All the information on this page, unless otherwise stated, comes from [pon.wiki:
 The WAS-110 is the reference PRX126 XGS-PON stick of the [8311 community](https://pon.wiki/), which maintains an open [community firmware](https://github.com/djGrrr/8311-was-110-firmware-builder) for it. The same firmware also runs on the other PRX126 sticks, such as the [Potron X-ONU-SFPP](/xgs/ont-potron-technology-x-onu-sfpp) and the [Wintop WT-ONU-STICK](/xgs/ont-wintop-optical-technology-wt-onu-stick).
 :::
 
+## Firmware
+
+<FirmwareList />
+
 ## Rebrands and resellers
 
 The WAS-110 is sold under several names[^ponwiki-was110]:

@@ -123,7 +123,7 @@ Since the MA5671A has no physical EEPROM (see above), a firmware made for a stic
 
 ## Other files
 
-These files are not documented in a firmware page:
+These files are not linked from the firmware pages:
 
 - [1224abort.bin](https://ma5671a.s3.nl-ams.scw.cloud/1224ABORT.bin){.btn}  md5hash: 10e94a4b4acdc82dec20c7904b69e5c0 <FirmwareBadge type="unverified" />
 - [right.com.cn (China) 19 July 2022](https://mega.nz/file/9fpSkYTb#wNyjAj1kOLWC9HozX-gTQ-TS3VFqRYg--x1rm7RSuDg){.btn} md5hash: 6b5e7e3c659fe3f0204340fa746ac4fc <FirmwareBadge type="unverified" />

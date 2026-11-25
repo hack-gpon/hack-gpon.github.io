@@ -39,7 +39,7 @@ Like the [Nokia G-010S-P](/ont-nokia-g-010s-p), the Nokia G-010S-A has a physica
 ## Modifying firmware
 
 ::: warning Warning
-Cross-flashing a firmware made for another stick is not recommended unless that firmware supports the physical EEPROM. This support is present in the China (right.com.cn) and Carlito firmwares listed on the [Huawei MA5671A](/ont-huawei-ma5671a#firmware) page.
+Cross-flashing a firmware made for another stick is not recommended unless that firmware supports the physical EEPROM. This support is present in the [China (right.com.cn)](/firmware-right-com-cn) and [Carlito](/firmware-carlito) firmwares.
 :::
 
 The firmwares that run on the [Nokia G-010S-P](/ont-nokia-g-010s-p) and on the [Huawei MA5671A](/ont-huawei-ma5671a) can be flashed on the Nokia G-010S-A, provided the MTD layout has been changed beforehand to match the new one. For the full procedure, see this post on [lafibre.info](https://lafibre.info/remplacer-livebox/guide-de-connexion-fibre-directement-sur-un-routeur-voire-meme-en-2gbps/msg870551/#msg870551).

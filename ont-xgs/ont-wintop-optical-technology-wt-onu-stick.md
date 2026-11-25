@@ -35,6 +35,10 @@ All the information on this page, unless otherwise stated, comes from [pon.wiki:
 The WT-ONU-STICK is a PRX126-based stick that is compatible with the [8311 community firmware](https://github.com/djGrrr/8311-was-110-firmware-builder). See the [BFW Solutions WAS-110](/xgs/ont-bfw-solutions-was-110) page for more details on the community firmware.
 :::
 
+## Firmware
+
+<FirmwareList />
+
 ## Rebrands and resellers
 
 | Company                                        | Product Number                                                                                               | Firmware      |
