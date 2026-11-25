@@ -3,7 +3,7 @@ title: Lantiq SDK (OpenWrt)
 has_children: true
 ---
 
-This page collects the commands shared by the firmwares built on the Lantiq Falcon SDK with OpenWrt (Lantiq PEB98035 chipset), e.g. on the [Huawei MA5671A](/ont-huawei-ma5671a), the [Nokia G-010S-P](/ont-nokia-g-010s-p) and the [FS.com GPON ONU Stick with MAC](/ont-fs-com-gpon-onu-stick-with-mac).
+This page collects the commands shared by the firmwares built on the Lantiq FALC ON SDK with OpenWrt (Lantiq FALC ON PEB98035 chipset), e.g. on the [Huawei MA5671A](/ont-huawei-ma5671a), the [Nokia G-010S-P](/ont-nokia-g-010s-p) and the [FS.com GPON ONU Stick with MAC](/ont-fs-com-gpon-onu-stick-with-mac).
 
 ::: warning
 These commands do not apply to the firmwares built on other systems (e.g. eCos) or on other SDKs, even if they run on the same chipset. Every firmware also has its own commands and settings: check the page of the firmware.

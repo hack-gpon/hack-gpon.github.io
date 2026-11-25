@@ -12,7 +12,7 @@ parent: Nokia
 | Model            | XS-010X-R                                                                        |
 | ODM              | unknow (CIG?)                                                                    |
 | ODM Product Code | XG-99YF                                                                          |
-| Chipset          | [Cortina CA8271NI](/chipset-cortina-ca827x)                                      |
+| Chipset          | [Cortina CA8271NI](/chipset-cortina-access)                                      |
 | Manufacter       | unknow (CIG?)                                                                    |
 | Flash            | 128MB (MX35LF1GE4AB, but there are also Models with 25NO1GVZEIR)                 |
 | RAM              | 256MB                                                                            |

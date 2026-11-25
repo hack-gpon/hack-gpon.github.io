@@ -13,7 +13,7 @@ parent: FS.com
 | Model            | XGS-ONU-25-20NI                                                            |
 | ODM              | CIG                                                                        |
 | ODM Product Code | XG-99S                                                                     |
-| Chipset          | [Cortina CA8271S](/chipset-cortina-ca827x)                                 |
+| Chipset          | [Cortina CA8271S](/chipset-cortina-access)                                 |
 | Flash            | MX35LF1GE4AB 128MB                                                         |
 | RAM              | 128MB                                                                      |
 | CPU              | Taroko V0.2 (MIPS)                                                         |

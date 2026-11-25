@@ -12,7 +12,7 @@ parent: Nokia
 | Model            | XS-010X-Q (3FE48118AC)[^ponwiki-xs010xq]                                         |
 | ODM              | CIG                                                                              |
 | ODM Product Code | XG-99YF                                                                           |
-| Chipset          | [Cortina CA8271A](/chipset-cortina-ca827x)                                       |
+| Chipset          | [Cortina CA8271A](/chipset-cortina-access)                                       |
 | CPU              | Taroko (MIPS)[^ponwiki-xs010xq]                                                  |
 | CPU Clock        | 500MHz[^ponwiki-xs010xq]                                                         |
 | Bootloader       | U-Boot 2015.04 (CIG XGS-PON Boot Version 1.0.0)                                  |

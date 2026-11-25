@@ -13,7 +13,7 @@ parent: Zisa
 | Model            | OP151S                                                     |
 | ODM              | T&W                                                        |
 | ODM Product Code | TW2362H-CDEL                                               |
-| Chipset          | [Lantiq PEB98035](/chipset-lantiq-falcon)                  |
+| Chipset          | [Lantiq FALC ON PEB98035](/chipset-lantiq-falc-on)                  |
 | CPU              | MIPS 34Kc interAptiv                                       |
 | CPU Clock        | 400MHz                                                     |
 | Flash            | 8 MB (GigaDevice GD25Q64CW16)                              |

@@ -13,7 +13,7 @@ parent: FS.com
 | Model            | GPON-ONU-34-20BI                         |
 | ODM              | SourcePhotonics                          |
 | ODM Product Code | SPS-34-24T-HP-TDFO                       |
-| Chipset          | [Lantiq FALC ON-S PEB 38035 ET (PEB98035)](/chipset-lantiq-falcon) |
+| Chipset          | [Lantiq FALC ON-S PEB 38035 ET (PEB98035)](/chipset-lantiq-falc-on) |
 | CPU              | MIPS 34Kc interAptiv                     |
 | CPU Clock        | 400MHz                                   |
 | Flash            | 16 MB                                    |

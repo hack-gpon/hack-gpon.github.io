@@ -3,7 +3,11 @@ title: HiSilicon
 has_children: false
 ---
 
-The HiSilicon SoCs of the Huawei ONTs (SD5116, SD5117, SD5182S...), usually running Huawei Dopra Linux.
+The HiSilicon (Huawei) SoCs of the Huawei ONTs, usually running Huawei Dopra Linux:
+
+- SD5116
+- SD5117 (XGS-PON)
+- SD5182S (GPON and XGS-PON SFP ONTs)
 
 # Devices
 

@@ -10,7 +10,7 @@ parent: Sercomm
 | --------------- | --------------------------------- |
 | Vendor/Brand    | Sercomm                           |
 | Model           | FGS202                            |
-| Chipset         | [Lantiq PEB98036](/chipset-lantiq-falcon) |
+| Chipset         | [Lantiq FALC ON PEB98036](/chipset-lantiq-falc-on) |
 | Flash           | 8 MiB (MXIC MX25L6405D)           |
 | RAM             | 1 MiB                             |
 | System          | eCos                              |

@@ -10,7 +10,7 @@ parent: D-LINK
 | ---------------- | --------------- |
 | Vendor/Brand     | D-LINK          |
 | Model            | DPN-100 Rev A2  |
-| Chipset          | [Lantiq PEB98035](/chipset-lantiq-falcon) |
+| Chipset          | [Lantiq FALC ON PEB98035](/chipset-lantiq-falc-on) |
 | ODM              | T&W             |
 | ODM Product Code | TW2362H-CDEL    |
 | Flash            | 8 MB            |

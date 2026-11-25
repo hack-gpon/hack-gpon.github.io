@@ -12,7 +12,7 @@ parent: Nokia
 | Model            | XS-010S-Q                                                          |
 | ODM              | CIG                                                                |
 | ODM Product Code | [XG-99S](/xgs/ont-fs-XGS-ONU-25-20NI)                              |
-| Chipset          | [Cortina CA8271S](/chipset-cortina-ca827x)                         |
+| Chipset          | [Cortina CA8271S](/chipset-cortina-access)                         |
 | CPU              | Dual core CPU (four virtual CPUs) running at 800 MHz               |
 | L1 Cache         | 64KB (32KB instruction, 32KB data)                                 |
 | L2 Cache         | 256KB with I/O coherency                                           |

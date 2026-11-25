@@ -3,7 +3,14 @@ title: Broadcom
 has_children: false
 ---
 
-The Broadcom PON SoCs: the BCM55030 of the SFP sticks and the BCM68xx / BCM63xx of the ONTs and routers.
+The Broadcom PON SoCs:
+
+- BCM68 series
+  - BCM6838 / BCM68380
+  - BCM6848
+  - BCM68360
+- BCM63153 (routers with integrated PON)
+- BCM55030 (10G-EPON)
 
 # Devices
 

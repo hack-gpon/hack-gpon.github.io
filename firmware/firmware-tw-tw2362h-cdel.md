@@ -2,7 +2,7 @@
 title: T&W TW2362H-CDEL original firmwares
 has_children: false
 badge: stock
-platform: T&W (Lantiq PEB98035)
+platform: T&W (Lantiq FALC ON)
 devices: ont-zyxel-pmg3000-d20b:works, ont-halny-hl-gsfp:works, ont-zisa-op151s:works, ont-d-link-dpn-100-rev-a2:works
 ---
 
