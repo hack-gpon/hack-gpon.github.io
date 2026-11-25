@@ -10,7 +10,7 @@ parent: Nokia
 | -------------- | ---------------- |
 | Vendor/Brand   | Nokia            |
 | Model          | G-010G-A         |
-| ODM            | ✅[^oem]        |
+| ODM            | ✅              |
 | Chipset        | [Broadcom BCM6838](/chipset-broadcom) |
 | Flash          |                  |
 | RAM            |                  |
@@ -28,6 +28,8 @@ parent: Nokia
 <ImageFigure file="g-010g-a.jpg" alt="G-010G-A" caption="Nokia G-010G-A" />
 
 # Curiosity
+
+This is a OEM product of Nokia[^oem].
 
 In the USA, the ex-BellSouth network deploys some ONTs with a 'ALT Optics' label that use a different wave length, 1310 nm for upstream and 1550 nm for downstream (instead of 1490 nm).
 This was done to be able to quickly convert a network with low fibre capacity while allowing the same fibre to be reused for multiple services contemporarily: both FTTH and FTTC/IFITL[^att_alt_optics_1],[^att_alt_optics_2],[^att_alt_optics_3].

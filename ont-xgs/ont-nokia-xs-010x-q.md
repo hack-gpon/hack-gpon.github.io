@@ -9,16 +9,19 @@ parent: Nokia
 |                  |                                                                                  |
 | ---------------- | -------------------------------------------------------------------------------- |
 | Vendor           | Nokia                                                                            |
-| Model            | XS-010X-Q                                                                        |
+| Model            | XS-010X-Q (3FE48118AC)[^ponwiki-xs010xq]                                         |
 | ODM              | CIG                                                                              |
 | ODM Product Code | XG-99YF                                                                           |
 | Chipset          | [Cortina CA8271A](/chipset-cortina-ca827x)                                       |
+| CPU              | Taroko (MIPS)[^ponwiki-xs010xq]                                                  |
+| CPU Clock        | 500MHz[^ponwiki-xs010xq]                                                         |
+| Bootloader       | U-Boot 2015.04 (CIG XGS-PON Boot Version 1.0.0)                                  |
 | Manufacter       | CIG                                                                              |
-| Flash            | 128MB                                                                            |
-| RAM              | 128MB                                                                            |
+| Flash            | 128MB SPI NAND (Macronix MX35LF1GE4AB)[^ponwiki-xs010xq]                         |
+| RAM              | 128MB DDR3 (Nanya NT5CC64M16GP)[^ponwiki-xs010xq]                                |
 | System           | Custom Linux by Cortina (Saturn SDK) based on Kernel 4.4                         |
 | 10GBaseT         | Yes                                                                              |
-| Optics           | SC/APC                                                                           |
+| Optics           | SC/APC (Tx 1270 nm / Rx 1577 nm), laser driver MACOM M02181[^ponwiki-xs010xq]    |
 | IP address       | 192.168.100.1                                                                    |
 | Web Gui          | ✅ Port 80 user: `admin`, password: `1234`                                       |
 | SSH              | ✅ (see Enable SSH)                                                              |
@@ -28,6 +31,21 @@ parent: Nokia
 | Serial encoding  | 8-N-1                                                                            |
 | Form Factor      | ONT                                                                              |
 
+
+## Default credentials
+
+| Service | Username  | Password | Notes                                                       |
+| ------- | --------- | -------- | ----------------------------------------------------------- |
+| Web GUI | `admin`   | `1234`   | `http://192.168.100.1/`                                     |
+| Telnet  | `admin`   | `1234`   | limited `GponSLID` shell, see [Enable Telnet Full Shell](#enable-telnet-full-shell) |
+| Telnet  | `ONTUSER` | generated | full shell, only after changing `admin_mask`               |
+| Serial  | `ONTUSER` | generated | full shell                                                 |
+
+The telnet and web credentials are also confirmed by [pon.wiki](https://pon.wiki/xgs-pon/ont/nokia/xs-010x-q/#telnet-credentials)[^ponwiki-xs010xq].
+
+## EEPROM
+
+The ONT has no SFP cage, but the optical module still has a DDM EEPROM: it is handled by the MACOM M02181 laser driver[^ponwiki-xs010xq].
 
 ## Accessing the Web GUI
 
@@ -84,9 +102,33 @@ Newer firmware versions (starting from 3FE49337BOCK28) disable the serial consol
 | mtd13 | 01078000 | 0001f000  | "userdata"      |
 | mtd14 | 00b09000 | 0001f000  | "squashfs_ubi"  |
 
+::: info Info
+The `/proc/mtd` captured by pon.wiki on another unit shows slightly different sizes for `ssb` (`00400000`), `uboot-env2` (`00100000`) and the first `squashfs_ubi` (`00be1000`): the UBI volumes depend on the installed firmware. See the dump below[^ponwiki-xs010xq].
+:::
+
 This ONT supports dual boot. 
 
 `kernel0` and `rootfs0` respectively contain the kernel and firmware of the first image, `kernel1` and `rootfs1` the kernel and firmware of the second one.
+
+## Boot log and system information
+
+The following dumps were taken by the pon.wiki contributors[^ponwiki-xs010xq].
+
+::: details Boot log
+<<< ./serial_dump/nokia-xs-010x-q/bootlog.txt
+:::
+
+::: details /proc/cpuinfo
+<<< ./serial_dump/nokia-xs-010x-q/procfs_cpuinfo.txt
+:::
+
+::: details /proc/meminfo
+<<< ./serial_dump/nokia-xs-010x-q/procfs_meminfo.txt
+:::
+
+::: details /proc/mtd
+<<< ./serial_dump/nokia-xs-010x-q/procfs_mtd.txt
+:::
 
 <!--@partial: ./_partials/ont-nokia-use.md-->
 
@@ -135,3 +177,5 @@ Now reboot the ONT and you can access telnet with `ONTUSER` and full power :)
 # Miscellaneous Links
 
 - [pon.wiki: Nokia XS-010X-Q](https://pon.wiki/xgs-pon/ont/nokia/xs-010x-q/)
+
+[^ponwiki-xs010xq]: [pon.wiki: XS-010X-Q (3FE48118AC) / CIG XG-99YF](https://pon.wiki/xgs-pon/ont/nokia/xs-010x-q/), licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/); boot log and `procfs` dumps imported from the [PONwiki repository](https://github.com/up-n-atom/PONwiki/tree/main/docs/xgs-pon/ont/nokia/xs-010x-q).

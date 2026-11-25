@@ -1,0 +1,472 @@
+9601D
+PRELOADER Bismarck 3.5
+II: PLR:9d28e825, Build_date:23121209, Toolkit:rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-131105
+II: Disable OCP Timeout Monitor
+II: Disable LX Timeout Monitor
+II: Enable Triple Synchronizer
+II:cg_cpu_clk_init doneII:cg_spif_clk_init doneII: CPU 300MHz (600/2/0), MEM 325MHz, LX 200MHz, SPIF 25MHz
+II: NOR SPI-F... 204016/MMIO16-1/ModeC done
+AK: DRAM AUTO CALIBRATION(20210202)
+AK: ZQ Calibration PassedAK: ZQ Calibration PassedAK: ZQ Calibration PassedAK: ZQ Calibration PassedAK: MR0: 0x00100952
+AK: MR1: 0x00110040
+AK: MR2: 0x00120000
+AK: MR3: 0x00130000
+AK: clear dwdqor
+AK: Bit/max_r_s/max_r_l/max_w_s/max_w_l    Bit/max_r_s/max_r_l/max_w_s/max_w_l(Hex)
+   [ 0]       0      1f       0      17   [16]       0      1f       0      17
+   [ 1]       0      1f       0      17   [17]       0      1f       0      17
+   [ 2]       0      1f       0      17   [18]       0      1f       0      15
+   [ 3]       0      1f       0      17   [19]       0      1f       0      15
+   [ 4]       0      1f       0      17   [20]       0      1f       0      15
+   [ 5]       0      1f       0      15   [21]       0      1f       0      15
+   [ 6]       0      1f       0      17   [22]       0      1f       0      17
+   [ 7]       0      1f       0      15   [23]       0      1f       0      15
+   [ 8]       0      1f       0      1b   [24]       0      1f       0      1b
+   [ 9]       0      1f       0      1d   [25]       0      1f       0      1b
+   [10]       0      1f       0      1b   [26]       0      1f       0      19
+   [11]       0      1f       0      1b   [27]       0      1f       0      1b
+   [12]       0      1f       0      1d   [28]       0      1f       0      1b
+   [13]       0      1f       0      1b   [29]       0      1f       0      1b
+   [14]       0      1f       0      1d   [30]       0      1f       0      1d
+   [15]       0      1f       0      1b   [31]       0      1f       0      19
+AK: DQ enable delay sync with DQ delay tap.
+    0xb80015D0=0x07070707, 0xb80015D4=0x07070707, 0xb80015D8=0x09090909, 0xb80015DC=0x09090909
+AK: DRAM size = 0x2000000
+AK: Disable read after write function
+AK: Support tREFI divided by 4
+AK: dram auto calibrtaion is done
+II: MEM_PROBE_OK
+II: MEM_XLAT_OK
+II: MEM_TO_REG_OK
+II: MEM_CAL_OK
+II: Change Stack from 0x9f007ff8 to 0x80efffe0
+II: Decompressing U-Boot (0x81c00000 <- 0x9fc179c0)... (179 KB <- 68 KB) OK
+II: Starting U-boot... 
+
+
+U-Boot 2011.12.NA (Dec 12 2023 - 09:54:22)
+
+Board: RTL9601D, CPU:300MHz, LX:200MHx, MEM:325MHz, Type:DDR2
+DRAM: 32 MB
+SPI-F: 204016/MMIO16-1/ModeC 1x4 MB (plr_flash_info @ 81c2b810)
+Loading 8192B env. variables from offset 0x40000
+Loading 8192B env. variables from offset 0x42000
+*** Warning - bad CRC, using default environment
+
+Loaded 8192B env. variables from offset 0x40000
+Net:   LUNA GMAC 
+Warning: eth device name has a space!
+
+Hit any key to stop autoboot:  0
+## Booting kernel from Legacy Image at 94078000 ...
+   Image Name:   Linux Kernel Image
+   Created:      2023-12-12   2:04:46 UTC
+   Image Type:   MIPS Linux Kernel Image (lzma compressed)
+   Data Size:    881123 Bytes = 860.5 KB
+   Load Address: 80000000
+   Entry Point:  80000000
+   Verifying Checksum ... OK
+   Uncompressing Kernel Image ... OK
+
+Starting kernel ...
+
+=================================
+rtk_ldo_init
+=================================
+0xbb000044=0x00000002
+0xbb000130=0x00ec0005
+=================================
+rtk_ims_init
+=================================
+starting pid 116, tty '': '/etc/init.d/rcS'
+rcS.sdk
+mount: mounting devpts on /dev/pts failed: No such device
+=== Start to run rc0 / rc63 ===
+----- do_rc [/etc/init.d/rc2] -----
+mount: mounting proc on /proc failed: Device or resource busy
+mount: mounting sysfs on /sys failed: Device or resource busy
+Mounting /dev/mtdblock3 onto /var/config as the configuration data storage
+----- do_rc [/etc/init.d/rc3] -----
+no need to do reset to default
+open_queue: No such file or directory
+open_queue: No such file or directory
+rtkbosa: Donât care pon mode, use general file
+md5sum: can't open '/var/config/rtkbosa_k.bin': No such file or directory
+cat: can't open '/var/config/rtkbosa_k_checksum': No such file or directory
+rtkbosa: checksumold = 
+rtkbosa: Use general file [/var/config/rtkbosa_k.bin]
+set_msgqueue_max_size:180> set msgqidds.msg_qbytes=20600 OK
+set_msgqueue_max_size:180> set msgqidds.msg_qbytes=20600 OK
+rtkbosa: Version 2.9 (Dec 12 2023 - 10:00:25)
+rtkbosa: Detecting UX3320S ...
+rtkbosa: Read 0x51.0xF5(0x55): 0x55
+rtkbosa: Read 0x51.0xF6(0x58): 0x58
+rtkbosa: Read 0x51.0xF7(0x33): 0x33
+rtkbosa: Read 0x51.0xF8(0x33): 0x33
+rtkbosa: Read 0x51.0xF9(0x32): 0x32
+rtkbosa: Read 0x51.0xFA(0x30): 0x30
+rtkbosa: Read 0x51.0xFB(0x53): 0x53
+rtkbosa: UXFASTIC UX3320S is Found.
+rtkbosa: INIT_STATE (Table 3, 0xF0): 0xff
+rtkbosa: Init UX3320S ...
+rtkbosa: Open file [/var/config/rtkbosa_k.bin]
+rtkbosa: Open file [/var/config/rtkbosa_k.bin] error
+rtkbosa: Use default file: /var/config/ux3320s_bob.conf
+rtkbosa: Init UX3320S ... Done
+rtkbosa: The Vendor name or PN is not empty, do NOT set it.
+
+rtkbosa: done
+------ [-b]Bootup_config ------
+Fetch mib data (type 8) from program code.
+Fetch mib data (type 2) from program code.
+Pre-fetch mib data from program default done.
+Checking input file [/var/config/lastgood_hs.xml].
+[OK] Valid config file!
+
+***** config_parser(): dfname=[/etc/config_default_hs.xml](0) loaded *****
+
+***** config_parser(): fname=[/var/config/lastgood_hs.xml](0) loaded *****
+
+[xml_INFO]: Load HS configuration success.
+Checking input file [/var/config/lastgood.xml].
+[OK] Valid config file!
+
+***** config_parser(): dfname=[/etc/config_default.xml](0) loaded *****
+
+***** config_parser(): fname=[/var/config/lastgood.xml](0) loaded *****
+
+[xml_INFO]: Load CS configuration success.
+==== check omci mib
+/etc/runigmp.sh: line 34: igmpd: not found
+running GPON mode ...
+insmod: can't insert 'rldp_drv.ko': No such file or directory
+/etc/runlansds.sh: line 5: can't create proc/lan_sds/sfp_app: nonexistent directory
+/etc/runlansds.sh: line 6: sfpapp: not found
+----- do_rc [/etc/init.d/rc10] -----
+----- do_rc [/etc/init.d/rc32] -----
+----- do_rc [/etc/init.d/rc34] -----
+MIB chain descriptors checking (total 9) ok !
+rcS.sdk init done!
+/etc/init.d/rcS: line 58: can't create /proc/sys/net/ipv6/conf/all/disable_ipv6: nonexistent directory
+/etc/init.d/rcS: line 74: can't create /proc/sys/net/ipv6/conf/all/forwarding: nonexistent directory
+<startup.c 393 startELan> i=0 remap[0]=0 portid=0 eth0.2
+system(): /bin/echo 0 eth0.2 > /proc/rtl8686gmac/dev_port_mapping
+sh: can't create /proc/sys/net/ipv6/conf/br0/dad_transmits: nonexistent directory
+exec /bin/boa failed
+rtk_pon_led_SpecType_set 0
+TRACE: /bin/ethctl addsmux bridge nas0 nas0_0 napt brpppoe
+rcS init done!
+
+Please press Enter to activate this console. 1483 bridged
+[ main ] 113 - ERROR:  omci wait dm count : 1
+
+sh: /bin/diag: not found
+sh: can't create /proc/sys/net/ipv6/conf/br0/dad_transmits: nonexistent directory
+iptables v1.2.7a: Couldn't find target `lan_mark'
+
+Try `iptables -h' or 'iptables --help' for more information.
+Illegal target name 'portmapping'.
+exec /bin/ip failed
+exec /bin/ip failed
+exec /bin/ip failed
+exec /bin/ip failed
+exec /bin/ip failed
+exec /bin/ip failed
+exec /bin/ip failed
+exec /bin/ip failed
+exec /bin/ip failed
+exec /bin/ip failed
+exec /bin/ip failed
+exec /bin/ip failed
+exec /bin/ip failed
+exec /bin/ip failed
+exec /bin/ip failed
+exec /bin/ip failed
+exec /bin/ip failed
+exec /bin/ip failed
+exec /bin/ip failed
+exec /bin/ip failed
+exec /bin/ip failed
+exec /bin/ip failed
+exec /bin/ip failed
+exec /bin/ip failed
+exec /bin/ip failed
+exec /bin/ip failed
+exec /bin/ip failed
+exec /bin/ip failed
+echo "0 1 0 0" > /proc/sys/loopback_detect/lan_port_remapping
+loopback: LoopExistPeriod = 5
+loopback: LoopCancelPeriod = 300
+loopback: Ereset_loop_intf-1155
+tenable loopback detect 
+hernetType = 0xFFFA
+loopback: vid = untagged
+total 1 vlan values
+sh: igmpd: not found
+[ main ] 113 - ERROR:  omci wait dm count : 2
+
+br0: port 1(eth0.2) entering forwarding state
+iptables: No chain/target/match by that name
+iptables: No chain/target/match by that name
+iptables v1.2.7a: Couldn't find match `comment'
+
+Try `iptables -h' or 'iptables --help' for more information.
+iptables: No chain/target/match by that name
+Interface name length cannot exceed 15 characters.
+[ cmem_initSharedBuff ] 706:  Init shared buffer success
+
+[ cmem_initSharedBuff ] 723:  Init shared semaphore success
+
+[ dm_shmInit ] 079:  creating shared memory region, size=1048576
+[ dm_shmInit ] 118:  attach to shmId=98307 at 0x58800000
+[ dm_lockInit ] 116:  create semaphore...
+[ cmem_attachSharedBuff ] 748:  Start attach shared buffer
+
+[ cmem_attachSharedBuff ] 775:  Attach shared buffer success
+
+[ dm_readFile ] 2219 - ERROR:  can not open xml file /var/tmp/pc/reduced_data_model.xml!, about to open file /etc/reduced_data_model.xml
+[ cmem_detachSharedBuff ] 798:  Start detach shared buffer
+
+[ cmem_detachSharedBuff ] 817:  Detach shared buffer success
+
+[ main ] 113 - ERROR:  omci wait dm count : 3
+
+[ cmem_attachSharedBuff ] 748:  Start attach shared buffer
+
+[ cmem_attachSharedBuff ] 775:  Attach shared buffer success
+
+[ cmem_detachSharedBuff ] 798:  Start detach shared buffer
+
+[ cmem_detachSharedBuff ] 817:  Detach shared buffer success
+
+[ dm_postHook ] 1033 - ERROR:  X_TP_ConfigVersion 5a000002, X_TP_DMVersion 5a000002
+[25.490][cos] 517 - ERROR: Disable gpon driver before true SN set
+
+sh: can't create /proc/gpon/debug: nonexistent directory
+[ rsl_initDevInfo ] 1725:  === softwareVersion 0.1.0 3.0.0 v6066.0 Build 231212 Rel.36338n ===
+[ rsl_initDevInfo ] 1783:  === hardwareVersion XZ005-G6 v1.0 00000000 ===
+[ oal_sys_getOldTZInfo ] 2703 - ERROR:  Open TZ file error!
+sh: ntpc: not found
+[ dm_shmInit ] 079:  creating shared memory region, size=1048576
+[ dm_shmInit ] 105:  created shared memory, shmid=98307
+[ dm_shmInit ] 118:  attach to shmId=98307 at 0x58800000
+[ main ] 113 - ERROR:  omci wait dm count : 4
+[ dm_shmInit ] 079:  creating shared memory region, size=1048576
+[ dm_shmInit ] 105:  created shared memory, shmid=98307
+[ dm_shmInit ] 118:  attach to shmId=98307 at 0x58800000
+sh: dnsProxy: not found
+killall: dnsmasq: no process killed
+sh: dnsmasq: not found
+[ chkDnsParameter ] 156:  Empty DNSServer()
+[ chkDnsParameter ] 156:  Empty DNSServer()
+sh: can't create /proc/sys/net/ipv6/conf/all/accept_ra: nonexistent directory
+sh: can't create /proc/sys/net/ipv6/conf/all/autoconf: nonexistent directory
+sh: dhcpc: not found
+iptables: Bad rule (does a matching rule exist in that chain?)
+device br0 already exists; can't create bridge with the same name
+[ oal_intf_setIfMac ] 529:  No need to set MAC for br0!
+[ rsl_initDev2BridgeObj ] 527:  may cause some Bad Rule errors, just ignore
+iptables: Bad rule (does a matching rule exist in that chain?)
+iptables: Bad rule (does a matching rule exist in that chain?)
+iptables: Bad rule (does a matching rule exist in that chain?)
+sh: can't create /sys/class/net/br0/bridge/multicast_snooping: nonexistent directory
+[ oal_intf_setIfMac ] 529:  No need to set MAC for eth0.2!
+[ util_enFuncQueue ] 117:  DEV2_ETH_INTF object do 2 operation enqueue
+[ util_deFuncQueue ] 156:  DEV2_ETH_INTF object do 2 operation dequeue - 1
+[ rsl_setUpDev2BridgePortObj ] 884:  eth0.2 isWanConn=0 moveIntfToBr0=0 br0
+sh: can't create /proc/sys/net/ipv6/conf/eth0.2/disable_ipv6: nonexistent directory
+device eth0.2 is already a member of a bridge; can't enslave it to bridge br0.
+[ ethLink_createParam ] 790:  ethlink.index=0
+[ ethLink_createParam ] 825:  ethlink.wanindex=-1
+[ ethLink_isLowLayerWithSameIfname ] 445:  pEthLinkObj->lowerLayers=Device.Bridging.Bridge.1.Port.1.
+[ util_getObjFromFullpath ] 1365 - ERROR:  Failed to get object from fullPath(Device.Bridging.Bridge.1.Port.1.), because oid 165 != 91.
+[ ethLink_isLowLayerWithSameIfname ] 487:  perror:1
+[ dm_getParamValue ] 1298 - ERROR:  Get instance description failed. object name = Interface
+[ rsl_buildAdtWanMapList ] 9909:  perror:9805
+[ rsl_adt_syncWanObj ] 10859:  perror:9805
+[ rsl_adt_syncObj ] 498 - ERROR:  Failed to sync DEV2_ADT_WAN
+[ oal_util_setProcLanAddr ] 313 - ERROR:  ip_conntrack module is not loaded, or we did not open the CONFIG_NF_CT_LOCAL_LIMIT_ENTRY
+[ stat_setsockopt ] 217 - ERROR:  statSetsockopt: 262 opt error
+[ oal_stat_addNetInfo ] 776 - ERROR:  Failed to call stat_setsockopt
+iptables: Bad rule (does a matching rule exist in that chain?)
+sh: ip6tables: not found
+[ oal_lan6_stopDhcp6s ] 720:  Could not find pid of dibbler-server with interface name is br0!
+[ oal_lan6_startDhcp6s ] 569 - ERROR:  Can not open file /var/run/dibbler/br0/server.conf, failed to start dhcp6s!
+[ rsl_setDev2Dhcpv6ServerObj ] 172 - ERROR:  Start dhcp6s error!
+[ rsl_setObj ] 1562:  perror:1
+[ rsl_setDev2Dhcpv6ServerPoolObj ] 293:  perror:1
+[ rsl_setObj ] 1562:  perror:1
+[ autoConfdhcp6sMainPoolPrefix ] 784:  perror:1
+[ rsl_lan6_setV6Prefix ] 1096:  perror:1
+[ rsl_setObj ] 1562:  perror:1
+[ rsl_lan6_responseUp ] 1267:  perror:1
+[ ipIntf_lan_connect ] 4716:  perror:1
+[ rsl_setUpDev2IpIntfObj ] 7096 - ERROR:  Failed to setUp(Default), ret=1
+[ rsl_intfStack_setUpAllHiLayers ] 1463 - ERROR:  Failed to setUp Device.IP.Interface.1., ret(1)
+rdpSNPassowdInfoGet: sn=TPLGxxxx, password=
+<fMgmtInit:601> is the so is not a regular file.
+<fMgmtInit:601> is the so is not a regular file.
+<fMgmtInit:601> is the so is not a regular file.
+Module libigmpipc.so is loaded and inited
+Module /lib/features/internal/bdp_00000008.so is inited
+load moduleOptInitFunc
+Module /lib/feport 2 aassign to pon0
+tpon0 -> 0x4
+ures/internal/bdp_00000080.so is inited
+no hook voice service
+MIB_Table_Init Init mib table:mib_Me242.so fail, error code is:1...
+MIB_Table_Init Init mib table:mib_Me243.so fail, error code is:1...
+omci_wrapper_msgHandler: devMode 0,receiveState 1,usrLogLvl 1, drvLogLvl 1,sn TPLGxxxx
+MIB_Table_Init Init mib table:mib_Me370.so fail, error code is:1...
+omci_wrapper_setPhyPwrDown ioctl failed -1
+Set port 0 Admin State Error: 0x1
+[ dm_shmInit ] 079:  creating shared memory region, size=1048576
+[ dm_shmInit ] 105:  created shared memory, shmid=98307
+[ dm_shmInit ] 118:  attach to shmId=98307 at 0x58800000
+Not in Mode H, skip ME 373
+meOperCb[0] handler returns fail: HW ME373
+Not in Mode H, skip ME 350
+meOperCb[0] handler returns fail: HW ME350
+iptables: Bad rule (does a matching rule exist in that chain?)
+omci_wrpriority: 7, portmask 255, rx: c026b34c
+apriority: 0, portmask 127, rx: 8023b8b8
+pinsert here, priority: 4, portmask 4, rx: 80175200
+per_activateGpon ioctl failed
+sh: can't create /proc/domain/domain_name: nonexistent directory
+Alarm handler returns fail: EthUni
+[ http_set_domain ] 996 - ERROR:  u_domain: tplinkmodem.net
+[ ethLink_createParam ] 790:  ethlink.index=0
+[ ethLink_createParam ] 825:  ethlink.wanindex=-1
+[ dm_getObj ] 743 - ERROR:  Get instance description failed. object name = Interface
+[ dm_getObj ] 744:  1#6
+[ rsl_getObj ] 1400:  perror:9805
+[ rsl_intfStack_getIfNameFromLoLayers ] 561:  perror:9805
+[ ethLink_createParam ] 759 - ERROR:  Failed to get intfName from lowerLayer(Device.Ethernet.Interface.6.) path, ret(9805).
+[ rsl_initDev2EthLinkObj ] 2056 - ERROR:  Failed to create the parameter for EthLink obj, ret(9805).
+[ dm_getObj ] 743 - ERROR:  Get instance description failed. object name = Interface
+[ dm_getObj ] 744:  1#6
+[ rsl_getObj ] 1400:  perror:9805
+[ rsl_intfStack_getIfNameFromLoLayers ] 561:  perror:9805
+[ ethLink_createParam ] 759 - ERROR:  Failed to get intfName from lowerLayer(Device.Ethernet.Interface.6.) path, ret(9805).
+[ rsl_initDev2EthLinkObj ] 2056 - ERROR:  Failed to create the parameter for EthLink obj, ret(9805).
+[ rsl_initDev2GponAuthObj ] 850:  pNewObj:gponPwd=, oltMode=0, gponSn=54504C47xxxxxxxx
+[ oal_gpon_setGponParameter ] 263:  sn=54504C47xxxxxxxx, pwd=, pwdType=0, snType=1
+[ rsl_initDev2GponAuthCtc ] 1046 - ERROR:  Init loid tplink passwd tplink
+[ stat_setsockopt ] 217 - ERROR:  statSetsockopt: 257 opt error
+[ rsl_setObj ] 1562:  perror:4510
+[ rsl_initDev2StatCfgObj ] 208:  perror:4510
+insmod: can't insert '/lib/modules/kmdir/kernel/net/netfilter/nf_conntrack_ftp.ko': No such file or directory
+insmod: can't insert '/lib/modules/kmdir/kernel/net/netfilter/nf_nat_ftp.ko': No such file or directory
+iptables: Bad rule (does a matching rule exist in that chain?)
+insmod: can't insert '/lib/modules/kmdir/kernel/net/ipv4/netfilter/nf_nat_proto_gre.ko': No such file or directory
+insmod: can't insert '/lib/modules/kmdir/kernel/net/ipv4/netfilter/nf_nat_pptp.ko': No such file or directory
+iptables: Bad rule (does a matching rule exist in that chain?)
+iptables: Bad rule (does a matching rule exist in that chain?)
+insmod: can't insert '/lib/modules/kmdir/kernel/net/netfilter/nf_conntrack_tftp.ko': No such file or directory
+insmod: can't insert '/lib/modules/kmdir/kernel/net/netfilter/nf_nat_tftp.ko': No such file or directory
+insmod: can't insert '/lib/modules/kmdir/kernel/net/netfilter/nf_conntrack_h323.ko': No such file or directory
+insmod: can't insert '/lib/modules/kmdir/kernel/net/ipv4/netfilter/nf_nat_h323.ko': No such file or directory
+insmod: can't insert '/lib/modules/kmdir/kernel/net/netfilter/nf_conntrack_rtsp.ko': No such file or directory
+insmod: can't insert '/lib/modules/kmdir/kernel/net/ipv4/netfilter/nf_nat_rtsp.ko': No such file or directory
+insmod: can't insert '/lib/modules/kmdir/kernel/net/netfilter/nf_conntrack_sip.ko': No such file or directory
+insmod: can't insert '/lib/modules/kmdir/kernel/net/netfilter/nf_nat_sip.ko': No such file or directory
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+sh: ip6tables: not found
+[ dm_getObj ] 743 - ERROR:  Get instance description failed. object name = Chain
+[ dm_getObj ] 744:  1#4
+[ rsl_getObj ] 1400:  perror:9805
+[ util_getObjFromFullpath ] 1371:  perror:9805
+[ getChainInstance ] 830 - ERROR:  get chain path Device.Firewall.Chain.4. failed. errno 9805.
+[ refreshFirewallRule ] 1359 - ERROR:  get firewall rule chain failed. errno is 9805.
+[ rsl_initDev2FirewallObj ] 2649 - ERROR:  Refresh firewall rule faile. errno: 9805
+sh: ip6tables: not found
+upnpd: can't load library 'libupnp.so'
+#file: ./src/http_alias.c;line: 529; error = No such file or directory
+#msg: Unknown page: /main/ethWan.htm, skip it
+#file: ./src/http_alias.c;line: 529; error = No such file or directory
+#msg: Unknown page: /main/ethWanEdit.htm, skip it
+#file: ./src/http_alias.c;line: 529; error = No such file or directory
+#msg: Unknown page: /main/wan.htm, skip it
+#file: ./src/http_alias.c;line: 529; error = No such file or directory
+#msg: Unknown page: /main/advanceLte.htm, skip it
+#file: ./src/http_alias.c;line: 529; error = No such file or directory
+#msg: Unknown page: /main/wirelessSettings.htm, skip it
+#file: ./src/http_alias.c;line: 529; error = No such file or directory
+#msg: Unknown page: /main/wirelessBasic.htm, skip it
+#file: ./src/http_alias.c;line: 529; error = No such file or directory
+#msg: Unknown page: /main/wirelessAdv.htm, skip it
+#file: ./src/http_alias.c;line: 529; error = No such file or directory
+#msg: Unknown page: /main/multiSSID.htm, skip it
+#file: ./src/http_alias.c;line: 529; error = No such file or directory
+#msg: Unknown page: /main/multiSSIDBasic.htm, skip it
+#file: ./src/http_alias.c;line: 529; error = No such file or directory
+#msg: Unknown page: /main/ddos.htm, skip it
+#file: ./src/http_alias.c;line: 529; error = No such file or directory
+#msg: Unknown page: /main/alg.htm, skip it
+#file: ./src/http_alias.c;line: 529; error = No such file or directory
+#msg: Unknown page: /main/virtualServer.htm, skip it
+#file: ./src/http_alias.c;line: 529; error = No such file or directory
+#msg: Unknown page: /main/portTrigger.htm, skip it
+#file: ./src/http_alias.c;line: 529; error = No such file or directory
+#msg: Unknown page: /main/dmz.htm, skip it
+#file: ./src/http_alias.c;line: 529; error = No such file or directory
+#msg: Unknown page: /main/upnp.htm, skip it
+#file: ./src/http_alias.c;line: 529; error = No such file or directory
+#msg: Unknown page: /main/cwmp.htm, skip it
+#file: ./src/http_alias.c;line: 529; error = No such file or directory
+#msg: Unknown page: /main/operateMode.htm, skip it
+#file: ./src/http_alias.c;line: 529; error = No such file or directory
+#msg: Unknown page: /main/snmp.htm, skip it
+sh: can't create /proc/rtl8367s/eth_forward: nonexistent directory
+sh: can't create /proc/pon_phy/debug: nonexistent directory
+sh: can't create /proc/ux3320s/debug: nonexistent directory
+sh: write error: Invalid argument
+sh: write error: Invalid argument
+sh: write error: Invalid argument
+ mcast_rg_clear_all(), cmd=0
+omci_wrapper_setPhyPwrDown ioctl failed -1
+Set port 0 Admin State Error: 0x1
+Not in Mode H, skip ME 373
+meOperCb[0] handler returns fail: HW ME373
+Not in Mode H, skip ME 350
+meOperCb[0] handler returns fail: HW ME350
+omci_wrapper_setPhyPwrDown br0: port 1(eth0.2) entering disabled state
+iosomething error ?!
+ctl failed -1
+br0: port 1(eth0.2) entering forwarding state
+set veip gem flow [0] failed!
+omci_AddTrafficRule: BBA Platform: VLAN Mode CONTROL_BY_OLT
+omci_wrapper_setPhyPwrDown ioctl failed -1
+something error ?!
+omci_AddTrafficRule: BBA Platform: VLAN Mode CONTROL_BY_OLT
