@@ -1,0 +1,17 @@
+system type             : Falcon rev A22
+machine                 : SFP - Lantiq Falcon SFP Stick
+processor               : 0
+cpu model               : MIPS 34Kc V5.6
+BogoMIPS                : 265.98
+wait instruction        : yes
+microsecond timers      : yes
+tlb_entries             : 16
+extra interrupt vector  : yes
+hardware watchpoint     : yes, count: 4, address/irw mask: [0x0000, 0x0228, 0x0098, 0x0e40]
+isa                     : mips1 mips2 mips32r1 mips32r2
+ASEs implemented        : mips16 dsp mt
+shadow register sets    : 1
+kscratch registers      : 0
+core                    : 0
+VCED exceptions         : not available
+VCEI exceptions         : not available

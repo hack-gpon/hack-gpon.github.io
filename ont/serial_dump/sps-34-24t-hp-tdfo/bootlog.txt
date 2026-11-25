@@ -1,0 +1,151 @@
+ROM: V1.1.4
+ROM: CFG 0x00000006
+ROM: SFLASH-4
+hw fuse format 1
+
+
+U-Boot 2011.12-lantiq-gpon-1.2.24 (Nov 03 2014 - 22:46:28), Build: falcon_sfp_linux
+
+Board: SFP
+DRAM:  64 MiB
+Now running in RAM - U-Boot at: 83fc8000
+SF: Detected S25FL129P_64K with page size 64 KiB, total 16 MiB
+Chip:  FALCON-S (A22)
+Bootmode: 0x06
+Reset cause: Power-On Reset
+CPU Clock: 400 MHz
+Net:   SGMII, SERDES [PRIME]
+gpio: pin 105 (gpio 105) value is 0
+gpio: pin 106 (gpio 106) value is 0
+gpio: pin 107 (gpio 107) value is 1
+gpio: pin 108 (gpio 108) value is 1
+gpio: pin 3 (gpio 3) value is 1
+Press SPACE to delay and Ctrl-C to abort autoboot in 3 seconds
+SF: Detected S25FL129P_64K with page size 64 KiB, total 16 MiB
+## Booting kernel from Legacy Image at 80f00000 ...
+   Image Name:   MIPS OpenWrt Linux-3.10.12
+   Created:      2015-06-12   7:26:12 UTC
+   Image Type:   MIPS Linux Kernel Image (lzma compressed)
+   Data Size:    1183972 Bytes = 1.1 MiB
+   Load Address: 80002000
+   Entry Point:  80002000
+   Verifying Checksum ... OK
+   Uncompressing Kernel Image ... OK
+
+Starting kernel ...
+
+[    0.000000] Linux version 3.10.12 (jairo@localhost.localdomain) (gcc version 4.6.3 20120201 (prerelease) (Linaro GCC 4.6-2012.025
+[    0.000000] SoC: Falcon rev A22
+[    0.000000] bootconsole [early0] enabled
+[    0.000000] CPU revision is: 00019556 (MIPS 34Kc)
+[    0.000000] MIPS: machine is SFP - Lantiq Falcon SFP Stick
+[    0.000000] e=memsize=64
+[    0.000000] e=initrd_start=0xA0000000
+[    0.000000] e=initrd_size=0x0
+[    0.000000] e=flash_start=0xB0000000
+[    0.000000] e=flash_size=0x40C1A9E0
+[    0.000000] e=ethaddr=ac:9a:96:00:00:00
+[    0.000000] MEMSIZE = 67108864
+[    0.000000] Determined physical RAM map:
+[    0.000000]  memory: 04000000 @ 00000000 (usable)
+[    0.000000] debug: ignoring loglevel setting.
+[    0.000000] User-defined physical RAM map:
+[    0.000000]  memory: 03f00000 @ 00000000 (usable)
+[    0.000000] Initrd not found or empty - disabling initrd
+[    0.000000] Zone ranges:
+[    0.000000]   Normal   [mem 0x00000000-0x03efffff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x00000000-0x03efffff]
+[    0.000000] On node 0 totalpages: 16128
+[    0.000000] free_area_init_node: node 0, pgdat 8030c5f0, node_mem_map 81003460
+[    0.000000]   Normal zone: 126 pages used for memmap
+[    0.000000]   Normal zone: 0 pages reserved
+[    0.000000]   Normal zone: 16128 pages, LIFO batch:3
+[    0.000000] Primary instruction cache 32kB, VIPT, 4-way, linesize 32 bytes.
+[    0.000000] Primary data cache 32kB, 4-way, VIPT, cache aliases, linesize 32 bytes
+[    0.000000] pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+[    0.000000] pcpu-alloc: [0] 0
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 16002
+[    0.000000] Kernel command line: rootfstype=squashfs,jffs2 ip=192.168.1.10:192.168.1.100:192.168.2.0:255.255.255.0:::off ethaddrt
+[    0.000000] PID hash table entries: 256 (order: -2, 1024 bytes)
+[    0.000000] Dentry cache hash table entries: 8192 (order: 3, 32768 bytes)
+[    0.000000] Inode-cache hash table entries: 4096 (order: 2, 16384 bytes)
+[    0.000000] Writing ErrCtl register=00021b48
+[    0.000000] Readback ErrCtl register=00021b48
+[    0.000000] Memory: 60212k/64512k available (2558k kernel code, 4300k reserved, 668k data, 220k init, 0k highmem)
+[    0.000000] NR_IRQS:328
+[    0.000000] Setting up vectored interrupts
+[    0.000000] CPU Clock: 400MHz
+[    0.000000] Calibrating delay loop... 265.98 BogoMIPS (lpj=531968)
+[    0.036000] pid_max: default: 32768 minimum: 301
+[    0.040000] Mount-cache hash table entries: 512
+[    0.048000] pinctrl core: initialized pinctrl subsystem
+[    0.052000] NET: Registered protocol family 16
+[    0.072000] pinctrl-falcon pinctrl.0: Init done
+[    0.076000] FALC(tm) ON clock driver
+[    0.080000] clockevent device FALCON_CLK_EVT with timer 4, irq 124
+[    0.100000] bio: create slab <bio-0> at 0
+[    0.104000] FALC(tm) ON GPIO Driver, (C) 2012 Lantiq Deutschland Gmbh
+[    0.112000] Switching to clocksource FALCON
+[    0.120000] NET: Registered protocol family 2
+[    0.124000] TCP established hash table entries: 512 (order: 0, 4096 bytes)
+[    0.132000] TCP bind hash table entries: 512 (order: -1, 2048 bytes)
+[    0.136000] TCP: Hash tables configured (established 512 bind 512)
+[    0.144000] TCP: reno registered
+[    0.148000] UDP hash table entries: 256 (order: 0, 4096 bytes)
+[    0.152000] UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+[    0.160000] NET: Registered protocol family 1
+[    0.164000] RPC: Registered named UNIX socket transport module.
+[    0.168000] RPC: Registered udp transport module.
+[    0.176000] RPC: Registered tcp transport module.
+[    0.180000] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.188000] EASY98000 LED driver, Version 1.0.1 (c) Copyright 2013, Lantiq Deutschland GmbH
+[    0.200000] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.204000] jffs2: version 2.2 (NAND) (SUMMARY) (LZMA) (RTIME) (CMODE_PRIORITY) (c) 2001-2006 Red Hat, Inc.
+[    0.216000] msgmni has been set to 117
+[    0.220000] io scheduler noop registered
+[    0.224000] io scheduler deadline registered (default)
+[    0.232000] 1e100c00.serial: ttyLTQ0 at MMIO 0x1e100c00 (irq = 104) is a lantiq,asc
+[    0.236000] console [ttyLTQ0] enabled, bootconsole disabled
+[    0.236000] console [ttyLTQ0] enabled, bootconsole disabled
+[    0.256000] m25p80 spi32766.0: found s25fl129p1, expected s25fl129p0
+[    0.260000] m25p80 spi32766.0: s25fl129p1 (16384 Kbytes)
+[    0.264000] 4 cmdlinepart partitions found on MTD device sflash
+[    0.272000] Creating 4 MTD partitions on "sflash":
+[    0.276000] 0x000000000000-0x000000040000 : "uboot"
+[    0.284000] 0x000000040000-0x0000000c0000 : "uboot_env"
+[    0.288000] 0x0000000c0000-0x000000800000 : "linux"
+[    0.296000] 0x0000001e1124-0x000000800000 : "rootfs"
+[    0.300000] mtd: partition "rootfs" must either start or end on erase block boundary or be smaller than an erase block -- forciny
+[    0.312000] mtd: partition "rootfs" set to be root filesystem
+[    0.316000] mtd: partition "rootfs_data" created automatically, ofs=0x490000, len=0x370000
+[    0.324000] 0x000000490000-0x000000800000 : "rootfs_data"
+[    0.332000] 0x000000800000-0x000001000000 : "image1"
+[    0.344000] wdt 1f8803f0.watchdog: Init done
+[    0.348000] TCP: cubic registered
+[    0.348000] NET: Registered protocol family 17
+[    0.356000] 8021q: 802.1Q VLAN Support v1.8
+[   12.416000] VFS: Mounted root (squashfs filesystem) readonly on device 31:3.
+[   12.420000] Freeing unused kernel memory: 220K (80329000 - 80360000)
+- preinit -
+Press the [f] key and hit [enter] to enter failsafe mode
+- regular preinit -
+[   19.248000] jffs2: notice: (378) jffs2_build_xattr_subsystem: complete building xattr subsystem, 1 of xdatum (0 unchecked, 0 orp.
+switching to jffs2
+- init -
+
+Please press Enter to activate this console. [   21.628000] IFXOS, Version 1.5.19 (c) Copyright 2009, Lantiq Deutschland GmbH
+[   21.660000] Button Hotplug driver version 0.4.1
+[   21.684000] GPON SFP I2C Slave Driver, Version 1.5.0 (c) Copyright 2013, Lantiq Deutschland GmbH
+[   21.692000] [sfp_i2c] I2C-module id=87 revision=2
+[   21.968000] FALC(tm) ON Optic Driver, version 6.4.1 (c) Copyright 2013, Lantiq Deutschland GmbH
+[   22.612000] FALC(tm) ON Base Driver, Version 6.4.2.0 Copyright (c) 2013, Lantiq Deutschland GmbH
+[   22.620000] [onu] gpe_table[39] FIO_GPE_SCE_CONSTANTS_GET - cmd 0xc0600527 - write size 0
+[   22.648000] FALC(tm) ON Ethernet Driver, Version 0.7.0 Copyright (c) 2013, Lantiq Deutschland GmbH
+MIPS: set unaligned_action to 'SHOW'
+[omci_usock_server] OMCI Usock Server v0.0.1 started...
+[   35.536000] [onu] serial number: ALCLFAB41898
+[   35.844000] [onu] GPHY Firmware loaded into RAM (phy11g.bin)
+[   35.904000] [onu] PE[255] firmware loaded v9.47.0.0
+Start status monitoring for I2C: slope 0.921100, offset 2.191600

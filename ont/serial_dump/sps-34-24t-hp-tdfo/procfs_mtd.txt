@@ -1,0 +1,7 @@
+dev:    size   erasesize  name
+mtd0: 00040000 00010000 "uboot"
+mtd1: 00080000 00010000 "uboot_env"
+mtd2: 00740000 00010000 "image0"
+mtd3: 00800000 00010000 "linux"
+mtd4: 006d8077 00010000 "rootfs"
+mtd5: 003f0000 00010000 "rootfs_data"

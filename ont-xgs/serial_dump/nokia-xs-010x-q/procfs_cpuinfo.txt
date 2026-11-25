@@ -1,0 +1,17 @@
+system type             : Saturn
+machine                 : Cortina Access Saturn SFU
+processor               : 0
+cpu model               : Taroko V0.2
+BogoMIPS                : 666.41
+Revision                : D
+wait instruction        : no
+microsecond timers      : yes
+tlb_entries             : 64
+extra interrupt vector  : no
+hardware watchpoint     : no
+isa                     : mips1
+ASEs implemented        : mips16
+shadow register sets    : 1
+kscratch registers      : 0
+package                 : 0
+core                    : 0

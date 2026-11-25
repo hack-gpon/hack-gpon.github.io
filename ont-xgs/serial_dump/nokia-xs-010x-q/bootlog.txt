@@ -1,0 +1,336 @@
+NOTICE:  BL1: GLOBAL_STRAP 0x8880
+NOTICE:  BL1: Fabric Clock Speed 250 MHz
+NOTICE:  BL1: OTP Clock Speed 62 MHz
+NOTICE:  BL1: CPU Clock Speed 666 MHz
+NOTICE:  BL1: I/O Clock 100 MHz
+NOTICE:  BL1: PER Clock 125 MHz
+NOTICE:  Secure Boot Firmware - Cortina Access Inc.
+NOTICE:  BL1: v1.3(release):957a6b2
+NOTICE:  BL1: Built : 16:43:43, Apr 17 2018
+NOTICE:  boot from serial NAND flash
+NOTICE:  SERIAL_NAND: ID: 0x12c200
+NOTICE:  SERIAL_NAND: chip_id MACRONIX
+NOTICE:  SERIAL_NAND: Sizes - oob 0x40, page 0x800, block 0x20000
+NOTICE:  Platform initialized
+NOTICE:  BL1: Booting BL2
+NOTICE:  Chip Sub-Revision D
+NOTICE:  Saturn Soc
+NOTICE:  Change IO clock
+NOTICE:  DIAGNOSTIC_TASK ON
+NOTICE:  DDR3 800MHz
+NOTICE:  PAD_BUS_0=0x5dd80000
+NOTICE:  PAD_CTRL_PROG=0xc000000
+NOTICE:  rzq_480code:0x9
+NOTICE:  # PAD_ZCTRL_STATUS: 0x800a8576  ==> NOTICE:  TTCN[TTFN]=0x5[0x0]; [CPMSB,TTCP][TTFP]=0x0,0x5[0x1]
+NOTICE:  # PAD_ZCTRL_STATUS: 0x80091276  ==> NOTICE:  TTCN[TTFN]=0x2[0x1]; [CPMSB,TTCP][TTFP]=0x0,0x2[0x1]
+NOTICE:  WriteLeveling PI of DRAM_CK moved 0 tick
+NOTICE:  ddr_write_leveling: 0
+NOTICE:  ddr_write_leveling: 1001
+NOTICE:  ddr_ck_training:DIAG_ID=2: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=2: PLL_PI1 starting value 0x40808
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=2: going left 13 ticks; going right 14 ticks
+NOTICE:  ddr_wr_data_training: min_reg_pi_dq[0]: 3; max_reg_pi_dq[0]: 13
+NOTICE:  ddr_ck_training:DIAG_ID=3: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=3: PLL_PI1 starting value 0x40707
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=3: going left 13 ticks; going right 14 ticks
+NOTICE:  ddr_dqs_gating: dqs_en gating trained as: 2
+NOTICE:  ddr_dqs_gating: dqs_en gating trained as: 2
+NOTICE:  ddr_ck_training:DIAG_ID=4: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=4: PLL_PI1 starting value 0x40707
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=4: going left 13 ticks; going right 14 ticks
+NOTICE:  rising_dqs_in_dly[0]: 0~31=15
+NOTICE:  rising_dqs_in_dly[1]: 0~31=15
+NOTICE:  rising_dqs_in_dly[2]: 0~31=15
+NOTICE:  rising_dqs_in_dly[3]: 0~31=15
+NOTICE:  falling_dqs_in_dly[0]:0~28=14
+NOTICE:  falling_dqs_in_dly[1]:0~29=14
+NOTICE:  falling_dqs_in_dly[2]:0~29=14
+NOTICE:  falling_dqs_in_dly[3]:0~29=14
+NOTICE:  rising_dqs_in_dly[4]: 0~31=15
+NOTICE:  rising_dqs_in_dly[5]: 1~31=16
+NOTICE:  rising_dqs_in_dly[6]: 0~31=15
+NOTICE:  rising_dqs_in_dly[7]: 0~31=15
+NOTICE:  falling_dqs_in_dly[4]:0~29=14
+NOTICE:  falling_dqs_in_dly[5]:0~30=15
+NOTICE:  falling_dqs_in_dly[6]:0~29=14
+NOTICE:  falling_dqs_in_dly[7]:0~29=14
+NOTICE:  rising_dqs_in_dly[8]: 1~31=16
+NOTICE:  rising_dqs_in_dly[9]: 0~31=15
+NOTICE:  rising_dqs_in_dly[10]: 1~31=16
+NOTICE:  rising_dqs_in_dly[11]: 0~31=15
+NOTICE:  falling_dqs_in_dly[8]:0~30=15
+NOTICE:  falling_dqs_in_dly[9]:0~29=14
+NOTICE:  falling_dqs_in_dly[10]:0~30=15
+NOTICE:  falling_dqs_in_dly[11]:0~29=14
+NOTICE:  rising_dqs_in_dly[12]: 0~31=15
+NOTICE:  rising_dqs_in_dly[13]: 0~31=15
+NOTICE:  rising_dqs_in_dly[14]: 0~31=15
+NOTICE:  rising_dqs_in_dly[15]: 0~31=15
+NOTICE:  falling_dqs_in_dly[12]:0~29=14
+NOTICE:  falling_dqs_in_dly[13]:0~28=14
+NOTICE:  falling_dqs_in_dly[14]:0~30=15
+NOTICE:  falling_dqs_in_dly[15]:0~29=14
+NOTICE:  ddr_ck_training:DIAG_ID=5: PLL_PI0 starting value 0x1010200
+NOTICE:  ddr_ck_training:DIAG_ID=5: PLL_PI1 starting value 0x40707
+NOTICE:  ddr_ck_training:FREQ=800; DIAG_ID=5: going left 13 ticks; going right 14 ticks
+NOTICE:  DDR Size: 128MB
+NOTICE:  Start DDR scan ...
+NOTICE:  DDR scan done
+NOTICE:  DDR Init done...
+NOTICE:  Recover io_clk...
+NOTICE:  Reduce Power for SFU
+NOTICE:  boot from serial NAND flash
+NOTICE:  SERIAL_NAND: ID: 0x12c200
+NOTICE:  SERIAL_NAND: chip_id MACRONIX
+NOTICE:  SERIAL_NAND: Sizes - oob 0x40, page 0x800, block 0x20000
+NOTICE:  BL2: v1.3(release):0e4fa4b
+NOTICE:  BL2: Built : 08:52:24, Jun 29 2020
+
+
+U-Boot 2015.04 (Aug 22 2022 - 14:54:39) Saturn-ASIC 
+CIG XGS-PON Boot Version: 1.0.0
+
+DRAM:  128 MiB
+SPI NAND: MX35LF1GE4AB (0xc212)
+   spare: 0x40      (64B)
+    page: 0x800     (2KB)
+   block: 0x20000   (128KB)
+    chip: 0x8000000(128MB)
+    Mode: 4/4
+SPI NAND: MX35LF1GE4AB (0xc212)
+   spare: 0x40      (64B)
+    page: 0x800     (2KB)
+   block: 0x20000   (128KB)
+    chip: 0x8000000(128MB)
+    Mode: 4/4
+crc1,2 ret is 0 0 value is 0x997437a8 0x997437a8,flag is 1 1
+To detect 5s reset.(183)
+To detect 5s reset end.(184)
+SPI NAND: MX35LF1GE4AB (0xc212)
+   spare: 0x40      (64B)
+    page: 0x800     (2KB)
+   block: 0x20000   (128KB)
+    chip: 0x8000000(128MB)
+    Mode: 4/4
+done
+Valid environment: 2
+done
+Valid environment: 1
+[    0.383504] console [ttyS0] enabled
+[    0.390362] bootconsole [early0] disabled
+[    0.398766] b2224178.uart: ttyS1 at I/O 0x0 (irq = 20, base_baud = 7812500) is a Cortina UART1
+[    0.407945] IPC: host cpu is PE0 , thisCPU=0x1 
+[    0.412367] IPC: list physical start from: 0x2810000
+[    0.417320] IPC: list virtual start from: 0xa2810000
+[    0.422219] IPC: list size: 0x4800
+[    0.425714] IPC: Debug:...Clearing memory.... from 0xa2811800
+[    0.431377] IPC: version is 100
+[    0.434500] IPC: irq = 24
+[    0.437117] CA_IPC:register succesfull:session_id[8] session 87ca3c80 msg_count 3 
+[    0.437117] 
+[    0.446433] ca_pelog_probe
+[    0.449013] pelog0: shm physical address : 0x2800000
+[    0.453968] pelog0: shm virtual address : 0xa2800000
+[    0.458878] pelog0: shm size: 0x1000
+[    0.462452] pelog1: shm physical address : 0x2801000
+[    0.467405] pelog1: shm virtual address : 0xa2801000
+[    0.472344] pelog1: shm size: 0x1000
+[    0.476399] ca_sflash b2223000.sflash: Cortina-Access Serial Flash driver
+[    0.483095] Serial flash: indirect/direct access mode
+[    0.488080] Serial flash type : 0x8000 
+[    0.491926] ca_jedec_probe : unrecognized JEDEC id 00c212
+[    0.497314] ca_sflash: probe of b2223000.sflash failed with error -5
+[    0.503921] ca_set_mux: group:98 reg_off:0 bit_off:18
+[    0.508840] ca_spi_nand b2223000.spi-nand: Cortina-Access SPI-NAND Flash driver
+[    0.516164] SPI-NAND io-mode:a00
+[    0.520331] SPI-NAND flash mfr-name: Macronix, mdr_id: 0xc2, dev_id: 0x12
+[    0.529974] spi_nand_base: SPI-NAND: MX35LF1GE4AB is found.
+[    0.535887] Bad block table found at page 65472, version 0x01
+[    0.541880] Bad block table found at page 65408, version 0x01
+[    0.547980] 12 cmdlinepart partitions found on MTD device ca_spinand_flash
+[    0.554713] Creating 12 MTD partitions on "ca_spinand_flash":
+[    0.560433] 0x000000000000-0x000000400000 : "ssb"
+[    0.566297] 0x000000400000-0x000000500000 : "uboot-env"
+[    0.572408] 0x000000500000-0x000000600000 : "dtb0"
+[    0.578236] 0x000000600000-0x000000c00000 : "kernel0"
+[    0.584278] 0x000000c00000-0x000003400000 : "rootfs0"
+[    0.590287] 0x000003400000-0x000003500000 : "dtb1"
+[    0.596093] 0x000003500000-0x000003b00000 : "kernel1"
+[    0.602043] 0x000003b00000-0x000006300000 : "rootfs1"
+[    0.608170] 0x000006300000-0x000007700000 : "userdata"
+[    0.614387] 0x000007700000-0x000007800000 : "mfginfo1"
+[    0.620430] 0x000007800000-0x000007900000 : "mfginfo2"
+[    0.626575] 0x000007900000-0x000007a00000 : "uboot-env2"
+[    0.633206] spi-ca77xx b2224098.spi: resource - [mem 0xb2224098-0xb22240d7 flags 0x200] mapped at 0xb2224098
+[    0.642943] spi-ca77xx b2224098.spi: irq 23
+[    0.647779] spi-ca77xx b2224098.spi: chipselect 0 already in use
+[    0.653687] spi_master spi32766: spi_device register error /spi@b2224098/voicepath_spi0@0
+[    0.661802] spi_master spi32766: Failed to create SPI device for /spi@b2224098/voicepath_spi0@0
+[    0.670628] i2c /dev entries driver
+[    0.674204] ca77xx-i2c b2224120.i2c: resource - [mem 0xb2224120-0xb2224147 flags 0x200] mapped at 0xb2224120
+[    0.683938] ca77xx-i2c b2224120.i2c: invalid timeout on /i2c@b2224120
+[    0.690305] ca77xx-i2c b2224120.i2c: invalid retries on /i2c@b2224120
+[    0.696780] ca77xx-i2c b2224120.i2c: irq 41
+[    1.051728] cortina_thermal bc10017c.thermal: SoC Temperature= 55
+[    1.058433] Synopsys Designware Multimedia Card Interface Driver
+[    1.066466] ip_tables: (C) 2000-2006 Netfilter Core Team
+[    1.071707] NET: Registered protocol family 17
+[    1.076144] 8021q: 802.1Q VLAN Support v1.8
+[    1.082809] ubi0: attaching mtd4
+[    1.303043] random: nonblocking pool is initialized
+[    1.354201] ubi0: scanning is finished
+[    1.369180] ubi0: attached mtd4 (name "rootfs0", size 40 MiB)
+[    1.374820] ubi0: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+[    1.381634] ubi0: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+[    1.388418] ubi0: VID header offset: 2048 (aligned 2048), data offset: 4096
+[    1.395367] ubi0: good PEBs: 320, bad PEBs: 0, corrupted PEBs: 0
+[    1.401356] ubi0: user volume: 1, internal volumes: 1, max. volumes count: 128
+[    1.408576] ubi0: max/mean erase counter: 2/0, WL threshold: 4096, image sequence number: 883191580
+[    1.417609] ubi0: available PEBs: 197, total reserved PEBs: 123, PEBs reserved for bad PEB handling: 20
+[    1.427167] ubi0: background thread "ubi_bgt0d" started, PID 48
+[    1.434420] ALSA device list:
+[    1.437231]   No soundcards found.
+[    4.190751] VFS: Mounted root (squashfs filesystem) readonly on device 31:12.
+[    4.202888] devtmpfs: mounted
+[    4.206453] Freeing unused kernel memory: 212K
+INIT: version 2.88 booting
+[    5.562694] ubi1: attaching mtd8
+[    5.697071] ubi1: scanning is finished
+[    5.711765] ubi1: attached mtd8 (name "userdata", size 20 MiB)
+[    5.717503] ubi1: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+[    5.724316] ubi1: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+[    5.731085] ubi1: VID header offset: 2048 (aligned 2048), data offset: 4096
+[    5.738042] ubi1: good PEBs: 160, bad PEBs: 0, corrupted PEBs: 0
+[    5.744037] ubi1: user volume: 1, internal volumes: 1, max. volumes count: 128
+[    5.751243] ubi1: max/mean erase counter: 309/192, WL threshold: 4096, image sequence number: 1877387500
+[    5.760719] ubi1: available PEBs: 0, total reserved PEBs: 160, PEBs reserved for bad PEB handling: 20
+[    5.770127] ubi1: background thread "ubi_bgt1d" started, PID 67
+UBI device number 1, total 160 LEBs (20316160 bytes, 19.4 MiB), available 0 LEBs (0 bytes), LEB size 126976 bytes (124.0 KiB)
+[    5.817690] UBIFS (ubi1:0): background thread "ubifs_bgt1_0" started, PID 76
+[    5.874375] UBIFS (ubi1:0): recovery needed
+[    6.011890] UBIFS (ubi1:0): recovery completed
+[    6.016316] UBIFS (ubi1:0): UBIFS: mounted UBI device 1, volume 0, name "userdata"
+[    6.023760] UBIFS (ubi1:0): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+[    6.033655] UBIFS (ubi1:0): FS size: 15998976 bytes (15 MiB, 126 LEBs), journal size 2920448 bytes (2 MiB, 23 LEBs)
+[    6.044075] UBIFS (ubi1:0): reserved for root: 0 bytes (0 KiB)
+[    6.049897] UBIFS (ubi1:0): media format: w4/r0 (latest is w4/r0), UUID EC112DFE-8893-43D5-BFCC-55A35A31B801, small LPT model
+Starting udev
+[    6.528720] udevd[87]: starting version 3.1.5
+[    7.179649] ubi1 error: ubi_open_volume: cannot open device 1, volume 0, error -16
+[    7.193732] ubi1 error: ubi_open_volume: cannot open device 1, volume 0, error -16
+[    7.477379] cig_kvos: loading out-of-tree module taints kernel.
+[    7.554298] ca-log: init calog-ioctl-dev OK (max_level 9, default_level 4)
+[    7.563492] ca-pal: init ca_pal_ioctl OK
+[    7.571296] ca-peri:hw_timer irq 22 install 
+[    7.600041] CIG GPIO LEDs Init.
+[    7.603333] ca_set_mux: group:6 reg_off:8 bit_off:6
+[    7.608053] ca_set_mux: group:7 reg_off:8 bit_off:7
+[    7.612917] ca_set_mux: group:9 reg_off:8 bit_off:9
+[    7.617826] ca_set_mux: group:c reg_off:8 bit_off:c
+[    7.622673] CIG GPIO LED module init.
+[    7.626315] ###########Init LED led, /leds/led@0, <NULL>.
+[    7.631683] ############Get GPIO DESC opt-led.
+[    7.636149] ca_pmx_request_gpio: offset:9 reg_off:8 bit_off:9
+[    7.641858] ###########Init LED led, /leds/led@1, <NULL>.
+[    7.647245] ############Get GPIO DESC alarm-led.
+[    7.651850] ca_pmx_request_gpio: offset:c reg_off:8 bit_off:c
+[    7.657587] ###########Init LED led, /leds/led@2, <NULL>.
+[    7.662959] ############Get GPIO DESC pwr-led.
+[    7.667410] ca_pmx_request_gpio: offset:7 reg_off:8 bit_off:7
+[    7.673137] ###########Init LED led, /leds/led@3, <NULL>.
+[    7.678510] ############Get GPIO DESC pwrg-led.
+[    7.683046] ca_pmx_request_gpio: offset:6 reg_off:8 bit_off:6
+[    7.688883] Init ret:0.
+[    7.730279] ubi1 error: ubi_open_volume: cannot open device 1, volume 0, error -16
+[    7.737769] nvram_nand_init_ca[411]:ca1:0,ca2:0
+[    7.742214] nvram_nand_init_ca 423 :get CA part2 [mtd10] failed
+[    7.764974] nvram_nand_read 195 
+[    7.768046] 
+[    7.769557] nvram_nand_eeprom_valid_check: chksum 0x45b7f395 ntohl(chksum) 0x95f3b745 calc 0x45b7f395 len 0x000000ec crc_ok 1
+[    7.780851] gEepMajor: 0xea ,gEepMinor: 0x1
+[    7.798313] nvram_nand_read 195 
+[    7.801376] 
+[    7.802870] nvram_nand_eeprom_valid_check: chksum 0x45b7f395 ntohl(chksum) 0x95f3b745 calc 0x45b7f395 len 0x000000ec crc_ok 1
+[    7.814190] gEepMajor: 0xea ,gEepMinor: 0x1
+[    7.818321] nvram_nand_init_ca 436 :cnvram_nand_init_ca OK!
+[    7.823900] expanded_io_init ip_port_list[i].major =0xff,ip_port_list[i].minor=0xff
+[    7.831525] expanded_io_init ip_port_list[i].major =0xff,ip_port_list[i].minor=0xff
+[    7.839177] expanded IOs init successful!
+ln: /etc/resolv.conf: Read-only file system
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+INIT: Entering runlevel: 5
+Configuring network interfaces... done.
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Start ca-app ... done.
+/sbin/setup.sh: line 5: syslogd: not found
+ifconfig: SIOCGIFFLAGS: No such device
+/
+tm->c_cc: 3 28 127 21 1 0 0 0 17 19 26 0 18 15 23 22 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ONT>
+Update timer: curTime=00002ba2, gTmrTimerMsCounter=00000000
+Starting Application: 0x00002000, /usr/bin/TimerMgr................Done. elapsed time:(1023)ms
+Starting Application: 0x00001000, /usr/bin/LogMgr................Done. elapsed time:(1029)ms
+para address is 0x7fc5127a 0x7fc51278
+Nov 10 2022 ptmp is 0x7fc51193
+mmr_EepCfgSetMember 827 VALUE set 0
+##Nov 10 2022 ptmp is 0x7fc51193
+mmr_EepCfgSetMember 857 VALUE set 0
+mmr_LoadEepData() 3202, normal load eep data
+mmr_EepApiReadCertFile 552 
+
+Sync 0x10009, msg no reply, dest MMR, VOS_SendSyncMsg:2110
+Starting Application: 0x00007000, /usr/bin/MiscMgr................VOS_SendSyncMsg:2119 Recv sync response failed
+
+Sync 0x10009, msg no reply, dest MMR, VOS_SendSyncMsg:2110
+VOS_SendSyncMsg:2119 Recv sync response failed
+[   25.438492] sdk ioctl init success
+[   26.390880] kioctl init success
+Configuring network interfaces... ifup: interface lo already configured
+done.
+Done. elapsed time:(13569)ms
+starting to upgrade /etc/00ea_01_01 
+newver :1048930 oldver:1048930
+UBI device number 2, total 320 LEBs (40632320 bytes, 38.8 MiB), available 204 LEBs (25903104 bytes, 24.7 MiB), LEB size 126976 byte)
+ssp_SetupProductInfo() 79, major ID[0xea] minor ID[0x1]
+offset is 0x0,length is 0x530c
+cp: can't create 'sync/runtime_rg.xml': No such file or directory
+cp: can't stat '/mnt/rwdir2/runtime_rg.xml.tmp': No such file or directory
+cp: can't stat ';': No such file or directory
+mv: can't rename '/mnt/rwdir2/runtime_rg.xml.tmp': No such file or directory
+mv: can't rename '/mnt/rwdir2/runtime_rg.xml': No such file or directory
+mv: can't rename ';': No such file or directory
+cp: can't create 'sync/.md5': No such file or directory
+cp: can't stat '/mnt/rwdir2/.md5.tmp': No such file or directory
+cp: can't stat ';': No such file or directory
+mv: can't rename '/mnt/rwdir2/.md5.tmp': No such file or directory
+mv: can't rename '/mnt/rwdir2/.md5': No such file or directory
+mv: can't rename ';': No such file or directory
+VOS_XML_Init(): 
+Load XML OK from file /mnt/rwdir/runtime_rg.xmlVOS_XML_Init(): 
+Load XML OK from file /tmp/default_rg.xmlVOS_XML_Init(): 
+Load XML OK from file /tmp/runtime_rg.xmlVOS_XML_Init(): 
+Load XML OK from file /tmp/runtime_rg.xmldata crc 0x59e2ded8,org_crc 0x59e2ded8,img_size 0x42f290
+find last leb pnum 94 addr 12320768 ok
+mmr_EepCfgSetMember 827 VALUE set 0
+mmr_LoadEepData() 3202, normal load eep data
+mmr_EepCfgSetMember 857 VALUE set 0
+mmr_LoadEepData() 3202, normal load eep data
+Starting Application: 0x00003000, /usr/bin/MecMgr................Done. elapsed time:(2171)ms
+Starting Application: 0x00004000, /usr/bin/PonMgr................Done. elapsed time:(1029)ms
+VOS_RegisterEventListener:2995, Init event socket 5
+vos_OnKernelEvent:2916, Start receving event on socket 5
+Starting Application: 0x00009000, /usr/bin/NetMgr................Done. elapsed time:(1030)ms
+Starting Application: 0x00005000, /usr/bin/EthMgr................Done. elapsed time:(1024)ms
+217be7b:Exit SSP -->ssp, msg 0x50000,elapsed time:24054 ms
+[   35.504122] pon_kobj_init /sys/ont_pon/pon/hw,5
+[   35.508518] pon_kobj_init /sys/ont_pon/pon/debug,23
+[   35.513566] pon_kobj_init /sys/ont_pon/pon/misc,12
+[   35.518240] pon_kobj_init /sys/ont_pon/pon/ca,2
+killall: dropbear: no process killed
+Unkown pwd type 0
+Starting Application: 0x0000c000, /usr/bin/WebMgr................Done. elapsed time:(1089)ms
+23b9b00:Exit MEC -->ssp, msg 0x10012,elapsed time:1089 ms
+
+INFO: ALL APPs are ready.
+23c1d89:Exit EMR -->mec, msg 0xc0000,elapsed time:2172 ms
+offset is 0x0,length is 0x530c

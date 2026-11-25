@@ -1,0 +1,424 @@
+ROM VER: 2.1.0
+CFG 0d
+B
+DdrOk 
+
+
+U-Boot 2016.07-MXL-v-3.1.261 (Apr 19 2023 - 07:07:22 +0000), Build: prx126-sfp-qspi-nand
+
+interAptiv
+cps cpu/ddr run in 400/466 Mhz
+       Watchdog enabled
+DRAM:  256 MiB
+NAND:  device found, Manufacturer ID: 0xef, Chip ID: 0xba
+128 MiB
+Bad block table found at page 65472, version 0x01
+Bad block table found at page 65408, version 0x01
+In:    serial
+Out:   serial
+Err:   serial
+Reset cause: POR RESET
+Net:   lan-0 config to 1G_XAUI_MODE, lan-1 config to 10G_KR_MODE, prx300-eth
+
+run flash_flash to bring up the kernel
+
+Hit Esc key to stop autoboot:  3 
+begin net init
+upgrade start! 
+pt_upg_auto_upgrade start!
+Timeout or packet isn't legal. Do not enter multicast upgrade
+auto upgrade failed.
+upgrade start! 
+pt_upg_auto_upgrade start!
+Timeout or packet isn't legal. Do not enter multicast upgrade
+auto upgrade failed.
+ 2 
+begin net init
+upgrade start! 
+pt_upg_auto_upgrade start!
+Timeout or packet isn't legal. Do not enter multicast upgrade
+auto upgrade failed.
+upgrade start! 
+pt_upg_auto_upgrade start!
+Timeout or packet isn't legal. Do not enter multicast upgrade
+auto upgrade failed.
+ 1 
+begin net init
+upgrade start! 
+pt_upg_auto_upgrade start!
+Timeout or packet isn't legal. Do not enter multicast upgrade
+auto upgrade failed.
+upgrade start! 
+pt_upg_auto_upgrade start!
+Timeout or packet isn't legal. Do not enter multicast upgrade
+auto upgrade failed.
+ 0 
+ubi0: attaching mtd1
+ubi0: scanning is finished
+ubi0: attached mtd1 (name "mtd=6", size 102 MiB)
+ubi0: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+ubi0: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+ubi0: VID header offset: 2048 (aligned 2048), data offset: 4096
+ubi0: good PEBs: 816, bad PEBs: 0, corrupted PEBs: 0
+ubi0: user volume: 8, internal volumes: 1, max. volumes count: 128
+ubi0: max/mean erase counter: 2/1, WL threshold: 4096, image sequence number: 0
+ubi0: available PEBs: 175, total reserved PEBs: 641, PEBs reserved for bad PEB handling: 20
+Remove UBI volume rootfs_data (id 6)
+Committed image: A
+ubi0: detaching mtd1
+ubi0: mtd1 is detached
+ubi0: attaching mtd1
+ubi0: scanning is finished
+ubi0: attached mtd1 (name "mtd=6", size 102 MiB)
+ubi0: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+ubi0: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+ubi0: VID header offset: 2048 (aligned 2048), data offset: 4096
+ubi0: good PEBs: 816, bad PEBs: 0, corrupted PEBs: 0
+ubi0: user volume: 7, internal volumes: 1, max. volumes count: 128
+ubi0: max/mean erase counter: 2/1, WL threshold: 4096, image sequence number: 0
+ubi0: available PEBs: 440, total reserved PEBs: 376, PEBs reserved for bad PEB handling: 20
+Read 0 bytes from volume bootcoreA to a0400000
+No size specified -> Using max size (5586944)
+Read 0 bytes from volume kernelA to 82000000
+No size specified -> Using max size (2412544)
+## Booting kernel from Legacy Image at 82000000 ...
+   Image Name:   PON_1.18.0
+   Created:      2023-04-19   7:11:20 UTC
+   Image Type:   MIPS Linux Kernel Image (lzma compressed)
+   Data Size:    2285568 Bytes = 2.2 MiB
+   Load Address: a0020000
+   Entry Point:  a0020000
+   Verifying Checksum ... OK
+   Uncompressing Kernel Image ... OK
+[    0.000000] Linux version 4.9.308+ (gcc version 8.3.0 (OpenWrt GCC 8.3.0 v19.07.8_maxlinear) ) #0 SMP Wed Apr 19 06:54:47 UTC 2023
+[    0.000000] SoC: PRX300 rev 1.2
+[    0.000000] CPU0 revision is: 0001a120 (MIPS interAptiv (multi))
+[    0.000000] Enhanced Virtual Addressing (EVA 1GB) activated
+[    0.000000] MIPS: machine is PRX126-SFP-PON
+[    0.000000] Coherence Manager IOCU detected
+[    0.000000] Hardware DMA cache coherency disabled
+[    0.000000] earlycon: lantiq0 at MMIO 0x16380000 (options '')
+[    0.000000] bootconsole [lantiq0] enabled
+[    0.000000] User-defined physical RAM map:
+[    0.000000]  memory: 40000000 @ 20000000 (usable)
+[    0.000000] Reserved memory: created CMA memory pool at 0x2d000000, size 48 MiB
+[    0.000000] OF: reserved mem: initialized node linux,cma@0x2D000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created CMA memory pool at 0x40000000, size 512 MiB
+[    0.000000] OF: reserved mem: initialized node bm_pool@40000000, compatible id shared-dma-pool
+[    0.000000] Determined physical RAM map:
+[    0.000000]  memory: 40000000 @ 20000000 (usable)
+[    0.000000]  memory: 0000809e @ 20768630 (reserved)
+[    0.000000]  memory: 22000000 @ 3e000000 (reserved)
+[    0.000000]  memory: 03000000 @ 2d000000 (reserved)
+[    0.000000]  memory: 00200000 @ 3be00000 (reserved)
+[    0.000000] Initrd not found or empty - disabling initrd
+[    0.000000] SMPCMP: CPU0: cmp_smp_setup
+[    0.000000] VPE topology {2,2} total 4
+[    0.000000] Detected 3 available secondary CPU(s)
+[    0.000000] Primary instruction cache 32kB, VIPT, 4-way, linesize 32 bytes.
+[    0.000000] Primary data cache 32kB, 4-way, PIPT, no aliases, linesize 32 bytes
+[    0.000000] MIPS secondary cache 256kB, 8-way, linesize 32 bytes.
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000020000000-0x000000002fffffff]
+[    0.000000]   Normal   [mem 0x0000000030000000-0x000000005fffffff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000020000000-0x000000005fffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000020000000-0x000000005fffffff]
+[    0.000000] percpu: Embedded 12 pages/cpu s17968 r8192 d22992 u49152
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 260096
+[    0.000000] Kernel command line: ubi.mtd=system_sw,2048 rootfsname=rootfsA rootfstype=squashfs ip=192.168.1.1:192.168.1.2:192.162.1.1:255.2 
+[    0.000000] PID hash table entries: 4096 (order: 2, 16384 bytes)
+[    0.000000] Dentry cache hash table entries: 131072 (order: 7, 524288 bytes)
+[    0.000000] Inode-cache hash table entries: 65536 (order: 6, 262144 bytes)
+[    0.000000] Writing ErrCtl register=00000000
+[    0.000000] Readback ErrCtl register=00000000
+[    0.000000] Memory: 421880K/1048576K available (5529K kernel code, 289K rwdata, 1392K rodata, 1284K init, 468K bss, 53256K reserved, 573440)
+[    0.000000] SLUB: HWalign=32, Order=0-3, MinObjects=0, CPUs=4, Nodes=1
+[    0.000000] Hierarchical RCU implementation.
+[    0.000000] NR_IRQS:527
+[    0.000000] EIC is off
+[    0.000000] VINT is on
+[    0.000000] CPU Clock: 400000000Hz  mips_hpt_frequency 200000000Hz
+[    0.000000] clocksource: GIC: mask: 0xffffffffffffffff max_cycles: 0x5c4093a7d1, max_idle_ns: 440795210635 ns
+[    0.000017] sched_clock: 64 bits at 400MHz, resolution 2ns, wraps every 4398046511103ns
+[    0.008523] Calibrating delay loop... 265.98 BogoMIPS (lpj=531968)
+[    0.045333] pid_max: default: 32768 minimum: 301
+[    0.050380] Mount-cache hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.056568] Mountpoint-cache hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.065364] CCA is coherent, multi-core is fine
+[    0.079899] Per DT Bootup LINUX not run on CPU 1
+[    0.083172] Please retry with MAX_CPUS !!!
+[    0.087141] cpu 1 is not available for Linux
+[    1.114295] CPU1: failed to start
+[    1.117026] Per DT Bootup LINUX not run on CPU 2
+[    1.120784] Please retry with MAX_CPUS !!!
+[    1.124838] cpu 2 is not available for Linux
+[    2.143926] CPU2: failed to start
+[    2.146647] Per DT Bootup LINUX not run on CPU 3
+[    2.150418] Please retry with MAX_CPUS !!!
+[    2.154465] cpu 3 is not available for Linux
+[    3.173557] CPU3: failed to start
+[    3.175435] Brought up 1 CPUs
+[    3.198011] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    3.206435] futex hash table entries: 1024 (order: 3, 32768 bytes)
+[    3.267677] pinctrl core: initialized pinctrl subsystem
+[    3.273965] NET: Registered protocol family 16
+[    3.283227] intel-pinctrl 16310000.pinctrl: pinbank id: 0, reg: 0xb6310000, pinbase: 0, pin number: 32, pinmap: 0xffffffff
+[    3.293420] intel-pinctrl 16310000.pinctrl: Total 27 groups, 17 functions
+[    3.299926] intel-pinctrl 16310000.pinctrl: gpiochip membase: 0xb6300000
+[    3.325317] Lantiq MIPSInterAptiv MPS driver, version 1.0.0.0, (c) 2006-2013 Lantiq Deutschland GmbH
+[    3.333931] MPS: major Id 253
+[    3.339302] dma0-grx500 16e00000.dma: base address b6e00000 chained_irq 34 irq_base 57
+[    3.345894] dma0-grx500 16e00000.dma: Init done - hw rev: A, ports: 4, channels: 16
+[    3.354075] dma-grx500 18200000.dma: dma1tx base address b8200000 chained_irq 38 irq_base 73
+[    3.377645] dma-grx500 18200000.dma: Init done - rev: 30, ports: 1, channels: 17
+[    3.384234] dma-grx500 18300000.dma: dma1rx base address b8300000 chained_irq 39 irq_base 90
+[    3.396981] dma-grx500 18300000.dma: Init done - rev: 30, ports: 1, channels: 8
+[    3.403195] dma-grx500 18500000.dma: dma2tx base address b8500000 chained_irq 40 irq_base 98
+[    3.415618] dma-grx500 18500000.dma: Init done - rev: 30, ports: 1, channels: 2
+[    3.421778] dma-grx500 18600000.dma: dma2rx base address b8600000 chained_irq 41 irq_base 100
+[    3.434637] dma-grx500 18600000.dma: Init done - rev: 30, ports: 1, channels: 8
+[    3.444133] [PP_DEV]:init_clocks:184: enabling pp clock 'ppv4'
+[    3.448630] [PP_DEV]:init_clocks:184: enabling pp clock 'freq'
+[    3.457406] [PP_QOS_UTILS]:qos_init_wred_ports:4603: Init QoS 128 ports
+[    3.462607] [PP_QOS_UTILS]:qos_init_wred_queues:4614: Init QoS 256 queues
+[    3.501480] pstore: using zlib compression
+[    3.506138] console [pstore-1] enabled
+[    3.508753] pstore: Registered ramoops as persistent store backend
+[    3.514627] ramoops: attached 0x200000@0x3be00000, ecc: 0/0
+[    3.548363] prx300-cqm prx300-cqm.1: assigned reserved memory node bm_pool@40000000
+[    3.642026] 0x80000000 0x1120000 0x400
+[    3.644417] 0x80000000 0x1120000
+[    3.725890] 0x81120000 0xfa0000 0x2800
+[    3.728199] 0x81120000 0xfa0000
+[    4.961580] 0x820c0000 0xf7f0000 0x400
+[    4.963982] 0x820c0000 0xf7f0000
+[    6.101993] 0x918b0000 0xe4c0000 0x2800
+[    6.104396] 0x918b0000 0xe4c0000
+[    6.128233] prx300-cqm prx300-cqm.1: fsqm init successfully, free buffers 7167
+[    6.134426] Load spreader init successfully
+[    6.138592] prx300-cqm prx300-cqm.1: CBM: Init Done !!
+[    6.143696] pps_core: LinuxPPS API ver. 1 registered
+[    6.148288] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    6.157430] PTP clock support registered
+[    6.165355] clocksource: Switched to clocksource GIC
+[    6.172066] NET: Registered protocol family 2
+[    6.175394] IP idents hash table entries: 16384 (order: 5, 131072 bytes)
+[    6.184552] TCP established hash table entries: 8192 (order: 3, 32768 bytes)
+[    6.190555] TCP bind hash table entries: 8192 (order: 4, 65536 bytes)
+[    6.196929] TCP: Hash tables configured (established 8192 bind 8192)
+[    6.203183] UDP hash table entries: 512 (order: 2, 16384 bytes)
+[    6.208952] UDP-Lite hash table entries: 512 (order: 2, 16384 bytes)
+[    6.215613] NET: Registered protocol family 1
+[    6.227072] No memory allocated for crashlog
+[    6.232651] workingset: timestamp_bits=30 max_order=18 bucket_order=0
+[    6.250022] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    6.254483] jffs2: version 2.2 (NAND) (SUMMARY) (LZMA) (RTIME) (CMODE_PRIORITY) (c) 2001-2006 Red Hat, Inc.
+[    6.289596] io scheduler noop registered
+[    6.292084] io scheduler deadline registered (default)
+[    6.298887] platform 1a800000.cb0phy: PHY(0:1) clock frequency set to 156250000 Success!
+[    6.309116] 16380000.serial: ttyLTQ0 at MMIO 0x16380000 (irq = 25, base_baud = 0) is a lantiq,asc
+[    6.326154] console [ttyLTQ0] enabled
+[    6.326154] console [ttyLTQ0] enabled
+[    6.332032] bootconsole [lantiq0] disabled
+[    6.332032] bootconsole [lantiq0] disabled
+[    6.340793] 163c0000.serial: ttyLTQ1 at MMIO 0x163c0000 (irq = 28, base_baud = 0) is a lantiq,asc
+[    6.353955] brd: module loaded
+[    6.356600] Gluebi: Found kernel commandline option 'rootfsname=rootfsA'
+[    6.365997] Lantiq SoC SPI controller rev 9 (TXFS 32, RXFS 32, DMA 1)
+[    6.372013] cadence-qspi 19300000.qspi: missing lantiq,qspi-physize; default to 128 MB
+[    6.378978] cadence-qspi 19300000.qspi: DMA NOT enabled
+[    6.386083] cadence-qspi 19300000.qspi: master is unqueued, this is deprecated
+[    6.395063] nand: device found, Manufacturer ID: 0xef, Chip ID: 0xba
+[    6.400047] nand: Winbond SPI NAND 1Gbit 1,8v WN25N01GW
+[    6.405217] nand: 128 MiB, SLC, erase size: 128 KiB, page size: 2048, OOB size: 64
+[    6.414026] Bad block table found at page 65472, version 0x01
+[    6.419503] Bad block table found at page 65408, version 0x01
+[    6.425448] 9 cmdlinepart partitions found on MTD device nand.0
+[    6.430128] Creating 9 MTD partitions on "nand.0":
+[    6.434900] 0x000000000000-0x000000100000 : "uboot"
+[    6.442014] 0x000000100000-0x000000140000 : "ubootconfigA"
+[    6.448731] 0x000000140000-0x000000180000 : "ubootconfigB"
+[    6.455512] 0x000000180000-0x0000001c0000 : "gphyfirmware"
+[    6.462817] 0x0000001c0000-0x0000002c0000 : "calibration"
+[    6.469697] 0x0000002c0000-0x0000012c0000 : "bootcore"
+[    6.476154] 0x0000012c0000-0x0000078c0000 : "system_sw"
+[    6.483995] 0x0000078c0000-0x000007ec0000 : "ptdata"
+[    6.490705] 0x000007ec0000-0x000008000000 : "res"
+[    6.496748] cadence-qspi 19300000.qspi: Cadence QSPI controller driver
+[    6.502196] MACsec IEEE 802.1AE
+[    6.506680] intel_xpcs 1a842000.lan_xpcs1: XPCS probe start
+[    6.552438] intel_xpcs 1a842000.lan_xpcs1: XPCS probe success
+[    6.575438] dp manager dummy init done
+[    6.579014] ltq_thermal 16000000.ssx4:ts: ltq_thermal_probe: is done
+[    6.584686] grx500wdt 12000000.watchdog: [grx500wdt_probe]:[445] cpu_clk=400000000
+[    6.591714] grx500wdt 12000000.watchdog: [grx500wdt_probe]WDT reset is Bit31, RCU_IAP_WDT_RST_STAT=0x8030408
+[    6.601481] grx500wdt 12000000.watchdog: [grx500wdt_probe]Not WDT reset.
+[    6.608184] grx500wdt 12000000.watchdog: [grx500wdt_probe]:[554] grx500_wdt = 70824178
+[    6.616428] grx500wdt 12000000.watchdog: H/w Watchdog Timer: (max 10) (nowayout= 0)
+[    6.624857] cpu cpu0: dev_pm_opp_of_get_sharing_cpus: Couldn't find opp node.
+[    6.633024] init netlink module
+[    6.636436] NET: Registered protocol family 10
+[    6.647006] NET: Registered protocol family 17
+[    6.650312] 8021q: 802.1Q VLAN Support v1.8
+[    6.665953] ubi0: attaching mtd6
+[    8.255143] ubi0: scanning is finished
+[    8.287306] ubi0: attached mtd6 (name "system_sw", size 102 MiB)
+[    8.292018] ubi0: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+[    8.298769] ubi0: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+[    8.305534] ubi0: VID header offset: 2048 (aligned 2048), data offset: 4096
+[    8.312477] ubi0: good PEBs: 816, bad PEBs: 0, corrupted PEBs: 0
+[    8.318468] ubi0: user volume: 7, internal volumes: 1, max. volumes count: 128
+[    8.325674] ubi0: max/mean erase counter: 2/1, WL threshold: 4096, image sequence number: 0
+[    8.334007] ubi0: available PEBs: 440, total reserved PEBs: 376, PEBs reserved for bad PEB handling: 20
+[    8.344110] ubi0: background thread "ubi_bgt0d" started, PID 455
+[    8.356495] Gluebi: mtd 'rootfsA' set to be root filesystem
+[    8.360834] rootdev: 0x01f0000b, mtd block: 0000001f, mtd index: 0000000b
+[    8.402103] VFS: Mounted root (squashfs filesystem) readonly on device 31:11.
+[    8.414008] Freeing unused kernel: 1284k freed
+[    8.417014] This architecture does not have kernel memory protection.
+[    9.242044] init: Console is alive
+[    9.244397] init: - watchdog -
+[   10.744331] kmodloader: loading kernel modules from /etc/modules-boot.d/*
+[   10.807669] kmodloader: done loading kernel modules from /etc/modules-boot.d/*
+[   10.817637] init: - preinit -
+[   12.249891] random: procd: uninitialized urandom read (4 bytes read)
+Volume ID 6, size 265 LEBs (33648640 bytes, 32.0 MiB), LEB size 126976 bytes (124.0 KiB), dynamic, name "rootfs_data", alignment 1
+[   12.720492] random: jshn: uninitialized urandom read (4 bytes read)
+[   12.915650] random: jshn: uninitialized urandom read (4 bytes read)
+ls: /lib/modules/4.9.308+/ltq_atm*: No such file or directory
+Press the [f] key and hit [enter] to enter failsafe mode
+Press the [1], [2], [3] or [4] key and hit [enter] to select the debug level
+[   16.535357] UBIFS (ubi0:6): default file-system created
+[   16.545419] UBIFS (ubi0:6): background thread "ubifs_bgt0_6" started, PID 575
+[   16.735500] UBIFS (ubi0:6): UBIFS: mounted UBI device 0, volume 6, name "rootfs_data"
+[   16.741994] UBIFS (ubi0:6): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+[   16.751823] UBIFS (ubi0:6): FS size: 32378880 bytes (30 MiB, 255 LEBs), journal size 1650688 bytes (1 MiB, 13 LEBs)
+[   16.762233] UBIFS (ubi0:6): reserved for root: 1529334 bytes (1493 KiB)
+[   16.768838] UBIFS (ubi0:6): media format: w4/r0 (latest is w4/r0), UUID FFCF3C93-8005-4374-BE0E-C7B04DC15AA2, small LPT model
+[   16.790641] mount_root: overlay filesystem has not been fully initialized yet
+[   16.797390] mount_root: switching to ubifs overlay
+[   16.842201] urandom-seed: Seed file not found (/etc/urandom.seed)
+>>>>> Mounting /ptconf partition <<<<<
+UBI=0
+[   17.192079] UBIFS (ubi0:7): background thread "ubifs_bgt0_7" started, PID 585
+[   17.316381] UBIFS (ubi0:7): recovery needed
+[   17.585241] UBIFS (ubi0:7): recovery completed
+[   17.588416] UBIFS (ubi0:7): UBIFS: mounted UBI device 0, volume 7, name "ptconf"
+[   17.595676] UBIFS (ubi0:7): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+[   17.605556] UBIFS (ubi0:7): FS size: 4825088 bytes (4 MiB, 38 LEBs), journal size 1015809 bytes (0 MiB, 6 LEBs)
+[   17.615618] UBIFS (ubi0:7): reserved for root: 227900 bytes (222 KiB)
+[   17.622051] UBIFS (ubi0:7): media format: w4/r0 (latest is w4/r0), UUID 90134634-9CC8-426E-A46D-346D602B08AD, small LPT model
+>>>>> Mounting /ptdata partition <<<<<
+MTD=7
+[   17.808266] ubi2: attaching mtd7
+[   17.905339] ubi2: scanning is finished
+[   17.933583] ubi2: attached mtd7 (name "ptdata", size 6 MiB)
+[   17.937819] ubi2: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+[   17.944612] ubi2: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+[   17.951382] ubi2: VID header offset: 2048 (aligned 2048), data offset: 4096
+[   17.958323] ubi2: good PEBs: 48, bad PEBs: 0, corrupted PEBs: 0
+[   17.964225] ubi2: user volume: 1, internal volumes: 1, max. volumes count: 128
+[   17.971436] ubi2: max/mean erase counter: 3/1, WL threshold: 4096, image sequence number: 191176628
+[   17.980460] ubi2: available PEBs: 0, total reserved PEBs: 48, PEBs reserved for bad PEB handling: 20
+[   17.991553] ubi2: background thread "ubi_bgt2d" started, PID 592
+>>>>> Mounting ptdata partition as UBIFS <<<<<
+UBI=2
+PTDATA_NAME=ptdata
+[   18.119620] UBIFS (ubi2:0): background thread "ubifs_bgt2_0" started, PID 610
+[   18.408431] UBIFS (ubi2:0): UBIFS: mounted UBI device 2, volume 0, name "ptdata"
+[   18.414494] UBIFS (ubi2:0): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+[   18.424322] UBIFS (ubi2:0): FS size: 1904640 bytes (1 MiB, 15 LEBs), journal size 888833 bytes (0 MiB, 5 LEBs)
+[   18.434299] UBIFS (ubi2:0): reserved for root: 89960 bytes (87 KiB)
+[   18.440556] UBIFS (ubi2:0): media format: w4/r0 (latest is w4/r0), UUID 0D6691F3-65A7-4542-8792-9AE400DEAF37, small LPT model
+/ptconf is not empty
+[   18.607879] procd: - early -
+[   18.609723] procd: - watchdog -
+[   19.459362] procd: - watchdog -
+[   19.461703] procd: - ubus -
+[   19.560403] urandom_read: 3 callbacks suppressed
+[   19.560419] random: ubusd: uninitialized urandom read (4 bytes read)
+[   19.570568] random: ubusd: uninitialized urandom read (4 bytes read)
+[   19.576437] random: ubusd: uninitialized urandom read (4 bytes read)
+[   19.584304] procd: - init -
+Please press Enter to activate this console.
+[   20.343068] kmodloader: loading kernel modules from /etc/modules.d/*
+[   20.391981] [PP_NAD]:__net_adapter_init:58: start: 1
+[   20.482075] [PP_QOS_FW]:do_load_firmware:318: FW [v 1.16.0] is running soc rev 1)
+[   20.488889] [PP_DEV]:pp_dev_late_init:676: PP is ready!
+[   20.556867] dp_pre_init done
+[   20.705296] mod_sfp_i2c-ACA_FW: ACA FW Hdr V2: version=0x0018, SOC=0x1 (soc_step_B), Chip=0x2 (chip_falcon), Built=0x0 (built_rel), FW=0x1 )
+[   20.717186] pon-sfp-i2c 14050000.sfp_i2c: FW interface version 0x04000000
+[   20.898603] ip6_tables: (C) 2000-2006 Netfilter Core Team
+[   20.922792] i2c /dev entries driver
+[   20.932533] i2c-gpio i2c-gpio: using pins 507 (SDA) and 506 (SCL)
+[   20.943009] GACT probability on
+[   20.947390] Mirror/redirect action on
+[   20.969751] u32 classifier
+[   20.971028]     input device check on
+[   20.974715]     Actions configured
+[   21.031795] Ebtables v2.0 registered
+[   21.038915] ip_tables: (C) 2000-2006 Netfilter Core Team
+[   21.105620] nf_conntrack version 0.5.0 (16384 buckets, 65536 max)
+[   21.315105] xt_time: kernel timezone is -0000
+[   21.401703] Property intel,extra-subif for if eth0_0 4
+[   21.424489] xrx500_of_iface: rx csum offload is enabled !
+[   21.452301] Lantiq ethernet driver for XRX500 init.
+[   21.617820] kmodloader: done loading kernel modules from /etc/modules.d/*
+MIPS: set unaligned_action to 'SHOW'
+factory_mode:0
+sync A0 table success
+sync A2 table success
+Start status monitoring for I2C EEPROM[0]@0x50 EEPROM[1]@0x51
+[optic-db] Looking for '/etc/optic-db/ecinetworks-enxgsfppomacv2-V1.0-prx126-sfp-pon' configuration
+[optic-db] Looking for '/etc/optic-db/ecinetworks-enxgsfppomacv2-prx126-sfp-pon' configuration
+[optic-db] Looking for '/etc/optic-db/ecinetworks-enxgsfppomacv2-V1.0' configuration
+[optic-db] Looking for '/etc/optic-db/ecinetworks-enxgsfppomacv2' configuration
+[optic-db] Looking for '/etc/optic-db/default' configuration
+[optic-db] Applied '/etc/optic-db/default' configuration
+[serdes-db] Looking for '/etc/serdes-db/prx126-sfp-pon-ecinetworks-enxgsfppomacv2-V1.0.conf' configuration
+[serdes-db] Looking for '/etc/serdes-db/prx126-sfp-pon-ecinetworks-enxgsfppomacv2.conf' configuration
+[serdes-db] Looking for '/etc/serdes-db/prx126-sfp-pon.conf' configuration
+[serdes-db] Applied '/etc/serdes-db/prx126-sfp-pon.conf' configuration
+[   37.256222] UBIFS (ubi2:0): background thread "ubifs_bgt2_0" stops
+[   37.393727] gpio_probe enter: 45
+[   37.395578] gpio_probe enter: 52 out gpio_num=2
+[   37.400186] gpio_probe enter: 68 gpiod_direction_output [0]
+[   37.405669] gpio_probe enter: 68 gpiod_direction_output [1]
+[   37.411190] gpio_probe enter: 76 in gpio_num=-2
+[   37.415990] ptdrv gpio adp  init
+[   37.419097] ptdrv gpio init
+[   37.439325] in pon_dev_init
+[   37.440799] out pon_dev_init
+[   37.457982] pt_gpon_drv: no symbol version for log_print
+[   37.462808] [PON]<Info>, line[464], pon_krl_port_fun_register_init:pon_krl_port_fun_register_init
+[   37.470826] [PON]<Error>, line[83], pon_driver_init:s_pon_user_init:0,s_pon_tx_power_on:0
+[   37.470826] 
+set_bootcmd_env:48 pt_env_fw_read 
+set_bootcmd_env:50 buf=run ubi_init;ubi remove rootfs_data;run flash_flash 
+set_bootcmd_env:51 buf, strlen=51 
+set_bootcmd_env:54 buf,last char=0x68 
+set_bootcmd_env:56 PRECONFIG_CONF_BOOTCMD_ENV=run ubi_init;ubi remove rootfs_data;run flash_flash 
+set_bootcmd_env:57 PRECONFIG_[   39.186021] random: fast init done
+CONF_BOOTCMD_ENV, strlen=51 
+set_bootcmd_env:60 new_buf= "run ubi_init;ubi remove rootfs_data;run flash_flash" 
+set_bootcmd_env:66 bootcmd is default! 
+set_bootcmd_env:67 go on! 
+[   39.955597] pon_mbox 18100000.ponmbox: abort write because mailbox is in reset
+p408 omci main start
+[omcid] Use OMCC version 0xa3
+[omcid] Use LCT port UNI1
+[   45.150158] get mesg from user, pid = 2242
+[   46.341421] pon_mbox: FW version: 3.21.0.3.14-1669214605
+[   47.193701] [PON]<Info>, line[165], pon_krl_set_dynm_link_detc:In
+[   47.193701] 
+[   47.200060] [PON]<Info>, line[173], pon_krl_set_dynm_link_detc:dynamic link detection enable:1
+[   47.200060] 
+[   49.436988] gpio_ioctl:51 gpio.pin=24, gpio.data=0
+[   49.505580] pon_mbox 18100000.ponmbox: cannot send FW multicast netlink msg: -3
+[   49.511546] pon_mbox 18100000.ponmbox: cannot send netlink response: ret: -3
+[   49.518591] pon_mbox 18100000.ponmbox: cannot send FW multicast netlink msg: -3
+[   49.525815] pon_mbox 18100000.ponmbox: cannot send netlink response: ret: -3
+[   49.532886] pon_mbox 18100000.ponmbox: cannot send FW multicast netlink msg: -3
+[   49.540136] pon_mbox 18100000.ponmbox: cannot send netlink response: ret: -3
