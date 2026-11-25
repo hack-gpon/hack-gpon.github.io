@@ -21,10 +21,10 @@ Every firmware has one badge, the best one whose requirements it meets. The badg
 
 The badge is assigned when the firmware page is reviewed. The checksums of the files listed in the firmware pages are SHA-256.
 
-The badges are SVG images, they can also be used in the README of a firmware:
+The badges are also available as SVG icons, e.g. for the README of a firmware:
 
 ```md
-[![hack-gpon: open source · verified](https://hack-gpon.org/badges/foss-verified.svg)](https://hack-gpon.org/firmware/#badges)
+[![Hack GPON: open source, verified build](https://hack-gpon.org/badges/foss-verified.svg)](https://hack-gpon.org/firmware/#badges)
 ```
 
 # Compatibility
