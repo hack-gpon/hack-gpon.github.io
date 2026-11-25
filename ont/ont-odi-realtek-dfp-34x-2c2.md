@@ -17,7 +17,7 @@ parent: HSGQ (formerly ODI)
 | RAM          | 32 MB / 64 MB                     |
 | System       | Linux (Luna SDK 1.9)              |
 | SFP interfaces | HSGMII                                  |
-| Optics       | SC/UPC (2C2), SC/APC (2C3)        |
+| Optics       | SC/UPC or SC/APC (depends on the variant) |
 | IP address   | 192.168.1.1                       |
 | Web Gui      | ✅ user `admin`, password `admin` |
 | SSH          | ✅ user `admin`, password `admin` |
