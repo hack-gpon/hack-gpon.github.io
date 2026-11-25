@@ -2,6 +2,7 @@
 title: ODI Realtek DFP-34X-2C2 
 description: New model 2022 - v05
 has_children: false
+alias: ODI DFP-34G-2C2, ODI DFP-34X-2C3, ODI DFP-34G-2C3, ODI DFP-34X-2IY3, HSGQ XPON stick, Luleey LL-XS2510
 parent: HSGQ (formerly ODI)
 ---
 
@@ -10,13 +11,13 @@ parent: HSGQ (formerly ODI)
 |              |                                   |
 | ------------ | --------------------------------- |
 | Vendor/Brand | ODI                               |
-| Model        | DFP-34X-2C2                       |
+| Model        | DFP-34X-2C2, DFP-34G-2C2, DFP-34X-2C3, DFP-34G-2C3, DFP-34X-2IY3 |
 | Chipset      | Realtek RTL9601D                  |
 | Flash        | 8 MB                              |
-| RAM          | 64 MB                             |
+| RAM          | 32 MB / 64 MB                     |
 | System       | Linux (Luna SDK 1.9)              |
 | SFP interfaces | HSGMII                                  |
-| Optics       | SC/UPC(DFP-34X-2C2), SC/APC(DFP-34X-2C3)|
+| Optics       | SC/UPC (2C2), SC/APC (2C3)        |
 | IP address   | 192.168.1.1                       |
 | Web Gui      | ✅ user `admin`, password `admin` |
 | SSH          | ✅ user `admin`, password `admin` |
@@ -32,11 +33,16 @@ SSH uses an outdated set of algorithms/ciphers, you can connect using the follow
 ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc -o HostKeyAlgorithms=ssh-rsa admin@192.168.1.1
 ```
 
-<ImageFigure file="realtek-dfp-34x-2c2.jpg" alt="ODI Realtek DFP-34X-C2C" caption="ODI Realtek DFP-34X-C2C" />
+<ImageFigure file="realtek-dfp-34x-2c2.jpg" alt="ODI Realtek DFP-34X-2C2" caption="ODI Realtek DFP-34X-2C2" />
+<ImageFigure file="realtek-dfp-34g-2c2.jpg" alt="ODI Realtek DFP-34G-2C2" caption="ODI Realtek DFP-34G-2C2" />
+
+::: info Note
+The Realtek based DFP-34X-xx and DFP-34G-xx sticks (2C2, 2C3, 2IY3) are the same hardware, and run the same firmwares: they differ in the optical connector (SC/UPC or SC/APC), the board revision and the amount of RAM (32 MB or 64 MB). This page also covers the former ODI Realtek DFP-34G-2C2 page.
+:::
 
 
 ::: warning
-The ODI DFP-34X-2C2 has been sold with two different chipsets with the same name: this page is about the Realtek RTL9601D one, the firmwares are not compatible with the [ZTE based one](/ont-odi-zte-dfp-34x-2c2).
+The ODI DFP-34X-2C2 and DFP-34G-2C2 have been sold with two different chipsets with the same name: this page is about the Realtek RTL9601D one, the firmwares are not compatible with the [ZTE based one](/ont-odi-zte-dfp-34g-2c2).
 :::
 
 <!--@partial: ./_partials/ont-realtek-rtl9601d-architecture.md-->
@@ -90,7 +96,7 @@ The firmwares are either SFU (bridge only) or HGU/IGD (the stick reports itself 
 | `M110_sfp_ODI_220923.tar`        | SFU  | ✅               | Provided by [@lanseyujie](https://github.com/Anime4000/RTL960x/issues/24#issuecomment-1297975439)             |
 | `M114_sfp_ODI_hybrid_221209.tar` | HGU  | ❌               | HSGQ, provided by [@physx2494](https://github.com/Anime4000/RTL960x/discussions/148#discussioncomment-5802985) |
 
-The recommended versions are `M114_sfp_ODI_hybrid_220527.tar` or `M114_sfp_ODI_hybrid_220916.tar`, as these have working VLAN translation. Use an SFU firmware if the original ONT is a bridge, an HGU firmware if the original ONT is a router (some OLTs, e.g. PLDT, loop between `O2` and `O5` with a SFU firmware)[^rtl960x_isp].
+The recommended versions are `M114_sfp_ODI_Vlan_220414.tar` (SFU), `M114_sfp_ODI_hybrid_220527.tar` or `M114_sfp_ODI_hybrid_220916.tar` (HGU), as these have working VLAN translation. Use an SFU firmware if the original ONT is a bridge, an HGU firmware if the original ONT is a router (some OLTs, e.g. PLDT, loop between `O2` and `O5` with a SFU firmware)[^rtl960x_isp].
 
 ::: warning
 Switching between a SFU and an HGU firmware requires a [factory reset](#factory-reset), and then a new [MAC key](#mac-key) for the MAC address.
