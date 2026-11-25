@@ -10,8 +10,8 @@ parent: Huawei
 | --------------- | ----------------------------------- |
 | Vendor/Brand    | Huawei                              |
 | Model           | MA5671A                             |
-| ODM             | SourcePhotonics[^ponwiki-sps]       |
-| ODM Product Code | SPS-34-24T-HP-TDFO[^ponwiki-sps]   |
+| ODM             | SourcePhotonics                     |
+| ODM Product Code | SPS-34-24T-HP-TDFO                 |
 | Chipset         | Lantiq FALC ON-S PEB 38035 ET (PEB98035) |
 | Flash           | 16 MB SPI NOR (Winbond W25Q128FV)   |
 | RAM             | 64 MB                               |
