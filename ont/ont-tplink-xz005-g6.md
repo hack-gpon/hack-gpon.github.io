@@ -24,18 +24,14 @@ parent: TP-Link
 | Serial          | ✅                                                          |
 | Form Factor     | ONT                                                        |
 
-::: info Note
-This is a GPON-only SFU ONT. XGS-PON is not supported.
-:::
-
-# GPON Identifiers
+# Default GPON Identifiers
 
 |              |                       |
 | ------------ | --------------------- |
 | ONU Type     | SFU (Ethernet UNI: 1) |
 | Vendor ID    | TPLG                  |
 | Equipment ID | XZ005-G6              |
-| Version      | 1.0                   |
+| Hardware Verion | 1.0                |
 | OMCC Version | 128 (0x80)            |
 
 The default GPON authentication parameters logged by the firmware are LOID `tplink`, password `tplink`.
@@ -46,7 +42,7 @@ The default GPON authentication parameters logged by the firmware are LOID `tpli
 
 ## List of partitions
 
-The firmware only exposes the configuration partition; the full MTD layout is not documented yet.
+The firmware only exposes the configuration partition.
 
 | dev       | mount         | content            |
 | --------- | ------------- | ------------------ |
@@ -62,12 +58,15 @@ The device ships **without** default credentials: the password is chosen by the 
 2. Open `http://192.168.1.1/superadmin` and set (and confirm) the **superadmin** password.
 3. Open `http://192.168.1.1` to set the normal **user** password (log out from superadmin first if needed).
 
-| Role       | URL                             |
-| ---------- | ------------------------------- |
-| User       | `http://192.168.1.1`            |
-| Superadmin | `http://192.168.1.1/superadmin` |
+The superadmin account unlocks a few extra web settings (enable SNMP, CWMP, SSH) and a higher-privilege CLI over Telnet.
 
-The superadmin account unlocks a few extra web settings and a higher-privilege CLI over Telnet.
+Using "Inspect Element," you can see that the blocks for Telnet and SSH are set to `display: none`; you can make them visible. SSH does not work (it returns an error), but Telnet does—you just need to use a port other than 23, as that one is filtered (e.g., 2323). Before clicking "Save," go to the console and enter:
+
+```js
+INCLUDE_WEB_TELNET = 1;
+INCLUDE_SSH_ACCESS = 1; // SSH returns an error
+```
+Then, click "Save" and log in via Telnet using the same "superadmin" password set in the GUI. The issue is that it’s a very basic shell, so you can’t do much with it.
 
 # Telnet
 
@@ -104,16 +103,15 @@ The DES key used for the `XZ005-G6 (UN) V1.0` is the 8-byte constant:
 ```
 
 ::: info Note
-The product ID for this variant is `0x1c796e01` (readable at big-endian offset `0x34` of a same-format firmware update file). Early analysis suggested the key was derived by XOR-ing a base key with this product ID, but the merged tool uses the literal key above directly.
+The product ID for this variant is `0x1c796e01` (readable at offset `0x34` of a same-format firmware update file).
 :::
 
 # Known limitations
 
 The `ONU-G` (hardware) version and the `Software image` version reported over OMCI are forced by the firmware and ignored on config import, so this device is not suitable when those fields need to be edited.
 
-TP-Link (O3 Labs) states that no custom firmware will be produced for this device: web and OMCI updates require signed images, and while loading an image over serial/UART is possible in principle, it is considerably more involved.
-
 # References
 
 - [TP-Link XZ005-G6 (UN) V1.0 — tripleoxygen wiki](https://www.tripleoxygen.net/wiki/ont/tplink/xz005-g6-un-v1)
 - [tpconf_bin_xml — configuration backup tool](https://github.com/sta-c0000/tpconf_bin_xml) ([PR #45](https://github.com/sta-c0000/tpconf_bin_xml/pull/45))
+- [All about the TP-Link XZ000-G3 GPON ONT](https://vantc.net/all-about-the-tp-link-xz000-g3-gpon-ont.html)
