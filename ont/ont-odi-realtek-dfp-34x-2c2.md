@@ -39,6 +39,8 @@ ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc -o HostKeyAl
 The ODI DFP-34X-2C2 has been sold with two different chipsets with the same name: this page is about the Realtek RTL9601D one, the firmwares are not compatible with the [ZTE based one](/ont-odi-zte-dfp-34x-2c2).
 :::
 
+<!--@partial: ./_partials/ont-realtek-rtl9601d-architecture.md-->
+
 ## Default credentials
 
 Besides `admin`/`admin`, the firmware has some system users[^rtl960x_reset]: `adsl`/`realtek`, `user`/`user` (changed with `flash set USER_PASSWORD`) and `administrator`/`Stel$864` (changed with `flash set E8BDUSER_PASSWORD`).

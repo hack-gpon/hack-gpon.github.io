@@ -1,6 +1,6 @@
 ## Architecture
 
-Block diagram of the Realtek RTL9601D (die RTL9602C, Lexra RLX5281 CPU) used by the ODI DFP-34X-2C2 / DFP-34G-2C2 and its rebrands. Unlike the Lantiq FALC ON, the laser driver (LDD) and the limiting amplifier (LA) are not integrated in the SoC: they are in an external Semtech GN25L95 combo chip, which also provides the SFF-8472 diagnostics (A0h/A2h) and is controlled by the SoC through its second I2C port. The module TX_DISABLE line is driven by the SoC GPIO 13.
+Block diagram of the Realtek RTL9601D (die RTL9602C, Lexra RLX5281 CPU) used by all the Realtek based ODI / HSGQ DFP-34X-xx and DFP-34G-xx sticks (e.g. DFP-34X-2C2, DFP-34G-2C2, DFP-34X-2C3, DFP-34G-2C3, DFP-34X-2IY3) and their rebrands (e.g. Luleey LL-XS2510): they share the same SoC and the same optics, and differ in the optical connector, the board revision and the amount of RAM (32 MB or 64 MB). Unlike the Lantiq FALC ON, the laser driver (LDD) and the limiting amplifier (LA) are not integrated in the SoC: they are in an external Semtech GN25L95 combo chip, which also provides the SFF-8472 diagnostics (A0h/A2h) and is controlled by the SoC through its second I2C port. The module TX_DISABLE line is driven by the SoC GPIO 13.
 
 ```mermaid
 %%{ init: { 'flowchart': { 'htmlLabels': false, 'curve': 'stepBefore' } } }%%
@@ -35,7 +35,7 @@ flowchart LR
   S <-- I2C --> Y[" "]
 
   SOC ~~~ I("SPI NOR<br/>Flash")
-  SOC ~~~ R("DRAM")
+  SOC ~~~ R("DRAM<br/>32/64 MB")
 
   classDef ghost fill:transparent,stroke:transparent,color:transparent
   class Z,X,Y ghost
