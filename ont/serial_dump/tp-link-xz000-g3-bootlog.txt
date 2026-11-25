@@ -1,0 +1,667 @@
+KGD IC
+Xtal:1
+DDR2 init.
+DRAMC init done.
+Calculate size.
+DRAM size=64MB
+Set new TRFC.
+ddr-800
+7512DRAMC V1.3.2 (0)
+EN751221 at Wed Feb 16 02:11:32 UTC 2022 version 1.1 free bootbase
+Memory size 64MB
+flash base: bc000000
+Set SPI Clock to 25 Mhz
+Found SPI Flash 4MiB EN25QH32B at 0xbc000000
+mtd:  part 4: partitioning exceeds flash size, truncating
+Press any key in 0.1 secs to enter boot command mode.
+..
+Decompress to 80002000 free_mem_ptr=80D00000 free_mem_ptr_end=807B0000
+[boot_kernel:1241] Here.
+[boot_kernel:1250] Here.
+75xx: 0x0
+Uncompressing [LZMA] ...  done.
+Linux version 2.6.36 (root@ubuntu) (gcc version 4.3.6 (Buildroot 2012.05) ) #43 SMP Tue Aug 30 09:45:16 CST 2022
+ISPRAM0: PA=002c0000,Size=00010000,enabled
+flash_init: flash_base:bc000000
+flash_init: flash_base:bc000000
+memsize:64MB
+EcoNet EN751221 SOC prom init
+bootconsole [early0] enabled
+CPU revision is: 00019558 (MIPS 34Kc)
+Determined physical RAM map:
+ memory: 03fe0000 @ 00020000 (usable)
+Wasting 1024 bytes for tracking 32 unused pages
+Zone PFN ranges:
+  Normal   0x00000020 -> 0x00004000
+Movable zone start PFN for each node
+early_node_map[1] active PFN ranges
+    0: 0x00000020 -> 0x00004000
+3 available secondary CPU TC(s)
+PERCPU: Embedded 7 pages/cpu @81083000 s7168 r8192 d13312 u65536
+pcpu-alloc: s7168 r8192 d13312 u65536 alloc=16*4096
+pcpu-alloc: [0] 0 [0] 1 [0] 2 [0] 3
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 16224
+Kernel command line:  es=1
+PID hash table entries: 256 (order: -2, 1024 bytes)
+Dentry cache hash table entries: 8192 (order: 3, 32768 bytes)
+Inode-cache hash table entries: 4096 (order: 2, 16384 bytes)
+Primary instruction cache 64kB, VIPT, 4-way, linesize 32 bytes.
+Primary data cache 32kB, 4-way, VIPT, cache aliases, linesize 32 bytes
+Writing ErrCtl register=0005e35f
+Readback ErrCtl register=0005e35f
+nmi base is 810c4200
+Memory: 60572k/65408k available (2840k kernel code, 4836k reserved, 624k data, 220k init, 0k highmem)
+SLUB: Genslabs=7, HWalign=32, Order=0-3, MinObjects=0, CPUs=4, Nodes=1
+Hierarchical RCU implementation.
+        RCU-based detection of stalled CPUs is disabled.
+        Verbose stalled-CPUs detection is disabled.
+NR_IRQS:64
+CPU frequency 700.00 MHz
+ Using 199.996 MHz high precision timer.
+console [ttyS0] enabled, bootconsole disabled
+console [ttyS0] enabled, bootconsole disabled
+Calibrating delay loop... 465.30 BogoMIPS (lpj=2326528)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 512
+34K sync es set to 1.
+Config7: 0x80080500
+Limit of 4 TCs set
+TLB of 64 entry pairs shared by 2 VPEs
+VPE 0: TC 0 1 2, VPE 1: TC 3
+IPI buffer pool of 16 buffers
+CPU revision is: 00019558 ((null))
+TC 1 going on-line as CPU 1
+CPU revision is: 00019558 ((null))
+TC 2 going on-line as CPU 2
+CPU revision is: 00019558 ((null))
+TC 3 going on-line as CPU 3
+Brought up 4 CPUs
+NET: Registered protocol family 16
+7522 - 21S/F disable PCIe gen1 port
+PCIe driver version: 751221.5.20170807
+MT7512_pcie_init
+check pcie link up status:
+isRC0_LINKUP=0
+isRC1_LINKUP=0
+PCI-E RC0 & RC1 can not link up
+Initializing Ecnt Event Netlink Socket
+Initializing Econet Event Netlink Socket nl_sk = 83c65e00
+bio: create slab <bio-0> at 0
+NET: Registered protocol family 8
+NET: Registered protocol family 20
+Switching to clocksource MIPS
+NET: Registered protocol family 2
+IP route cache hash table entries: 1024 (order: 0, 4096 bytes)
+TCP established hash table entries: 2048 (order: 2, 16384 bytes)
+TCP bind hash table entries: 2048 (order: 2, 16384 bytes)
+TCP: Hash tables configured (established 2048 bind 2048)
+TCP reno registered
+UDP hash table entries: 128 (order: 0, 4096 bytes)
+UDP-Lite hash table entries: 128 (order: 0, 4096 bytes)
+NET: Registered protocol family 1
+TC3162 hardware watchdog module loaded.
+squashfs: version 4.0 (2009/01/31) Phillip Lougher
+msgmni has been set to 118
+cryptomgr_test used greatest stack depth: 15224 bytes left
+io scheduler noop registered (default)
+ttyS0 at I/O 0xbfbf0003 (irq = 1) is a TC3162
+ECNT ring buffer init success
+brd: module loaded
+SPI Flash Init Start
+Set SPI Clock to 25 Mhz
+SPI Flash Init Finish
+IS_SPIFLASH=0x2, IS_NANDFLASH=0x0, (0xBFA10114)=0x0)
+[linux_spi_nand_flash_init] spi nor flash
+tc3162: flash device 0x01000000 at 0x1c000000
+tc3162: Found SPIFLASH 4MiB EN25QH32B
+Creating 10 MTD partitions on "tc3162":
+0x000000000000-0x000000400000 : "flash"
+0x000000000000-0x000000020000 : "tcboot"
+0x000000020000-0x000000030000 : "romfile"
+0x000000030000-0x000000040000 : "factoryinfo"
+0x000000040000-0x000000050000 : "loid"
+0x000000050000-0x000000060000 : "hwinfo"
+0x000000060000-0x000000070000 : "config"
+0x000000070000-0x000000080000 : "iot"
+0x000000080000-0x0000001b0000 : "kernelA"
+0x0000001b0000-0x000000400000 : "rootfsA"
+rootfsA
+PPP generic driver version 2.4.2
+PPP Deflate Compression module registered
+PPP BSD Compression module registered
+NET: Registered protocol family 24
+RT3xxx EHCI/OHCI init.
+Netfilter messages via NETLINK v0.30.
+nf_conntrack version 0.5.0 (946 buckets, 3784 max)
+ctnetlink v0.93: registering with nfnetlink.
+nf_conntrack_rtsp v0.6.21 loading
+nf_nat_rtsp v0.6.21 loading
+ip_tables: (C) 2000-2006 Netfilter Core Team
+TCP cubic registered
+NET: Registered protocol family 10
+IPv6 over IPv4 tunneling driver
+NET: Registered protocol family 17
+802.1Q VLAN Support v1.8 Ben Greear <greearb@candelatech.com>
+All bugs added by David S. Miller <davem@davemloft.net>
+VFS: Mounted root (squashfs filesystem) readonly on device 31:9.
+Freeing unused kernel memory: 220k freed
+busybox init and set aff
+init started: BusyBox v1.26.2 (2022-08-30 09:47:06 CST)
+starting pid 38, tty '': '/usr/etc/init.d/rcS'
+[ used greatest stack depth: 14832 bytes left
+chmod: /userfs/profile.cfg: Read-only file system
+devpts: called with bogus options
+mount used greatest stack depth: 14320 bytes left
+Unlocking factoryinfo .mtd used greatest stack depth: 14240 bytes left
+..
+Doing bob get function , get bob info to /tmp/7570_bob.conf
+read bob magic code is 0x07050701
+module_sel: module license 'unspecified' taints kernel.
+Disabling lock debugging due to kernel taint
+tc_multiwan version: tcsmux V1.1.0.0 (Apr  9 2019-11:56:42).
+tcportbind version: tcportbind V1.1.0.0 (Aug 30 2022-09:45:47).
+vlantag_drv_init
+TCSUPPORT_IPV6
+TC3162 LED Manager 0.1 init
+tcledctrl version: tcledctrl V1.1.0.0 (Aug 30 2022-09:45:43).
+led path:/userfs/led.conf
+insmod used greatest stack depth: 13912 bytes left
+tccicmd V1.1.0.0 (Aug 30 2022-09:45:45)
+SIFMaster 0.1 init
+===== Interface 0 is ON =====
+Register sifm cmd
+the number of cfg node is 58
+portbind_init
+autopvc_init
+LanguageSwitch_init vendorCfgFile_init The number of cache node is 5
+Enter into function:parser_romfile
+mxml: Bad control character 0x0b not allowed by XML standard!
+Romfile format is wrong, we use default romfile to replace current setting romfile!!
+/bin/sh: /userfs/bin/mmm: not found
+/var/tmp/samba_exe.sh: line 1: /usr/script/samba.sh: not found
+/var/tmp/samba_exe.sh: line 2: /userfs/bin/smbpasswd: not found
+/var/tmp/samba_exe.sh: line 3: /usr/script/samba_add_dir.sh: not found
+iptables used greatest stack depth: 13792 bytes left
+Can't open /etc/Wireless/WLAN_APOn
+Can't open /etc/Wireless/RT61AP/RT61AP.dat
+Wrong dispBy
+lanHost_read: Create node LanHost !
+tesIdx
+/bin/sh: /usr/bin/ip: not found
+insmod ETH_LAN driver
+macType = 0
+qdma_lan: physical_size is 0x00200000
+ether.c:v1.00-NAPI 29.Mar.2015
+MAC from flash_base: 0xbc000000(offset: 0x30000):ffffff9c ffffffa2 fffffff4 3a ffffffad ffffffdc
+eth0: FE MAC Ethernet address: 9C:A2:F4:3A:AD:DC
+Use Internal switch ,type 10
+tcPhyVerLookUp 4038 0
+tcPhyVerLookUp 4038 0
+tcPhyVerLookUp 4038 0
+tcPhyVerLookUp 4038 0
+tcPhyVerLookUp 4038 0
+tcPhyVerLookUp 4038 0
+tcPhyVerLookUp 4038 0
+tcPhyVerLookUp 4038 0
+tcPhyVerLookUp 4038 0
+tcPhyVerLookUp 4038 9414
+ 7522 Fe,
+ [tcPhyInit] in  [tcPhyInit] out , r31 = (9, 0xb000)
+tcPhyVerLookUp 4038 9414
+ 7522 Fe,
+ [tcPhyInit] in  [tcPhyInit] out , r31 = (10, 0xb000)
+tcPhyVerLookUp 4038 9414
+ 7522 Fe,
+ [tcPhyInit] in  [tcPhyInit] out , r31 = (11, 0xb000)
+tcPhyVerLookUp 4038 9471
+ 7522 Ge,
+ [tcPhyInit] in  [tcPhyInit] out , r31 = (12, 0x0)
+tcPhyVerLookUp 4038 9471
+ 7522 Ge,
+ [tcPhyInit] in  [tcPhyInit] out , r31 = (12, 0x0)
+ GE Rxet cal (1)(0)(0)(0x21)
+ GE Rxet cal (2)(0)(0)(0x22)
+ GE Rxet cal (3)(0)(0)(0x23)
+ GE Rxet cal (4)(0)(0)(0x24)
+ GE Rxet cal (5)(0)(0)(0x25)
+ GE Rxet cal (6)(0)(0)(0x26)
+  GE Rext AnaCal Done! (7)(0x27)
+  GE Rext AnaCal Done! (7)(0x27)
+  GE R50 AnaCal Done! (8) (0x20)(0xa0)
+  GE R50 AnaCal Done! (8) (0x20)(0xa0)
+  GE R50 AnaCal Done! (8) (0x20)(0xa0)
+ GE-c zcal(32)
+  GE R50 AnaCal Done! (8) (0x20)(0xa0)
+ GE-d zcal(32)
+ GE Tx offset AnaCal Done! (1)(0x21)
+ GE Tx offset AnaCal Done! (2)(0x2)
+ GE Tx offset AnaCal Done! (3)(0x3)
+ GE Tx offset AnaCal Done! (3)(0x3)
+ GE-a tx_amp(19)
+ GE Tx amp AnaCal Done! (pair-0)(0x12)(0x7c20)
+ GE Tx amp AnaCal Done! (13) (0x13)
+ GE-b tx_amp(14)
+ GE Tx amp AnaCal Done! (pair-1)(0x17)(0x1b20)
+ GE Tx amp AnaCal Done! (18) (0xe)
+ GE-c,d tx_amp(13)
+ GE Tx amp AnaCal Done! (pair-2)(0x19)(0x1620)
+ GE Tx amp AnaCal Done! (19) (0xd)
+ GE-c,d tx_amp(13)
+ GE Tx amp AnaCal Done! (pair-3)(0x21)(0x1620)
+ GE Tx amp AnaCal Done! (19) (0xd)
+tcPhyVerLookUp 4038 0
+tcPhyVerLookUp 4038 0
+tcPhyVerLookUp 4038 0
+tcPhyVerLookUp 4038 0
+tcPhyVerLookUp 4038 0
+tcPhyVerLookUp 4038 0
+tcPhyVerLookUp 4038 0
+tcPhyVerLookUp 4038 0
+tcPhyVerLookUp 4038 0
+tcPhyVerLookUp 4038 9414
+ 7522 Fe,
+ FE-9 R50 AnaCal Done! (2)(0x22)
+ 7522 FE zcal tx(38) rx(34)
+ 7522 FE l4_22(0x2600)
+ 7522 FE l4_22(0x2622)
+ FE-9 Tx offset AnaCal Done! (3)(-1)(0x21)
+ FE-9 Tx amp AnaCal Done! (2)(0x10)
+ FE-9 Tx amp AnaCal Done! (2)(0x10)
+tcPhyVerLookUp 4038 9414
+ 7522 Fe,
+ FE-10 R50 AnaCal Done! (3)(0x23)
+ 7522 FE zcal tx(38) rx(34)
+ 7522 FE l4_22(0x2600)
+ 7522 FE l4_22(0x2622)
+ FE-10 Tx offset AnaCal Done! (4)(-2)(0x22)
+ FE-10 Tx amp AnaCal Done! (7)(0xb)
+ FE-10 Tx amp AnaCal Done! (7)(0xb)
+tcPhyVerLookUp 4038 9414
+ 7522 Fe,
+ FE-11 R50 AnaCal Done! (4)(0x24)
+ 7522 FE zcal tx(33) rx(33)
+ 7522 FE l4_22(0x2100)
+ 7522 FE l4_22(0x2121)
+ FE-11 Tx offset AnaCal Done! (4)(2)(0x2)
+ FE-11 Tx amp AnaCal Done! (5)(0xd)
+ FE-11 Tx amp AnaCal Done! (5)(0xd)
+tcPhyVerLookUp 4038 9471
+ 7522 Ge,
+eth0: starting interface.
+netif_start_queue
+macType = 0
+qdma_wan: qdma_bmgr.c [2934]: HW_FWD physical size is not illegal, force setting to 4MB
+qdma_wan: physical_size is 0x00400000
+RX_IMP value:0x0000000f
+E3 patched
+EN7571 found!
+FLASH matrix got
+PWRADC offset = 0x3808
+PWRADC ready
+BG 1.76V = 0x286
+BG 0.875V = 0x140
+RSSI_Vref = 0x211
+RSSI_V = 0x298
+eFuse value = 0x7
+eFuse offset = 2.1'C
+Start GPON Tx Calibration
+RGS_T0C = 0x5a
+RGS_T1C = 0x54
+Initial current loaded
+PWR/ER loaded
+TIASD = 0x48
+Rx LOS is set
+Internal DDMI Enabled
+KT Enabled
+EN7571 Initialization Done!
+PON PHY driver version is 170824.106.8
+insmod used greatest stack depth: 13776 bytes left
+xPON driver initialization
+Alloc data struct memory successful, 35448
+Get MAC address from 0x30000the channel id_is must between 0 and 15
+the channel id_is must between 0 and 15
+the channel id_is must between 0 and 15
+the channel id_is must between 0 and 15
+the channel id_is must between 0 and 15
+the channel id_is must between 0 and 15
+the channel id_is must between 0 and 15
+the channel id_is must between 0 and 15
+the channel id_is must between 0 and 15
+the channel id_is must between 0 and 15
+the channel id_is must between 0 and 15
+the channel id_is must between 0 and 15
+the channel id_is must between 0 and 15
+the channel id_is must between 0 and 15
+the channel id_is must between 0 and 15
+the channel id_is must between 0 and 15
+Get MAC address from 0x30000
+Get MAC address from 0x30000
+insmod used greatest stack depth: 13736 bytes left
+XPON Mapping Module init OK!
+Mirror/redirect action on
+ifconfig: ioctl 0x8913 failed: No such device
+Ebtables v2.0 registered
+The remaining IMEM space cannot accommodate section .imem_text !!
+Remaining IMEM space: 11232 bytes       Section Size: 14652 bytes
+HWNAT Module enabled with Type:L2B/IPv4/IPv6/DS-LITE/6RD, foeSize:80B, foeNum:16384
+IP check use Black List
+insmod used greatest stack depth: 12936 bytes left
+device eth0 entered promiscuous mode
+TC3162 hardware watchdog initialized
+Hi~
+no specific node
+four ports
+device eth0.1 is not a slave of br0
+device eth0.2 is not a slave of br0
+device eth0.3 is not a slave of br0
+device eth0.4 is not a slave of br0
+device eth0 is already a member of a bridge; can't enslave it to bridge br0.
+device eth0 left promiscuous mode
+br0: port 1(eth0) entering disabled state
+device eth0.1 entered promiscuous mode
+device eth0.2 entered promiscuous mode
+device eth0.3 entered promiscuous mode
+device eth0.4 entered promiscuous mode
+ifconfig: ioctl 0x8913 failed: No such device
+interface eth0.5 does not exist!
+pon_vlan_init
+Multi Lan port
+ initilize xpon igmp module....done!
+pon_mac_filter_init
+Multi Lan portifconfig: SIOCSIFMTU: No such device
+*reg=00001640 value:00000000 (ext_switch:0)
+00:00:11 imgr.c [71]: Initial system driver.
+00:00:11 imgr.c [77]: Initial pthread parameters.
+00:00:11 imgr.c [83]: Initial dispatcher.
+00:00:11 dspch_init.c [23]: Create IPC trap message queue
+00:00:11 dspch_init.c [36]: Create IPC trap message queue
+00:00:11 imgr.c [89]: Initial database manager.
+00:00:11 dbmgr_init.c [32]: Create database memory.
+00:00:11 dbmgr_init.c [38]: Create the share database memory successful.
+00:00:11 dbmgr_init.c [41]: The total share database size is 0.
+00:00:11 imgr.c [95]: Initial config manager.
+00:00:11 imgr.c [101]: Initial fault manager.
+00:00:11 imgr.c [107]: Initial performance manager.
+device pon entered promiscuous mode
+iptables v1.4.10: can't initialize iptables table `filter': Table does not exist (do you need to insmod?)
+Perhaps iptables or your kernel needs to be upgraded.
+iptables v1.4.10: can't initialize iptables table `filter': Table does not exist (do you need to insmod?)
+Perhaps iptables or your kernel needs to be upgraded.
+iptables v1.4.10: can't initialize iptables table `filter': Table does not exist (do you need to insmod?)
+Perhaps iptables or your kernel needs to be upgraded.
+iptables v1.4.10: can't initialize iptables table `filter': Table does not exist (do you need to insmod?)
+Perhaps iptables or your kernel needs to be upgraded.
+/etc/isp0.conf
+device nas0 entered promiscuous mode
+add nas0 for BDCOM issue...
+device nas0 is already a member of a bridge; can't enslave it to bridge br0.
+/bin/sh: tc: not found
+/bin/sh: tc: not found
+/etc/isp1.conf
+/etc/isp2.conf
+/etc/isp3.conf
+/etc/isp4.conf
+/etc/isp5.conf
+/etc/isp6.conf
+/etc/isp7.conf
+br0: port 6(nas0) entering forwarding state
+br0: port 6(nas0) entering forwarding state
+br0: port 5(pon) entering forwarding state
+br0: port 5(pon) entering forwarding state
+br0: port 4(eth0.4) entering forwarding state
+br0: port 4(eth0.4) entering forwarding state
+br0: port 3(eth0.3) entering forwarding state
+br0: port 3(eth0.3) entering forwarding state
+br0: port 2(eth0.2) entering forwarding state
+br0: port 2(eth0.2) entering forwarding state
+br0: port 1(eth0.1) entering forwarding state
+br0: port 1(eth0.1) entering forwarding state
+Radvd function activated!
+Enter set first loop, IP addr by radvd
+/bin/sh: /tmp/del_radvd_prefix.sh: not found
+dhcp6s parameter activated by exec!
+/bin/sh: /userfs/bin/d========================insmod iptable_filter=======================
+nsmasq: not found
+/bin/sh: /userfs/bin/dhcp6s: not found
+/bin/sh: /userfs/bin/radvd: not found
+chmod: /userfs/profile.cfg: Read-only file system
+sh used greatest stack depth: 12872 bytes left
+valid subcommands:
+adsl
+kworker/u:0 used greatest stack depth: 12744 bytes left
+/etc/lanAlias0.conf
+killall: klogd: no process killed
+killall: syslogd: no process killed
+ftp switch turn on
+sip switch turn on
+h323 switch turn on
+rtsp switch turn on
+l2tp switch turn on,sw_state=
+iptables: Bad rule (does a matching rule exist in that chain?).
+ipsec switch turn on,sw_state=
+iptables: Bad rule (does a matching rule exist in that chain?).
+pptp switch turn on
+/var/tmp/samba_exe.sh: line 1: /userfs/bin/nmbd: not found
+/var/tmp/samba_exe.sh: line 2: /userfs/bin/smbd: not found
+set olt type: 0
+echo used greatest stack depth: 5504 bytes left
+Link State: LAN_1 up.
+come into gpon_boot
+activeImage=0, committedImage=0
+omci get image from flash : 0
+valid subcommands:
+adsl
+omci get image from flash : 1
+/usr/etc/init.d/rcS: line 1225: /userfs/bin/tftpd: not found
+Send OAM Update config!
+!sendEponOamCmdMsg open message queue fail!
+sendOmciCmdMsg open message queue fail!Modify to hw_nat L2 rule
+tcPhyVerLookUp 4038 9471
+ 7522 Ge,
+ [tcPhyInit] in  [tcPhyInit] out , r31 = (12, 0x0)
+  GE R45 zcal_idx (26) (0x1a)
+  GE R45 zcal_idx (36) (0x24)
+  GE R45 AnaCal Done! (6) (0x27)(0xa7)
+  GE R45 zcal_idx (25) (0x19)
+  GE R45 zcal_idx (35) (0x23)
+  GE R45 AnaCal Done! (7) (0x28)(0xa8)
+  GE R45 zcal_idx (26) (0x1a)
+  GE R45 zcal_idx (36) (0x24)
+  GE R45 AnaCal Done! (6) (0x27)(0xa7)
+ GE-c zcal(39)
+  GE R45 zcal_idx (26) (0x1a)
+  GE R45 zcal_idx (36) (0x24)
+  GE R45 AnaCal Done! (6) (0x27)(0xa7)
+ GE-d zcal(39)
+ GE Tx offset AnaCal Done! (1)(0x21)
+ GE Tx offset AnaCal Done! (2)(0x2)
+ GE Tx offset AnaCal Done! (3)(0x3)
+ GE Tx offset AnaCal Done! (3)(0x3)
+ GE-a tx_amp(19)
+ GE Tx amp AnaCal Done! (pair-0)(0x12)(0x7c1b)
+ GE Tx amp AnaCal Done! (13) (0x13)
+ GE Tx amp hbt  (0x13)(0x5c1a)
+ GE-b tx_amp(13)
+ GE Tx amp AnaCal Done! (pair-1)(0x17)(0x1a1b)
+ GE Tx amp AnaCal Done! (19) (0xd)
+ GE Tx amp hbt  (0xd)(0x1114)
+ GE-c,d tx_amp(13)
+ GE Tx amp AnaCal Done! (pair-2)(0x19)(0x1620)
+ GE Tx amp AnaCal Done! (19) (0xd)
+ GE-c,d tx_amp(14)
+ GE Tx amp AnaCal Done! (pair-3)(0x21)(0x1720)
+ GE Tx amp AnaCal Done! (18) (0xe)
+ FE-9 R45 AnaCal Done! (2)(0x22)
+ 7522 FE zcal tx(65) rx(47)
+ 7522 FE l4_22(0x4100)
+ 7522 FE l4_22(0x412f)
+ FE-9 Tx offset AnaCal Done! (3)(-1)(0x21)
+ FE-9 Tx amp AnaCal Done! (2)(0x10)
+ FE-10 R45 AnaCal Done! (3)(0x23)
+ 7522 FE zcal tx(42) rx(42)
+ 7522 FE l4_22(0x2a00)
+ 7522 FE l4_22(0x2a2a)
+ FE-10 Tx offset AnaCal Done! (4)(-2)(0x22)
+ FE-10 Tx amp AnaCal Done! (7)(0xb)
+ FE-11 R45 AnaCal Done! (4)(0x24)
+ 7522 FE zcal tx(43) rx(43)
+ 7522 FE l4_22(0x2b00)
+ 7522 FE l4_22(0x2b2b)
+ FE-11 Tx offset AnaCal Done! (4)(2)(0x2)
+ FE-11 Tx amp AnaCal Done! (5)(0xd)
+tcPhyVerLookUp 4038 9471
+ 7522 Ge,
+ [tcPhyInit] in  [tcPhyInit] out , r31 = (12, 0x0)
+ 751221 set 5R
+Link State: LAN_1 down.
+* doPhyMMDWrite => phyaddr=12, dev_addr=30, data_addr=0x0003 , value=0x0096
+* doPhyMMDWrite => phyaddr=12, dev_addr=30, data_addr=0x0006 , value=0x03A9
+* doPhyMMDWrite => phyaddr=12, dev_addr=31, data_addr=0x0268 , value=0x07F8
+* doPhyMMDWrite => phyaddr=12, dev_addr=31, data_addr=0x0271 , value=0x7E14
+Please press Enter to activate this console. [ setHostname ] 304:  hostname TP-LINK
+[ waitOmciInit ] 204:  <<<<  COS wait for OMCI init...  >>>>
+[ waitOmciInit ] 210:  <<<<  OMCI init use 0 seconds!  >>>>
+[ dm_readFile ] 2011:  can not open xml file /var/tmp/pc/reduced_data_model.xml!, about to open file /etc/reduced_data_model.xml
+sendto: No such file or directory
+send 2004 error 934, -1
+device eth0 entered promiscuous mode
+br0: port 7(eth0) entering forwarding state
+br0: port 7(eth0) entering forwarding state
+Get tp sw version :3.1.4 build 220830 Rel.35191n
+TpProductId:0x4685b102
+HwVersion:2.0.0.1
+SwVersion0:3.1.4.50
+SwVersion1:3.1.4.50
+MAC:9c:a2:f4:3a:ad:dc
+Get dut name and main version :XZ000-G3
+Get tp build info date :220830 , time : 35191
+api_set_pon_ver_info(415): -- not implemented, to do here! --
+[ oal_iotcheckfiles ] 1013:  iot file check ok len=1639
+[ oal_sys_readSnFlash ] 1883:  Read invalid sn from auth flash!!!!
+[ rsl_InitGponPloamSnPwd ] 1619:  Read sn from auth flash failed, Now try to read from hwinfo flash
+Get tp sw version :3.1.4 build 220830 Rel.35191n
+TpProductId:0x4685b102
+HwVersion:2.0.0.1
+SwVersion0:3.1.4.50
+SwVersion1:3.1.4.50
+MAC:9c:a2:f4:api_set_sn_auth_info(340): snIUint32[0] = 0x54504c47, snIUint32[1] = 0xf43aaddc,
+3
+ tmp: TPLGf43aaddc
+a:ad:dc
+[ rsl_InitGponPloamSnPwd ] 1628:  Read sn from hwinfo flash is invalid, Use auto_sn!!
+[ lanMacToOnuSn ] 197:  -------f43aaddc-----
+invendor: 0x54504c47
+it sn:<54504C47f43aaddc>
+Send OAM Update config!
+!sendEponOamCmdMsg open message queue fail!
+[ oal_sys_readPwapi_set_sn_auth_info(375): passwd:;
+dFlash ] 2058:  Read invalid pwd from auth flash!!!! Set to NULL....
+init pwd:<>
+Password:
+Send OAM Update config!
+!sendEponOamCmdMsg open message queue fail!
+[ oal_sys_readLoidFlash ] 1791:  Read invalid loid from flash. Now set default value to NULL
+Init loid:   ,  passwd:
+[ oal_sys_readVlanFlash ] 2160:  Read invalid vlan from auth flash!!!! Use default value...
+api_set_vlan_mode(987): set vlanmode=0 vid=1 pri=0
+ponvlancmd cleanrule 11 0
+ponvlancmd cleanrule 11 1
+ponvlan ioctl errorponvlancmd enable
+ponvlancmd setdsctl 0
+[ rsl_setget bootflag(0)GponFwRuleObj ] 2389:  Set vlan mode, mgmtMode=0 vid=1 pri=0
+Init vlan_mode 0 , vlan_vid 1 , vlan_prio 0
+got mainVer(V3.1.4) standbyVer(V3.1.4)mainSw(V3.1.4), standBySw(V3.1.4)api_set_sn_auth_info(340): snIUint32[0] = 0x54504c47, snIUint32[1] = 0xf43aaddc,
+ tmp: TPLGf43aaddc
+vendor: 0x54504c47
+echo used greatest stack depth: 5032 bytes left
+Send OAM Update config!
+!sendEponOamCmdMsg open message queue fail!
+me_xml_get_root(79): can noapi_renegotiate(644): cmdBuf:echo gpon startup 0 > /proc/gpon/debug
+t alloc mem for xml file /etc/omci_me.xml.
+[ rsl_setGponOmciMeIotObj ] 3112:  rsl_setGponOmciMeIotObj 3112() : optCode = 3, meId = 256,Disable GPON ONU
+ instId = 0, attrId = 1, value = V4.0
+[ rsl_setGponOmciMeIotObj ] 3112:  rsl_setGponOmciMeIotObj 3112() : optCode = 3, meId = 256, instId = 0, attrId = 0, value = TPLG
+[ rsl_setGponOmciMeIotObj ] 3112:  rsl_setGponOmciMeIotObj 3112() : optCode = 3, meId = 256, instId = 0, attrId = 2, value = 54504C47f43aaddc
+[ rsl_setGponOmciMeIotObj ] 3112:  rsl_setGponOmciMeIotObj 3112() : optCode = 3, meId = 256, instId = 0, attrId = 3, value = 0
+[ rsl_setGponOmciMeIotObj ] 3112:  rsl_setGponOmciMeIotObj 3112() : optCode = 3, meId = 257, instId = 0, attrId = 0, value = TX-6610
+[ rsl_setGponOmciMeIotObj ] 3112:  rsl_setGponOmciMeIotObj 3112() : optCode = 3, meId = 257, instId = 0, attrId = 1, value = 134
+[ rsl_setGponOmciMeIotObj ] 3112:  rsl_setGponOmciMeIotObj 3112() : optCode = 3, meId = 7, instId = 0, attrId = 0, value = V3.1.4
+[ rsl_setGponOmciMeIotObj ] 3112:  rsl_setGponOmciMeIotObj 3112() : optCode = 3, meId = 7, instId = 1, attrId = 0, value = V3.1.4
+api_renegotiate(650): cmdBuf:echo gpon startup 1 > /proc/gpon/debug
+Enable GPON ONU
+echo used greatest stack depth: 4816 bytes left
+omci_api_cos.c omci_api_call (1514): unknow api id 23
+[ oal_doSetGponDebugObj ] 2181:  Call OMCI API to set pon debug error
+api_set_onu_dhcp_status(1198): -- not implemented, to do here! --
+device pon is already a member of a bridge; can't enslave it to bridge br0.
+[ cos_init ] 482:  TX enable(echo txctl 1 0 > /proc/pon_phy/debug)!
+phy_write_proc ctrlFlag(1, 0-limit 1-open). set pon tx power[not used now](0, 0-ON 1-OFF).
+killall: epon_oam: no process killed
+telnetd: starting
+  port: 23; login program: /usr/bin/cli
+[ setSystemDropCaches ] 195:  echo 2 > /proc/sys/vm/drop_caches
+Link State: LAN_1 up.
+killall: epon_oam: no process killed
+killall: epon_oam: no process killed
+Change packet overhead to 0x14
+Link State: PON link up.
+/bin/sh: can't create /proc/tc3162/tsarm_qosred_update: nonexistent directory
+/bin/sh: can't create /proc/tc3162/tsarm_qosred_update: nonexistent directory
+/bin/sh: can't create /proc/tc3162/tsarm_qosred_update: nonexistent directory
+/bin/sh: can't create /proc/tc3162/tsarm_qosred_update: nonexistent directory
+/bin/sh: can't create /proc/tc3162/tsarm_qosred_update: nonexistent directory
+/bin/sh: can't create /proc/tc3162/tsarm_qosred_update: nonexistent directory
+/bin/sh: can't create /proc/tc3162/tsarm_qosred_update: nonexistent directory
+/bin/sh: can't create /proc/tc3162/tsarm_qosred_update: nonexistent directory
+/bin/sh: can't create /proc/tc3162/tsarm_qosred_update: nonexistent directory
+/bin/sh: can't create /proc/tc3162/tsarm_qosred_update: nonexistent directory
+killall: dnsmasq: no process killed
+/bin/sh: /userfs/bin/dnsmasq: not found
+iptables: Bad rule (does a matching rule exist in that chain?).
+iptables: Bad rule (does a matching rule exist in that chain?).
+iptables: Bad rule (does a matching rule exist in that chain?).
+iptables: Bad rule (does a matching rule exist in that chain?).
+chmod: /userfs/profile.cfg: Read-only file system
+iptables: No chain/target/match by that name.
+iptables: No chain/target/match by that name.
+/usr/script/wan_stop.sh: line 45: ip6tables: not found
+/usr/script/wan_stop.sh: line 46: ip6tables: not found
+iptables: No chain/target/match by that name.
+iptables: No chain/target/match by that name.
+iptables: No chain/target/match by that name.
+iptables: No chain/target/match by that name.
+iptables: No chain/target/match by that name.
+iptables: No chain/target/match by that name.
+iptables: No chain/target/match by that name.
+iptables: No chain/target/match by that name.
+iptables: No chain/target/match by that name.
+br0: port 6(nas0) entering forwarding state
+br0: port 6(nas0) entering disabled state
+[: !=: argument expected
+killall: siproxd: no process killed
+rmmod: can't unload module 'ipt_REDIRECT': No such file or directory
+sip switch turn on
+iptables: No chain/target/match by that name.
+iptables v1.4.10: Couldn't find target `acl_chain'
+Try `iptables -h' or 'iptables --help' for more information.
+iptables v1.4.10: Couldn't find target `acl_chain'
+Try `iptables -h' or 'iptables --help' for more information.
+iptables v1.4.10: Couldn't find target `acl_chain'
+Try `iptables -h' or 'iptables --help' for more information.
+iptables: No chain/target/match by that name.
+iptables: No chain/target/match by that name.
+iptables: No chain/target/match by that name.
+iptables v1.4.10: Couldn't find target `acl_chain'
+Try `iptables -h' or 'iptables --help' for more information.
+iptables v1.4.10: Couldn't find target `acl_chain'
+Try `iptables -h' or 'iptables --help' for more information.
+iptables v1.4.10: Couldn't find target `acl_chain'
+Try `iptables -h' or 'iptables --help' for more information.
+iptables: No chain/target/match by that name.
+ifconfig: nas0: error fetching interface information: Device not found
+chmod: /userfs/profile.cfg: Read-only file system
+chmod: /userfs/profile.cfg: Read-only file system
+/bin/sh: /etc/route.sh: not found
+method = HW_NAT_TAB_CLEAN
+done
+ddns running
