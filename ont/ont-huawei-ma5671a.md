@@ -34,6 +34,8 @@ parent: Huawei
 
 ::: info Info
 Unlike the [Nokia / Alcatel-Lucent G-010S-P](/ont-nokia-g-010s-p#eeprom), the MA5671A has no physical EEPROM chip: the SFP EEPROM is emulated by the SoC on the I2C interface (see [EEPROM](#eeprom-i2c-slave-simulated-eeprom))[^ponwiki-sps].
+
+<ImageFigure file="g-010s-p-and-ma5671a-eeprom.jpg" alt="Physical EEPROM on the G-010S-P, missing on the MA5671A" caption="Physical EEPROM on the G-010S-P (circled in red), missing on the MA5671A" />
 :::
 
 <!--@partial: ./_partials/ont-lantiq-falcon-architecture.md-->
