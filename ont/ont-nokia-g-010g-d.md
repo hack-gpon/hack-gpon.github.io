@@ -10,7 +10,7 @@ parent: Nokia
 | ---------------- | ---------------------------------------------------------------------------- |
 | Vendor/Brand     | Nokia                                                                        |
 | Model            | G-010G-D                                                                     |
-| Chipset          | RTL9607FS                                                                    |
+| Chipset          | [Realtek RTL9607FS](/chipset-realtek-rtl960x)                                |
 | Flash            | 256MB (SPI-NAND, Winbond 25N02KVZEIE)                                        |
 | RAM              | 512MB                                                                        |
 | System           | Linux (Realtek Unified SDK 2.2.0)                                            |

@@ -11,7 +11,7 @@ parent: CIG
 | Vendor/Brand     | CIG              |
 | Model            | G-97CM           |
 | ODM              | ✅               |
-| Chipset          | Realtek RTL9601B |
+| Chipset          | [Realtek RTL9601B](/chipset-realtek-rtl960x) |
 | Flash            |                  |
 | RAM              |                  |
 | System           | Linux            |

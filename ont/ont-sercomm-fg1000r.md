@@ -11,7 +11,7 @@ parent: Sercomm
 | Vendor/Brand    | Sercomm                        |
 | Model           | FG1000R                        |
 | ODM             | ✅                             |
-| Chipset         | RTL9602C                       |
+| Chipset         | [Realtek RTL9602C](/chipset-realtek-rtl960x) |
 | Flash           | 128MB (MXIC MX35LF1GE4AB)      |
 | RAM             | 64MB                           |
 | CPU             |                                |

@@ -1,7 +1,7 @@
 /** Client side data of the firmware badges and compatibility statuses (see `.vitepress/pages.ts`). */
-import type { CompatibilityStatus, Firmware, FirmwareBadge } from '../../pages'
+import type { Chipset, CompatibilityStatus, Firmware, FirmwareBadge } from '../../pages'
 
-export type { CompatibilityStatus, Firmware, FirmwareBadge }
+export type { Chipset, CompatibilityStatus, Firmware, FirmwareBadge }
 
 export const badgeInfo: Record<FirmwareBadge, { label: string; description: string }> = {
   'foss-verified': {

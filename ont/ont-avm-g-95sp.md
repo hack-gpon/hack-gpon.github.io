@@ -12,7 +12,7 @@ parent: AVM
 | Model            | G-95SP                                           |
 | ODM              | CIG                                              |
 | ODM Product Code | G-95SP                                           |
-| Chipset          | Lantiq PEB98035                                  |
+| Chipset          | [Lantiq PEB98035](/chipset-lantiq-falcon)        |
 | CPU              |                                                  |
 | CPU Clock        |                                                  |
 | Flash            |                                                  |

@@ -10,7 +10,7 @@ parent: Zyxel
 | ------------ | --------------- |
 | Vendor/Brand | Zyxel           |
 | Model        | PM3100-T0       |
-| Chipset      | MediaTek/EcoNet |
+| Chipset      | [MediaTek/EcoNet](/chipset-econet) |
 | Flash        |                 |
 | RAM          |                 |
 | System       |                 |

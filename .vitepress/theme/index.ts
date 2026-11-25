@@ -2,6 +2,9 @@ import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import Layout from './Layout.vue'
 import AsciiHex from './components/AsciiHex.vue'
+import ChipsetDevices from './components/ChipsetDevices.vue'
+import ChipsetFirmwares from './components/ChipsetFirmwares.vue'
+import ChipsetIndex from './components/ChipsetIndex.vue'
 import CigPassword from './components/CigPassword.vue'
 import CrcVerifier from './components/CrcVerifier.vue'
 import CiteAs from './components/CiteAs.vue'
@@ -25,6 +28,9 @@ export default {
   Layout,
   enhanceApp({ app, router }) {
     app.component('AsciiHex', AsciiHex)
+    app.component('ChipsetDevices', ChipsetDevices)
+    app.component('ChipsetFirmwares', ChipsetFirmwares)
+    app.component('ChipsetIndex', ChipsetIndex)
     app.component('CigPassword', CigPassword)
     app.component('CrcVerifier', CrcVerifier)
     app.component('CiteAs', CiteAs)

@@ -11,7 +11,7 @@ parent: AVM
 | Vendor/Brand    | AVM FRITZ!Box 5590                                                       |
 | Model           | FRITZ!Box 5590                                                           |
 | ODM             | ✅                                                                       |
-| Chipset         | MaxLinear Falcon PRX321B1BI-S-LNEV MIPS32                                |
+| Chipset         | [MaxLinear Falcon PRX321B1BI-S-LNEV](/chipset-maxlinear-prx) MIPS32      |
 | Flash           | 4 GB                                                                     |
 | RAM             | 2048 MB                                                                  |
 | Chipset         | MaxLinear Falcon PRX321B1BI-S-LNEV MIPS32                                |

@@ -11,7 +11,7 @@ parent: T3 Technology
 | Vendor/Brand     | T3 Technology / TrueOnline                                   |
 | Model            | T723                                                         |
 | CPU              | 2x ARM Cortex-A9 (ARMv7 Processor rev 1)                     |
-| Chipset          | HiSilicon A9, board description `HWSOC13`                    |
+| Chipset          | [HiSilicon A9](/chipset-hisilicon), board description `HWSOC13` |
 | Flash            | 256 MB SPI-NAND                                              |
 | RAM              | 512 MB DDR (`434M` exposed by the kernel boot arguments)      |
 | System           | Huawei Dopra/WAP-derived Linux 5.10.0                        |

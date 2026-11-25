@@ -12,7 +12,7 @@ parent: Nokia
 | Model            | XS-010X-Q                                                                        |
 | ODM              | CIG                                                                              |
 | ODM Product Code | XG-99YF                                                                           |
-| Chipset          | Cortina CA8271A                                                                  |
+| Chipset          | [Cortina CA8271A](/chipset-cortina-ca827x)                                       |
 | Manufacter       | CIG                                                                              |
 | Flash            | 128MB                                                                            |
 | RAM              | 128MB                                                                            |

@@ -10,7 +10,7 @@ parent: Zyxel
 | ------------ | -------------------------------------- |
 | Vendor/Brand | Zyxel                                  |
 | Model        | PM7300-T0                              |
-| Chipset      | MediaTek/EcoNet EN7580                 |
+| Chipset      | [MediaTek/EcoNet EN7580](/chipset-econet) |
 | Flash        | 128 MiB SPI NAND (Macronix MXIC35LF1G) |
 | RAM          | 256 MiB                                |
 | 10GBaseT     | ✅ 1&nbsp;&times;                      |

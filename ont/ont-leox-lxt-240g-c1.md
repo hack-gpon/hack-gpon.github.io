@@ -10,7 +10,7 @@ parent: LEOX
 | --------------- | ---------------------------------------------------------------------- |
 | Vendor/Brand    | LEOX                                                                   |
 | Model           | LXT-240G-C1                                                            |
-| Chipset         | Realtek RTL9607C                                                       |
+| Chipset         | [Realtek RTL9607C](/chipset-realtek-rtl960x)                           |
 | Flash           | SPI NAND 256MB                                                         |
 | RAM             | 196MB visible in top (256MB total?)                                    |
 | CPU             | Formosa MIPS interAptiv (multi) V2.0                                   |

@@ -12,7 +12,7 @@ parent: ZTE
 | Model            | F6005                             |
 | ODM              | CIG                               |
 | ODM Product Code | [G-97CP](/ont-cig-g-97cp)         |
-| Chipset          | Realtek RTL9601D                  |
+| Chipset          | [Realtek RTL9601D](/chipset-realtek-rtl960x) |
 | Flash            | 16MB                              |
 | RAM              | 32MB                              |
 | System           | Linux (Luna SDK 1.9.0)            |

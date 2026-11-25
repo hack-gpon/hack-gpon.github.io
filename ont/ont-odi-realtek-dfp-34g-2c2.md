@@ -11,7 +11,7 @@ parent: HSGQ (formerly ODI)
 | ------------ | --------------------------------- |
 | Vendor/Brand | ODI                               |
 | Model        | DFP-34G-2C2                       |
-| Chipset      | Realtek RTL9601D                  |
+| Chipset      | [Realtek RTL9601D](/chipset-realtek-rtl960x) |
 | Flash        | 8 MB                              |
 | RAM          | 64 MB                             |
 | System       | Linux (Luna SDK 1.9)              |

@@ -13,7 +13,7 @@ parent: ZTE
 | ODM          | ✅                                                                |
 | CPU          | ZTE ZX279133@Dual-Core A53                                        |
 | CPU Clock    | 1200MHz                                                           |
-| Chipset      | ZTE ZX279133                                                      |
+| Chipset      | [ZTE ZX279133](/chipset-zte-zx279)                                |
 | Flash        | 128 MB (SPI NAND FM25S01A)                                        |
 | RAM          | 128 MB                                                            |
 | System       | Customized Linux by ZTE                                           |

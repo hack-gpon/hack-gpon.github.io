@@ -11,7 +11,7 @@ parent: SourcePhotonics
 | Vendor/Brand       | SourcePhotonics    |
 | Model              | SPS-34-24T-HP-TDFM |
 | ODM                | ✅                 |
-| Chipset            | Lantiq PEB98035    |
+| Chipset            | [Lantiq PEB98035](/chipset-lantiq-falcon) |
 | CPU                |                    |
 | CPU Clock          |                    |
 | Flash              |                    |

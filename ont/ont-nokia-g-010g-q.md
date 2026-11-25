@@ -13,7 +13,7 @@ alias: CIG G-97CU
 | Model                 | G-010G-Q                                                                                                          |
 | ODM                   | CIG                                                                                                               |
 | ODM Product Code      | G-97C                                                                                                            |
-| Chipset               | Realtek RTL9601B                                                                                                  |
+| Chipset               | [Realtek RTL9601B](/chipset-realtek-rtl960x)                                                                      |
 | Flash                 | 16 MB (Winbond [W25Q128JV](https://www.winbond.com/resource-files/w25q128jv%20revf%2003272018%20plus.pdf) 3V SPI) |
 | RAM                   | DDR2 325MHz                                                                                                       |
 | System                | Linux (Luna SDK 1.9.0)                                                                                            |

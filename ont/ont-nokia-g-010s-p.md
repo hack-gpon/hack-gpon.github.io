@@ -12,7 +12,7 @@ parent: Nokia
 | Model            | G-010S-P                                 |
 | ODM              | SourcePhotonics                          |
 | ODM Product Code | SPS-34-24T-HP-TDFO                       |
-| Chipset          | Lantiq PEB98035                          |
+| Chipset          | [Lantiq PEB98035](/chipset-lantiq-falcon) |
 | Flash            | 16 MB                                    |
 | RAM              | 64 MB                                    |
 | CPU              | MIPS 34Kc interAptiv                     |

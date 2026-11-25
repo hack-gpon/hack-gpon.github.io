@@ -10,7 +10,7 @@ parent: Tenda
 | --------------- | -------------------------------------------------------------------------- |
 | Vendor/Brand    | Tenda                                                                      |
 | Model           | HG1                                                                        |
-| CPU             | Realtek RTL9601D                                                           |
+| Chipset         | [Realtek RTL9601D](/chipset-realtek-rtl960x)                               |
 | DRAM            | 32 MB                                                                      |
 | Flash Size      | 8 MB                                                                       |
 | CPU Arch        | MIPSBE Realtek Lexra                                                       |

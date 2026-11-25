@@ -12,7 +12,7 @@ parent: Free/Iliad
 | Model            | F-MDCONU3A                      |
 | ODM              | ✅                              |
 | ODM Product Code |                                 |
-| Chipset          | BCM55030B2FBG rev B2            |
+| Chipset          | [Broadcom BCM55030B2FBG](/chipset-broadcom) rev B2 |
 | Flash            | W25Q32J (4 MB SPI)              |
 | RAM              | embedded SRAM (DCCM)            |
 | CPU              | ARCompact[^arc-isa], big endian |

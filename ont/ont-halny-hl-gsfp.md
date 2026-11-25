@@ -12,7 +12,7 @@ parent: HALNy
 | Model            | HL-GSFP              |
 | ODM              | T&W                  |
 | ODM Product Code | TW2362H-CDEL         |
-| Chipset          | Lantiq PEB98035      |
+| Chipset          | [Lantiq PEB98035](/chipset-lantiq-falcon) |
 | Flash            | 8 MB                 |
 | RAM              | 64 MB                |
 | CPU              | MIPS 34Kc interAptiv |

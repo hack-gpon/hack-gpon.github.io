@@ -12,7 +12,7 @@ parent: Nokia
 | Model            | G-010G-R                                                                    |
 | ODM              | CIG                                                                         |
 | ODM Product Code | G-97C                                                                       |
-| Chipset          | RTL9601B                                                                    |
+| Chipset          | [Realtek RTL9601B](/chipset-realtek-rtl960x)                                |
 | Flash            | 16MB                                                                        |
 | RAM              | 32MB                                                                        |
 | System           | Linux (Luna SDK 1.9.0)                                                      |

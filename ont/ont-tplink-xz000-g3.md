@@ -10,7 +10,7 @@ parent: TP-Link
 | ------------ | ------------------------------------- |
 | Vendor/Brand | TP-Link                               |
 | Model        | XZ000-G3                              |
-| Chipset      | EcoNet EN751221                       |
+| Chipset      | [EcoNet EN751221](/chipset-econet)    |
 | CPU          | MIPS32 34Kc                           |
 | Flash        | 4 MB                                  |
 | RAM          | 60792 kB                              |

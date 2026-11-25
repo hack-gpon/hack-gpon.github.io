@@ -10,10 +10,10 @@ parent: Adtran
 | --------------- | ---------------------------------------- |
 | Vendor/Brand    | Adtran                                                        |
 | Model           | SDX 611 (Adtran-611-V2 REV1.0)                                |
-| Chipset         | Realtek RTL9601D (Realtek "Luna" SDK)                         |
+| Chipset         | [Realtek RTL9601D](/chipset-realtek-rtl960x) |
 | Flash           | 16 MB (Winbond W25Q128JVSQ)                                   |
 | RAM             |                                                               |
-| System          |                                                               |
+| System          | Linux (Luna SDK)                                              |
 | Firmware        | `GRO100_ADTRAN611V2` V2.2.9.11 (built 2022-11-12)             |
 | Bootloader      | U-Boot 2011.12.NA-g61AC973                                    |
 | Kernel          | 3.18.24 (uImage, LZMA, load address `0x80000000`)             |

@@ -11,7 +11,7 @@ parent: V-SOL
 | ------------ | --------------------------------------------------------------------- |
 | Vendor/Brand | V-SOL                                                                 |
 | Model        | V2802RH                                                               |
-| Chipset      | Realtek RTL9601D                                                      |
+| Chipset      | [Realtek RTL9601D](/chipset-realtek-rtl960x)                          |
 | Flash        | ZB25VQ32BSIG - Zbit Semi 32 Mbit SPI NOR Flash                        |
 | RAM          | 64 MB                                                                 |
 | System       | Linux (Luna SDK)                                                      |

@@ -10,7 +10,7 @@ parent: CONBIC
 | ---------------- | ---------------------------------------------------------- |
 | Vendor/Brand     | CONBIC                                                     |
 | Model            | PMG3000-D20B-C                                             |
-| Chipset          | Faraday/Galachip C1601                                     |
+| Chipset          | [Faraday/GalaChip GC1601](/chipset-galachip)               |
 | Flash            |                                                            |
 | RAM              |                                                            |
 | CPU              |                                                            |

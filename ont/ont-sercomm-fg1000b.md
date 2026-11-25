@@ -12,7 +12,7 @@ parent: Sercomm
 | Vendor/Brand    | Sercomm                                                             |
 | Model           | FG1000B                                                             |
 | ODM             | ✅                                                                  |
-| Chipset         | BCM68360_B1                                                         |
+| Chipset         | [Broadcom BCM68360_B1](/chipset-broadcom)                           |
 | Flash           | NAND 128 MB                                                         |
 | RAM             | 256 MB                                                              |
 | CPU             | Broadcom B53 Dual Core                                              |

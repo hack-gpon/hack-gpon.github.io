@@ -12,7 +12,7 @@ alias: Usourcetech UGP-N1S
 | ------------ | ----------------------------------------------- |
 | Vendor/Brand | ODI                                             |
 | Model        | DFP-34G-2C2                                     |
-| CPU          | ZTE ZX279125                                    |
+| Chipset      | [ZTE ZX279125](/chipset-zte-zx279)              |
 | CPU Clock    | 600Mhz                                          |
 | Flash        | 16 MB                                           |
 | RAM          | 32 MB                                           |

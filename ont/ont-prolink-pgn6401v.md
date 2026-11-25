@@ -10,7 +10,7 @@ parent: Prolink
 | --------------- | ---------------------------------------------------------------------- |
 | Vendor/Brand    | Prolink                                                                |
 | Model           | PGN6401V                                                               |
-| Chipset         | Realtek RTL9607Cv2                                                     |
+| Chipset         | [Realtek RTL9607Cv2](/chipset-realtek-rtl960x)                         |
 | Flash           | SPI NAND 128MB                                                         |
 | RAM             | 256MB                                                                  |
 | CPU             | Formosa MIPS interAptiv (multi) V2.0                                   |

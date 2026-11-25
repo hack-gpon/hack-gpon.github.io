@@ -11,7 +11,7 @@ parent: Huawei
 | Vendor/Brand    | Huawei                              |
 | Model           | MA5671A                             |
 | ODM             |                                     |
-| Chipset         | Lantiq PEB98035                     |
+| Chipset         | [Lantiq PEB98035](/chipset-lantiq-falcon) |
 | Flash           | 16 MB                               |
 | RAM             | 64 MB (Winbond W25Q128FV)           |
 | CPU             | MIPS 34Kc interAptiv                |

@@ -10,7 +10,7 @@ parent: Comtrend
 | --------------- | -------------------------------------------------------------------------- |
 | Vendor/Brand    | Comtrend                                                                   |
 | Model           | GRG-4362                                                                   |
-| Chipset         | Realtek RTL9615C                                                           |
+| Chipset         | [Realtek RTL9615C](/chipset-realtek-rtl961x)                               |
 | Flash           | SPI NAND 128MiB (Winbond W25N01GVZEIG)                                     |
 | RAM             | 512MiB                                                                     |
 | CPU             | Dualcore AArch64 A55                                                       |

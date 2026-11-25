@@ -11,7 +11,7 @@ parent: Huawei
 | --------------- | --------------------------------------- |
 | Vendor/Brand    | Huawei                                  |
 | Model           | OptiXstar S800E                         |
-| Chipset         | HiSilicon SD5182S                       |
+| Chipset         | [HiSilicon SD5182S](/chipset-hisilicon) |
 | BOSA            | HN517X (XGS-PON)                        |
 | Flash           |                                         |
 | RAM             |                                         |

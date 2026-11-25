@@ -10,7 +10,7 @@ parent: UFiber
 | ------------ | ----------------- |
 | Vendor/Brand | UFiber            |
 | Model        | UFiber UF-Instant |
-| Chipset      | Realtek RTL9601CI |
+| Chipset      | [Realtek RTL9601CI](/chipset-realtek-rtl960x) |
 | Flash        | 16 MB             |
 | RAM          | 64 MB             |
 | System       | Linux (Luna SDK)  |

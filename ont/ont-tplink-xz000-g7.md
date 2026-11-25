@@ -10,7 +10,7 @@ parent: TP-Link
 | ------------ | ------------------------------------- |
 | Vendor/Brand | TP-Link                               |
 | Model        | XZ000-G7                              |
-| Chipset      | Faraday/Galachip GC1601               |
+| Chipset      | [Faraday/GalaChip GC1601](/chipset-galachip) |
 | CPU          | ARMv5l 32-bit                         |
 | Flash        | 4MB (cFeon QH32B-104HIP)              |
 | RAM          | 32MB                                  |

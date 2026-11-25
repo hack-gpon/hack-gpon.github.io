@@ -12,7 +12,7 @@ parent: CIG
 | Model            | XE-99S                                                                     |
 | ODM              | CIG                                                                        |
 | ODM Product Code | XE-99S                                                                     |
-| Chipset          | Cortina CA8271S                                                            |
+| Chipset          | [Cortina CA8271S](/chipset-cortina-ca827x)                                 |
 | Flash            | MX35LF1GE4AB 128MB                                                         |
 | RAM              | 128MB                                                                      |
 | CPU              | Taroko V0.2 (MIPS)                                                         |

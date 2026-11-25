@@ -12,7 +12,7 @@ parent: BCCTV
 | Model            | PNC11C                                     |
 | ODM              |                                            |
 | ODM Product Code |                                            |
-| Chipset          | BCM55030                                   |
+| Chipset          | [Broadcom BCM55030](/chipset-broadcom)     |
 | Flash            | 16Mb                                       |
 | RAM              | 1Gb DDR3(L) SDRAM                          |
 | CPU              | BCM6848                                    |

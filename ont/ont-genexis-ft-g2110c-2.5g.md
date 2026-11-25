@@ -10,7 +10,7 @@ parent: Genexis
 | --------------- | ------------------------------------------------------------ |
 | Vendor/Brand    | Genexis FiberTwist                                           |
 | Model           | G2110C-2.5G                                                  |
-| Chipset         | Realtek RTL9601D                                             |
+| Chipset         | [Realtek RTL9601D](/chipset-realtek-rtl960x)                 |
 | Flash           | 128MB                                                        |
 | RAM             | 32MB                                                         |
 | System          | Linux 3.18 (Luna SDK 3.3)                                    |

@@ -12,7 +12,7 @@ parent: Zyxel
 | Model            | PMG3000-D20B                                               |
 | ODM              | T&W                                                        |
 | ODM Product Code | TW2362H-CDEL                                               |
-| Chipset          | Lantiq PEB98035                                            |
+| Chipset          | [Lantiq PEB98035](/chipset-lantiq-falcon)                  |
 | Flash            | 8 MB SPI NOR (GigaDevice GD25Q64B)                         |
 | RAM              | 64 MB                                                      |
 | CPU              | MIPS 34Kc interAptiv                                       |

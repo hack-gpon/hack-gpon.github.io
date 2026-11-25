@@ -11,7 +11,7 @@ parent: AVM
 | Vendor/Brand    | AVM FRITZ!Box 5530                                                       |
 | Model           | FRITZ!Box 5530                                                           |
 | ODM             | ✅                                                                       |
-| Chipset         | MaxLinear Falcon PRX321B1BI-S-LNEV MIPS32                                |
+| Chipset         | [MaxLinear Falcon PRX321B1BI-S-LNEV](/chipset-maxlinear-prx) MIPS32      |
 | Flash           | 128 MB                                                                   |
 | RAM             | 1024 MB                                                                  |
 | Chipset         | MaxLinear Falcon PRX321B1BI-S-LNEV MIPS32                                |

@@ -12,7 +12,7 @@ parent: Nokia
 | Model            | G-010S-B                                 |
 | ODM              | SourcePhotonics                          |
 | ODM Product Code |                                          |
-| Chipset          | Lantiq PEB98035                          |
+| Chipset          | [Lantiq PEB98035](/chipset-lantiq-falcon) |
 | CPU              | MIPS 34Kc interAptiv                     |
 | CPU Clock        | 400MHz                                   |
 | Flash            | 16 MB (Macronix MX25L25635FZ2R-10G)      |

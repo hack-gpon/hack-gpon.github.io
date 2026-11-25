@@ -12,7 +12,7 @@ parent: Free/Iliad
 | Model            | F-MDCONU5A  |
 | ODM              | ✅          |
 | ODM Product Code |             |
-| Chipset          | BCM55030    |
+| Chipset          | [Broadcom BCM55030](/chipset-broadcom) |
 | Flash            |             |
 | RAM              |             |
 | CPU              |             |

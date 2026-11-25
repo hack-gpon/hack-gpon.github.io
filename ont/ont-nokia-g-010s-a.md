@@ -11,7 +11,7 @@ parent: Nokia
 | Vendor/Brand     | Nokia                                    |
 | Model            | G-010S-A                                 |
 | ODM              | ✅[^oem]                                 |
-| Chipset          | Lantiq PEB98035                          |
+| Chipset          | [Lantiq PEB98035](/chipset-lantiq-falcon) |
 | Flash            | 16 MB                                    |
 | RAM              | 64 MB                                    |
 | CPU              | MIPS 34Kc interAptiv                     |

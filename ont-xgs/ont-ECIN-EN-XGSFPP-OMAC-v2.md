@@ -10,7 +10,7 @@ parent: E.C.I. Networks
 | ---------------- | ---------------------------------------- |
 | Vendor/Brand     | E.C.I. Networks                          |
 | Model            | EN-XGSPP-OMAC-V2                        |
-| Chipset          | MaxLinear PRX126                         |
+| Chipset          | [MaxLinear PRX126](/chipset-maxlinear-prx) |
 | Flash            |                                          |
 | RAM              |                                          |
 | System           | Linux (PRX126 SDK)                       |

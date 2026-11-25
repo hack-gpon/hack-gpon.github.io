@@ -10,7 +10,7 @@ parent: BT-PON
 | --------------- | -------------------------------------------------------------------------- |
 | Vendor/Brand    | BT-PON                                                                     |
 | Model           | BT-G711AX                                                                  |
-| Chipset         | Realtek RTL9607Cv2 (Realtek RTL8198D is mentioned too in boot log???)      |
+| Chipset         | [Realtek RTL9607Cv2](/chipset-realtek-rtl960x) (Realtek RTL8198D is mentioned too in boot log???) |
 | Flash           | SPI NAND 128MiB (Winbond W25N01GVZEIG)                                     |
 | RAM             | DDR3 256MiB                                                                |
 | CPU             | Formosa MIPS interAptiv (multi) V2.0                                       |

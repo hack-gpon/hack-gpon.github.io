@@ -12,7 +12,7 @@ parent: FS.com
 | Model        | ONU1710-1G                                   |
 | P/N          | ONU1710-1G                                   |
 | SKU          | 154796                                       |
-| Chipset      | Realtek RTL9601D                             |
+| Chipset      | [Realtek RTL9601D](/chipset-realtek-rtl960x) |
 | CPU          | MIPS-I 32-bit (big-endian)                   |
 | CPU Clock    | 300 MHz                                      |
 | RAM          | 32 MB (DDR2, 325 MHz)                        |
