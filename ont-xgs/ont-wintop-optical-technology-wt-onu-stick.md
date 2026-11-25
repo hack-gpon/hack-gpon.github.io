@@ -54,7 +54,6 @@ Vendor forks of the 8311 firmware are not supported by the 8311 community: ask t
 
 To access the U-Boot console hold <kbd>Esc</kbd> on device hot-plug to abort autoboot. At the prompt `### Please input uboot password: ###` enter `abc123`.
 
-<!--@partial: ./_partials/ont-prx126-cooling.md-->
 
 # Miscellaneous Links
 

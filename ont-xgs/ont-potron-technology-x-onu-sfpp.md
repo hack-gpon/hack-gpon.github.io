@@ -132,7 +132,6 @@ Modern OpenSSH (≥ 8.8) disables the legacy algorithms this firmware needs. Con
 
 To access the U-Boot console type `admin` at the prompt: `Hit enter to stop autoboot`.
 
-<!--@partial: ./_partials/ont-prx126-cooling.md-->
 
 ## System Information
 

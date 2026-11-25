@@ -178,7 +178,6 @@ Modern OpenSSH (≥ 8.8) disables the legacy algorithms this firmware needs. Con
 `ssh -oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedKeyTypes=+ssh-rsa root@192.168.11.1`
 :::
 
-<!--@partial: ./_partials/ont-prx126-cooling.md-->
 
 ## System Information
 
