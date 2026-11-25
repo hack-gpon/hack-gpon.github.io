@@ -34,6 +34,8 @@ ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc -oHostKeyAlg
 
 <ImageFigure file="realtek-dfp-34g-2c2.jpg" alt="ODI Realtek DFP-34X-C2C" caption="ODI Realtek DFP-34X-C2C" />
 
+<!--@partial: ./_partials/ont-realtek-rtl9601d-architecture.md-->
+
 ## List of firmwares and files
 - [Firmware repository by Anime4000](https://github.com/Anime4000/RTL960x/tree/main/Firmware/DFP-34X-2C2)
 
