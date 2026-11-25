@@ -13,7 +13,7 @@ parent: FS.com
 | Model            | GPON-ONU-34-20BI                         |
 | ODM              | SourcePhotonics                          |
 | ODM Product Code | SPS-34-24T-HP-TDFO                       |
-| Chipset          | Lantiq PEB98035                          |
+| Chipset          | Lantiq FALC ON-S PEB 38035 ET (PEB98035) |
 | CPU              | MIPS 34Kc interAptiv                     |
 | CPU Clock        | 400MHz                                   |
 | Flash            | 16 MB                                    |
@@ -47,6 +47,12 @@ The GPON-SFP-ONT-MAC-I is sold as multiple SKUs; the 133619 SKU is identical to 
 ::: danger Warning
 Newer FS.com GPON-SFP-ONT-MAC-I SKUs (e.g. 351553, 351565) use a **Faraday/Galachip GC1601** chipset instead of the Lantiq PEB98035. These are completely different hardware and the firmware, commands, and patches on this page do **not** apply to them. The GalaChip-based sticks use `gccli` commands instead of the Lantiq shell.
 :::
+
+::: info Info
+Unlike the [Nokia / Alcatel-Lucent G-010S-P](/ont-nokia-g-010s-p#eeprom), the GPON-ONU-34-20BI has no physical EEPROM chip: the SFP EEPROM is emulated by the SoC on the I2C interface[^ponwiki-sps].
+:::
+
+<!--@partial: ./_partials/ont-lantiq-falcon-architecture.md-->
 
 ## Firmware is interchangeable with:
 
@@ -599,3 +605,5 @@ For more information, see the SFF-8472 Rev 11.0 specification.
 ---
 
 [^subunit]: The subunit are 10000 times smaller than the specified unit
+
+[^ponwiki-sps]: [pon.wiki: Source Photonics SPS-34-24T-HP-TDFO](https://pon.wiki/gpon/ont/source-photonics/sps-34-24t-hp-tdfo/), licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).

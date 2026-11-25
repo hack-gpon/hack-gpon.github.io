@@ -12,12 +12,13 @@ parent: Nokia
 | Model            | G-010S-P                                 |
 | ODM              | SourcePhotonics                          |
 | ODM Product Code | SPS-34-24T-HP-TDFO                       |
-| Chipset          | Lantiq PEB98035                          |
-| Flash            | 16 MB                                    |
+| Chipset          | Lantiq FALC ON-S PEB 38035 ET (PEB98035) |
+| Flash            | 16 MB SPI NOR (Spansion S25FL128P)[^ponwiki-sps] |
 | RAM              | 64 MB                                    |
 | CPU              | MIPS 34Kc interAptiv                     |
 | CPU Clock        | 400MHz                                   |
-| System           | OpenWRT                                  |
+| Bootloader       | U-Boot 2011.12-lantiq-gpon-1.2.24        |
+| System           | OpenWRT (Kernel 3.10.12)                 |
 | SFP interfaces   | HSGMII                                   |
 | Optics           | SC/APC                                   |
 | IP address       | 192.168.1.10                             |
@@ -42,7 +43,11 @@ G-010S-P and other models will not expose an ethernet interface unless the fiber
 
 Like the [Nokia G-010S-A](/ont-nokia-g-010s-a), the Nokia / Alcatel-Lucent G-010S-P has a physical EEPROM chip (circled in red in the picture below). The [Huawei MA5671A](/ont-huawei-ma5671a) and the [FS.com GPON ONU Stick](/ont-fs-com-gpon-onu-stick-with-mac) do not have it: on those sticks the Falcon SOC emulates the EEPROM on the I2C interface.
 
+The chip is a Microchip 24LC02B (2 Kbit I²C EEPROM)[^ponwiki-sps].
+
 <ImageFigure file="g-010s-p-and-ma5671a-eeprom.jpg" alt="Physical EEPROM on the G-010S-P, missing on the MA5671A" caption="Physical EEPROM on the G-010S-P (circled in red), missing on the MA5671A" />
+
+<!--@partial: ./_partials/ont-lantiq-falcon-architecture.md-->
 
 ## Firmware is interchangeable with:
 
@@ -125,6 +130,30 @@ For more info [XPONos partition layout](https://web.archive.org/web/202409250352
 | mtd3 | 00800000 | 00010000  | "linux"       |
 | mtd4 | 006d8077 | 00010000  | "rootfs"      |
 | mtd5 | 00410000 | 00010000  | "rootfs_data" |
+
+## Boot log and system information
+
+The following dumps were taken from a G-010S-P running the stock firmware booted from image1 (Kernel 3.10.12, U-Boot 2011.12-lantiq-gpon-1.2.24)[^ponwiki-sps]. Some long lines are truncated in the original capture.
+
+::: details Boot log
+<<< ./serial_dump/sps-34-24t-hp-tdfo/bootlog.txt
+:::
+
+::: details /proc/cmdline
+<<< ./serial_dump/sps-34-24t-hp-tdfo/procfs_cmdline.txt
+:::
+
+::: details /proc/cpuinfo
+<<< ./serial_dump/sps-34-24t-hp-tdfo/procfs_cpuinfo.txt
+:::
+
+::: details /proc/meminfo
+<<< ./serial_dump/sps-34-24t-hp-tdfo/procfs_meminfo.txt
+:::
+
+::: details /proc/mtd
+<<< ./serial_dump/sps-34-24t-hp-tdfo/procfs_mtd.txt
+:::
 
 # General Settings and Useful Commands
 
@@ -324,5 +353,8 @@ FALCON => saveenv
 - [alcatel_lucent-lantiq_falcon](https://github.com/minhng99/alcatel_lucent-lantiq_falcon)
 - [uboot lantiq falcon](https://github.com/minhng99/u-boot_lantiq_falcon)
 - [Usage GPON module SFP in Spain](https://forum.mikrotik.com/viewtopic.php?t=116364&start=300)
+- [pon.wiki: Source Photonics SPS-34-24T-HP-TDFO](https://pon.wiki/gpon/ont/source-photonics/sps-34-24t-hp-tdfo/#alcatel-lucent-g-010s-p)
+
+[^ponwiki-sps]: [pon.wiki: Source Photonics SPS-34-24T-HP-TDFO](https://pon.wiki/gpon/ont/source-photonics/sps-34-24t-hp-tdfo/), licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/); boot log and `procfs` dumps imported from the [PONwiki repository](https://github.com/up-n-atom/PONwiki/tree/main/docs/gpon/ont/source-photonics/sps-34-24t-hp-tdfo).
 
 

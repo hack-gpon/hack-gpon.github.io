@@ -10,10 +10,11 @@ parent: Huawei
 | --------------- | ----------------------------------- |
 | Vendor/Brand    | Huawei                              |
 | Model           | MA5671A                             |
-| ODM             |                                     |
-| Chipset         | Lantiq PEB98035                     |
-| Flash           | 16 MB                               |
-| RAM             | 64 MB (Winbond W25Q128FV)           |
+| ODM             | SourcePhotonics[^ponwiki-sps]       |
+| ODM Product Code | SPS-34-24T-HP-TDFO[^ponwiki-sps]   |
+| Chipset         | Lantiq FALC ON-S PEB 38035 ET (PEB98035) |
+| Flash           | 16 MB SPI NOR (Winbond W25Q128FV)   |
+| RAM             | 64 MB                               |
 | CPU             | MIPS 34Kc interAptiv                |
 | CPU Clock       | 400MHz                              |
 | System          | OpenWRT                             |
@@ -30,6 +31,14 @@ parent: Huawei
 
 <ImageFigure file="g-010s-p-and-ma5671a.jpg" alt="G-010S-P and MA5671A Teardown" caption="G-010S-P and MA5671A Teardown" />
 
+
+::: info Info
+Unlike the [Nokia / Alcatel-Lucent G-010S-P](/ont-nokia-g-010s-p#eeprom), the MA5671A has no physical EEPROM chip: the SFP EEPROM is emulated by the SoC on the I2C interface (see [EEPROM](#eeprom-i2c-slave-simulated-eeprom))[^ponwiki-sps].
+
+<ImageFigure file="g-010s-p-and-ma5671a-eeprom.jpg" alt="Physical EEPROM on the G-010S-P, missing on the MA5671A" caption="Physical EEPROM on the G-010S-P (circled in red), missing on the MA5671A" />
+:::
+
+<!--@partial: ./_partials/ont-lantiq-falcon-architecture.md-->
 
 ##  Firmware is interchangeable with:
 
@@ -420,7 +429,10 @@ For more information, see the SFF-8472 Rev 10.2 specification.
 - [HUAWEI MA5671A SFP module](https://github.com/nikbyte/huawei_ma5671a)
 - [Usage GPON module SFP in Spain](https://forum.mikrotik.com/viewtopic.php?t=116364&start=300)
 - [Tech Info Depot Wiki](http://en.techinfodepot.shoutwiki.com/wiki/Huawei_MA5671A)
+- [pon.wiki: Source Photonics SPS-34-24T-HP-TDFO](https://pon.wiki/gpon/ont/source-photonics/sps-34-24t-hp-tdfo/#huawei-ma5671a)
 
 ---
 
 [^subunit]: The subunit are 10000 times smaller than the specified unit
+
+[^ponwiki-sps]: [pon.wiki: Source Photonics SPS-34-24T-HP-TDFO](https://pon.wiki/gpon/ont/source-photonics/sps-34-24t-hp-tdfo/), licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
