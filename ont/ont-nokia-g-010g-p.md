@@ -13,7 +13,7 @@ alias: CIG G-97C1/CIG G-97CU
 | Model            | G-010G-P                                                            |
 | ODM              | CIG                                                                 |
 | ODM Product Code | G-97C1                                                              |
-| Chipset          | Realtek RTL9601B                                                    |
+| Chipset          | [Realtek RTL9601B](/chipset-realtek-rtl960x)                        |
 | Flash            |                                                                     |
 | RAM              |                                                                     |
 | System           | Linux (Luna SDK 1.9.0)                                              |

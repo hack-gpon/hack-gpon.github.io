@@ -12,7 +12,7 @@ parent: Wintop Optical Technology
 | Vendor/Brand     | Wintop Optical Technology[^wintop]                                 |
 | Model            | WT-ONU-STICK (WT XGSPON ONU Stick)                                |
 | ODM              | ✅                                                                 |
-| Chipset          | MaxLinear PRX126[^prx126]                                          |
+| Chipset          | [MaxLinear PRX126](/chipset-maxlinear-prx)[^prx126]                |
 | Flash            | 128 MB SPI NAND                                                    |
 | RAM              | 1 GB                                                               |
 | CPU              | MIPS interAptiv (34Kc family)                                      |
@@ -34,6 +34,10 @@ All the information on this page, unless otherwise stated, comes from [pon.wiki:
 ::: info Info
 The WT-ONU-STICK is a PRX126-based stick that is compatible with the [8311 community firmware](https://github.com/djGrrr/8311-was-110-firmware-builder). See the [BFW Solutions WAS-110](/xgs/ont-bfw-solutions-was-110) page for more details on the community firmware.
 :::
+
+## Firmware
+
+<FirmwareList />
 
 ## Rebrands and resellers
 

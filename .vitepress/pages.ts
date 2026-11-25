@@ -17,6 +17,8 @@ export const collections = [
   { dir: 'ont-xgs', name: 'ONT XGS-PON', prefix: '/xgs/' },
   { dir: 'ont-epon', name: 'ONT EPON', prefix: '/epon/' },
   { dir: 'router', name: 'Router PON', prefix: '/router/' },
+  { dir: 'firmware', name: 'Firmware', prefix: '/' },
+  { dir: 'chipset', name: 'Chipsets', prefix: '/' },
   { dir: 'tools', name: 'Tools', prefix: '/' },
   { dir: 'sfp', name: 'SFP Resources & standard', prefix: '/' },
   { dir: 'gpon', name: 'GPON Resources & standard', prefix: '/' },
@@ -174,3 +176,179 @@ export function sidebar(): DefaultTheme.SidebarItem[] {
     }))
   ]
 }
+
+/**
+ * Firmware index, built from the front matter of the pages of the `firmware` collection:
+ *
+ *   badge: foss-verified           # one of `firmwareBadges`
+ *   platform: Lantiq SDK (OpenWrt) # free text, optional
+ *   source: https://...            # source code, required by the `foss*` badges
+ *   maintained: false              # optional, the firmware is no longer maintained
+ *   devices: ont-huawei-ma5671a:works, ont-nokia-g-010s-p:reported
+ *
+ * `devices` lists the device pages (URL without slashes, e.g. `ont-huawei-ma5671a` or
+ * `xgs/ont-nokia-xs-010x-q`) with their compatibility status: `works` (default), `procedure` (works
+ * after a procedure described in the firmware page), `reported` (single report), `untested` (technically
+ * possible, nobody tried it yet) or `broken`. The
+ * device pages show their firmwares with the `<FirmwareList />` component.
+ */
+
+/** Badges, from the best to the worst: the order is the one of the lists. */
+export const firmwareBadges = ['foss-verified', 'foss', 'maintainers', 'contributors', 'stock', 'unverified'] as const
+export type FirmwareBadge = (typeof firmwareBadges)[number]
+
+export const compatibilityStatuses = ['works', 'procedure', 'reported', 'untested', 'broken'] as const
+export type CompatibilityStatus = (typeof compatibilityStatuses)[number]
+
+export interface FirmwareDevice {
+  url: string
+  title: string
+  status: CompatibilityStatus
+}
+
+export interface Firmware {
+  url: string
+  title: string
+  badge: FirmwareBadge
+  platform?: string
+  source?: string
+  maintained: boolean
+  devices: FirmwareDevice[]
+}
+
+function readFirmware(page: Page): Firmware {
+  const fm = page.frontmatter
+  const fail = (msg: string) => {
+    throw new Error(`[firmware] ${page.file}: ${msg}`)
+  }
+  if (!firmwareBadges.includes(fm.badge)) fail(`"badge" must be one of ${firmwareBadges.join(', ')}`)
+  if (String(fm.badge).startsWith('foss') && !fm.source) fail(`the "${fm.badge}" badge needs the "source" of the firmware`)
+  const devices = String(fm.devices ?? '')
+    .split(',')
+    .map((d) => d.trim())
+    .filter(Boolean)
+    .map((entry): FirmwareDevice => {
+      const [name, status = 'works'] = entry.split(':').map((s) => s.trim())
+      if (!compatibilityStatuses.includes(status as CompatibilityStatus)) {
+        fail(`unknown status "${status}" of ${name}, it must be one of ${compatibilityStatuses.join(', ')}`)
+      }
+      const device = pages.find((p) => p.url === `/${name}/` && p.collection !== 'firmware' && !p.frontmatter.redirect_to)
+      if (!device) fail(`device page "${name}" not found`)
+      return { url: device!.url, title: String(device!.frontmatter.title).trim(), status: status as CompatibilityStatus }
+    })
+  if (!devices.length) fail('"devices" is empty')
+  return {
+    url: page.url,
+    title: String(fm.title).trim(),
+    badge: fm.badge,
+    platform: fm.platform || undefined,
+    source: fm.source || undefined,
+    maintained: fm.maintained !== false,
+    devices
+  }
+}
+
+export const firmwares: Firmware[] = pages
+  .filter((p) => p.collection === 'firmware' && p.frontmatter.badge !== undefined && !p.frontmatter.redirect_to)
+  .map(readFirmware)
+  .sort((a, b) => firmwareBadges.indexOf(a.badge) - firmwareBadges.indexOf(b.badge) || a.title.localeCompare(b.title))
+
+/**
+ * Chipset families. Every family has a page in the `chipset` collection, and the device pages link
+ * it from the `Chipset` row of their "Hardware Specifications" table, e.g.
+ *
+ *   | Chipset | [Realtek RTL9601D](/chipset-realtek-rtl960x) |
+ *
+ * The family pages list their devices with the `<ChipsetDevices />` component. The OS and the SDK
+ * (e.g. `Linux 3.18 (Luna SDK 3.3)`) go in the `System` row, not in the `Chipset` one.
+ */
+
+/** Device collections that have a "Hardware Specifications" table, with their label. */
+const deviceCollections: Record<string, string> = {
+  ont: 'GPON',
+  'ont-xgs': 'XGS-PON',
+  'ont-epon': 'EPON',
+  router: 'Router'
+}
+
+export interface ChipsetDevice {
+  url: string
+  title: string
+  type: string
+  /** chip model: the text of the link in the `Chipset` row */
+  model: string
+  system?: string
+}
+
+export interface Chipset {
+  url: string
+  title: string
+  devices: ChipsetDevice[]
+}
+
+/** Plain text of a table cell: no links, code spans, footnotes or HTML. */
+function cellText(cell: string) {
+  return cell
+    .replace(/\[\^[^\]]*\]/g, '')
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/<[^>]+>/g, '')
+    .replace(/`/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+/** Rows of the "Hardware Specifications" table, by label (all the cells after the label). */
+function specRows(src: string): Map<string, string[]> {
+  const rows = new Map<string, string[]>()
+  const heading = /^#{1,6}[ \t]+Hardware Specifications[ \t]*$/m.exec(src)
+  if (!heading) return rows
+  const lines = src.slice(heading.index + heading[0].length).split(/\r?\n/)
+  let i = 0
+  while (i < lines.length && lines[i].trim() === '') i++
+  for (; i < lines.length && lines[i].trim().startsWith('|'); i++) {
+    const cells = lines[i].trim().replace(/^\||\|$/g, '').split('|')
+    const label = cells[0].trim()
+    if (label && !rows.has(label)) rows.set(label, cells.slice(1))
+  }
+  return rows
+}
+
+const chipsetPages = pages.filter((p) => p.collection === 'chipset' && !p.frontmatter.redirect_to)
+const chipsetDevices = new Map<string, ChipsetDevice[]>(chipsetPages.map((p) => [p.url, []]))
+
+for (const page of pages) {
+  const type = page.collection && deviceCollections[page.collection]
+  if (!type || page.frontmatter.redirect_to) continue
+  const rows = specRows(fs.readFileSync(path.join(root, page.file), 'utf8'))
+  const chipset = rows.get('Chipset') ?? []
+  const system = rows.get('System') ?? []
+  chipset.forEach((cell, i) => {
+    for (const [, label, target] of cell.matchAll(/\[([^\]]+)\]\((\/chipset-[^)#]*)\)/g)) {
+      const url = resolvePageUrl(target)
+      const devices = url && chipsetDevices.get(url)
+      if (!devices) throw new Error(`[chipset] ${page.file}: the chipset page ${target} does not exist`)
+      // tables with more columns (hardware revisions): the System cell of the same column
+      const sys = cellText(system[i] ?? system[0] ?? '')
+      devices.push({
+        url: page.url,
+        title: String(page.frontmatter.title).trim(),
+        type,
+        model: cellText(label),
+        system: sys && sys !== '-' ? sys : undefined
+      })
+    }
+  })
+}
+
+const typeOrder = Object.values(deviceCollections)
+
+export const chipsets: Chipset[] = chipsetPages
+  .filter((p) => p.file !== 'chipset/chipset.md')
+  .map((p) => ({
+    url: p.url,
+    title: String(p.frontmatter.title).trim(),
+    devices: chipsetDevices
+      .get(p.url)!
+      .sort((a, b) => typeOrder.indexOf(a.type) - typeOrder.indexOf(b.type) || a.title.localeCompare(b.title))
+  }))
+  .sort((a, b) => a.title.localeCompare(b.title))

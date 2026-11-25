@@ -13,7 +13,7 @@ alias: CIG G-97S
 | Model            | G-010S-Q                                                                                                          |
 | ODM              | CIG                                                                                                               |
 | ODM Product Code | G-97S                                                                                                             |
-| Chipset          | RTL9601CI                                                                                                         |
+| Chipset          | [Realtek RTL9601CI](/chipset-realtek-rtl960x)                                                                     |
 | Flash            | 16 MB (Macronix MX25L12835F)                                                                                      |
 | RAM              | 32 MB                                                                                                             |
 | System           |                                                                                                                   |

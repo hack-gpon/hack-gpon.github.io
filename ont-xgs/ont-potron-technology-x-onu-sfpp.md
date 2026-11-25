@@ -12,7 +12,7 @@ parent: Potron Technology
 | Vendor/Brand     | Potron Technology[^potron]                                         |
 | Model            | X-ONU-SFPP (SFP+ XGSPON ONU Stick)                                |
 | ODM              | ✅                                                                 |
-| Chipset          | MaxLinear PRX126[^prx126]                                          |
+| Chipset          | [MaxLinear PRX126](/chipset-maxlinear-prx)[^prx126]                |
 | Flash            | 128 MB SPI NAND (Winbond W25N01GV)                                 |
 | RAM              | 1 GB (Rayson RS256M32LD3D1LMZ)                                     |
 | CPU              | MIPS interAptiv (34Kc family)                                      |
@@ -36,6 +36,10 @@ All the information on this page, unless otherwise stated, comes from [pon.wiki:
 ::: info Info
 The X-ONU-SFPP is a PRX126-based stick that is compatible with the [8311 community firmware](https://github.com/djGrrr/8311-was-110-firmware-builder). See the [BFW Solutions WAS-110](/xgs/ont-bfw-solutions-was-110) page for more details on the community firmware.
 :::
+
+## Firmware
+
+<FirmwareList />
 
 ## Rebrands and resellers
 

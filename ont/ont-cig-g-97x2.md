@@ -12,7 +12,7 @@ alias: Frontier FOG421
 | Vendor/Brand    | CIG                                                 |
 | Model           | G-97X2                                              |
 | ODM             | ✅                                                  |
-| CPU             | Realtek RTL9606                                     |
+| Chipset         | [Realtek RTL9606](/chipset-realtek-rtl960x)         |
 | DRAM            | 128 MB (MXIC MX30LF1G18AC)                          |
 | Flash Size      | 128 MB (Nanya NT5CC64M16GP-DI)                      |
 | CPU Arch        | MIPSBE Realtek Lexra                                |

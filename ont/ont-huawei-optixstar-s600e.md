@@ -11,7 +11,7 @@ parent: Huawei
 | ---------------- | --------------------------------------- |
 | Vendor/Brand     | Huawei                                  |
 | Model            | OptiXstar S600E                         |
-| Chipset          | HiSilicon SD5182S                       |
+| Chipset          | [HiSilicon SD5182S](/chipset-hisilicon) |
 | BOSA             | UX5176 (GPON)                           |
 | Flash            |                                         |
 | RAM              |                                         |

@@ -10,7 +10,7 @@ parent: V-SOL
 | ------------ | --------------------------------------------------------------------- |
 | Vendor/Brand | V-SOL                                                                 |
 | Model        | V2802Q                                                                |
-| Chipset      | Realtek RTL9601D                                                      |
+| Chipset      | [Realtek RTL9601D](/chipset-realtek-rtl960x)                          |
 | Flash        | GIGADEVICE 25VQ32BS1G                        |
 | RAM          |                                                                  |
 | System       | Linux (Luna SDK)                                                      |

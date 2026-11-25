@@ -14,7 +14,7 @@ parent: Sagemcom
 | ODM          | ✅                                                                      |
 | CPU          | 4x ARMv8 (Broadcom)                                                     |
 | CPU Clock    |                                                                         |
-| Chipset      | Broadcom                                                                |
+| Chipset      | [Broadcom](/chipset-broadcom)                                           |
 | Flash        |                                                                         |
 | RAM          |                                                                         |
 | System       | Linux 4.1.52 (Broadcom SDK 5.02L.07)                                    |

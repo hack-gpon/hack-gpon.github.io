@@ -12,7 +12,7 @@ parent: BFW Solutions
 | Vendor/Brand     | BFW Solutions[^bfw]                                                |
 | Model            | WAS-110                                                            |
 | ODM              | ✅                                                                 |
-| Chipset          | MaxLinear PRX126[^prx126]                                          |
+| Chipset          | [MaxLinear PRX126](/chipset-maxlinear-prx)[^prx126]                |
 | Flash            | 128 MB SPI NAND (Winbond W25N01GV)                                 |
 | RAM              | 1 GB LPDDR3 (Nanya NT6CL256M32AM) (256 MB seen by U-Boot)          |
 | CPU              | MIPS interAptiv (34Kc family)                                      |
@@ -37,6 +37,10 @@ All the information on this page, unless otherwise stated, comes from [pon.wiki:
 ::: info Info
 The WAS-110 is the reference PRX126 XGS-PON stick of the [8311 community](https://pon.wiki/), which maintains an open [community firmware](https://github.com/djGrrr/8311-was-110-firmware-builder) for it. The same firmware also runs on the other PRX126 sticks, such as the [Potron X-ONU-SFPP](/xgs/ont-potron-technology-x-onu-sfpp) and the [Wintop WT-ONU-STICK](/xgs/ont-wintop-optical-technology-wt-onu-stick).
 :::
+
+## Firmware
+
+<FirmwareList />
 
 ## Rebrands and resellers
 

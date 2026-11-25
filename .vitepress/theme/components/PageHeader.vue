@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useData, withBase } from 'vitepress'
 import { computed, onMounted, ref, watch } from 'vue'
+import FirmwareBadge from './FirmwareBadge.vue'
 
 const { frontmatter, page, theme } = useData()
 
@@ -128,6 +129,10 @@ watch(() => page.value.filePath, load)
     </h1>
     <p v-if="frontmatter.alias" class="alias"><span>Also sold as:</span> {{ frontmatter.alias }}</p>
     <p v-if="frontmatter.description" class="description">{{ frontmatter.description }}</p>
+    <p v-if="frontmatter.badge && !redirect" class="firmware">
+      <FirmwareBadge :type="frontmatter.badge" />
+      <span v-if="frontmatter.maintained === false" class="unmaintained">No longer maintained</span>
+    </p>
     <p v-if="redirect">
       This page has moved to <a :href="withBase(redirect)">{{ redirect }}</a>.
     </p>
@@ -213,6 +218,20 @@ h1:hover .edit-link,
   margin-top: 8px;
   font-size: 18px;
   color: var(--vp-c-text-2);
+}
+
+.firmware {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.unmaintained {
+  color: var(--vp-c-warning-1);
+  font-weight: 500;
 }
 
 .contributors {

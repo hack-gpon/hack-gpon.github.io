@@ -12,7 +12,7 @@ parent: HSGQ (formerly ODI)
 | ------------ | --------------------------------- |
 | Vendor/Brand | ODI                               |
 | Model        | DFP-34X-2C2, DFP-34G-2C2, DFP-34X-2C3, DFP-34G-2C3, DFP-34X-2IY3 |
-| Chipset      | Realtek RTL9601D                  |
+| Chipset      | [Realtek RTL9601D](/chipset-realtek-rtl960x) |
 | Flash        | 8 MB                              |
 | RAM          | 32 MB / 64 MB                     |
 | System       | Linux (Luna SDK 1.9)              |
@@ -79,6 +79,10 @@ The defaults of the other ONTs that can be useful to clone are in the [configura
 - V1.0-220414 (vlan working)
 - V1.0-220304
 - V1.0-210702
+
+## Firmware
+
+<FirmwareList />
 
 ## List of firmwares and files
 - [Firmware repository by Anime4000](https://github.com/Anime4000/RTL960x/tree/main/Firmware/DFP-34X-2C2)

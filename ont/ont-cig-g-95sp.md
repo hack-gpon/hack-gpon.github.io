@@ -11,7 +11,7 @@ parent: CIG
 | Vendor/Brand     | CIG                                                      |
 | Model            | G-95SP                                                   |
 | ODM              | ✅                                                       |
-| Chipset          | Lantiq PEB98035                                          |
+| Chipset          | [Lantiq FALC ON PEB98035](/chipset-lantiq-falc-on)                |
 | CPU              |                                                          |
 | CPU Clock        |                                                          |
 | Flash            |                                                          |

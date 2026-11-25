@@ -10,7 +10,7 @@ parent: TP-Link
 | --------------- | ------------------------------------------------------------ |
 | Vendor/Brand    | TP-Link                                                      |
 | Model           | XZ005-G6 (UN) V1.0                                           |
-| Chipset         | Realtek RTL9601D                                             |
+| Chipset         | [Realtek RTL9601D](/chipset-realtek-rtl960x)                 |
 | CPU             | MIPS, 300 MHz                                                |
 | Flash           | 4 MB SPI NOR (XMC XM25QH32CHIG, 32 Mbit)                     |
 | RAM             | 32 MB DDR2 (embedded in the SoC)                             |

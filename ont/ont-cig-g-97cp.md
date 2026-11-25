@@ -11,7 +11,7 @@ parent: CIG
 | Vendor/Brand     | CIG                                                                      |
 | Model            | G-97CP                                                                   |
 | ODM              | ✅                                                                       |
-| Chipset          | Realtek RTL9601D                                                         |
+| Chipset          | [Realtek RTL9601D](/chipset-realtek-rtl960x)                             |
 | Flash            |                                                                          |
 | RAM              |                                                                          |
 | System           | Linux (Luna SDK 1.9.0)                                                   |

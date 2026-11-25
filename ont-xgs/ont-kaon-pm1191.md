@@ -10,7 +10,7 @@ parent: KAON
 | --------------- | -------------------------------------------------------------------------- |
 | Vendor          | KAON                                                                       |
 | Model           | PM1191                                                                     |
-| CPU             | Cortina CA8271A                                                            |
+| Chipset         | [Cortina CA8271A](/chipset-cortina-access)                                 |
 | DRAM            | 256 MB                                                                     |
 | Flash Size      | 128 MB (MICRON MT29F1G01ABAFD)                                             |
 | CPU Arch        | Taroko V0.2 (MIPS)                                                         |

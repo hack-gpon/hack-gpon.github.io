@@ -10,7 +10,7 @@ parent: Iskratel
 | --------------- | -------------------------------------------------------------------------- |
 | Vendor          | Iskratel                                                                   |
 | Model           | Innbox X24                                                                 |
-| CPU             | EcoNet EN7580                                                              |
+| Chipset         | [EcoNet EN7580](/chipset-econet)                                           |
 | DRAM            | 256 MB                                                                     |
 | Flash Size      | 128 MB (WINBOND W25N01G)                                                   |
 | CPU Arch        | MIPS interAptiv (multi) V2.12 - (2 Core, 4 Threads)                        |

@@ -32,8 +32,6 @@
 
 ## Root procedure
 
-## Firmware is interchangeable with
-
 ## List of software versions
 
 ## List of partitions

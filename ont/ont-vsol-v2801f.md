@@ -10,7 +10,7 @@ parent: V-SOL
 | ------------ | ------------------------------------- |
 | Vendor/Brand | V-SOL                                 |
 | Model        | V2801F                                |
-| Chipset      | Realtek RTL9601CI                     |
+| Chipset      | [Realtek RTL9601CI](/chipset-realtek-rtl960x) |
 | Flash        | 8 MB                                  |
 | RAM          | 64 MB                                 |
 | System       | Linux (Luna SDK)                      |

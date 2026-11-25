@@ -12,7 +12,7 @@ parent: HiSense
 | Model            | LTF7263-BH+                                                                |
 | ODM              | HiSense                                                                    |
 | ODM Product Code | LTF7263-BH+                                                                |
-| Chipset          | Cortina CA8271S                                                            |
+| Chipset          | [Cortina CA8271S](/chipset-cortina-access)                                 |
 | Flash            | MT29F1G01ABAFDWB 128MB                                                     |
 | RAM              | 128MB                                                                      |
 | CPU              | Taroko V0.2 (MIPS)                                                         |

@@ -13,7 +13,7 @@ alias: HiSense LTE3415-SCA+
 | Model            | AFM0002TIM/FWB/WND                              |
 | ODM              | HiSense                                         |
 | ODM Product Code | LTE3415-SCA+                                    |
-| Chipset          | Realtek RTL9601B                                |
+| Chipset          | [Realtek RTL9601B](/chipset-realtek-rtl960x)    |
 | Flash            | 32MB                                            |
 | RAM              | 16MB                                            |
 | System           | Linux (Luna SDK 1.9)                            |

@@ -12,7 +12,7 @@ parent: Zyxel
 | Model            | PMG3000-D20B                                               |
 | ODM              | T&W                                                        |
 | ODM Product Code | TW2362H-CDEL                                               |
-| Chipset          | Lantiq PEB98035                                            |
+| Chipset          | [Lantiq FALC ON PEB98035](/chipset-lantiq-falc-on)                  |
 | Flash            | 8 MB SPI NOR (GigaDevice GD25Q64B)                         |
 | RAM              | 64 MB                                                      |
 | CPU              | MIPS 34Kc interAptiv                                       |
@@ -50,12 +50,9 @@ The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be a
 Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work.
 :::
 
-## Firmware is interchangeable with:
+## Firmware
 
-- [Halny HL-GSFP](/ont-halny-hl-gsfp)
-- [D-LINK DPN-100-Rev-A2](/ont-d-link-dpn-100-rev-a2)
-- [Zisa OP151s](/ont-zisa-op151s)
-- [T&W TW2362H-CDEL](/ont-t-w-tw2362h-cdel)
+<FirmwareList />
 
 ## List of software versions
 - V1.00(ABVJ.0) (OpenWrt 12.09, with ssh)

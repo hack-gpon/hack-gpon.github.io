@@ -10,7 +10,7 @@ parent: Sercomm
 | --------------- | -------------------------- |
 | Vendor/Brand    | Sercomm                    |
 | Model           | RHG3006                    |
-| Chipset         | Broadcom BCM68380          |
+| Chipset         | [Broadcom BCM68380](/chipset-broadcom) |
 | Flash           | 4 Gbit (MXIC MX30LF4G28AD) |
 | RAM             | 256 Mb                     |
 | Bootloader      | Broadcom CFE               |

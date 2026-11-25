@@ -11,7 +11,7 @@ parent: Huawei
 | Vendor/Brand | Huawei                                                                               |
 | Model        | EG8010H                                                                              |
 | ODM          | ✅                                                                                   |
-| Chipset      | HiSilicon                                                                            |
+| Chipset      | [HiSilicon](/chipset-hisilicon)                                                      |
 | Flash        | 128MiB SLC NAND (DS35Q1GA-IB)                                                        |
 | RAM          | 256MiB                                                                               |
 | CPU          | HiSilicon A9 dual core (ARMv7)                                                       |

@@ -11,7 +11,7 @@ parent: Huawei
 | Vendor/Brand | Huawei                                                          |
 | Model        | HN8010Ts                                                        |
 | ODM          |                                                                 |
-| Chipset      | HiSilicon SD5117                                                |
+| Chipset      | [HiSilicon SD5117](/chipset-hisilicon)                          |
 | Flash        | 128MB                                                           |
 | RAM          | 32MB                                                            |
 | System       | Dopra Linux                                                     |

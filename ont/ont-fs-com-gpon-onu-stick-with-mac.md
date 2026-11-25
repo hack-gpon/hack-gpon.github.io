@@ -13,7 +13,7 @@ parent: FS.com
 | Model            | GPON-ONU-34-20BI                         |
 | ODM              | SourcePhotonics                          |
 | ODM Product Code | SPS-34-24T-HP-TDFO                       |
-| Chipset          | Lantiq FALC ON-S PEB 38035 ET (PEB98035) |
+| Chipset          | [Lantiq FALC ON-S PEB 38035 ET (PEB98035)](/chipset-lantiq-falc-on) |
 | CPU              | MIPS 34Kc interAptiv                     |
 | CPU Clock        | 400MHz                                   |
 | Flash            | 16 MB                                    |
@@ -54,14 +54,10 @@ Unlike the [Nokia / Alcatel-Lucent G-010S-P](/ont-nokia-g-010s-p#eeprom), the GP
 
 <!--@partial: ./_partials/ont-lantiq-falcon-architecture.md-->
 
-## Firmware is interchangeable with:
+## Firmware
 
-- [Huawei MA5671A](/ont-huawei-ma5671a)
-- [Nokia G-010S-P](/ont-nokia-g-010s-p)
-- [Hilink HL23446](/ont-hilink-hl23446)
-- Dasan H650SFP {.text-red-200}
-- DpOptics D23446 {.text-red-200}
-- Photonics SPS-34-24T-HP-TDFO {.text-red-200}
+<FirmwareList />
+
 ## Serial
 
 The stick has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be accessed from the SFP connector.

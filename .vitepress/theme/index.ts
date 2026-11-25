@@ -2,9 +2,16 @@ import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import Layout from './Layout.vue'
 import AsciiHex from './components/AsciiHex.vue'
+import ChipsetDevices from './components/ChipsetDevices.vue'
+import ChipsetFirmwares from './components/ChipsetFirmwares.vue'
+import ChipsetIndex from './components/ChipsetIndex.vue'
 import CigPassword from './components/CigPassword.vue'
 import CrcVerifier from './components/CrcVerifier.vue'
 import CiteAs from './components/CiteAs.vue'
+import FirmwareBadge from './components/FirmwareBadge.vue'
+import FirmwareCompatibility from './components/FirmwareCompatibility.vue'
+import FirmwareIndex from './components/FirmwareIndex.vue'
+import FirmwareList from './components/FirmwareList.vue'
 import HisensePloam from './components/HisensePloam.vue'
 import ImageFigure from './components/ImageFigure.vue'
 import LantiqEeprom from './components/LantiqEeprom.vue'
@@ -21,9 +28,16 @@ export default {
   Layout,
   enhanceApp({ app, router }) {
     app.component('AsciiHex', AsciiHex)
+    app.component('ChipsetDevices', ChipsetDevices)
+    app.component('ChipsetFirmwares', ChipsetFirmwares)
+    app.component('ChipsetIndex', ChipsetIndex)
     app.component('CigPassword', CigPassword)
     app.component('CrcVerifier', CrcVerifier)
     app.component('CiteAs', CiteAs)
+    app.component('FirmwareBadge', FirmwareBadge)
+    app.component('FirmwareCompatibility', FirmwareCompatibility)
+    app.component('FirmwareIndex', FirmwareIndex)
+    app.component('FirmwareList', FirmwareList)
     app.component('HisensePloam', HisensePloam)
     app.component('ImageFigure', ImageFigure)
     app.component('LantiqEeprom', LantiqEeprom)

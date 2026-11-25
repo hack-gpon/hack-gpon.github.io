@@ -13,7 +13,7 @@ parent: ZTE
 | ODM          | ✅                                                                | ✅                                                                |             | ✅                        |
 | CPU          | ZTE FA626TE                                                       | ZTE ZX279125@A9                                                   |             | ZX279127S                 |
 | CPU Clock    | 266 MHz                                                           | 600 MHz                                                           |             |                           |
-| Chipset      | ZTE FA626TE                                                       | ZTE ZX279125@A9                                                   |             |                           |
+| Chipset      | ZTE FA626TE                                                       | [ZTE ZX279125](/chipset-zte-zx279)@A9                             |             |                           |
 | Flash        | 16 MB (SPI Flash w25q128)                                         | 16 MB (SPI Flash mx25l12805d)                                     |             | ZX279127S                 |
 | RAM          | 64 MB                                                             | 32 MB                                                             |             | 128 MB (ESMT M15T1G1664A) |
 | System       |                                                                   |                                                                   |             |                           |

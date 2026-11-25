@@ -12,7 +12,7 @@ parent: Free/Iliad
 | Model            |                                                                                    |
 | ODM              |                                                                                    |
 | ODM Product Code |                                                                                    |
-| Chipset          | BCM63153                                                                           |
+| Chipset          | [Broadcom BCM63153](/chipset-broadcom)                                             |
 | Flash            | 4GB eMMC 5.1 KLM4G1FETE-B041                                                       |
 | RAM              | 2x 512MB DDR3L-1866 NT5CC128M16JR-EK                                               |
 | CPU              |                                                                                    |

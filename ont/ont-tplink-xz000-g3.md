@@ -10,7 +10,7 @@ parent: TP-Link
 | --------------- | ------------------------------------------------- |
 | Vendor/Brand    | TP-Link                                           |
 | Model           | XZ000-G3                                          |
-| Chipset         | EcoNet EN751221 (PON PHY EN7571)                  |
+| Chipset         | [EcoNet EN751221](/chipset-econet) (PON PHY EN7571) |
 | CPU             | MIPS 34Kc, 700 MHz (4 threads)                    |
 | Flash           | 4 MB SPI NOR (EON EN25QH32B)                      |
 | RAM             | 64 MB DDR2 (60792 kB available)                   |

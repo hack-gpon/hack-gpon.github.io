@@ -13,7 +13,7 @@ alias: HiSense LTE3415-SH+
 | Model            | AFM0003TIM                                      |
 | ODM              | HiSense                                         |
 | ODM Product Code | LTE3415-SH+                                     |
-| Chipset          | Realtek RTL9601CI                               |
+| Chipset          | [Realtek RTL9601CI](/chipset-realtek-rtl960x)   |
 | Flash            | 128MB                                           |
 | RAM              | 32MB                                            |
 | System           | Linux 2.6 (Luna SDK 1.9)                        |

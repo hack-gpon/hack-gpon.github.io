@@ -12,7 +12,7 @@ parent: LEOX
 | Model            | LXT-010S-H                              |
 | ODM              | HiSense                                 |
 | ODM Product Code | [LTE3415-SH+](/ont-hisense-lte3415-sh+) |
-| Chipset          | Realtek RTL9601CI                       |
+| Chipset          | [Realtek RTL9601CI](/chipset-realtek-rtl960x) |
 | Flash            | 128MB                                   |
 | RAM              | 32MB                                    |
 | System           | Linux 3.18 (Luna SDK 3.3)               |

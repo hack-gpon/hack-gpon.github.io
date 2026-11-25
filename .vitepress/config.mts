@@ -2,7 +2,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { createMarkdownRenderer, defineConfig, type MarkdownRenderer } from 'vitepress'
 import { configureMarkdown, extractHardwareSpecs } from './markdown'
-import { isExternal, pages, resolveLink, rewrites, sidebar, srcExclude } from './pages'
+import { chipsets, firmwares, isExternal, pages, resolveLink, rewrites, sidebar, srcExclude } from './pages'
 
 const hostname = 'https://hack-gpon.org'
 const repository = 'https://github.com/hack-gpon/hack-gpon.github.io'
@@ -88,6 +88,12 @@ export default defineConfig({
     ],
 
     sidebar: sidebar(),
+
+    // used by the <FirmwareList>, <FirmwareIndex> and <FirmwareCompatibility> components
+    firmwares,
+
+    // used by the <ChipsetDevices> and <ChipsetIndex> components
+    chipsets,
 
     socialLinks: [
       { icon: 'github', link: repository, ariaLabel: 'GitHub' },

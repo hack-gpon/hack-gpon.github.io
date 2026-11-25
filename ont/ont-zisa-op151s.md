@@ -13,7 +13,7 @@ parent: Zisa
 | Model            | OP151S                                                     |
 | ODM              | T&W                                                        |
 | ODM Product Code | TW2362H-CDEL                                               |
-| Chipset          | Lantiq PEB98035                                            |
+| Chipset          | [Lantiq FALC ON PEB98035](/chipset-lantiq-falc-on)                  |
 | CPU              | MIPS 34Kc interAptiv                                       |
 | CPU Clock        | 400MHz                                                     |
 | Flash            | 8 MB (GigaDevice GD25Q64CW16)                              |
@@ -53,11 +53,9 @@ manufactory -> set uni mac addr xx:xx:xx:xx:xx:xx
 Enabling RSTP bridge mode with `set rstp bridge enable` may cause loss of telnet access. If this happens, access can be recovered via UART serial console.
 :::
 
-## Firmware is interchangeable with:
+## Firmware
 
-- [Halny HL-GSFP](/ont-halny-hl-gsfp)
-- [D-LINK DPN-100-Rev-A2](/ont-d-link-dpn-100-rev-a2)
-- [T&W TW2362H-CDEL](/ont-t-w-tw2362h-cdel)
+<FirmwareList />
 
 # Miscellaneous Links
 

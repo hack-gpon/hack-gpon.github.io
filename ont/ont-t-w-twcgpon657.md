@@ -11,7 +11,7 @@ parent: T&W
 | Vendor/Brand     | T&W                                |
 | Model            | TWC GPON657                        |
 | ODM              | ✅                                 |
-| Chipset          | Realtek RTL9601CI                  |
+| Chipset          | [Realtek RTL9601CI](/chipset-realtek-rtl960x) |
 | Flash            | 16 MB                              |
 | RAM              | 64 MB                              |
 | System           | Linux (Luna SDK)                   |

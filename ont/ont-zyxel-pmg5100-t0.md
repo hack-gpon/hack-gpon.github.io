@@ -10,7 +10,7 @@ parent: Zyxel
 | ------------ | -------------------------- |
 | Vendor/Brand | Zyxel                      |
 | Model        | PM5100-T0                  |
-| Chipset      | MediaTek/EcoNet EN7523OT   |
+| Chipset      | [MediaTek/EcoNet EN7523OT](/chipset-econet) |
 | Flash        | 128 MB (Macronix W25N01G)  |
 | RAM          | 256 MB (Winbond W623GU6MB) |
 | System       |                            |

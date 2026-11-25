@@ -11,7 +11,7 @@ parent: Comtrend
 | Vendor/Brand    | Comtrend                                                                   |
 | Model           | GRG-4284                                                                   |
 | ODM             | Unknown                                                                    |
-| CPU             | Realtek RTL9601D                                                           |
+| Chipset         | [Realtek RTL9601D](/chipset-realtek-rtl960x)                               |
 | DRAM            | 32 MB                                                                      |
 | Flash Size      | 16 MB                                                                      |
 | CPU Arch        | MIPSBE Realtek Lexra                                                       |
