@@ -9,10 +9,10 @@ parent: Potron Technology
 
 |                  |                                                                    |
 | ---------------- | ------------------------------------------------------------------ |
-| Vendor/Brand     | Potron Technology[^potron]                                         |
+| Vendor/Brand     | Potron Technology                                                  |
 | Model            | X-ONU-SFPP (SFP+ XGSPON ONU Stick)                                |
 | ODM              | ✅                                                                 |
-| Chipset          | [MaxLinear PRX126](/chipset-maxlinear-prx)[^prx126]                |
+| Chipset          | [MaxLinear PRX126](/chipset-maxlinear-prx)                         |
 | Flash            | 128 MB SPI NAND (Winbond W25N01GV)                                 |
 | RAM              | 1 GB (Rayson RS256M32LD3D1LMZ)                                     |
 | CPU              | MIPS interAptiv (34Kc family)                                      |
@@ -166,6 +166,4 @@ The following dumps were captured by the pon.wiki contributors[^ponwiki-potron].
 - [pon.wiki: X-ONU-SFPP](https://pon.wiki/xgs-pon/ont/potron-technology/x-onu-sfpp/)
 - [8311 community firmware builder](https://github.com/djGrrr/8311-was-110-firmware-builder)
 
-[^potron]: <https://www.potrontec.com/index/index/list/cat_id/2.html#11-83>
-[^prx126]: <https://www.maxlinear.com/product/access/fiber-access/socs-for-optical-networking-units-onu/prx126>
 [^ponwiki-potron]: [pon.wiki: X-ONU-SFPP](https://pon.wiki/xgs-pon/ont/potron-technology/x-onu-sfpp/), licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/); boot log and `procfs` dumps imported from the [PONwiki repository](https://github.com/up-n-atom/PONwiki/tree/main/docs/xgs-pon/ont/potron-technology/x-onu-sfpp).

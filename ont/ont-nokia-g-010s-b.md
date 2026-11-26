@@ -12,7 +12,7 @@ parent: Nokia
 | Model            | G-010S-B                                 |
 | ODM              | SourcePhotonics                          |
 | ODM Product Code |                                          |
-| Chipset          | [Lantiq FALC ON PEB98035](/chipset-lantiq-falc-on) |
+| Chipset          | [Lantiq FALC ON-S PEB 38035 ET (PEB98035)](/chipset-lantiq-falc-on) |
 | CPU              | MIPS 34Kc interAptiv                     |
 | CPU Clock        | 400MHz                                   |
 | Flash            | 16 MB (Macronix MX25L25635FZ2R-10G)      |
@@ -32,6 +32,7 @@ parent: Nokia
 <ImageFigure file="g-010s-b_teardown_1.jpg" alt="G-010S-B Teardown" caption="G-010S-B Teardown" />
 <ImageFigure file="g-010s-b_teardown_2.jpg" alt="G-010S-B Teardown" caption="G-010S-B Teardown" />
 
+<!--@partial: ./_partials/ont-lantiq-falcon-architecture.md-->
 
 ## List of partitions
 
@@ -89,3 +90,5 @@ uci set gpon.gtc.nDyingGaspEnable='0'; uci commit gpon
 - [Bypassing the HH3K up to 2.5Gbps using a BCM57810S NIC](https://www.dslreports.com/forum/r32230041-Internet-Bypassing-the-HH3K-up-to-2-5Gbps-using-a-BCM57810S-NIC)
 - [Tech Info Depot Wiki](http://en.techinfodepot.shoutwiki.com/wiki/Nokia_G-010S-B)
 
+
+[^ponwiki-sps]: Chipset information sourced from [pon.wiki](https://pon.wiki/), licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).

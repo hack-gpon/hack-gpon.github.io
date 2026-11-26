@@ -13,7 +13,7 @@ parent: Nokia
 | ODM              | SourcePhotonics                          |
 | ODM Product Code | SPS-34-24T-HP-TDFO                       |
 | Chipset          | [Lantiq FALC ON-S PEB 38035 ET (PEB98035)](/chipset-lantiq-falc-on) |
-| Flash            | 16 MB SPI NOR (Spansion S25FL128P)[^ponwiki-sps] |
+| Flash            | 16 MB SPI NOR (Spansion S25FL128P)       |
 | RAM              | 64 MB                                    |
 | CPU              | MIPS 34Kc interAptiv                     |
 | CPU Clock        | 400MHz                                   |
