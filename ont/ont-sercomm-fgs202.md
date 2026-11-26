@@ -10,7 +10,7 @@ parent: Sercomm
 | --------------- | --------------------------------- |
 | Vendor/Brand    | Sercomm                           |
 | Model           | FGS202                            |
-| Chipset         | Lantiq PEB98036                   |
+| Chipset         | Lantiq FALC ON-S PEB 38036 ET (PEB98036) |
 | Flash           | 8 MiB (MXIC MX25L6405D)           |
 | RAM             | 1 MiB                             |
 | System          | eCos                              |
@@ -28,6 +28,8 @@ parent: Sercomm
 
 <ImageFigure file="fgs202.jpg" alt="Sercomm FGS202" caption="Sercomm FGS202" />
 <ImageFigure file="fgs202_teardown.jpg" alt="Sercomm FGS202 teardown" caption="Sercomm FGS202 teardown" />
+
+<!--@partial: ./_partials/ont-lantiq-falcon-architecture.md-->
 
 ## Serial
 
@@ -256,3 +258,5 @@ It is not possible to exit this mode until the write operation completes or the 
 
 
 
+
+[^ponwiki-sps]: Chipset information sourced from [pon.wiki](https://pon.wiki/), licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).

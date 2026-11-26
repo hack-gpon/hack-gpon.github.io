@@ -12,7 +12,7 @@ parent: HALNy
 | Model            | HL-GSFP              |
 | ODM              | T&W                  |
 | ODM Product Code | TW2362H-CDEL         |
-| Chipset          | Lantiq PEB98035      |
+| Chipset          | Lantiq FALC ON-S PEB 38035 ET (PEB98035) |
 | Flash            | 8 MB                 |
 | RAM              | 64 MB                |
 | CPU              | MIPS 34Kc interAptiv |
@@ -31,6 +31,8 @@ parent: HALNy
 
 <ImageFigure file="hl-gsfp-1.png" alt="HALNy HL-GSFP top" caption="HALNy HL-GSFP top" />
 <ImageFigure file="hl-gsfp-2.png" alt="HALNy HL-GSFP bottom" caption="HALNy HL-GSFP bottom" />
+
+<!--@partial: ./_partials/ont-lantiq-falcon-architecture.md-->
 
 ## Firmware is interchangeable with:
 
@@ -51,3 +53,5 @@ parent: HALNy
 | mtd5 | 000a0000 | 00010000  | "rootfs_data" |
 
 
+
+[^ponwiki-sps]: Chipset information sourced from [pon.wiki](https://pon.wiki/), licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).

@@ -9,19 +9,19 @@ parent: Nokia
 |                  |                                                                                  |
 | ---------------- | -------------------------------------------------------------------------------- |
 | Vendor           | Nokia                                                                            |
-| Model            | XS-010X-Q (3FE48118AC)[^ponwiki-xs010xq]                                         |
+| Model            | XS-010X-Q (3FE48118AC)                                                           |
 | ODM              | CIG                                                                              |
 | ODM Product Code | XG-99YF                                                                           |
 | Chipset          | Cortina CA8271A                                                                  |
-| CPU              | Taroko (MIPS)[^ponwiki-xs010xq]                                                  |
-| CPU Clock        | 500MHz[^ponwiki-xs010xq]                                                         |
+| CPU              | Taroko (MIPS)                                                                    |
+| CPU Clock        | 500MHz                                                                           |
 | Bootloader       | U-Boot 2015.04 (CIG XGS-PON Boot Version 1.0.0)                                  |
 | Manufacter       | CIG                                                                              |
-| Flash            | 128MB SPI NAND (Macronix MX35LF1GE4AB)[^ponwiki-xs010xq]                         |
-| RAM              | 128MB DDR3 (Nanya NT5CC64M16GP)[^ponwiki-xs010xq]                                |
+| Flash            | 128MB SPI NAND (Macronix MX35LF1GE4AB)                                           |
+| RAM              | 128MB DDR3 (Nanya NT5CC64M16GP)                                                  |
 | System           | Custom Linux by Cortina (Saturn SDK) based on Kernel 4.4                         |
 | 10GBaseT         | Yes                                                                              |
-| Optics           | SC/APC (Tx 1270 nm / Rx 1577 nm), laser driver MACOM M02181[^ponwiki-xs010xq]    |
+| Optics           | SC/APC (Tx 1270 nm / Rx 1577 nm), laser driver MACOM M02181                      |
 | IP address       | 192.168.100.1                                                                    |
 | Web Gui          | ✅ Port 80 user: `admin`, password: `1234`                                       |
 | SSH              | ✅ (see Enable SSH)                                                              |

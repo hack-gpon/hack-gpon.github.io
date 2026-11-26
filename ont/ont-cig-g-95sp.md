@@ -11,7 +11,7 @@ parent: CIG
 | Vendor/Brand     | CIG                                                      |
 | Model            | G-95SP                                                   |
 | ODM              | ✅                                                       |
-| Chipset          | Lantiq PEB98035                                          |
+| Chipset          | Lantiq FALC ON-S PEB 38035 ET (PEB98035)                 |
 | CPU              |                                                          |
 | CPU Clock        |                                                          |
 | Flash            |                                                          |
@@ -29,6 +29,8 @@ parent: CIG
 The G-95SP is the older CIG GPON SFP stick, based on a Lantiq board (the newer [CIG G-97SP](/ont-cig-g-97sp) uses a Realtek board).
 
 It is also sold by AVM with a custom firmware, see [AVM GmbH (G-95SP)](/ont-avm-g-95sp).
+
+<!--@partial: ./_partials/ont-lantiq-falcon-architecture.md-->
 
 ## Optical and electrical specifications
 
@@ -78,3 +80,5 @@ From the CIG platform briefing (version 2, Jan 2018):
 - [GPON ONT G-95SP Platform Briefing (archive.org)](https://web.archive.org/web/20221022023845/https://www.cigtech.com/wp-content/uploads/2018/03/G-95SP_DataSheet_V2.pdf)
 - [Tech Info Depot Wiki](http://en.techinfodepot.shoutwiki.com/wiki/Cigtech_G-95SP)
 - [AVM GmbH (G-95SP)](/ont-avm-g-95sp)
+
+[^ponwiki-sps]: Chipset information sourced from [pon.wiki](https://pon.wiki/), licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).

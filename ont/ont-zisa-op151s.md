@@ -13,7 +13,7 @@ parent: Zisa
 | Model            | OP151S                                                     |
 | ODM              | T&W                                                        |
 | ODM Product Code | TW2362H-CDEL                                               |
-| Chipset          | Lantiq PEB98035                                            |
+| Chipset          | Lantiq FALC ON-S PEB 38035 ET (PEB98035)                   |
 | CPU              | MIPS 34Kc interAptiv                                       |
 | CPU Clock        | 400MHz                                                     |
 | Flash            | 8 MB (GigaDevice GD25Q64CW16)                              |
@@ -31,6 +31,8 @@ parent: Zisa
 | Form Factor      | miniONT SFP                                                |
 
 <ImageFigure file="op151s.png" alt="Zisa OP151S" caption="Zisa OP151S" />
+
+<!--@partial: ./_partials/ont-lantiq-falcon-architecture.md-->
 
 ## Serial
 
@@ -63,3 +65,5 @@ Enabling RSTP bridge mode with `set rstp bridge enable` may cause loss of telnet
 
 - [Tech Info Depot Wiki](http://en.techinfodepot.shoutwiki.com/wiki/ZISA_OP151S)
 - [Zisa OP151S 1GE GPON SFU SFP module](https://www.zisacom.com/admin/ewebeditor/uploadfile/20181116154842842.pdf)
+
+[^ponwiki-sps]: Chipset information sourced from [pon.wiki](https://pon.wiki/), licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).

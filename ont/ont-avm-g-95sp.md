@@ -12,7 +12,7 @@ parent: AVM
 | Model            | G-95SP                                           |
 | ODM              | CIG                                              |
 | ODM Product Code | G-95SP                                           |
-| Chipset          | Lantiq PEB98035                                  |
+| Chipset          | Lantiq FALC ON-S PEB 38035 ET (PEB98035)         |
 | CPU              |                                                  |
 | CPU Clock        |                                                  |
 | Flash            |                                                  |
@@ -32,6 +32,8 @@ parent: AVM
 The AVM GmbH (G-95SP) is the [CIG G-95SP](/ont-cig-g-95sp) with an AVM firmware, shipped together with some FRITZ!Box models with an SFP cage (e.g. FRITZ!Box 5491). For the optical and electrical specifications and the pinout see the [CIG G-95SP](/ont-cig-g-95sp) page.
 
 The firmware image of the stick (`SFP_7.5.13`, MIPS uImage with Linux 3.10.4 and a SquashFS root filesystem) is contained in the FRITZ!Box firmware.
+
+<!--@partial: ./_partials/ont-lantiq-falcon-architecture.md-->
 
 # AVM configuration protocol
 
@@ -73,3 +75,5 @@ The capture and its decoding come from [issue #46](https://github.com/hack-gpon/
 - [OpenWrt Forum](https://forum.openwrt.org/t/cigtech-g-95sp-sfp-gpon/63352)
 - [Video: FRITZ!Box SFP capture (tomazzaman)](https://www.youtube.com/watch?v=Hi7JMTojT-4&t=6m20s)
 - [Video: FRITZ!Box SFP configuration (tomazzaman)](https://www.youtube.com/watch?v=7RZ6JtjHBfo&t=11m11s)
+
+[^ponwiki-sps]: Chipset information sourced from [pon.wiki](https://pon.wiki/), licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).

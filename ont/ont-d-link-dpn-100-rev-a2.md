@@ -10,7 +10,7 @@ parent: D-LINK
 | ---------------- | --------------- |
 | Vendor/Brand     | D-LINK          |
 | Model            | DPN-100 Rev A2  |
-| Chipset          | Lantiq PEB98035 |
+| Chipset          | Lantiq FALC ON-S PEB 38035 ET (PEB98035) |
 | ODM              | T&W             |
 | ODM Product Code | TW2362H-CDEL    |
 | Flash            | 8 MB            |
@@ -27,6 +27,7 @@ parent: D-LINK
 
 <ImageFigure file="dpn-100-rev-a2.jpg" alt="DPN-100 Rev A2" caption="DPN-100 Rev A2" />
 
+<!--@partial: ./_partials/ont-lantiq-falcon-architecture.md-->
 
 Once you access the stick via ssh you will be presented with a second tier login. The credentials to access the dell shell are: username: `twmanu` , password: `twmanu`.
 
@@ -86,3 +87,5 @@ show info
 
 
 
+
+[^ponwiki-sps]: Chipset information sourced from [pon.wiki](https://pon.wiki/), licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
