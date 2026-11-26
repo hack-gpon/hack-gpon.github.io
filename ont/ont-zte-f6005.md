@@ -210,3 +210,60 @@ In versions V6.0.10N14 and V6.0.10P2N02 this problem is felt more than with newe
 
 In version V6.0.10P2N18, problems were found in download speeds with 1 Gbps links.
 
+# Open Firmware (OpenWrt)
+
+The ZTE F6005 can run OpenWrt via the [alphaonex86/openwrt](https://github.com/alphaonex86/openwrt) fork, which already supports the RTL9601D SoC (HSGQ X100DG) and the RTL9602C family (HSGQ X111W, VSOL V2801RGW) with a full GPON ONU port on kernel 6.18.
+
+## Why OpenWrt over ODI-OSS
+
+- The F6005 is a CIG/ZTE design, not an ODI board — OpenWrt's luna target fits better than the ODI-OSS tree
+- RTL9601D already supported: same SoC and 32 MB RAM as the X100DG, 91% code reuse
+- RTL8226B-VB 2.5GBase-T PHY: the RTL8226 mainline kernel patches are already backported, and `luna_eth.c` handles similar RTL8221B with HiSGMII
+- Self-managed optics pattern: the V2801RGW board already implements `realtek,optics-self-managed` for internal BOSA — the F6005 uses the same approach
+- Complete OMCI stack with panel declaration via DT
+- No WiFi needed — 32 MB RAM is sufficient for a wired-only ONT
+
+## Board support files
+
+Three files provide the complete board definition (no driver changes needed — everything is DT-driven):
+
+| File | Description |
+| ---- | ----------- |
+| `rtl9601d_f6005.dts` | Board device tree: 32 MB DDR2 with PON pool holes, CIG 16 MB dual-bank flash layout, self-managed optics, 256-entry NIC RX ring |
+| `rtl9601d_f6005-omci-uni.dtsi` | OMCI panel overlay: single Ethernet UNI, HGU type (based on X100DG stock MIB) |
+| `taroko.mk` (zte_f6005 device) | Image profile: kernel 2240K + rootfs 4800K inside Image A (7 MB), Image B preserved for stock recovery |
+
+### Flash layout (inside 16 MB SPI-NOR)
+
+| Partition | Offset | Size | Description |
+| --------- | ------ | ---- | ----------- |
+| boot | 0x000000 | 192K | CIG bootloader (CIG_bu.en_V3.09.15) |
+| env | 0x030000 | 64K | U-Boot environment (`activeimage` selects bank) |
+| config | 0x040000 | ~1.75M | Factory data: GPON SN, MAC address |
+| k0 | 0x200000 | 2240K | OpenWrt kernel (Image A area) |
+| r0 | 0x430000 | 4800K | OpenWrt rootfs + rootfs_data |
+| crashlog | 0x8E0000 | 128K | Kernel crash log (mtdoops) |
+| imageb | 0x900000 | 7M | Stock Image B (recovery, read-only) |
+
+### Bring-up procedure
+
+Initial bring-up uses TFTP + bootm (no flash write):
+
+1. Access U-Boot via serial console (CIG bootloader escape sequence: `$1B $1D $0F $0B`)
+2. Set up TFTP: PC at 192.168.1.2, ONT at 192.168.1.1
+3. Load uImage via TFTP and boot from RAM:
+```
+9601D# tftpboot 0x80400000 openwrt-realtek-luna-taroko-zte_f6005-initramfs-kernel.bin
+9601D# bootm 0x80400000
+```
+
+For persistent flash install, the CIG bootloader expects cramfs at the active image offset — a cramfs wrapper is needed (not yet implemented).
+
+### TODO items (require hardware measurement)
+
+- **GPIO pads for pon-optics**: read the stock firmware's `device_api` gpio_pads to get `realtek,gpio-pads` values. Without them the PON analog front end may not initialise correctly and the ONU will not range.
+- **WAN MAC offset**: verify from this board's stock `nas0_0` MAC address (X100DG uses +1, V2801RGW uses +5)
+- **LED indices**: read `pon-led`, `los-led`, `port-leds` from the stock firmware's LED init (current values are from the X100DG and are likely wrong)
+- **Memory map**: verify PON pool base addresses (MSTBASE_DS/US) from the F6005's own live registers
+- **OMCI panel**: capture a gpon-oracle from a stock F6005 at O5 and run `omci_panel.py` to get the board's own OMCI MIB (CIG's panel may differ from X100DG's)
+
