@@ -187,6 +187,10 @@ Requires prior access via UART console or Telnet.
 
 After a reboot, SSH will be permantly enabled with the username `root` and a password generated from the serial number, same as [CIG G97-CP](/ont-cig-g-97cp#login-and-enable).
 
+The password can be generated using the following form:
+
+<CigPassword username="root" />
+
 ```sh
 #ONT>system
 #ONT/system>misc
