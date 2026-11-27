@@ -31,7 +31,7 @@ parent: Sercomm
 | Form Factor     | ONT                            |
 
 ::: info Note
-The FG1000R uses the same Realtek RTL9602C SoC as the [ODI DFP-34X-2C2](/ont-odi-realtek-dfp-34x-2c2) SFP sticks, but in a desktop ONT form factor with NAND flash (instead of NOR), 64 MB RAM (instead of 32 MB), and a 2.5GBaseT Ethernet port via an external RTL8221B PHY (instead of the direct SFP SerDes). The Sercomm application framework runs on top of the Realtek Luna SDK.
+The FG1000R uses the same Realtek RTL9602C SoC as the [ODI DFP-34X-2C2](/ont-odi-realtek-dfp-34x-2c2) SFP sticks, but in a desktop ONT form factor with NAND flash (instead of NOR), 64 MB RAM (instead of 32 MB), and a 2.5GBaseT Ethernet port via an external RTL8221B PHY (instead of the direct SFP SerDes). It runs the Realtek Luna SDK with the BOA web server (Linux 2.6 kernel), unlike the [FG1000B](/ont-sercomm-fg1000b) which uses the Broadcom SDK with the Sercomm framework.
 :::
 
 <ImageFigure file="fg1000r_front.jpg" alt="Sercomm FG1000R front" caption="Sercomm FG1000R front" />
@@ -47,36 +47,52 @@ The serial console is active at 115200 8-N-1 but only TX is exposed (no way to s
 ## Root procedure
 
 ::: warning
-The root procedure has not been fully tested. The FG1000R uses the same Sercomm framework as the [FG1000B](/ont-sercomm-fg1000b), so the same web injection technique may work. See [FG1000B: Enabling telnet/SSH/serial](/ont-sercomm-fg1000b#enabling-telnet-ssh-serial) for the general approach.
+The root procedure has not been fully tested on all firmware versions. Proceed with caution and make a NAND backup first.
 :::
 
-The FG1000R has a web GUI accessible at `http://192.168.1.1` with credentials `Tech` / `ftth@!`. The same `applog_select` command injection used on the FG1000B may apply here, adapted for the FG1000R's IP address:
+The FG1000R runs the **Realtek BOA web server** (not the Sercomm framework used on the [FG1000B](/ont-sercomm-fg1000b)). The web GUI is accessible at `http://192.168.1.1` with credentials `Tech` / `ftth@!`.
 
-```javascript
-// Fetch a non csrf protected page to get a csrf token
-await fetch("http://192.168.1.1/setup.cgi?next_file=statusandsupport/status.html").then(function (response) {
-	return response.text();
-}).then(function (html) {
-    var el = document.createElement( 'html' );
-    el.innerHTML = html;
-    var es = el.getElementsByTagName( 'script' );
-	var aText = es[0].text;
-    document.csrf_token = aText.match("'(.*)'")[1];
-}).catch(function (err) {
-	console.warn('Something went wrong.', err);
-});
+### Method 1: BOA `syscmd.asp` (command injection)
 
-// use the csrf token to activate telnet
-fetch('http://192.168.1.1/data/statussupporteventlog_applog_download.json?_=1686211215966&csrf_token='+document.csrf_token, {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-  },
-  body: 'applog_select=a;echo "#!/bin/sh" > /tmp/slogin;echo "export PATH=/bin:/sbin:/usr/bin:/usr/sbin" >> /tmp/slogin;echo "/bin/sh" >> /tmp/slogin;/bin/chmod 755 /tmp/slogin;/usr/sbin/telnetd -l /tmp/slogin'
-})
-.then(res => res.json())
-.then(console.log)
+The classic Luna SDK BOA web server often exposes a system command page. Try accessing:
+
 ```
+http://192.168.1.1/syscmd.asp
+```
+
+If the page loads, you can execute arbitrary commands directly from the web interface. Use it to enable telnet:
+
+```sh
+# In the syscmd.asp command field, run:
+telnetd -l /bin/sh
+```
+
+Then connect via telnet:
+```sh
+telnet 192.168.1.1
+```
+
+If `syscmd.asp` is not accessible, try the form endpoint directly with `curl`:
+
+```sh
+curl -X POST http://192.168.1.1/boaform/admin/formSysCmd \
+  -d 'sysCmd=telnetd+-l+/bin/sh&apply=Apply&submit-url=/syscmd.asp' \
+  --user Tech:ftth@!
+```
+
+### Method 2: Default Luna SDK credentials
+
+Many RTL9602C devices ship with default shell credentials. Try via telnet or SSH (if enabled):
+
+| Username | Password |
+|----------|----------|
+| `admin`  | `admin`  |
+| `adsl`   | `realtek` |
+| `user`   | `user`   |
+
+### Method 3: NAND dump + filesystem modification
+
+If web-based methods fail, dump the SPI NAND (MX35LF1GE4AB) with a CH341A programmer and SNANDer, extract the rootfs, modify `/etc/passwd` or add a telnetd startup script, then flash back.
 
 ## List of software versions
 
@@ -94,8 +110,8 @@ Since the FG1000R uses 128 MB SPI NAND flash (unlike the 8 MB SPI NOR of the SFP
 
 # Useful files and binaries
 
-::: warning
-The following information is based on the typical Sercomm/Luna SDK platform. Verify on your device.
+::: info
+The following information is based on the Realtek Luna SDK platform, confirmed by the BOA web server source files.
 :::
 
 ## Useful files
@@ -108,7 +124,7 @@ The following information is based on the typical Sercomm/Luna SDK platform. Ver
 - `omcicli` - Used to interact with the running OMCI daemon
 - `omci_app` - The OMCI daemon
 - `diag` - Used to run low-level diagnostics commands
-- `cmld_client` - Sercomm configuration daemon client (if the Sercomm framework layer is present)
+- `boa` - The web server (Realtek BOA, handles `/boaform/` endpoints)
 
 # GPON ONU status
 
@@ -139,8 +155,8 @@ diag port get status port all
 
 # GPON/OMCI settings
 
-::: warning
-The commands below assume the standard Luna SDK `flash` command is available. If the FG1000R uses the Sercomm `cmld_client` framework instead, refer to the [FG1000B commands](/ont-sercomm-fg1000b#gpon-omci-settings) and adapt accordingly.
+::: info
+The FG1000R uses the standard Luna SDK `flash` command for GPON/OMCI configuration. This is confirmed by the BOA web server pages (`gpon.asp` with `/boaform/admin/formgponConf`).
 :::
 
 ## Getting/Setting ONU GPON Serial Number
@@ -240,7 +256,7 @@ reboot
 | RAM | 64 MB | 256 MB | 32 MB |
 | Ethernet | 2.5GBaseT (RTL8221B PHY) | 2.5GBaseT (RTL8221B PHY) | SFP SerDes (direct) |
 | Form factor | ONT | ONT | SFP stick |
-| Vendor framework | Sercomm + Luna SDK | Sercomm + Broadcom SDK | Luna SDK only |
+| Vendor framework | Luna SDK + BOA | Sercomm + Broadcom SDK | Luna SDK only |
 
 # Open firmware (odi-oss)
 
