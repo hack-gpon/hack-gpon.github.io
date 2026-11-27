@@ -9,10 +9,10 @@ parent: Wintop Optical Technology
 
 |                  |                                                                    |
 | ---------------- | ------------------------------------------------------------------ |
-| Vendor/Brand     | Wintop Optical Technology[^wintop]                                 |
+| Vendor/Brand     | Wintop Optical Technology                                          |
 | Model            | WT-ONU-STICK (WT XGSPON ONU Stick)                                |
 | ODM              | ✅                                                                 |
-| Chipset          | [MaxLinear PRX126](/chipset-maxlinear-prx)[^prx126]                |
+| Chipset          | [MaxLinear PRX126](/chipset-maxlinear-prx)                         |
 | Flash            | 128 MB SPI NAND                                                    |
 | RAM              | 1 GB                                                               |
 | CPU              | MIPS interAptiv (34Kc family)                                      |

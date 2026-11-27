@@ -12,7 +12,7 @@ parent: Zyxel
 | Model            | PMG3000-D20B                                               |
 | ODM              | T&W                                                        |
 | ODM Product Code | TW2362H-CDEL                                               |
-| Chipset          | [Lantiq FALC ON PEB98035](/chipset-lantiq-falc-on)                  |
+| Chipset          | [Lantiq FALC ON-S PEB 38035 ET (PEB98035)](/chipset-lantiq-falc-on)                  |
 | Flash            | 8 MB SPI NOR (GigaDevice GD25Q64B)                         |
 | RAM              | 64 MB                                                      |
 | CPU              | MIPS 34Kc interAptiv                                       |
@@ -36,6 +36,8 @@ parent: Zyxel
 <ImageFigure file="tw236h-cdel-th.jpg" alt="PMG3000-D20B Teardown" caption="PMG3000-D20B Teardown" />
 <ImageFigure file="tw236h-cdel-th-back.jpg" alt="PMG3000-D20B Teardown" caption="PMG3000-D20B Teardown" />
 <ImageFigure file="pmg3000-d20b_modulediff.jpg" alt="PMG3000-D20B Module comparison" caption="PMG3000-D20B Module comparison" />
+
+<!--@partial: ./_partials/ont-lantiq-falcon-architecture.md-->
 
 Once you access the stick via ssh you will be presented with a second tier login. The credentials to access the zyxel shell are: username: `twmanu` with password: `twmanu` or username: `admin` with password: `1234`.
 From the Zyxel shell you can move to a standard Linux shell using the `linuxshell` command
@@ -390,3 +392,5 @@ For more information, see the SFF-8472 Rev 11.0 specification.
 - [Zyxel PMG-3000 mod kit](https://github.com/hack-gpon/zyxel-pmg-3000-mod-kit)
 - [Rollback SFP Zyxel con il W3 HUB per risolvere il problema dell'upload cappato](https://forum.fibra.click/d/36541-rollback-sfp-zyxel-con-il-w3-hub-per-risolvere-il-problema-dellupload-cappato)
 - [Zyxel PMG3000-D20B firmware image files](https://gist.github.com/maurice-w/faeb60bf8201ce70391873bcb9059bc2)
+
+[^ponwiki-sps]: Chipset information sourced from [pon.wiki](https://pon.wiki/), licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).

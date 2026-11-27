@@ -9,10 +9,10 @@ parent: Potron Technology
 
 |                  |                                                                    |
 | ---------------- | ------------------------------------------------------------------ |
-| Vendor/Brand     | Potron Technology[^potron]                                         |
+| Vendor/Brand     | Potron Technology                                                  |
 | Model            | X-ONU-SFPP (SFP+ XGSPON ONU Stick)                                |
 | ODM              | ✅                                                                 |
-| Chipset          | [MaxLinear PRX126](/chipset-maxlinear-prx)[^prx126]                |
+| Chipset          | [MaxLinear PRX126](/chipset-maxlinear-prx)                         |
 | Flash            | 128 MB SPI NAND (Winbond W25N01GV)                                 |
 | RAM              | 1 GB (Rayson RS256M32LD3D1LMZ)                                     |
 | CPU              | MIPS interAptiv (34Kc family)                                      |

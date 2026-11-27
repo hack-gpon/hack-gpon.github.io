@@ -9,10 +9,10 @@ parent: BFW Solutions
 
 |                  |                                                                    |
 | ---------------- | ------------------------------------------------------------------ |
-| Vendor/Brand     | BFW Solutions[^bfw]                                                |
+| Vendor/Brand     | BFW Solutions                                                      |
 | Model            | WAS-110                                                            |
 | ODM              | ✅                                                                 |
-| Chipset          | [MaxLinear PRX126](/chipset-maxlinear-prx)[^prx126]                |
+| Chipset          | [MaxLinear PRX126](/chipset-maxlinear-prx)                         |
 | Flash            | 128 MB SPI NAND (Winbond W25N01GV)                                 |
 | RAM              | 1 GB LPDDR3 (Nanya NT6CL256M32AM) (256 MB seen by U-Boot)          |
 | CPU              | MIPS interAptiv (34Kc family)                                      |

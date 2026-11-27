@@ -11,7 +11,7 @@ parent: Hilink
 | ------------ | -------------------- |
 | Vendor/Brand | Hilink               |
 | Model        | HL23446              |
-| Chipset      | [Lantiq FALC ON PEB98035](/chipset-lantiq-falc-on) |
+| Chipset      | [Lantiq FALC ON-S PEB 38035 ET (PEB98035)](/chipset-lantiq-falc-on) |
 | Flash        | 16 MB                |
 | RAM          | 64 MB                |
 | CPU          | MIPS 34Kc interAptiv |
@@ -27,6 +27,8 @@ parent: Hilink
 | Form Factor  | miniONT SFP          |
 
 <ImageFigure file="hl23446.png" alt="Hilink HL23446" caption="Hilink HL23446" />
+
+<!--@partial: ./_partials/ont-lantiq-falcon-architecture.md-->
 
 ## Possible Clones
 - CarlitoxxPro CPGOS03-0490 **v1**
@@ -51,3 +53,5 @@ parent: Hilink
 
 - [Usage GPON module SFP in Spain](https://forum.mikrotik.com/viewtopic.php?t=116364&start=300)
 
+
+[^ponwiki-sps]: Chipset information sourced from [pon.wiki](https://pon.wiki/), licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).

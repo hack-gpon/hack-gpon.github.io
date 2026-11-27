@@ -11,7 +11,7 @@ parent: Nokia
 | Vendor/Brand     | Nokia                                    |
 | Model            | G-010S-A                                 |
 | ODM              | ✅[^oem]                                 |
-| Chipset          | [Lantiq FALC ON PEB98035](/chipset-lantiq-falc-on) |
+| Chipset          | [Lantiq FALC ON-S PEB 38035 ET (PEB98035)](/chipset-lantiq-falc-on) |
 | Flash            | 16 MB                                    |
 | RAM              | 64 MB                                    |
 | CPU              | MIPS 34Kc interAptiv                     |
@@ -31,6 +31,7 @@ parent: Nokia
 <ImageFigure file="g-010s-a.png" alt="G-010S-A" caption="G-010S-A" />
 <ImageFigure file="g-010s-a-teardown.jpg" alt="G-010S-A Teardown" caption="G-010S-A Teardown" />
 
+<!--@partial: ./_partials/ont-lantiq-falcon-architecture.md-->
 
 ## EEPROM
 
@@ -336,3 +337,5 @@ omciMgr
 
 [^oem]: The last model letter in a Nokia/Alcatel ONT indicates the variant: A-M ALu ONT Manufacturer, P-Z external Manufacturer https://hack-gpon.org/assets/img/ont-nokia-naming.jpg
 
+
+[^ponwiki-sps]: Chipset information sourced from [pon.wiki](https://pon.wiki/), licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
