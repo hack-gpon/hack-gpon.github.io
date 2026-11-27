@@ -39,6 +39,8 @@ The ONT has a TTL 3.3v UART console (configured as 115200 8-N-1) that can be acc
 Some USB TTL adapters label TX and RX pins the other way around: try to swap them if the connection doesn't work.
 :::
 
+<!--@partial: ./_partials/ont-realtek-rtl960x-cig-g97cp-architecture.md-->
+
 ## List of software versions
 - V6.0.10N14 (TIM)
 - V6.0.10N20 (TIM)
