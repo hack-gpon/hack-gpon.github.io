@@ -64,4 +64,6 @@ To access the U-Boot console hold <kbd>Esc</kbd> on device hot-plug to abort aut
 - [pon.wiki: WT-ONU-STICK](https://pon.wiki/xgs-pon/ont/wintop-optical-technology/wt-onu-stick/)
 - [8311 community firmware builder](https://github.com/djGrrr/8311-was-110-firmware-builder)
 
+[^wintop]: <https://www.enwintoptec.com/>
+[^prx126]: <https://www.maxlinear.com/product/access/fiber-access/socs-for-optical-networking-units-onu/prx126>
 [^ponwiki-wintop]: [pon.wiki: WT-ONU-STICK](https://pon.wiki/xgs-pon/ont/wintop-optical-technology/wt-onu-stick/), licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).

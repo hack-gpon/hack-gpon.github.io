@@ -213,4 +213,6 @@ The following dumps were captured by the pon.wiki contributors[^ponwiki-was110].
 - [8311 community firmware builder](https://github.com/djGrrr/8311-was-110-firmware-builder)
 - [Install the 8311 community firmware on the WAS-110](https://pon.wiki/guides/install-the-8311-community-firmware-on-the-was-110/)
 
+[^bfw]: <https://www.bfw-solutions.com/en/gpon-family-141>
+[^prx126]: <https://www.maxlinear.com/product/access/fiber-access/socs-for-optical-networking-units-onu/prx126>
 [^ponwiki-was110]: [pon.wiki: WAS-110](https://pon.wiki/xgs-pon/ont/bfw-solutions/was-110/), licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/); boot log and `procfs` dumps imported from the [PONwiki repository](https://github.com/up-n-atom/PONwiki/tree/main/docs/xgs-pon/ont/bfw-solutions/was-110).
